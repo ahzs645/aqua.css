@@ -1,0 +1,220 @@
+body {
+    background-color: #222;
+    color: #eee;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.layout {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    background: #333;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.preview-area {
+    display: flex;
+    gap: 40px;
+}
+
+.spinner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.label {
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    font-weight: 600;
+}
+
+.controls-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 250px;
+    border-left: 1px solid #444;
+    padding-left: 40px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.output-group {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+textarea {
+    background: #111;
+    border: 1px solid #444;
+    color: #00ff00;
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 8px;
+    resize: none;
+    height: 70px;
+    font-size: 0.85em;
+}
+
+label {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #bbb;
+}
+
+input[type=range] {
+    width: 100%;
+    accent-color: #007aff;
+}
+
+/* --- Spinner Core --- */
+.spinner-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Layer 1: Conic Gradient Background --- */
+.static-rainbow-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+    /* Smooth transition when switching */
+}
+
+.bg-beach-ball {
+    background: conic-gradient(from 90deg,
+            #ff3b30,
+            #ff2d55,
+            #af52de,
+            #007aff,
+            #5ac8fa,
+            #34c759,
+            #ffcc00,
+            #ff9500,
+            #ff3b30);
+}
+
+.bg-smooth-rainbow {
+    background: conic-gradient(from 0deg,
+            #7b68ee,
+            #4169e1,
+            #00bfff,
+            #00fa9a,
+            #32cd32,
+            #9acd32,
+            #ffd700,
+            #ff8c00,
+            #ff4500,
+            #ff1493,
+            #7b68ee);
+}
+
+/* --- Layer 2: Spinning Pinwheel --- */
+.spinning-pinwheel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 10;
+}
+
+/* Ensure static mode STOPS the animation on the pinwheel element */
+.static-mode .spinning-pinwheel {
+    animation: none !important;
+}
+
+.spinning-pinwheel .blade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: url(#dynamicBlade);
+    transform-origin: 50% 50%;
+    background: rgba(0, 0, 0, var(--blade-opacity, 0.25));
+}
+
+.spinning-pinwheel .blade:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+.spinning-pinwheel .blade:nth-child(2) {
+    transform: rotate(72deg);
+}
+
+.spinning-pinwheel .blade:nth-child(3) {
+    transform: rotate(144deg);
+}
+
+.spinning-pinwheel .blade:nth-child(4) {
+    transform: rotate(216deg);
+}
+
+.spinning-pinwheel .blade:nth-child(5) {
+    transform: rotate(288deg);
+}
+
+
+/* --- Layer 3: Effects --- */
+.gloss-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background:
+        radial-gradient(ellipse 70% 40% at 50% 25%,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 20;
+}
+
+.rim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow:
+        inset 0 2px 3px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 3px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+    z-index: 21;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
