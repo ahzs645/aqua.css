@@ -1,6 +1,6 @@
 /**
  * Checkboxes
- * Custom styled checkboxes with Aqua blue gradient
+ * Mac OS X Aqua-style checkboxes with glossy gradients
  */
 
 input[type="checkbox"] {
@@ -9,43 +9,137 @@ input[type="checkbox"] {
   -moz-appearance: none;
   width: var(--checkbox-size);
   height: var(--checkbox-size);
-  border: 1px solid #888888;
   border-radius: 3px;
-  background: #FFFFFF;
-  box-shadow: var(--inset-shadow);
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #f0f0f0 50%,
+    #e0e0e0 100%
+  );
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 0, 0, 0.25);
   cursor: default;
   vertical-align: middle;
   position: relative;
+  transition: all 0.15s ease;
+  overflow: hidden;
+
+  /* Top shine */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 10%;
+    right: 10%;
+    height: 40%;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 2px 2px 50% 50%;
+    pointer-events: none;
+  }
+
+  /* Check mark */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 4px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+    transition: transform 0.1s ease;
+  }
 
   &:checked {
-    background: var(--button-blue-gradient);
-    border-color: var(--aqua-blue-dark);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 65, 184, 0.9) 0%,
+      rgba(45, 115, 199, 0.9) 50%,
+      rgba(33, 160, 196, 0.9) 100%
+    );
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 1px 1px rgba(0, 78, 187, 0.5),
+      inset 0 1px 2px rgba(0, 17, 49, 0.6),
+      inset 0 2px 3px 1px rgba(0, 78, 187, 0.5),
+      0 0 0 1px rgba(0, 50, 150, 0.5);
 
     &::after {
-      content: "";
-      position: absolute;
-      left: 4px;
-      top: 1px;
-      width: 4px;
-      height: 8px;
-      border: solid white;
-      border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg) scale(1);
     }
+  }
+
+  &:hover:not(:disabled) {
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(0, 0, 0, 0.3),
+      0 0 4px rgba(52, 106, 227, 0.3);
+  }
+
+  &:checked:hover:not(:disabled) {
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.35),
+      0 1px 1px rgba(0, 78, 187, 0.5),
+      inset 0 1px 2px rgba(0, 17, 49, 0.6),
+      inset 0 2px 3px 1px rgba(0, 78, 187, 0.5),
+      0 0 0 1px rgba(0, 50, 150, 0.5),
+      0 0 4px rgba(52, 106, 227, 0.5);
   }
 
   &:focus {
-    border-color: var(--aqua-blue);
-    box-shadow: var(--inset-shadow), 0 0 3px rgba(43, 153, 255, 0.5);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(0, 0, 0, 0.25),
+      0 0 0 3px rgba(52, 106, 227, 0.4);
+    outline: none;
+  }
+
+  &:checked:focus {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 1px 1px rgba(0, 78, 187, 0.5),
+      inset 0 1px 2px rgba(0, 17, 49, 0.6),
+      inset 0 2px 3px 1px rgba(0, 78, 187, 0.5),
+      0 0 0 1px rgba(0, 50, 150, 0.5),
+      0 0 0 3px rgba(52, 106, 227, 0.4);
+  }
+
+  &:active:not(:disabled) {
+    filter: brightness(0.9);
   }
 
   &:disabled {
-    background: var(--surface);
-    border-color: #AAAAAA;
-
-    &:checked {
-      background: var(--graphite);
-    }
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: linear-gradient(
+      to bottom,
+      #e8e8e8 0%,
+      #d8d8d8 50%,
+      #c8c8c8 100%
+    );
   }
+}
+
+/* Checkbox with label wrapper */
+.field-row input[type="checkbox"] + label,
+label input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.field-row:has(input[type="checkbox"]:disabled) label,
+label:has(input[type="checkbox"]:disabled) {
+  color: var(--text-disabled);
+  cursor: not-allowed;
 }

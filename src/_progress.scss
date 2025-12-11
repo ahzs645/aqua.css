@@ -1,54 +1,163 @@
 /**
  * Progress Bar
- * Standard, animated, and indeterminate progress bars
+ * Mac OS X Aqua-style progress bars with glossy gradients
  */
 
 .progress-bar {
-  height: 16px;
-  background: #FFFFFF;
-  border: 1px solid #888888;
-  border-radius: var(--radius-large);
-  box-shadow: var(--inset-shadow);
-  overflow: hidden;
   position: relative;
-
-  /* Animated candy stripe */
-  &.animated .progress-bar-fill {
-    background-image: linear-gradient(
-      -45deg,
-      rgba(255, 255, 255, 0.3) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0.3) 75%,
-      transparent 75%,
-      transparent
-    );
-    background-size: 20px 20px;
-    animation: progress-stripe 0.5s linear infinite;
-  }
-
-  /* Indeterminate (barber pole) */
-  &.indeterminate .progress-bar-fill {
-    width: 30% !important;
-    animation: progress-indeterminate 1.5s ease-in-out infinite, progress-stripe 0.5s linear infinite;
-  }
+  background: linear-gradient(#d0d0d0, #f5f5f5);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18),
+    inset 0 1px 2px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.55);
+  border-radius: 9999px;
+  overflow: hidden;
+  height: 10px;
+  width: 100%;
 }
 
 .progress-bar-fill {
-  height: 100%;
-  background: var(--button-blue-gradient);
-  border-radius: var(--radius-large);
-  transition: width 0.3s ease;
   position: relative;
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to bottom,
+    #2260a4 0%,
+    #e2fbfd 8%,
+    #aecef3 25%,
+    #7aafee 40%,
+    #98ceff 60%,
+    #9dcfff 80%,
+    #74deff 100%
+  );
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  transition: width 300ms ease;
+}
+
+/* Animated candy stripe */
+&.animated .progress-bar-fill,
+.progress-bar.animated .progress-bar-fill {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  ), linear-gradient(
+    to bottom,
+    #2260a4 0%,
+    #e2fbfd 8%,
+    #aecef3 25%,
+    #7aafee 40%,
+    #98ceff 60%,
+    #9dcfff 80%,
+    #74deff 100%
+  );
+  background-size: 20px 20px, 100% 100%;
+  animation: progress-stripe 0.5s linear infinite;
+}
+
+/* Indeterminate animation */
+@keyframes progress-indeterminate {
+  0% {
+    left: -35%;
+    width: 35%;
+  }
+  100% {
+    left: 100%;
+    width: 35%;
+  }
+}
+
+.progress-bar.indeterminate .progress-bar-fill {
+  position: absolute;
+  animation: progress-indeterminate 1.5s ease-in-out infinite;
 }
 
 @keyframes progress-stripe {
-  0% { background-position: 0 0; }
-  100% { background-position: 20px 0; }
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
 }
 
-@keyframes progress-indeterminate {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(400%); }
+/* Size variations */
+.progress-bar.small {
+  height: 6px;
+}
+
+.progress-bar.large {
+  height: 16px;
+}
+
+/* Color variants */
+.progress-bar.success .progress-bar-fill {
+  background: linear-gradient(
+    to bottom,
+    #1e7a2e 0%,
+    #c8f7cd 8%,
+    #7edf8b 25%,
+    #4dd162 40%,
+    #5edf73 60%,
+    #6ee882 80%,
+    #4eed68 100%
+  );
+}
+
+.progress-bar.warning .progress-bar-fill {
+  background: linear-gradient(
+    to bottom,
+    #a06020 0%,
+    #fff4e2 8%,
+    #ffd699 25%,
+    #ffba4d 40%,
+    #ffc266 60%,
+    #ffcc80 80%,
+    #ffa940 100%
+  );
+}
+
+.progress-bar.error .progress-bar-fill {
+  background: linear-gradient(
+    to bottom,
+    #a42020 0%,
+    #ffe2e2 8%,
+    #ff9999 25%,
+    #ff6666 40%,
+    #ff7777 60%,
+    #ff8888 80%,
+    #ff5555 100%
+  );
+}
+
+/* With label wrapper */
+.progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-label {
+  font-family: var(--font-system);
+  font-size: 13px;
+  color: #333;
+}
+
+.progress-value {
+  font-family: var(--font-system);
+  font-size: 12px;
+  color: #666;
 }
