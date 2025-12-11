@@ -178,7 +178,45 @@ input[type=range] {
 }
 
 
-/* --- Layer 3: Effects --- */
+/* --- Layer 3: Aqua 3D Effects --- */
+
+/* Top shine overlay */
+.spinner-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 40%;
+    top: 5%;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.1)
+    );
+    border-radius: 50% 50% 40% 40%;
+    filter: blur(2px);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* Bottom glow overlay */
+.spinner-container::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 30%;
+    bottom: 8%;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.25)
+    );
+    border-radius: 50%;
+    filter: blur(3px);
+    z-index: 20;
+    pointer-events: none;
+}
 
 @keyframes spin {
     from {
