@@ -1,8 +1,353 @@
 /**
  * Buttons
- * Standard buttons, default (blue) buttons, and pulsing animation
+ * Mac OS X Aqua-style glossy 3D buttons with multiple variants
  */
 
+/* ===== Aqua 3D Button (Glossy Pill Style) ===== */
+.aqua-button {
+  font-family: "Lucida Grande", "myriad-pro", system-ui, var(--font-system);
+  height: 1.75em;
+  padding: 0 2em;
+  min-width: 6em;
+  border-radius: 1000px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Top shine */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 33%;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
+    width: calc(100% - 0.875em);
+    border-radius: 2em 2em 0.5em 0.5em;
+    top: 5%;
+    filter: blur(1px);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Bottom glow */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 33%;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.5));
+    width: calc(100% - 1.25em);
+    border-radius: 0.75em;
+    bottom: 10%;
+    filter: blur(3px);
+    pointer-events: none;
+  }
+
+  /* Text styling */
+  span {
+    position: relative;
+    top: 0.05em;
+    z-index: 1;
+    letter-spacing: 0.0375em;
+    line-height: 1;
+  }
+}
+
+/* Primary Button - Blue */
+.aqua-button--primary {
+  background: linear-gradient(rgba(0, 65, 184, 0.625), rgba(45, 115, 199, 0.625), rgba(33, 160, 196, 0.625));
+  box-shadow:
+    0 0.375em 0.5em rgba(0, 0, 0, 0.3),
+    0 0.125em 0.125em rgba(0, 78, 187, 0.5),
+    inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8),
+    inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75);
+  color: #000;
+
+  span {
+    text-shadow: 0 0.25em 0.2em rgba(30, 77, 161, 0.5);
+  }
+
+  &:focus,
+  &:active {
+    box-shadow:
+      0 0.375em 0.5em rgba(0, 0, 0, 0.3),
+      0 0.125em 0.125em rgba(0, 78, 187, 0.5),
+      inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8),
+      inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75),
+      0 0 0.5em rgba(52, 106, 227, 0.5);
+  }
+}
+
+/* Secondary Button - Gray/White */
+.aqua-button--secondary {
+  background: linear-gradient(rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
+  box-shadow:
+    0 0.375em 0.5em rgba(0, 0, 0, 0.2),
+    0 0.125em 0.125em rgba(0, 0, 0, 0.3),
+    inset 0 0.25em 0.25em rgba(0, 0, 0, 0.4),
+    inset 0 0.375em 0.5em 0.25em #BBBBBB;
+  color: #000;
+
+  span {
+    text-shadow: 0 0.25em 0.2em rgba(0, 0, 0, 0.25);
+  }
+
+  &:focus,
+  &:active {
+    box-shadow:
+      0 0.375em 0.5em rgba(0, 0, 0, 0.2),
+      0 0.125em 0.125em rgba(0, 0, 0, 0.3),
+      inset 0 0.25em 0.25em rgba(0, 0, 0, 0.4),
+      inset 0 0.375em 0.5em 0.25em #BBBBBB,
+      0 0 0.5em rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* Orange Button - macOS login style */
+.aqua-button--orange {
+  background: linear-gradient(
+    rgba(250, 172, 4, 0.85),
+    rgba(254, 197, 64, 0.85),
+    rgba(255, 219, 128, 0.85)
+  );
+  box-shadow:
+    0 0.375em 0.5em rgba(0, 0, 0, 0.3),
+    0 0.125em 0.125em rgba(250, 172, 4, 0.5),
+    inset 0 0.25em 0.5em rgba(120, 65, 0, 0.8),
+    inset 0 0.375em 0.5em 0.25em rgba(250, 172, 4, 0.75);
+  color: #fff;
+
+  span {
+    text-shadow: 0 0.25em 0.2em rgba(0, 0, 0, 0.4);
+    color: #fff;
+  }
+
+  &:focus,
+  &:active {
+    box-shadow:
+      0 0.375em 0.5em rgba(0, 0, 0, 0.3),
+      0 0.125em 0.125em rgba(250, 172, 4, 0.5),
+      inset 0 0.25em 0.5em rgba(120, 65, 0, 0.8),
+      inset 0 0.375em 0.5em 0.25em rgba(250, 172, 4, 0.75),
+      0 0 0.5em rgba(250, 172, 4, 0.5);
+  }
+}
+
+/* Size variations */
+.aqua-button--small {
+  font-size: 0.75rem;
+}
+
+.aqua-button--large {
+  font-size: 1.5rem;
+}
+
+.aqua-button--xlarge {
+  font-size: 2rem;
+}
+
+/* Disabled state */
+.aqua-button--disabled,
+.aqua-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Flat Button Style (System Preferences style) ===== */
+.aqua-button-flat {
+  vertical-align: top;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-family: "Lucida Grande", sans-serif;
+  color: #000;
+  border-radius: 4.5px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background-image: linear-gradient(rgb(152, 152, 152) 0%, rgb(142, 142, 142) 100%);
+}
+
+.aqua-button-flat__inner {
+  padding: 0px 12px;
+  padding-top: 1px;
+  height: 18px;
+  min-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3.5px;
+  box-shadow: inset 3px 0px 3px -3px rgba(0, 0, 0, .2), inset -3px 0px 3px -3px rgba(0, 0, 0, .2);
+}
+
+/* Flat Secondary (gray/white) */
+.aqua-button-flat--secondary .aqua-button-flat__inner {
+  background-image: linear-gradient(
+    rgb(255, 255, 255) 22%,
+    rgb(251, 251, 251) 27.5%,
+    rgb(249, 249, 249) 33%,
+    rgb(245, 245, 245) 38.5%,
+    rgb(242, 242, 242) 44%,
+    rgb(240, 240, 240) 50%,
+    rgb(231, 231, 231) 55.5%,
+    rgb(231, 231, 231) 72%,
+    rgb(232, 232, 232) 77.5%,
+    rgb(232, 232, 232) 89%,
+    rgb(235, 235, 235) 95%,
+    rgb(239, 239, 239) 100%
+  );
+}
+
+/* Flat Primary (blue) */
+.aqua-button-flat--primary {
+  background-image: linear-gradient(rgb(76, 80, 163) 0%, rgb(69, 70, 94) 100%);
+}
+
+.aqua-button-flat--primary .aqua-button-flat__inner {
+  background-image: linear-gradient(
+    rgb(229, 247, 255) 0%,
+    rgb(210, 236, 253) 5.5%,
+    rgb(199, 228, 252) 11%,
+    rgb(196, 221, 252) 16.5%,
+    rgb(189, 222, 255) 22%,
+    rgb(180, 216, 252) 27.5%,
+    rgb(177, 216, 253) 33%,
+    rgb(168, 211, 252) 38.5%,
+    rgb(162, 210, 252) 44%,
+    rgb(155, 207, 254) 50%,
+    rgb(138, 191, 249) 55.5%,
+    rgb(140, 196, 252) 61%,
+    rgb(148, 202, 252) 66.5%,
+    rgb(161, 212, 255) 72%,
+    rgb(170, 217, 253) 77.5%,
+    rgb(179, 224, 253) 83%,
+    rgb(187, 232, 255) 89%,
+    rgb(203, 242, 255) 95%,
+    rgb(219, 244, 255) 100%
+  );
+}
+
+/* Active/pressed state */
+.aqua-button-flat:active {
+  background-image: linear-gradient(rgb(66, 71, 160) 0%, rgb(59, 61, 99) 100%);
+}
+
+.aqua-button-flat:active .aqua-button-flat__inner {
+  background-image: linear-gradient(
+    rgb(176, 205, 236) 0%,
+    rgb(148, 179, 237) 5.5%,
+    rgb(136, 169, 229) 11%,
+    rgb(128, 163, 229) 16.5%,
+    rgb(121, 161, 230) 22%,
+    rgb(114, 155, 230) 27.5%,
+    rgb(107, 154, 230) 33%,
+    rgb(99, 150, 230) 38.5%,
+    rgb(92, 147, 230) 44%,
+    rgb(87, 143, 230) 50%,
+    rgb(58, 128, 230) 55.5%,
+    rgb(64, 132, 231) 61%,
+    rgb(73, 140, 234) 66.5%,
+    rgb(85, 150, 236) 72%,
+    rgb(96, 158, 236) 77.5%,
+    rgb(109, 167, 237) 83%,
+    rgb(122, 178, 237) 89%,
+    rgb(135, 189, 236) 95%,
+    rgb(158, 203, 236) 100%
+  );
+}
+
+/* Pulsing animation for default primary button */
+@keyframes aqua-button-pulse {
+  0%   { opacity: 0; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.aqua-button-flat--primary.aqua-button-flat--pulsing {
+  height: 20px;
+  min-width: 70px;
+  padding: 1px;
+  position: relative;
+}
+
+.aqua-button-flat--primary.aqua-button-flat--pulsing .aqua-button-flat__label {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 12px;
+}
+
+.aqua-button-flat--primary.aqua-button-flat--pulsing .aqua-button-flat__base,
+.aqua-button-flat--primary.aqua-button-flat--pulsing .aqua-button-flat__pulse {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  bottom: 1px;
+  border-radius: 3.5px;
+  box-shadow: inset 3px 0px 3px -3px rgba(0, 0, 0, .2), inset -3px 0px 3px -3px rgba(0, 0, 0, .2);
+}
+
+.aqua-button-flat--primary.aqua-button-flat--pulsing .aqua-button-flat__base {
+  z-index: 1;
+  background-image: linear-gradient(
+    rgb(229, 247, 255) 0%,
+    rgb(155, 207, 254) 50%,
+    rgb(219, 244, 255) 100%
+  );
+}
+
+.aqua-button-flat--primary.aqua-button-flat--pulsing .aqua-button-flat__pulse {
+  z-index: 2;
+  animation: aqua-button-pulse 1s infinite;
+  background-image: linear-gradient(
+    rgb(199, 217, 251) 0%,
+    rgb(128, 177, 243) 50%,
+    rgb(187, 214, 239) 100%
+  );
+}
+
+/* Flat button sizes */
+.aqua-button-flat--small {
+  font-size: 11px;
+}
+
+.aqua-button-flat--small .aqua-button-flat__inner {
+  height: 14px;
+  min-width: 40px;
+  padding: 0 8px;
+}
+
+.aqua-button-flat--large {
+  font-size: 15px;
+}
+
+.aqua-button-flat--large .aqua-button-flat__inner {
+  height: 24px;
+  min-width: 60px;
+  padding: 0 16px;
+}
+
+/* Flat button disabled */
+.aqua-button-flat--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Standard HTML Button (Backward Compatible) ===== */
 button,
 input[type="submit"],
 input[type="reset"],
@@ -10,47 +355,50 @@ input[type="button"],
 .button {
   font-family: var(--font-system);
   font-size: var(--font-size-base);
-  padding: 4px 16px;
-  min-height: 22px;
-  border: 1px solid #888888;
-  border-radius: var(--radius-medium);
-  background: var(--button-gradient);
+  padding: 1px 12px;
+  height: 20px;
+  min-width: 50px;
+  border: 1px solid rgb(152, 152, 152);
+  border-radius: 4.5px;
+  background-image: linear-gradient(
+    rgb(255, 255, 255) 22%,
+    rgb(251, 251, 251) 27.5%,
+    rgb(249, 249, 249) 33%,
+    rgb(245, 245, 245) 38.5%,
+    rgb(242, 242, 242) 44%,
+    rgb(240, 240, 240) 50%,
+    rgb(231, 231, 231) 55.5%,
+    rgb(231, 231, 231) 72%,
+    rgb(232, 232, 232) 77.5%,
+    rgb(232, 232, 232) 89%,
+    rgb(235, 235, 235) 95%,
+    rgb(239, 239, 239) 100%
+  );
+  box-shadow: inset 3px 0px 3px -3px rgba(0, 0, 0, .2), inset -3px 0px 3px -3px rgba(0, 0, 0, .2);
   color: var(--text-color);
   cursor: default;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 -1px 0 rgba(0, 0, 0, 0.1) inset,
-    0 1px 2px rgba(0, 0, 0, 0.1);
   outline: none;
   user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  &:hover {
-    background: linear-gradient(
-      180deg,
-      #FFFFFF 0%,
-      #F0F0F0 45%,
-      #E0E0E0 50%,
-      #E8E8E8 55%,
-      #F8F8F8 100%
+  &:active {
+    background-image: linear-gradient(
+      rgb(176, 205, 236) 0%,
+      rgb(87, 143, 230) 50%,
+      rgb(158, 203, 236) 100%
     );
   }
 
-  &:active {
-    background: var(--button-gradient-active);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.3) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.05) inset,
-      0 1px 1px rgba(0, 0, 0, 0.05);
+  &:focus {
+    border-color: rgb(90, 150, 200);
+    box-shadow: 0px 0px 2px 2px rgba(110, 160, 210, .9);
   }
 
   &:disabled {
-    background: var(--surface);
-    border-color: #AAAAAA;
-    color: var(--text-disabled);
-    text-shadow: none;
-    box-shadow: none;
-    cursor: default;
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 
@@ -58,47 +406,38 @@ input[type="button"],
 button.default,
 input[type="submit"],
 .button.default {
-  background: var(--button-blue-gradient);
-  border-color: #0055AA;
-  color: white;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.4) inset,
-    0 -1px 0 rgba(0, 0, 0, 0.2) inset,
-    0 1px 3px rgba(0, 102, 204, 0.4);
+  border-color: rgb(76, 80, 163);
+  background-image: linear-gradient(
+    rgb(229, 247, 255) 0%,
+    rgb(155, 207, 254) 50%,
+    rgb(219, 244, 255) 100%
+  );
 
-  &:hover {
-    background: linear-gradient(
-      180deg,
-      #8DDDFF 0%,
-      #5CC8FF 30%,
-      #3BA9FF 50%,
-      #1090FF 70%,
-      #0077DD 100%
+  &:active {
+    background-image: linear-gradient(
+      rgb(176, 205, 236) 0%,
+      rgb(87, 143, 230) 50%,
+      rgb(158, 203, 236) 100%
     );
   }
 
-  &:active {
-    background: var(--button-blue-gradient-active);
-  }
-
   &.pulse {
-    animation: aqua-pulse 1.5s ease-in-out infinite;
+    animation: aqua-default-pulse 1.5s ease-in-out infinite;
   }
 }
 
 /* Pulsing Default Button Animation */
-@keyframes aqua-pulse {
+@keyframes aqua-default-pulse {
   0%, 100% {
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.4) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.2) inset,
-      0 0 8px rgba(43, 153, 255, 0.4);
+      inset 3px 0px 3px -3px rgba(0, 0, 0, .2),
+      inset -3px 0px 3px -3px rgba(0, 0, 0, .2),
+      0 0 6px rgba(43, 153, 255, 0.3);
   }
   50% {
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.4) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.2) inset,
-      0 0 16px rgba(43, 153, 255, 0.7);
+      inset 3px 0px 3px -3px rgba(0, 0, 0, .2),
+      inset -3px 0px 3px -3px rgba(0, 0, 0, .2),
+      0 0 12px rgba(43, 153, 255, 0.6);
   }
 }

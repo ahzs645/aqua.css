@@ -1,0 +1,191 @@
+/**
+ * Dialog / Panel
+ * Mac OS X Aqua-style dialog boxes and panels
+ */
+
+.aqua-dialog {
+  background: rgba(234, 234, 234, .92);
+  padding: 11px 12px;
+  display: block;
+  position: relative;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "PT Sans", Verdana, sans-serif;
+  box-shadow:
+    0px 0px 6px 1px rgba(0, 0, 0, .25),
+    0px 6px 7px -3px rgba(0, 0, 0, .35),
+    0px 0px 1px 1px rgba(0, 0, 0, .15),
+    inset 0px 13px 7px -10px rgba(0, 0, 0, .3);
+  border-radius: 8px;
+}
+
+/* Width variants */
+.aqua-dialog--small {
+  width: 300px;
+}
+
+.aqua-dialog--medium {
+  width: 403px;
+}
+
+.aqua-dialog--large {
+  width: 550px;
+}
+
+.aqua-dialog--full {
+  width: 100%;
+}
+
+/* Dialog sections */
+.aqua-dialog__header {
+  font-size: 11pt;
+  font-weight: bold;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.aqua-dialog__content {
+  margin-bottom: 14px;
+}
+
+.aqua-dialog__section {
+  background: rgba(0, 0, 0, .025);
+  padding: 14px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 2px rgba(0, 0, 0, .3);
+  font-size: 10pt;
+  margin: 10px 0;
+}
+
+.aqua-dialog__section-description {
+  margin-top: 5px;
+  font-size: 7.7pt;
+  color: #666;
+}
+
+.aqua-dialog__row {
+  font-size: 10pt;
+  text-align: left;
+  margin-top: 10px;
+  margin-left: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aqua-dialog__row:first-child {
+  margin-top: 14px;
+}
+
+.aqua-dialog__row label {
+  display: inline-block;
+  min-width: 70px;
+  text-align: right;
+}
+
+.aqua-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+  margin-right: 7px;
+}
+
+/* Animation for slide in/out */
+.aqua-dialog--animated {
+  transition-timing-function: linear;
+  transition-duration: .25s;
+}
+
+/* Alert dialog variant */
+.alert-dialog {
+  background: rgba(234, 234, 234, .95);
+  padding: 16px 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.alert-dialog-content {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.alert-dialog-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+
+  &.warning {
+    background: linear-gradient(
+      to bottom,
+      #ffdb4d 0%,
+      #ffcc00 100%
+    );
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  &.error {
+    background: linear-gradient(
+      to bottom,
+      #ff6b6b 0%,
+      #ff3b30 100%
+    );
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  &.info {
+    background: linear-gradient(
+      to bottom,
+      #5ac8fa 0%,
+      #007aff 100%
+    );
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  &.success {
+    background: linear-gradient(
+      to bottom,
+      #4cd964 0%,
+      #34c759 100%
+    );
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+.alert-dialog-text {
+  flex: 1;
+
+  h3 {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  p {
+    margin: 0;
+    font-size: 12px;
+    color: #333;
+    line-height: 1.4;
+  }
+}
+
+.alert-dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

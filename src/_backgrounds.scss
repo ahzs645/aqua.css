@@ -1,0 +1,270 @@
+/**
+ * Backgrounds & Pinstripes
+ * Mac OS X Aqua-style background patterns and utility classes
+ */
+
+/* CSS Variables for Aqua theming */
+:root {
+  /* Pinstripe patterns */
+  --aqua-pinstripe-light: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1.5px,
+    rgba(255, 255, 255, 0.85) 1.5px,
+    rgba(255, 255, 255, 0.85) 4px
+  );
+
+  --aqua-pinstripe-window: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 1.5px,
+      rgba(255, 255, 255, 0.85) 1.5px,
+      rgba(255, 255, 255, 0.85) 4px
+    ),
+    linear-gradient(to bottom, #ececec 0%, #ececec 100%);
+
+  --aqua-pinstripe-titlebar: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(219, 219, 219, 0.6) 70%,
+    rgba(206, 206, 206, 0.7) 100%
+  );
+
+  --aqua-pinstripe-menubar: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1.5px,
+    rgba(255, 255, 255, 0.55) 1.5px,
+    rgba(255, 255, 255, 0.55) 4px
+  );
+
+  --aqua-pinstripe-diagonal: repeating-linear-gradient(
+    -45deg,
+    #eee 0px,
+    #eee 2px,
+    #e3e3e3 2px,
+    #e3e3e3 4px
+  );
+
+  /* Brushed metal texture */
+  --aqua-brushed-metal: linear-gradient(
+    to bottom,
+    #e8e8e8 0%,
+    #d0d0d0 50%,
+    #c8c8c8 100%
+  );
+
+  /* Selection colors */
+  --aqua-selection-bg: rgba(39, 101, 202, 0.88);
+  --aqua-selection-text: #ffffff;
+  --aqua-selection-glow: rgba(48, 103, 218, 0.5);
+
+  /* Primary blue gradient (for buttons, progress bars) */
+  --aqua-blue-gradient: linear-gradient(
+    rgba(0, 65, 184, 0.625),
+    rgba(45, 115, 199, 0.625),
+    rgba(33, 160, 196, 0.625)
+  );
+
+  /* Secondary gray gradient */
+  --aqua-gray-gradient: linear-gradient(
+    rgba(160, 160, 160, 0.625),
+    rgba(255, 255, 255, 0.625)
+  );
+
+  /* Window backgrounds */
+  --aqua-window-bg: #ececec;
+  --aqua-titlebar-bg: linear-gradient(to bottom, #e8e8e8 0%, #d0d0d0 100%);
+  --aqua-titlebar-inactive-bg: linear-gradient(to bottom, #f6f6f6 0%, #e0e0e0 100%);
+
+  /* Border colors */
+  --aqua-border-color: rgba(0, 0, 0, 0.3);
+  --aqua-border-color-light: rgba(0, 0, 0, 0.15);
+
+  /* Focus ring */
+  --aqua-focus-ring: 0 0 0 3px rgba(52, 106, 227, 0.4);
+
+  /* Shadows */
+  --aqua-window-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --aqua-window-shadow-inactive: 0 4px 15px rgba(0, 0, 0, 0.2), 0 1px 4px rgba(0, 0, 0, 0.1);
+  --aqua-button-shadow: 0 2px 3px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 78, 187, 0.5);
+}
+
+/* Classic horizontal stripes (like Finder windows) */
+.aqua-background {
+  background: repeating-linear-gradient(
+    #F0F0F0,
+    #F0F0F0 4px,
+    #FFFFFF 4px,
+    #FFFFFF 8px
+  );
+}
+
+/* Diagonal stripes */
+.aqua-background--diagonal {
+  background: repeating-linear-gradient(
+    45deg,
+    #eee,
+    #eee 10px,
+    #e3e3e3 10px,
+    #e3e3e3 20px
+  );
+}
+
+/* Solid gray */
+.aqua-background--gray {
+  background: #e8e8e8;
+}
+
+/* Brushed metal */
+.aqua-background--metal {
+  background: linear-gradient(
+    to bottom,
+    #e8e8e8 0%,
+    #d0d0d0 50%,
+    #c8c8c8 100%
+  );
+}
+
+/* Full viewport wrapper */
+.aqua-background--full {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Utility classes for backgrounds */
+.aqua-bg-window {
+  background-image: var(--aqua-pinstripe-window);
+}
+
+.aqua-bg-pinstripe {
+  background-image: var(--aqua-pinstripe-light);
+  background-color: #ececec;
+}
+
+.aqua-bg-pinstripe-diagonal {
+  background-image: var(--aqua-pinstripe-diagonal);
+}
+
+.aqua-bg-titlebar {
+  background-image: var(--aqua-pinstripe-titlebar), var(--aqua-titlebar-bg);
+}
+
+.aqua-bg-menubar {
+  background-image: var(--aqua-pinstripe-menubar), linear-gradient(to bottom, #f8f8f8 0%, #e8e8e8 50%, #d4d4d4 100%);
+}
+
+.aqua-bg-brushed-metal {
+  background: var(--aqua-brushed-metal);
+}
+
+.aqua-bg-solid {
+  background: var(--aqua-window-bg);
+}
+
+/* Utility classes for borders */
+.aqua-border {
+  border: 1px solid var(--aqua-border-color);
+}
+
+.aqua-border-light {
+  border: 1px solid var(--aqua-border-color-light);
+}
+
+.aqua-border-bottom {
+  border-bottom: 1px solid var(--aqua-border-color);
+}
+
+/* Utility classes for shadows */
+.aqua-shadow-window {
+  box-shadow: var(--aqua-window-shadow);
+}
+
+.aqua-shadow-window-inactive {
+  box-shadow: var(--aqua-window-shadow-inactive);
+}
+
+.aqua-shadow-button {
+  box-shadow: var(--aqua-button-shadow);
+}
+
+/* Focus ring utility */
+.aqua-focus-ring:focus {
+  outline: none;
+  box-shadow: var(--aqua-focus-ring);
+}
+
+/* Selection color utility */
+.aqua-selection::selection {
+  background: var(--aqua-selection-bg);
+  color: var(--aqua-selection-text);
+}
+
+/* Gloss effect utility (for buttons, bars) */
+.aqua-gloss {
+  position: relative;
+}
+
+.aqua-gloss::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Inset utility for inputs */
+.aqua-inset {
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Text shadows */
+.aqua-text-shadow {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.aqua-text-shadow-dark {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Font family utility */
+.aqua-font {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Rounded corners utilities */
+.aqua-rounded {
+  border-radius: 8px;
+}
+
+.aqua-rounded-top {
+  border-radius: 8px 8px 0 0;
+}
+
+.aqua-rounded-pill {
+  border-radius: 9999px;
+}
+
+/* Disabled state utility */
+.aqua-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

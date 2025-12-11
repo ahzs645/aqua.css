@@ -7,13 +7,16 @@
 /* Variables & Base */
 @import "_variables.scss";
 @import "_base.scss";
+@import "_backgrounds.scss";
 
 /* Core Components */
 @import "_window.scss";
+@import "_traffic-lights.scss";
 @import "_buttons.scss";
 @import "_forms.scss";
 @import "_checkbox.scss";
 @import "_radio.scss";
+@import "_switch.scss";
 
 /* UI Components */
 @import "_progress.scss";
@@ -24,6 +27,7 @@
 /* Advanced Components */
 @import "_menu.scss";
 @import "_toolbar.scss";
+@import "_dialog.scss";
 @import "_alert.scss";
 @import "_table.scss";
 @import "_listview.scss";
@@ -38,6 +42,8 @@
 @import "_splitview.scss";
 @import "_disclosure.scss";
 @import "_window-pane.scss";
+@import "_toast.scss";
+@import "_chat-bubble.scss";
 
 /* Utilities & Themes */
 @import "_utilities.scss";

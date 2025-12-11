@@ -1,0 +1,316 @@
+/**
+ * Traffic Lights
+ * Mac OS X Aqua-style window control buttons (close, minimize, zoom)
+ */
+
+/* Traffic Lights Container */
+.traffic-lights {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Base Aqua Light Style */
+.aqua-light {
+  --button-size: 14px;
+  position: relative;
+  width: var(--button-size);
+  height: var(--button-size);
+  font-size: var(--button-size);
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  overflow: hidden;
+
+  /* Gray/inactive state by default */
+  background: linear-gradient(
+    rgba(160, 160, 160, 0.625),
+    rgba(200, 200, 200, 0.625),
+    rgba(180, 180, 180, 0.625)
+  );
+  box-shadow:
+    0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(0, 0, 0, 0.2),
+    inset 0 0.125em 0.2em rgba(0, 0, 0, 0.4),
+    inset 0 0.15em 0.25em 0.1em rgba(150, 150, 150, 0.75);
+
+  /* Top shine */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40%;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.2)
+    );
+    width: 70%;
+    border-radius: 50% 50% 30% 30%;
+    top: 8%;
+    filter: blur(0.5px);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Bottom glow */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 30%;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.4)
+    );
+    width: 60%;
+    border-radius: 50%;
+    bottom: 10%;
+    filter: blur(1px);
+    pointer-events: none;
+  }
+}
+
+/* Icon styles - hidden by default */
+.aqua-light .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 0.6em;
+  font-weight: bold;
+  line-height: 1;
+  opacity: 0;
+  z-index: 10;
+  transition: opacity 0.1s ease;
+}
+
+.aqua-red .icon {
+  color: #4d0f0a;
+  text-shadow: 0 1px 0 rgba(255, 150, 150, 0.3);
+}
+
+.aqua-yellow .icon {
+  color: #5a4005;
+  text-shadow: 0 1px 0 rgba(255, 220, 150, 0.3);
+}
+
+.aqua-green .icon {
+  color: #0a4d12;
+  text-shadow: 0 1px 0 rgba(150, 255, 150, 0.3);
+}
+
+/* Show ALL icons when hovering over the container */
+.traffic-lights:hover .aqua-light:not(.aqua-inactive) .icon {
+  opacity: 1;
+}
+
+/* Close - Red (on hover) */
+.traffic-lights:hover .aqua-red:not(.aqua-inactive) {
+  background: linear-gradient(
+    rgb(193, 58, 45),
+    rgb(205, 73, 52)
+  );
+  box-shadow:
+    0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(150, 40, 30, 0.5),
+    inset 0 0.125em 0.2em rgba(150, 40, 30, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(225, 70, 64, 0.75);
+}
+
+/* Minimize - Yellow/Orange (on hover) */
+.traffic-lights:hover .aqua-yellow:not(.aqua-inactive) {
+  background: linear-gradient(
+    rgb(202, 130, 13),
+    rgb(253, 253, 149)
+  );
+  box-shadow:
+    0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(155, 78, 21, 0.5),
+    inset 0 0.125em 0.2em rgba(155, 78, 21, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(241, 157, 20, 0.75);
+}
+
+/* Maximize - Green (on hover) */
+.traffic-lights:hover .aqua-green:not(.aqua-inactive) {
+  background: linear-gradient(
+    rgb(111, 174, 58),
+    rgb(138, 192, 50)
+  );
+  box-shadow:
+    0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(53, 91, 17, 0.5),
+    inset 0 0.125em 0.2em rgba(53, 91, 17, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(98, 187, 19, 0.75);
+}
+
+/* Permanently inactive */
+.aqua-inactive {
+  background: linear-gradient(
+    rgba(160, 160, 160, 0.625),
+    rgba(200, 200, 200, 0.625),
+    rgba(180, 180, 180, 0.625)
+  ) !important;
+  box-shadow:
+    0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(0, 0, 0, 0.2),
+    inset 0 0.125em 0.2em rgba(0, 0, 0, 0.4),
+    inset 0 0.15em 0.25em 0.1em rgba(150, 150, 150, 0.75) !important;
+  cursor: default;
+}
+
+/* Pressed state */
+.traffic-lights:hover .aqua-light:active {
+  filter: brightness(0.85);
+  transition: none;
+}
+
+/* Size variations */
+.traffic-lights--large .aqua-light {
+  --button-size: 32px;
+}
+
+.traffic-lights--small .aqua-light {
+  --button-size: 10px;
+}
+
+/* Always show colors (for demo/static display) */
+.traffic-lights--always-colored .aqua-red:not(.aqua-inactive) {
+  background: linear-gradient(
+    rgb(193, 58, 45),
+    rgb(205, 73, 52)
+  );
+  box-shadow:
+    0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(150, 40, 30, 0.5),
+    inset 0 0.125em 0.2em rgba(150, 40, 30, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(225, 70, 64, 0.75);
+}
+
+.traffic-lights--always-colored .aqua-yellow:not(.aqua-inactive) {
+  background: linear-gradient(
+    rgb(202, 130, 13),
+    rgb(253, 253, 149)
+  );
+  box-shadow:
+    0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(155, 78, 21, 0.5),
+    inset 0 0.125em 0.2em rgba(155, 78, 21, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(241, 157, 20, 0.75);
+}
+
+.traffic-lights--always-colored .aqua-green:not(.aqua-inactive) {
+  background: linear-gradient(
+    rgb(111, 174, 58),
+    rgb(138, 192, 50)
+  );
+  box-shadow:
+    0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(53, 91, 17, 0.5),
+    inset 0 0.125em 0.2em rgba(53, 91, 17, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(98, 187, 19, 0.75);
+}
+
+/* Unsaved document indicator (dot in close button) */
+.aqua-red.unsaved .icon {
+  display: none;
+}
+
+.aqua-red.unsaved::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background: #4d0f0a;
+  border-radius: 50%;
+  filter: none;
+  z-index: 5;
+}
+
+.traffic-lights--large .aqua-red.unsaved::after {
+  width: 10px;
+  height: 10px;
+}
+
+.traffic-lights--small .aqua-red.unsaved::after {
+  width: 3px;
+  height: 3px;
+}
+
+/* SVG icon styles (for Panther variant) */
+.traffic-lights--panther .icon-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: 45%;
+  opacity: 0;
+  z-index: 10;
+  transition: opacity 0.1s ease;
+}
+
+.traffic-lights--panther .aqua-red .icon-svg {
+  color: #4d0f0a;
+}
+
+.traffic-lights--panther .aqua-yellow .icon-svg {
+  color: #5a4005;
+}
+
+.traffic-lights--panther .aqua-green .icon-svg {
+  color: #0a4d12;
+}
+
+.traffic-lights--panther:hover .aqua-light:not(.aqua-inactive) .icon-svg {
+  opacity: 1;
+}
+
+/* RYOS Variant - Pure colored circles, no icons */
+.traffic-lights--ryos .aqua-light {
+  width: 13px;
+  height: 13px;
+}
+
+.traffic-lights--ryos .aqua-red:not(.aqua-inactive) {
+  background: linear-gradient(rgb(193, 58, 45), rgb(205, 73, 52));
+  box-shadow:
+    rgba(0, 0, 0, 0.5) 0px 2px 4px,
+    rgba(0, 0, 0, 0.4) 0px 1px 2px,
+    rgba(225, 70, 64, 0.5) 0px 1px 1px,
+    rgba(0, 0, 0, 0.3) 0px 0px 0px 0.5px inset,
+    rgba(150, 40, 30, 0.8) 0px 1px 3px inset,
+    rgba(225, 70, 64, 0.75) 0px 2px 3px 1px inset;
+}
+
+.traffic-lights--ryos .aqua-yellow:not(.aqua-inactive) {
+  background: linear-gradient(rgb(202, 130, 13), rgb(253, 253, 149));
+  box-shadow:
+    rgba(0, 0, 0, 0.5) 0px 2px 4px,
+    rgba(0, 0, 0, 0.4) 0px 1px 2px,
+    rgba(223, 161, 35, 0.5) 0px 1px 1px,
+    rgba(0, 0, 0, 0.3) 0px 0px 0px 0.5px inset,
+    rgb(155, 78, 21) 0px 1px 3px inset,
+    rgb(241, 157, 20) 0px 2px 3px 1px inset;
+}
+
+.traffic-lights--ryos .aqua-green:not(.aqua-inactive) {
+  background: linear-gradient(rgb(111, 174, 58), rgb(138, 192, 50));
+  box-shadow:
+    rgba(0, 0, 0, 0.5) 0px 2px 4px,
+    rgba(0, 0, 0, 0.4) 0px 1px 2px,
+    rgba(59, 173, 29, 0.5) 0px 1px 1px,
+    rgba(0, 0, 0, 0.3) 0px 0px 0px 0.5px inset,
+    rgb(53, 91, 17) 0px 1px 3px inset,
+    rgb(98, 187, 19) 0px 2px 3px 1px inset;
+}
+
+.traffic-lights--ryos .icon {
+  display: none !important;
+}
