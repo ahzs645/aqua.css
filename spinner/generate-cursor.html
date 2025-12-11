@@ -213,8 +213,8 @@
         <div class="controls">
             <div class="control-row">
                 <label>Cursor Size</label>
-                <input type="range" id="sizeRange" min="16" max="128" value="32">
-                <span class="value" id="sizeValue">32px</span>
+                <input type="range" id="sizeRange" min="16" max="128" value="24">
+                <span class="value" id="sizeValue">24px</span>
             </div>
             <div class="control-row">
                 <label>Frame Count</label>
@@ -229,6 +229,7 @@
         </div>
 
         <div class="buttons">
+            <button id="toggleCursorBtn" class="toggle-cursor">Use as Cursor</button>
             <button id="generateBtn">Generate Frames</button>
             <button id="downloadZipBtn">Download All Frames (ZIP)</button>
             <button id="downloadGifBtn">Download as GIF</button>
@@ -417,6 +418,63 @@
             animationId = requestAnimationFrame(animatePreview);
         }
         requestAnimationFrame(animatePreview);
+
+        // Cursor follower
+        const cursorFollower = document.getElementById('cursorFollower');
+        const cursorCtx = cursorFollower.getContext('2d');
+        let cursorActive = false;
+        let cursorRotation = 0;
+        let cursorLastTime = 0;
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (cursorActive) {
+                const size = parseInt(sizeRange.value);
+                cursorFollower.style.left = (mouseX - size / 2) + 'px';
+                cursorFollower.style.top = (mouseY - size / 2) + 'px';
+            }
+        });
+
+        function animateCursor(timestamp) {
+            if (!cursorActive) {
+                requestAnimationFrame(animateCursor);
+                return;
+            }
+
+            if (!cursorLastTime) cursorLastTime = timestamp;
+            const deltaTime = (timestamp - cursorLastTime) / 1000;
+            cursorLastTime = timestamp;
+
+            const size = parseInt(sizeRange.value);
+            cursorFollower.width = cursorFollower.height = size;
+            cursorFollower.style.left = (mouseX - size / 2) + 'px';
+            cursorFollower.style.top = (mouseY - size / 2) + 'px';
+
+            const speed = 1.2;
+            cursorRotation += deltaTime * speed * Math.PI * 2;
+
+            drawSpinner(cursorCtx, size, cursorRotation);
+            requestAnimationFrame(animateCursor);
+        }
+        requestAnimationFrame(animateCursor);
+
+        document.getElementById('toggleCursorBtn').addEventListener('click', () => {
+            cursorActive = !cursorActive;
+            const btn = document.getElementById('toggleCursorBtn');
+
+            if (cursorActive) {
+                document.body.classList.add('cursor-active');
+                cursorFollower.style.display = 'block';
+                btn.textContent = 'Disable Cursor';
+                cursorLastTime = 0;
+            } else {
+                document.body.classList.remove('cursor-active');
+                cursorFollower.style.display = 'none';
+                btn.textContent = 'Use as Cursor';
+            }
+        });
 
         // Generate frames
         document.getElementById('generateBtn').addEventListener('click', () => {
