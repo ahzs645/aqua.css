@@ -3,12 +3,8 @@
  * Mac OS X Aqua-style tab list and tab panels with glossy gradients
  */
 
-.tabs {
-  display: flex;
-  flex-direction: column;
-}
-
-.tab-list {
+/* Tab bar mixin for shared styles */
+@mixin aqua-tab-bar-base {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -16,8 +12,6 @@
   gap: 2px;
   padding-bottom: 0;
   background: transparent;
-  margin: 0;
-  list-style: none;
 
   /* Colorful gradient bar at the bottom */
   &::after {
@@ -41,102 +35,173 @@
     box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.3),
       inset 0 -1px 0 rgba(0, 0, 0, 0.3);
   }
+}
+
+/* Tab item mixin for shared styles */
+@mixin aqua-tab-base {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 6px 6px 0 0;
+  transition: all 150ms;
+  overflow: hidden;
+  height: 28px;
+  padding: 0 16px;
+  margin-top: 4px;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lucida Grande", "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  white-space: nowrap;
+
+  /* Inactive tab (secondary aqua button style) */
+  background: linear-gradient(rgb(197, 197, 197), rgb(255, 255, 255));
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 2px 3px 1px rgba(187, 187, 187, 0.8),
+    0 1px 1px rgba(0, 0, 0, 0.3);
+  color: black;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+
+  /* Top shine for aqua tabs */
+  &::before {
+    content: "";
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    top: 1px;
+    height: 15%;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.55),
+      rgba(255, 255, 255, 0.25)
+    );
+    border-radius: 4px 4px 0 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Bottom glow for aqua tabs */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: 0px;
+    height: 20%;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.35));
+    border-radius: 0 0 2px 2px;
+    pointer-events: none;
+    z-index: 10;
+    filter: blur(1px);
+  }
+}
+
+@mixin aqua-tab-hover {
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0 2px 3px 1px rgba(187, 187, 187, 0.6),
+    0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+@mixin aqua-tab-active {
+  margin-top: 0;
+  z-index: 10;
+
+  /* Active tab (primary aqua button style) */
+  background: linear-gradient(
+    rgb(48, 123, 201),
+    rgb(152, 189, 228),
+    rgb(210, 255, 255)
+  );
+  box-shadow:
+    inset 0 1px 3px rgba(0, 17, 49, 0.8),
+    inset 0 2px 3px 1px rgba(0, 78, 187, 0.75),
+    0 2px 3px rgba(0, 0, 0, 0.3),
+    0 1px 1px rgba(0, 78, 187, 0.5);
+  text-shadow: 0 2px 2px rgba(30, 77, 161, 0.5);
+  border-bottom: 1px solid rgb(210, 255, 255);
+
+  /* Enhanced gloss for active state */
+  &::before {
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.35)
+    );
+  }
+
+  &::after {
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.45));
+  }
+}
+
+/* ===== Aqua Tab Classes (Recommended) ===== */
+.aqua-tab-bar {
+  @include aqua-tab-bar-base;
+}
+
+.aqua-tab {
+  @include aqua-tab-base;
+
+  &:hover:not(.aqua-tab--active) {
+    @include aqua-tab-hover;
+  }
+
+  &.aqua-tab--active {
+    @include aqua-tab-active;
+  }
+}
+
+/* Tab content panel */
+.aqua-tab-content {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: none;
+  background: transparent;
+  padding: 16px;
+  margin-top: 5px;
+}
+
+/* Size variations */
+.aqua-tab--small {
+  height: 22px;
+  font-size: 11px;
+  padding: 0 12px;
+}
+
+.aqua-tab--large {
+  height: 34px;
+  font-size: 14px;
+  padding: 0 20px;
+}
+
+/* Disabled state */
+.aqua-tab--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ===== Legacy/Generic Tab Classes ===== */
+.tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-list {
+  @include aqua-tab-bar-base;
+  margin: 0;
+  list-style: none;
 
   li {
-    position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 6px 6px 0 0;
-    transition: all 150ms;
-    overflow: hidden;
-    height: 28px;
-    padding: 0 16px;
-    margin-top: 4px;
-    cursor: default;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-system);
-    font-size: 12px;
-    white-space: nowrap;
-
-    /* Inactive tab (secondary aqua button style) */
-    background: linear-gradient(rgb(197, 197, 197), rgb(255, 255, 255));
-    box-shadow:
-      inset 0 1px 2px rgba(0, 0, 0, 0.1),
-      inset 0 2px 3px 1px rgba(187, 187, 187, 0.8),
-      0 1px 1px rgba(0, 0, 0, 0.3);
-    color: black;
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
-
-    /* Top shine for aqua tabs */
-    &::before {
-      content: "";
-      position: absolute;
-      left: 1px;
-      right: 1px;
-      top: 1px;
-      height: 15%;
-      background: linear-gradient(
-        rgba(255, 255, 255, 0.55),
-        rgba(255, 255, 255, 0.25)
-      );
-      border-radius: 4px 4px 0 0;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    /* Bottom glow for aqua tabs */
-    &::after {
-      content: "";
-      position: absolute;
-      left: 1px;
-      right: 1px;
-      bottom: 0px;
-      height: 20%;
-      background: linear-gradient(transparent, rgba(255, 255, 255, 0.35));
-      border-radius: 0 0 2px 2px;
-      pointer-events: none;
-      z-index: 10;
-      filter: blur(1px);
-    }
+    @include aqua-tab-base;
 
     &:hover:not(.active):not([aria-selected="true"]) {
-      box-shadow:
-        inset 0 1px 2px rgba(0, 0, 0, 0.05),
-        inset 0 2px 3px 1px rgba(187, 187, 187, 0.6),
-        0 1px 1px rgba(0, 0, 0, 0.2);
+      @include aqua-tab-hover;
     }
 
     &.active,
     &[aria-selected="true"] {
-      margin-top: 0;
-      z-index: 10;
-
-      /* Active tab (primary aqua button style) */
-      background: linear-gradient(
-        rgb(48, 123, 201),
-        rgb(152, 189, 228),
-        rgb(210, 255, 255)
-      );
-      box-shadow:
-        inset 0 1px 3px rgba(0, 17, 49, 0.8),
-        inset 0 2px 3px 1px rgba(0, 78, 187, 0.75),
-        0 2px 3px rgba(0, 0, 0, 0.3),
-        0 1px 1px rgba(0, 78, 187, 0.5);
-      text-shadow: 0 2px 2px rgba(30, 77, 161, 0.5);
-      border-bottom: 1px solid rgb(210, 255, 255);
-
-      /* Enhanced gloss for active state */
-      &::before {
-        background: linear-gradient(
-          rgba(255, 255, 255, 0.8),
-          rgba(255, 255, 255, 0.35)
-        );
-      }
-
-      &::after {
-        background: linear-gradient(transparent, rgba(255, 255, 255, 0.45));
-      }
+      @include aqua-tab-active;
     }
   }
 }
