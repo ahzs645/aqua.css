@@ -1,0 +1,52 @@
+/**
+ * Radio Buttons
+ * Custom styled radio buttons with Aqua blue gradient
+ */
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: var(--radio-size);
+  height: var(--radio-size);
+  border: 1px solid #888888;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: var(--inset-shadow);
+  cursor: default;
+  vertical-align: middle;
+  position: relative;
+
+  &:checked {
+    background: var(--button-blue-gradient);
+    border-color: var(--aqua-blue-dark);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &:focus {
+    border-color: var(--aqua-blue);
+    box-shadow: var(--inset-shadow), 0 0 3px rgba(43, 153, 255, 0.5);
+  }
+
+  &:disabled {
+    background: var(--surface);
+    border-color: #AAAAAA;
+
+    &:checked {
+      background: var(--graphite);
+    }
+  }
+}

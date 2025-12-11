@@ -1,0 +1,108 @@
+/**
+ * Menu Bar
+ * Horizontal menu bar with dropdown menus
+ */
+
+.menu-bar {
+  background: var(--brushed-metal);
+  border-bottom: 1px solid #888888;
+  padding: 2px 0;
+  font-family: var(--font-system);
+  font-size: var(--font-size-base);
+  user-select: none;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  > ul > li {
+    position: relative;
+
+    &:hover,
+    &:focus-within {
+      .menu-dropdown {
+        display: block;
+      }
+
+      .menu-title {
+        background: var(--aqua-blue);
+        color: white;
+      }
+    }
+  }
+
+  .menu-title {
+    display: block;
+    padding: 4px 12px;
+    cursor: default;
+    border-radius: var(--radius-small);
+
+    &:hover {
+      background: var(--aqua-blue);
+      color: white;
+    }
+  }
+
+  .menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #888888;
+    border-radius: var(--radius-medium);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 4px 0;
+    z-index: 1000;
+    list-style: none;
+    margin: 0;
+
+    li {
+      padding: 4px 16px;
+      cursor: default;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &:hover {
+        background: var(--aqua-blue);
+        color: white;
+
+        .shortcut {
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+
+      &.disabled {
+        color: var(--text-disabled);
+        pointer-events: none;
+
+        &:hover {
+          background: transparent;
+          color: var(--text-disabled);
+        }
+      }
+    }
+
+    .separator {
+      height: 1px;
+      background: #CCCCCC;
+      margin: 4px 8px;
+      padding: 0;
+
+      &:hover {
+        background: #CCCCCC;
+      }
+    }
+
+    .shortcut {
+      color: #666666;
+      font-size: var(--font-size-small);
+      margin-left: 24px;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+/**
+ * Utility Classes
+ * Layout helpers and common patterns
+ */
+
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: var(--grouped-element-spacing);
+
+  & + & {
+    margin-top: var(--element-spacing);
+  }
+}
+
+.field-row-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  & + & {
+    margin-top: var(--element-spacing);
+  }
+}

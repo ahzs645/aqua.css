@@ -1,0 +1,84 @@
+/**
+ * Window Pane
+ * Navigation pane with nested menu items
+ */
+
+.window-pane {
+  background: var(--surface-light);
+  border: 1px solid #888888;
+  border-radius: var(--radius-medium);
+  padding: 8px 0;
+
+  .menu-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 4px 12px;
+      cursor: default;
+
+      a {
+        color: var(--text-color);
+        text-decoration: none;
+        display: block;
+
+        &:hover {
+          color: var(--aqua-blue);
+        }
+      }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+    }
+
+    /* Nested lists */
+    ul {
+      list-style: none;
+      margin: 4px 0 0 0;
+      padding: 0 0 0 12px;
+
+      li {
+        padding: 2px 12px;
+        font-size: var(--font-size-small);
+
+        &::before {
+          content: "";
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          background: #CCCCCC;
+          border-radius: 50%;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+
+        a {
+          display: inline;
+        }
+      }
+    }
+
+    /* Section headers (non-link items) */
+    > li:not(:has(> a)):not(:has(ul)) {
+      font-weight: bold;
+      color: var(--text-color);
+      padding-top: 8px;
+
+      &:first-child {
+        padding-top: 4px;
+      }
+    }
+
+    /* Category items with nested lists */
+    > li:has(> ul) {
+      font-weight: bold;
+      padding-top: 8px;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+}

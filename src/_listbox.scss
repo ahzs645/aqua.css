@@ -1,0 +1,42 @@
+/**
+ * Listbox
+ * Multi-select list using select[multiple] or role="listbox"
+ */
+
+[role="listbox"],
+select[multiple] {
+  background: white;
+  border: 1px solid #888888;
+  border-radius: var(--radius-small);
+  display: block;
+  font-family: var(--font-system);
+  font-size: var(--font-size-base);
+  overflow-y: auto;
+  box-shadow: var(--inset-shadow);
+  padding: 2px;
+  min-height: 80px;
+
+  &:focus {
+    border-color: var(--aqua-blue);
+    box-shadow: var(--inset-shadow), 0 0 3px rgba(43, 153, 255, 0.5);
+    outline: none;
+  }
+
+  [role="option"],
+  option {
+    padding: 4px 8px;
+    cursor: default;
+    border-radius: var(--radius-small);
+
+    &[aria-selected="true"],
+    &:checked,
+    &:focus {
+      background: var(--aqua-blue);
+      color: white;
+    }
+
+    &:hover:not([aria-selected="true"]):not(:checked) {
+      background: #E8E8E8;
+    }
+  }
+}

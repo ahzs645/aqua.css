@@ -1,0 +1,38 @@
+/**
+ * Split View
+ * Sidebar and content area layout
+ */
+
+.split-view {
+  display: flex;
+  border: 1px solid #888888;
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+  background: white;
+}
+
+.split-view-sidebar {
+  width: 200px;
+  min-width: 150px;
+  background: var(--surface-light);
+  border-right: 1px solid #CCCCCC;
+  overflow: auto;
+}
+
+.split-view-content {
+  flex: 1;
+  overflow: auto;
+  padding: 8px;
+}
+
+.split-view-divider {
+  width: 5px;
+  background: var(--surface);
+  cursor: col-resize;
+  border-left: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+
+  &:hover {
+    background: var(--surface-dark);
+  }
+}

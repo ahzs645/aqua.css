@@ -1,0 +1,119 @@
+/**
+ * Variables
+ * CSS custom properties for colors, spacing, typography, etc.
+ */
+
+:root {
+  /* Aqua Blue Palette */
+  --aqua-blue: #2B99FF;
+  --aqua-blue-dark: #0066CC;
+  --aqua-blue-darker: #004C99;
+  --aqua-blue-light: #66CCFF;
+  --aqua-blue-lighter: #99DDFF;
+
+  /* Graphite Alternative */
+  --graphite: #8C8C8C;
+  --graphite-dark: #666666;
+  --graphite-light: #AAAAAA;
+
+  /* Surface Colors */
+  --surface: #E8E8E8;
+  --surface-light: #F5F5F5;
+  --surface-dark: #D0D0D0;
+  --window-bg: #ECECEC;
+
+  /* Text Colors */
+  --text-color: #000000;
+  --text-disabled: #808080;
+  --text-highlight: #FFFFFF;
+
+  /* Traffic Light Buttons */
+  --close-red: #FF5F57;
+  --close-red-dark: #E04840;
+  --minimize-yellow: #FFBD2E;
+  --minimize-yellow-dark: #DFA020;
+  --maximize-green: #28CA41;
+  --maximize-green-dark: #1AAB30;
+  --button-inactive: #DDDDDD;
+
+  /* Shadows */
+  --window-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
+  --button-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --inset-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  /* Border Radius */
+  --radius-small: 3px;
+  --radius-medium: 5px;
+  --radius-large: 8px;
+  --radius-pill: 100px;
+
+  /* Spacing */
+  --element-spacing: 8px;
+  --grouped-element-spacing: 6px;
+
+  /* Typography */
+  --font-system: -apple-system, BlinkMacSystemFont, "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-size-base: 13px;
+  --font-size-small: 11px;
+  --font-size-title: 13px;
+
+  /* Brushed Metal Gradient */
+  --brushed-metal: linear-gradient(
+    180deg,
+    #E8E8E8 0%,
+    #D4D4D4 45%,
+    #C8C8C8 50%,
+    #D8D8D8 55%,
+    #E0E0E0 100%
+  );
+
+  /* Pinstripe Pattern (subtle) */
+  --pinstripe: repeating-linear-gradient(
+    0deg,
+    #FFFFFF 0px,
+    #FFFFFF 1px,
+    #F0F0F0 1px,
+    #F0F0F0 2px
+  );
+
+  /* Aqua Button Gradient */
+  --button-gradient: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    #E8E8E8 45%,
+    #D4D4D4 50%,
+    #DFDFDF 55%,
+    #F0F0F0 100%
+  );
+
+  --button-gradient-active: linear-gradient(
+    180deg,
+    #D0D0D0 0%,
+    #C8C8C8 45%,
+    #B8B8B8 50%,
+    #C4C4C4 55%,
+    #D8D8D8 100%
+  );
+
+  --button-blue-gradient: linear-gradient(
+    180deg,
+    #7DD1FF 0%,
+    #52B8FF 30%,
+    #2B99FF 50%,
+    #0080FF 70%,
+    #0066CC 100%
+  );
+
+  --button-blue-gradient-active: linear-gradient(
+    180deg,
+    #52B8FF 0%,
+    #2B99FF 30%,
+    #0080FF 50%,
+    #0066CC 70%,
+    #004C99 100%
+  );
+
+  /* Form field sizes */
+  --checkbox-size: 14px;
+  --radio-size: 16px;
+}

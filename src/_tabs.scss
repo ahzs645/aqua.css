@@ -1,0 +1,48 @@
+/**
+ * Tabs
+ * Tab list and tab panels
+ */
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-list {
+  display: flex;
+  gap: 2px;
+  padding: 0 8px;
+  margin: 0;
+  list-style: none;
+
+  li {
+    padding: 6px 16px;
+    background: var(--surface-dark);
+    border: 1px solid #888888;
+    border-bottom: none;
+    border-radius: var(--radius-medium) var(--radius-medium) 0 0;
+    cursor: default;
+    font-size: var(--font-size-base);
+    user-select: none;
+    position: relative;
+    top: 1px;
+
+    &:hover {
+      background: var(--surface);
+    }
+
+    &.active,
+    &[aria-selected="true"] {
+      background: var(--window-bg);
+      border-bottom: 1px solid var(--window-bg);
+      z-index: 1;
+    }
+  }
+}
+
+.tab-panel {
+  background: var(--window-bg);
+  border: 1px solid #888888;
+  border-radius: 0 0 var(--radius-medium) var(--radius-medium);
+  padding: 16px;
+}

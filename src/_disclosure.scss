@@ -1,0 +1,47 @@
+/**
+ * Disclosure
+ * Expandable section with disclosure triangle
+ */
+
+details.disclosure {
+  border: 1px solid #888888;
+  border-radius: var(--radius-medium);
+  background: var(--surface-light);
+
+  > summary {
+    padding: 8px 12px;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    font-weight: bold;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background-image: svg-load("./icon/disclosure-closed.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.2s;
+    }
+
+    &:hover {
+      background: var(--surface);
+    }
+  }
+
+  &[open] > summary::before {
+    background-image: svg-load("./icon/disclosure-open.svg");
+  }
+
+  > .disclosure-content {
+    padding: 12px;
+    border-top: 1px solid #CCCCCC;
+  }
+}

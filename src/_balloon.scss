@@ -1,0 +1,114 @@
+/**
+ * Balloon / Speech Bubble
+ * Tooltip with a speech bubble tail
+ */
+
+.balloon,
+[role="tooltip"].balloon {
+  position: relative;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, #FFFFEE 0%, #FFFFC8 100%);
+  border: 1px solid #999999;
+  border-radius: var(--radius-medium);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  font-size: var(--font-size-base);
+
+  /* Tail pointing up (default) */
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #999999;
+    top: -9px;
+    left: 16px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #FFFFEE;
+    top: -7px;
+    left: 17px;
+  }
+
+  /* Tail pointing down */
+  &.balloon-bottom {
+    &::before {
+      border-bottom: none;
+      border-top: 8px solid #999999;
+      top: auto;
+      bottom: -9px;
+    }
+
+    &::after {
+      border-bottom: none;
+      border-top: 7px solid #FFFFC8;
+      top: auto;
+      bottom: -7px;
+    }
+  }
+
+  /* Tail on the right side */
+  &.balloon-right {
+    &::before,
+    &::after {
+      left: auto;
+      right: 16px;
+    }
+
+    &::after {
+      right: 17px;
+    }
+  }
+
+  /* Tail pointing left */
+  &.balloon-left-tail {
+    &::before {
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: none;
+      border-right: 8px solid #999999;
+      top: 12px;
+      left: -9px;
+    }
+
+    &::after {
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: none;
+      border-right: 7px solid #FFFFEE;
+      top: 13px;
+      left: -7px;
+    }
+  }
+
+  /* Tail pointing right */
+  &.balloon-right-tail {
+    &::before {
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: none;
+      border-left: 8px solid #999999;
+      top: 12px;
+      left: auto;
+      right: -9px;
+    }
+
+    &::after {
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-right: none;
+      border-left: 7px solid #FFFFC8;
+      top: 13px;
+      left: auto;
+      right: -7px;
+    }
+  }
+}

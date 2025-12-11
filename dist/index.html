@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aqua.css - Mac OS X Aqua Interface CSS Library</title>
+  <link rel="stylesheet" href="aqua.css">
+  <style>
+    body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      gap: 30px;
+    }
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 20px;
+      align-self: flex-start;
+      max-height: calc(100vh - 40px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .sidebar-nav {
+      overflow-y: auto;
+      max-height: 60vh;
+    }
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+    h1, h2, h3 {
+      font-weight: normal;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 2em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid #ccc;
+    }
+    h3 {
+      font-size: 1.2em;
+      margin-top: 1.5em;
+    }
+    p {
+      line-height: 1.6;
+    }
+    .intro {
+      margin-bottom: 2em;
+    }
+    .example {
+      margin: 1em 0;
+      padding: 20px;
+      background: #f5f5f5;
+      border-radius: 8px;
+    }
+    .example details {
+      margin-top: 15px;
+    }
+    .example summary {
+      cursor: pointer;
+      color: #0066cc;
+      font-size: 12px;
+    }
+    .example pre {
+      margin-top: 10px;
+      padding: 15px;
+      background: #1e1e1e;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .example code {
+      color: #d4d4d4;
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+      font-size: 12px;
+    }
+    .window {
+      max-width: 400px;
+    }
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .progress-demo {
+      width: 300px;
+    }
+    .scrollbar-demo {
+      height: 100px;
+      overflow-y: scroll;
+      background: white;
+      border: 1px solid #888;
+      border-radius: 4px;
+      padding: 8px;
+    }
+    .hljs-tag { color: #569cd6; }
+    .hljs-attr { color: #9cdcfe; }
+    .hljs-string { color: #ce9178; }
+    .hljs-name { color: #569cd6; }
+
+    @media (max-width: 800px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        position: static;
+        max-height: none;
+      }
+      .sidebar-nav {
+        max-height: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="window-pane sidebar-nav">
+      <ul class="menu-items">
+        <li><a href="#intro">Introduction</a></li>
+        <li>Components
+          <ul>
+            <li><a href="#buttons">Buttons</a></li>
+            <li><a href="#text-inputs">Text Inputs</a></li>
+            <li><a href="#select">Select Menu</a></li>
+            <li><a href="#combobox">Combobox</a></li>
+            <li><a href="#listbox">Listbox</a></li>
+            <li><a href="#checkboxes">Checkboxes</a></li>
+            <li><a href="#radio-buttons">Radio Buttons</a></li>
+            <li><a href="#progress-bar">Progress Bar</a></li>
+            <li><a href="#spinner">Spinner</a></li>
+            <li><a href="#slider">Slider</a></li>
+            <li><a href="#search-field">Search Field</a></li>
+            <li><a href="#stepper">Stepper</a></li>
+          </ul>
+        </li>
+        <li>Windows
+          <ul>
+            <li><a href="#window">Window</a></li>
+            <li><a href="#tabs">Tabs</a></li>
+            <li><a href="#fieldset">Fieldset</a></li>
+            <li><a href="#alert-dialog">Alert Dialog</a></li>
+            <li><a href="#split-view">Split View</a></li>
+            <li><a href="#disclosure">Disclosure</a></li>
+            <li><a href="#scrollbar">Scrollbar</a></li>
+          </ul>
+        </li>
+        <li>Navigation
+          <ul>
+            <li><a href="#menu-bar">Menu Bar</a></li>
+            <li><a href="#toolbar">Toolbar</a></li>
+            <li><a href="#segmented-control">Segmented Control</a></li>
+          </ul>
+        </li>
+        <li>Data Display
+          <ul>
+            <li><a href="#table">Table</a></li>
+            <li><a href="#list-view">List View</a></li>
+            <li><a href="#tree-view">Tree View</a></li>
+            <li><a href="#tooltip">Tooltip</a></li>
+            <li><a href="#balloon">Balloon</a></li>
+          </ul>
+        </li>
+        <li>Themes
+          <ul>
+            <li><a href="#graphite-theme">Graphite Theme</a></li>
+          </ul>
+        </li>
+        <li><a href="#complete-example">Complete Example</a></li>
+      </ul>
+    </div>
+
+    <!-- Scrollbar Demo in Sidebar -->
+    <div style="padding: 8px; background: var(--surface-light); border: 1px solid #888; border-radius: 5px;">
+      <div style="font-size: 11px; font-weight: bold; margin-bottom: 6px;">Scrollbar Preview</div>
+      <div class="scrollbar-demo">
+        <p style="margin: 0 0 8px 0;">Scroll me!</p>
+        <p style="margin: 0 0 8px 0;">Item 1</p>
+        <p style="margin: 0 0 8px 0;">Item 2</p>
+        <p style="margin: 0 0 8px 0;">Item 3</p>
+        <p style="margin: 0 0 8px 0;">Item 4</p>
+        <p style="margin: 0 0 8px 0;">Item 5</p>
+        <p style="margin: 0 0 8px 0;">Item 6</p>
+        <p style="margin: 0;">Item 7</p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <h1 id="intro">aqua.css</h1>
+    <div class="intro">
+      <p>
+        A CSS library for building interfaces that look like Apple's classic Aqua UI
+        from Mac OS X 10.0 - 10.4 (2001-2005). Featuring glossy buttons, traffic light
+        window controls, and that iconic blue gradient style.
+      </p>
+      <p>
+        <strong>Install:</strong> <code>npm install aqua.css</code> or use the CDN:
+        <code>&lt;link rel="stylesheet" href="https://unpkg.com/aqua.css"&gt;</code>
+      </p>
+    </div>
+
+    <h2 id="window">Window</h2>
+    <p>
+      The classic Aqua window with brushed metal title bar and traffic light buttons
+      (close, minimize, maximize/zoom).
+    </p>
+
+    <div class="example">
+      <div class="window">
+  <div class="title-bar">
+    <div class="title-bar-controls">
+      <button aria-label="Close"></button>
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+    </div>
+    <div class="title-bar-text">My Window</div>
+  </div>
+  <div class="window-body">
+    <p>This is a window with Aqua styling.</p>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar-controls&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Close&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Minimize&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Maximize&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar-text&quot;</span>&gt;</span>My Window<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window-body&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a window with Aqua styling.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h3>Inactive Window</h3>
+    <p>Windows that are not in focus have grayed-out traffic lights.</p>
+
+    <div class="example">
+      <div class="window inactive">
+  <div class="title-bar">
+    <div class="title-bar-controls">
+      <button aria-label="Close"></button>
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+    </div>
+    <div class="title-bar-text">Inactive Window</div>
+  </div>
+  <div class="window-body">
+    <p>This window is not focused.</p>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window inactive&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar-controls&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Close&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Minimize&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Maximize&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar-text&quot;</span>&gt;</span>Inactive Window<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window-body&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This window is not focused.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="buttons">Buttons</h2>
+    <p>
+      Aqua buttons feature glossy gradients. The default button uses the iconic
+      blue Aqua style and can optionally pulse to draw attention.
+    </p>
+
+    <div class="example">
+      <div class="button-row">
+  <button>Regular Button</button>
+  <button class="default">Default Button</button>
+  <button class="default pulse">Pulsing Button</button>
+  <button disabled>Disabled</button>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Regular Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span>Default Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default pulse&quot;</span>&gt;</span>Pulsing Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">disabled</span>&gt;</span>Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2>Form Controls</h2>
+
+    <h3 id="text-inputs">Text Inputs</h3>
+    <div class="example">
+      <div class="field-row-stacked">
+  <label for="text-input">Text Input</label>
+  <input type="text" id="text-input" placeholder="Enter text...">
+</div>
+<div class="field-row-stacked" style="margin-top: 12px;">
+  <label for="textarea">Textarea</label>
+  <textarea id="textarea" rows="3" placeholder="Enter multiple lines..."></textarea>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row-stacked&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;text-input&quot;</span>&gt;</span>Text Input<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;text-input&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter text...&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row-stacked&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 12px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;textarea&quot;</span>&gt;</span>Textarea<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;textarea&quot;</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">&quot;3&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter multiple lines...&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h3 id="select">Select Dropdown</h3>
+    <div class="example">
+      <div class="field-row">
+  <label for="select">Choose an option:</label>
+  <select id="select">
+    <option>Option 1</option>
+    <option>Option 2</option>
+    <option>Option 3</option>
+  </select>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;select&quot;</span>&gt;</span>Choose an option:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;select&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 1<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 2<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 3<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h3 id="combobox">Combobox</h3>
+    <p>Text input combined with a dropdown button.</p>
+    <div class="example">
+      <div class="combobox" style="width: 200px;">
+  <input type="text" placeholder="Type or select...">
+  <button></button>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;combobox&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Type or select...&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h3 id="listbox">Listbox</h3>
+    <p>Multi-select list using <code>select[multiple]</code> or <code>role="listbox"</code>.</p>
+    <div class="example">
+      <select multiple style="width: 200px; height: 120px;">
+  <option>Documents</option>
+  <option selected>Pictures</option>
+  <option>Music</option>
+  <option>Movies</option>
+  <option>Downloads</option>
+</select>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px; height: 120px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Documents<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">selected</span>&gt;</span>Pictures<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Music<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Movies<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Downloads<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h3 id="checkboxes">Checkboxes</h3>
+    <div class="example">
+      <div class="field-row">
+  <input type="checkbox" id="check1" checked>
+  <label for="check1">Checked checkbox</label>
+</div>
+<div class="field-row">
+  <input type="checkbox" id="check2">
+  <label for="check2">Unchecked checkbox</label>
+</div>
+<div class="field-row">
+  <input type="checkbox" id="check3" disabled checked>
+  <label for="check3" class="disabled">Disabled checked</label>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;check1&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;check1&quot;</span>&gt;</span>Checked checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;check2&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;check2&quot;</span>&gt;</span>Unchecked checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;check3&quot;</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">checked</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;check3&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;disabled&quot;</span>&gt;</span>Disabled checked<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h3 id="radio-buttons">Radio Buttons</h3>
+    <div class="example">
+      <div class="field-row">
+  <input type="radio" id="radio1" name="radio-group" checked>
+  <label for="radio1">Option A</label>
+</div>
+<div class="field-row">
+  <input type="radio" id="radio2" name="radio-group">
+  <label for="radio2">Option B</label>
+</div>
+<div class="field-row">
+  <input type="radio" id="radio3" name="radio-group">
+  <label for="radio3">Option C</label>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radio1&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-group&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;radio1&quot;</span>&gt;</span>Option A<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radio2&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-group&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;radio2&quot;</span>&gt;</span>Option B<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radio3&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-group&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;radio3&quot;</span>&gt;</span>Option C<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="progress-bar">Progress Bar</h2>
+    <p>
+      Aqua-style progress bars with optional candy-stripe animation.
+    </p>
+
+    <div class="example">
+      <div class="progress-demo">
+  <p>Standard progress bar (60%):</p>
+  <div class="progress-bar">
+    <div class="progress-bar-fill" style="width: 60%;"></div>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-demo&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Standard progress bar (60%):<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar-fill&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 60%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <div class="example">
+      <div class="progress-demo">
+  <p>Animated progress bar (40%):</p>
+  <div class="progress-bar animated">
+    <div class="progress-bar-fill" style="width: 40%;"></div>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-demo&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Animated progress bar (40%):<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar animated&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar-fill&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 40%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <div class="example">
+      <div class="progress-demo">
+  <p>Indeterminate progress bar:</p>
+  <div class="progress-bar indeterminate">
+    <div class="progress-bar-fill"></div>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-demo&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Indeterminate progress bar:<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar indeterminate&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar-fill&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="spinner">Spinner / Loader</h2>
+    <p>Animated loading indicators.</p>
+
+    <div class="example">
+      <div class="button-row">
+  <div class="spinner animate"></div>
+  <div class="spinner-large animate"></div>
+  <div class="spinner-small animate"></div>
+  <div class="spinner-aqua animate"></div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;spinner animate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;spinner-large animate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;spinner-small animate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;spinner-aqua animate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="tabs">Tabs</h2>
+    <div class="example">
+      <div class="tabs">
+  <ul class="tab-list">
+    <li class="active">General</li>
+    <li>Advanced</li>
+    <li>About</li>
+  </ul>
+  <div class="tab-panel">
+    <p>This is the General tab content.</p>
+    <div class="field-row">
+      <input type="checkbox" id="tab-check" checked>
+      <label for="tab-check">Enable feature</label>
+    </div>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tabs&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-list&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;active&quot;</span>&gt;</span>General<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Advanced<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-panel&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is the General tab content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tab-check&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;tab-check&quot;</span>&gt;</span>Enable feature<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="fieldset">Fieldset</h2>
+    <div class="example">
+      <fieldset>
+  <legend>Settings</legend>
+  <div class="field-row">
+    <input type="checkbox" id="fs-check1" checked>
+    <label for="fs-check1">Option 1</label>
+  </div>
+  <div class="field-row">
+    <input type="checkbox" id="fs-check2">
+    <label for="fs-check2">Option 2</label>
+  </div>
+</fieldset>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Settings<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fs-check1&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;fs-check1&quot;</span>&gt;</span>Option 1<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fs-check2&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;fs-check2&quot;</span>&gt;</span>Option 2<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="menu-bar">Menu Bar</h2>
+    <p>Classic Mac menu bar with dropdown menus.</p>
+
+    <div class="example">
+      <nav class="menu-bar">
+  <ul>
+    <li>
+      <span class="menu-title">File</span>
+      <ul class="menu-dropdown">
+        <li>New <span class="shortcut">Cmd+N</span></li>
+        <li>Open... <span class="shortcut">Cmd+O</span></li>
+        <li class="separator"></li>
+        <li>Save <span class="shortcut">Cmd+S</span></li>
+        <li class="disabled">Save As...</li>
+      </ul>
+    </li>
+    <li>
+      <span class="menu-title">Edit</span>
+      <ul class="menu-dropdown">
+        <li>Undo <span class="shortcut">Cmd+Z</span></li>
+        <li>Redo <span class="shortcut">Cmd+Shift+Z</span></li>
+        <li class="separator"></li>
+        <li>Cut <span class="shortcut">Cmd+X</span></li>
+        <li>Copy <span class="shortcut">Cmd+C</span></li>
+        <li>Paste <span class="shortcut">Cmd+V</span></li>
+      </ul>
+    </li>
+    <li>
+      <span class="menu-title">View</span>
+      <ul class="menu-dropdown">
+        <li>as Icons</li>
+        <li>as List</li>
+        <li>as Columns</li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-bar&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-title&quot;</span>&gt;</span>File<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-dropdown&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>New <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span>Cmd+N<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Open... <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span>Cmd+O<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;separator&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Save <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span>Cmd+S<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;disabled&quot;</span>&gt;</span>Save As...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-title&quot;</span>&gt;</span>Edit<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-dropdown&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Undo <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span>Cmd+Z<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Redo <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span>Cmd+Shift+Z<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;separator&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Cut <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span>Cmd+X<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Copy <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span>Cmd+C<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Paste <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span>Cmd+V<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-title&quot;</span>&gt;</span>View<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-dropdown&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>as Icons<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>as List<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>as Columns<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="toolbar">Toolbar</h2>
+    <p>Icon toolbar for application actions.</p>
+
+    <div class="example">
+      <div class="toolbar">
+  <button class="toolbar-button">
+    <span>Back</span>
+  </button>
+  <button class="toolbar-button">
+    <span>Forward</span>
+  </button>
+  <div class="toolbar-separator"></div>
+  <button class="toolbar-button">
+    <span>Refresh</span>
+  </button>
+  <button class="toolbar-button" disabled>
+    <span>Stop</span>
+  </button>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;toolbar&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;toolbar-button&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Back<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;toolbar-button&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Forward<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;toolbar-separator&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;toolbar-button&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Refresh<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;toolbar-button&quot;</span> <span class="hljs-attr">disabled</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Stop<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="alert-dialog">Alert Dialog</h2>
+    <p>Modal alert boxes with different icon types.</p>
+
+    <div class="example">
+      <div class="alert-dialog">
+  <div class="alert-dialog-content">
+    <div class="alert-dialog-icon warning"></div>
+    <div class="alert-dialog-text">
+      <h3>Are you sure you want to delete this file?</h3>
+      <p>This action cannot be undone. The file will be permanently removed.</p>
+    </div>
+  </div>
+  <div class="alert-dialog-buttons">
+    <button>Cancel</button>
+    <button class="default">Delete</button>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;alert-dialog&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;alert-dialog-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;alert-dialog-icon warning&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;alert-dialog-text&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Are you sure you want to delete this file?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This action cannot be undone. The file will be permanently removed.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;alert-dialog-buttons&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Cancel<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span>Delete<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="slider">Slider</h2>
+    <p>Range input with Aqua styling.</p>
+
+    <div class="example">
+      <div style="width: 300px;">
+  <label>Volume:</label>
+  <input type="range" min="0" max="100" value="50">
+  <br><br>
+  <label>Blue slider:</label>
+  <input type="range" class="blue" min="0" max="100" value="70">
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 300px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Volume:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;range&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;50&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Blue slider:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;range&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;blue&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;70&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="search-field">Search Field</h2>
+    <p>Rounded search input with magnifying glass icon.</p>
+
+    <div class="example">
+      <input type="search" class="search-field" placeholder="Search..." style="width: 200px;">
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;search-field&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Search...&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="segmented-control">Segmented Control</h2>
+    <p>Button group for switching between views or options.</p>
+
+    <div class="example">
+      <div class="segmented-control">
+  <button class="active">Icons</button>
+  <button>List</button>
+  <button>Columns</button>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;segmented-control&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;active&quot;</span>&gt;</span>Icons<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>List<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Columns<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="table">Table</h2>
+    <p>Standard HTML table with Aqua styling. Use <code>.interactive</code> for clickable rows.</p>
+
+    <div class="example">
+      <table class="interactive" style="width: 100%; max-width: 500px; border: 1px solid #888; border-radius: 5px;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date Modified</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Documents</td>
+      <td>Today, 10:30 AM</td>
+      <td>--</td>
+    </tr>
+    <tr class="highlighted">
+      <td>Photos</td>
+      <td>Yesterday</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td>report.pdf</td>
+      <td>Dec 5, 2024</td>
+      <td>2.4 MB</td>
+    </tr>
+    <tr>
+      <td>notes.txt</td>
+      <td>Dec 1, 2024</td>
+      <td>4 KB</td>
+    </tr>
+  </tbody>
+</table>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;interactive&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 500px; border: 1px solid #888; border-radius: 5px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Date Modified<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Size<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Documents<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Today, 10:30 AM<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>--<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;highlighted&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Photos<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Yesterday<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>--<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>report.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dec 5, 2024<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2.4 MB<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>notes.txt<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dec 1, 2024<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>4 KB<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="list-view">List View</h2>
+    <p>Styled table specifically for file/item lists. Similar to table but uses <code>.list-view</code> class.</p>
+
+    <div class="example">
+      <table class="list-view" style="width: 100%; max-width: 500px;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date Modified</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Documents</td>
+      <td>Today, 10:30 AM</td>
+      <td>--</td>
+    </tr>
+    <tr class="selected">
+      <td>Photos</td>
+      <td>Yesterday</td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td>report.pdf</td>
+      <td>Dec 5, 2024</td>
+      <td>2.4 MB</td>
+    </tr>
+  </tbody>
+</table>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list-view&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 500px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Date Modified<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Size<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Documents<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Today, 10:30 AM<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>--<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;selected&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Photos<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Yesterday<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>--<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>report.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dec 5, 2024<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2.4 MB<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="tree-view">Tree View</h2>
+    <p>Expandable hierarchical list.</p>
+
+    <div class="example">
+      <ul class="tree-view" style="width: 250px;">
+  <li>
+    <details open>
+      <summary>Documents</summary>
+      <ul>
+        <li>
+          <details>
+            <summary>Work</summary>
+            <ul>
+              <li>report.pdf</li>
+              <li>presentation.key</li>
+            </ul>
+          </details>
+        </li>
+        <li>notes.txt</li>
+      </ul>
+    </details>
+  </li>
+  <li>
+    <details>
+      <summary>Pictures</summary>
+      <ul>
+        <li>vacation.jpg</li>
+        <li>profile.png</li>
+      </ul>
+    </details>
+  </li>
+  <li class="selected">Desktop</li>
+</ul>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tree-view&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 250px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">details</span> <span class="hljs-attr">open</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Documents<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Work<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>report.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>presentation.key<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>notes.txt<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Pictures<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>vacation.jpg<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>profile.png<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;selected&quot;</span>&gt;</span>Desktop<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="tooltip">Tooltip</h2>
+    <p>Hover over an element to see the tooltip.</p>
+
+    <div class="example">
+      <button class="tooltip" data-tooltip="Click to save your changes">Save</button>
+<button class="tooltip" data-tooltip="Discard all changes">Cancel</button>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tooltip&quot;</span> <span class="hljs-attr">data-tooltip</span>=<span class="hljs-string">&quot;Click to save your changes&quot;</span>&gt;</span>Save<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tooltip&quot;</span> <span class="hljs-attr">data-tooltip</span>=<span class="hljs-string">&quot;Discard all changes&quot;</span>&gt;</span>Cancel<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="balloon">Balloon / Speech Bubble</h2>
+    <p>Tooltip with a speech bubble tail. Use <code>.balloon-bottom</code>, <code>.balloon-right</code>, etc. for positioning.</p>
+
+    <div class="example">
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; padding-top: 20px;">
+  <div class="balloon" style="max-width: 200px;">
+    This is a balloon tooltip with the tail pointing up.
+  </div>
+  <div class="balloon balloon-bottom" style="max-width: 200px; margin-top: 0; margin-bottom: 20px;">
+    Tail pointing down.
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 20px; flex-wrap: wrap; padding-top: 20px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;balloon&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;max-width: 200px;&quot;</span>&gt;</span>
+    This is a balloon tooltip with the tail pointing up.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;balloon balloon-bottom&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;max-width: 200px; margin-top: 0; margin-bottom: 20px;&quot;</span>&gt;</span>
+    Tail pointing down.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="stepper">Stepper</h2>
+    <p>Number input with increment/decrement buttons.</p>
+
+    <div class="example">
+      <div class="stepper">
+  <button>-</button>
+  <input type="number" value="5" min="0" max="100">
+  <button>+</button>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stepper&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;100&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="disclosure">Disclosure</h2>
+    <p>Expandable section with disclosure triangle.</p>
+
+    <div class="example">
+      <details class="disclosure" style="width: 300px;">
+  <summary>Advanced Options</summary>
+  <div class="disclosure-content">
+    <div class="field-row">
+      <input type="checkbox" id="disc-check1">
+      <label for="disc-check1">Enable logging</label>
+    </div>
+    <div class="field-row">
+      <input type="checkbox" id="disc-check2">
+      <label for="disc-check2">Debug mode</label>
+    </div>
+  </div>
+</details>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">details</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;disclosure&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 300px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Advanced Options<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;disclosure-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;disc-check1&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;disc-check1&quot;</span>&gt;</span>Enable logging<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;disc-check2&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;disc-check2&quot;</span>&gt;</span>Debug mode<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="split-view">Split View</h2>
+    <p>Sidebar and content area layout.</p>
+
+    <div class="example">
+      <div class="split-view" style="height: 200px;">
+  <div class="split-view-sidebar" style="padding: 8px;">
+    <div style="padding: 4px; background: #2B99FF; color: white; border-radius: 3px;">Inbox</div>
+    <div style="padding: 4px;">Sent</div>
+    <div style="padding: 4px;">Drafts</div>
+    <div style="padding: 4px;">Trash</div>
+  </div>
+  <div class="split-view-content">
+    <p>Select a folder to view messages.</p>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;split-view&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 200px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;split-view-sidebar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 8px;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 4px; background: #2B99FF; color: white; border-radius: 3px;&quot;</span>&gt;</span>Inbox<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 4px;&quot;</span>&gt;</span>Sent<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 4px;&quot;</span>&gt;</span>Drafts<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 4px;&quot;</span>&gt;</span>Trash<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;split-view-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Select a folder to view messages.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="scrollbar">Scrollbar</h2>
+    <p>Custom WebKit scrollbar styling. Scrollbars appear automatically on scrollable content.</p>
+
+    <div class="example">
+      <div style="height: 150px; overflow-y: scroll; background: white; border: 1px solid #888; border-radius: 5px; padding: 12px; width: 300px;">
+  <p>Scroll this content to see the Aqua-styled scrollbar.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p>Ut enim ad minim veniam, quis nostrud exercitation.</p>
+  <p>Duis aute irure dolor in reprehenderit in voluptate.</p>
+  <p>Excepteur sint occaecat cupidatat non proident.</p>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 150px; overflow-y: scroll; background: white; border: 1px solid #888; border-radius: 5px; padding: 12px; width: 300px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Scroll this content to see the Aqua-styled scrollbar.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Ut enim ad minim veniam, quis nostrud exercitation.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Duis aute irure dolor in reprehenderit in voluptate.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Excepteur sint occaecat cupidatat non proident.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="graphite-theme">Graphite Theme</h2>
+    <p>Add <code>class="theme-graphite"</code> to use gray instead of blue.</p>
+
+    <div class="example">
+      <div class="theme-graphite" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
+  <div class="button-row">
+    <button>Regular</button>
+    <button class="default">Default</button>
+  </div>
+  <br>
+  <div class="field-row">
+    <input type="checkbox" id="graphite-check" checked>
+    <label for="graphite-check">Graphite checkbox</label>
+  </div>
+  <div class="field-row">
+    <input type="radio" id="graphite-radio" checked>
+    <label for="graphite-radio">Graphite radio</label>
+  </div>
+  <br>
+  <div class="progress-bar" style="width: 200px;">
+    <div class="progress-bar-fill" style="width: 60%;"></div>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;theme-graphite&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 16px; background: #ECECEC; border-radius: 8px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-row&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Regular<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;graphite-check&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;graphite-check&quot;</span>&gt;</span>Graphite checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;graphite-radio&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;graphite-radio&quot;</span>&gt;</span>Graphite radio<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-bar-fill&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 60%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="complete-example">Complete Example</h2>
+    <p>A window demonstrating multiple components together:</p>
+
+    <div class="example">
+      <div class="window" style="max-width: 350px;">
+  <div class="title-bar">
+    <div class="title-bar-controls">
+      <button aria-label="Close"></button>
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+    </div>
+    <div class="title-bar-text">Preferences</div>
+  </div>
+  <div class="window-body">
+    <div class="field-row-stacked">
+      <label for="username">Username:</label>
+      <input type="text" id="username" value="admin">
+    </div>
+    <fieldset style="margin-top: 12px;">
+      <legend>Display</legend>
+      <div class="field-row">
+        <input type="radio" id="light" name="theme" checked>
+        <label for="light">Light mode</label>
+      </div>
+      <div class="field-row">
+        <input type="radio" id="dark" name="theme">
+        <label for="dark">Dark mode</label>
+      </div>
+    </fieldset>
+    <div class="field-row" style="margin-top: 16px; justify-content: flex-end;">
+      <button>Cancel</button>
+      <button class="default">Save</button>
+    </div>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;max-width: 350px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar-controls&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Close&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Minimize&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Maximize&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar-text&quot;</span>&gt;</span>Preferences<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window-body&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row-stacked&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>Username:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;admin&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 12px;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Display<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;light&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;theme&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;light&quot;</span>&gt;</span>Light mode<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;dark&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;theme&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;dark&quot;</span>&gt;</span>Dark mode<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 16px; justify-content: flex-end;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Cancel<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span>Save<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <footer style="margin-top: 3em; padding-top: 1em; border-top: 1px solid #ccc; font-size: 12px; color: #666;">
+      <p>
+        aqua.css is inspired by Apple's Aqua interface (Mac OS X 10.0-10.4).
+        <br>
+        Built following the patterns of
+        <a href="https://github.com/jdan/98.css">98.css</a>,
+        <a href="https://github.com/botoxparty/XP.css">XP.css</a>, and
+        <a href="https://github.com/sakofchit/system.css">system.css</a>.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>

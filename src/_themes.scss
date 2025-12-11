@@ -1,0 +1,51 @@
+/**
+ * Themes
+ * Graphite theme variant
+ */
+
+.theme-graphite {
+  --aqua-blue: #8C8C8C;
+  --aqua-blue-dark: #666666;
+  --aqua-blue-light: #AAAAAA;
+
+  --button-blue-gradient: linear-gradient(
+    180deg,
+    #BBBBBB 0%,
+    #999999 30%,
+    #8C8C8C 50%,
+    #777777 70%,
+    #666666 100%
+  );
+
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked {
+    background: var(--button-blue-gradient);
+    border-color: var(--aqua-blue-dark);
+  }
+
+  button.default,
+  .button.default {
+    background: var(--button-blue-gradient);
+    border-color: var(--aqua-blue-dark);
+  }
+
+  .progress-bar-fill {
+    background: var(--button-blue-gradient);
+  }
+
+  .segmented-control button.active {
+    background: var(--button-blue-gradient);
+  }
+
+  .list-view tbody tr.selected,
+  .tree-view li.selected {
+    background: var(--aqua-blue);
+  }
+
+  .menu-bar {
+    .menu-title:hover,
+    .menu-dropdown li:hover {
+      background: var(--aqua-blue);
+    }
+  }
+}

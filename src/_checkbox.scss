@@ -1,0 +1,51 @@
+/**
+ * Checkboxes
+ * Custom styled checkboxes with Aqua blue gradient
+ */
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  border: 1px solid #888888;
+  border-radius: 3px;
+  background: #FFFFFF;
+  box-shadow: var(--inset-shadow);
+  cursor: default;
+  vertical-align: middle;
+  position: relative;
+
+  &:checked {
+    background: var(--button-blue-gradient);
+    border-color: var(--aqua-blue-dark);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 4px;
+      height: 8px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  &:focus {
+    border-color: var(--aqua-blue);
+    box-shadow: var(--inset-shadow), 0 0 3px rgba(43, 153, 255, 0.5);
+  }
+
+  &:disabled {
+    background: var(--surface);
+    border-color: #AAAAAA;
+
+    &:checked {
+      background: var(--graphite);
+    }
+  }
+}

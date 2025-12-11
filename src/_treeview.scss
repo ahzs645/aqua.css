@@ -1,0 +1,70 @@
+/**
+ * Tree View
+ * Expandable hierarchical list
+ */
+
+.tree-view {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  font-size: var(--font-size-base);
+  background: white;
+  border: 1px solid #888888;
+  border-radius: var(--radius-medium);
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  li {
+    padding: 2px 4px;
+    cursor: default;
+
+    &:hover {
+      background: #E8E8E8;
+      border-radius: var(--radius-small);
+    }
+
+    &.selected {
+      background: var(--aqua-blue);
+      color: white;
+      border-radius: var(--radius-small);
+    }
+  }
+
+  details {
+    > summary {
+      list-style: none;
+      cursor: default;
+      padding: 2px 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background-image: svg-load("./icon/disclosure-closed.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background: #E8E8E8;
+        border-radius: var(--radius-small);
+      }
+    }
+
+    &[open] > summary::before {
+      background-image: svg-load("./icon/disclosure-open.svg");
+    }
+  }
+}

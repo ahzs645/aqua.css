@@ -1,0 +1,88 @@
+/**
+ * Alert / Dialog Box
+ * Modal alert dialogs with icons
+ */
+
+.alert-dialog {
+  background: var(--window-bg);
+  border-radius: var(--radius-large);
+  box-shadow: var(--window-shadow);
+  padding: 20px;
+  min-width: 300px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.alert-dialog-content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.alert-dialog-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  &.warning {
+    background-image: svg-load("./icon/alert-warning.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &.error {
+    background-image: svg-load("./icon/alert-error.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &.info {
+    background-image: svg-load("./icon/alert-info.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &.question {
+    background-image: svg-load("./icon/alert-question.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.alert-dialog-text {
+  flex: 1;
+
+  h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0;
+    font-size: var(--font-size-base);
+    color: #333333;
+  }
+}
+
+.alert-dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}

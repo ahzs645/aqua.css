@@ -1,0 +1,60 @@
+/**
+ * List View / Table
+ * Table with alternating rows and selection
+ */
+
+.list-view {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-base);
+  background: white;
+  border: 1px solid #888888;
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+
+  thead {
+    background: var(--brushed-metal);
+  }
+
+  th {
+    text-align: left;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #888888;
+    border-right: 1px solid #CCCCCC;
+    cursor: default;
+    user-select: none;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:hover {
+      background: var(--surface);
+    }
+  }
+
+  td {
+    padding: 4px 12px;
+    border-bottom: 1px solid #E8E8E8;
+  }
+
+  tbody tr {
+    &:nth-child(even) {
+      background: #F5F5F5;
+    }
+
+    &:hover {
+      background: #E8E8E8;
+    }
+
+    &.selected {
+      background: var(--aqua-blue);
+      color: white;
+
+      td {
+        border-bottom-color: var(--aqua-blue-dark);
+      }
+    }
+  }
+}

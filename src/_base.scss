@@ -1,0 +1,33 @@
+/**
+ * Base Styles
+ * Global resets and typography
+ */
+
+html {
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-system);
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  background: var(--pinstripe);
+  background-color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--aqua-blue-dark);
+
+  &:hover {
+    color: var(--aqua-blue);
+  }
+}

@@ -1,0 +1,64 @@
+/**
+ * Spinner / Loader
+ * Animated loading indicator
+ */
+
+.spinner,
+.loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #CCCCCC;
+  border-top-color: var(--aqua-blue);
+  border-radius: 50%;
+
+  &.animate,
+  &.spinning {
+    animation: spinner-rotate 0.8s linear infinite;
+  }
+}
+
+/* Large spinner */
+.spinner-large,
+.loader-large {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+/* Small spinner */
+.spinner-small,
+.loader-small {
+  width: 14px;
+  height: 14px;
+  border-width: 2px;
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Aqua-style "beach ball" spinner */
+.spinner-aqua {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #FF0000 0deg 60deg,
+    #FFFF00 60deg 120deg,
+    #00FF00 120deg 180deg,
+    #00FFFF 180deg 240deg,
+    #0000FF 240deg 300deg,
+    #FF00FF 300deg 360deg
+  );
+
+  &.animate,
+  &.spinning {
+    animation: spinner-rotate 1s linear infinite;
+  }
+}
