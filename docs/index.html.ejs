@@ -225,10 +225,10 @@
     <%- example(`
       <div class="window">
         <div class="title-bar">
-          <div class="title-bar-controls">
-            <button aria-label="Close"></button>
-            <button aria-label="Minimize"></button>
-            <button aria-label="Maximize"></button>
+          <div class="traffic-lights traffic-lights--always-colored">
+            <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
+            <div class="aqua-light aqua-yellow" role="button" tabindex="0" aria-label="Minimize"><span class="icon">−</span></div>
+            <div class="aqua-light aqua-green" role="button" tabindex="0" aria-label="Maximize"><span class="icon">+</span></div>
           </div>
           <div class="title-bar-text">My Window</div>
         </div>
@@ -244,10 +244,10 @@
     <%- example(`
       <div class="window inactive">
         <div class="title-bar">
-          <div class="title-bar-controls">
-            <button aria-label="Close"></button>
-            <button aria-label="Minimize"></button>
-            <button aria-label="Maximize"></button>
+          <div class="traffic-lights">
+            <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
+            <div class="aqua-light aqua-yellow" role="button" tabindex="0" aria-label="Minimize"><span class="icon">−</span></div>
+            <div class="aqua-light aqua-green" role="button" tabindex="0" aria-label="Maximize"><span class="icon">+</span></div>
           </div>
           <div class="title-bar-text">Inactive Window</div>
         </div>
@@ -785,10 +785,10 @@
     <%- example(`
       <div class="window" style="max-width: 350px;">
         <div class="title-bar">
-          <div class="title-bar-controls">
-            <button aria-label="Close"></button>
-            <button aria-label="Minimize"></button>
-            <button aria-label="Maximize"></button>
+          <div class="traffic-lights traffic-lights--always-colored">
+            <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
+            <div class="aqua-light aqua-yellow" role="button" tabindex="0" aria-label="Minimize"><span class="icon">−</span></div>
+            <div class="aqua-light aqua-green" role="button" tabindex="0" aria-label="Maximize"><span class="icon">+</span></div>
           </div>
           <div class="title-bar-text">Preferences</div>
         </div>
