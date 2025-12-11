@@ -69,14 +69,7 @@
   flex: 1;
   padding: 16px;
   overflow: auto;
-
-  /* Classic horizontal stripes (like Finder windows) */
-  background: repeating-linear-gradient(
-    #F0F0F0,
-    #F0F0F0 4px,
-    #FFFFFF 4px,
-    #FFFFFF 8px
-  );
+  background: #ececec;
 }
 
 /* Title Bar */
