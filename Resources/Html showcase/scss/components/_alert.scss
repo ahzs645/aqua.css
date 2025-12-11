@@ -1,0 +1,38 @@
+// ============================================
+// AquaFX Alert Dialog Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-alert {
+  background: $aqua-bg;
+  border-radius: 10px;
+  padding: $spacing-xl;
+  box-shadow: $shadow-alert;
+  max-width: 350px;
+  text-align: center;
+}
+
+.aqua-alert-icon {
+  font-size: 48px;
+  margin-bottom: $spacing-lg;
+}
+
+.aqua-alert-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: $spacing-md;
+}
+
+.aqua-alert-message {
+  font-size: 12px;
+  color: rgb(80, 80, 80);
+  margin-bottom: $spacing-xl;
+}
+
+.aqua-alert-buttons {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+}

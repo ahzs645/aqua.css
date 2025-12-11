@@ -1,0 +1,50 @@
+// ============================================
+// AquaFX Air Theme (Wind)
+// Light, airy color scheme
+// ============================================
+
+@use 'theme-base' as *;
+
+// Air/Wind color palette
+$dark-wind: rgb(248, 248, 248);
+$dark-wind-transparent: rgba(255, 255, 255, 0.8);
+$dark-wind-armed: rgb(200, 200, 200);
+$light-wind: rgb(255, 255, 255);
+$light-wind-armed: rgb(248, 248, 248);
+$white-wind: rgb(250, 250, 250);
+$light-white-wind: rgb(255, 255, 255);
+$light-white-wind-armed: rgb(248, 248, 248);
+$lighter-wind: rgb(255, 255, 255);
+$lighter-white-wind: rgb(255, 255, 255);
+
+// Apply theme
+.theme-air {
+  @include theme-colors(
+    $dark-wind,
+    $dark-wind-transparent,
+    $dark-wind-armed,
+    $light-wind,
+    $light-wind-armed,
+    $white-wind,
+    $light-white-wind,
+    $light-white-wind-armed,
+    $lighter-wind,
+    $lighter-white-wind
+  );
+
+  // Air-specific overrides
+  .aqua-link {
+    color: $dark-wind-armed;
+  }
+
+  // List selected maintains black text
+  .aqua-list-item.selected,
+  .aqua-list:focus-within .aqua-list-item.selected {
+    color: black;
+  }
+
+  // Progress bar uses wind image
+  .aqua-progress .bar {
+    background: radial-gradient(circle at 50% 50%, $dark-wind, $white-wind);
+  }
+}

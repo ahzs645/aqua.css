@@ -1,0 +1,15 @@
+// ============================================
+// AquaFX Group Box Component
+// ============================================
+
+@use '../base/variables' as *;
+
+.aqua-group-box {
+  padding: $spacing-sm;
+  border: 0.5px solid $groupbox-border;
+  border-radius: $radius-medium;
+  background-color: $groupbox-bg;
+  background-image: linear-gradient(to right, $groupbox-edge 0%, transparent 0.4%, transparent 99.6%, $groupbox-edge);
+  box-shadow: inset 0 2px 4px $groupbox-shadow;
+  margin: $spacing-lg 0;
+}

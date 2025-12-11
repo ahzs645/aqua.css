@@ -1,0 +1,16 @@
+{
+  "name": "aquafx-scss-showcase",
+  "version": "1.0.0",
+  "description": "AquaFX UI Showcase - Mac OS X Aqua Design System in SCSS",
+  "scripts": {
+    "sass": "sass scss/main.scss:css/aqua-showcase.css",
+    "sass:watch": "sass --watch scss/main.scss:css/aqua-showcase.css",
+    "sass:compressed": "sass scss/main.scss:css/aqua-showcase.min.css --style=compressed",
+    "build": "npm run sass && npm run sass:compressed"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0"
+  },
+  "author": "Based on AquaFX by Claudine Zillmann & Hendrik Ebbers",
+  "license": "BSD-3-Clause"
+}

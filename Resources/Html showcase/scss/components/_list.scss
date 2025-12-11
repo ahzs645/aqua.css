@@ -1,0 +1,205 @@
+// ============================================
+// AquaFX List View Component
+// Matches JavaFX ListView exactly
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// ============================================
+// VERTICAL LIST (Default)
+// ============================================
+
+.aqua-list {
+  background: white;
+  border: 1px solid;
+  border-color: rgb(156, 156, 156) rgb(190, 190, 190) rgb(190, 190, 190) rgb(190, 190, 190);
+  overflow: auto;
+  min-width: 150px;
+  max-height: 200px;
+
+  // Focus ring
+  &:focus-within {
+    box-shadow: 0 0 8px 0 rgba(120, 171, 217, 0.8);
+  }
+
+  // Disabled state
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// List item/cell
+.aqua-list-item {
+  padding: 2.6px 3.2px;
+  cursor: pointer;
+  background: white;
+  color: $aqua-text;
+
+  // Hover state
+  &:hover {
+    background: rgb(182, 214, 253); // -fx-cell-hover-color
+  }
+
+  // Empty cell
+  &.empty {
+    opacity: 0;
+  }
+
+  // Selected state when list is NOT focused (gray selection)
+  &.selected {
+    background:
+      linear-gradient(rgb(187, 197, 214), rgb(147, 160, 185)),
+      linear-gradient(
+        rgb(195, 204, 223),
+        rgb(195, 204, 223) 1%,
+        rgb(189, 199, 220) 1%,
+        rgb(155, 169, 196) 100%
+      );
+    background-size: 100% 1px, 100% 100%;
+    background-position: 0 0, 0 1px;
+    background-repeat: no-repeat;
+    color: white;
+  }
+}
+
+// When list container is focused, selected items get blue gradient
+.aqua-list:focus-within .aqua-list-item.selected,
+.aqua-list.focused .aqua-list-item.selected {
+  background:
+    linear-gradient(rgb(95, 165, 221), rgb(54, 124, 192)),
+    linear-gradient(
+      rgb(116, 186, 232),
+      rgb(116, 186, 232) 1%,
+      rgb(109, 178, 227) 1%,
+      rgb(59, 136, 208) 100%
+    );
+  background-size: 100% 1px, 100% 100%;
+  background-position: 0 0, 0 1px;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+// ============================================
+// HORIZONTAL LIST
+// ============================================
+
+.aqua-list.horizontal {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: none;
+  height: auto;
+
+  .aqua-list-item {
+    flex-shrink: 0;
+    white-space: nowrap;
+
+    // Odd items in horizontal list
+    &:nth-child(odd) {
+      background: rgb(243, 246, 250);
+    }
+
+    &:hover {
+      background: rgb(182, 214, 253);
+    }
+
+    // Selected state (unfocused) - horizontal gradient
+    &.selected {
+      background:
+        linear-gradient(to right, rgb(187, 197, 214), rgb(147, 160, 185)),
+        linear-gradient(to right,
+          rgb(195, 204, 223),
+          rgb(195, 204, 223) 1%,
+          rgb(189, 199, 220) 1%,
+          rgb(155, 169, 196) 100%
+        );
+      background-size: 1px 100%, 100% 100%;
+      background-position: 0 0, 1px 0;
+      background-repeat: no-repeat;
+      color: white;
+    }
+  }
+}
+
+// Horizontal list focused selection
+.aqua-list.horizontal:focus-within .aqua-list-item.selected,
+.aqua-list.horizontal.focused .aqua-list-item.selected {
+  background:
+    linear-gradient(to right, rgb(95, 165, 221), rgb(54, 124, 192)),
+    linear-gradient(to right,
+      rgb(116, 186, 232),
+      rgb(116, 186, 232) 1%,
+      rgb(109, 178, 227) 1%,
+      rgb(59, 136, 208) 100%
+    );
+  background-size: 1px 100%, 100% 100%;
+  background-position: 0 0, 1px 0;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+// ============================================
+// LIST WITH ODD/EVEN ROWS (Table-style)
+// ============================================
+
+.aqua-list.striped {
+  .aqua-list-item:nth-child(odd) {
+    background: rgb(243, 246, 250);
+  }
+
+  .aqua-list-item:nth-child(even) {
+    background: white;
+  }
+
+  .aqua-list-item:hover {
+    background: rgb(182, 214, 253);
+  }
+}
+
+// ============================================
+// COMBO BOX POPUP LIST
+// Special styling for dropdown lists
+// ============================================
+
+.aqua-list.popup {
+  border-color: rgba(0, 0, 0, 0.4);
+  border-width: 0.5px 0.5px 1.5px 0.5px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  margin-top: -3px;
+
+  .aqua-list-item {
+    padding: 4px 5px;
+    background: white;
+
+    &.selected,
+    &.selected:hover {
+      background: rgb(60, 119, 212);
+      color: white;
+    }
+  }
+}
+
+// ============================================
+// EDITABLE LIST
+// ============================================
+
+.aqua-list.editable {
+  .aqua-list-item {
+    &.editing {
+      padding: 0;
+
+      input {
+        width: 100%;
+        border: none;
+        padding: 2.6px 3.2px;
+        background: white;
+        outline: 2px solid rgb(104, 155, 201);
+      }
+    }
+  }
+}

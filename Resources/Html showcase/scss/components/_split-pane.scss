@@ -1,0 +1,75 @@
+// ============================================
+// AquaFX Split Pane Component
+// Matches JavaFX SplitPane exactly
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// Divider (horizontal by default - left/right panes)
+.aqua-split-divider {
+  width: 8px;
+  min-width: 8px;
+  padding: 4px 0;
+  background: linear-gradient(to right, rgb(252, 252, 252), rgb(224, 224, 224));
+  border-left: 1px solid rgb(180, 180, 180);
+  border-right: 1px solid rgb(180, 180, 180);
+  cursor: col-resize;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 1px;
+}
+
+// Grabber lines - vertical lines for horizontal split pane (parallel to divider edges)
+.aqua-split-grabber {
+  width: 1px;
+  height: 20px;
+  background: rgb(167, 167, 167);
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.5);
+}
+
+.aqua-split-pane {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(175, 175, 175);
+  background: white;
+  overflow: hidden;
+
+  // Child panes
+  > div:not(.aqua-split-divider) {
+    overflow: auto;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  // Vertical orientation (top/bottom)
+  &.vertical {
+    flex-direction: column;
+
+    .aqua-split-divider {
+      width: 100%;
+      height: 8px;
+      min-width: auto;
+      min-height: 8px;
+      padding: 0;
+      background: linear-gradient(to bottom, rgb(252, 252, 252), rgb(224, 224, 224));
+      border-left: none;
+      border-right: none;
+      border-top: 1px solid rgb(180, 180, 180);
+      border-bottom: 1px solid rgb(180, 180, 180);
+      cursor: row-resize;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .aqua-split-grabber {
+      width: 20px;
+      height: 1px;
+      background: rgb(167, 167, 167);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+  }
+}

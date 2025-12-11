@@ -1,0 +1,343 @@
+// ============================================
+// AquaFX SCSS Mixins
+// Reusable patterns for Aqua styling
+// ============================================
+
+@use 'variables' as *;
+
+// ============================================
+// GRADIENT MIXINS
+// ============================================
+
+// Standard button gradient (white to light gray)
+@mixin button-gradient {
+  background: $button-gradient-white;
+  background: linear-gradient(
+    $button-gradient-white 25%,
+    $button-gradient-light 50%,
+    $button-gradient-mid 50%,
+    $button-gradient-light 100%
+  );
+}
+
+// Button hover gradient
+@mixin button-gradient-hover {
+  background: linear-gradient(
+    $button-hover-white 25%,
+    $button-hover-light 50%,
+    $button-hover-mid 50%,
+    $button-hover-light 100%
+  );
+}
+
+// Armed/pressed button gradient (Aqua blue)
+@mixin button-gradient-armed {
+  background: linear-gradient(
+    $button-armed-start 0%,
+    $button-armed-mid1 50%,
+    $button-armed-mid2 50%,
+    $button-armed-mid3 75%,
+    $button-armed-end 100%
+  );
+  border-color: $button-armed-border;
+}
+
+// Toggle selected gradient
+@mixin toggle-gradient-selected {
+  background: linear-gradient(
+    $toggle-selected-start 0%,
+    $toggle-selected-mid1 10%,
+    $toggle-selected-mid2 85%,
+    $toggle-selected-end 98%,
+    $toggle-selected-start 100%
+  );
+}
+
+// Toggle armed gradient
+@mixin toggle-gradient-armed {
+  background: linear-gradient(
+    $toggle-armed-start 0%,
+    $toggle-armed-mid1 12%,
+    $toggle-armed-mid2 87%,
+    $toggle-armed-end 100%
+  );
+}
+
+// Checkbox/Radio default gradient
+@mixin checkbox-gradient {
+  background: $checkbox-bg-white;
+  background: linear-gradient(
+    $checkbox-gradient-start 0%,
+    $checkbox-gradient-mid1 25%,
+    $checkbox-gradient-mid2 50%,
+    $checkbox-gradient-mid3 51%,
+    $checkbox-gradient-end 100%
+  );
+}
+
+// Checkbox/Radio selected gradient (Aqua blue)
+@mixin checkbox-gradient-selected {
+  background: linear-gradient(
+    $checkbox-selected-start 0%,
+    $checkbox-selected-mid 50%,
+    $checkbox-selected-end 51%,
+    $checkbox-selected-start 100%
+  );
+  border-color: $checkbox-selected-border-start;
+}
+
+// Checkbox/Radio armed gradient
+@mixin checkbox-gradient-armed {
+  background: linear-gradient(
+    $checkbox-armed-start 0%,
+    $checkbox-armed-mid 50%,
+    $checkbox-armed-end1 51%,
+    $checkbox-armed-end2 100%
+  );
+}
+
+// List view selected gradient (focused)
+@mixin list-gradient-selected-focused {
+  background: linear-gradient(
+    $list-selected-start2 0%,
+    $list-selected-mid 1%,
+    $list-selected-end2 100%
+  );
+}
+
+// List view selected gradient (unfocused)
+@mixin list-gradient-selected-unfocused {
+  background: linear-gradient(
+    $list-unfocused-start1,
+    $list-unfocused-end1
+  );
+}
+
+// Menu bar gradient
+@mixin menubar-gradient {
+  background: linear-gradient($menubar-gradient-start, $menubar-gradient-end);
+}
+
+// Toolbar gradient
+@mixin toolbar-gradient {
+  background: linear-gradient(to bottom, $toolbar-gradient-start, $toolbar-gradient-end 99%, $menubar-hover-start);
+}
+
+// Toolbar inactive gradient
+@mixin toolbar-gradient-inactive {
+  background: linear-gradient(to bottom, $toolbar-inactive-start, $toolbar-inactive-end 99%, $groupbox-bg);
+}
+
+// ============================================
+// FOCUS MIXINS
+// ============================================
+
+@mixin focus-ring {
+  box-shadow: $shadow-focus;
+}
+
+@mixin focus-ring-with-inner {
+  box-shadow: $shadow-focus-with-inner;
+}
+
+// ============================================
+// BORDER MIXINS
+// ============================================
+
+@mixin button-border {
+  border: 0.5px solid;
+  border-color: $border-light $border-dark $border-dark $border-dark;
+}
+
+@mixin button-border-radius($radius: $radius-default) {
+  border-radius: $radius;
+}
+
+@mixin list-border {
+  border: 1px solid;
+  border-color: $list-border-top $list-border-sides $list-border-sides $list-border-sides;
+}
+
+// ============================================
+// TYPOGRAPHY MIXINS
+// ============================================
+
+@mixin aqua-font {
+  font-family: $aqua-font-family;
+  font-size: $aqua-font-size;
+  color: $aqua-text;
+}
+
+@mixin aqua-font-small {
+  font-family: $aqua-font-family;
+  font-size: $aqua-font-size-small;
+}
+
+@mixin aqua-font-mini {
+  font-family: $aqua-font-family;
+  font-size: $aqua-font-size-mini;
+}
+
+// ============================================
+// COMPONENT MIXINS
+// ============================================
+
+// Base button styles
+@mixin aqua-button-base {
+  @include aqua-font;
+  @include button-gradient;
+  @include button-border;
+  @include button-border-radius;
+  padding: 1px 11px 1.2px 11px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: $shadow-button;
+  text-align: center;
+}
+
+// Base input styles
+@mixin aqua-input-base {
+  @include aqua-font;
+  outline: none;
+
+  &::placeholder {
+    color: $textfield-placeholder;
+  }
+
+  &::selection {
+    background: $textfield-highlight;
+  }
+}
+
+// Checkbox/Radio container
+@mixin checkbox-radio-container {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  @include aqua-font;
+}
+
+// Hide native input
+@mixin hide-native-input {
+  display: none;
+}
+
+// ============================================
+// ANIMATION MIXINS
+// ============================================
+
+@mixin transition-default {
+  transition: all 0.15s ease;
+}
+
+@mixin transition-transform {
+  transition: transform 0.1s;
+}
+
+// Default button pulse animation - JavaFX uses 500ms duration
+@mixin button-pulse-animation {
+  animation: aqua-pulse 0.5s ease-in-out infinite alternate;
+}
+
+// ============================================
+// DISABLED STATE MIXIN
+// ============================================
+
+@mixin disabled-state {
+  opacity: $aqua-disabled-opacity;
+  cursor: default;
+  pointer-events: none;
+}
+
+// ============================================
+// SCROLLBAR MIXINS
+// ============================================
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $scrollbar-thumb;
+    background-clip: padding-box;
+    border-radius: 4px;
+    border: 2px solid transparent;
+  }
+
+  &:hover::-webkit-scrollbar-track {
+    background: linear-gradient(to right, $scrollbar-track-hover-start, $scrollbar-track-hover-end);
+    border-left: 1px solid $scrollbar-track-border;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbar-thumb transparent;
+}
+
+// ============================================
+// ARROW MIXINS
+// ============================================
+
+@mixin disclosure-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid $tree-arrow;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  @include transition-transform;
+}
+
+@mixin disclosure-arrow-expanded {
+  transform: rotate(90deg);
+}
+
+// ============================================
+// PILL BUTTON MIXINS
+// ============================================
+
+@mixin pill-left {
+  border-radius: $radius-default 0 0 $radius-default;
+  border-right-width: 0;
+}
+
+@mixin pill-center {
+  border-radius: 0;
+  border-right-width: 0;
+  border-left: 1px dashed $tab-border-dashed;
+}
+
+@mixin pill-right {
+  border-radius: 0 $radius-default $radius-default 0;
+  border-left: 1px dashed $tab-border-dashed;
+}
+
+// ============================================
+// SIZE VARIANT MIXINS
+// ============================================
+
+@mixin size-small {
+  @include aqua-font-small;
+  border-radius: 3px;
+  padding: 1.5px 11px 0.6px 11px;
+}
+
+@mixin size-mini {
+  @include aqua-font-mini;
+  border-radius: $radius-small;
+  padding: 1.5px 11px 0.6px 11px;
+}

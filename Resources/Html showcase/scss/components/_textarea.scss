@@ -1,0 +1,33 @@
+// ============================================
+// AquaFX Text Area Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-textarea {
+  font-family: 'Helvetica', $aqua-font-family;
+  font-size: $aqua-font-size;
+  padding: 1.2px 3px 2px 1px;
+  border: 1px solid;
+  border-color: rgb(142, 142, 142) $list-border-sides $list-border-sides $list-border-sides;
+  border-radius: 0;
+  background: $list-bg;
+  outline: none;
+  resize: both;
+  min-width: 200px;
+  min-height: 60px;
+  color: $aqua-text;
+
+  &::placeholder {
+    color: $textfield-placeholder;
+  }
+
+  &::selection {
+    background: $textfield-highlight;
+  }
+
+  &:focus {
+    @include focus-ring;
+  }
+}

@@ -1,0 +1,44 @@
+// ============================================
+// AquaFX Pagination Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-pagination {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+// Pagination number buttons
+.aqua-pagination-btn {
+  border: 0.5px solid $border-dark;
+  border-radius: 3em;
+  @include checkbox-gradient;
+  padding: $spacing-xs;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: $aqua-font-size-small;
+
+  &.active {
+    border-color: $checkbox-selected-border-start;
+    background: linear-gradient(
+      $pagination-bullet-selected-start 0%,
+      $pagination-bullet-selected-mid 50%,
+      $pagination-bullet-selected-end 51%,
+      $pagination-bullet-selected-start 100%
+    );
+  }
+}
+
+// Arrow buttons
+.aqua-pagination-arrow {
+  border: 0.5px solid $border-dark;
+  border-radius: 3em;
+  @include button-gradient;
+  padding: $spacing-xs $spacing-sm;
+  cursor: pointer;
+  font-size: 10px;
+}

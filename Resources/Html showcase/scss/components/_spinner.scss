@@ -1,0 +1,45 @@
+// ============================================
+// AquaFX Spinner / Stepper Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-spinner {
+  display: inline-flex;
+  align-items: stretch;
+
+  input {
+    @include aqua-font;
+    width: 60px;
+    padding: $spacing-xs $spacing-sm;
+    border: 1px solid rgb(168, 168, 168);
+    border-radius: 3px 0 0 3px;
+    text-align: center;
+    outline: none;
+  }
+}
+
+.aqua-spinner-buttons {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    font-size: 8px;
+    padding: 0 $spacing-sm;
+    border: 1px solid rgb(168, 168, 168);
+    border-left: none;
+    @include button-gradient;
+    cursor: pointer;
+    height: 50%;
+
+    &:first-child {
+      border-radius: 0 3px 0 0;
+      border-bottom: none;
+    }
+
+    &:last-child {
+      border-radius: 0 0 3px 0;
+    }
+  }
+}

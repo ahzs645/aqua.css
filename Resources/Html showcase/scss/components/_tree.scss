@@ -1,0 +1,40 @@
+// ============================================
+// AquaFX Tree View Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-tree {
+  background: $list-bg;
+  @include list-border;
+  padding: 0;
+  min-width: 200px;
+}
+
+.aqua-tree-item {
+  padding: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    background: $aqua-cell-hover;
+  }
+
+  &.selected {
+    background: $table-selected;
+    color: $aqua-text-white;
+  }
+}
+
+// Disclosure arrow
+.aqua-tree-arrow {
+  @include disclosure-arrow;
+  margin-left: 4px;
+}
+
+.aqua-tree-item.expanded .aqua-tree-arrow {
+  @include disclosure-arrow-expanded;
+}

@@ -1,0 +1,44 @@
+// ============================================
+// AquaFX Toolbar Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-toolbar {
+  @include toolbar-gradient;
+  padding: 3px 10.8px 8.7px 10.8px;
+  display: flex;
+  gap: $spacing-sm;
+  align-items: center;
+  border-bottom: 1px solid $toolbar-border;
+
+  // Inactive toolbar
+  &.inactive {
+    @include toolbar-gradient-inactive;
+    border-bottom-color: $toolbar-inactive-border;
+  }
+}
+
+// Toolbar button
+.aqua-toolbar-button {
+  background: linear-gradient($menubar-gradient-start, $menubar-gradient-end);
+  border: 0.5px solid;
+  border-color: $border-light $menubar-border-top $menubar-border-top $menubar-border-top;
+  border-radius: $radius-default;
+  padding: 1.3px 11.7px 2px 11.7px;
+  cursor: pointer;
+  @include aqua-font;
+
+  &:active {
+    background: linear-gradient(rgb(160, 160, 160), rgb(215, 215, 215));
+  }
+}
+
+// Toolbar separator
+.aqua-toolbar-separator {
+  width: 1px;
+  height: 20px;
+  border-right: 1px solid $toolbar-separator;
+  margin: 0 1px;
+}

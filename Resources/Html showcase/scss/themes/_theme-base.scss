@@ -1,0 +1,172 @@
+// ============================================
+// AquaFX Theme Base
+// Abstract theme mixin for color variants
+// ============================================
+
+// Theme mixin - override these variables in theme files
+@mixin theme-colors(
+  $dark-color,
+  $dark-color-transparent,
+  $dark-color-armed,
+  $light-color,
+  $light-color-armed,
+  $white-color,
+  $light-white-color,
+  $light-white-color-armed,
+  $lighter-color,
+  $lighter-white-color
+) {
+  // Selected row color
+  --theme-selected-row: #{$dark-color-armed};
+
+  // Main gradient
+  --theme-main-gradient: linear-gradient(
+    #{$light-color} 15%,
+    #{$dark-color} 50%,
+    #{$dark-color} 50%,
+    #{$light-white-color} 100%
+  );
+
+  // Main gradient armed
+  --theme-main-gradient-armed: linear-gradient(
+    #{$light-color-armed} 15%,
+    #{$dark-color-armed} 50%,
+    #{$dark-color-armed} 50%,
+    #{$light-white-color-armed} 100%
+  );
+
+  // Cell hover
+  --theme-cell-hover: #{$light-color};
+
+  // Hyperlink color
+  .aqua-link {
+    color: $dark-color;
+  }
+
+  // Focus colors for controls
+  .aqua-button,
+  .aqua-toggle,
+  .aqua-radio,
+  .aqua-checkbox,
+  .aqua-select,
+  .aqua-slider,
+  .aqua-textfield,
+  .aqua-textarea,
+  .aqua-color-picker {
+    --theme-focus-inner: #{$dark-color-transparent};
+    --theme-focus-outer: #{$dark-color};
+  }
+
+  // Button theme colors
+  .aqua-button {
+    &:active,
+    &.armed {
+      background: linear-gradient(
+        #{$light-color} 0%,
+        #{$dark-color-armed} 100%
+      );
+    }
+
+    &.default:active {
+      background: var(--theme-main-gradient);
+    }
+  }
+
+  // Toggle selected state
+  .aqua-toggle.selected,
+  .aqua-toggle:checked {
+    background: var(--theme-main-gradient);
+  }
+
+  .aqua-toggle:active {
+    background: var(--theme-main-gradient-armed);
+  }
+
+  // Checkbox selected
+  .aqua-checkbox input:checked + .box,
+  .aqua-checkbox input:indeterminate + .box {
+    background: var(--theme-main-gradient);
+  }
+
+  .aqua-checkbox input:checked:active + .box {
+    background: var(--theme-main-gradient-armed);
+  }
+
+  // Radio selected
+  .aqua-radio input:checked + .radio {
+    background: var(--theme-main-gradient);
+  }
+
+  .aqua-radio input:checked:active + .radio {
+    background: var(--theme-main-gradient-armed);
+  }
+
+  // Titled pane focus
+  .aqua-titled-pane:focus-within .aqua-titled-pane-arrow {
+    filter: drop-shadow(0 0 6.5px $dark-color);
+  }
+
+  // List/Table focus border
+  .aqua-list:focus-within,
+  .aqua-table:focus-within,
+  .aqua-tree:focus-within {
+    box-shadow: 0 0 8px $dark-color-transparent;
+  }
+
+  // List selected
+  .aqua-list-item.selected {
+    background: linear-gradient($light-white-color, $dark-color-armed),
+                linear-gradient($light-white-color, $dark-color);
+    color: black;
+  }
+
+  .aqua-list:focus-within .aqua-list-item.selected {
+    background: linear-gradient($light-white-color, $dark-color-armed),
+                linear-gradient($light-white-color, $dark-color);
+  }
+
+  // Table row odd
+  .aqua-table tr:nth-child(odd) td {
+    background: $dark-color;
+  }
+
+  // Table/Tree selected
+  .aqua-table tr.selected td,
+  .aqua-tree-item.selected {
+    background: var(--theme-selected-row);
+  }
+
+  // Pagination selected
+  .aqua-pagination-btn.active {
+    background: var(--theme-main-gradient);
+  }
+
+  // Tab active
+  .aqua-tab.active {
+    background: var(--theme-main-gradient);
+    box-shadow: inset 0 2px 5.5px rgba(0, 0, 0, 0.3);
+  }
+
+  // Progress bar
+  .aqua-progress .bar {
+    background: radial-gradient(circle at 50% 50%, $dark-color, $white-color);
+  }
+
+  .aqua-progress.indeterminate {
+    background:
+      linear-gradient(rgb(176, 176, 176), rgb(207, 207, 207)),
+      repeating-linear-gradient(
+        -45deg,
+        #{$dark-color},
+        #{$dark-color} 10px,
+        rgb(236, 236, 236) 10px,
+        rgb(236, 236, 236) 20px
+      );
+    background-size: 100% 100%, 200% 100%;
+  }
+
+  // Progress indicator
+  .aqua-progress-indicator .progress {
+    background: radial-gradient(center 50% 50%, radius 50%, $dark-color, $white-color);
+  }
+}

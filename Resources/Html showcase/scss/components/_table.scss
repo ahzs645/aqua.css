@@ -1,0 +1,63 @@
+// ============================================
+// AquaFX Table View Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: $list-bg;
+  @include list-border;
+
+  // Column headers
+  th {
+    background: linear-gradient(
+      $table-header-gradient-white 25%,
+      $table-header-gradient-light 50%,
+      $table-header-gradient-mid 50%,
+      $table-header-gradient-light 98%,
+      $button-hover-white 100%
+    );
+    padding: 0 $spacing-md;
+    text-align: left;
+    font-weight: normal;
+    border-bottom: 0.5px solid $table-header-border;
+    border-right: 1px solid $list-border-sides;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  // Table cells
+  td {
+    padding: 0 $spacing-md;
+    border-bottom: 1px solid $table-cell-border;
+  }
+
+  // Alternating row colors
+  tr:nth-child(odd) td {
+    background: $table-row-odd;
+  }
+
+  tr:nth-child(even) td {
+    background: $table-row-even;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  // Hover state
+  tr:hover td {
+    background: $aqua-cell-hover;
+  }
+
+  // Selected row
+  tr.selected td {
+    background: $table-selected;
+    color: $aqua-text-white;
+  }
+}

@@ -1,0 +1,17 @@
+// ============================================
+// AquaFX Badge Component
+// ============================================
+
+@use '../base/variables' as *;
+
+.aqua-badge {
+  display: inline-block;
+  background: linear-gradient($badge-gradient-start, $badge-gradient-end);
+  color: $aqua-text-white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: $spacing-xs 6px;
+  border-radius: 10px;
+  min-width: 16px;
+  text-align: center;
+}

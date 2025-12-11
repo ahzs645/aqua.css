@@ -1,0 +1,31 @@
+// ============================================
+// AquaFX Tooltip Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-tooltip {
+  position: relative;
+  display: inline-block;
+
+  .tooltip-text {
+    visibility: hidden;
+    background: rgba($tooltip-bg, 0.95);
+    color: $aqua-text;
+    padding: 1.3px 4.5px 3.2px 2.5px;
+    border: 0.5px solid $tooltip-border;
+    font-size: $aqua-font-size;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    box-shadow: $shadow-tooltip;
+    z-index: 100;
+  }
+
+  &:hover .tooltip-text {
+    visibility: visible;
+  }
+}

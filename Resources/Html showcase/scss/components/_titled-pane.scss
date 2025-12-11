@@ -1,0 +1,42 @@
+// ============================================
+// AquaFX Titled Pane / Accordion Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-titled-pane {
+  border: 1px solid $progress-border;
+  border-width: 1px 0;
+}
+
+.aqua-titled-pane-header {
+  padding: 2px 10.8px 3.2px 10.8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// Arrow
+.aqua-titled-pane-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid $tree-arrow;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  @include transition-transform;
+}
+
+.aqua-titled-pane.expanded .aqua-titled-pane-arrow {
+  @include disclosure-arrow-expanded;
+}
+
+.aqua-titled-pane-content {
+  padding: $spacing-xs;
+  display: none;
+}
+
+.aqua-titled-pane.expanded .aqua-titled-pane-content {
+  display: block;
+}

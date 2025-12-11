@@ -1,0 +1,124 @@
+// ============================================
+// AquaFX Buttons Component
+// Includes: Standard, Toggle, Pill buttons
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// ============================================
+// STANDARD BUTTONS
+// ============================================
+
+.aqua-button {
+  @include aqua-button-base;
+
+  &:hover {
+    @include button-gradient-hover;
+  }
+
+  &:active,
+  &.armed {
+    @include button-gradient-armed;
+  }
+
+  &:focus {
+    @include focus-ring-with-inner;
+  }
+
+  &:disabled {
+    @include disabled-state;
+  }
+
+  // Default button (pulsing blue glow)
+  &.default {
+    background: rgb(183, 206, 238);
+    background-image: linear-gradient(
+      to bottom,
+      rgb(183, 206, 238) 0%,
+      rgb(142, 188, 237) 50%,
+      rgb(114, 174, 236) 50%,
+      rgb(178, 218, 242) 100%
+    );
+    border-color: $button-armed-border;
+    @include button-pulse-animation;
+  }
+
+  // Help button (round with ?)
+  &.help {
+    border-radius: $radius-large;
+    width: 22px;
+    height: 22px;
+    padding: 0 4px 1px 4px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  // Round rect button
+  &.round-rect {
+    border-radius: $radius-large;
+  }
+
+  // Size variants
+  &.small {
+    @include size-small;
+  }
+
+  &.mini {
+    @include size-mini;
+  }
+
+  // Pill buttons (segmented control)
+  &.left-pill {
+    @include pill-left;
+  }
+
+  &.center-pill {
+    @include pill-center;
+  }
+
+  &.right-pill {
+    @include pill-right;
+  }
+}
+
+// Default button pulse animation - smooth glowing effect
+@keyframes aqua-pulse {
+  0% {
+    box-shadow: 0 0 4px 1px rgba(120, 176, 238, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 12px 4px rgba(120, 176, 238, 0.8);
+  }
+}
+
+// ============================================
+// TOGGLE BUTTONS
+// ============================================
+
+.aqua-toggle {
+  @include aqua-button-base;
+
+  // Selected state
+  &.selected,
+  &:checked {
+    @include toggle-gradient-selected;
+    color: $aqua-text-white;
+    border-color: $toggle-selected-border;
+    box-shadow: $shadow-toggle-selected;
+  }
+
+  // Armed state
+  &:active {
+    @include toggle-gradient-armed;
+    color: $aqua-text-white;
+  }
+}
+
+// ============================================
+// PILL GROUP CONTAINER
+// ============================================
+
+.pill-group {
+  display: inline-flex;
+}

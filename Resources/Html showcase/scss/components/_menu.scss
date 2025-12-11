@@ -1,0 +1,79 @@
+// ============================================
+// AquaFX Menu Components
+// Includes: Context Menu, Menu Bar
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// ============================================
+// CONTEXT MENU
+// ============================================
+
+.aqua-menu {
+  background: $menu-bg;
+  border: 0.5px solid $menu-border;
+  border-radius: $radius-medium;
+  padding: 3px 0;
+  box-shadow: $shadow-menu;
+  min-width: 150px;
+}
+
+.aqua-menu-item {
+  padding: 0 0 4px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid transparent;
+
+  > span {
+    padding: -1px 26px 0 4px;
+  }
+
+  &:hover {
+    background: linear-gradient($menu-item-hover-start 0%, $menu-item-hover-end 100%);
+    color: $aqua-text-white;
+    border-color: $menu-item-border-top transparent $menu-item-border-bottom transparent;
+
+    .shortcut {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .shortcut {
+    color: $menu-shortcut;
+    font-size: 12px;
+    margin-left: 20px;
+    padding-right: $spacing-md;
+  }
+}
+
+.aqua-menu-separator {
+  height: 1px;
+  background: $menu-separator;
+  margin: 4px 0;
+}
+
+// ============================================
+// MENU BAR
+// ============================================
+
+.aqua-menubar {
+  @include menubar-gradient;
+  padding: 0 8px;
+  display: flex;
+  gap: 2px;
+  border-bottom: 0.5px solid $menubar-border-bottom;
+  border-top: 0.5px solid $menubar-border-top;
+}
+
+.aqua-menubar-item {
+  padding: 4px 6px;
+  cursor: pointer;
+  border-radius: 3px;
+
+  &:hover {
+    background: linear-gradient(to right, $menubar-hover-start, $menubar-hover-end 99%, $menubar-hover-start);
+  }
+}

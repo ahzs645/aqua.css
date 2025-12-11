@@ -1,0 +1,64 @@
+// ============================================
+// AquaFX Demo-specific Layout Styles
+// ============================================
+
+@use '../base/variables' as *;
+
+// Container
+.container {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+// Component rows
+.component-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+  align-items: center;
+  margin: $spacing-lg 0;
+}
+
+.component-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+// Labels
+.label {
+  font-size: $aqua-font-size-small;
+  color: rgb(100, 100, 100);
+  margin-bottom: 3px;
+}
+
+// Demo sections
+.demo-section {
+  margin-bottom: 40px;
+}
+
+// States demo grid
+.states-demo {
+  display: flex;
+  gap: $spacing-xl;
+  flex-wrap: wrap;
+}
+
+.state-box {
+  text-align: center;
+}
+
+.state-label {
+  font-size: 10px;
+  color: rgb(120, 120, 120);
+  margin-top: $spacing-sm;
+}
+
+// Inline code
+.inline-code {
+  font-family: Monaco, Consolas, monospace;
+  font-size: $aqua-font-size-small;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 1px 4px;
+  border-radius: 3px;
+}

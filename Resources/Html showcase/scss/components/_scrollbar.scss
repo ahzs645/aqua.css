@@ -1,0 +1,38 @@
+// ============================================
+// AquaFX Scrollbar Component
+// Modern Mac-style overlay scrollbar
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.scroll-container {
+  overflow: auto;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 3px;
+  background: $list-bg;
+  @include custom-scrollbar;
+}
+
+// Vertical scroll demo
+.scroll-demo-vertical {
+  width: 250px;
+  height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+// Horizontal scroll demo
+.scroll-demo-horizontal {
+  width: 300px;
+  height: 80px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+// Both directions demo
+.scroll-demo-both {
+  width: 280px;
+  height: 180px;
+  overflow: scroll;
+}

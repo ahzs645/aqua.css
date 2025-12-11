@@ -1,0 +1,55 @@
+// ============================================
+// AquaFX Window Chrome Component
+// Includes: Window, Title Bar, Traffic Lights
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-window {
+  border: 1px solid $window-border;
+  border-radius: $radius-medium;
+  overflow: hidden;
+  box-shadow: $shadow-window;
+  background: $aqua-bg;
+}
+
+.aqua-titlebar {
+  background: linear-gradient($titlebar-gradient-start, $titlebar-gradient-end);
+  padding: 8px $spacing-md;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid $titlebar-border;
+}
+
+.aqua-traffic-light {
+  width: 12px;
+  height: 12px;
+  border-radius: $radius-round;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  &.close {
+    background: linear-gradient($traffic-light-close-start, $traffic-light-close-end);
+  }
+
+  &.minimize {
+    background: linear-gradient($traffic-light-minimize-start, $traffic-light-minimize-end);
+  }
+
+  &.maximize {
+    background: linear-gradient($traffic-light-maximize-start, $traffic-light-maximize-end);
+  }
+}
+
+.aqua-titlebar-title {
+  flex: 1;
+  text-align: center;
+  font-size: $aqua-font-size;
+  color: $titlebar-text;
+}
+
+.aqua-window-content {
+  padding: $spacing-lg;
+  min-height: 100px;
+}

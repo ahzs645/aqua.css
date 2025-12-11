@@ -1,0 +1,44 @@
+// ============================================
+// AquaFX Fire Theme
+// Red/Orange, fiery color scheme
+// ============================================
+
+@use 'theme-base' as *;
+
+// Fire/Red color palette
+$dark-red: rgb(226, 61, 56);
+$dark-red-transparent: rgba(226, 61, 56, 0.8);
+$dark-red-armed: rgb(165, 64, 59);
+$light-red: rgb(251, 207, 202);
+$light-red-armed: rgb(187, 156, 152);
+$orange-red: rgb(226, 90, 56);
+$light-orange-red: rgb(251, 177, 175);
+$light-orange-red-armed: rgb(222, 175, 174);
+$lighter-red: rgb(251, 231, 228);
+$lighter-orange-red: rgb(250, 216, 216);
+
+// Apply theme
+.theme-fire {
+  @include theme-colors(
+    $dark-red,
+    $dark-red-transparent,
+    $dark-red-armed,
+    $light-red,
+    $light-red-armed,
+    $orange-red,
+    $light-orange-red,
+    $light-orange-red-armed,
+    $lighter-red,
+    $lighter-orange-red
+  );
+
+  // Fire-specific overrides
+  .aqua-link {
+    color: $dark-red;
+  }
+
+  // Progress bar uses fire colors
+  .aqua-progress .bar {
+    background: radial-gradient(circle at 50% 50%, $dark-red, $orange-red);
+  }
+}

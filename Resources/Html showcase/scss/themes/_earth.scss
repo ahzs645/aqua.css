@@ -1,0 +1,49 @@
+// ============================================
+// AquaFX Earth Theme
+// Green, nature-inspired color scheme
+// ============================================
+
+@use 'theme-base' as *;
+
+// Earth/Green color palette
+$dark-green: rgb(69, 199, 73);
+$dark-green-transparent: rgba(69, 199, 73, 0.8);
+$dark-green-armed: rgb(69, 154, 73);
+$light-green: rgb(180, 235, 145);
+$light-green-armed: rgb(160, 196, 139);
+$white-green: rgb(148, 212, 112);
+$light-white-green: rgb(184, 233, 154);
+$light-white-green-armed: rgb(163, 196, 143);
+$lighter-green: rgb(219, 255, 190);
+$lighter-white-green: rgb(206, 231, 190);
+
+// Apply theme
+.theme-earth {
+  @include theme-colors(
+    $dark-green,
+    $dark-green-transparent,
+    $dark-green-armed,
+    $light-green,
+    $light-green-armed,
+    $white-green,
+    $light-white-green,
+    $light-white-green-armed,
+    $lighter-green,
+    $lighter-white-green
+  );
+
+  // Earth-specific overrides
+  .aqua-link {
+    color: $dark-green;
+  }
+
+  // Progress bar uses earth colors
+  .aqua-progress .bar {
+    background: radial-gradient(circle at 50% 50%, $dark-green, $white-green);
+  }
+
+  // Progress indicator tick
+  .aqua-progress-indicator .tick {
+    background: rgb(208, 208, 208), black;
+  }
+}

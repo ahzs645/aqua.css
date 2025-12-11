@@ -1,0 +1,316 @@
+// ============================================
+// AquaFX SCSS Variables
+// Mac OS X Aqua Design System
+// Based on AquaFX JavaFX library
+// ============================================
+
+// ============================================
+// TYPOGRAPHY
+// ============================================
+$aqua-font-family: 'Lucida Grande', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$aqua-font-size: 13px;
+$aqua-font-size-small: 11px;
+$aqua-font-size-mini: 9px;
+
+// ============================================
+// CORE COLORS
+// ============================================
+$aqua-bg: rgb(237, 237, 237);
+$aqua-text: black;
+$aqua-text-white: white;
+$aqua-disabled-opacity: 0.6;
+
+// Cell/hover colors
+$aqua-cell-hover: rgb(182, 214, 253);
+
+// ============================================
+// BORDER COLORS
+// ============================================
+$border-dark: rgb(129, 129, 129);
+$border-light: rgb(147, 147, 147);
+$border-subtle: rgb(205, 205, 205);
+$border-medium: rgb(207, 207, 207);
+
+// ============================================
+// FOCUS COLORS (Aqua Blue Glow)
+// ============================================
+$focus-inner: rgba(104, 155, 201, 0.8);
+$focus-outer: rgb(120, 171, 217);
+
+// ============================================
+// BUTTON COLORS
+// ============================================
+
+// Default button gradient stops
+$button-gradient-white: rgb(255, 255, 255);
+$button-gradient-light: rgb(243, 243, 243);
+$button-gradient-mid: rgb(236, 236, 236);
+
+// Armed/pressed state - Aqua blue
+$button-armed-start: rgb(165, 193, 238);
+$button-armed-mid1: rgb(108, 161, 231);
+$button-armed-mid2: rgb(74, 138, 217);
+$button-armed-mid3: rgb(105, 167, 236);
+$button-armed-end: rgb(152, 201, 238);
+$button-armed-border: rgb(100, 103, 124);
+
+// Hover state
+$button-hover-white: rgb(250, 250, 250);
+$button-hover-light: rgb(238, 238, 238);
+$button-hover-mid: rgb(231, 231, 231);
+
+// ============================================
+// TOGGLE BUTTON COLORS
+// ============================================
+$toggle-selected-start: rgb(94, 94, 94);
+$toggle-selected-mid1: rgb(120, 120, 120);
+$toggle-selected-mid2: rgb(150, 150, 150);
+$toggle-selected-end: rgb(177, 177, 177);
+$toggle-selected-border: rgb(97, 97, 97);
+
+$toggle-armed-start: rgb(87, 87, 87);
+$toggle-armed-mid1: rgb(113, 113, 113);
+$toggle-armed-mid2: rgb(125, 125, 125);
+$toggle-armed-end: rgb(155, 155, 155);
+
+// ============================================
+// CHECKBOX/RADIO COLORS
+// ============================================
+$checkbox-bg-white: rgb(250, 250, 250);
+$checkbox-gradient-start: rgb(255, 255, 255);
+$checkbox-gradient-mid1: rgb(253, 253, 253);
+$checkbox-gradient-mid2: rgb(244, 244, 244);
+$checkbox-gradient-mid3: rgb(236, 236, 236);
+$checkbox-gradient-end: rgb(243, 243, 243);
+
+// Selected state - Aqua blue
+$checkbox-selected-start: rgb(228, 250, 255);
+$checkbox-selected-mid: #91bdee;
+$checkbox-selected-end: #78b0ee;
+$checkbox-selected-border-start: rgb(100, 103, 124);
+$checkbox-selected-border-end: rgb(92, 94, 116);
+
+// Armed state
+$checkbox-armed-start: rgb(224, 224, 224);
+$checkbox-armed-mid: rgb(214, 214, 214);
+$checkbox-armed-end1: rgb(207, 207, 207);
+$checkbox-armed-end2: rgb(208, 208, 208);
+
+// ============================================
+// TEXT FIELD COLORS
+// ============================================
+$textfield-border-top: rgb(184, 184, 184);
+$textfield-border-sides: rgb(205, 205, 205);
+$textfield-bg-top: rgb(155, 155, 155);
+$textfield-bg-bottom: rgb(172, 172, 172);
+$textfield-inner-shadow: rgb(224, 224, 224);
+$textfield-highlight: rgb(182, 214, 253);
+$textfield-placeholder: rgb(128, 128, 128);
+$textfield-disabled-text: rgb(127, 127, 127);
+
+// ============================================
+// SLIDER COLORS
+// ============================================
+$slider-track-start: rgb(147, 147, 147);
+$slider-track-end: rgb(217, 217, 217);
+$slider-track-border-start: rgb(111, 111, 111);
+$slider-track-border-end: rgb(171, 171, 171);
+$slider-thumb-border: rgba(87, 87, 87, 0.8);
+$slider-thumb-shadow: rgb(192, 192, 198);
+
+// ============================================
+// PROGRESS BAR COLORS
+// ============================================
+$progress-border: rgb(146, 146, 146);
+$progress-track-start: rgb(176, 176, 176);
+$progress-track-end: rgb(207, 207, 207);
+$progress-bar-start: rgb(84, 170, 240);
+$progress-bar-end: rgb(90, 192, 246);
+$progress-bar-stripe: rgb(84, 169, 239);
+
+// ============================================
+// MENU COLORS
+// ============================================
+$menu-bg: rgba(255, 255, 255, 0.95);
+$menu-border: rgba(209, 209, 209, 0.4);
+$menu-item-hover-start: rgb(101, 140, 245);
+$menu-item-hover-end: rgb(41, 103, 243);
+$menu-item-border-top: rgb(90, 130, 235);
+$menu-item-border-bottom: rgb(23, 89, 231);
+$menu-separator: rgb(220, 220, 220);
+$menu-shortcut: rgb(130, 130, 130);
+
+// ============================================
+// MENUBAR COLORS
+// ============================================
+$menubar-gradient-start: rgb(245, 245, 245);
+$menubar-gradient-end: rgb(185, 185, 185);
+$menubar-border-top: rgb(131, 131, 131);
+$menubar-border-bottom: rgb(116, 116, 116);
+$menubar-hover-start: rgb(233, 233, 233);
+$menubar-hover-end: rgb(173, 173, 173);
+
+// ============================================
+// TOOLBAR COLORS
+// ============================================
+$toolbar-gradient-start: rgb(222, 222, 222);
+$toolbar-gradient-end: rgb(173, 173, 173);
+$toolbar-border: rgb(103, 103, 103);
+$toolbar-inactive-start: rgb(244, 244, 244);
+$toolbar-inactive-end: rgb(224, 224, 224);
+$toolbar-inactive-border: rgb(166, 166, 166);
+$toolbar-separator: rgb(129, 129, 129);
+
+// ============================================
+// LIST VIEW COLORS
+// ============================================
+$list-border-top: rgb(156, 156, 156);
+$list-border-sides: rgb(190, 190, 190);
+$list-bg: white;
+$list-selected-start1: rgb(95, 165, 221);
+$list-selected-end1: rgb(54, 124, 192);
+$list-selected-start2: rgb(116, 186, 232);
+$list-selected-mid: rgb(109, 178, 227);
+$list-selected-end2: rgb(59, 136, 208);
+$list-unfocused-start1: rgb(187, 197, 214);
+$list-unfocused-end1: rgb(147, 160, 185);
+$list-unfocused-start2: rgb(195, 204, 223);
+$list-unfocused-mid: rgb(189, 199, 220);
+$list-unfocused-end2: rgb(155, 169, 196);
+
+// ============================================
+// TABLE VIEW COLORS
+// ============================================
+$table-header-gradient-white: rgb(255, 255, 255);
+$table-header-gradient-light: rgb(243, 243, 243);
+$table-header-gradient-mid: rgb(236, 236, 236);
+$table-header-border: rgb(156, 156, 156);
+$table-row-odd: white;
+$table-row-even: rgb(243, 246, 250);
+$table-cell-border: rgb(240, 240, 240);
+$table-selected: rgb(60, 119, 212);
+
+// ============================================
+// TREE VIEW COLORS
+// ============================================
+$tree-arrow: rgb(134, 134, 134);
+
+// ============================================
+// TAB COLORS
+// ============================================
+$tab-border-dashed: rgb(203, 203, 203);
+$tab-selected-neighbor: rgb(74, 74, 74);
+
+// ============================================
+// GROUP BOX COLORS
+// ============================================
+$groupbox-bg: rgb(227, 227, 227);
+$groupbox-border: rgb(193, 193, 193);
+$groupbox-shadow: rgba(168, 168, 168, 0.6);
+$groupbox-edge: rgba(168, 168, 168, 0.5);
+
+// ============================================
+// TOOLTIP COLORS
+// ============================================
+$tooltip-bg: rgb(251, 250, 205);
+$tooltip-border: rgba(125, 125, 125, 0.4);
+
+// ============================================
+// SCROLLBAR COLORS
+// ============================================
+$scrollbar-thumb: rgba(0, 0, 0, 0.5);
+$scrollbar-track-hover-start: rgba(238, 238, 238, 0.7);
+$scrollbar-track-hover-end: rgba(255, 255, 255, 0.7);
+$scrollbar-track-border: rgb(198, 198, 198);
+
+// ============================================
+// LINK COLOR
+// ============================================
+$link-color: rgb(94, 162, 218);
+
+// ============================================
+// SEPARATOR COLOR
+// ============================================
+$separator-color: rgb(132, 132, 132);
+
+// ============================================
+// WINDOW CHROME COLORS
+// ============================================
+$window-border: rgb(150, 150, 150);
+$titlebar-gradient-start: rgb(232, 232, 232);
+$titlebar-gradient-end: rgb(206, 206, 206);
+$titlebar-border: rgb(180, 180, 180);
+$titlebar-text: rgb(70, 70, 70);
+
+// Traffic light buttons
+$traffic-light-close-start: rgb(255, 95, 87);
+$traffic-light-close-end: rgb(255, 70, 60);
+$traffic-light-minimize-start: rgb(255, 189, 46);
+$traffic-light-minimize-end: rgb(255, 170, 30);
+$traffic-light-maximize-start: rgb(39, 201, 63);
+$traffic-light-maximize-end: rgb(30, 180, 50);
+
+// ============================================
+// SPLIT PANE COLORS
+// ============================================
+$split-border: rgb(175, 175, 175);
+$split-divider-start: rgb(252, 252, 252);
+$split-divider-end: rgb(224, 224, 224);
+$split-divider-border: rgb(180, 180, 180);
+$split-grabber-start: rgb(203, 203, 203);
+$split-grabber-end: rgb(167, 167, 167);
+
+// ============================================
+// COLOR PICKER COLORS
+// ============================================
+$colorpicker-swatch-border: rgb(141, 141, 141);
+
+// ============================================
+// PAGINATION COLORS
+// ============================================
+$pagination-bullet-selected-start: rgb(228, 250, 255);
+$pagination-bullet-selected-mid: #91bdee;
+$pagination-bullet-selected-end: #78b0ee;
+
+// ============================================
+// BADGE COLORS
+// ============================================
+$badge-gradient-start: rgb(255, 100, 100);
+$badge-gradient-end: rgb(220, 50, 50);
+
+// ============================================
+// BORDER RADII
+// ============================================
+$radius-small: 2px;
+$radius-default: 4px;
+$radius-medium: 6px;
+$radius-large: 1em;
+$radius-round: 50%;
+$radius-checkbox: 2.5px;
+$radius-slider-track: 2.5px;
+$radius-progress: 2.5px;
+$radius-tabs: 4px;
+
+// ============================================
+// SPACING
+// ============================================
+$spacing-xs: 2px;
+$spacing-sm: 5px;
+$spacing-md: 10px;
+$spacing-lg: 15px;
+$spacing-xl: 20px;
+
+// ============================================
+// SHADOWS
+// ============================================
+$shadow-button: 0 0.8px 1px rgba(172, 172, 184, 0.5);
+$shadow-focus: 0 0 0 3px $focus-outer;
+$shadow-focus-with-inner: 0 0 0 3px $focus-outer, inset 0 0 5px $focus-inner;
+$shadow-toggle-selected: inset 0 2px 5.5px rgba(94, 94, 94, 0.7);
+$shadow-menu: 0 0 8px rgba(0, 0, 0, 0.6);
+$shadow-window: 0 5px 20px rgba(0, 0, 0, 0.3);
+$shadow-tooltip: 0 3px 8px rgba(0, 0, 0, 0.4);
+$shadow-alert: 0 10px 40px rgba(0, 0, 0, 0.3);
+$shadow-slider-thumb: 0 1px 2px rgba(192, 192, 198, 0.8);
+$shadow-list-text: 0 1px 1px rgba(0, 0, 0, 0.4);
+$shadow-list-focus: 0 0 8px rgba(120, 171, 217, 0.8);

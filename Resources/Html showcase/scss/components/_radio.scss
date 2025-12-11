@@ -1,0 +1,55 @@
+// ============================================
+// AquaFX Radio Button Component
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.aqua-radio {
+  @include checkbox-radio-container;
+
+  input {
+    @include hide-native-input;
+  }
+
+  // The radio circle
+  .radio {
+    width: 16px;
+    height: 16px;
+    border: 0.5px solid $border-dark;
+    border-radius: $radius-round;
+    @include checkbox-gradient;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1px;
+  }
+
+  // The inner dot
+  .radio .dot {
+    width: 6px;
+    height: 6px;
+    background: transparent;
+    border-radius: $radius-round;
+  }
+
+  // Armed/pressed state
+  &:active .radio {
+    @include checkbox-gradient-armed;
+  }
+
+  // Selected state
+  input:checked + .radio {
+    @include checkbox-gradient-selected;
+
+    .dot {
+      background: $aqua-text;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  // Focus state
+  input:focus + .radio {
+    @include focus-ring;
+  }
+}
