@@ -70,16 +70,13 @@
   padding: 16px;
   overflow: auto;
 
-  /* Pinstripe background */
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 1.5px,
-      rgba(255, 255, 255, 0.85) 1.5px,
-      rgba(255, 255, 255, 0.85) 4px
-    ),
-    linear-gradient(to bottom, #ececec 0%, #ececec 100%);
+  /* Classic horizontal stripes (like Finder windows) */
+  background: repeating-linear-gradient(
+    #F0F0F0,
+    #F0F0F0 4px,
+    #FFFFFF 4px,
+    #FFFFFF 8px
+  );
 }
 
 /* Title Bar */
