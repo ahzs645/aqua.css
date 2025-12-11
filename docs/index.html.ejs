@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Required SVG for pinwheel spinner blades -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <clipPath id="spinnerBlade" clipPathUnits="objectBoundingBox">
+        <path d="M 0.5,0.5 Q 0.6025,0.2720 0.3372,0.0272 A 0.5,0.5 0 0 1 0.6628,0.0272 Q 0.7211,0.3834 0.5,0.5 Z" />
+      </clipPath>
+    </defs>
+  </svg>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>aqua.css - Mac OS X Aqua Interface CSS Library</title>
@@ -383,9 +391,27 @@
         <div class="spinner animate"></div>
         <div class="spinner-large animate"></div>
         <div class="spinner-small animate"></div>
-        <div class="spinner-aqua animate"></div>
+        <div class="spinner-container">
+          <div class="static-rainbow-bg bg-smooth-rainbow"></div>
+          <div class="spinning-pinwheel">
+            <div class="blade"></div>
+            <div class="blade"></div>
+            <div class="blade"></div>
+            <div class="blade"></div>
+            <div class="blade"></div>
+          </div>
+        </div>
       </div>
     `) %>
+
+    <p><strong>Note:</strong> The pinwheel spinner requires this SVG in your HTML:</p>
+    <pre><code>&lt;svg width="0" height="0" style="position:absolute"&gt;
+  &lt;defs&gt;
+    &lt;clipPath id="spinnerBlade" clipPathUnits="objectBoundingBox"&gt;
+      &lt;path d="M 0.5,0.5 Q 0.6025,0.2720 0.3372,0.0272 A 0.5,0.5 0 0 1 0.6628,0.0272 Q 0.7211,0.3834 0.5,0.5 Z" /&gt;
+    &lt;/clipPath&gt;
+  &lt;/defs&gt;
+&lt;/svg&gt;</code></pre>
 
     <h2 id="tabs">Tabs</h2>
     <%- example(`

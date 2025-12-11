@@ -62,3 +62,108 @@
     animation: spinner-rotate 1s linear infinite;
   }
 }
+
+/* Pinwheel Spinner */
+.spinner-container {
+  --blade-opacity: 0.25;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  vertical-align: middle;
+
+  /* Top shine overlay */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 40%;
+    top: 5%;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.1)
+    );
+    border-radius: 50% 50% 40% 40%;
+    filter: blur(1px);
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  /* Bottom glow overlay */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 30%;
+    bottom: 8%;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.25)
+    );
+    border-radius: 50%;
+    filter: blur(1px);
+    z-index: 20;
+    pointer-events: none;
+  }
+}
+
+/* Rainbow background layer */
+.static-rainbow-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.bg-smooth-rainbow {
+  background: conic-gradient(from 0deg,
+    #7b68ee,
+    #4169e1,
+    #00bfff,
+    #00fa9a,
+    #32cd32,
+    #9acd32,
+    #ffd700,
+    #ff8c00,
+    #ff4500,
+    #ff1493,
+    #7b68ee);
+}
+
+/* Spinning pinwheel layer */
+.spinning-pinwheel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: spinner-rotate 1.2s linear infinite;
+  z-index: 10;
+
+  .blade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: url(#spinnerBlade);
+    transform-origin: 50% 50%;
+    background: rgba(0, 0, 0, var(--blade-opacity, 0.25));
+
+    &:nth-child(1) { transform: rotate(0deg); }
+    &:nth-child(2) { transform: rotate(72deg); }
+    &:nth-child(3) { transform: rotate(144deg); }
+    &:nth-child(4) { transform: rotate(216deg); }
+    &:nth-child(5) { transform: rotate(288deg); }
+  }
+}
+
+/* Static mode - no animation */
+.spinner-container.static-mode .spinning-pinwheel {
+  animation: none;
+}
