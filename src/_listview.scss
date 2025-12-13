@@ -1,60 +1,154 @@
 /**
- * List View / Table
- * Table with alternating rows and selection
+ * List View
+ * Mac OS X Aqua-style list - JavaFX AquaFX accurate
  */
 
+/* ============================================
+   VERTICAL LIST (Default)
+   ============================================ */
 .list-view {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--font-size-base);
   background: white;
-  border: 1px solid #888888;
-  border-radius: var(--radius-medium);
-  overflow: hidden;
+  border: 1px solid;
+  border-color: rgb(156, 156, 156) rgb(190, 190, 190) rgb(190, 190, 190) rgb(190, 190, 190);
+  overflow: auto;
+  min-width: 150px;
+  max-height: 200px;
+  font-family: var(--font-system);
+  font-size: var(--font-size-base);
 
-  thead {
-    background: var(--brushed-metal);
+  /* Focus ring */
+  &:focus-within,
+  &.focused {
+    box-shadow: 0 0 8px 0 rgba(120, 171, 217, 0.8);
   }
 
-  th {
-    text-align: left;
-    padding: 6px 12px;
-    font-weight: bold;
-    border-bottom: 1px solid #888888;
-    border-right: 1px solid #CCCCCC;
-    cursor: default;
-    user-select: none;
+  /* Disabled state */
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
 
-    &:last-child {
-      border-right: none;
+/* List item/cell */
+.list-item {
+  padding: 3px 3px;
+  cursor: pointer;
+  background: white;
+  color: #000;
+
+  /* Hover state */
+  &:hover {
+    background: rgb(182, 214, 253);
+  }
+
+  /* Selected state when list is NOT focused (gray selection) */
+  &.selected {
+    background:
+      linear-gradient(rgb(187, 197, 214), rgb(147, 160, 185)),
+      linear-gradient(
+        rgb(195, 204, 223),
+        rgb(195, 204, 223) 1%,
+        rgb(189, 199, 220) 1%,
+        rgb(155, 169, 196) 100%
+      );
+    background-size: 100% 1px, 100% 100%;
+    background-position: 0 0, 0 1px;
+    background-repeat: no-repeat;
+    color: white;
+  }
+}
+
+/* When list container is focused, selected items get blue gradient */
+.list-view:focus-within .list-item.selected,
+.list-view.focused .list-item.selected {
+  background:
+    linear-gradient(rgb(95, 165, 221), rgb(54, 124, 192)),
+    linear-gradient(
+      rgb(116, 186, 232),
+      rgb(116, 186, 232) 1%,
+      rgb(109, 178, 227) 1%,
+      rgb(59, 136, 208) 100%
+    );
+  background-size: 100% 1px, 100% 100%;
+  background-position: 0 0, 0 1px;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   HORIZONTAL LIST
+   ============================================ */
+.list-view.horizontal {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: none;
+  height: auto;
+
+  .list-item {
+    flex-shrink: 0;
+    white-space: nowrap;
+
+    /* Odd items in horizontal list */
+    &:nth-child(odd) {
+      background: rgb(243, 246, 250);
     }
 
     &:hover {
-      background: var(--surface);
-    }
-  }
-
-  td {
-    padding: 4px 12px;
-    border-bottom: 1px solid #E8E8E8;
-  }
-
-  tbody tr {
-    &:nth-child(even) {
-      background: #F5F5F5;
+      background: rgb(182, 214, 253);
     }
 
-    &:hover {
-      background: #E8E8E8;
-    }
-
+    /* Selected state (unfocused) - horizontal gradient */
     &.selected {
-      background: var(--aqua-blue);
+      background:
+        linear-gradient(to right, rgb(187, 197, 214), rgb(147, 160, 185)),
+        linear-gradient(to right,
+          rgb(195, 204, 223),
+          rgb(195, 204, 223) 1%,
+          rgb(189, 199, 220) 1%,
+          rgb(155, 169, 196) 100%
+        );
+      background-size: 1px 100%, 100% 100%;
+      background-position: 0 0, 1px 0;
+      background-repeat: no-repeat;
       color: white;
-
-      td {
-        border-bottom-color: var(--aqua-blue-dark);
-      }
     }
+  }
+}
+
+/* Horizontal list focused selection */
+.list-view.horizontal:focus-within .list-item.selected,
+.list-view.horizontal.focused .list-item.selected {
+  background:
+    linear-gradient(to right, rgb(95, 165, 221), rgb(54, 124, 192)),
+    linear-gradient(to right,
+      rgb(116, 186, 232),
+      rgb(116, 186, 232) 1%,
+      rgb(109, 178, 227) 1%,
+      rgb(59, 136, 208) 100%
+    );
+  background-size: 1px 100%, 100% 100%;
+  background-position: 0 0, 1px 0;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   STRIPED LIST (Alternating rows)
+   ============================================ */
+.list-view.striped {
+  .list-item:nth-child(odd) {
+    background: rgb(243, 246, 250);
+  }
+
+  .list-item:nth-child(even) {
+    background: white;
+  }
+
+  .list-item:hover {
+    background: rgb(182, 214, 253);
   }
 }

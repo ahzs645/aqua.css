@@ -1,0 +1,116 @@
+/**
+ * Badge
+ * Mac OS X Aqua-style notification badge - JavaFX AquaFX accurate
+ */
+
+/* ============================================
+   BADGE BASE STYLES
+   ============================================ */
+.badge,
+.aqua-badge {
+  display: inline-block;
+  background: linear-gradient(rgb(255, 100, 100), rgb(220, 50, 50));
+  color: white;
+  font-family: var(--font-system);
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 16px;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   BADGE COLOR VARIANTS
+   ============================================ */
+
+/* Blue badge (info) */
+.badge-blue,
+.badge.blue,
+.aqua-badge.blue {
+  background: linear-gradient(rgb(100, 160, 255), rgb(50, 120, 220));
+}
+
+/* Green badge (success) */
+.badge-green,
+.badge.green,
+.aqua-badge.green {
+  background: linear-gradient(rgb(100, 200, 100), rgb(50, 160, 50));
+}
+
+/* Orange badge (warning) */
+.badge-orange,
+.badge.orange,
+.aqua-badge.orange {
+  background: linear-gradient(rgb(255, 180, 100), rgb(220, 140, 50));
+}
+
+/* Gray badge (neutral) */
+.badge-gray,
+.badge.gray,
+.aqua-badge.gray {
+  background: linear-gradient(rgb(160, 160, 160), rgb(120, 120, 120));
+}
+
+/* ============================================
+   BADGE SIZE VARIANTS
+   ============================================ */
+
+/* Small badge */
+.badge-small,
+.badge.small,
+.aqua-badge.small {
+  font-size: 9px;
+  padding: 1px 4px;
+  min-width: 12px;
+  border-radius: 8px;
+}
+
+/* Large badge */
+.badge-large,
+.badge.large,
+.aqua-badge.large {
+  font-size: 12px;
+  padding: 3px 8px;
+  min-width: 20px;
+  border-radius: 12px;
+}
+
+/* ============================================
+   BADGE POSITIONING (for use with icons/buttons)
+   ============================================ */
+.badge-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .badge,
+  .aqua-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    z-index: 1;
+  }
+
+  /* Small variant positioning */
+  .badge.small,
+  .badge-small,
+  .aqua-badge.small {
+    top: -4px;
+    right: -4px;
+  }
+}
+
+/* ============================================
+   EMPTY BADGE (dot indicator)
+   ============================================ */
+.badge-dot,
+.badge.dot,
+.aqua-badge.dot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  padding: 0;
+  border-radius: 50%;
+}

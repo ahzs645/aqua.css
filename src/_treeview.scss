@@ -1,44 +1,127 @@
 /**
  * Tree View
- * Expandable hierarchical list
+ * Mac OS X Aqua-style tree view - JavaFX AquaFX accurate
  */
 
-.tree-view {
-  list-style: none;
-  margin: 0;
-  padding: 8px;
-  font-size: var(--font-size-base);
+/* ============================================
+   TREE VIEW CONTAINER
+   ============================================ */
+.tree-view,
+.aqua-tree {
   background: white;
-  border: 1px solid #888888;
-  border-radius: var(--radius-medium);
+  border: 1px solid;
+  border-color: rgb(156, 156, 156) rgb(190, 190, 190) rgb(190, 190, 190) rgb(190, 190, 190);
+  padding: 0;
+  min-width: 200px;
+  overflow: auto;
+  font-family: var(--font-system);
+  font-size: var(--font-size-base);
 
+  /* Focus ring */
+  &:focus-within,
+  &.focused {
+    box-shadow: 0 0 8px 0 rgba(120, 171, 217, 0.8);
+  }
+
+  /* Nested lists */
   ul {
     list-style: none;
     margin: 0;
-    padding-left: 20px;
+    padding-left: 16px;
+  }
+}
+
+/* ============================================
+   TREE ITEM
+   ============================================ */
+.tree-item,
+.aqua-tree-item {
+  padding: 1px 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    background: rgb(182, 214, 253);
   }
 
-  li {
-    padding: 2px 4px;
-    cursor: default;
-
-    &:hover {
-      background: #E8E8E8;
-      border-radius: var(--radius-small);
-    }
-
-    &.selected {
-      background: var(--aqua-blue);
-      color: white;
-      border-radius: var(--radius-small);
-    }
+  /* Selected state (unfocused - gray) */
+  &.selected {
+    background:
+      linear-gradient(rgb(187, 197, 214), rgb(147, 160, 185)),
+      linear-gradient(
+        rgb(195, 204, 223),
+        rgb(195, 204, 223) 1%,
+        rgb(189, 199, 220) 1%,
+        rgb(155, 169, 196) 100%
+      );
+    background-size: 100% 1px, 100% 100%;
+    background-position: 0 0, 0 1px;
+    background-repeat: no-repeat;
+    color: white;
   }
+}
 
+/* Focused tree selected items get blue gradient */
+.tree-view:focus-within .tree-item.selected,
+.tree-view.focused .tree-item.selected,
+.aqua-tree:focus-within .aqua-tree-item.selected,
+.aqua-tree.focused .aqua-tree-item.selected {
+  background:
+    linear-gradient(rgb(95, 165, 221), rgb(54, 124, 192)),
+    linear-gradient(
+      rgb(116, 186, 232),
+      rgb(116, 186, 232) 1%,
+      rgb(109, 178, 227) 1%,
+      rgb(59, 136, 208) 100%
+    );
+  background-size: 100% 1px, 100% 100%;
+  background-position: 0 0, 0 1px;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   DISCLOSURE ARROW
+   ============================================ */
+.tree-arrow,
+.aqua-tree-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid rgb(134, 134, 134);
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  margin-left: 4px;
+  transition: transform 0.1s;
+  flex-shrink: 0;
+}
+
+/* Expanded state */
+.tree-item.expanded .tree-arrow,
+.aqua-tree-item.expanded .aqua-tree-arrow {
+  transform: rotate(90deg);
+}
+
+/* ============================================
+   TREE NODE ICON
+   ============================================ */
+.tree-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   TREE USING HTML5 DETAILS/SUMMARY
+   ============================================ */
+.tree-view {
   details {
     > summary {
       list-style: none;
-      cursor: default;
-      padding: 2px 4px;
+      cursor: pointer;
+      padding: 1px 3px;
       display: flex;
       align-items: center;
       gap: 4px;
@@ -49,22 +132,55 @@
 
       &::before {
         content: "";
-        width: 8px;
-        height: 8px;
-        background-image: svg-load("./icon/disclosure-closed.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
+        width: 0;
+        height: 0;
+        border-left: 4px solid rgb(134, 134, 134);
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        transition: transform 0.1s;
         flex-shrink: 0;
       }
 
       &:hover {
-        background: #E8E8E8;
-        border-radius: var(--radius-small);
+        background: rgb(182, 214, 253);
+      }
+
+      &.selected {
+        background: rgb(60, 119, 212);
+        color: white;
       }
     }
 
     &[open] > summary::before {
-      background-image: svg-load("./icon/disclosure-open.svg");
+      transform: rotate(90deg);
+    }
+
+    > ul {
+      padding-left: 16px;
     }
   }
+
+  /* Plain list items */
+  li:not(details):not(summary) {
+    padding: 1px 3px 1px 12px;
+    cursor: pointer;
+
+    &:hover {
+      background: rgb(182, 214, 253);
+    }
+
+    &.selected {
+      background: rgb(60, 119, 212);
+      color: white;
+    }
+  }
+}
+
+/* ============================================
+   TREE VIEW DISABLED
+   ============================================ */
+.tree-view.disabled,
+.aqua-tree.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }

@@ -1,9 +1,78 @@
 /**
- * Table
- * Standard HTML table element with Aqua styling
+ * Table View
+ * Mac OS X Aqua-style table - JavaFX AquaFX accurate
  */
 
-table {
+.table-view,
+table.aqua {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid;
+  border-color: rgb(156, 156, 156) rgb(190, 190, 190) rgb(190, 190, 190) rgb(190, 190, 190);
+  font-family: var(--font-system);
+  font-size: var(--font-size-base);
+
+  /* Column headers */
+  th {
+    background: linear-gradient(
+      rgb(255, 255, 255) 25%,
+      rgb(243, 243, 243) 50%,
+      rgb(236, 236, 236) 50%,
+      rgb(243, 243, 243) 98%,
+      rgb(250, 250, 250) 100%
+    );
+    padding: 0 10px;
+    text-align: left;
+    font-weight: normal;
+    border-bottom: 0.5px solid rgb(156, 156, 156);
+    border-right: 1px solid rgb(190, 190, 190);
+    height: 22px;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  /* Table cells */
+  td {
+    padding: 0 10px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    height: 22px;
+  }
+
+  /* Alternating row colors */
+  tr:nth-child(odd) td {
+    background: white;
+  }
+
+  tr:nth-child(even) td {
+    background: rgb(243, 246, 250);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Hover state */
+  tr:hover td {
+    background: rgb(182, 214, 253);
+  }
+
+  /* Selected row */
+  tr.selected td {
+    background: rgb(60, 119, 212);
+    color: white;
+  }
+
+  /* Interactive table */
+  &.interactive tbody tr {
+    cursor: pointer;
+  }
+}
+
+/* Standard table styling (legacy) */
+table:not(.aqua):not(.table-view) {
   border-collapse: collapse;
   font-size: var(--font-size-base);
   background: white;
@@ -58,10 +127,5 @@ table {
         border-bottom: 1px solid #E8E8E8;
       }
     }
-  }
-
-  /* Interactive table - shows pointer cursor */
-  &.interactive tbody tr {
-    cursor: pointer;
   }
 }
