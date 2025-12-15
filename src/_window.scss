@@ -162,42 +162,8 @@
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Top shine on buttons */
-    &::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 40%;
-      background: linear-gradient(
-        rgba(255, 255, 255, 0.9),
-        rgba(255, 255, 255, 0.2)
-      );
-      width: 70%;
-      border-radius: 50% 50% 30% 30%;
-      top: 8%;
-      filter: blur(0.5px);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* Bottom glow on buttons */
-    &::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 30%;
-      background: linear-gradient(
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.4)
-      );
-      width: 60%;
-      border-radius: 50%;
-      bottom: 10%;
-      filter: blur(1px);
-      pointer-events: none;
-    }
+    /* Aqua glass effect (top shine + bottom glow) */
+    @include aqua-glass-effect('circle');
 
     /* Close button - Red */
     &[aria-label="Close"] {

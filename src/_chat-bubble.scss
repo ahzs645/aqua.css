@@ -24,40 +24,22 @@
     inset 0 0 0 0.5px rgba(0, 0, 0, 0.48),
     inset 0 0 0 1px rgba(0, 0, 0, 0.08);
 
-  /* Top shine */
+  /* Aqua glass effect (top shine + bottom glow) */
+  @include aqua-glass-effect('bubble');
+
+  /* Override positioning for bubble shape (use left/right instead of centering) */
   &::before {
-    content: "";
-    position: absolute;
     left: 6px;
     right: 6px;
-    top: 2px;
-    filter: blur(0.5px);
-    height: 12px;
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.25)
-    );
-    border-radius: 16px 16px 4px 4px;
-    pointer-events: none;
-    z-index: 1;
+    width: auto;
+    transform: none;
   }
 
-  /* Bottom glow */
   &::after {
-    content: "";
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    height: 20px;
-    background: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.45)
-    );
-    border-radius: 4px;
-    filter: blur(0.6px);
-    pointer-events: none;
-    z-index: 1;
+    left: 0;
+    right: 0;
+    width: auto;
+    transform: none;
   }
 
   /* Ensure inner text stays above shine */

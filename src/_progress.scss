@@ -67,18 +67,8 @@
 /* Indeterminate state - candy cane stripes */
 .progress-bar.indeterminate,
 .aqua-progress.indeterminate {
+  position: relative;
   background:
-    /* Glass highlight overlay */
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.7) 5%,
-      rgba(255, 255, 255, 0.55) 5%,
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0) 50%,
-      rgba(255, 255, 255, 0) 60%,
-      rgba(255, 255, 255, 0.4) 85%,
-      rgba(245, 245, 245, 0.7) 100%
-    ),
     /* Diagonal candy cane stripes */
     repeating-linear-gradient(
       135deg,
@@ -89,9 +79,12 @@
     ),
     /* Base gray gradient */
     linear-gradient(rgb(176, 176, 176), rgb(207, 207, 207));
-  background-size: 100% 100%, 14px 14px, 100% 100%;
+  background-size: 14px 14px, 100% 100%;
   animation: progress-indeterminate 2s linear infinite;
   border-radius: 2.5px;
+
+  /* Aqua glass effect (top shine + bottom glow) */
+  @include aqua-glass-effect('progress');
 
   .progress-bar-fill {
     display: none;
@@ -103,8 +96,8 @@
 }
 
 @keyframes progress-indeterminate {
-  from { background-position: 0 0, 0 0, 0 0; }
-  to { background-position: 0 0, 200px 0, 0 0; }
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 200px 0, 0 0; }
 }
 
 /* Size variations */
