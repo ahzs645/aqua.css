@@ -249,7 +249,7 @@
     </div>
 
     <!-- Scrollbar Demo in Sidebar -->
-    <div style="padding: 8px; background: var(--surface-light); border: 1px solid #888; border-radius: 5px;">
+    <div style="padding: 8px; background: #F5F5F5; border: 1px solid #888; border-radius: 5px;">
       <div style="font-size: 11px; font-weight: bold; margin-bottom: 6px;">Scrollbar Preview</div>
       <div class="scrollbar-demo">
         <p style="margin: 0 0 8px 0;">Scroll me!</p>
@@ -624,6 +624,10 @@
   <input type="checkbox" id="check3" disabled checked>
   <label for="check3" class="disabled">Disabled checked</label>
 </div>
+<div class="field-row">
+  <input type="checkbox" id="check-indeterminate">
+  <label for="check-indeterminate">Indeterminate</label>
+</div>
       <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
@@ -637,6 +641,10 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;check3&quot;</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">checked</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;check3&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;disabled&quot;</span>&gt;</span>Disabled checked<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;check-indeterminate&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;check-indeterminate&quot;</span>&gt;</span>Indeterminate<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
       </details>
     </div>
@@ -1916,26 +1924,26 @@
 
     <div class="example">
       <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-  <div class="aqua-color-swatch" style="background: var(--close-red);"></div>
-  <div class="aqua-color-swatch" style="background: var(--minimize-yellow);"></div>
-  <div class="aqua-color-swatch" style="background: var(--maximize-green);"></div>
-  <div class="aqua-color-swatch" style="background: var(--aqua-blue);"></div>
+  <div class="aqua-color-swatch" style="background: #FF5F57;"></div>
+  <div class="aqua-color-swatch" style="background: #FFBD2E;"></div>
+  <div class="aqua-color-swatch" style="background: #28CA41;"></div>
+  <div class="aqua-color-swatch" style="background: #2B99FF;"></div>
   <div class="aqua-color-swatch" style="background: #5856D6;"></div>
 </div>
       <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 10px; align-items: center; flex-wrap: wrap;&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: var(--close-red);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: var(--minimize-yellow);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: var(--maximize-green);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: var(--aqua-blue);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: #FF5F57;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: #FFBD2E;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: #28CA41;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: #2B99FF;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: #5856D6;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
       </details>
     </div>
 
     <h2 id="focus-ring">Focus Ring (Aqua Blue Glow)</h2>
-    <p class="label">Focus colors: <span class="inline-code">--focus-outer</span>, <span class="inline-code">--focus-inner</span></p>
+    <p class="label">Focus colors: <span class="inline-code">$focus-outer</span>, <span class="inline-code">$focus-inner</span></p>
 
     <div class="example">
       <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
@@ -2546,10 +2554,18 @@
         });
       }
 
+      function setupIndeterminateCheckbox() {
+        const checkbox = document.getElementById('check-indeterminate');
+        if (checkbox) {
+          checkbox.indeterminate = true;
+        }
+      }
+
       setupTitledPanes();
       setupTreeTable();
       setupSplitPanes();
       setupPillTabs();
+      setupIndeterminateCheckbox();
     })();
   </script>
 </body>

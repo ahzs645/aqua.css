@@ -37,17 +37,19 @@
     position: relative;
     box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
+    overflow: visible;
   }
 
-  /* Checkmark - hidden by default */
+  /* Checkmark - positioned to extend outside the box (classic Aqua style) */
   .box .mark {
     display: none;
-    width: 10px;
-    height: 10px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 5 L3.5 8 L9 2' stroke='%23000' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    position: absolute;
+    inset: -3.5px -2.5px 2.5px 1px;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2012%2012%27%3E%3Cpath%20d%3D%27m%2018.174523%2C1027.137%20c%20-0.18077%2C-0.4575%20-0.184364%2C-0.8913%200.115901%2C-1.1721%200.300265%2C-0.2809%200.836622%2C-0.3601%201.288422%2C-0.041%200.4518%2C0.3191%202.020453%2C2.9316%202.020453%2C2.9316%20l%205.41194%2C-8.0232%20c%20-4e-6%2C0%200.516257%2C-0.6671%201.248682%2C-0.3099%200.648831%2C0.3165%200.559153%2C1.0373%200.559153%2C1.0373%200%2C0%20-5.940433%2C9.3556%20-6.15501%2C9.6287%20-0.214577%2C0.273%20-1.595078%2C0.2481%20-1.817995%2C-0.027%20-0.222917%2C-0.2751%20-2.490777%2C-3.567%20-2.671546%2C-4.0244%20z%27%20transform%3D%27translate%28-17%20-1019%29%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    background-color: transparent;
     filter: drop-shadow(-1px 1px 0 rgba(255, 255, 255, 0.8));
   }
 
@@ -134,23 +136,21 @@ input[type="checkbox"]:not(.checkbox input) {
   vertical-align: middle;
   position: relative;
   transition: all 0.15s ease;
-  overflow: hidden;
+  overflow: visible;
 
-  /* Check mark */
+  /* Check mark - extends outside the box (classic Aqua style) */
   &::after {
     content: "";
     position: absolute;
-    left: 50%;
-    top: 45%;
-    width: 10px;
-    height: 10px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1 5 L3.5 8 L9 2' stroke='%23000' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    inset: -3.5px -2.5px 2.5px 1px;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2012%2012%27%3E%3Cpath%20d%3D%27m%2018.174523%2C1027.137%20c%20-0.18077%2C-0.4575%20-0.184364%2C-0.8913%200.115901%2C-1.1721%200.300265%2C-0.2809%200.836622%2C-0.3601%201.288422%2C-0.041%200.4518%2C0.3191%202.020453%2C2.9316%202.020453%2C2.9316%20l%205.41194%2C-8.0232%20c%20-4e-6%2C0%200.516257%2C-0.6671%201.248682%2C-0.3099%200.648831%2C0.3165%200.559153%2C1.0373%200.559153%2C1.0373%200%2C0%20-5.940433%2C9.3556%20-6.15501%2C9.6287%20-0.214577%2C0.273%20-1.595078%2C0.2481%20-1.817995%2C-0.027%20-0.222917%2C-0.2751%20-2.490777%2C-3.567%20-2.671546%2C-4.0244%20z%27%20transform%3D%27translate%28-17%20-1019%29%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    transform: translate(-50%, -50%) scale(0);
+    background-color: transparent;
+    opacity: 0;
     filter: drop-shadow(-1px 1px 0 rgba(255, 255, 255, 0.8));
-    transition: transform 0.1s ease;
+    transition: opacity 0.1s ease;
   }
 
   &:checked {
@@ -163,7 +163,7 @@ input[type="checkbox"]:not(.checkbox input) {
     );
 
     &::after {
-      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
     }
   }
 
@@ -198,12 +198,16 @@ input[type="checkbox"]:not(.checkbox input) {
     );
 
     &::after {
+      inset: auto;
       width: 8px;
       height: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       background-image: none;
       background-color: #000;
       border-radius: 0;
-      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
       filter: drop-shadow(0 1.5px 0 rgba(255, 255, 255, 0.8));
     }
   }

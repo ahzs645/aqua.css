@@ -249,7 +249,7 @@
     </div>
 
     <!-- Scrollbar Demo in Sidebar -->
-    <div style="padding: 8px; background: var(--surface-light); border: 1px solid #888; border-radius: 5px;">
+    <div style="padding: 8px; background: #F5F5F5; border: 1px solid #888; border-radius: 5px;">
       <div style="font-size: 11px; font-weight: bold; margin-bottom: 6px;">Scrollbar Preview</div>
       <div class="scrollbar-demo">
         <p style="margin: 0 0 8px 0;">Scroll me!</p>
@@ -466,6 +466,10 @@
       <div class="field-row">
         <input type="checkbox" id="check3" disabled checked>
         <label for="check3" class="disabled">Disabled checked</label>
+      </div>
+      <div class="field-row">
+        <input type="checkbox" id="check-indeterminate">
+        <label for="check-indeterminate">Indeterminate</label>
       </div>
     `) %>
 
@@ -1139,16 +1143,16 @@
 
     <%- example(`
       <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-        <div class="aqua-color-swatch" style="background: var(--close-red);"></div>
-        <div class="aqua-color-swatch" style="background: var(--minimize-yellow);"></div>
-        <div class="aqua-color-swatch" style="background: var(--maximize-green);"></div>
-        <div class="aqua-color-swatch" style="background: var(--aqua-blue);"></div>
+        <div class="aqua-color-swatch" style="background: #FF5F57;"></div>
+        <div class="aqua-color-swatch" style="background: #FFBD2E;"></div>
+        <div class="aqua-color-swatch" style="background: #28CA41;"></div>
+        <div class="aqua-color-swatch" style="background: #2B99FF;"></div>
         <div class="aqua-color-swatch" style="background: #5856D6;"></div>
       </div>
     `) %>
 
     <h2 id="focus-ring">Focus Ring (Aqua Blue Glow)</h2>
-    <p class="label">Focus colors: <span class="inline-code">--focus-outer</span>, <span class="inline-code">--focus-inner</span></p>
+    <p class="label">Focus colors: <span class="inline-code">$focus-outer</span>, <span class="inline-code">$focus-inner</span></p>
 
     <%- example(`
       <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
@@ -1541,10 +1545,18 @@
         });
       }
 
+      function setupIndeterminateCheckbox() {
+        const checkbox = document.getElementById('check-indeterminate');
+        if (checkbox) {
+          checkbox.indeterminate = true;
+        }
+      }
+
       setupTitledPanes();
       setupTreeTable();
       setupSplitPanes();
       setupPillTabs();
+      setupIndeterminateCheckbox();
     })();
   </script>
 </body>
