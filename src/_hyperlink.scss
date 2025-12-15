@@ -1,0 +1,111 @@
+/**
+ * Hyperlink
+ * Mac OS X Aqua-style hyperlinks
+ * Matches JavaFX Hyperlink - underlines on hover/focus
+ */
+
+/* ============================================
+   HYPERLINK BASE STYLES
+   ============================================ */
+a,
+.hyperlink,
+a.aqua-hyperlink {
+  color: rgb(0, 102, 204);
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-system);
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  /* Focus ring */
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(120, 171, 217, 0.5);
+    border-radius: 2px;
+  }
+
+  /* Visited state */
+  &:visited {
+    color: rgb(128, 118, 163);
+  }
+
+  /* Active/pressed state */
+  &:active {
+    color: rgb(60, 130, 190);
+  }
+}
+
+/* ============================================
+   BUTTON STYLED AS LINK
+   ============================================ */
+button.link,
+.button-link,
+button.aqua-hyperlink {
+  color: rgb(0, 102, 204);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-family: var(--font-system);
+  display: inline;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(120, 171, 217, 0.5);
+    border-radius: 2px;
+  }
+
+  &:active {
+    color: rgb(60, 130, 190);
+  }
+}
+
+/* ============================================
+   DISABLED HYPERLINK
+   ============================================ */
+a.disabled,
+.hyperlink.disabled,
+button.link:disabled,
+.button-link:disabled,
+button.aqua-hyperlink:disabled,
+button.aqua-hyperlink.disabled {
+  color: rgb(128, 128, 128);
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+/* ============================================
+   HYPERLINK VARIATIONS
+   ============================================ */
+
+/* Subtle link - no underline even on hover */
+.hyperlink.subtle {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    opacity: 0.8;
+  }
+}
+
+/* External link indicator */
+.hyperlink.external::after {
+  content: ' \2197';
+  font-size: 0.8em;
+}

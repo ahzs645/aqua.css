@@ -6,7 +6,8 @@
 /* ============================================
    VERTICAL LIST (Default)
    ============================================ */
-.list-view {
+.list-view,
+.aqua-list {
   background: white;
   border: 1px solid;
   border-color: rgb(156, 156, 156) rgb(190, 190, 190) rgb(190, 190, 190) rgb(190, 190, 190);
@@ -30,7 +31,8 @@
 }
 
 /* List item/cell */
-.list-item {
+.list-item,
+.aqua-list-item {
   padding: 3px 3px;
   cursor: pointer;
   background: white;
@@ -60,7 +62,9 @@
 
 /* When list container is focused, selected items get blue gradient */
 .list-view:focus-within .list-item.selected,
-.list-view.focused .list-item.selected {
+.list-view.focused .list-item.selected,
+.aqua-list:focus-within .aqua-list-item.selected,
+.aqua-list.focused .aqua-list-item.selected {
   background:
     linear-gradient(rgb(95, 165, 221), rgb(54, 124, 192)),
     linear-gradient(
@@ -79,7 +83,8 @@
 /* ============================================
    HORIZONTAL LIST
    ============================================ */
-.list-view.horizontal {
+.list-view.horizontal,
+.aqua-list.horizontal {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
@@ -87,7 +92,8 @@
   max-height: none;
   height: auto;
 
-  .list-item {
+  .list-item,
+  .aqua-list-item {
     flex-shrink: 0;
     white-space: nowrap;
 
@@ -120,7 +126,9 @@
 
 /* Horizontal list focused selection */
 .list-view.horizontal:focus-within .list-item.selected,
-.list-view.horizontal.focused .list-item.selected {
+.list-view.horizontal.focused .list-item.selected,
+.aqua-list.horizontal:focus-within .aqua-list-item.selected,
+.aqua-list.horizontal.focused .aqua-list-item.selected {
   background:
     linear-gradient(to right, rgb(95, 165, 221), rgb(54, 124, 192)),
     linear-gradient(to right,
@@ -139,16 +147,20 @@
 /* ============================================
    STRIPED LIST (Alternating rows)
    ============================================ */
-.list-view.striped {
-  .list-item:nth-child(odd) {
+.list-view.striped,
+.aqua-list.striped {
+  .list-item:nth-child(odd),
+  .aqua-list-item:nth-child(odd) {
     background: rgb(243, 246, 250);
   }
 
-  .list-item:nth-child(even) {
+  .list-item:nth-child(even),
+  .aqua-list-item:nth-child(even) {
     background: white;
   }
 
-  .list-item:hover {
+  .list-item:hover,
+  .aqua-list-item:hover {
     background: rgb(182, 214, 253);
   }
 }

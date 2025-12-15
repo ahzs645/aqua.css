@@ -109,6 +109,20 @@
       border-radius: 4px;
       padding: 8px;
     }
+    .label {
+      display: inline-block;
+      font-size: 11px;
+      color: rgba(0, 0, 0, 0.65);
+      margin: 0 0 8px 0;
+    }
+    .inline-code {
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+      font-size: 11px;
+      background: rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 3px;
+      padding: 1px 4px;
+    }
     .hljs-tag { color: #569cd6; }
     .hljs-attr { color: #9cdcfe; }
     .hljs-string { color: #ce9178; }
@@ -148,6 +162,8 @@
             <li><a href="#slider">Slider</a></li>
             <li><a href="#search-field">Search Field</a></li>
             <li><a href="#stepper">Stepper</a></li>
+            <li><a href="#separator">Separator</a></li>
+            <li><a href="#hyperlink">Hyperlink</a></li>
           </ul>
         </li>
         <li>Windows
@@ -156,6 +172,8 @@
             <li><a href="#tabs">Tabs</a></li>
             <li><a href="#fieldset">Fieldset</a></li>
             <li><a href="#alert-dialog">Alert Dialog</a></li>
+            <li><a href="#titled-pane">Titled Pane</a></li>
+            <li><a href="#split-pane">Split Pane</a></li>
             <li><a href="#split-view">Split View</a></li>
             <li><a href="#disclosure">Disclosure</a></li>
             <li><a href="#scrollbar">Scrollbar</a></li>
@@ -164,8 +182,10 @@
         <li>Navigation
           <ul>
             <li><a href="#menu-bar">Menu Bar</a></li>
+            <li><a href="#context-menu">Context Menu</a></li>
             <li><a href="#toolbar">Toolbar</a></li>
             <li><a href="#segmented-control">Segmented Control</a></li>
+            <li><a href="#pagination">Pagination</a></li>
           </ul>
         </li>
         <li>Data Display
@@ -173,6 +193,7 @@
             <li><a href="#table">Table</a></li>
             <li><a href="#list-view">List View</a></li>
             <li><a href="#tree-view">Tree View</a></li>
+            <li><a href="#tree-table-view">Tree Table View</a></li>
             <li><a href="#tooltip">Tooltip</a></li>
             <li><a href="#balloon">Balloon</a></li>
           </ul>
@@ -496,6 +517,19 @@
       </nav>
     `) %>
 
+    <h2 id="context-menu">Context Menu</h2>
+    <p>Menu styling for right-click and contextual actions.</p>
+
+    <%- example(`
+      <div class="aqua-menu" style="display: inline-block;">
+        <div class="aqua-menu-item"><span>Cut</span> <span class="shortcut">&#8984;X</span></div>
+        <div class="aqua-menu-item"><span>Copy</span> <span class="shortcut">&#8984;C</span></div>
+        <div class="aqua-menu-item"><span>Paste</span> <span class="shortcut">&#8984;V</span></div>
+        <div class="aqua-menu-separator"></div>
+        <div class="aqua-menu-item"><span>Select All</span> <span class="shortcut">&#8984;A</span></div>
+      </div>
+    `) %>
+
     <h2 id="toolbar">Toolbar</h2>
     <p>Icon toolbar for application actions.</p>
 
@@ -567,116 +601,263 @@
       </div>
     `) %>
 
-    <h2 id="table">Table</h2>
-    <p>Standard HTML table with Aqua styling. Use <code>.interactive</code> for clickable rows.</p>
+    <h2 id="table">Table View</h2>
+    <p class="label">Alternating row colors: <span class="inline-code">--table-row-odd</span> and <span class="inline-code">--table-row-even</span></p>
 
     <%- example(`
-      <table class="interactive" style="width: 100%; max-width: 500px; border: 1px solid #888; border-radius: 5px;">
+      <table class="aqua-table" style="width: 100%; max-width: 600px;">
         <thead>
           <tr>
             <th>Name</th>
             <th>Date Modified</th>
             <th>Size</th>
+            <th>Kind</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Documents</td>
-            <td>Today, 10:30 AM</td>
+            <td>Dec 10, 2024</td>
             <td>--</td>
-          </tr>
-          <tr class="highlighted">
-            <td>Photos</td>
-            <td>Yesterday</td>
-            <td>--</td>
+            <td>Folder</td>
           </tr>
           <tr>
             <td>report.pdf</td>
-            <td>Dec 5, 2024</td>
+            <td>Dec 9, 2024</td>
             <td>2.4 MB</td>
+            <td>PDF Document</td>
           </tr>
           <tr>
-            <td>notes.txt</td>
-            <td>Dec 1, 2024</td>
-            <td>4 KB</td>
+            <td>image.png</td>
+            <td>Dec 8, 2024</td>
+            <td>856 KB</td>
+            <td>PNG Image</td>
           </tr>
         </tbody>
       </table>
     `) %>
 
     <h2 id="list-view">List View</h2>
-    <p>Styled table specifically for file/item lists. Similar to table but uses <code>.list-view</code> class.</p>
+    <p>Selectable list component with focused (blue) and unfocused (gray) selection.</p>
 
     <%- example(`
-      <table class="list-view" style="width: 100%; max-width: 500px;">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Date Modified</th>
-            <th>Size</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Documents</td>
-            <td>Today, 10:30 AM</td>
-            <td>--</td>
-          </tr>
-          <tr class="selected">
-            <td>Photos</td>
-            <td>Yesterday</td>
-            <td>--</td>
-          </tr>
-          <tr>
-            <td>report.pdf</td>
-            <td>Dec 5, 2024</td>
-            <td>2.4 MB</td>
-          </tr>
-        </tbody>
-      </table>
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+        <div>
+          <span class="label">Vertical (Focused - Blue)</span><br>
+          <div class="aqua-list focused" tabindex="0" style="width: 150px;">
+            <div class="aqua-list-item">Document 1</div>
+            <div class="aqua-list-item selected">Document 2</div>
+            <div class="aqua-list-item">Document 3</div>
+            <div class="aqua-list-item">Document 4</div>
+            <div class="aqua-list-item">Document 5</div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Vertical (Unfocused - Gray)</span><br>
+          <div class="aqua-list" style="width: 150px;">
+            <div class="aqua-list-item">Photo 1</div>
+            <div class="aqua-list-item selected">Photo 2</div>
+            <div class="aqua-list-item">Photo 3</div>
+            <div class="aqua-list-item">Photo 4</div>
+            <div class="aqua-list-item">Photo 5</div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Striped Rows</span><br>
+          <div class="aqua-list striped focused" tabindex="0" style="width: 150px;">
+            <div class="aqua-list-item">Row 1</div>
+            <div class="aqua-list-item">Row 2</div>
+            <div class="aqua-list-item selected">Row 3</div>
+            <div class="aqua-list-item">Row 4</div>
+            <div class="aqua-list-item">Row 5</div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Disabled</span><br>
+          <div class="aqua-list disabled" style="width: 150px;">
+            <div class="aqua-list-item">Item A</div>
+            <div class="aqua-list-item selected">Item B</div>
+            <div class="aqua-list-item">Item C</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <span class="label">Horizontal List</span><br>
+        <div class="aqua-list horizontal focused" tabindex="0" style="width: 520px;">
+          <div class="aqua-list-item">January</div>
+          <div class="aqua-list-item selected">February</div>
+          <div class="aqua-list-item">March</div>
+          <div class="aqua-list-item">April</div>
+          <div class="aqua-list-item">May</div>
+          <div class="aqua-list-item">June</div>
+          <div class="aqua-list-item">July</div>
+        </div>
+      </div>
     `) %>
 
     <h2 id="tree-view">Tree View</h2>
     <p>Expandable hierarchical list.</p>
 
     <%- example(`
-      <ul class="tree-view" style="width: 250px;">
-        <li>
-          <details open>
-            <summary>Documents</summary>
-            <ul>
-              <li>
-                <details>
-                  <summary>Work</summary>
-                  <ul>
-                    <li>report.pdf</li>
-                    <li>presentation.key</li>
-                  </ul>
-                </details>
-              </li>
-              <li>notes.txt</li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <details>
-            <summary>Pictures</summary>
-            <ul>
-              <li>vacation.jpg</li>
-              <li>profile.png</li>
-            </ul>
-          </details>
-        </li>
-        <li class="selected">Desktop</li>
-      </ul>
+      <div class="aqua-tree" tabindex="0" style="width: 250px;">
+        <div class="aqua-tree-item expanded">
+          <span class="aqua-tree-arrow"></span>
+          <span>Documents</span>
+        </div>
+        <div class="aqua-tree-item" style="padding-left: 20px;">
+          <span style="width: 8px; display: inline-block;"></span>
+          <span>report.pdf</span>
+        </div>
+        <div class="aqua-tree-item" style="padding-left: 20px;">
+          <span style="width: 8px; display: inline-block;"></span>
+          <span>notes.txt</span>
+        </div>
+        <div class="aqua-tree-item selected">
+          <span class="aqua-tree-arrow"></span>
+          <span>Pictures</span>
+        </div>
+      </div>
+    `) %>
+
+    <h2 id="tree-table-view">Tree Table View</h2>
+    <p class="label">Combines tree hierarchy with table columns (click arrows to expand/collapse)</p>
+
+    <%- example(`
+      <table class="aqua-tree-table" tabindex="0" id="tree-table-demo" style="width: 100%; max-width: 700px;">
+        <thead>
+          <tr>
+            <th style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
+            <th>Date Modified</th>
+            <th>Size</th>
+            <th>Kind</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="selected" data-id="documents">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-arrow expanded" data-toggle="documents" role="button" tabindex="0" aria-label="Toggle Documents"></span>
+                <span>Documents</span>
+              </div>
+            </td>
+            <td>Dec 10, 2024</td>
+            <td>--</td>
+            <td>Folder</td>
+          </tr>
+          <tr data-parent="documents">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-indent"></span>
+                <span class="aqua-tree-table-arrow leaf"></span>
+                <span>report.pdf</span>
+              </div>
+            </td>
+            <td>Dec 9, 2024</td>
+            <td>2.4 MB</td>
+            <td>PDF Document</td>
+          </tr>
+          <tr data-parent="documents">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-indent"></span>
+                <span class="aqua-tree-table-arrow leaf"></span>
+                <span>notes.txt</span>
+              </div>
+            </td>
+            <td>Dec 8, 2024</td>
+            <td>12 KB</td>
+            <td>Text File</td>
+          </tr>
+          <tr data-id="pictures">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-arrow" data-toggle="pictures" role="button" tabindex="0" aria-label="Toggle Pictures"></span>
+                <span>Pictures</span>
+              </div>
+            </td>
+            <td>Dec 7, 2024</td>
+            <td>--</td>
+            <td>Folder</td>
+          </tr>
+          <tr data-parent="pictures" style="display: none;">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-indent"></span>
+                <span class="aqua-tree-table-arrow leaf"></span>
+                <span>photo.jpg</span>
+              </div>
+            </td>
+            <td>Dec 6, 2024</td>
+            <td>3.2 MB</td>
+            <td>JPEG Image</td>
+          </tr>
+        </tbody>
+      </table>
+    `) %>
+
+    <h2 id="separator">Separator</h2>
+
+    <%- example(`
+      <hr class="aqua-separator">
+      <div style="display: flex; align-items: center;">
+        <span>Item 1</span>
+        <div class="aqua-separator vertical"></div>
+        <span>Item 2</span>
+        <div class="aqua-separator vertical"></div>
+        <span>Item 3</span>
+      </div>
+    `) %>
+
+    <h2 id="hyperlink">Hyperlink</h2>
+    <p class="label">Matches JavaFX Hyperlink - underlines on hover/focus</p>
+
+    <%- example(`
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: baseline;">
+        <div>
+          <span class="label">Normal</span><br>
+          <a href="#" class="aqua-hyperlink">Click this hyperlink</a>
+        </div>
+        <div>
+          <span class="label">Visited</span><br>
+          <a href="#visited-example" class="aqua-hyperlink" id="visited-example">Visited hyperlink</a>
+        </div>
+        <div>
+          <span class="label">Disabled</span><br>
+          <a href="#" class="aqua-hyperlink disabled">Disabled hyperlink</a>
+        </div>
+        <div>
+          <span class="label">Button as Link</span><br>
+          <button class="aqua-hyperlink">Button styled as link</button>
+        </div>
+      </div>
     `) %>
 
     <h2 id="tooltip">Tooltip</h2>
-    <p>Hover over an element to see the tooltip.</p>
+    <p class="label">Background: <span class="inline-code">--tooltip-bg</span></p>
 
     <%- example(`
-      <button class="tooltip" data-tooltip="Click to save your changes">Save</button>
-      <button class="tooltip" data-tooltip="Discard all changes">Cancel</button>
+      <div class="aqua-tooltip">
+        <button>Hover for tooltip</button>
+        <span class="tooltip-text">This is a tooltip!</span>
+      </div>
+    `) %>
+
+    <h2 id="pagination">Pagination</h2>
+
+    <%- example(`
+      <div class="aqua-pagination">
+        <button class="aqua-pagination-arrow">&lt;</button>
+        <button class="aqua-pagination-btn">1</button>
+        <button class="aqua-pagination-btn active">2</button>
+        <button class="aqua-pagination-btn">3</button>
+        <button class="aqua-pagination-btn">4</button>
+        <button class="aqua-pagination-btn">5</button>
+        <button class="aqua-pagination-arrow">&gt;</button>
+      </div>
     `) %>
 
     <h2 id="balloon">Balloon / Speech Bubble</h2>
@@ -723,6 +904,61 @@
       </details>
     `) %>
 
+    <h2 id="titled-pane">Titled Pane / Accordion</h2>
+
+    <%- example(`
+      <div class="aqua-titled-pane expanded">
+        <div class="aqua-titled-pane-header" role="button" tabindex="0">
+          <span class="aqua-titled-pane-arrow"></span>
+          <span>General Options</span>
+        </div>
+        <div class="aqua-titled-pane-content">
+          <p style="margin: 5px 0;">Content for general options goes here.</p>
+        </div>
+      </div>
+      <div class="aqua-titled-pane">
+        <div class="aqua-titled-pane-header" role="button" tabindex="0">
+          <span class="aqua-titled-pane-arrow"></span>
+          <span>Advanced Options</span>
+        </div>
+        <div class="aqua-titled-pane-content">
+          <p style="margin: 5px 0;">Content for advanced options goes here.</p>
+        </div>
+      </div>
+    `) %>
+
+    <h2 id="split-pane">Split Pane</h2>
+    <p class="label">Drag the divider to resize panes</p>
+
+    <%- example(`
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+        <div>
+          <span class="label">Horizontal (Left / Right)</span><br>
+          <div class="aqua-split-pane" style="height: 100px; width: 300px;" id="split-h">
+            <div style="width: 150px; padding: 10px;">Left pane</div>
+            <div class="aqua-split-divider" data-split="split-h" aria-label="Resize panes" role="separator" aria-orientation="vertical" tabindex="0">
+              <div class="aqua-split-grabber"></div>
+              <div class="aqua-split-grabber"></div>
+              <div class="aqua-split-grabber"></div>
+            </div>
+            <div style="flex: 1; padding: 10px;">Right pane</div>
+          </div>
+        </div>
+        <div>
+          <span class="label">Vertical (Top / Bottom)</span><br>
+          <div class="aqua-split-pane vertical" style="height: 150px; width: 200px;" id="split-v">
+            <div style="height: 75px; padding: 10px;">Top pane</div>
+            <div class="aqua-split-divider" data-split="split-v" aria-label="Resize panes" role="separator" aria-orientation="horizontal" tabindex="0">
+              <div class="aqua-split-grabber"></div>
+              <div class="aqua-split-grabber"></div>
+              <div class="aqua-split-grabber"></div>
+            </div>
+            <div style="flex: 1; padding: 10px;">Bottom pane</div>
+          </div>
+        </div>
+      </div>
+    `) %>
+
     <h2 id="split-view">Split View</h2>
     <p>Sidebar and content area layout.</p>
 
@@ -741,16 +977,31 @@
     `) %>
 
     <h2 id="scrollbar">Scrollbar</h2>
-    <p>Custom WebKit scrollbar styling. Scrollbars appear automatically on scrollable content.</p>
+    <p class="label">Modern Mac-style overlay scrollbar - hover over the containers to see scrollbars appear</p>
 
     <%- example(`
-      <div style="height: 150px; overflow-y: scroll; background: white; border: 1px solid #888; border-radius: 5px; padding: 12px; width: 300px;">
-        <p>Scroll this content to see the Aqua-styled scrollbar.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <p>Duis aute irure dolor in reprehenderit in voluptate.</p>
-        <p>Excepteur sint occaecat cupidatat non proident.</p>
+      <div>
+        <span class="label">Vertical Scroll</span><br>
+        <div class="scroll-container scroll-demo-vertical">
+          <div style="padding: 12px;">
+            <div style="font-weight: bold; margin-bottom: 8px;">Scrollable Content</div>
+            <div style="margin: 0 0 6px 0;">Line 1 - Hover to see scrollbar</div>
+            <div style="margin: 0 0 6px 0;">Line 2 - Semi-transparent thumb</div>
+            <div style="margin: 0 0 6px 0;">Line 3 - Uses CSS variables</div>
+            <div style="margin: 0 0 6px 0;">Line 4 - 4px border radius</div>
+            <div style="margin: 0 0 6px 0;">Line 5 - Expands to 6px on hover</div>
+            <div style="margin: 0 0 6px 0;">Line 6 - Track appears on hover</div>
+            <div style="margin: 0 0 6px 0;">Line 7 - Light gradient background</div>
+            <div style="margin: 0 0 6px 0;">Line 8 - No arrow buttons</div>
+            <div style="margin: 0 0 6px 0;">Line 9 - Modern macOS style</div>
+            <div style="margin: 0 0 6px 0;">Line 10 - Overlay scrollbar</div>
+            <div style="margin: 0 0 6px 0;">Line 11 - Doesn't take space</div>
+            <div style="margin: 0 0 6px 0;">Line 12 - Content flows under</div>
+            <div style="margin: 0 0 6px 0;">Line 13 - Try scrolling!</div>
+            <div style="margin: 0 0 6px 0;">Line 14 - Smooth animation</div>
+            <div style="margin: 0;">Line 15 - End of content</div>
+          </div>
+        </div>
       </div>
     `) %>
 
@@ -827,5 +1078,122 @@
       </p>
     </footer>
   </main>
+
+  <script>
+    (function () {
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function setupTitledPanes() {
+        document.querySelectorAll('.aqua-titled-pane-header').forEach((header) => {
+          header.addEventListener('click', () => {
+            const pane = header.closest('.aqua-titled-pane');
+            if (pane) pane.classList.toggle('expanded');
+          });
+
+          header.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            const pane = header.closest('.aqua-titled-pane');
+            if (pane) pane.classList.toggle('expanded');
+          });
+        });
+      }
+
+      function setupTreeTable() {
+        const root = document.getElementById('tree-table-demo');
+        if (!root) return;
+
+        function toggleRows(parentId, expanded) {
+          root.querySelectorAll(`tr[data-parent="${parentId}"]`).forEach((row) => {
+            row.style.display = expanded ? '' : 'none';
+          });
+        }
+
+        root.querySelectorAll('.aqua-tree-table-arrow[data-toggle]').forEach((arrow) => {
+          const parentId = arrow.getAttribute('data-toggle');
+          if (!parentId) return;
+
+          toggleRows(parentId, arrow.classList.contains('expanded'));
+
+          const activate = () => {
+            arrow.classList.toggle('expanded');
+            toggleRows(parentId, arrow.classList.contains('expanded'));
+          };
+
+          arrow.addEventListener('click', (event) => {
+            event.preventDefault();
+            activate();
+          });
+
+          arrow.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            activate();
+          });
+        });
+      }
+
+      function setupSplitPanes() {
+        document.querySelectorAll('.aqua-split-divider[data-split]').forEach((divider) => {
+          divider.addEventListener('pointerdown', (event) => {
+            const splitId = divider.getAttribute('data-split');
+            if (!splitId) return;
+            const container = document.getElementById(splitId);
+            if (!container) return;
+
+            const isVertical = container.classList.contains('vertical');
+            const prevPane = divider.previousElementSibling;
+            const nextPane = divider.nextElementSibling;
+            if (!prevPane || !nextPane) return;
+
+            event.preventDefault();
+            divider.setPointerCapture(event.pointerId);
+
+            const containerRect = container.getBoundingClientRect();
+            const dividerRect = divider.getBoundingClientRect();
+
+            const dividerSize = isVertical ? dividerRect.height : dividerRect.width;
+            const minSize = 60;
+            const maxSize = (isVertical ? containerRect.height : containerRect.width) - dividerSize - minSize;
+
+            const startPos = isVertical ? event.clientY : event.clientX;
+            const startPrevSize = isVertical ? prevPane.getBoundingClientRect().height : prevPane.getBoundingClientRect().width;
+
+            function onMove(moveEvent) {
+              const currentPos = isVertical ? moveEvent.clientY : moveEvent.clientX;
+              const delta = currentPos - startPos;
+              const nextPrevSize = clamp(startPrevSize + delta, minSize, maxSize);
+
+              if (isVertical) {
+                prevPane.style.height = `${nextPrevSize}px`;
+                prevPane.style.flex = `0 0 ${nextPrevSize}px`;
+              } else {
+                prevPane.style.width = `${nextPrevSize}px`;
+                prevPane.style.flex = `0 0 ${nextPrevSize}px`;
+              }
+              nextPane.style.flex = '1 1 auto';
+            }
+
+            function onUp(upEvent) {
+              divider.releasePointerCapture(upEvent.pointerId);
+              divider.removeEventListener('pointermove', onMove);
+              divider.removeEventListener('pointerup', onUp);
+              divider.removeEventListener('pointercancel', onUp);
+            }
+
+            divider.addEventListener('pointermove', onMove);
+            divider.addEventListener('pointerup', onUp);
+            divider.addEventListener('pointercancel', onUp);
+          });
+        });
+      }
+
+      setupTitledPanes();
+      setupTreeTable();
+      setupSplitPanes();
+    })();
+  </script>
 </body>
 </html>

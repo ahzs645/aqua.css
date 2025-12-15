@@ -1,0 +1,126 @@
+/**
+ * Titled Pane / Accordion
+ * Mac OS X Aqua-style expandable panels
+ * Matches JavaFX TitledPane and Accordion
+ */
+
+/* ============================================
+   TITLED PANE CONTAINER
+   ============================================ */
+.titled-pane,
+.aqua-titled-pane {
+  border: 1px solid rgb(180, 180, 180);
+  border-width: 1px 0;
+  font-family: var(--font-system);
+  font-size: var(--font-size-base);
+
+  & + .titled-pane {
+    border-top: none;
+  }
+}
+
+/* ============================================
+   TITLED PANE HEADER
+   ============================================ */
+.titled-pane-header,
+.aqua-titled-pane-header {
+  padding: 4px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(
+    rgb(255, 255, 255) 25%,
+    rgb(243, 243, 243) 50%,
+    rgb(236, 236, 236) 50%,
+    rgb(243, 243, 243) 100%
+  );
+  user-select: none;
+
+  &:hover {
+    background: linear-gradient(
+      rgb(250, 250, 250) 25%,
+      rgb(238, 238, 238) 50%,
+      rgb(231, 231, 231) 50%,
+      rgb(238, 238, 238) 100%
+    );
+  }
+}
+
+/* ============================================
+   DISCLOSURE ARROW
+   ============================================ */
+.titled-pane-arrow,
+.aqua-titled-pane-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid rgb(134, 134, 134);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.titled-pane.expanded .titled-pane-arrow,
+.aqua-titled-pane.expanded .aqua-titled-pane-arrow {
+  transform: rotate(90deg);
+}
+
+/* ============================================
+   TITLED PANE CONTENT
+   ============================================ */
+.titled-pane-content,
+.aqua-titled-pane-content {
+  padding: 12px;
+  display: none;
+  background: white;
+  border-top: 1px solid rgb(200, 200, 200);
+}
+
+.titled-pane.expanded .titled-pane-content,
+.aqua-titled-pane.expanded .aqua-titled-pane-content {
+  display: block;
+}
+
+/* ============================================
+   ACCORDION (Multiple titled panes)
+   ============================================ */
+.accordion {
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+
+  .titled-pane {
+    border: none;
+    border-bottom: 1px solid rgb(200, 200, 200);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .titled-pane-content {
+    border-top: none;
+  }
+}
+
+/* ============================================
+   DISABLED STATE
+   ============================================ */
+.titled-pane.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+
+  .titled-pane-header {
+    cursor: default;
+  }
+}
+
+.aqua-titled-pane.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+
+  .aqua-titled-pane-header {
+    cursor: default;
+  }
+}

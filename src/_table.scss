@@ -4,7 +4,8 @@
  */
 
 .table-view,
-table.aqua {
+table.aqua,
+table.aqua-table {
   width: 100%;
   border-collapse: collapse;
   background: white;
@@ -43,11 +44,11 @@ table.aqua {
 
   /* Alternating row colors */
   tr:nth-child(odd) td {
-    background: white;
+    background: var(--table-row-odd);
   }
 
   tr:nth-child(even) td {
-    background: rgb(243, 246, 250);
+    background: var(--table-row-even);
   }
 
   tr:last-child td {

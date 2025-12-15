@@ -16,8 +16,8 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 1px 5px 3px 3px;
-    background: rgba(251, 250, 205, 0.95);
-    border: 0.5px solid rgba(125, 125, 125, 0.4);
+    background: var(--tooltip-bg);
+    border: 0.5px solid var(--tooltip-border);
     font-family: var(--font-system);
     font-size: var(--font-size-base);
     color: #000;
@@ -38,17 +38,18 @@
 }
 
 /* Class-based tooltip with nested element */
-.tooltip-wrapper {
+.tooltip-wrapper,
+.aqua-tooltip {
   position: relative;
   display: inline-block;
 
   .tooltip-text {
     visibility: hidden;
     opacity: 0;
-    background: rgba(251, 250, 205, 0.95);
+    background: var(--tooltip-bg);
     color: #000;
     padding: 1px 5px 3px 3px;
-    border: 0.5px solid rgba(125, 125, 125, 0.4);
+    border: 0.5px solid var(--tooltip-border);
     font-family: var(--font-system);
     font-size: var(--font-size-base);
     position: absolute;

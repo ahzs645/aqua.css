@@ -6,7 +6,8 @@
 /* ============================================
    SPLIT PANE CONTAINER
    ============================================ */
-.split-pane {
+.split-pane,
+.aqua-split-pane {
   display: flex;
   flex-direction: row;
   border: 1px solid rgb(175, 175, 175);
@@ -14,7 +15,7 @@
   overflow: hidden;
 
   /* Child panes */
-  > div:not(.split-divider) {
+  > div:not(.split-divider):not(.aqua-split-divider) {
     overflow: auto;
     min-width: 0;
     min-height: 0;
@@ -24,7 +25,8 @@
   &.vertical {
     flex-direction: column;
 
-    .split-divider {
+    .split-divider,
+    .aqua-split-divider {
       width: 100%;
       height: 8px;
       min-width: auto;
@@ -40,7 +42,8 @@
       gap: 1px;
     }
 
-    .split-grabber {
+    .split-grabber,
+    .aqua-split-grabber {
       width: 20px;
       height: 1px;
       background: rgb(167, 167, 167);
@@ -52,7 +55,8 @@
 /* ============================================
    DIVIDER (horizontal by default - left/right panes)
    ============================================ */
-.split-divider {
+.split-divider,
+.aqua-split-divider {
   width: 8px;
   min-width: 8px;
   padding: 4px 0;
@@ -69,7 +73,8 @@
 }
 
 /* Grabber lines */
-.split-grabber {
+.split-grabber,
+.aqua-split-grabber {
   width: 1px;
   height: 20px;
   background: rgb(167, 167, 167);

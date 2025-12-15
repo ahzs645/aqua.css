@@ -148,3 +148,70 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(140, 190, 250, 0.7) #f4f4f4;
 }
+
+/* ============================================
+   OPTIONAL OVERLAY SCROLLBAR (scoped)
+   ============================================ */
+
+.scroll-container {
+  overflow: auto;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 3px;
+  background: white;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--overlay-scrollbar-thumb);
+    background-clip: padding-box;
+    border-radius: 4px;
+    border: 2px solid transparent;
+  }
+
+  &:hover::-webkit-scrollbar-track {
+    background: linear-gradient(
+      to right,
+      var(--overlay-scrollbar-track-hover-start),
+      var(--overlay-scrollbar-track-hover-end)
+    );
+    border-left: 1px solid var(--overlay-scrollbar-track-border);
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--overlay-scrollbar-thumb) transparent;
+}
+
+.scroll-demo-vertical {
+  width: 250px;
+  height: 150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.scroll-demo-horizontal {
+  width: 300px;
+  height: 80px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.scroll-demo-both {
+  width: 280px;
+  height: 180px;
+  overflow: scroll;
+}

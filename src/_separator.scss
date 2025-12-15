@@ -1,0 +1,130 @@
+/**
+ * Separator
+ * Mac OS X Aqua-style horizontal and vertical dividers
+ * Matches JavaFX Separator
+ */
+
+/* ============================================
+   HORIZONTAL SEPARATOR (Default)
+   ============================================ */
+.separator,
+.aqua-separator,
+hr.aqua,
+hr.aqua-separator {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 10%,
+    rgba(0, 0, 0, 0.15) 90%,
+    transparent 100%
+  );
+  margin: 8px 0;
+}
+
+/* ============================================
+   VERTICAL SEPARATOR
+   ============================================ */
+.separator.vertical {
+  width: 1px;
+  height: 20px;
+  margin: 0 8px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 10%,
+    rgba(0, 0, 0, 0.15) 90%,
+    transparent 100%
+  );
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.aqua-separator.vertical {
+  width: 1px;
+  height: 20px;
+  margin: 0 8px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 10%,
+    rgba(0, 0, 0, 0.15) 90%,
+    transparent 100%
+  );
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ============================================
+   MENU SEPARATOR
+   ============================================ */
+.menu-separator {
+  height: 1px;
+  background: rgb(220, 220, 220);
+  margin: 4px 0;
+}
+
+/* ============================================
+   TOOLBAR SEPARATOR
+   ============================================ */
+.toolbar-separator {
+  width: 1px;
+  height: 24px;
+  margin: 0 4px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+/* ============================================
+   ETCHED SEPARATOR (3D effect)
+   ============================================ */
+.separator.etched {
+  height: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+}
+
+.separator.etched.vertical {
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+}
+
+.aqua-separator.etched {
+  height: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+}
+
+.aqua-separator.etched.vertical {
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+}

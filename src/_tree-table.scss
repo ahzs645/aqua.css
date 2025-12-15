@@ -1,0 +1,194 @@
+/**
+ * Tree Table View
+ * Mac OS X Aqua-style tree table - combines tree hierarchy with table columns
+ * Matches JavaFX TreeTableView
+ */
+
+/* ============================================
+   TREE TABLE CONTAINER
+   ============================================ */
+.tree-table,
+table.aqua-tree-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid;
+  border-color: rgb(156, 156, 156) rgb(190, 190, 190) rgb(190, 190, 190) rgb(190, 190, 190);
+  font-family: var(--font-system);
+  font-size: var(--font-size-base);
+
+  /* Column headers */
+  thead th {
+    background: linear-gradient(
+      rgb(255, 255, 255) 25%,
+      rgb(243, 243, 243) 50%,
+      rgb(236, 236, 236) 50%,
+      rgb(243, 243, 243) 98%,
+      rgb(250, 250, 250) 100%
+    );
+    padding: 4px 8px;
+    text-align: left;
+    font-weight: normal;
+    border-bottom: 0.5px solid rgb(156, 156, 156);
+    border-right: 1px solid rgba(190, 190, 190, 0.8);
+    height: 22px;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:active {
+      background: linear-gradient(
+        rgb(224, 224, 224) 25%,
+        rgb(214, 214, 214) 50%,
+        rgb(207, 207, 207) 50%,
+        rgb(209, 209, 209) 98%,
+        rgb(218, 218, 218) 100%
+      );
+    }
+
+    /* Sort arrow */
+    .sort-arrow {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 4px;
+      vertical-align: middle;
+
+      &.asc {
+        border-left: 3.5px solid transparent;
+        border-right: 3.5px solid transparent;
+        border-bottom: 4px solid rgba(0, 0, 0, 0.4);
+      }
+
+      &.desc {
+        border-left: 3.5px solid transparent;
+        border-right: 3.5px solid transparent;
+        border-top: 4px solid rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+
+  /* Table rows */
+  tbody tr {
+    background: white;
+
+    &:nth-child(odd) {
+      background: rgb(243, 246, 250);
+    }
+
+    &:hover {
+      background: rgb(182, 214, 253);
+    }
+
+    /* Selected (unfocused) - gray */
+    &.selected {
+      background:
+        linear-gradient(rgb(187, 197, 214), rgb(147, 160, 185)),
+        linear-gradient(
+          rgb(195, 204, 223),
+          rgb(195, 204, 223) 1%,
+          rgb(189, 199, 220) 1%,
+          rgb(155, 169, 196) 100%
+        );
+      background-size: 100% 1px, 100% 100%;
+      background-position: 0 0, 0 1px;
+      background-repeat: no-repeat;
+      color: white;
+    }
+  }
+
+  /* Table cells */
+  tbody td {
+    padding: 3px 8px;
+    border: none;
+    vertical-align: middle;
+    height: 22px;
+  }
+
+  /* Focus state */
+  &:focus,
+  &:focus-within {
+    box-shadow: 0 0 8px 0 rgba(120, 171, 217, 0.8);
+
+    tbody tr.selected {
+      background:
+        linear-gradient(rgb(95, 165, 221), rgb(54, 124, 192)),
+        linear-gradient(
+          rgb(116, 186, 232),
+          rgb(116, 186, 232) 1%,
+          rgb(109, 178, 227) 1%,
+          rgb(59, 136, 208) 100%
+        );
+      background-size: 100% 1px, 100% 100%;
+      background-position: 0 0, 0 1px;
+      background-repeat: no-repeat;
+      color: white;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  /* Disabled */
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+/* ============================================
+   TREE CELL (use inside td for proper alignment)
+   ============================================ */
+.tree-cell,
+.aqua-tree-cell {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ============================================
+   TREE DISCLOSURE ARROW
+   ============================================ */
+.tree-table-arrow,
+.aqua-tree-table-arrow {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+
+  /* Arrow triangle using borders */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid rgb(134, 134, 134);
+    transition: transform 0.15s ease;
+  }
+
+  &.expanded::before {
+    transform: rotate(90deg);
+    transform-origin: 2px 4px;
+  }
+
+  /* Hidden placeholder for leaf nodes */
+  &.leaf::before {
+    visibility: hidden;
+  }
+}
+
+/* ============================================
+   INDENTATION SPACER
+   ============================================ */
+.tree-table-indent,
+.aqua-tree-table-indent {
+  display: inline-block;
+  width: 16px;
+  flex-shrink: 0;
+}
