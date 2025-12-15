@@ -241,7 +241,7 @@
         </li>
         <li>Themes
           <ul>
-            <li><a href="#graphite-theme">Graphite Theme</a></li>
+            <li><a href="#graphite-theme">Color Themes</a></li>
           </ul>
         </li>
         <li><a href="#complete-example">Complete Example</a></li>
@@ -1336,27 +1336,61 @@
       </div>
     `) %>
 
-    <h2 id="graphite-theme">Graphite Theme</h2>
-    <p>Add <code>class="theme-graphite"</code> to use gray instead of blue.</p>
+    <h2 id="graphite-theme">Color Themes</h2>
+    <p>Add a theme class to your container to change the accent color. Available themes:</p>
+    <ul style="margin: 1em 0;">
+      <li><code>theme-graphite</code> - Gray/silver (like macOS Graphite appearance)</li>
+      <li><code>theme-air</code> - Light/white (subtle, airy look)</li>
+      <li><code>theme-earth</code> - Green (nature-inspired)</li>
+      <li><code>theme-fire</code> - Red/orange (bold, fiery)</li>
+    </ul>
+
+    <h3>Theme Selector</h3>
+    <p class="label">Click a button to preview different themes on the components below</p>
 
     <%- example(`
-      <div class="theme-graphite" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
+      <div class="button-row" style="margin-bottom: 20px;">
+        <button onclick="setTheme('')">Default (Aqua Blue)</button>
+        <button onclick="setTheme('theme-graphite')">Graphite</button>
+        <button onclick="setTheme('theme-air')">Air (Light)</button>
+        <button onclick="setTheme('theme-earth')">Earth (Green)</button>
+        <button onclick="setTheme('theme-fire')">Fire (Red)</button>
+      </div>
+
+      <div id="theme-preview" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
+        <div class="label">Buttons</div>
         <div class="button-row">
           <button>Regular</button>
           <button class="default">Default</button>
         </div>
-        <br>
+
+        <div class="label" style="margin-top: 15px;">Checkboxes & Radio</div>
         <div class="field-row">
-          <input type="checkbox" id="graphite-check" checked>
-          <label for="graphite-check">Graphite checkbox</label>
+          <input type="checkbox" id="theme-check1" checked>
+          <label for="theme-check1">Checked checkbox</label>
         </div>
         <div class="field-row">
-          <input type="radio" id="graphite-radio" checked>
-          <label for="graphite-radio">Graphite radio</label>
+          <input type="radio" id="theme-radio1" name="theme-radio" checked>
+          <label for="theme-radio1">Selected radio</label>
         </div>
-        <br>
-        <div class="progress-bar" style="width: 200px;">
-          <div class="progress-bar-fill" style="width: 60%;"></div>
+
+        <div class="label" style="margin-top: 15px;">Progress Bar</div>
+        <div class="aqua-progress" style="width: 200px;">
+          <div class="bar" style="width: 60%;"></div>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Segmented Control</div>
+        <div class="segmented-control">
+          <button class="active">Selected</button>
+          <button>Option</button>
+          <button>Option</button>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">List Selection</div>
+        <div class="aqua-list focused" tabindex="0" style="width: 150px;">
+          <div class="aqua-list-item">Item 1</div>
+          <div class="aqua-list-item selected">Item 2</div>
+          <div class="aqua-list-item">Item 3</div>
         </div>
       </div>
     `) %>
@@ -1551,6 +1585,18 @@
           checkbox.indeterminate = true;
         }
       }
+
+      // Theme switching for the theme preview section
+      window.setTheme = function(theme) {
+        const preview = document.getElementById('theme-preview');
+        if (preview) {
+          preview.className = theme;
+          // Re-apply the background style
+          preview.style.padding = '16px';
+          preview.style.background = '#ECECEC';
+          preview.style.borderRadius = '8px';
+        }
+      };
 
       setupTitledPanes();
       setupTreeTable();
