@@ -1,0 +1,199 @@
+/**
+ * Mixins
+ * Reusable SCSS mixins for Aqua-style effects
+ */
+
+/**
+ * Aqua Glass Effect
+ * Creates the signature Mac OS X Aqua glossy appearance with:
+ * - Top highlight/shine (::before pseudo-element)
+ * - Bottom glow reflection (::after pseudo-element)
+ *
+ * @param $shape - 'circle' | 'pill' | 'spinner' - preset with shape-specific defaults
+ */
+@mixin aqua-glass-effect($shape: 'circle') {
+  // Shape-specific defaults
+  $shine-height: 40%;
+  $shine-width: 70%;
+  $shine-top: 8%;
+  $shine-blur: 0.5px;
+  $shine-opacity-start: 0.9;
+  $shine-opacity-end: 0.2;
+  $shine-radius: 50% 50% 30% 30%;
+  $shine-z-index: 2;
+
+  $glow-height: 30%;
+  $glow-width: 60%;
+  $glow-bottom: 10%;
+  $glow-blur: 1px;
+  $glow-opacity-start: 0.1;
+  $glow-opacity-end: 0.4;
+  $glow-radius: 50%;
+  $glow-z-index: null;
+
+  @if $shape == 'pill' {
+    // Button-specific values
+    $shine-height: 33%;
+    $shine-top: 5%;
+    $shine-blur: 1px;
+    $shine-opacity-end: 0.3;
+    $shine-radius: 2em 2em 0.5em 0.5em;
+
+    $glow-height: 33%;
+    $glow-blur: 3px;
+    $glow-opacity-start: 0.2;
+    $glow-opacity-end: 0.5;
+    $glow-radius: 0.75em;
+  } @else if $shape == 'spinner' {
+    // Spinner-specific values
+    $shine-top: 5%;
+    $shine-blur: 1px;
+    $shine-opacity-start: 0.7;
+    $shine-opacity-end: 0.1;
+    $shine-radius: 50% 50% 40% 40%;
+    $shine-z-index: 20;
+
+    $glow-bottom: 8%;
+    $glow-blur: 1px;
+    $glow-opacity-start: 0.05;
+    $glow-opacity-end: 0.25;
+    $glow-z-index: 20;
+  }
+
+  // Top shine
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: $shine-height;
+    width: $shine-width;
+    top: $shine-top;
+    background: linear-gradient(
+      rgba(255, 255, 255, $shine-opacity-start),
+      rgba(255, 255, 255, $shine-opacity-end)
+    );
+    border-radius: $shine-radius;
+    filter: blur($shine-blur);
+    z-index: $shine-z-index;
+    pointer-events: none;
+  }
+
+  // Bottom glow
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: $glow-height;
+    width: $glow-width;
+    bottom: $glow-bottom;
+    background: linear-gradient(
+      rgba(255, 255, 255, $glow-opacity-start),
+      rgba(255, 255, 255, $glow-opacity-end)
+    );
+    border-radius: $glow-radius;
+    filter: blur($glow-blur);
+    @if $glow-z-index {
+      z-index: $glow-z-index;
+    }
+    pointer-events: none;
+  }
+}
+
+/**
+ * Aqua Glass Shine Only
+ * Just the top highlight, useful when ::after is needed for other purposes
+ */
+@mixin aqua-glass-shine($shape: 'circle') {
+  $height: 40%;
+  $width: 70%;
+  $top: 8%;
+  $blur: 0.5px;
+  $opacity-start: 0.9;
+  $opacity-end: 0.2;
+  $radius: 50% 50% 30% 30%;
+  $z-index: 2;
+
+  @if $shape == 'pill' {
+    $height: 33%;
+    $top: 5%;
+    $blur: 1px;
+    $opacity-end: 0.3;
+    $radius: 2em 2em 0.5em 0.5em;
+  } @else if $shape == 'spinner' {
+    $top: 5%;
+    $blur: 1px;
+    $opacity-start: 0.7;
+    $opacity-end: 0.1;
+    $radius: 50% 50% 40% 40%;
+    $z-index: 20;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: $height;
+    width: $width;
+    top: $top;
+    background: linear-gradient(
+      rgba(255, 255, 255, $opacity-start),
+      rgba(255, 255, 255, $opacity-end)
+    );
+    border-radius: $radius;
+    filter: blur($blur);
+    z-index: $z-index;
+    pointer-events: none;
+  }
+}
+
+/**
+ * Aqua Glass Glow Only
+ * Just the bottom glow, useful when ::before is needed for other purposes
+ */
+@mixin aqua-glass-glow($shape: 'circle') {
+  $height: 30%;
+  $width: 60%;
+  $bottom: 10%;
+  $blur: 1px;
+  $opacity-start: 0.1;
+  $opacity-end: 0.4;
+  $radius: 50%;
+  $z-index: null;
+
+  @if $shape == 'pill' {
+    $height: 33%;
+    $blur: 3px;
+    $opacity-start: 0.2;
+    $opacity-end: 0.5;
+    $radius: 0.75em;
+  } @else if $shape == 'spinner' {
+    $bottom: 8%;
+    $blur: 1px;
+    $opacity-start: 0.05;
+    $opacity-end: 0.25;
+    $z-index: 20;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: $height;
+    width: $width;
+    bottom: $bottom;
+    background: linear-gradient(
+      rgba(255, 255, 255, $opacity-start),
+      rgba(255, 255, 255, $opacity-end)
+    );
+    border-radius: $radius;
+    filter: blur($blur);
+    @if $z-index {
+      z-index: $z-index;
+    }
+    pointer-events: none;
+  }
+}

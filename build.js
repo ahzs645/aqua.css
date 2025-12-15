@@ -7,16 +7,21 @@ const hljs = require("highlight.js");
 const mkdirp = require("mkdirp");
 const path = require("path");
 const postcss = require("postcss");
+const sass = require("sass");
 
 const { homepage, version } = require("./package.json");
 
 function buildCSS() {
-  const input =
-    `/*! aqua.css v${version} - ${homepage} */\n` + fs.readFileSync("src/index.scss");
+  // First, compile SCSS to CSS
+  const scssResult = sass.compile("src/index.scss", {
+    loadPaths: ["src"],
+    sourceMap: true,
+  });
 
+  const input = `/*! aqua.css v${version} - ${homepage} */\n` + scssResult.css;
+
+  // Then process with PostCSS
   return postcss()
-    .use(require("postcss-import"))
-    .use(require("postcss-nested"))
     .use(require("postcss-inline-svg"))
     .use(require("postcss-css-variables"))
     .use(require("postcss-calc"))

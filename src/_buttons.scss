@@ -20,36 +20,12 @@
   align-items: center;
   justify-content: center;
 
-  /* Top shine */
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 33%;
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
-    width: calc(100% - 0.875em);
-    border-radius: 2em 2em 0.5em 0.5em;
-    top: 5%;
-    filter: blur(1px);
-    z-index: 2;
-    pointer-events: none;
-  }
+  /* Aqua glass effect (top shine + bottom glow) */
+  @include aqua-glass-effect('pill');
 
-  /* Bottom glow */
-  &::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 33%;
-    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.5));
-    width: calc(100% - 1.25em);
-    border-radius: 0.75em;
-    bottom: 10%;
-    filter: blur(3px);
-    pointer-events: none;
-  }
+  /* Override widths with calc() for variable-width buttons */
+  &::before { width: calc(100% - 0.875em); }
+  &::after { width: calc(100% - 1.25em); }
 
   /* Text styling */
   span {

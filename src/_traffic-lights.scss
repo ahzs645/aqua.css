@@ -36,42 +36,8 @@
     inset 0 0.125em 0.2em rgba(0, 0, 0, 0.4),
     inset 0 0.15em 0.25em 0.1em rgba(150, 150, 150, 0.75);
 
-  /* Top shine */
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 40%;
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.2)
-    );
-    width: 70%;
-    border-radius: 50% 50% 30% 30%;
-    top: 8%;
-    filter: blur(0.5px);
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  /* Bottom glow */
-  &::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 30%;
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.4)
-    );
-    width: 60%;
-    border-radius: 50%;
-    bottom: 10%;
-    filter: blur(1px);
-    pointer-events: none;
-  }
+  /* Aqua glass effect (top shine + bottom glow) */
+  @include aqua-glass-effect($shape: 'circle');
 }
 
 /* Icon styles - hidden by default */

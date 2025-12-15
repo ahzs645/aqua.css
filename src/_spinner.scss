@@ -74,43 +74,8 @@
   display: inline-block;
   vertical-align: middle;
 
-  /* Top shine overlay */
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    height: 40%;
-    top: 5%;
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.7),
-      rgba(255, 255, 255, 0.1)
-    );
-    border-radius: 50% 50% 40% 40%;
-    filter: blur(1px);
-    z-index: 20;
-    pointer-events: none;
-  }
-
-  /* Bottom glow overlay */
-  &::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 30%;
-    bottom: 8%;
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.05),
-      rgba(255, 255, 255, 0.25)
-    );
-    border-radius: 50%;
-    filter: blur(1px);
-    z-index: 20;
-    pointer-events: none;
-  }
+  /* Aqua glass effect (top shine + bottom glow) */
+  @include aqua-glass-effect('spinner');
 }
 
 /* Rainbow background layer */
