@@ -28,22 +28,17 @@
   transition: width 300ms ease;
 }
 
-/* aqua-progress inner bar */
+/* aqua-progress inner bar (uses progress.png pattern like the showcase) */
 .aqua-progress .bar {
   height: 100%;
   border-right: 0.5px solid rgb(161, 161, 161);
   border-radius: 2px;
   transition: width 300ms ease;
 
-  background-image: repeating-linear-gradient(
-    -45deg,
-    rgb(84, 170, 240),
-    rgb(84, 170, 240) 5px,
-    rgb(110, 190, 250) 5px,
-    rgb(110, 190, 250) 10px
-  );
-  background-size: 14px 100%;
-  animation: progress-scroll 1s linear infinite;
+  background-image: url("progress.png");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  animation: aqua-progress-scroll 1s linear infinite;
 }
 
 /* Animated scrolling pattern */
@@ -62,6 +57,11 @@
 @keyframes progress-scroll {
   from { background-position: 0 0; }
   to { background-position: -14px 0; }
+}
+
+@keyframes aqua-progress-scroll {
+  from { background-position: 0 0; }
+  to { background-position: -38px 0; }
 }
 
 /* Indeterminate state - candy cane stripes */
