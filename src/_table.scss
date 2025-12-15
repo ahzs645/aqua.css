@@ -29,6 +29,10 @@ table.aqua-table {
     border-bottom: 0.5px solid rgb(156, 156, 156);
     border-right: 1px solid rgb(190, 190, 190);
     height: 22px;
+    position: relative;
+
+    /* Aqua glass effect */
+    @include aqua-glass-effect('header');
 
     &:last-child {
       border-right: none;

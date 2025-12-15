@@ -52,6 +52,11 @@
     );
     cursor: default;
     color: #333;
+    position: relative;
+    overflow: hidden;
+
+    /* Aqua glass effect */
+    @include aqua-glass-effect('stepper');
 
     &:first-child {
       border-right: 1px solid rgb(152, 152, 152);
@@ -142,6 +147,11 @@
     justify-content: center;
     line-height: 1;
     color: #333;
+    position: relative;
+    overflow: hidden;
+
+    /* Aqua glass effect */
+    @include aqua-glass-effect('stepper');
 
     &:first-child {
       border-radius: 0 3px 0 0;

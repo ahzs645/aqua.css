@@ -36,6 +36,10 @@
     rgb(243, 243, 243) 100%
   );
   user-select: none;
+  position: relative;
+
+  /* Aqua glass effect */
+  @include aqua-glass-effect('header');
 
   &:hover {
     background: linear-gradient(

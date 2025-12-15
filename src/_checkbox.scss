@@ -38,6 +38,9 @@
     box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
     overflow: visible;
+
+    /* Aqua glass effect */
+    @include aqua-glass-effect('control');
   }
 
   /* Checkmark - positioned to extend outside the box (classic Aqua style) */
@@ -137,6 +140,9 @@ input[type="checkbox"]:not(.checkbox input) {
   position: relative;
   transition: all 0.15s ease;
   overflow: visible;
+
+  /* Aqua glass effect (shine only - ::after used for checkmark) */
+  @include aqua-glass-shine('control');
 
   /* Check mark - extends outside the box (classic Aqua style) */
   &::after {

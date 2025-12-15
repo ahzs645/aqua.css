@@ -40,6 +40,11 @@
   justify-content: center;
   outline: none;
   transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+
+  /* Aqua glass effect */
+  @include aqua-glass-effect('control-round');
 
   &:hover:not(.active):not(:disabled) {
     background: linear-gradient(
@@ -97,6 +102,11 @@
   min-width: 20px;
   height: 20px;
   transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+
+  /* Aqua glass effect */
+  @include aqua-glass-effect('control-round');
 
   &:hover:not(:disabled) {
     background: linear-gradient(
