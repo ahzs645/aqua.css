@@ -82,7 +82,9 @@
   --aqua-border-color-light: rgba(0, 0, 0, 0.15);
 
   /* Focus ring */
-  --aqua-focus-ring: 0 0 0 3px rgba(52, 106, 227, 0.4);
+  --focus-outer: rgba(52, 106, 227, 0.45);
+  --focus-inner: rgba(180, 210, 255, 0.8);
+  --aqua-focus-ring: 0 0 0 3px var(--focus-outer), 0 0 0 1px var(--focus-inner);
 
   /* Shadows */
   --aqua-window-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -195,6 +197,11 @@
 
 /* Focus ring utility */
 .aqua-focus-ring:focus {
+  outline: none;
+  box-shadow: var(--aqua-focus-ring);
+}
+
+.aqua-focus-ring.is-focused {
   outline: none;
   box-shadow: var(--aqua-focus-ring);
 }

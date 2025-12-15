@@ -68,6 +68,16 @@
       margin: 1em 0;
       padding: 20px;
       border-radius: 8px;
+      background: rgb(227, 227, 227);
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      box-shadow: inset 0 2px 4px rgba(168, 168, 168, 0.35);
+      background-image: linear-gradient(
+        to right,
+        rgba(168, 168, 168, 0.35) 0%,
+        transparent 0.4%,
+        transparent 99.6%,
+        rgba(168, 168, 168, 0.35)
+      );
     }
     .example details {
       margin-top: 15px;
@@ -122,6 +132,34 @@
       border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 3px;
       padding: 1px 4px;
+    }
+    .component-row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .component-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+    }
+    .states-demo {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .state-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .state-label {
+      font-size: 11px;
+      color: rgba(0, 0, 0, 0.65);
     }
     .hljs-tag { color: #569cd6; }
     .hljs-attr { color: #9cdcfe; }
@@ -196,6 +234,9 @@
             <li><a href="#tree-table-view">Tree Table View</a></li>
             <li><a href="#tooltip">Tooltip</a></li>
             <li><a href="#balloon">Balloon</a></li>
+            <li><a href="#badge">Badge</a></li>
+            <li><a href="#color-swatches">Color Swatches</a></li>
+            <li><a href="#focus-ring">Focus Ring</a></li>
           </ul>
         </li>
         <li>Themes
@@ -311,44 +352,138 @@
     </div>
 
     <h2 id="buttons">Buttons</h2>
-    <p>
-      Aqua buttons feature glossy gradients. The default button uses the iconic
-      blue Aqua style and can optionally pulse to draw attention.
-    </p>
-
     <div class="example">
-      <div class="button-row">
-  <button>Regular Button</button>
-  <button class="default">Default Button</button>
-  <button class="default pulse">Pulsing Button</button>
+      <div class="label">Standard Buttons</div>
+<div class="component-row">
+  <button>Button</button>
+  <button class="default">Default</button>
+  <button class="default pulse">Pulsing</button>
   <button disabled>Disabled</button>
 </div>
-      <details>
-        <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-row&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Regular Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span>Default Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default pulse&quot;</span>&gt;</span>Pulsing Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">disabled</span>&gt;</span>Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-      </details>
-    </div>
 
-    <h3>Round Aqua Buttons</h3>
-    <p>Glossy 3D pill-shaped buttons with the classic Aqua look.</p>
+<div class="label" style="margin-top: 15px;">Button Types</div>
+<div class="component-row">
+  <button>Regular</button>
+  <button class="round-rect">Round Rect</button>
+  <button class="help" aria-label="Help">?</button>
+</div>
 
-    <div class="example">
-      <div class="button-row">
+<div class="label" style="margin-top: 15px;">Size Variants (from Apple HIG)</div>
+<div class="component-row">
+  <div class="component-group">
+    <button>Regular</button>
+    <span class="state-label">13px font</span>
+  </div>
+  <div class="component-group">
+    <button class="small">Small</button>
+    <span class="state-label">11px font</span>
+  </div>
+  <div class="component-group">
+    <button class="mini">Mini</button>
+    <span class="state-label">9px font</span>
+  </div>
+</div>
+
+<div class="label" style="margin-top: 15px;">Pill Buttons (Segmented Control)</div>
+<div class="component-row">
+  <div class="pill-group">
+    <button class="left-pill">Left</button>
+    <button class="center-pill">Center</button>
+    <button class="right-pill">Right</button>
+  </div>
+  <div class="segmented-control" style="margin-left: 10px;">
+    <button class="active" aria-pressed="true">Left</button>
+    <button>Center</button>
+    <button>Right</button>
+  </div>
+</div>
+
+<div class="label" style="margin-top: 15px;">Glossy 3D (aqua-button)</div>
+<div class="component-row">
   <button class="aqua-button aqua-button--secondary"><span>Cancel</span></button>
-  <button class="aqua-button aqua-button--primary"><span>Save</span></button>
+  <button class="aqua-button default"><span>Default</span></button>
   <button class="aqua-button aqua-button--orange"><span>Login</span></button>
+  <button class="aqua-button default armed"><span>Pressed</span></button>
+  <button class="aqua-button mini aqua-button--secondary"><span>Mini</span></button>
+</div>
+
+<div class="label" style="margin-top: 15px;">Button States</div>
+<div class="states-demo">
+  <div class="state-box">
+    <button>Normal</button>
+    <div class="state-label">Normal</div>
+  </div>
+  <div class="state-box">
+    <button class="armed">Pressed</button>
+    <div class="state-label">Pressed/Armed</div>
+  </div>
 </div>
       <details>
         <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-row&quot;</span>&gt;</span>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Standard Buttons<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;default pulse&quot;</span>&gt;</span>Pulsing<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">disabled</span>&gt;</span>Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Button Types<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Regular<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;round-rect&quot;</span>&gt;</span>Round Rect<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;help&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Help&quot;</span>&gt;</span>?<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Size Variants (from Apple HIG)<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Regular<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;state-label&quot;</span>&gt;</span>13px font<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span>Small<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;state-label&quot;</span>&gt;</span>11px font<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mini&quot;</span>&gt;</span>Mini<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;state-label&quot;</span>&gt;</span>9px font<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Pill Buttons (Segmented Control)<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pill-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left-pill&quot;</span>&gt;</span>Left<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;center-pill&quot;</span>&gt;</span>Center<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right-pill&quot;</span>&gt;</span>Right<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;segmented-control&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-left: 10px;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;active&quot;</span> <span class="hljs-attr">aria-pressed</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Left<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Center<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Right<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Glossy 3D (aqua-button)<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;component-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Cancel<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--primary&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Save<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button default&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--orange&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Login<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button default armed&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Pressed<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button mini aqua-button--secondary&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Mini<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Button States<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;states-demo&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;state-box&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Normal<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;state-label&quot;</span>&gt;</span>Normal<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;state-box&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;armed&quot;</span>&gt;</span>Pressed<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;state-label&quot;</span>&gt;</span>Pressed/Armed<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
       </details>
     </div>
@@ -1753,6 +1888,93 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-pagination-btn&quot;</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-pagination-btn&quot;</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-pagination-arrow&quot;</span>&gt;</span><span class="hljs-symbol">&amp;gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="badge">Badge</h2>
+
+    <div class="example">
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+  <span>Messages</span>
+  <span class="aqua-badge">5</span>
+  <span style="margin-left: 20px;">Notifications</span>
+  <span class="aqua-badge">99+</span>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 20px; align-items: center; flex-wrap: wrap;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Messages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-badge&quot;</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-left: 20px;&quot;</span>&gt;</span>Notifications<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-badge&quot;</span>&gt;</span>99+<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="color-swatches">Color Swatches</h2>
+
+    <div class="example">
+      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+  <div class="aqua-color-swatch" style="background: var(--close-red);"></div>
+  <div class="aqua-color-swatch" style="background: var(--minimize-yellow);"></div>
+  <div class="aqua-color-swatch" style="background: var(--maximize-green);"></div>
+  <div class="aqua-color-swatch" style="background: var(--aqua-blue);"></div>
+  <div class="aqua-color-swatch" style="background: #5856D6;"></div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 10px; align-items: center; flex-wrap: wrap;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: var(--close-red);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: var(--minimize-yellow);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: var(--maximize-green);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: var(--aqua-blue);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: #5856D6;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
+    <h2 id="focus-ring">Focus Ring (Aqua Blue Glow)</h2>
+    <p class="label">Focus colors: <span class="inline-code">--focus-outer</span>, <span class="inline-code">--focus-inner</span></p>
+
+    <div class="example">
+      <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+  <div>
+    <span class="label">Button</span><br>
+    <button class="aqua-focus-ring is-focused">Button</button>
+  </div>
+  <div>
+    <span class="label">Text field</span><br>
+    <input class="aqua-textfield aqua-focus-ring is-focused" type="text" value="Focused">
+  </div>
+  <div>
+    <span class="label">Select</span><br>
+    <select class="aqua-focus-ring is-focused">
+      <option>Option 1</option>
+      <option selected>Option 2</option>
+      <option>Option 3</option>
+    </select>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; align-items: center; flex-wrap: wrap;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Button<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-focus-ring is-focused&quot;</span>&gt;</span>Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Text field<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-textfield aqua-focus-ring is-focused&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Focused&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Select<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-focus-ring is-focused&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 1<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">selected</span>&gt;</span>Option 2<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 3<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
       </details>
     </div>

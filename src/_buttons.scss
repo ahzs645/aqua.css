@@ -62,7 +62,8 @@
 }
 
 /* Primary Button - Blue */
-.aqua-button--primary {
+.aqua-button--primary,
+.aqua-button.default {
   background: linear-gradient(rgba(0, 65, 184, 0.625), rgba(45, 115, 199, 0.625), rgba(33, 160, 196, 0.625));
   box-shadow:
     0 0.375em 0.5em rgba(0, 0, 0, 0.3),
@@ -152,6 +153,29 @@
 
 .aqua-button--xlarge {
   font-size: 2rem;
+}
+
+/* HIG-style aliases */
+.aqua-button.small { font-size: 11px; }
+.aqua-button.mini { font-size: 9px; }
+
+/* Button types */
+.aqua-button.round-rect {
+  border-radius: 6px;
+}
+
+.aqua-button.help {
+  min-width: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Pressed/armed (static pressed state for docs/demos) */
+.aqua-button.armed {
+  transform: translateY(1px);
+  filter: brightness(0.96) saturate(0.98);
 }
 
 /* Disabled state */
@@ -434,6 +458,49 @@ input[type="button"],
   }
 }
 
+/* Standard button variants */
+button.round-rect,
+.button.round-rect {
+  border-radius: 9px;
+}
+
+button.help,
+.button.help {
+  width: 20px;
+  min-width: 20px;
+  padding: 0;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+/* Size variants (Apple HIG-ish) */
+button.small,
+.button.small {
+  font-size: 11px;
+  height: 17px;
+  min-width: 44px;
+  padding: 0 10px;
+}
+
+button.mini,
+.button.mini {
+  font-size: 9px;
+  height: 15px;
+  min-width: 36px;
+  padding: 0 8px;
+}
+
+/* Pressed/armed demo state */
+button.armed,
+.button.armed {
+  transform: translateY(1px);
+  background-image: linear-gradient(
+    rgb(176, 205, 236) 0%,
+    rgb(87, 143, 230) 50%,
+    rgb(158, 203, 236) 100%
+  );
+}
+
 /* Default Button (Blue Aqua Style) */
 button.default,
 input[type="submit"],
@@ -457,6 +524,39 @@ input[type="submit"],
     animation: aqua-default-pulse 1.5s ease-in-out infinite;
   }
 }
+
+button.default.armed,
+.button.default.armed {
+  transform: translateY(1px);
+  background-image: linear-gradient(
+    rgb(176, 205, 236) 0%,
+    rgb(87, 143, 230) 50%,
+    rgb(158, 203, 236) 100%
+  );
+}
+
+/* Pill group (segmented) */
+.pill-group {
+  display: inline-flex;
+  border: 1px solid #888888;
+  border-radius: 4px;
+  overflow: hidden;
+
+  button {
+    border-radius: 0;
+    border-right: 1px solid #888888;
+    min-width: 60px;
+    box-shadow: none;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+.left-pill { border-radius: 4px 0 0 4px !important; }
+.center-pill { border-radius: 0 !important; }
+.right-pill { border-radius: 0 4px 4px 0 !important; }
 
 /* Pulsing Default Button Animation */
 @keyframes aqua-default-pulse {

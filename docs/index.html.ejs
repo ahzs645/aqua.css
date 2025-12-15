@@ -68,6 +68,16 @@
       margin: 1em 0;
       padding: 20px;
       border-radius: 8px;
+      background: rgb(227, 227, 227);
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      box-shadow: inset 0 2px 4px rgba(168, 168, 168, 0.35);
+      background-image: linear-gradient(
+        to right,
+        rgba(168, 168, 168, 0.35) 0%,
+        transparent 0.4%,
+        transparent 99.6%,
+        rgba(168, 168, 168, 0.35)
+      );
     }
     .example details {
       margin-top: 15px;
@@ -122,6 +132,34 @@
       border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 3px;
       padding: 1px 4px;
+    }
+    .component-row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .component-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+    }
+    .states-demo {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .state-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .state-label {
+      font-size: 11px;
+      color: rgba(0, 0, 0, 0.65);
     }
     .hljs-tag { color: #569cd6; }
     .hljs-attr { color: #9cdcfe; }
@@ -196,6 +234,9 @@
             <li><a href="#tree-table-view">Tree Table View</a></li>
             <li><a href="#tooltip">Tooltip</a></li>
             <li><a href="#balloon">Balloon</a></li>
+            <li><a href="#badge">Badge</a></li>
+            <li><a href="#color-swatches">Color Swatches</a></li>
+            <li><a href="#focus-ring">Focus Ring</a></li>
           </ul>
         </li>
         <li>Themes
@@ -279,28 +320,71 @@
     `) %>
 
     <h2 id="buttons">Buttons</h2>
-    <p>
-      Aqua buttons feature glossy gradients. The default button uses the iconic
-      blue Aqua style and can optionally pulse to draw attention.
-    </p>
-
     <%- example(`
-      <div class="button-row">
-        <button>Regular Button</button>
-        <button class="default">Default Button</button>
-        <button class="default pulse">Pulsing Button</button>
+      <div class="label">Standard Buttons</div>
+      <div class="component-row">
+        <button>Button</button>
+        <button class="default">Default</button>
+        <button class="default pulse">Pulsing</button>
         <button disabled>Disabled</button>
       </div>
-    `) %>
 
-    <h3>Round Aqua Buttons</h3>
-    <p>Glossy 3D pill-shaped buttons with the classic Aqua look.</p>
+      <div class="label" style="margin-top: 15px;">Button Types</div>
+      <div class="component-row">
+        <button>Regular</button>
+        <button class="round-rect">Round Rect</button>
+        <button class="help" aria-label="Help">?</button>
+      </div>
 
-    <%- example(`
-      <div class="button-row">
+      <div class="label" style="margin-top: 15px;">Size Variants (from Apple HIG)</div>
+      <div class="component-row">
+        <div class="component-group">
+          <button>Regular</button>
+          <span class="state-label">13px font</span>
+        </div>
+        <div class="component-group">
+          <button class="small">Small</button>
+          <span class="state-label">11px font</span>
+        </div>
+        <div class="component-group">
+          <button class="mini">Mini</button>
+          <span class="state-label">9px font</span>
+        </div>
+      </div>
+
+      <div class="label" style="margin-top: 15px;">Pill Buttons (Segmented Control)</div>
+      <div class="component-row">
+        <div class="pill-group">
+          <button class="left-pill">Left</button>
+          <button class="center-pill">Center</button>
+          <button class="right-pill">Right</button>
+        </div>
+        <div class="segmented-control" style="margin-left: 10px;">
+          <button class="active" aria-pressed="true">Left</button>
+          <button>Center</button>
+          <button>Right</button>
+        </div>
+      </div>
+
+      <div class="label" style="margin-top: 15px;">Glossy 3D (aqua-button)</div>
+      <div class="component-row">
         <button class="aqua-button aqua-button--secondary"><span>Cancel</span></button>
-        <button class="aqua-button aqua-button--primary"><span>Save</span></button>
+        <button class="aqua-button default"><span>Default</span></button>
         <button class="aqua-button aqua-button--orange"><span>Login</span></button>
+        <button class="aqua-button default armed"><span>Pressed</span></button>
+        <button class="aqua-button mini aqua-button--secondary"><span>Mini</span></button>
+      </div>
+
+      <div class="label" style="margin-top: 15px;">Button States</div>
+      <div class="states-demo">
+        <div class="state-box">
+          <button>Normal</button>
+          <div class="state-label">Normal</div>
+        </div>
+        <div class="state-box">
+          <button class="armed">Pressed</button>
+          <div class="state-label">Pressed/Armed</div>
+        </div>
       </div>
     `) %>
 
@@ -1037,6 +1121,53 @@
         <button class="aqua-pagination-btn">4</button>
         <button class="aqua-pagination-btn">5</button>
         <button class="aqua-pagination-arrow">&gt;</button>
+      </div>
+    `) %>
+
+    <h2 id="badge">Badge</h2>
+
+    <%- example(`
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <span>Messages</span>
+        <span class="aqua-badge">5</span>
+        <span style="margin-left: 20px;">Notifications</span>
+        <span class="aqua-badge">99+</span>
+      </div>
+    `) %>
+
+    <h2 id="color-swatches">Color Swatches</h2>
+
+    <%- example(`
+      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <div class="aqua-color-swatch" style="background: var(--close-red);"></div>
+        <div class="aqua-color-swatch" style="background: var(--minimize-yellow);"></div>
+        <div class="aqua-color-swatch" style="background: var(--maximize-green);"></div>
+        <div class="aqua-color-swatch" style="background: var(--aqua-blue);"></div>
+        <div class="aqua-color-swatch" style="background: #5856D6;"></div>
+      </div>
+    `) %>
+
+    <h2 id="focus-ring">Focus Ring (Aqua Blue Glow)</h2>
+    <p class="label">Focus colors: <span class="inline-code">--focus-outer</span>, <span class="inline-code">--focus-inner</span></p>
+
+    <%- example(`
+      <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+        <div>
+          <span class="label">Button</span><br>
+          <button class="aqua-focus-ring is-focused">Button</button>
+        </div>
+        <div>
+          <span class="label">Text field</span><br>
+          <input class="aqua-textfield aqua-focus-ring is-focused" type="text" value="Focused">
+        </div>
+        <div>
+          <span class="label">Select</span><br>
+          <select class="aqua-focus-ring is-focused">
+            <option>Option 1</option>
+            <option selected>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
       </div>
     `) %>
 
