@@ -308,13 +308,31 @@
 
     <h3 id="text-inputs">Text Inputs</h3>
     <%- example(`
-      <div class="field-row-stacked">
-        <label for="text-input">Text Input</label>
-        <input type="text" id="text-input" placeholder="Enter text...">
-      </div>
-      <div class="field-row-stacked" style="margin-top: 12px;">
-        <label for="textarea">Textarea</label>
-        <textarea id="textarea" rows="3" placeholder="Enter multiple lines..."></textarea>
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+        <div>
+          <span class="label">Regular (square corners)</span><br>
+          <input class="aqua-textfield" type="text" placeholder="Enter text...">
+        </div>
+
+        <div>
+          <span class="label">Search (with icon)</span><br>
+          <input class="aqua-textfield search" type="text" placeholder="Search...">
+        </div>
+
+        <div>
+          <span class="label">Round Rect</span><br>
+          <input class="aqua-textfield round-rect" type="text" placeholder="Round rect...">
+        </div>
+
+        <div>
+          <span class="label">Disabled</span><br>
+          <input class="aqua-textfield" type="text" placeholder="Disabled" disabled>
+        </div>
+
+        <div>
+          <span class="label">Password</span><br>
+          <input class="aqua-textfield" type="password" value="••••••••">
+        </div>
       </div>
     `) %>
 
@@ -384,33 +402,40 @@
     `) %>
 
     <h2 id="progress-bar">Progress Bar</h2>
-    <p>
-      Aqua-style progress bars with optional candy-stripe animation.
-    </p>
-
     <%- example(`
-      <div class="progress-demo">
-        <p>Standard progress bar (60%):</p>
-        <div class="progress-bar">
-          <div class="progress-bar-fill" style="width: 60%;"></div>
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+        <div>
+          <span class="label">Determinate (60%)</span><br>
+          <div class="aqua-progress">
+            <div class="bar" style="width: 60%;"></div>
+          </div>
+        </div>
+        <div>
+          <span class="label">Determinate (30%)</span><br>
+          <div class="aqua-progress">
+            <div class="bar" style="width: 30%;"></div>
+          </div>
+        </div>
+        <div>
+          <span class="label">Complete (100%)</span><br>
+          <div class="aqua-progress">
+            <div class="bar" style="width: 100%;"></div>
+          </div>
         </div>
       </div>
-    `) %>
 
-    <%- example(`
-      <div class="progress-demo">
-        <p>Animated progress bar (40%):</p>
-        <div class="progress-bar animated">
-          <div class="progress-bar-fill" style="width: 40%;"></div>
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start; margin-top: 15px;">
+        <div>
+          <span class="label">Indeterminate (striped animation)</span><br>
+          <div class="aqua-progress indeterminate">
+            <div class="bar"></div>
+          </div>
         </div>
-      </div>
-    `) %>
-
-    <%- example(`
-      <div class="progress-demo">
-        <p>Indeterminate progress bar:</p>
-        <div class="progress-bar indeterminate">
-          <div class="progress-bar-fill"></div>
+        <div>
+          <span class="label">Disabled</span><br>
+          <div class="aqua-progress disabled">
+            <div class="bar" style="width: 50%;"></div>
+          </div>
         </div>
       </div>
     `) %>
@@ -419,18 +444,64 @@
     <p>Animated loading indicators.</p>
 
     <%- example(`
-      <div class="button-row">
-        <div class="spinner animate"></div>
-        <div class="spinner-large animate"></div>
-        <div class="spinner-small animate"></div>
-        <div class="spinner-container">
-          <div class="static-rainbow-bg bg-smooth-rainbow"></div>
-          <div class="spinning-pinwheel">
-            <div class="blade"></div>
-            <div class="blade"></div>
-            <div class="blade"></div>
-            <div class="blade"></div>
-            <div class="blade"></div>
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
+        <div>
+          <span class="label">Spinning (Indeterminate)</span><br>
+          <div class="aqua-spinner-indicator" aria-label="Loading">
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Spinner (Large)</span><br>
+          <div class="aqua-spinner-indicator large" aria-label="Loading">
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Ring Spinner</span><br>
+          <div class="spinner animate"></div>
+        </div>
+
+        <div>
+          <span class="label">Ring Spinner (Large)</span><br>
+          <div class="spinner-large animate"></div>
+        </div>
+
+        <div>
+          <span class="label">Pinwheel</span><br>
+          <div class="spinner-container">
+            <div class="static-rainbow-bg bg-smooth-rainbow"></div>
+            <div class="spinning-pinwheel">
+              <div class="blade"></div>
+              <div class="blade"></div>
+              <div class="blade"></div>
+              <div class="blade"></div>
+              <div class="blade"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -447,18 +518,15 @@
 
     <h2 id="tabs">Tabs</h2>
     <%- example(`
-      <div class="tabs">
-        <ul class="tab-list">
-          <li class="active">General</li>
-          <li>Advanced</li>
-          <li>About</li>
-        </ul>
-        <div class="tab-panel">
-          <p>This is the General tab content.</p>
-          <div class="field-row">
-            <input type="checkbox" id="tab-check" checked>
-            <label for="tab-check">Enable feature</label>
-          </div>
+      <h3 style="margin: 0 0 8px 0;">Tabs (Pill Style)</h3>
+      <div class="aqua-tabs-container">
+        <div class="aqua-tabs">
+          <button class="aqua-tab active" data-tab="general">General</button>
+          <button class="aqua-tab" data-tab="security">Security</button>
+          <button class="aqua-tab" data-tab="privacy">Privacy</button>
+        </div>
+        <div class="aqua-tab-content" data-tab-content>
+          <p>General settings content goes here.</p>
         </div>
       </div>
     `) %>
@@ -571,15 +639,75 @@
     `) %>
 
     <h2 id="slider">Slider</h2>
-    <p>Range input with Aqua styling.</p>
-
     <%- example(`
-      <div style="width: 300px;">
-        <label>Volume:</label>
-        <input type="range" min="0" max="100" value="50">
-        <br><br>
-        <label>Blue slider:</label>
-        <input type="range" class="blue" min="0" max="100" value="70">
+      <div>
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+          <div>
+            <span class="label">Horizontal (Circle Thumb)</span><br>
+            <input class="aqua-slider" type="range" min="0" max="100" value="50">
+          </div>
+
+          <div>
+            <span class="label">Disabled</span><br>
+            <input class="aqua-slider" type="range" min="0" max="100" value="50" disabled>
+          </div>
+
+          <div>
+            <span class="label">With Tick Marks (Pointer Thumb)</span><br>
+            <div class="aqua-slider-custom alternative-thumb show-ticks">
+              <div class="track"></div>
+              <div class="thumb" style="left: 45%;"></div>
+              <div class="ticks">
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <span class="label">Custom (Circle Thumb)</span><br>
+            <div class="aqua-slider-custom">
+              <div class="track"></div>
+              <div class="thumb" style="left: 65%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; margin-top: 30px;">
+          <div style="height: 180px;">
+            <span class="label">Vertical (Circle)</span><br>
+            <div class="aqua-slider-custom vertical" style="margin-top: 10px;">
+              <div class="track"></div>
+              <div class="thumb" style="top: 40%;"></div>
+            </div>
+          </div>
+
+          <div style="height: 180px;">
+            <span class="label">Vertical (Pointer + Ticks)</span><br>
+            <div class="aqua-slider-custom vertical alternative-thumb show-ticks" style="margin-top: 10px;">
+              <div class="track"></div>
+              <div class="thumb" style="top: 60%;"></div>
+              <div class="ticks">
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height: 180px;">
+            <span class="label">Vertical Disabled</span><br>
+            <div class="aqua-slider-custom vertical disabled" style="margin-top: 10px;">
+              <div class="track"></div>
+              <div class="thumb" style="top: 50%;"></div>
+            </div>
+          </div>
+        </div>
       </div>
     `) %>
 
@@ -878,10 +1006,26 @@
     <p>Number input with increment/decrement buttons.</p>
 
     <%- example(`
-      <div class="stepper">
-        <button>-</button>
-        <input type="number" value="5" min="0" max="100">
-        <button>+</button>
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
+        <div>
+          <span class="label">Spinner / Stepper</span><br>
+          <div class="aqua-spinner">
+            <input type="number" value="5" min="0" max="100" aria-label="Value">
+            <div class="aqua-spinner-buttons" aria-hidden="true">
+              <button type="button">&#9650;</button>
+              <button type="button">&#9660;</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Legacy Stepper</span><br>
+          <div class="stepper">
+            <button>-</button>
+            <input type="number" value="5" min="0" max="100">
+            <button>+</button>
+          </div>
+        </div>
       </div>
     `) %>
 
@@ -1190,9 +1334,34 @@
         });
       }
 
+      function setupPillTabs() {
+        document.querySelectorAll('.aqua-tabs-container').forEach((container) => {
+          const content = container.querySelector('[data-tab-content]');
+          if (!content) return;
+
+          const textByTab = {
+            general: 'General settings content goes here.',
+            security: 'Security settings content goes here.',
+            privacy: 'Privacy settings content goes here.',
+          };
+
+          function activate(tabId) {
+            container.querySelectorAll('.aqua-tabs .aqua-tab').forEach((btn) => {
+              btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+            });
+            content.innerHTML = `<p>${textByTab[tabId] || ''}</p>`;
+          }
+
+          container.querySelectorAll('.aqua-tabs .aqua-tab').forEach((btn) => {
+            btn.addEventListener('click', () => activate(btn.getAttribute('data-tab')));
+          });
+        });
+      }
+
       setupTitledPanes();
       setupTreeTable();
       setupSplitPanes();
+      setupPillTabs();
     })();
   </script>
 </body>

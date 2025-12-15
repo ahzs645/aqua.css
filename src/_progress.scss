@@ -7,7 +7,8 @@
 /* ============================================
    LINEAR PROGRESS BAR
    ============================================ */
-.progress-bar {
+.progress-bar,
+.aqua-progress {
   width: 200px;
   height: 13px;
   border: 0.5px solid rgb(146, 146, 146);
@@ -25,6 +26,24 @@
   border-right: 0.5px solid rgb(161, 161, 161);
   border-radius: 2px;
   transition: width 300ms ease;
+}
+
+/* aqua-progress inner bar */
+.aqua-progress .bar {
+  height: 100%;
+  border-right: 0.5px solid rgb(161, 161, 161);
+  border-radius: 2px;
+  transition: width 300ms ease;
+
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgb(84, 170, 240),
+    rgb(84, 170, 240) 5px,
+    rgb(110, 190, 250) 5px,
+    rgb(110, 190, 250) 10px
+  );
+  background-size: 14px 100%;
+  animation: progress-scroll 1s linear infinite;
 }
 
 /* Animated scrolling pattern */
@@ -46,7 +65,8 @@
 }
 
 /* Indeterminate state - candy cane stripes */
-.progress-bar.indeterminate {
+.progress-bar.indeterminate,
+.aqua-progress.indeterminate {
   background:
     /* Glass highlight overlay */
     linear-gradient(
@@ -76,6 +96,10 @@
   .progress-bar-fill {
     display: none;
   }
+
+  .bar {
+    display: none;
+  }
 }
 
 @keyframes progress-indeterminate {
@@ -84,16 +108,19 @@
 }
 
 /* Size variations */
-.progress-bar.small {
+.progress-bar.small,
+.aqua-progress.small {
   height: 8px;
 }
 
-.progress-bar.large {
+.progress-bar.large,
+.aqua-progress.large {
   height: 18px;
 }
 
 /* Disabled state */
-.progress-bar.disabled {
+.progress-bar.disabled,
+.aqua-progress.disabled {
   opacity: 0.6;
   pointer-events: none;
 }
@@ -102,7 +129,8 @@
    CIRCULAR PROGRESS INDICATOR (Determinate)
    Uses --progress as a number 0-100
    ============================================ */
-.progress-indicator {
+.progress-indicator,
+.aqua-progress-indicator {
   width: 32px;
   height: 32px;
   position: relative;
@@ -201,7 +229,8 @@
 }
 
 /* Size variants */
-.progress-indicator.small {
+.progress-indicator.small,
+.aqua-progress-indicator.small {
   width: 24px;
   height: 24px;
 
@@ -210,7 +239,8 @@
   }
 }
 
-.progress-indicator.large {
+.progress-indicator.large,
+.aqua-progress-indicator.large {
   width: 48px;
   height: 48px;
 }
@@ -218,7 +248,8 @@
 /* ============================================
    SPINNER INDICATOR (Indeterminate - 12 segments)
    ============================================ */
-.spinner-indicator {
+.spinner-indicator,
+.aqua-spinner-indicator {
   width: 20px;
   height: 20px;
   position: relative;
@@ -277,7 +308,8 @@
 }
 
 /* Larger spinner variant */
-.spinner-indicator.large {
+.spinner-indicator.large,
+.aqua-spinner-indicator.large {
   width: 32px;
   height: 32px;
 

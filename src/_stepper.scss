@@ -43,3 +43,70 @@
     }
   }
 }
+
+/* ============================================
+   Aqua Spinner / Stepper (JavaFX-style)
+   ============================================ */
+
+.aqua-spinner {
+  display: inline-flex;
+  align-items: stretch;
+  font-family: var(--font-system);
+  font-size: var(--font-size-base);
+
+  input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid rgb(168, 168, 168);
+    border-right: none;
+    border-radius: 3px 0 0 3px;
+    outline: none;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    -moz-appearance: textfield;
+  }
+}
+
+.aqua-spinner-buttons {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    font-size: 10px;
+    padding: 0 8px;
+    border: 1px solid rgb(168, 168, 168);
+    border-left: none;
+    background: linear-gradient(
+      rgb(255, 255, 255) 25%,
+      rgb(243, 243, 243) 50%,
+      rgb(236, 236, 236) 50%,
+      rgb(243, 243, 243) 100%
+    );
+    cursor: pointer;
+    height: 50%;
+    line-height: 1;
+
+    &:first-child {
+      border-radius: 0 3px 0 0;
+      border-bottom: none;
+    }
+
+    &:last-child {
+      border-radius: 0 0 3px 0;
+    }
+
+    &:active {
+      background: linear-gradient(
+        rgb(224, 224, 224) 25%,
+        rgb(214, 214, 214) 50%,
+        rgb(207, 207, 207) 50%,
+        rgb(214, 214, 214) 100%
+      );
+    }
+  }
+}
