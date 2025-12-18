@@ -84,22 +84,7 @@
   border-radius: 2.5px;
 
   /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass(
-    'bar',
-    $overrides: (
-      shine: (
-        opacity-start: 0.7,
-        opacity-end: 0.1,
-        z-index: 2
-      ),
-      glow: (
-        height: 40%,
-        opacity-start: 0,
-        opacity-end: 0.7,
-        z-index: 2
-      )
-    )
-  );
+  @include aqua-glass('bar');
 
   .progress-bar-fill {
     display: none;

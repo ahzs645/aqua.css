@@ -65,36 +65,7 @@
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 
   /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass(
-    'box',
-    $overrides: (
-      shine: (
-        height: 15%,
-        opacity-start: 0.55,
-        opacity-end: 0.25,
-        radius: 4px 4px 0 0,
-        z-index: 10
-      ),
-      glow: (
-        height: 20%,
-        bottom: 0,
-        blur: 1px,
-        opacity-start: 0,
-        opacity-end: 0.35,
-        radius: 0 0 2px 2px,
-        z-index: 10
-      )
-    )
-  );
-
-  /* Override positioning for tabs (use left/right instead of centering) */
-  &::before,
-  &::after {
-    left: 1px;
-    right: 1px;
-    width: auto;
-    transform: none;
-  }
+  @include aqua-glass('box');
 }
 
 @mixin aqua-tab-hover {
@@ -121,18 +92,6 @@
     0 1px 1px rgba(0, 78, 187, 0.5);
   text-shadow: 0 2px 2px rgba(30, 77, 161, 0.5);
   border-bottom: 1px solid rgb(210, 255, 255);
-
-  /* Enhanced gloss for active state */
-  &::before {
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.35)
-    );
-  }
-
-  &::after {
-    background: linear-gradient(transparent, rgba(255, 255, 255, 0.45));
-  }
 }
 
 /* ===== Aqua Tab Classes (Recommended) ===== */

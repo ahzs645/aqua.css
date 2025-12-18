@@ -75,7 +75,7 @@
   vertical-align: middle;
 
   /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass('round', $overrides: (shine: (z-index: 20), glow: (z-index: 20)));
+  @include aqua-glass('round');
 }
 
 /* Rainbow background layer */

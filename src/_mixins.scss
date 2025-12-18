@@ -52,23 +52,23 @@ $aqua-glass-presets: (
   ),
   'box': (
     shine: (
-      height: 45%,
+      height: 33%,
       width: 90%,
-      top: 1px,
-      blur: 0,
-      opacity-start: 0.6,
-      opacity-end: 0.1,
-      radius: 2px 2px 1px 1px,
+      top: 5%,
+      blur: 1px,
+      opacity-start: 0.9,
+      opacity-end: 0.3,
+      radius: inherit,
       z-index: 1
     ),
     glow: (
-      height: 40%,
+      height: 33%,
       width: 90%,
-      bottom: 1px,
-      blur: 0,
-      opacity-start: 0.05,
-      opacity-end: 0.25,
-      radius: 1px 1px 2px 2px,
+      bottom: 10%,
+      blur: 3px,
+      opacity-start: 0.2,
+      opacity-end: 0.5,
+      radius: inherit,
       z-index: 1
     )
   ),
@@ -114,7 +114,21 @@ $aqua-glass-aliases: (
   'switch': (preset: 'round'),
   'spinner': (preset: 'round'),
 
-  'pill': (preset: 'box'),
+  'pill': (
+    preset: 'box',
+    overrides: (
+      shine: (
+        width: calc(100% - 0.875em),
+        radius: 2em 2em 0.5em 0.5em,
+        z-index: 2
+      ),
+      glow: (
+        width: calc(100% - 1.25em),
+        radius: 0.75em,
+        z-index: null
+      )
+    )
+  ),
   'bubble': (preset: 'box'),
   'tab': (preset: 'box'),
   'control': (preset: 'box'),

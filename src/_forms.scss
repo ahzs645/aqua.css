@@ -121,27 +121,7 @@ select {
   color: var(--text-color);
 
   /* Aqua glass effect */
-  @include aqua-glass(
-    'box',
-    $overrides: (
-      shine: (
-        height: 50%,
-        width: calc(100% - 8px),
-        top: 0,
-        opacity-start: 0.5,
-        opacity-end: 0.1,
-        radius: 3px 3px 0 0
-      ),
-      glow: (
-        height: 35%,
-        width: calc(100% - 8px),
-        bottom: 0,
-        opacity-start: 0.05,
-        opacity-end: 0.25,
-        radius: 0 0 3px 3px
-      )
-    )
-  );
+  @include aqua-glass('box');
 
   &:focus {
     border-color: rgb(90, 150, 200);
