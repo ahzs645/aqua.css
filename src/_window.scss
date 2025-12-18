@@ -163,7 +163,7 @@
     }
 
     /* Aqua glass effect (top shine + bottom glow) */
-    @include aqua-glass-effect('circle');
+    @include aqua-glass('round');
 
     /* Close button - Red */
     &[aria-label="Close"] {

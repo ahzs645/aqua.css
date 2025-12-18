@@ -21,7 +21,29 @@
   justify-content: center;
 
   /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass-effect('pill');
+  @include aqua-glass(
+    'box',
+    $overrides: (
+      shine: (
+        height: 33%,
+        top: 5%,
+        blur: 1px,
+        opacity-start: 0.9,
+        opacity-end: 0.3,
+        radius: 2em 2em 0.5em 0.5em,
+        z-index: 2
+      ),
+      glow: (
+        height: 33%,
+        bottom: 10%,
+        blur: 3px,
+        opacity-start: 0.2,
+        opacity-end: 0.5,
+        radius: 0.75em,
+        z-index: null
+      )
+    )
+  );
 
   /* Override widths with calc() for variable-width buttons */
   &::before { width: calc(100% - 0.875em); }

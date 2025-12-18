@@ -32,7 +32,7 @@ table.aqua-table {
     position: relative;
 
     /* Aqua glass effect */
-    @include aqua-glass-effect('header');
+    @include aqua-glass('bar');
 
     &:last-child {
       border-right: none;

@@ -4,467 +4,331 @@
  */
 
 /**
- * Aqua Glass Effect
+ * Aqua Glass Effect (consolidated)
  * Creates the signature Mac OS X Aqua glossy appearance with:
  * - Top highlight/shine (::before pseudo-element)
  * - Bottom glow reflection (::after pseudo-element)
  *
- * @param $shape - Shape preset with component-specific defaults:
- *   'circle'  - Traffic lights, round buttons (default)
- *   'pill'    - Aqua buttons
- *   'spinner' - Pinwheel spinner
- *   'bubble'  - Chat bubbles
- *   'tab'     - Tab buttons
- *   'switch'  - Toggle switch thumb
- *   'toast'   - Toast action buttons (shine only)
+ * Core presets:
+ *   'round'  - Circular/spherical elements
+ *   'box'    - Rectangular controls and buttons
+ *   'bar'    - Flat/full-width bars and headers
+ *
+ * Modifier aliases:
+ *   'subtle' - Lighter shine-only effect
+ *
+ * Backwards-compatible aliases are supported (e.g. 'circle', 'pill', 'header', ...).
  */
-@mixin aqua-glass-effect($shape: 'circle') {
-  // Default values (circle - traffic lights)
-  $shine-height: 40%;
-  $shine-width: 70%;
-  $shine-top: 8%;
-  $shine-blur: 0.5px;
-  $shine-opacity-start: 0.9;
-  $shine-opacity-end: 0.2;
-  $shine-radius: 50% 50% 30% 30%;
-  $shine-z-index: 2;
 
-  $glow-height: 30%;
-  $glow-width: 60%;
-  $glow-bottom: 10%;
-  $glow-blur: 1px;
-  $glow-opacity-start: 0.1;
-  $glow-opacity-end: 0.4;
-  $glow-radius: 50%;
-  $glow-z-index: null;
+@use "sass:map";
+@use "sass:meta";
 
-  $include-glow: true;
+/* ============================================
+   Presets + aliases (single source of truth)
+   ============================================ */
 
-  @if $shape == 'pill' {
-    // Aqua buttons
-    $shine-height: 33%;
-    $shine-top: 5%;
-    $shine-blur: 1px;
-    $shine-opacity-end: 0.3;
-    $shine-radius: 2em 2em 0.5em 0.5em;
+$aqua-glass-presets: (
+  'round': (
+    shine: (
+      height: 40%,
+      width: 75%,
+      top: 8%,
+      blur: 0.5px,
+      opacity-start: 0.8,
+      opacity-end: 0.15,
+      radius: 50% 50% 30% 30%,
+      z-index: 2
+    ),
+    glow: (
+      height: 35%,
+      width: 70%,
+      bottom: 10%,
+      blur: 1px,
+      opacity-start: 0.1,
+      opacity-end: 0.35,
+      radius: 30% 30% 50% 50%,
+      z-index: null
+    )
+  ),
+  'box': (
+    shine: (
+      height: 45%,
+      width: 90%,
+      top: 1px,
+      blur: 0,
+      opacity-start: 0.6,
+      opacity-end: 0.1,
+      radius: 2px 2px 1px 1px,
+      z-index: 1
+    ),
+    glow: (
+      height: 40%,
+      width: 90%,
+      bottom: 1px,
+      blur: 0,
+      opacity-start: 0.05,
+      opacity-end: 0.25,
+      radius: 1px 1px 2px 2px,
+      z-index: 1
+    )
+  ),
+  'bar': (
+    shine: (
+      height: 50%,
+      width: 100%,
+      top: 0,
+      blur: 0,
+      opacity-start: 0.4,
+      opacity-end: 0.05,
+      radius: 0,
+      z-index: 1
+    ),
+    glow: (
+      height: 30%,
+      width: 100%,
+      bottom: 0,
+      blur: 0,
+      opacity-start: 0,
+      opacity-end: 0.2,
+      radius: 0,
+      z-index: 1
+    )
+  )
+);
 
-    $glow-height: 33%;
-    $glow-blur: 3px;
-    $glow-opacity-start: 0.2;
-    $glow-opacity-end: 0.5;
-    $glow-radius: 0.75em;
-  } @else if $shape == 'spinner' {
-    // Pinwheel spinner
-    $shine-top: 5%;
-    $shine-blur: 1px;
-    $shine-opacity-start: 0.7;
-    $shine-opacity-end: 0.1;
-    $shine-radius: 50% 50% 40% 40%;
-    $shine-z-index: 20;
+// Aliases can define:
+// - preset: base preset name ('round' | 'box' | 'bar')
+// - options: default options for the alias
+// - overrides: per-layer overrides merged into the base preset config
+$aqua-glass-aliases: (
+  // Modifiers
+  'subtle': (
+    preset: 'box',
+    options: (parts: 'shine', glow: false, intensity: 0.85)
+  ),
 
-    $glow-bottom: 8%;
-    $glow-blur: 1px;
-    $glow-opacity-start: 0.05;
-    $glow-opacity-end: 0.25;
-    $glow-z-index: 20;
-  } @else if $shape == 'bubble' {
-    // Chat bubbles
-    $shine-height: 12px;
-    $shine-width: calc(100% - 12px);
-    $shine-top: 2px;
-    $shine-blur: 0.5px;
-    $shine-opacity-start: 0.9;
-    $shine-opacity-end: 0.25;
-    $shine-radius: 16px 16px 4px 4px;
-    $shine-z-index: 1;
+  // Legacy preset names (mapped to the consolidated presets)
+  'circle': (preset: 'round'),
+  'control-round': (preset: 'round'),
+  'slider-thumb': (preset: 'round'),
+  'switch': (preset: 'round'),
+  'spinner': (preset: 'round'),
 
-    $glow-height: 20px;
-    $glow-width: 100%;
-    $glow-bottom: 0;
-    $glow-blur: 0.6px;
-    $glow-opacity-start: 0;
-    $glow-opacity-end: 0.45;
-    $glow-radius: 4px;
-    $glow-z-index: 1;
-  } @else if $shape == 'tab' {
-    // Tab buttons
-    $shine-height: 15%;
-    $shine-width: calc(100% - 2px);
-    $shine-top: 1px;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.55;
-    $shine-opacity-end: 0.25;
-    $shine-radius: 4px 4px 0 0;
-    $shine-z-index: 10;
+  'pill': (preset: 'box'),
+  'bubble': (preset: 'box'),
+  'tab': (preset: 'box'),
+  'control': (preset: 'box'),
+  'stepper': (preset: 'box'),
+  'select': (preset: 'box'),
 
-    $glow-height: 20%;
-    $glow-width: calc(100% - 2px);
-    $glow-bottom: 0;
-    $glow-blur: 1px;
-    $glow-opacity-start: 0;
-    $glow-opacity-end: 0.35;
-    $glow-radius: 0 0 2px 2px;
-    $glow-z-index: 10;
-  } @else if $shape == 'switch' {
-    // Toggle switch thumb
-    $shine-height: 30%;
-    $shine-width: 50%;
-    $shine-top: 1px;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.9;
-    $shine-opacity-end: 0.3;
-    $shine-radius: 9999px;
-    $shine-z-index: 2;
+  'header': (preset: 'bar'),
+  'progress': (preset: 'bar'),
 
-    $glow-height: 40%;
-    $glow-width: 80%;
-    $glow-bottom: 1px;
-    $glow-blur: 0.5px;
-    $glow-opacity-start: 0.2;
-    $glow-opacity-end: 0.5;
-    $glow-radius: 9999px;
-    $glow-z-index: 1;
-  } @else if $shape == 'toast' {
-    // Toast action buttons (shine only, no glow)
-    $shine-height: 40%;
-    $shine-width: 80%;
-    $shine-top: 1px;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.8;
-    $shine-opacity-end: 0.2;
-    $shine-radius: 10px 10px 2px 2px;
-    $shine-z-index: 1;
+  // Legacy "shine-only" names
+  'toast': (preset: 'box', options: (parts: 'shine', glow: false, intensity: 1.25)),
+  'menubar': (
+    preset: 'bar',
+    options: (parts: 'shine', glow: false, intensity: 0.85),
+    overrides: (shine: (opacity-start: 0.3, opacity-end: 0.1))
+  )
+);
 
-    $include-glow: false;
-  } @else if $shape == 'progress' {
-    // Progress bar (indeterminate)
-    $shine-height: 50%;
-    $shine-width: 100%;
-    $shine-top: 0;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.7;
-    $shine-opacity-end: 0.1;
-    $shine-radius: 2.5px 2.5px 0 0;
-    $shine-z-index: 2;
+/* ============================================
+   Internal helpers
+   ============================================ */
 
-    $glow-height: 40%;
-    $glow-width: 100%;
-    $glow-bottom: 0;
-    $glow-blur: 0;
-    $glow-opacity-start: 0;
-    $glow-opacity-end: 0.7;
-    $glow-radius: 0 0 2.5px 2.5px;
-    $glow-z-index: 2;
-  } @else if $shape == 'control' {
-    // Form controls (checkbox, radio, pagination buttons)
-    $shine-height: 45%;
-    $shine-width: 90%;
-    $shine-top: 1px;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.6;
-    $shine-opacity-end: 0.1;
-    $shine-radius: 2px 2px 1px 1px;
-    $shine-z-index: 1;
+@function _aqua-glass-option($options, $key, $fallback) {
+  @if meta.type-of($options) == 'map' and map.has-key($options, $key) {
+    @return map.get($options, $key);
+  }
+  @return $fallback;
+}
 
-    $glow-height: 40%;
-    $glow-width: 90%;
-    $glow-bottom: 1px;
-    $glow-blur: 0;
-    $glow-opacity-start: 0.05;
-    $glow-opacity-end: 0.25;
-    $glow-radius: 1px 1px 2px 2px;
-    $glow-z-index: 1;
-  } @else if $shape == 'control-round' {
-    // Round form controls (radio buttons)
-    $shine-height: 40%;
-    $shine-width: 80%;
-    $shine-top: 1px;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.6;
-    $shine-opacity-end: 0.1;
-    $shine-radius: 50% 50% 30% 30%;
-    $shine-z-index: 1;
-
-    $glow-height: 35%;
-    $glow-width: 80%;
-    $glow-bottom: 1px;
-    $glow-blur: 0;
-    $glow-opacity-start: 0.05;
-    $glow-opacity-end: 0.25;
-    $glow-radius: 30% 30% 50% 50%;
-    $glow-z-index: 1;
-  } @else if $shape == 'header' {
-    // Table headers, titled pane headers (flat bars)
-    $shine-height: 50%;
-    $shine-width: 100%;
-    $shine-top: 0;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.4;
-    $shine-opacity-end: 0.05;
-    $shine-radius: 0;
-    $shine-z-index: 1;
-
-    $glow-height: 30%;
-    $glow-width: 100%;
-    $glow-bottom: 0;
-    $glow-blur: 0;
-    $glow-opacity-start: 0;
-    $glow-opacity-end: 0.2;
-    $glow-radius: 0;
-    $glow-z-index: 1;
-  } @else if $shape == 'stepper' {
-    // Stepper/spinner buttons
-    $shine-height: 45%;
-    $shine-width: 100%;
-    $shine-top: 0;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.5;
-    $shine-opacity-end: 0.1;
-    $shine-radius: 0;
-    $shine-z-index: 1;
-
-    $glow-height: 35%;
-    $glow-width: 100%;
-    $glow-bottom: 0;
-    $glow-blur: 0;
-    $glow-opacity-start: 0.05;
-    $glow-opacity-end: 0.2;
-    $glow-radius: 0;
-    $glow-z-index: 1;
-  } @else if $shape == 'select' {
-    // Select dropdown
-    $shine-height: 50%;
-    $shine-width: calc(100% - 8px);
-    $shine-top: 0;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.5;
-    $shine-opacity-end: 0.1;
-    $shine-radius: 3px 3px 0 0;
-    $shine-z-index: 1;
-
-    $glow-height: 35%;
-    $glow-width: calc(100% - 8px);
-    $glow-bottom: 0;
-    $glow-blur: 0;
-    $glow-opacity-start: 0.05;
-    $glow-opacity-end: 0.25;
-    $glow-radius: 0 0 3px 3px;
-    $glow-z-index: 1;
-  } @else if $shape == 'slider-thumb' {
-    // Slider thumb (round)
-    $shine-height: 40%;
-    $shine-width: 80%;
-    $shine-top: 1px;
-    $shine-blur: 0;
-    $shine-opacity-start: 0.7;
-    $shine-opacity-end: 0.15;
-    $shine-radius: 50% 50% 30% 30%;
-    $shine-z-index: 1;
-
-    $glow-height: 35%;
-    $glow-width: 80%;
-    $glow-bottom: 1px;
-    $glow-blur: 0;
-    $glow-opacity-start: 0.1;
-    $glow-opacity-end: 0.35;
-    $glow-radius: 30% 30% 50% 50%;
-    $glow-z-index: 1;
+@function _aqua-glass-scale-alpha($alpha, $intensity) {
+  @if $alpha == null {
+    @return null;
   }
 
-  // Top shine
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: $shine-height;
-    width: $shine-width;
-    top: $shine-top;
-    background: linear-gradient(
-      rgba(255, 255, 255, $shine-opacity-start),
-      rgba(255, 255, 255, $shine-opacity-end)
-    );
-    border-radius: $shine-radius;
-    @if $shine-blur != 0 {
-      filter: blur($shine-blur);
+  $scaled: $alpha * $intensity;
+  @if $scaled < 0 {
+    @return 0;
+  }
+  @if $scaled > 1 {
+    @return 1;
+  }
+  @return $scaled;
+}
+
+@function _aqua-glass-width($layer) {
+  @if meta.type-of($layer) == 'map' and map.has-key($layer, width) {
+    @return map.get($layer, width);
+  }
+
+  @if meta.type-of($layer) == 'map' and map.has-key($layer, inset-x) {
+    $inset-x: map.get($layer, inset-x);
+    @return calc(100% - #{2 * $inset-x});
+  }
+
+  @return 100%;
+}
+
+@function _aqua-map-deep-merge($base, $overrides) {
+  $merged: $base;
+
+  @if meta.type-of($overrides) != 'map' {
+    @return $merged;
+  }
+
+  @each $key, $value in $overrides {
+    $existing: null;
+    @if meta.type-of($base) == 'map' and map.has-key($base, $key) {
+      $existing: map.get($base, $key);
     }
-    z-index: $shine-z-index;
-    pointer-events: none;
+
+    @if meta.type-of($existing) == 'map' and meta.type-of($value) == 'map' {
+      $merged: map.merge($merged, ($key: _aqua-map-deep-merge($existing, $value)));
+    } @else {
+      $merged: map.merge($merged, ($key: $value));
+    }
   }
 
-  // Bottom glow (conditionally included)
-  @if $include-glow {
+  @return $merged;
+}
+
+@function _aqua-glass-resolve($name) {
+  @if map.has-key($aqua-glass-presets, $name) {
+    @return (preset: $name);
+  }
+
+  @if map.has-key($aqua-glass-aliases, $name) {
+    @return map.get($aqua-glass-aliases, $name);
+  }
+
+  @warn "Unknown aqua glass preset `#{$name}`; falling back to `round`.";
+  @return (preset: 'round');
+}
+
+/* ============================================
+   Public API
+   ============================================ */
+
+// parts: 'both' | 'shine' | 'glow'
+@mixin aqua-glass($preset: 'round', $parts: null, $intensity: null, $glow: null, $overrides: ()) {
+  $resolved: _aqua-glass-resolve($preset);
+
+  $base-preset: map.get($resolved, preset);
+  $base-config: map.get($aqua-glass-presets, $base-preset);
+
+  @if $base-config == null {
+    @warn "Unknown aqua glass base preset `#{$base-preset}`; falling back to `round`.";
+    $base-config: map.get($aqua-glass-presets, 'round');
+  }
+
+  $alias-options: null;
+  @if map.has-key($resolved, options) {
+    $alias-options: map.get($resolved, options);
+  }
+
+  $alias-overrides: ();
+  @if map.has-key($resolved, overrides) {
+    $alias-overrides: map.get($resolved, overrides);
+  }
+
+  $final-parts: _aqua-glass-option($alias-options, parts, 'both');
+  @if $parts != null {
+    $final-parts: $parts;
+  }
+
+  $final-intensity: _aqua-glass-option($alias-options, intensity, 1);
+  @if $intensity != null {
+    $final-intensity: $intensity;
+  }
+
+  $final-glow: _aqua-glass-option($alias-options, glow, true);
+  @if $glow != null {
+    $final-glow: $glow;
+  }
+
+  $config: _aqua-map-deep-merge($base-config, $alias-overrides);
+  $config: _aqua-map-deep-merge($config, $overrides);
+
+  $shine: map.get($config, shine);
+  $glow-layer: map.get($config, glow);
+
+  $include-shine: $final-parts == 'both' or $final-parts == 'shine';
+  $include-glow: $final-glow == true and ($final-parts == 'both' or $final-parts == 'glow');
+
+  @if $include-shine and $shine != null {
+    $shine-blur: map.get($shine, blur);
+    $shine-z: map.get($shine, z-index);
+    $shine-opacity-start: _aqua-glass-scale-alpha(map.get($shine, opacity-start), $final-intensity);
+    $shine-opacity-end: _aqua-glass-scale-alpha(map.get($shine, opacity-end), $final-intensity);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: map.get($shine, height);
+      width: _aqua-glass-width($shine);
+      top: map.get($shine, top);
+      background: linear-gradient(
+        rgba(255, 255, 255, $shine-opacity-start),
+        rgba(255, 255, 255, $shine-opacity-end)
+      );
+      border-radius: map.get($shine, radius);
+      @if $shine-blur != null and $shine-blur != 0 {
+        filter: blur($shine-blur);
+      }
+      @if $shine-z != null {
+        z-index: $shine-z;
+      }
+      pointer-events: none;
+    }
+  }
+
+  @if $include-glow and $glow-layer != null {
+    $glow-blur: map.get($glow-layer, blur);
+    $glow-z: map.get($glow-layer, z-index);
+    $glow-opacity-start: _aqua-glass-scale-alpha(map.get($glow-layer, opacity-start), $final-intensity);
+    $glow-opacity-end: _aqua-glass-scale-alpha(map.get($glow-layer, opacity-end), $final-intensity);
+
     &::after {
       content: '';
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      height: $glow-height;
-      width: $glow-width;
-      bottom: $glow-bottom;
+      height: map.get($glow-layer, height);
+      width: _aqua-glass-width($glow-layer);
+      bottom: map.get($glow-layer, bottom);
       background: linear-gradient(
         rgba(255, 255, 255, $glow-opacity-start),
         rgba(255, 255, 255, $glow-opacity-end)
       );
-      border-radius: $glow-radius;
-      @if $glow-blur != 0 {
+      border-radius: map.get($glow-layer, radius);
+      @if $glow-blur != null and $glow-blur != 0 {
         filter: blur($glow-blur);
       }
-      @if $glow-z-index {
-        z-index: $glow-z-index;
+      @if $glow-z != null {
+        z-index: $glow-z;
       }
       pointer-events: none;
     }
   }
 }
 
-/**
- * Aqua Glass Shine Only
- * Just the top highlight, useful when ::after is needed for other purposes
- */
-@mixin aqua-glass-shine($shape: 'circle') {
-  $height: 40%;
-  $width: 70%;
-  $top: 8%;
-  $blur: 0.5px;
-  $opacity-start: 0.9;
-  $opacity-end: 0.2;
-  $radius: 50% 50% 30% 30%;
-  $z-index: 2;
+/* ============================================
+   Backwards-compatible wrappers
+   ============================================ */
 
-  @if $shape == 'pill' {
-    $height: 33%;
-    $top: 5%;
-    $blur: 1px;
-    $opacity-end: 0.3;
-    $radius: 2em 2em 0.5em 0.5em;
-  } @else if $shape == 'spinner' {
-    $top: 5%;
-    $blur: 1px;
-    $opacity-start: 0.7;
-    $opacity-end: 0.1;
-    $radius: 50% 50% 40% 40%;
-    $z-index: 20;
-  } @else if $shape == 'menubar' {
-    // Menu bar top gloss
-    $height: 50%;
-    $width: 100%;
-    $top: 0;
-    $blur: 0;
-    $opacity-start: 0.3;
-    $opacity-end: 0.1;
-    $radius: 0;
-    $z-index: 1;
-  } @else if $shape == 'control' {
-    // Form controls (checkbox, radio, pagination buttons)
-    $height: 45%;
-    $width: 90%;
-    $top: 1px;
-    $blur: 0;
-    $opacity-start: 0.6;
-    $opacity-end: 0.1;
-    $radius: 2px 2px 1px 1px;
-    $z-index: 1;
-  } @else if $shape == 'control-round' {
-    // Round form controls (radio buttons)
-    $height: 40%;
-    $width: 80%;
-    $top: 1px;
-    $blur: 0;
-    $opacity-start: 0.6;
-    $opacity-end: 0.1;
-    $radius: 50% 50% 30% 30%;
-    $z-index: 1;
-  } @else if $shape == 'header' {
-    // Table headers, titled pane headers
-    $height: 50%;
-    $width: 100%;
-    $top: 0;
-    $blur: 0;
-    $opacity-start: 0.4;
-    $opacity-end: 0.05;
-    $radius: 0;
-    $z-index: 1;
-  } @else if $shape == 'stepper' {
-    // Stepper/spinner buttons
-    $height: 45%;
-    $width: 100%;
-    $top: 0;
-    $blur: 0;
-    $opacity-start: 0.5;
-    $opacity-end: 0.1;
-    $radius: 0;
-    $z-index: 1;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: $height;
-    width: $width;
-    top: $top;
-    background: linear-gradient(
-      rgba(255, 255, 255, $opacity-start),
-      rgba(255, 255, 255, $opacity-end)
-    );
-    border-radius: $radius;
-    @if $blur != 0 {
-      filter: blur($blur);
-    }
-    z-index: $z-index;
-    pointer-events: none;
-  }
+@mixin aqua-glass-effect($shape: 'circle') {
+  @include aqua-glass($shape);
 }
 
-/**
- * Aqua Glass Glow Only
- * Just the bottom glow, useful when ::before is needed for other purposes
- */
+@mixin aqua-glass-shine($shape: 'circle') {
+  @include aqua-glass($shape, $parts: 'shine', $glow: false);
+}
+
 @mixin aqua-glass-glow($shape: 'circle') {
-  $height: 30%;
-  $width: 60%;
-  $bottom: 10%;
-  $blur: 1px;
-  $opacity-start: 0.1;
-  $opacity-end: 0.4;
-  $radius: 50%;
-  $z-index: null;
-
-  @if $shape == 'pill' {
-    $height: 33%;
-    $blur: 3px;
-    $opacity-start: 0.2;
-    $opacity-end: 0.5;
-    $radius: 0.75em;
-  } @else if $shape == 'spinner' {
-    $bottom: 8%;
-    $blur: 1px;
-    $opacity-start: 0.05;
-    $opacity-end: 0.25;
-    $z-index: 20;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: $height;
-    width: $width;
-    bottom: $bottom;
-    background: linear-gradient(
-      rgba(255, 255, 255, $opacity-start),
-      rgba(255, 255, 255, $opacity-end)
-    );
-    border-radius: $radius;
-    @if $blur != 0 {
-      filter: blur($blur);
-    }
-    @if $z-index {
-      z-index: $z-index;
-    }
-    pointer-events: none;
-  }
+  @include aqua-glass($shape, $parts: 'glow', $glow: true);
 }

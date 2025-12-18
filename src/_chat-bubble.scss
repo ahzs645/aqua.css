@@ -25,7 +25,7 @@
     inset 0 0 0 1px rgba(0, 0, 0, 0.08);
 
   /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass-effect('bubble');
+  @include aqua-glass('box');
 
   /* Override positioning for bubble shape (use left/right instead of centering) */
   &::before {

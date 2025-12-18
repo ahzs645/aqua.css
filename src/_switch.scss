@@ -43,7 +43,31 @@
   transform: translateX(0);
 
   /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass-effect('switch');
+  @include aqua-glass(
+    'round',
+    $overrides: (
+      shine: (
+        height: 30%,
+        width: 50%,
+        top: 1px,
+        blur: 0,
+        opacity-start: 0.9,
+        opacity-end: 0.3,
+        radius: 9999px,
+        z-index: 2
+      ),
+      glow: (
+        height: 40%,
+        width: 80%,
+        bottom: 1px,
+        blur: 0.5px,
+        opacity-start: 0.2,
+        opacity-end: 0.5,
+        radius: 9999px,
+        z-index: 1
+      )
+    )
+  );
 }
 
 /* OFF state - gray gradient */

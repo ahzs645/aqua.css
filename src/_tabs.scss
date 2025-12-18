@@ -65,7 +65,27 @@
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 
   /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass-effect('tab');
+  @include aqua-glass(
+    'box',
+    $overrides: (
+      shine: (
+        height: 15%,
+        opacity-start: 0.55,
+        opacity-end: 0.25,
+        radius: 4px 4px 0 0,
+        z-index: 10
+      ),
+      glow: (
+        height: 20%,
+        bottom: 0,
+        blur: 1px,
+        opacity-start: 0,
+        opacity-end: 0.35,
+        radius: 0 0 2px 2px,
+        z-index: 10
+      )
+    )
+  );
 
   /* Override positioning for tabs (use left/right instead of centering) */
   &::before,

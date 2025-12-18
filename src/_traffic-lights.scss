@@ -37,7 +37,7 @@
     inset 0 0.15em 0.25em 0.1em rgba(150, 150, 150, 0.75);
 
   /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass-effect($shape: 'circle');
+  @include aqua-glass('round');
 }
 
 /* Icon styles - hidden by default */

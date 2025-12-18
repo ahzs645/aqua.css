@@ -39,7 +39,7 @@
   position: relative;
 
   /* Aqua glass effect */
-  @include aqua-glass-effect('header');
+  @include aqua-glass('bar');
 
   &:hover {
     background: linear-gradient(

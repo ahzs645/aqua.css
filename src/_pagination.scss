@@ -44,7 +44,7 @@
   overflow: hidden;
 
   /* Aqua glass effect */
-  @include aqua-glass-effect('control-round');
+  @include aqua-glass('round');
 
   &:hover:not(.active):not(:disabled) {
     background: linear-gradient(
@@ -106,7 +106,7 @@
   overflow: hidden;
 
   /* Aqua glass effect */
-  @include aqua-glass-effect('control-round');
+  @include aqua-glass('round');
 
   &:hover:not(:disabled) {
     background: linear-gradient(

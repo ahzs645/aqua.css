@@ -38,7 +38,7 @@
     position: relative;
 
     /* Aqua glass effect */
-    @include aqua-glass-effect('control-round');
+    @include aqua-glass('round');
   }
 
   /* The inner dot */
@@ -112,7 +112,7 @@ input[type="radio"]:not(.radio input) {
   overflow: hidden;
 
   /* Aqua glass effect (shine only - ::after used for dot) */
-  @include aqua-glass-shine('control-round');
+  @include aqua-glass('round', $parts: 'shine');
 
   /* Inner dot */
   &::after {
