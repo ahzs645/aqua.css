@@ -37,6 +37,22 @@
       overflow-y: auto;
       max-height: 60vh;
     }
+    .version-switcher {
+      padding: 12px;
+    }
+    .version-switcher .select-wrapper {
+      display: block;
+      width: 100%;
+    }
+    .version-switcher select {
+      width: 100%;
+    }
+    .version-note {
+      margin-top: 6px;
+      font-size: 10px;
+      line-height: 1.4;
+      color: rgba(0, 0, 0, 0.6);
+    }
     .main-content {
       flex: 1;
       min-width: 0;
@@ -181,8 +197,22 @@
     }
   </style>
 </head>
-<body class="aqua-background">
+<body class="aqua-background" data-aqua-era="10-4">
   <aside class="sidebar">
+    <div class="window-pane version-switcher">
+      <div class="label">Aqua Era</div>
+      <div class="select-wrapper">
+        <select id="aqua-era-select" aria-label="Aqua era">
+          <option value="10-0">Mac OS X 10.0-10.1 (Cheetah/Puma)</option>
+          <option value="10-2">Mac OS X 10.2 (Jaguar)</option>
+          <option value="10-3">Mac OS X 10.3 (Panther)</option>
+          <option value="10-4" selected>Mac OS X 10.4 (Tiger)</option>
+          <option value="10-6">Mac OS X 10.6 (Snow Leopard)</option>
+        </select>
+      </div>
+      <div class="version-note">Adjusts palette, textures, and button shape to match each era.</div>
+    </div>
+
     <div class="window-pane sidebar-nav">
       <ul class="menu-items">
         <li><a href="#intro">Introduction</a></li>
@@ -275,6 +305,10 @@
       <p>
         <strong>Install:</strong> <code>npm install aqua.css</code> or use the CDN:
         <code>&lt;link rel="stylesheet" href="https://unpkg.com/aqua.css"&gt;</code>
+      </p>
+      <p>
+        Use the Aqua Era selector in the sidebar to preview palette and texture changes
+        across the 10.0-10.4 releases.
       </p>
     </div>
 
@@ -1586,6 +1620,39 @@
         }
       }
 
+      function setupAquaEraSelector() {
+        const select = document.getElementById('aqua-era-select');
+        if (!select) return;
+
+        const body = document.body;
+        const valid = new Set(['10-0', '10-2', '10-3', '10-4', '10-6']);
+        const storageKey = 'aqua-era';
+
+        function applyEra(value) {
+          if (!valid.has(value)) return;
+          body.setAttribute('data-aqua-era', value);
+          select.value = value;
+          try {
+            localStorage.setItem(storageKey, value);
+          } catch (err) {
+            // Ignore storage errors (private mode, blocked, etc.)
+          }
+        }
+
+        let initial = body.getAttribute('data-aqua-era') || '10-4';
+        try {
+          const stored = localStorage.getItem(storageKey);
+          if (valid.has(stored)) {
+            initial = stored;
+          }
+        } catch (err) {
+          // Ignore storage errors (private mode, blocked, etc.)
+        }
+
+        applyEra(initial);
+        select.addEventListener('change', () => applyEra(select.value));
+      }
+
       // Theme switching for the theme preview section
       window.setTheme = function(theme) {
         const preview = document.getElementById('theme-preview');
@@ -1603,6 +1670,7 @@
       setupSplitPanes();
       setupPillTabs();
       setupIndeterminateCheckbox();
+      setupAquaEraSelector();
     })();
   </script>
 </body>

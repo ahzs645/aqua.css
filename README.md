@@ -69,6 +69,23 @@ npm install aqua.css
 - **Tabs** - Rounded Aqua-style tab panels
 - **Scrollbars** - Blue pill-shaped scrollbars
 
+## Aqua Era Presets
+
+Apply an era class (or `data-aqua-era`) to shift the palette and textures between releases:
+
+- `aqua-era-10-0` (Mac OS X 10.0-10.1)
+- `aqua-era-10-2` (Mac OS X 10.2)
+- `aqua-era-10-3` (Mac OS X 10.3)
+- `aqua-era-10-6` (Mac OS X 10.6, rectangular buttons)
+
+Mac OS X 10.4 is the default look, so no class is required.
+
+```html
+<body class="aqua-era-10-2">
+  <!-- Your Aqua UI -->
+</body>
+```
+
 ## Development
 
 ```bash

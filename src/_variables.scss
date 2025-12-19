@@ -441,6 +441,9 @@
     #aad2f3 95%,
     #bbd6ef 100%
   );
+  --aqua-button-standard-radius: 8px;
+  --aqua-button-round-rect-radius: 10px;
+  --aqua-button-pill-radius: var(--radius-pill);
   --aqua-button-standard-border: rgb(152, 152, 152);
   --aqua-button-standard-gradient: var(--aqua-button-flat-secondary-gradient);
   --aqua-button-standard-shadow: var(--aqua-button-flat-inner-shadow);

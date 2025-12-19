@@ -11,7 +11,7 @@
   height: 1.75em;
   padding: 0 2em;
   min-width: 6em;
-  border-radius: 1000px;
+  border-radius: var(--aqua-button-pill-radius);
   position: relative;
   overflow: hidden;
   cursor: default;
@@ -33,6 +33,13 @@
     letter-spacing: 0.0375em;
     line-height: 1;
   }
+}
+
+.aqua-era-10-6 .aqua-button::before,
+[data-aqua-era="10-6"] .aqua-button::before,
+.aqua-era-10-6 .aqua-button::after,
+[data-aqua-era="10-6"] .aqua-button::after {
+  border-radius: inherit;
 }
 
 /* Primary Button - Blue */
@@ -265,7 +272,7 @@ input[type="button"],
   height: 20px;
   min-width: 50px;
   border: 1px solid var(--aqua-button-standard-border);
-  border-radius: 4.5px;
+  border-radius: var(--aqua-button-standard-radius);
   background-image: var(--aqua-button-standard-gradient);
   box-shadow: var(--aqua-button-standard-shadow);
   color: var(--text-color);
@@ -294,7 +301,7 @@ input[type="button"],
 /* Standard button variants */
 button.round-rect,
 .button.round-rect {
-  border-radius: 9px;
+  border-radius: var(--aqua-button-round-rect-radius);
 }
 
 button.help,

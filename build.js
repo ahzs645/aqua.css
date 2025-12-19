@@ -23,7 +23,7 @@ function buildCSS() {
   // Then process with PostCSS
   return postcss()
     .use(require("postcss-inline-svg"))
-    .use(require("postcss-css-variables"))
+    .use(require("postcss-css-variables")({ preserve: true }))
     .use(require("postcss-calc"))
     .use(require("postcss-copy")({ dest: "dist", template: "[name].[ext]" }))
     .use(require("cssnano"))

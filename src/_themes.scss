@@ -185,3 +185,349 @@
   --pagination-active-gradient: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
   --hyperlink-color: rgb(226, 61, 56);
 }
+
+/* ============================================
+   Aqua Era Presets (approximate)
+   ============================================ */
+.aqua-era-10-0,
+[data-aqua-era="10-0"] {
+  --aqua-blue: #3B9CFF;
+  --aqua-blue-dark: #0054D6;
+  --aqua-blue-darker: #003B9E;
+  --aqua-blue-light: #8AD7FF;
+  --aqua-blue-lighter: #BDEBFF;
+
+  --surface: #E4EDF7;
+  --surface-light: #F2F7FC;
+  --surface-dark: #C8D7E8;
+  --window-bg: #E7EFF9;
+  --aqua-window-bg: #E7EFF9;
+
+  --brushed-metal: linear-gradient(
+    180deg,
+    #F0F4FA 0%,
+    #D7E0EB 45%,
+    #C8D4E3 50%,
+    #DCE4EE 55%,
+    #EEF3F8 100%
+  );
+  --aqua-brushed-metal: linear-gradient(
+    to bottom,
+    #EAF1F8 0%,
+    #D4DEE9 50%,
+    #C6D2E2 100%
+  );
+
+  --pinstripe: repeating-linear-gradient(
+    0deg,
+    #F6F9FD 0px,
+    #F6F9FD 1px,
+    #E3EBF6 1px,
+    #E3EBF6 2px
+  );
+  --aqua-background-classic: repeating-linear-gradient(
+    #F2F6FB,
+    #F2F6FB 4px,
+    #FFFFFF 4px,
+    #FFFFFF 8px
+  );
+  --aqua-pinstripe-light: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.9) 1px,
+    rgba(255, 255, 255, 0.9) 4px
+  );
+  --aqua-pinstripe-window: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 1px,
+      rgba(255, 255, 255, 0.9) 1px,
+      rgba(255, 255, 255, 0.9) 4px
+    ),
+    linear-gradient(to bottom, #E7EFF9 0%, #E7EFF9 100%);
+
+  --menu-bar-gradient: linear-gradient(
+    to bottom,
+    #FFFFFF 0%,
+    #E7EFF7 55%,
+    #CBD7E5 100%
+  );
+  --menu-bar-pinstripe: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.65) 1px,
+    rgba(255, 255, 255, 0.65) 3px
+  );
+  --menu-item-hover-bg: rgba(48, 116, 214, 0.9);
+
+  --aqua-selection-bg: rgba(48, 116, 214, 0.88);
+  --aqua-selection-glow: rgba(72, 134, 228, 0.55);
+
+  --aqua-blue-gradient: linear-gradient(
+    rgba(0, 78, 204, 0.75),
+    rgba(39, 126, 214, 0.75),
+    rgba(53, 172, 218, 0.75)
+  );
+  --button-blue-gradient: linear-gradient(
+    180deg,
+    #8AD7FF 0%,
+    #5ABEFF 30%,
+    #2B99FF 50%,
+    #0078E5 70%,
+    #005BBF 100%
+  );
+  --button-blue-gradient-active: linear-gradient(
+    180deg,
+    #5ABEFF 0%,
+    #2B99FF 30%,
+    #0078E5 50%,
+    #005BBF 70%,
+    #004A99 100%
+  );
+  --progress-fill-gradient: linear-gradient(
+    to right,
+    rgb(88, 176, 248),
+    rgb(58, 134, 226)
+  );
+
+  --input-selection-bg: #7FB4FF;
+
+  --table-row-selected: linear-gradient(rgb(74, 141, 225), rgb(38, 102, 198));
+  --list-item-selected-focused-strip-gradient: linear-gradient(rgb(74, 141, 225), rgb(38, 102, 198));
+  --list-item-selected-focused-fill-gradient: linear-gradient(rgb(74, 141, 225), rgb(38, 102, 198));
+  --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
+  --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+}
+
+.aqua-era-10-2,
+[data-aqua-era="10-2"] {
+  --aqua-blue: #2F95FF;
+  --aqua-blue-dark: #0060C9;
+  --aqua-blue-darker: #00468F;
+  --aqua-blue-light: #7CD2FF;
+  --aqua-blue-lighter: #AEE5FF;
+
+  --surface: #E7EDF3;
+  --surface-light: #F3F7FB;
+  --surface-dark: #D1D9E3;
+  --window-bg: #EBF0F6;
+  --aqua-window-bg: #EBF0F6;
+
+  --brushed-metal: linear-gradient(
+    180deg,
+    #EEF2F6 0%,
+    #D9E0E8 45%,
+    #CDD6E0 50%,
+    #DCE3EC 55%,
+    #EAF0F5 100%
+  );
+  --aqua-brushed-metal: linear-gradient(
+    to bottom,
+    #E9EEF4 0%,
+    #D4DBE4 50%,
+    #C7D0DB 100%
+  );
+
+  --pinstripe: repeating-linear-gradient(
+    0deg,
+    #F6F8FB 0px,
+    #F6F8FB 1px,
+    #E9EEF6 1px,
+    #E9EEF6 2px
+  );
+  --aqua-background-classic: repeating-linear-gradient(
+    #F3F6FA,
+    #F3F6FA 4px,
+    #FFFFFF 4px,
+    #FFFFFF 8px
+  );
+  --aqua-pinstripe-light: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1.5px,
+    rgba(255, 255, 255, 0.8) 1.5px,
+    rgba(255, 255, 255, 0.8) 4px
+  );
+  --aqua-pinstripe-window: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 1.5px,
+      rgba(255, 255, 255, 0.8) 1.5px,
+      rgba(255, 255, 255, 0.8) 4px
+    ),
+    linear-gradient(to bottom, #EBF0F6 0%, #EBF0F6 100%);
+
+  --menu-bar-gradient: linear-gradient(
+    to bottom,
+    #FAFAFA 0%,
+    #EAEFF3 50%,
+    #D3DAE2 100%
+  );
+  --menu-bar-pinstripe: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1.5px,
+    rgba(255, 255, 255, 0.6) 1.5px,
+    rgba(255, 255, 255, 0.6) 4px
+  );
+  --menu-item-hover-bg: rgba(45, 112, 206, 0.88);
+
+  --aqua-selection-bg: rgba(45, 112, 206, 0.88);
+  --aqua-selection-glow: rgba(64, 124, 218, 0.5);
+
+  --aqua-blue-gradient: linear-gradient(
+    rgba(0, 74, 190, 0.7),
+    rgba(46, 118, 206, 0.7),
+    rgba(41, 160, 209, 0.7)
+  );
+  --button-blue-gradient: linear-gradient(
+    180deg,
+    #7DD1FF 0%,
+    #52B8FF 30%,
+    #2E9EFF 50%,
+    #0086F0 70%,
+    #0066CC 100%
+  );
+  --button-blue-gradient-active: linear-gradient(
+    180deg,
+    #52B8FF 0%,
+    #2E9EFF 30%,
+    #0086F0 50%,
+    #0066CC 70%,
+    #004C99 100%
+  );
+  --progress-fill-gradient: linear-gradient(
+    to right,
+    rgb(84, 170, 240),
+    rgb(62, 142, 224)
+  );
+
+  --input-selection-bg: #8DBEFF;
+
+  --table-row-selected: linear-gradient(rgb(67, 130, 218), rgb(42, 106, 204));
+  --list-item-selected-focused-strip-gradient: linear-gradient(rgb(67, 130, 218), rgb(42, 106, 204));
+  --list-item-selected-focused-fill-gradient: linear-gradient(rgb(67, 130, 218), rgb(42, 106, 204));
+  --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
+  --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+}
+
+.aqua-era-10-3,
+[data-aqua-era="10-3"] {
+  --aqua-blue: #2A8DEB;
+  --aqua-blue-dark: #0055B3;
+  --aqua-blue-darker: #003E87;
+  --aqua-blue-light: #6CC9FF;
+  --aqua-blue-lighter: #9FDCFF;
+
+  --surface: #E2E4E7;
+  --surface-light: #F1F2F4;
+  --surface-dark: #C8CCD2;
+  --window-bg: #E7E9EC;
+  --aqua-window-bg: #E7E9EC;
+
+  --brushed-metal: linear-gradient(
+    180deg,
+    #E6E7EA 0%,
+    #D0D3D8 45%,
+    #C2C6CC 50%,
+    #D4D7DC 55%,
+    #E3E5E9 100%
+  );
+  --aqua-brushed-metal: linear-gradient(
+    to bottom,
+    #E1E3E6 0%,
+    #C9CED5 50%,
+    #BEC3CB 100%
+  );
+
+  --pinstripe: repeating-linear-gradient(
+    0deg,
+    #FFFFFF 0px,
+    #FFFFFF 1px,
+    #ECEEEF 1px,
+    #ECEEEF 2px
+  );
+  --aqua-background-classic: repeating-linear-gradient(
+    #F2F2F2,
+    #F2F2F2 4px,
+    #FFFFFF 4px,
+    #FFFFFF 8px
+  );
+  --aqua-pinstripe-light: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(255, 255, 255, 0.7) 2px,
+    rgba(255, 255, 255, 0.7) 5px
+  );
+  --aqua-pinstripe-window: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.7) 2px,
+      rgba(255, 255, 255, 0.7) 5px
+    ),
+    linear-gradient(to bottom, #E7E9EC 0%, #E7E9EC 100%);
+
+  --menu-bar-gradient: linear-gradient(
+    to bottom,
+    #F4F4F4 0%,
+    #E0E0E0 50%,
+    #C8C8C8 100%
+  );
+  --menu-bar-pinstripe: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(255, 255, 255, 0.55) 2px,
+    rgba(255, 255, 255, 0.55) 5px
+  );
+  --menu-item-hover-bg: rgba(40, 100, 190, 0.88);
+
+  --aqua-selection-bg: rgba(40, 100, 190, 0.88);
+  --aqua-selection-glow: rgba(54, 112, 204, 0.5);
+
+  --aqua-blue-gradient: linear-gradient(
+    rgba(0, 66, 176, 0.65),
+    rgba(42, 110, 198, 0.65),
+    rgba(35, 150, 204, 0.65)
+  );
+  --button-blue-gradient: linear-gradient(
+    180deg,
+    #6CC9FF 0%,
+    #3AAEF2 30%,
+    #2A8DEB 50%,
+    #0069D9 70%,
+    #0052A6 100%
+  );
+  --button-blue-gradient-active: linear-gradient(
+    180deg,
+    #3AAEF2 0%,
+    #2A8DEB 30%,
+    #0069D9 50%,
+    #0052A6 70%,
+    #003D7A 100%
+  );
+  --progress-fill-gradient: linear-gradient(
+    to right,
+    rgb(76, 158, 230),
+    rgb(52, 122, 206)
+  );
+
+  --input-selection-bg: #7EAFF2;
+
+  --table-row-selected: linear-gradient(rgb(58, 116, 203), rgb(36, 92, 177));
+  --list-item-selected-focused-strip-gradient: linear-gradient(rgb(58, 116, 203), rgb(36, 92, 177));
+  --list-item-selected-focused-fill-gradient: linear-gradient(rgb(58, 116, 203), rgb(36, 92, 177));
+  --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
+  --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+}
+
+.aqua-era-10-6,
+[data-aqua-era="10-6"] {
+  --aqua-button-standard-radius: 4.5px;
+  --aqua-button-round-rect-radius: 6px;
+  --aqua-button-pill-radius: 6px;
+}
