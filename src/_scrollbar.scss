@@ -10,28 +10,12 @@
 
 ::-webkit-scrollbar-track {
   border-radius: 8px;
-  background: linear-gradient(
-    to right,
-    #d8d8d8 0%,
-    #f4f4f4 30%,
-    #f8f8f8 50%,
-    #f4f4f4 70%,
-    #d8d8d8 100%
-  );
-  box-shadow:
-    inset 0 0 0 1px rgba(0, 0, 0, 0.15),
-    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  background: var(--scrollbar-track-gradient);
+  box-shadow: var(--scrollbar-track-shadow);
 }
 
 ::-webkit-scrollbar-track:horizontal {
-  background: linear-gradient(
-    to bottom,
-    #d8d8d8 0%,
-    #f4f4f4 30%,
-    #f8f8f8 50%,
-    #f4f4f4 70%,
-    #d8d8d8 100%
-  );
+  background: var(--scrollbar-track-gradient-horizontal);
 }
 
 /* Aqua blue translucent thumb */
@@ -41,112 +25,42 @@
   min-width: 30px;
 
   /* Aqua blue translucent gradient */
-  background: linear-gradient(
-    to right,
-    rgba(100, 150, 220, 0.7) 0%,
-    rgba(140, 190, 250, 0.8) 20%,
-    rgba(180, 215, 255, 0.85) 40%,
-    rgba(200, 230, 255, 0.9) 50%,
-    rgba(180, 215, 255, 0.85) 60%,
-    rgba(140, 190, 250, 0.8) 80%,
-    rgba(100, 150, 220, 0.7) 100%
-  );
-  box-shadow:
-    0 0 0 1px rgba(0, 80, 180, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    inset 0 -1px 0 rgba(0, 50, 120, 0.2),
-    0 1px 3px rgba(0, 0, 0, 0.2);
+  background: var(--scrollbar-thumb-gradient);
+  box-shadow: var(--scrollbar-thumb-shadow);
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
-  background: linear-gradient(
-    to bottom,
-    rgba(100, 150, 220, 0.7) 0%,
-    rgba(140, 190, 250, 0.8) 20%,
-    rgba(180, 215, 255, 0.85) 40%,
-    rgba(200, 230, 255, 0.9) 50%,
-    rgba(180, 215, 255, 0.85) 60%,
-    rgba(140, 190, 250, 0.8) 80%,
-    rgba(100, 150, 220, 0.7) 100%
-  );
+  background: var(--scrollbar-thumb-gradient-horizontal);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    to right,
-    rgba(80, 130, 210, 0.8) 0%,
-    rgba(120, 175, 245, 0.85) 20%,
-    rgba(160, 200, 255, 0.9) 40%,
-    rgba(190, 220, 255, 0.95) 50%,
-    rgba(160, 200, 255, 0.9) 60%,
-    rgba(120, 175, 245, 0.85) 80%,
-    rgba(80, 130, 210, 0.8) 100%
-  );
-  box-shadow:
-    0 0 0 1px rgba(0, 70, 170, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 0 rgba(0, 50, 120, 0.3),
-    0 1px 4px rgba(0, 0, 0, 0.25);
+  background: var(--scrollbar-thumb-hover-gradient);
+  box-shadow: var(--scrollbar-thumb-hover-shadow);
 }
 
 ::-webkit-scrollbar-thumb:horizontal:hover {
-  background: linear-gradient(
-    to bottom,
-    rgba(80, 130, 210, 0.8) 0%,
-    rgba(120, 175, 245, 0.85) 20%,
-    rgba(160, 200, 255, 0.9) 40%,
-    rgba(190, 220, 255, 0.95) 50%,
-    rgba(160, 200, 255, 0.9) 60%,
-    rgba(120, 175, 245, 0.85) 80%,
-    rgba(80, 130, 210, 0.8) 100%
-  );
+  background: var(--scrollbar-thumb-hover-gradient-horizontal);
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(
-    to right,
-    rgba(60, 110, 200, 0.85) 0%,
-    rgba(100, 160, 240, 0.9) 20%,
-    rgba(140, 185, 255, 0.92) 40%,
-    rgba(170, 210, 255, 0.95) 50%,
-    rgba(140, 185, 255, 0.92) 60%,
-    rgba(100, 160, 240, 0.9) 80%,
-    rgba(60, 110, 200, 0.85) 100%
-  );
-  box-shadow:
-    0 0 0 1px rgba(0, 60, 160, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(0, 50, 120, 0.4),
-    0 1px 5px rgba(0, 0, 0, 0.3);
+  background: var(--scrollbar-thumb-active-gradient);
+  box-shadow: var(--scrollbar-thumb-active-shadow);
 }
 
 ::-webkit-scrollbar-thumb:horizontal:active {
-  background: linear-gradient(
-    to bottom,
-    rgba(60, 110, 200, 0.85) 0%,
-    rgba(100, 160, 240, 0.9) 20%,
-    rgba(140, 185, 255, 0.92) 40%,
-    rgba(170, 210, 255, 0.95) 50%,
-    rgba(140, 185, 255, 0.92) 60%,
-    rgba(100, 160, 240, 0.9) 80%,
-    rgba(60, 110, 200, 0.85) 100%
-  );
+  background: var(--scrollbar-thumb-active-gradient-horizontal);
 }
 
 /* Corner piece when both scrollbars are visible */
 ::-webkit-scrollbar-corner {
-  background: linear-gradient(
-    135deg,
-    #e8e8e8 0%,
-    #d0d0d0 100%
-  );
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  background: var(--scrollbar-corner-gradient);
+  box-shadow: var(--scrollbar-corner-shadow);
 }
 
 /* Firefox scrollbar support */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(140, 190, 250, 0.7) #f4f4f4;
+  scrollbar-color: var(--scrollbar-firefox-thumb) var(--scrollbar-firefox-track);
 }
 
 /* ============================================
@@ -155,9 +69,9 @@
 
 .scroll-container {
   overflow: auto;
-  border: 1px solid rgb(180, 180, 180);
+  border: 1px solid var(--scroll-container-border);
   border-radius: 3px;
-  background: white;
+  background: var(--scroll-container-bg);
 
   &::-webkit-scrollbar {
     width: 8px;

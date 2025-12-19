@@ -4,11 +4,11 @@
  */
 
 fieldset {
-  border: 1px solid #888888;
+  border: 1px solid var(--fieldset-border);
   border-radius: var(--radius-medium);
   padding: 16px;
   margin: 0;
-  background: #ececec;
+  background: var(--fieldset-bg);
 }
 
 legend {

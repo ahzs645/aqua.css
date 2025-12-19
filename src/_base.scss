@@ -12,7 +12,7 @@ body {
   font-size: var(--font-size-base);
   color: var(--text-color);
   background: var(--pinstripe);
-  background-color: #FFFFFF;
+  background-color: var(--text-highlight);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;

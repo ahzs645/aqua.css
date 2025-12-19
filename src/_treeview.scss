@@ -8,9 +8,9 @@
    ============================================ */
 .tree-view,
 .aqua-tree {
-  background: white;
+  background: var(--tree-bg);
   border: 1px solid;
-  border-color: rgb(156, 156, 156) rgb(190, 190, 190) rgb(190, 190, 190) rgb(190, 190, 190);
+  border-color: var(--tree-border);
   padding: 0;
   min-width: 200px;
   overflow: auto;
@@ -20,7 +20,7 @@
   /* Focus ring */
   &:focus-within,
   &.focused {
-    box-shadow: 0 0 8px 0 rgba(120, 171, 217, 0.8);
+    box-shadow: var(--tree-focus-ring);
   }
 
   /* Nested lists */
@@ -43,23 +43,18 @@
   gap: 4px;
 
   &:hover {
-    background: rgb(182, 214, 253);
+    background: var(--tree-item-hover-bg);
   }
 
   /* Selected state (unfocused - gray) */
   &.selected {
     background:
-      linear-gradient(rgb(187, 197, 214), rgb(147, 160, 185)),
-      linear-gradient(
-        rgb(195, 204, 223),
-        rgb(195, 204, 223) 1%,
-        rgb(189, 199, 220) 1%,
-        rgb(155, 169, 196) 100%
-      );
+      var(--tree-item-selected-strip-gradient),
+      var(--tree-item-selected-fill-gradient);
     background-size: 100% 1px, 100% 100%;
     background-position: 0 0, 0 1px;
     background-repeat: no-repeat;
-    color: white;
+    color: var(--tree-item-selected-text);
   }
 }
 
@@ -69,18 +64,13 @@
 .aqua-tree:focus-within .aqua-tree-item.selected,
 .aqua-tree.focused .aqua-tree-item.selected {
   background:
-    linear-gradient(rgb(95, 165, 221), rgb(54, 124, 192)),
-    linear-gradient(
-      rgb(116, 186, 232),
-      rgb(116, 186, 232) 1%,
-      rgb(109, 178, 227) 1%,
-      rgb(59, 136, 208) 100%
-    );
+    var(--tree-item-selected-focused-strip-gradient),
+    var(--tree-item-selected-focused-fill-gradient);
   background-size: 100% 1px, 100% 100%;
   background-position: 0 0, 0 1px;
   background-repeat: no-repeat;
-  color: white;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  color: var(--tree-item-selected-focused-text);
+  text-shadow: var(--tree-item-selected-focused-text-shadow);
 }
 
 /* ============================================
@@ -90,7 +80,7 @@
 .aqua-tree-arrow {
   width: 0;
   height: 0;
-  border-left: 4px solid rgb(134, 134, 134);
+  border-left: 4px solid var(--tree-arrow-color);
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
   margin-left: 4px;
@@ -134,7 +124,7 @@
         content: "";
         width: 0;
         height: 0;
-        border-left: 4px solid rgb(134, 134, 134);
+        border-left: 4px solid var(--tree-arrow-color);
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;
         transition: transform 0.1s;
@@ -142,12 +132,12 @@
       }
 
       &:hover {
-        background: rgb(182, 214, 253);
+        background: var(--tree-item-hover-bg);
       }
 
       &.selected {
-        background: rgb(60, 119, 212);
-        color: white;
+        background: var(--tree-item-selected-solid-bg);
+        color: var(--tree-item-selected-solid-text);
       }
     }
 
@@ -166,12 +156,12 @@
     cursor: pointer;
 
     &:hover {
-      background: rgb(182, 214, 253);
+      background: var(--tree-item-hover-bg);
     }
 
     &.selected {
-      background: rgb(60, 119, 212);
-      color: white;
+      background: var(--tree-item-selected-solid-bg);
+      color: var(--tree-item-selected-solid-text);
     }
   }
 }

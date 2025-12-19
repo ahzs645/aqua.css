@@ -5,7 +5,7 @@
 
 .window-pane {
   background: var(--surface-light);
-  border: 1px solid #888888;
+  border: 1px solid var(--window-pane-border);
   border-radius: var(--radius-medium);
   padding: 8px 0;
 
@@ -29,7 +29,7 @@
       }
 
       &:hover {
-        background: rgba(0, 0, 0, 0.05);
+        background: var(--window-pane-hover-bg);
       }
     }
 
@@ -48,7 +48,7 @@
           display: inline-block;
           width: 6px;
           height: 6px;
-          background: #CCCCCC;
+          background: var(--window-pane-bullet);
           border-radius: 50%;
           margin-right: 8px;
           vertical-align: middle;

@@ -3,12 +3,14 @@
  * Animated loading indicator
  */
 
+@use "mixins" as *;
+
 .spinner,
 .loader {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 2px solid #CCCCCC;
+  border: 2px solid var(--spinner-border);
   border-top-color: var(--aqua-blue);
   border-radius: 50%;
 
@@ -48,14 +50,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: conic-gradient(
-    #FF0000 0deg 60deg,
-    #FFFF00 60deg 120deg,
-    #00FF00 120deg 180deg,
-    #00FFFF 180deg 240deg,
-    #0000FF 240deg 300deg,
-    #FF00FF 300deg 360deg
-  );
+  background: var(--spinner-aqua-gradient);
 
   &.animate,
   &.spinning {
@@ -70,7 +65,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--spinner-container-shadow);
   display: inline-block;
   vertical-align: middle;
 
@@ -87,18 +82,7 @@
 }
 
 .bg-smooth-rainbow {
-  background: conic-gradient(from 0deg,
-    #7b68ee,
-    #4169e1,
-    #00bfff,
-    #00fa9a,
-    #32cd32,
-    #9acd32,
-    #ffd700,
-    #ff8c00,
-    #ff4500,
-    #ff1493,
-    #7b68ee);
+  background: var(--spinner-rainbow-gradient);
 }
 
 /* Spinning pinwheel layer */
@@ -118,7 +102,7 @@
     height: 100%;
     clip-path: url(#spinnerBlade);
     transform-origin: 50% 50%;
-    background: rgba(0, 0, 0, var(--blade-opacity, 0.25));
+    background: var(--spinner-blade-color);
 
     &:nth-child(1) { transform: rotate(0deg); }
     &:nth-child(2) { transform: rotate(72deg); }

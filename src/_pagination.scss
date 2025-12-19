@@ -3,6 +3,8 @@
  * Mac OS X Aqua-style pagination controls - JavaFX AquaFX accurate
  */
 
+@use "mixins" as *;
+
 /* ============================================
    PAGINATION CONTAINER
    ============================================ */
@@ -20,16 +22,10 @@
    ============================================ */
 .pagination-btn,
 .aqua-pagination-btn {
-  border: 0.5px solid rgb(129, 129, 129);
+  border: 0.5px solid var(--pagination-border);
   border-radius: 3em;
-  background: rgb(250, 250, 250);
-  background: linear-gradient(
-    rgb(255, 255, 255) 0%,
-    rgb(253, 253, 253) 25%,
-    rgb(244, 244, 244) 50%,
-    rgb(236, 236, 236) 51%,
-    rgb(243, 243, 243) 100%
-  );
+  background: var(--pagination-bg);
+  background: var(--pagination-gradient);
   padding: 2px;
   width: 20px;
   height: 20px;
@@ -47,23 +43,13 @@
   @include aqua-glass('round');
 
   &:hover:not(.active):not(:disabled) {
-    background: linear-gradient(
-      rgb(224, 224, 224) 0%,
-      rgb(214, 214, 214) 50%,
-      rgb(207, 207, 207) 51%,
-      rgb(208, 208, 208) 100%
-    );
+    background: var(--pagination-hover-gradient);
   }
 
   /* Active/selected state - Aqua blue */
   &.active {
-    border-color: rgb(100, 103, 124);
-    background: linear-gradient(
-      rgb(228, 250, 255) 0%,
-      #91bdee 50%,
-      #78b0ee 51%,
-      rgb(228, 250, 255) 100%
-    );
+    border-color: var(--pagination-active-border);
+    background: var(--pagination-active-gradient);
   }
 
   /* Disabled state */
@@ -75,7 +61,7 @@
 
   /* Focus state */
   &:focus {
-    box-shadow: 0 0 0 3px rgb(120, 171, 217);
+    box-shadow: var(--pagination-focus-ring);
   }
 }
 
@@ -84,14 +70,9 @@
    ============================================ */
 .pagination-arrow,
 .aqua-pagination-arrow {
-  border: 0.5px solid rgb(129, 129, 129);
+  border: 0.5px solid var(--pagination-border);
   border-radius: 3em;
-  background: linear-gradient(
-    rgb(255, 255, 255) 25%,
-    rgb(243, 243, 243) 50%,
-    rgb(236, 236, 236) 50%,
-    rgb(243, 243, 243) 100%
-  );
+  background: var(--pagination-arrow-gradient);
   padding: 2px 5px;
   cursor: pointer;
   font-size: 10px;
@@ -109,23 +90,12 @@
   @include aqua-glass('round');
 
   &:hover:not(:disabled) {
-    background: linear-gradient(
-      rgb(250, 250, 250) 25%,
-      rgb(238, 238, 238) 50%,
-      rgb(231, 231, 231) 50%,
-      rgb(238, 238, 238) 100%
-    );
+    background: var(--pagination-arrow-hover-gradient);
   }
 
   &:active:not(:disabled) {
-    background: linear-gradient(
-      rgb(165, 193, 238) 0%,
-      rgb(108, 161, 231) 50%,
-      rgb(74, 138, 217) 50%,
-      rgb(105, 167, 236) 75%,
-      rgb(152, 201, 238) 100%
-    );
-    border-color: rgb(100, 103, 124);
+    background: var(--pagination-arrow-active-gradient);
+    border-color: var(--pagination-active-border);
   }
 
   &:disabled {
@@ -135,7 +105,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px rgb(120, 171, 217);
+    box-shadow: var(--pagination-focus-ring);
   }
 }
 
@@ -159,5 +129,5 @@
   align-items: center;
   justify-content: center;
   font-size: 11px;
-  color: rgb(129, 129, 129);
+  color: var(--pagination-arrow-color);
 }

@@ -3,6 +3,8 @@
  * Mac OS X Aqua-style radio buttons - JavaFX AquaFX accurate
  */
 
+@use "mixins" as *;
+
 /* Class-based radio button (recommended) */
 .radio {
   display: inline-flex;
@@ -20,16 +22,10 @@
   .circle {
     width: var(--radio-size);
     height: var(--radio-size);
-    border: 0.5px solid rgb(129, 129, 129);
+    border: 0.5px solid var(--radio-border);
     border-radius: 50%;
-    background: rgb(250, 250, 250);
-    background: linear-gradient(
-      rgb(255, 255, 255) 0%,
-      rgb(253, 253, 253) 25%,
-      rgb(244, 244, 244) 50%,
-      rgb(236, 236, 236) 51%,
-      rgb(243, 243, 243) 100%
-    );
+    background: var(--checkbox-bg);
+    background: var(--radio-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,33 +47,23 @@
 
   /* Armed/pressed state */
   &:active .circle {
-    background: linear-gradient(
-      rgb(224, 224, 224) 0%,
-      rgb(214, 214, 214) 50%,
-      rgb(207, 207, 207) 51%,
-      rgb(208, 208, 208) 100%
-    );
+    background: var(--radio-pressed-gradient);
   }
 
   /* Selected state */
   input:checked + .circle {
-    border-color: rgb(100, 103, 124);
-    background: linear-gradient(
-      rgb(228, 250, 255) 0%,
-      #91bdee 50%,
-      #78b0ee 51%,
-      rgb(228, 250, 255) 100%
-    );
+    border-color: var(--radio-selected-border);
+    background: var(--radio-selected-gradient);
 
     .dot {
-      background: #000;
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+      background: var(--radio-dot-color);
+      box-shadow: var(--radio-dot-shadow);
     }
   }
 
   /* Focus state */
   input:focus + .circle {
-    box-shadow: 0 0 0 3px rgba(120, 171, 217, 1);
+    box-shadow: var(--radio-focus-ring);
   }
 
   /* Disabled state */
@@ -97,14 +83,8 @@ input[type="radio"]:not(.radio input) {
   width: var(--radio-size);
   height: var(--radio-size);
   border-radius: 50%;
-  border: 0.5px solid rgb(129, 129, 129);
-  background: linear-gradient(
-    rgb(255, 255, 255) 0%,
-    rgb(253, 253, 253) 25%,
-    rgb(244, 244, 244) 50%,
-    rgb(236, 236, 236) 51%,
-    rgb(243, 243, 243) 100%
-  );
+  border: 0.5px solid var(--radio-border);
+  background: var(--radio-gradient);
   cursor: default;
   vertical-align: middle;
   position: relative;
@@ -129,32 +109,22 @@ input[type="radio"]:not(.radio input) {
   }
 
   &:checked {
-    border-color: rgb(100, 103, 124);
-    background: linear-gradient(
-      rgb(228, 250, 255) 0%,
-      #91bdee 50%,
-      #78b0ee 51%,
-      rgb(228, 250, 255) 100%
-    );
+    border-color: var(--radio-selected-border);
+    background: var(--radio-selected-gradient);
 
     &::after {
-      background: #000;
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+      background: var(--radio-dot-color);
+      box-shadow: var(--radio-dot-shadow);
     }
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px rgba(120, 171, 217, 1);
+    box-shadow: var(--radio-focus-ring);
     outline: none;
   }
 
   &:active:not(:disabled) {
-    background: linear-gradient(
-      rgb(224, 224, 224) 0%,
-      rgb(214, 214, 214) 50%,
-      rgb(207, 207, 207) 51%,
-      rgb(208, 208, 208) 100%
-    );
+    background: var(--radio-pressed-gradient);
   }
 
   &:disabled {

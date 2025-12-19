@@ -3,6 +3,8 @@
  * Mac OS X Aqua-style chat bubbles with glossy effects
  */
 
+@use "mixins" as *;
+
 .aqua-chat-bubble {
   position: relative;
   border-radius: 16px;
@@ -13,16 +15,10 @@
   font-size: 13px;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.07);
+  text-shadow: var(--chat-bubble-text-shadow);
 
   /* Enhanced shadow with subtle outer lift and multi-layer inset stroke */
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.14),
-    0 1px 1px rgba(0, 0, 0, 0.25),
-    inset 0 1px 2px rgba(255, 255, 255, 0.6),
-    inset 0 0 4px rgba(0, 0, 0, 0.05),
-    inset 0 0 0 0.5px rgba(0, 0, 0, 0.48),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--chat-bubble-shadow);
 
   /* Aqua glass effect (top shine + bottom glow) */
   @include aqua-glass('box');
@@ -36,59 +32,59 @@
 
 /* Color variants */
 .aqua-chat-bubble--yellow {
-  background-color: #fde68a;
+  background-color: var(--chat-bubble-yellow);
 }
 
 .aqua-chat-bubble--blue {
-  background-color: #bfdbfe;
+  background-color: var(--chat-bubble-blue);
 }
 
 .aqua-chat-bubble--pink {
-  background-color: #fbcfe8;
+  background-color: var(--chat-bubble-pink);
 }
 
 .aqua-chat-bubble--purple {
-  background-color: #e9d5ff;
+  background-color: var(--chat-bubble-purple);
 }
 
 .aqua-chat-bubble--indigo {
-  background-color: #c7d2fe;
+  background-color: var(--chat-bubble-indigo);
 }
 
 .aqua-chat-bubble--teal {
-  background-color: #99f6e4;
+  background-color: var(--chat-bubble-teal);
 }
 
 .aqua-chat-bubble--lime {
-  background-color: #d9f99d;
+  background-color: var(--chat-bubble-lime);
 }
 
 .aqua-chat-bubble--amber {
-  background-color: #fde68a;
+  background-color: var(--chat-bubble-amber);
 }
 
 .aqua-chat-bubble--cyan {
-  background-color: #a5f3fc;
+  background-color: var(--chat-bubble-cyan);
 }
 
 .aqua-chat-bubble--rose {
-  background-color: #fecdd3;
+  background-color: var(--chat-bubble-rose);
 }
 
 .aqua-chat-bubble--gray {
-  background-color: #e5e7eb;
+  background-color: var(--chat-bubble-gray);
 }
 
 .aqua-chat-bubble--green {
-  background-color: #bbf7d0;
+  background-color: var(--chat-bubble-green);
 }
 
 .aqua-chat-bubble--orange {
-  background-color: #fed7aa;
+  background-color: var(--chat-bubble-orange);
 }
 
 .aqua-chat-bubble--red {
-  background-color: #fecaca;
+  background-color: var(--chat-bubble-red);
 }
 
 /* Alignment - tail direction */
@@ -132,7 +128,7 @@
 /* Message metadata */
 .aqua-chat-bubble-meta {
   font-size: 11px;
-  color: #666;
+  color: var(--chat-bubble-meta-text);
   margin-bottom: 4px;
   display: flex;
   gap: 8px;

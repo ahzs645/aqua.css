@@ -5,8 +5,8 @@
 
 [role="listbox"],
 select[multiple] {
-  background: white;
-  border: 1px solid #888888;
+  background: var(--listbox-bg);
+  border: 1px solid var(--listbox-border);
   border-radius: var(--radius-small);
   display: block;
   font-family: var(--font-system);
@@ -18,7 +18,7 @@ select[multiple] {
 
   &:focus {
     border-color: var(--aqua-blue);
-    box-shadow: var(--inset-shadow), 0 0 3px rgba(43, 153, 255, 0.5);
+    box-shadow: var(--inset-shadow), var(--listbox-focus-shadow);
     outline: none;
   }
 
@@ -31,12 +31,12 @@ select[multiple] {
     &[aria-selected="true"],
     &:checked,
     &:focus {
-      background: var(--aqua-blue);
-      color: white;
+      background: var(--listbox-option-selected-bg);
+      color: var(--listbox-option-selected-text);
     }
 
     &:hover:not([aria-selected="true"]):not(:checked) {
-      background: #E8E8E8;
+      background: var(--listbox-option-hover-bg);
     }
   }
 }

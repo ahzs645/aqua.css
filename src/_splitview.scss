@@ -10,8 +10,8 @@
 .aqua-split-pane {
   display: flex;
   flex-direction: row;
-  border: 1px solid rgb(175, 175, 175);
-  background: white;
+  border: 1px solid var(--split-pane-border);
+  background: var(--split-pane-bg);
   overflow: hidden;
 
   /* Child panes */
@@ -32,11 +32,11 @@
       min-width: auto;
       min-height: 8px;
       padding: 0;
-      background: linear-gradient(to bottom, rgb(252, 252, 252), rgb(224, 224, 224));
+      background: var(--split-divider-gradient-vertical);
       border-left: none;
       border-right: none;
-      border-top: 1px solid rgb(180, 180, 180);
-      border-bottom: 1px solid rgb(180, 180, 180);
+      border-top: 1px solid var(--split-divider-border);
+      border-bottom: 1px solid var(--split-divider-border);
       cursor: row-resize;
       flex-direction: column;
       gap: 1px;
@@ -46,8 +46,8 @@
     .aqua-split-grabber {
       width: 20px;
       height: 1px;
-      background: rgb(167, 167, 167);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      background: var(--split-grabber-bg);
+      box-shadow: var(--split-grabber-shadow);
     }
   }
 }
@@ -60,9 +60,9 @@
   width: 8px;
   min-width: 8px;
   padding: 4px 0;
-  background: linear-gradient(to right, rgb(252, 252, 252), rgb(224, 224, 224));
-  border-left: 1px solid rgb(180, 180, 180);
-  border-right: 1px solid rgb(180, 180, 180);
+  background: var(--split-divider-gradient);
+  border-left: 1px solid var(--split-divider-border);
+  border-right: 1px solid var(--split-divider-border);
   cursor: col-resize;
   display: flex;
   flex-direction: row;
@@ -77,8 +77,8 @@
 .aqua-split-grabber {
   width: 1px;
   height: 20px;
-  background: rgb(167, 167, 167);
-  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.5);
+  background: var(--split-grabber-bg);
+  box-shadow: var(--split-grabber-shadow-vertical);
 }
 
 /* ============================================
@@ -86,17 +86,17 @@
    ============================================ */
 .split-view {
   display: flex;
-  border: 1px solid rgb(175, 175, 175);
+  border: 1px solid var(--split-view-border);
   border-radius: var(--radius-medium);
   overflow: hidden;
-  background: white;
+  background: var(--split-view-bg);
 }
 
 .split-view-sidebar {
   width: 200px;
   min-width: 150px;
   background: var(--surface-light);
-  border-right: 1px solid #CCCCCC;
+  border-right: 1px solid var(--split-view-sidebar-border);
   overflow: auto;
 }
 
@@ -108,16 +108,16 @@
 
 .split-view-divider {
   width: 8px;
-  background: linear-gradient(to right, rgb(252, 252, 252), rgb(224, 224, 224));
+  background: var(--split-divider-gradient);
   cursor: col-resize;
-  border-left: 1px solid rgb(180, 180, 180);
-  border-right: 1px solid rgb(180, 180, 180);
+  border-left: 1px solid var(--split-divider-border);
+  border-right: 1px solid var(--split-divider-border);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1px;
 
   &:hover {
-    background: linear-gradient(to right, rgb(245, 245, 245), rgb(215, 215, 215));
+    background: var(--split-view-divider-hover-gradient);
   }
 }

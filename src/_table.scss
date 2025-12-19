@@ -3,31 +3,27 @@
  * Mac OS X Aqua-style table - JavaFX AquaFX accurate
  */
 
+@use "mixins" as *;
+
 .table-view,
 table.aqua,
 table.aqua-table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: var(--table-bg);
   border: 1px solid;
-  border-color: rgb(156, 156, 156) rgb(190, 190, 190) rgb(190, 190, 190) rgb(190, 190, 190);
+  border-color: var(--table-border);
   font-family: var(--font-system);
   font-size: var(--font-size-base);
 
   /* Column headers */
   th {
-    background: linear-gradient(
-      rgb(255, 255, 255) 25%,
-      rgb(243, 243, 243) 50%,
-      rgb(236, 236, 236) 50%,
-      rgb(243, 243, 243) 98%,
-      rgb(250, 250, 250) 100%
-    );
+    background: var(--table-header-gradient);
     padding: 0 10px;
     text-align: left;
     font-weight: normal;
-    border-bottom: 0.5px solid rgb(156, 156, 156);
-    border-right: 1px solid rgb(190, 190, 190);
+    border-bottom: 0.5px solid var(--table-header-border-bottom);
+    border-right: 1px solid var(--table-header-border-right);
     height: 22px;
     position: relative;
 
@@ -42,7 +38,7 @@ table.aqua-table {
   /* Table cells */
   td {
     padding: 0 10px;
-    border-bottom: 1px solid rgb(240, 240, 240);
+    border-bottom: 1px solid var(--table-cell-border);
     height: 22px;
   }
 
@@ -61,13 +57,13 @@ table.aqua-table {
 
   /* Hover state */
   tr:hover td {
-    background: rgb(182, 214, 253);
+    background: var(--table-row-hover);
   }
 
   /* Selected row */
   tr.selected td {
-    background: rgb(60, 119, 212);
-    color: white;
+    background: var(--table-row-selected);
+    color: var(--table-row-selected-text);
   }
 
   /* Interactive table */
@@ -80,7 +76,7 @@ table.aqua-table {
 table:not(.aqua):not(.table-view) {
   border-collapse: collapse;
   font-size: var(--font-size-base);
-  background: white;
+  background: var(--table-bg);
   text-align: left;
   white-space: nowrap;
 
@@ -92,8 +88,8 @@ table:not(.aqua):not(.table-view) {
       top: 0;
       padding: 6px 12px;
       font-weight: bold;
-      border-bottom: 1px solid #888888;
-      border-right: 1px solid #CCCCCC;
+      border-bottom: 1px solid var(--table-legacy-header-border);
+      border-right: 1px solid var(--table-legacy-header-divider);
       cursor: default;
       user-select: none;
 
@@ -110,17 +106,17 @@ table:not(.aqua):not(.table-view) {
   tbody {
     tr {
       &:nth-child(even) {
-        background: #F5F5F5;
+        background: var(--table-legacy-row-even);
       }
 
       &:hover {
-        background: #E8E8E8;
+        background: var(--table-legacy-row-hover);
       }
 
       &.selected,
       &.highlighted {
         background: var(--aqua-blue);
-        color: white;
+        color: var(--table-row-selected-text);
 
         td {
           border-bottom-color: var(--aqua-blue-dark);
@@ -129,7 +125,7 @@ table:not(.aqua):not(.table-view) {
 
       td {
         padding: 4px 12px;
-        border-bottom: 1px solid #E8E8E8;
+        border-bottom: 1px solid var(--table-legacy-row-border);
       }
     }
   }

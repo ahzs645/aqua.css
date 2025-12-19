@@ -46,6 +46,30 @@
     #e3e3e3 4px
   );
 
+  --aqua-background-classic: repeating-linear-gradient(
+    #F0F0F0,
+    #F0F0F0 4px,
+    #FFFFFF 4px,
+    #FFFFFF 8px
+  );
+
+  --aqua-background-diagonal: repeating-linear-gradient(
+    45deg,
+    #eee,
+    #eee 10px,
+    #e3e3e3 10px,
+    #e3e3e3 20px
+  );
+
+  --aqua-background-gray: #e8e8e8;
+  --aqua-menubar-gradient: var(--menu-bar-gradient);
+  --aqua-gloss-gradient: var(--menu-bar-gloss);
+  --aqua-inset-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  --aqua-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  --aqua-text-shadow-dark: 0 -1px 0 rgba(0, 0, 0, 0.3);
+
   /* Brushed metal texture */
   --aqua-brushed-metal: linear-gradient(
     to bottom,
@@ -94,38 +118,22 @@
 
 /* Classic horizontal stripes (like Finder windows) */
 .aqua-background {
-  background: repeating-linear-gradient(
-    #F0F0F0,
-    #F0F0F0 4px,
-    #FFFFFF 4px,
-    #FFFFFF 8px
-  );
+  background: var(--aqua-background-classic);
 }
 
 /* Diagonal stripes */
 .aqua-background--diagonal {
-  background: repeating-linear-gradient(
-    45deg,
-    #eee,
-    #eee 10px,
-    #e3e3e3 10px,
-    #e3e3e3 20px
-  );
+  background: var(--aqua-background-diagonal);
 }
 
 /* Solid gray */
 .aqua-background--gray {
-  background: #e8e8e8;
+  background: var(--aqua-background-gray);
 }
 
 /* Brushed metal */
 .aqua-background--metal {
-  background: linear-gradient(
-    to bottom,
-    #e8e8e8 0%,
-    #d0d0d0 50%,
-    #c8c8c8 100%
-  );
+  background: var(--aqua-brushed-metal);
 }
 
 /* Full viewport wrapper */
@@ -146,7 +154,7 @@
 
 .aqua-bg-pinstripe {
   background-image: var(--aqua-pinstripe-light);
-  background-color: #ececec;
+  background-color: var(--aqua-window-bg);
 }
 
 .aqua-bg-pinstripe-diagonal {
@@ -158,7 +166,7 @@
 }
 
 .aqua-bg-menubar {
-  background-image: var(--aqua-pinstripe-menubar), linear-gradient(to bottom, #f8f8f8 0%, #e8e8e8 50%, #d4d4d4 100%);
+  background-image: var(--aqua-pinstripe-menubar), var(--aqua-menubar-gradient);
 }
 
 .aqua-bg-brushed-metal {
@@ -224,30 +232,23 @@
   left: 0;
   right: 0;
   height: 50%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
+  background: var(--aqua-gloss-gradient);
   pointer-events: none;
   z-index: 1;
 }
 
 /* Inset utility for inputs */
 .aqua-inset {
-  box-shadow:
-    inset 0 1px 3px rgba(0, 0, 0, 0.15),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.2),
-    0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: var(--aqua-inset-shadow);
 }
 
 /* Text shadows */
 .aqua-text-shadow {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-shadow: var(--aqua-text-shadow);
 }
 
 .aqua-text-shadow-dark {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  text-shadow: var(--aqua-text-shadow-dark);
 }
 
 /* Font family utility */

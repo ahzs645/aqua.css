@@ -28,55 +28,32 @@
     rgb(140, 140, 140) 51%,
     rgb(180, 180, 180) 100%
   );
-
-  input[type="checkbox"]:checked,
-  input[type="radio"]:checked {
-    background: var(--checkbox-selected-gradient);
-    border-color: rgb(80, 80, 80);
-  }
-
-  button.default,
-  .button.default {
-    border-color: rgb(80, 80, 80);
-    background: linear-gradient(
-      rgb(220, 220, 220) 0%,
-      rgb(160, 160, 160) 50%,
-      rgb(200, 200, 200) 100%
-    );
-  }
-
-  .progress-bar-fill,
-  .aqua-progress .bar {
-    background: linear-gradient(
-      rgb(180, 180, 180) 0%,
-      rgb(140, 140, 140) 50%,
-      rgb(160, 160, 160) 100%
-    );
-  }
-
-  .segmented-control button.active {
-    background: var(--button-blue-gradient);
-  }
-
-  .aqua-list.focused .aqua-list-item.selected,
-  .aqua-table tr.selected td {
-    background: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
-  }
-
-  .menu-bar {
-    .menu-title:hover,
-    .menu-dropdown li:hover {
-      background: var(--aqua-blue);
-    }
-  }
-
-  .aqua-tab.active {
-    background: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
-  }
-
-  .aqua-pagination-btn.active {
-    background: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
-  }
+  --checkbox-selected-border: rgb(80, 80, 80);
+  --aqua-button-default-border: rgb(80, 80, 80);
+  --aqua-button-default-gradient: linear-gradient(
+    rgb(220, 220, 220) 0%,
+    rgb(160, 160, 160) 50%,
+    rgb(200, 200, 200) 100%
+  );
+  --progress-fill-gradient: linear-gradient(
+    rgb(180, 180, 180) 0%,
+    rgb(140, 140, 140) 50%,
+    rgb(160, 160, 160) 100%
+  );
+  --menu-item-hover-bg: var(--aqua-blue);
+  --list-item-selected-focused-strip-gradient: linear-gradient(
+    rgb(180, 180, 180),
+    rgb(140, 140, 140)
+  );
+  --list-item-selected-focused-fill-gradient: linear-gradient(
+    rgb(180, 180, 180),
+    rgb(140, 140, 140)
+  );
+  --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
+  --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+  --table-row-selected: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
+  --tab-active-gradient: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
+  --pagination-active-gradient: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
 }
 
 /* ============================================
@@ -93,51 +70,34 @@
     rgb(235, 235, 235) 51%,
     rgb(250, 250, 250) 100%
   );
-
-  input[type="checkbox"]:checked,
-  input[type="radio"]:checked {
-    background: var(--checkbox-selected-gradient);
-    border-color: rgb(180, 180, 180);
-  }
-
-  button.default,
-  .button.default {
-    border-color: rgb(180, 180, 180);
-    background: linear-gradient(
-      rgb(255, 255, 255) 0%,
-      rgb(245, 245, 245) 50%,
-      rgb(252, 252, 252) 100%
-    );
-  }
-
-  .progress-bar-fill,
-  .aqua-progress .bar {
-    background: linear-gradient(
-      rgb(255, 255, 255) 0%,
-      rgb(235, 235, 235) 50%,
-      rgb(248, 248, 248) 100%
-    );
-  }
-
-  .segmented-control button.active {
-    background: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
-  }
-
-  .aqua-list.focused .aqua-list-item.selected,
-  .aqua-table tr.selected td {
-    background: linear-gradient(rgb(255, 255, 255), rgb(230, 230, 230));
-    color: black;
-  }
-
-  .aqua-tab.active {
-    background: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
-    color: black;
-  }
-
-  .aqua-pagination-btn.active {
-    background: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
-    color: black;
-  }
+  --checkbox-selected-border: rgb(180, 180, 180);
+  --aqua-button-default-border: rgb(180, 180, 180);
+  --aqua-button-default-gradient: linear-gradient(
+    rgb(255, 255, 255) 0%,
+    rgb(245, 245, 245) 50%,
+    rgb(252, 252, 252) 100%
+  );
+  --progress-fill-gradient: linear-gradient(
+    rgb(255, 255, 255) 0%,
+    rgb(235, 235, 235) 50%,
+    rgb(248, 248, 248) 100%
+  );
+  --segmented-active-bg: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
+  --list-item-selected-focused-text: var(--text-color);
+  --list-item-selected-focused-strip-gradient: linear-gradient(
+    rgb(255, 255, 255),
+    rgb(230, 230, 230)
+  );
+  --list-item-selected-focused-fill-gradient: linear-gradient(
+    rgb(255, 255, 255),
+    rgb(230, 230, 230)
+  );
+  --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
+  --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+  --table-row-selected: linear-gradient(rgb(255, 255, 255), rgb(230, 230, 230));
+  --table-row-selected-text: var(--text-color);
+  --tab-active-gradient: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
+  --pagination-active-gradient: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
 }
 
 /* ============================================
@@ -154,52 +114,33 @@
     rgb(69, 154, 73) 51%,
     rgb(184, 233, 154) 100%
   );
-
-  input[type="checkbox"]:checked,
-  input[type="radio"]:checked {
-    background: var(--checkbox-selected-gradient);
-    border-color: rgb(50, 120, 50);
-  }
-
-  button.default,
-  .button.default {
-    border-color: rgb(50, 120, 50);
-    background: linear-gradient(
-      rgb(219, 255, 190) 0%,
-      rgb(148, 212, 112) 50%,
-      rgb(184, 233, 154) 100%
-    );
-  }
-
-  .progress-bar-fill,
-  .aqua-progress .bar {
-    background: linear-gradient(
-      rgb(180, 235, 145) 0%,
-      rgb(69, 199, 73) 50%,
-      rgb(148, 212, 112) 100%
-    );
-  }
-
-  .segmented-control button.active {
-    background: linear-gradient(rgb(180, 235, 145), rgb(69, 199, 73));
-  }
-
-  .aqua-list.focused .aqua-list-item.selected,
-  .aqua-table tr.selected td {
-    background: linear-gradient(rgb(184, 233, 154), rgb(69, 154, 73));
-  }
-
-  .aqua-tab.active {
-    background: linear-gradient(rgb(180, 235, 145), rgb(69, 199, 73));
-  }
-
-  .aqua-pagination-btn.active {
-    background: linear-gradient(rgb(180, 235, 145), rgb(69, 199, 73));
-  }
-
-  a, .aqua-hyperlink {
-    color: rgb(69, 154, 73);
-  }
+  --checkbox-selected-border: rgb(50, 120, 50);
+  --aqua-button-default-border: rgb(50, 120, 50);
+  --aqua-button-default-gradient: linear-gradient(
+    rgb(219, 255, 190) 0%,
+    rgb(148, 212, 112) 50%,
+    rgb(184, 233, 154) 100%
+  );
+  --progress-fill-gradient: linear-gradient(
+    rgb(180, 235, 145) 0%,
+    rgb(69, 199, 73) 50%,
+    rgb(148, 212, 112) 100%
+  );
+  --segmented-active-bg: linear-gradient(rgb(180, 235, 145), rgb(69, 199, 73));
+  --list-item-selected-focused-strip-gradient: linear-gradient(
+    rgb(184, 233, 154),
+    rgb(69, 154, 73)
+  );
+  --list-item-selected-focused-fill-gradient: linear-gradient(
+    rgb(184, 233, 154),
+    rgb(69, 154, 73)
+  );
+  --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
+  --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+  --table-row-selected: linear-gradient(rgb(184, 233, 154), rgb(69, 154, 73));
+  --tab-active-gradient: linear-gradient(rgb(180, 235, 145), rgb(69, 199, 73));
+  --pagination-active-gradient: linear-gradient(rgb(180, 235, 145), rgb(69, 199, 73));
+  --hyperlink-color: rgb(69, 154, 73);
 }
 
 /* ============================================
@@ -216,50 +157,31 @@
     rgb(165, 64, 59) 51%,
     rgb(251, 177, 175) 100%
   );
-
-  input[type="checkbox"]:checked,
-  input[type="radio"]:checked {
-    background: var(--checkbox-selected-gradient);
-    border-color: rgb(140, 50, 50);
-  }
-
-  button.default,
-  .button.default {
-    border-color: rgb(140, 50, 50);
-    background: linear-gradient(
-      rgb(251, 231, 228) 0%,
-      rgb(226, 90, 56) 50%,
-      rgb(251, 177, 175) 100%
-    );
-  }
-
-  .progress-bar-fill,
-  .aqua-progress .bar {
-    background: linear-gradient(
-      rgb(251, 207, 202) 0%,
-      rgb(226, 61, 56) 50%,
-      rgb(226, 90, 56) 100%
-    );
-  }
-
-  .segmented-control button.active {
-    background: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
-  }
-
-  .aqua-list.focused .aqua-list-item.selected,
-  .aqua-table tr.selected td {
-    background: linear-gradient(rgb(251, 177, 175), rgb(165, 64, 59));
-  }
-
-  .aqua-tab.active {
-    background: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
-  }
-
-  .aqua-pagination-btn.active {
-    background: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
-  }
-
-  a, .aqua-hyperlink {
-    color: rgb(226, 61, 56);
-  }
+  --checkbox-selected-border: rgb(140, 50, 50);
+  --aqua-button-default-border: rgb(140, 50, 50);
+  --aqua-button-default-gradient: linear-gradient(
+    rgb(251, 231, 228) 0%,
+    rgb(226, 90, 56) 50%,
+    rgb(251, 177, 175) 100%
+  );
+  --progress-fill-gradient: linear-gradient(
+    rgb(251, 207, 202) 0%,
+    rgb(226, 61, 56) 50%,
+    rgb(226, 90, 56) 100%
+  );
+  --segmented-active-bg: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
+  --list-item-selected-focused-strip-gradient: linear-gradient(
+    rgb(251, 177, 175),
+    rgb(165, 64, 59)
+  );
+  --list-item-selected-focused-fill-gradient: linear-gradient(
+    rgb(251, 177, 175),
+    rgb(165, 64, 59)
+  );
+  --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
+  --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+  --table-row-selected: linear-gradient(rgb(251, 177, 175), rgb(165, 64, 59));
+  --tab-active-gradient: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
+  --pagination-active-gradient: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
+  --hyperlink-color: rgb(226, 61, 56);
 }

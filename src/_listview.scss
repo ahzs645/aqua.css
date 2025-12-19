@@ -8,9 +8,9 @@
    ============================================ */
 .list-view,
 .aqua-list {
-  background: white;
+  background: var(--list-bg);
   border: 1px solid;
-  border-color: rgb(156, 156, 156) rgb(190, 190, 190) rgb(190, 190, 190) rgb(190, 190, 190);
+  border-color: var(--list-border);
   overflow: auto;
   min-width: 150px;
   max-height: 200px;
@@ -20,7 +20,7 @@
   /* Focus ring */
   &:focus-within,
   &.focused {
-    box-shadow: 0 0 8px 0 rgba(120, 171, 217, 0.8);
+    box-shadow: var(--list-focus-ring);
   }
 
   /* Disabled state */
@@ -35,28 +35,23 @@
 .aqua-list-item {
   padding: 3px 3px;
   cursor: pointer;
-  background: white;
-  color: #000;
+  background: var(--list-item-bg);
+  color: var(--list-item-color);
 
   /* Hover state */
   &:hover {
-    background: rgb(182, 214, 253);
+    background: var(--list-item-hover-bg);
   }
 
   /* Selected state when list is NOT focused (gray selection) */
   &.selected {
     background:
-      linear-gradient(rgb(187, 197, 214), rgb(147, 160, 185)),
-      linear-gradient(
-        rgb(195, 204, 223),
-        rgb(195, 204, 223) 1%,
-        rgb(189, 199, 220) 1%,
-        rgb(155, 169, 196) 100%
-      );
+      var(--list-item-selected-strip-gradient),
+      var(--list-item-selected-fill-gradient);
     background-size: 100% 1px, 100% 100%;
     background-position: 0 0, 0 1px;
     background-repeat: no-repeat;
-    color: white;
+    color: var(--list-item-selected-text);
   }
 }
 
@@ -66,18 +61,13 @@
 .aqua-list:focus-within .aqua-list-item.selected,
 .aqua-list.focused .aqua-list-item.selected {
   background:
-    linear-gradient(rgb(95, 165, 221), rgb(54, 124, 192)),
-    linear-gradient(
-      rgb(116, 186, 232),
-      rgb(116, 186, 232) 1%,
-      rgb(109, 178, 227) 1%,
-      rgb(59, 136, 208) 100%
-    );
+    var(--list-item-selected-focused-strip-gradient),
+    var(--list-item-selected-focused-fill-gradient);
   background-size: 100% 1px, 100% 100%;
   background-position: 0 0, 0 1px;
   background-repeat: no-repeat;
-  color: white;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  color: var(--list-item-selected-focused-text);
+  text-shadow: var(--list-item-selected-focused-text-shadow);
 }
 
 /* ============================================
@@ -99,27 +89,22 @@
 
     /* Odd items in horizontal list */
     &:nth-child(odd) {
-      background: rgb(243, 246, 250);
+      background: var(--list-item-odd-bg);
     }
 
     &:hover {
-      background: rgb(182, 214, 253);
+      background: var(--list-item-hover-bg);
     }
 
     /* Selected state (unfocused) - horizontal gradient */
     &.selected {
       background:
-        linear-gradient(to right, rgb(187, 197, 214), rgb(147, 160, 185)),
-        linear-gradient(to right,
-          rgb(195, 204, 223),
-          rgb(195, 204, 223) 1%,
-          rgb(189, 199, 220) 1%,
-          rgb(155, 169, 196) 100%
-        );
+        var(--list-item-selected-strip-gradient-horizontal),
+        var(--list-item-selected-fill-gradient-horizontal);
       background-size: 1px 100%, 100% 100%;
       background-position: 0 0, 1px 0;
       background-repeat: no-repeat;
-      color: white;
+      color: var(--list-item-selected-text);
     }
   }
 }
@@ -130,18 +115,13 @@
 .aqua-list.horizontal:focus-within .aqua-list-item.selected,
 .aqua-list.horizontal.focused .aqua-list-item.selected {
   background:
-    linear-gradient(to right, rgb(95, 165, 221), rgb(54, 124, 192)),
-    linear-gradient(to right,
-      rgb(116, 186, 232),
-      rgb(116, 186, 232) 1%,
-      rgb(109, 178, 227) 1%,
-      rgb(59, 136, 208) 100%
-    );
+    var(--list-item-selected-focused-strip-gradient-horizontal),
+    var(--list-item-selected-focused-fill-gradient-horizontal);
   background-size: 1px 100%, 100% 100%;
   background-position: 0 0, 1px 0;
   background-repeat: no-repeat;
-  color: white;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  color: var(--list-item-selected-focused-text);
+  text-shadow: var(--list-item-selected-focused-text-shadow);
 }
 
 /* ============================================
@@ -151,16 +131,16 @@
 .aqua-list.striped {
   .list-item:nth-child(odd),
   .aqua-list-item:nth-child(odd) {
-    background: rgb(243, 246, 250);
+    background: var(--list-item-odd-bg);
   }
 
   .list-item:nth-child(even),
   .aqua-list-item:nth-child(even) {
-    background: white;
+    background: var(--list-item-even-bg);
   }
 
   .list-item:hover,
   .aqua-list-item:hover {
-    background: rgb(182, 214, 253);
+    background: var(--list-item-hover-bg);
   }
 }

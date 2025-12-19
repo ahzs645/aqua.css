@@ -9,8 +9,8 @@
 .badge,
 .aqua-badge {
   display: inline-block;
-  background: linear-gradient(rgb(255, 100, 100), rgb(220, 50, 50));
-  color: white;
+  background: var(--badge-gradient);
+  color: var(--badge-text);
   font-family: var(--font-system);
   font-size: 10px;
   font-weight: bold;
@@ -19,7 +19,7 @@
   min-width: 16px;
   text-align: center;
   line-height: 1.2;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--badge-shadow);
 }
 
 /* ============================================
@@ -30,28 +30,28 @@
 .badge-blue,
 .badge.blue,
 .aqua-badge.blue {
-  background: linear-gradient(rgb(100, 160, 255), rgb(50, 120, 220));
+  background: var(--badge-blue-gradient);
 }
 
 /* Green badge (success) */
 .badge-green,
 .badge.green,
 .aqua-badge.green {
-  background: linear-gradient(rgb(100, 200, 100), rgb(50, 160, 50));
+  background: var(--badge-green-gradient);
 }
 
 /* Orange badge (warning) */
 .badge-orange,
 .badge.orange,
 .aqua-badge.orange {
-  background: linear-gradient(rgb(255, 180, 100), rgb(220, 140, 50));
+  background: var(--badge-orange-gradient);
 }
 
 /* Gray badge (neutral) */
 .badge-gray,
 .badge.gray,
 .aqua-badge.gray {
-  background: linear-gradient(rgb(160, 160, 160), rgb(120, 120, 120));
+  background: var(--badge-gray-gradient);
 }
 
 /* ============================================

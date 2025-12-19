@@ -5,53 +5,53 @@
  */
 
 /* Variables & Base */
-@import "_variables.scss";
-@import "_mixins.scss";
-@import "_base.scss";
-@import "_backgrounds.scss";
+@use "variables";
+@use "mixins";
+@use "base";
+@use "backgrounds";
 
 /* Core Components */
-@import "_window.scss";
-@import "_traffic-lights.scss";
-@import "_buttons.scss";
-@import "_forms.scss";
-@import "_checkbox.scss";
-@import "_radio.scss";
-@import "_switch.scss";
+@use "window";
+@use "traffic-lights";
+@use "buttons";
+@use "forms";
+@use "checkbox";
+@use "radio";
+@use "switch";
 
 /* UI Components */
-@import "_progress.scss";
-@import "_tabs.scss";
-@import "_fieldset.scss";
-@import "_scrollbar.scss";
+@use "progress";
+@use "tabs";
+@use "fieldset";
+@use "scrollbar";
 
 /* Advanced Components */
-@import "_menu.scss";
-@import "_toolbar.scss";
-@import "_dialog.scss";
-@import "_alert.scss";
-@import "_table.scss";
-@import "_listview.scss";
-@import "_listbox.scss";
-@import "_treeview.scss";
-@import "_tree-table.scss";
-@import "_segmented.scss";
-@import "_tooltip.scss";
-@import "_balloon.scss";
-@import "_stepper.scss";
-@import "_combobox.scss";
-@import "_spinner.scss";
-@import "_splitview.scss";
-@import "_disclosure.scss";
-@import "_titled-pane.scss";
-@import "_separator.scss";
-@import "_hyperlink.scss";
-@import "_window-pane.scss";
-@import "_toast.scss";
-@import "_chat-bubble.scss";
-@import "_pagination.scss";
-@import "_badge.scss";
+@use "menu";
+@use "toolbar";
+@use "dialog";
+@use "alert";
+@use "table";
+@use "listview";
+@use "listbox";
+@use "treeview";
+@use "tree-table";
+@use "segmented";
+@use "tooltip";
+@use "balloon";
+@use "stepper";
+@use "combobox";
+@use "spinner";
+@use "splitview";
+@use "disclosure";
+@use "titled-pane";
+@use "separator";
+@use "hyperlink";
+@use "window-pane";
+@use "toast";
+@use "chat-bubble";
+@use "pagination";
+@use "badge";
 
 /* Utilities & Themes */
-@import "_utilities.scss";
-@import "_themes.scss";
+@use "utilities";
+@use "themes";

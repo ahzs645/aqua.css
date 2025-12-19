@@ -4,49 +4,39 @@
  */
 
 .toolbar {
-  background: linear-gradient(
-    to bottom,
-    rgb(222, 222, 222),
-    rgb(173, 173, 173) 99%,
-    rgb(233, 233, 233)
-  );
+  background: var(--toolbar-bg-gradient);
   padding: 3px 10px 8px 10px;
   display: flex;
   gap: 5px;
   align-items: center;
-  border-bottom: 1px solid rgb(103, 103, 103);
+  border-bottom: 1px solid var(--toolbar-border);
 
   /* Inactive toolbar */
   &.inactive {
-    background: linear-gradient(
-      to bottom,
-      rgb(244, 244, 244),
-      rgb(224, 224, 224) 99%,
-      rgb(227, 227, 227)
-    );
-    border-bottom-color: rgb(166, 166, 166);
+    background: var(--toolbar-bg-inactive-gradient);
+    border-bottom-color: var(--toolbar-border-inactive);
   }
 }
 
 /* Toolbar button */
 .toolbar-button {
-  background: linear-gradient(rgb(245, 245, 245), rgb(185, 185, 185));
+  background: var(--toolbar-button-gradient);
   border: 0.5px solid;
-  border-color: rgb(147, 147, 147) rgb(131, 131, 131) rgb(131, 131, 131) rgb(131, 131, 131);
+  border-color: var(--toolbar-button-border);
   border-radius: 4px;
   padding: 1px 12px 2px 12px;
   cursor: pointer;
   font-family: var(--font-system);
   font-size: var(--font-size-base);
-  color: #000;
-  box-shadow: 0 0.8px 1px rgba(172, 172, 184, 0.5);
+  color: var(--toolbar-button-text);
+  box-shadow: var(--toolbar-button-shadow);
 
   &:hover {
-    background: linear-gradient(rgb(250, 250, 250), rgb(195, 195, 195));
+    background: var(--toolbar-button-hover-gradient);
   }
 
   &:active {
-    background: linear-gradient(rgb(160, 160, 160), rgb(215, 215, 215));
+    background: var(--toolbar-button-active-gradient);
   }
 
   &:disabled {
@@ -80,7 +70,7 @@
 .toolbar-separator {
   width: 1px;
   height: 20px;
-  border-right: 1px solid rgb(129, 129, 129);
+  border-right: 1px solid var(--toolbar-separator-border);
   margin: 0 1px;
 }
 
@@ -91,8 +81,8 @@
 
 /* Toolbar search field */
 .toolbar-search {
-  background: #fff;
-  border: 1px solid rgb(180, 180, 180);
+  background: var(--toolbar-search-bg);
+  border: 1px solid var(--toolbar-search-border);
   border-radius: 10px;
   padding: 2px 8px;
   font-size: var(--font-size-small);
@@ -100,11 +90,11 @@
   width: 150px;
 
   &:focus {
-    border-color: rgb(104, 155, 201);
-    box-shadow: 0 0 0 3px rgba(120, 171, 217, 0.4);
+    border-color: var(--toolbar-search-focus-border);
+    box-shadow: var(--toolbar-search-focus-shadow);
   }
 
   &::placeholder {
-    color: rgb(128, 128, 128);
+    color: var(--toolbar-search-placeholder);
   }
 }

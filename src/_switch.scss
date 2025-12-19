@@ -3,13 +3,14 @@
  * Mac OS X Aqua-style toggle switch
  */
 
+@use "mixins" as *;
+
 .aqua-switch {
   position: relative;
   border-radius: 9999px;
-  background: linear-gradient(#d0d0d0, #f5f5f5);
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.55);
+  background: var(--switch-track-gradient);
+  border: 1px solid var(--switch-track-border);
+  box-shadow: var(--switch-track-shadow);
   padding: 0 2px;
   height: 16px;
   width: 28px;
@@ -20,9 +21,7 @@
 
   &:focus {
     outline: none;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12),
-      0 1px 0 rgba(255, 255, 255, 0.55),
-      0 0 0 2px rgba(48, 103, 218, 0.3);
+    box-shadow: var(--switch-track-focus-shadow);
   }
 }
 
@@ -48,27 +47,14 @@
 
 /* OFF state - gray gradient */
 .aqua-switch:not(.aqua-switch--checked) .aqua-switch-thumb {
-  background: linear-gradient(
-    rgba(160, 160, 160, 0.625),
-    rgba(255, 255, 255, 0.625)
-  );
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2),
-    0 1px 1px rgba(0, 0, 0, 0.3),
-    inset 0 1px 2px rgba(0, 0, 0, 0.4),
-    inset 0 2px 3px 1px #bbbbbb;
+  background: var(--switch-thumb-off-gradient);
+  box-shadow: var(--switch-thumb-off-shadow);
 }
 
 /* ON state - blue gradient */
 .aqua-switch--checked .aqua-switch-thumb {
-  background: linear-gradient(
-    rgba(0, 65, 184, 0.625),
-    rgba(45, 115, 199, 0.625),
-    rgba(33, 160, 196, 0.625)
-  );
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3),
-    0 1px 1px rgba(0, 78, 187, 0.5),
-    inset 0 1px 3px rgba(0, 17, 49, 0.8),
-    inset 0 2px 3px 1px rgba(0, 78, 187, 0.75);
+  background: var(--switch-thumb-on-gradient);
+  box-shadow: var(--switch-thumb-on-shadow);
   transform: translateX(10px);
 }
 
@@ -118,7 +104,7 @@
 .aqua-switch-label {
   font-family: "Lucida Grande", "Helvetica Neue", sans-serif;
   font-size: 13px;
-  color: #333;
+  color: var(--switch-label-color);
   cursor: pointer;
 }
 

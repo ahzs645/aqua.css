@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brushed Metal Effect</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1a1a1a;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="metal"></canvas>
+  <script>
+    const canvas = document.getElementById('metal');
+    const ctx = canvas.getContext('2d');
+
+    const width = 1440;
+    const height = 900;
+    canvas.width = width;
+    canvas.height = height;
+
+    // Create image data for pixel manipulation
+    const imageData = ctx.createImageData(width, height);
+    const data = imageData.data;
+
+    // Generate brushed metal texture
+    for (let y = 0; y < height; y++) {
+      // Row-based noise for horizontal striations
+      // Using multiple layers of noise for a more natural "brushed" feel
+      const rowNoise1 = (Math.random() - 0.5) * 50;
+      const rowNoise2 = (Math.random() - 0.5) * 20;
+
+      for (let x = 0; x < width; x++) {
+        const i = (y * width + x) * 4;
+
+        // Base gray (brighter, like the image)
+        let gray = 185;
+
+        // 1. Horizontal Striations
+        gray += rowNoise1;
+        // Some pixels are slightly different to avoid perfect solid lines
+        if (Math.random() > 0.8) gray += rowNoise2;
+        // Fine grain noise
+        gray += (Math.random() - 0.5) * 15;
+
+        // 2. Vertical Specular Highlights
+        // Main bright band (around 30-40% width)
+        const mainHighlightX = width * 0.38;
+        const mainDist = Math.abs(x - mainHighlightX) / (width * 0.12);
+        const mainHighlight = Math.exp(-mainDist * mainDist) * 45;
+
+        // Secondary softer band (around 75% width)
+        const secHighlightX = width * 0.75;
+        const secDist = Math.abs(x - secHighlightX) / (width * 0.2);
+        const secHighlight = Math.exp(-secDist * secDist) * 25;
+        
+        // Third very subtle band on the left
+        const leftHighlightX = width * 0.1;
+        const leftDist = Math.abs(x - leftHighlightX) / (width * 0.1);
+        const leftHighlight = Math.exp(-leftDist * leftDist) * 15;
+
+        gray += mainHighlight + secHighlight + leftHighlight;
+
+        // 3. Horizontal Wavy Lighting (Sheen)
+        // Using low-frequency sine waves to create subtle horizontal bands of light/dark
+        const horizontalWave = Math.sin(y * 0.015) * 6 + Math.sin(y * 0.04) * 3;
+        gray += horizontalWave;
+
+        // 4. Overall Gradient
+        // Slight darkening towards the bottom and right to add depth
+        gray -= (y / height) * 10;
+        gray -= (x / width) * 10;
+
+        // Clamp
+        gray = Math.max(0, Math.min(255, gray));
+
+        data[i] = gray;     // R
+        data[i + 1] = gray; // G
+        data[i + 2] = gray; // B
+        data[i + 3] = 255;  // A
+      }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+  </script>
+</body>
+</html>

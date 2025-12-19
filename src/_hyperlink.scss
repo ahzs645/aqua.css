@@ -10,7 +10,7 @@
 a,
 .hyperlink,
 a.aqua-hyperlink {
-  color: rgb(0, 102, 204);
+  color: var(--hyperlink-color);
   text-decoration: none;
   cursor: pointer;
   font-family: var(--font-system);
@@ -23,18 +23,18 @@ a.aqua-hyperlink {
   /* Focus ring */
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(120, 171, 217, 0.5);
+    box-shadow: var(--hyperlink-focus-ring);
     border-radius: 2px;
   }
 
   /* Visited state */
   &:visited {
-    color: rgb(128, 118, 163);
+    color: var(--hyperlink-visited);
   }
 
   /* Active/pressed state */
   &:active {
-    color: rgb(60, 130, 190);
+    color: var(--hyperlink-active);
   }
 }
 
@@ -44,7 +44,7 @@ a.aqua-hyperlink {
 button.link,
 .button-link,
 button.aqua-hyperlink {
-  color: rgb(0, 102, 204);
+  color: var(--hyperlink-color);
   text-decoration: none;
   cursor: pointer;
   background: none;
@@ -61,12 +61,12 @@ button.aqua-hyperlink {
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(120, 171, 217, 0.5);
+    box-shadow: var(--hyperlink-focus-ring);
     border-radius: 2px;
   }
 
   &:active {
-    color: rgb(60, 130, 190);
+    color: var(--hyperlink-active);
   }
 }
 
@@ -79,7 +79,7 @@ button.link:disabled,
 .button-link:disabled,
 button.aqua-hyperlink:disabled,
 button.aqua-hyperlink.disabled {
-  color: rgb(128, 128, 128);
+  color: var(--hyperlink-disabled);
   opacity: 0.6;
   cursor: not-allowed;
   pointer-events: none;

@@ -50,11 +50,11 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
-    border: 1px solid #888888;
+    background: var(--combobox-dropdown-bg);
+    border: 1px solid var(--combobox-dropdown-border);
     border-top: none;
     border-radius: 0 0 var(--radius-small) var(--radius-small);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--combobox-dropdown-shadow);
     max-height: 150px;
     overflow-y: auto;
     z-index: 100;
@@ -69,13 +69,13 @@
       cursor: default;
 
       &:hover {
-        background: var(--aqua-blue);
-        color: white;
+        background: var(--combobox-option-hover-bg);
+        color: var(--combobox-option-hover-text);
       }
 
       &.selected {
-        background: var(--aqua-blue);
-        color: white;
+        background: var(--combobox-option-hover-bg);
+        color: var(--combobox-option-hover-text);
       }
     }
   }
