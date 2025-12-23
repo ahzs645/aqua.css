@@ -75,6 +75,79 @@
   }
 }
 
+/* 10.4 and earlier: primary button becomes darker when pressed */
+.aqua-era-10-0 .aqua-button--primary:active,
+[data-aqua-era="10-0"] .aqua-button--primary:active,
+.aqua-era-10-0 .aqua-button.default:active,
+[data-aqua-era="10-0"] .aqua-button.default:active,
+.aqua-era-10-2 .aqua-button--primary:active,
+[data-aqua-era="10-2"] .aqua-button--primary:active,
+.aqua-era-10-2 .aqua-button.default:active,
+[data-aqua-era="10-2"] .aqua-button.default:active,
+.aqua-era-10-3 .aqua-button--primary:active,
+[data-aqua-era="10-3"] .aqua-button--primary:active,
+.aqua-era-10-3 .aqua-button.default:active,
+[data-aqua-era="10-3"] .aqua-button.default:active,
+.aqua-era-10-4 .aqua-button--primary:active,
+[data-aqua-era="10-4"] .aqua-button--primary:active,
+.aqua-era-10-4 .aqua-button.default:active,
+[data-aqua-era="10-4"] .aqua-button.default:active {
+  background: var(--aqua-button-primary-gradient-pressed);
+}
+
+/* 10.4 and earlier: secondary/help button turns blue when pressed */
+.aqua-era-10-0 .aqua-button--secondary:active,
+[data-aqua-era="10-0"] .aqua-button--secondary:active,
+.aqua-era-10-0 .aqua-button--secondary.armed,
+[data-aqua-era="10-0"] .aqua-button--secondary.armed,
+.aqua-era-10-0 .aqua-button.help:active,
+[data-aqua-era="10-0"] .aqua-button.help:active,
+.aqua-era-10-2 .aqua-button--secondary:active,
+[data-aqua-era="10-2"] .aqua-button--secondary:active,
+.aqua-era-10-2 .aqua-button--secondary.armed,
+[data-aqua-era="10-2"] .aqua-button--secondary.armed,
+.aqua-era-10-2 .aqua-button.help:active,
+[data-aqua-era="10-2"] .aqua-button.help:active,
+.aqua-era-10-3 .aqua-button--secondary:active,
+[data-aqua-era="10-3"] .aqua-button--secondary:active,
+.aqua-era-10-3 .aqua-button--secondary.armed,
+[data-aqua-era="10-3"] .aqua-button--secondary.armed,
+.aqua-era-10-3 .aqua-button.help:active,
+[data-aqua-era="10-3"] .aqua-button.help:active,
+.aqua-era-10-4 .aqua-button--secondary:active,
+[data-aqua-era="10-4"] .aqua-button--secondary:active,
+.aqua-era-10-4 .aqua-button--secondary.armed,
+[data-aqua-era="10-4"] .aqua-button--secondary.armed,
+.aqua-era-10-4 .aqua-button.help:active,
+[data-aqua-era="10-4"] .aqua-button.help:active {
+  background: var(--aqua-button-primary-gradient-pressed);
+  box-shadow: var(--aqua-button-primary-shadow-active);
+
+  span {
+    text-shadow: var(--aqua-button-primary-text-shadow);
+  }
+}
+
+/* 10.4 and earlier: primary button armed state */
+.aqua-era-10-0 .aqua-button--primary.armed,
+[data-aqua-era="10-0"] .aqua-button--primary.armed,
+.aqua-era-10-0 .aqua-button.default.armed,
+[data-aqua-era="10-0"] .aqua-button.default.armed,
+.aqua-era-10-2 .aqua-button--primary.armed,
+[data-aqua-era="10-2"] .aqua-button--primary.armed,
+.aqua-era-10-2 .aqua-button.default.armed,
+[data-aqua-era="10-2"] .aqua-button.default.armed,
+.aqua-era-10-3 .aqua-button--primary.armed,
+[data-aqua-era="10-3"] .aqua-button--primary.armed,
+.aqua-era-10-3 .aqua-button.default.armed,
+[data-aqua-era="10-3"] .aqua-button.default.armed,
+.aqua-era-10-4 .aqua-button--primary.armed,
+[data-aqua-era="10-4"] .aqua-button--primary.armed,
+.aqua-era-10-4 .aqua-button.default.armed,
+[data-aqua-era="10-4"] .aqua-button.default.armed {
+  background: var(--aqua-button-primary-gradient-pressed);
+}
+
 /* Orange Button - macOS login style */
 .aqua-button--orange {
   background: var(--aqua-button-orange-gradient);
@@ -115,11 +188,30 @@
 }
 
 .aqua-button.help {
-  min-width: 0;
-  width: 20px;
-  height: 20px;
+  --help-size: 1.75em;
+  min-width: var(--help-size);
+  width: var(--help-size);
+  height: var(--help-size);
+  aspect-ratio: 1;
   padding: 0;
   border-radius: 50%;
+  background: var(--aqua-button-secondary-gradient);
+  box-shadow: var(--aqua-button-secondary-shadow);
+  color: var(--aqua-button-secondary-text);
+
+  /* Use round glass effect like traffic lights */
+  @include aqua-glass('round');
+
+  span {
+    text-shadow: var(--aqua-button-secondary-text-shadow);
+    font-weight: bold;
+    top: 0;
+    letter-spacing: 0;
+  }
+
+  &:active {
+    box-shadow: var(--aqua-button-secondary-shadow-active);
+  }
 }
 
 /* Pressed/armed (static pressed state for docs/demos) */
@@ -390,4 +482,33 @@ button.default.armed,
   50% {
     box-shadow: var(--aqua-button-default-pulse-shadow-high);
   }
+}
+
+/* 10.4 and earlier: Dragon breathing pulse (default <-> pressed) */
+@keyframes aqua-button-breathe {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(0.75) saturate(1.1);
+  }
+}
+
+.aqua-era-10-0 .aqua-button.default.pulse,
+[data-aqua-era="10-0"] .aqua-button.default.pulse,
+.aqua-era-10-0 .aqua-button--primary.pulse,
+[data-aqua-era="10-0"] .aqua-button--primary.pulse,
+.aqua-era-10-2 .aqua-button.default.pulse,
+[data-aqua-era="10-2"] .aqua-button.default.pulse,
+.aqua-era-10-2 .aqua-button--primary.pulse,
+[data-aqua-era="10-2"] .aqua-button--primary.pulse,
+.aqua-era-10-3 .aqua-button.default.pulse,
+[data-aqua-era="10-3"] .aqua-button.default.pulse,
+.aqua-era-10-3 .aqua-button--primary.pulse,
+[data-aqua-era="10-3"] .aqua-button--primary.pulse,
+.aqua-era-10-4 .aqua-button.default.pulse,
+[data-aqua-era="10-4"] .aqua-button.default.pulse,
+.aqua-era-10-4 .aqua-button--primary.pulse,
+[data-aqua-era="10-4"] .aqua-button--primary.pulse {
+  animation: aqua-button-breathe 1.5s ease-in-out infinite;
 }

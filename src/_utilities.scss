@@ -31,3 +31,23 @@
   box-shadow: var(--color-swatch-shadow);
   display: inline-block;
 }
+
+/* Era-specific visibility utilities */
+/* Show only in eras before 10.6 (10-0, 10-2, 10-3, 10-4) */
+.era-pre-10-6 {
+  display: block;
+}
+
+/* Show only in 10.6 and later */
+.era-10-6-plus {
+  display: none;
+}
+
+/* 10.6 era: swap visibility */
+[data-aqua-era="10-6"] .era-pre-10-6 {
+  display: none;
+}
+
+[data-aqua-era="10-6"] .era-10-6-plus {
+  display: block;
+}

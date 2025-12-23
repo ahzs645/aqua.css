@@ -44,6 +44,115 @@
       background-image: none;
     }
   }
+
+  /* ============================================
+     Authentic Brushed Metal Window
+     Mac OS X 10.3-10.5 era (iTunes, QuickTime, Finder)
+     ============================================ */
+  &.brushed-metal-authentic {
+    border-color: var(--brushed-metal-border);
+    box-shadow: var(--brushed-metal-window-shadow);
+
+    .title-bar {
+      background: var(--brushed-metal-titlebar);
+      background-color: #B4B4B4;
+      border-bottom-color: var(--brushed-metal-border-light);
+      box-shadow: var(--brushed-metal-shadow);
+    }
+
+    .title-bar-text {
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .window-body {
+      background: var(--brushed-metal-authentic);
+      background-color: #A0A0A0;
+    }
+
+    .toolbar {
+      background: var(--brushed-metal-toolbar);
+      background-color: #B0B0B0;
+      border-bottom-color: var(--brushed-metal-border-light);
+      box-shadow: var(--brushed-metal-shadow);
+    }
+
+    .status-bar {
+      background: var(--brushed-metal-toolbar);
+      background-color: #B0B0B0;
+      border-top-color: var(--brushed-metal-border-light);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    &.inactive {
+      .title-bar {
+        background: var(--brushed-metal-light-variant);
+        background-color: #BCBCBC;
+      }
+    }
+  }
+
+  /* Light brushed metal variant */
+  &.brushed-metal-light {
+    border-color: var(--brushed-metal-border-light);
+
+    .title-bar {
+      background: var(--brushed-metal-light-variant);
+      background-color: #BCBCBC;
+      border-bottom-color: #A0A0A0;
+    }
+
+    .window-body {
+      background: var(--brushed-metal-light-variant);
+      background-color: #BCBCBC;
+    }
+
+    .toolbar {
+      background: var(--brushed-metal-light-variant);
+      background-color: #BCBCBC;
+    }
+  }
+
+  /* Dark brushed metal variant (like Finder sidebar) */
+  &.brushed-metal-dark {
+    border-color: #505050;
+
+    .title-bar {
+      background: var(--brushed-metal-dark-variant);
+      background-color: #888888;
+      border-bottom-color: #606060;
+    }
+
+    .title-bar-text {
+      color: #FFFFFF;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .window-body {
+      background: var(--brushed-metal-dark-variant);
+      background-color: #888888;
+    }
+
+    .toolbar {
+      background: var(--brushed-metal-dark-variant);
+      background-color: #888888;
+    }
+  }
+
+  /* Warm brushed metal variant (early QuickTime Player) */
+  &.brushed-metal-warm {
+    border-color: #787068;
+
+    .title-bar {
+      background: var(--brushed-metal-warm);
+      background-color: #A8A098;
+      border-bottom-color: #908880;
+    }
+
+    .window-body {
+      background: var(--brushed-metal-warm);
+      background-color: #A8A098;
+    }
+  }
 }
 
 .window-body {

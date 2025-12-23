@@ -218,6 +218,60 @@
     #C6D2E2 100%
   );
 
+  /* 10.0 Authentic brushed metal - warmer, bluer tint */
+  --brushed-metal-grain: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(220, 235, 255, 0.1) 1px,
+    rgba(220, 235, 255, 0.1) 2px,
+    transparent 2px,
+    transparent 3px,
+    rgba(0, 20, 60, 0.04) 3px,
+    rgba(0, 20, 60, 0.04) 4px
+  );
+  --brushed-metal-center-highlight: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 25%,
+    rgba(200, 220, 255, 0.2) 35%,
+    rgba(220, 240, 255, 0.3) 50%,
+    rgba(200, 220, 255, 0.2) 65%,
+    transparent 75%,
+    transparent 100%
+  );
+  --brushed-metal-authentic:
+    var(--brushed-metal-edge-top),
+    var(--brushed-metal-edge-bottom),
+    var(--brushed-metal-center-highlight),
+    var(--brushed-metal-shading),
+    var(--brushed-metal-grain),
+    linear-gradient(
+      to bottom,
+      #C8D4E4 0%,
+      #B8C8DC 15%,
+      #A8BCCE 50%,
+      #9CAFC2 85%,
+      #90A4B8 100%
+    );
+  --brushed-metal-titlebar:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 1px,
+      rgba(220, 235, 255, 0.15) 1px,
+      rgba(220, 235, 255, 0.15) 2px
+    ),
+    var(--brushed-metal-center-highlight),
+    linear-gradient(
+      to bottom,
+      #D0DCE8 0%,
+      #C0D0E0 40%,
+      #B4C4D4 50%,
+      #BCC8D8 60%,
+      #C4D0DC 100%
+    );
+
   --pinstripe: repeating-linear-gradient(
     0deg,
     #F6F9FD 0px,
@@ -330,6 +384,60 @@
     #C7D0DB 100%
   );
 
+  /* 10.2 Authentic brushed metal - slightly cooler blue tint */
+  --brushed-metal-grain: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(210, 225, 245, 0.09) 1px,
+    rgba(210, 225, 245, 0.09) 2px,
+    transparent 2px,
+    transparent 3px,
+    rgba(0, 15, 50, 0.035) 3px,
+    rgba(0, 15, 50, 0.035) 4px
+  );
+  --brushed-metal-center-highlight: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 25%,
+    rgba(190, 210, 245, 0.18) 35%,
+    rgba(210, 230, 255, 0.28) 50%,
+    rgba(190, 210, 245, 0.18) 65%,
+    transparent 75%,
+    transparent 100%
+  );
+  --brushed-metal-authentic:
+    var(--brushed-metal-edge-top),
+    var(--brushed-metal-edge-bottom),
+    var(--brushed-metal-center-highlight),
+    var(--brushed-metal-shading),
+    var(--brushed-metal-grain),
+    linear-gradient(
+      to bottom,
+      #C4D0DE 0%,
+      #B4C4D6 15%,
+      #A4B8CA 50%,
+      #98ACBE 85%,
+      #8CA0B4 100%
+    );
+  --brushed-metal-titlebar:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 1px,
+      rgba(210, 225, 245, 0.14) 1px,
+      rgba(210, 225, 245, 0.14) 2px
+    ),
+    var(--brushed-metal-center-highlight),
+    linear-gradient(
+      to bottom,
+      #CCD8E4 0%,
+      #BCC8D8 40%,
+      #B0C0D0 50%,
+      #B8C4D4 60%,
+      #C0CCD8 100%
+    );
+
   --pinstripe: repeating-linear-gradient(
     0deg,
     #F6F8FB 0px,
@@ -441,6 +549,83 @@
     #C9CED5 50%,
     #BEC3CB 100%
   );
+
+  /* 10.3 Panther Authentic brushed metal - neutral gray, most iconic era */
+  --brushed-metal-grain: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.08) 1px,
+    rgba(255, 255, 255, 0.08) 2px,
+    transparent 2px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.03) 3px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  --brushed-metal-center-highlight: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 25%,
+    rgba(255, 255, 255, 0.15) 35%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 65%,
+    transparent 75%,
+    transparent 100%
+  );
+  --brushed-metal-authentic:
+    var(--brushed-metal-edge-top),
+    var(--brushed-metal-edge-bottom),
+    var(--brushed-metal-center-highlight),
+    var(--brushed-metal-shading),
+    var(--brushed-metal-grain),
+    linear-gradient(
+      to bottom,
+      #BEBEBE 0%,
+      #A8A8A8 15%,
+      #A0A0A0 50%,
+      #989898 85%,
+      #909090 100%
+    );
+  --brushed-metal-light-variant:
+    var(--brushed-metal-edge-top),
+    var(--brushed-metal-center-highlight),
+    var(--brushed-metal-shading),
+    var(--brushed-metal-grain),
+    linear-gradient(
+      to bottom,
+      #D8D8D8 0%,
+      #C8C8C8 15%,
+      #BCBCBC 50%,
+      #B4B4B4 85%,
+      #A8A8A8 100%
+    );
+  --brushed-metal-titlebar:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 1px,
+      rgba(255, 255, 255, 0.12) 1px,
+      rgba(255, 255, 255, 0.12) 2px
+    ),
+    var(--brushed-metal-center-highlight),
+    linear-gradient(
+      to bottom,
+      #C8C8C8 0%,
+      #B8B8B8 40%,
+      #ACACAC 50%,
+      #B4B4B4 60%,
+      #BCBCBC 100%
+    );
+  --brushed-metal-toolbar:
+    var(--brushed-metal-grain),
+    var(--brushed-metal-center-highlight),
+    linear-gradient(
+      to bottom,
+      #C4C4C4 0%,
+      #B0B0B0 45%,
+      #A4A4A4 55%,
+      #B0B0B0 100%
+    );
 
   --pinstripe: repeating-linear-gradient(
     0deg,

@@ -67,6 +67,182 @@
     #E0E0E0 100%
   );
 
+  /* ============================================
+     Enhanced Brushed Metal System
+     Authentic Apple brushed metal texture (2003-2007)
+     Used in iTunes, QuickTime, Finder, Safari
+     ============================================ */
+
+  /* Base metal color (adjustable per-era) */
+  --brushed-metal-base: #A8A8A8;
+  --brushed-metal-light: #D0D0D0;
+  --brushed-metal-dark: #8C8C8C;
+  --brushed-metal-highlight: rgba(255, 255, 255, 0.35);
+
+  /* Horizontal grain pattern - simulates brushed texture */
+  --brushed-metal-grain: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(255, 255, 255, 0.08) 1px,
+    rgba(255, 255, 255, 0.08) 2px,
+    transparent 2px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.03) 3px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+
+  /* Fine horizontal striations */
+  --brushed-metal-striations: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.06) 0px,
+    rgba(0, 0, 0, 0.02) 1px,
+    rgba(255, 255, 255, 0.04) 2px
+  );
+
+  /* Center vertical highlight (specular reflection) */
+  --brushed-metal-center-highlight: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 25%,
+    rgba(255, 255, 255, 0.15) 35%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 65%,
+    transparent 75%,
+    transparent 100%
+  );
+
+  /* Vertical shading (top-to-bottom gradient) */
+  --brushed-metal-shading: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 8%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.03) 55%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+
+  /* Edge highlights for depth */
+  --brushed-metal-edge-top: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.2) 1px,
+    transparent 2px
+  );
+
+  --brushed-metal-edge-bottom: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.08) 1px,
+    transparent 2px
+  );
+
+  /* Combined authentic brushed metal background */
+  --brushed-metal-authentic:
+    var(--brushed-metal-edge-top),
+    var(--brushed-metal-edge-bottom),
+    var(--brushed-metal-center-highlight),
+    var(--brushed-metal-shading),
+    var(--brushed-metal-grain),
+    var(--brushed-metal-striations),
+    linear-gradient(
+      to bottom,
+      #BEBEBE 0%,
+      #A8A8A8 15%,
+      #A0A0A0 50%,
+      #989898 85%,
+      #909090 100%
+    );
+
+  /* Light variant (like iTunes header) */
+  --brushed-metal-light-variant:
+    var(--brushed-metal-edge-top),
+    var(--brushed-metal-center-highlight),
+    var(--brushed-metal-shading),
+    var(--brushed-metal-grain),
+    linear-gradient(
+      to bottom,
+      #D8D8D8 0%,
+      #C8C8C8 15%,
+      #BCBCBC 50%,
+      #B4B4B4 85%,
+      #A8A8A8 100%
+    );
+
+  /* Dark variant (like Finder sidebar) */
+  --brushed-metal-dark-variant:
+    var(--brushed-metal-edge-top),
+    var(--brushed-metal-center-highlight),
+    var(--brushed-metal-shading),
+    var(--brushed-metal-grain),
+    linear-gradient(
+      to bottom,
+      #A0A0A0 0%,
+      #909090 15%,
+      #888888 50%,
+      #808080 85%,
+      #787878 100%
+    );
+
+  /* Warm variant (like early QuickTime) */
+  --brushed-metal-warm:
+    var(--brushed-metal-edge-top),
+    var(--brushed-metal-center-highlight),
+    var(--brushed-metal-shading),
+    var(--brushed-metal-grain),
+    linear-gradient(
+      to bottom,
+      #C8C0B8 0%,
+      #B8B0A8 15%,
+      #A8A098 50%,
+      #A09890 85%,
+      #989088 100%
+    );
+
+  /* Title bar brushed metal (with subtle pinstripe) */
+  --brushed-metal-titlebar:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 1px,
+      rgba(255, 255, 255, 0.12) 1px,
+      rgba(255, 255, 255, 0.12) 2px
+    ),
+    var(--brushed-metal-center-highlight),
+    linear-gradient(
+      to bottom,
+      #C8C8C8 0%,
+      #B8B8B8 40%,
+      #ACACAC 50%,
+      #B4B4B4 60%,
+      #BCBCBC 100%
+    );
+
+  /* Toolbar brushed metal */
+  --brushed-metal-toolbar:
+    var(--brushed-metal-grain),
+    var(--brushed-metal-center-highlight),
+    linear-gradient(
+      to bottom,
+      #C4C4C4 0%,
+      #B0B0B0 45%,
+      #A4A4A4 55%,
+      #B0B0B0 100%
+    );
+
+  /* Brushed metal border colors */
+  --brushed-metal-border: #686868;
+  --brushed-metal-border-light: #888888;
+  --brushed-metal-border-inner: rgba(255, 255, 255, 0.3);
+
+  /* Brushed metal shadows */
+  --brushed-metal-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --brushed-metal-window-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+
   /* Pinstripe Pattern (subtle) */
   --pinstripe: repeating-linear-gradient(
     0deg,
@@ -289,6 +465,7 @@
 
   /* Buttons */
   --aqua-button-primary-gradient: var(--aqua-blue-gradient);
+  --aqua-button-primary-gradient-pressed: var(--aqua-blue-gradient-pressed);
   --aqua-button-primary-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.3),
     0 0.125em 0.125em rgba(0, 78, 187, 0.5),
     inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8),

@@ -90,6 +90,13 @@
     rgba(33, 160, 196, 0.625)
   );
 
+  /* Darker blue gradient for pressed state (10.4 and earlier) */
+  --aqua-blue-gradient-pressed: linear-gradient(
+    rgba(0, 45, 140, 0.75),
+    rgba(25, 85, 165, 0.75),
+    rgba(15, 120, 160, 0.75)
+  );
+
   /* Secondary gray gradient */
   --aqua-gray-gradient: linear-gradient(
     rgba(160, 160, 160, 0.625),
@@ -171,6 +178,47 @@
 
 .aqua-bg-brushed-metal {
   background: var(--aqua-brushed-metal);
+}
+
+/* ============================================
+   Authentic Brushed Metal Backgrounds
+   Mac OS X 10.3-10.5 era styling (2003-2007)
+   ============================================ */
+
+/* Full authentic brushed metal (iTunes/QuickTime style) */
+.aqua-bg-brushed-metal-authentic {
+  background: var(--brushed-metal-authentic);
+  background-color: #A0A0A0;
+}
+
+/* Light brushed metal variant */
+.aqua-bg-brushed-metal-light {
+  background: var(--brushed-metal-light-variant);
+  background-color: #BCBCBC;
+}
+
+/* Dark brushed metal variant */
+.aqua-bg-brushed-metal-dark {
+  background: var(--brushed-metal-dark-variant);
+  background-color: #888888;
+}
+
+/* Warm brushed metal variant (early QuickTime) */
+.aqua-bg-brushed-metal-warm {
+  background: var(--brushed-metal-warm);
+  background-color: #A8A098;
+}
+
+/* Brushed metal titlebar background */
+.aqua-bg-brushed-metal-titlebar {
+  background: var(--brushed-metal-titlebar);
+  background-color: #B4B4B4;
+}
+
+/* Brushed metal toolbar background */
+.aqua-bg-brushed-metal-toolbar {
+  background: var(--brushed-metal-toolbar);
+  background-color: #B0B0B0;
 }
 
 .aqua-bg-solid {
