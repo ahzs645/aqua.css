@@ -415,12 +415,7 @@
     rgb(208, 208, 208) 100%
   );
   --checkbox-selected-border: rgb(100, 103, 124);
-  --checkbox-selected-gradient: linear-gradient(
-    rgb(228, 250, 255) 0%,
-    #91bdee 50%,
-    #78b0ee 51%,
-    rgb(228, 250, 255) 100%
-  );
+  --checkbox-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
   --checkbox-focus-border: rgb(104, 155, 201);
   --checkbox-focus-ring: 0 0 0 3px rgba(120, 171, 217, 1);
   --checkbox-indeterminate-shadow: drop-shadow(0 1.5px 0 rgba(255, 255, 255, 0.8));
