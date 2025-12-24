@@ -2865,6 +2865,55 @@
       </details>
     </div>
 
+    <h4>Wave-Animated Scrollbar</h4>
+    <p>Custom scrollbar with the same liquid wave effect as the progress bar. Scroll or drag the thumb to see the wave pattern reveal.</p>
+
+    <div class="example">
+      <div class="scrollbar-wave-container" style="width: 300px; height: 200px;" id="scrollbar-wave-demo">
+  <div class="scrollbar-wave-content" id="scrollbar-wave-content">
+    <div style="padding: 12px;">
+      <div style="font-weight: bold; margin-bottom: 8px;">Wave Scrollbar Demo</div>
+      <p style="margin: 0 0 10px 0;">This scrollbar uses the same liquid wave effect as the progress bar, creating a cohesive Aqua experience.</p>
+      <p style="margin: 0 0 10px 0;">The wave pattern in the thumb creates a sense of depth and movement as you scroll through the content.</p>
+      <p style="margin: 0 0 10px 0;">Notice how the wave stays fixed relative to the track, revealing different parts of the pattern as the thumb moves.</p>
+      <p style="margin: 0 0 10px 0;">You can drag the thumb directly or scroll the content area to see the effect.</p>
+      <p style="margin: 0 0 10px 0;">The design matches the classic Mac OS X Aqua interface with its glossy, three-dimensional appearance.</p>
+      <p style="margin: 0;">This implementation responds to theme changes - try switching themes above!</p>
+    </div>
+  </div>
+  <div class="scrollbar-wave-track" id="scrollbar-wave-track">
+    <div class="scrollbar-wave-thumb" id="scrollbar-wave-thumb">
+      <div class="scrollbar-wave-ink">
+        <div class="scrollbar-wave-shimmer" id="scrollbar-wave-shimmer"></div>
+      </div>
+    </div>
+  </div>
+</div>
+      <details>
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-container&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 300px; height: 200px;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-demo&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-content&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 12px;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;font-weight: bold; margin-bottom: 8px;&quot;</span>&gt;</span>Wave Scrollbar Demo<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0 0 10px 0;&quot;</span>&gt;</span>This scrollbar uses the same liquid wave effect as the progress bar, creating a cohesive Aqua experience.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0 0 10px 0;&quot;</span>&gt;</span>The wave pattern in the thumb creates a sense of depth and movement as you scroll through the content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0 0 10px 0;&quot;</span>&gt;</span>Notice how the wave stays fixed relative to the track, revealing different parts of the pattern as the thumb moves.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0 0 10px 0;&quot;</span>&gt;</span>You can drag the thumb directly or scroll the content area to see the effect.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0 0 10px 0;&quot;</span>&gt;</span>The design matches the classic Mac OS X Aqua interface with its glossy, three-dimensional appearance.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0;&quot;</span>&gt;</span>This implementation responds to theme changes - try switching themes above!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-track&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-track&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-thumb&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-thumb&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-ink&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-shimmer&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+      </details>
+    </div>
+
     <h2 id="graphite-theme">Color Themes</h2>
     <p>Add a theme class to your container to change the accent color. Available themes:</p>
     <ul style="margin: 1em 0;">
@@ -3464,7 +3513,100 @@
             preview.style.borderRadius = '8px';
           }
         });
+
+        // Also update wave scrollbar track theme
+        const scrollbarTrack = document.getElementById('scrollbar-wave-track');
+        if (scrollbarTrack) {
+          scrollbarTrack.className = 'scrollbar-wave-track ' + theme;
+        }
       };
+
+      function setupWaveScrollbar() {
+        const scrollContent = document.getElementById('scrollbar-wave-content');
+        const scrollbarTrack = document.getElementById('scrollbar-wave-track');
+        const scrollbarThumb = document.getElementById('scrollbar-wave-thumb');
+        const thumbShimmer = document.getElementById('scrollbar-wave-shimmer');
+
+        if (!scrollContent || !scrollbarTrack || !scrollbarThumb || !thumbShimmer) return;
+
+        let isDragging = false;
+        let startY = 0;
+        let startScrollTop = 0;
+
+        function updateScrollbar() {
+          const contentHeight = scrollContent.scrollHeight;
+          const visibleHeight = scrollContent.clientHeight;
+          const scrollTop = scrollContent.scrollTop;
+          const trackHeight = scrollbarTrack.clientHeight;
+
+          // Calculate thumb size (proportional to visible content)
+          const thumbHeight = Math.max(40, (visibleHeight / contentHeight) * trackHeight);
+          scrollbarThumb.style.height = thumbHeight + 'px';
+
+          // Calculate thumb position
+          const maxScroll = contentHeight - visibleHeight;
+          const maxThumbTop = trackHeight - thumbHeight;
+          const thumbTop = maxScroll > 0 ? (scrollTop / maxScroll) * maxThumbTop : 0;
+          scrollbarThumb.style.top = thumbTop + 'px';
+
+          // Wave is sized to track height, positioned to stay "fixed" relative to track
+          thumbShimmer.style.height = trackHeight + 'px';
+          thumbShimmer.style.top = -thumbTop + 'px';
+        }
+
+        scrollContent.addEventListener('scroll', updateScrollbar);
+        window.addEventListener('resize', updateScrollbar);
+        updateScrollbar();
+
+        // Drag functionality
+        scrollbarThumb.addEventListener('mousedown', function(e) {
+          isDragging = true;
+          startY = e.clientY;
+          startScrollTop = scrollContent.scrollTop;
+          document.body.style.userSelect = 'none';
+          e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', function(e) {
+          if (!isDragging) return;
+
+          const trackHeight = scrollbarTrack.clientHeight;
+          const thumbHeight = scrollbarThumb.clientHeight;
+          const contentHeight = scrollContent.scrollHeight;
+          const visibleHeight = scrollContent.clientHeight;
+
+          const deltaY = e.clientY - startY;
+          const maxThumbTop = trackHeight - thumbHeight;
+          const maxScroll = contentHeight - visibleHeight;
+
+          const scrollDelta = (deltaY / maxThumbTop) * maxScroll;
+          scrollContent.scrollTop = startScrollTop + scrollDelta;
+        });
+
+        document.addEventListener('mouseup', function() {
+          isDragging = false;
+          document.body.style.userSelect = '';
+        });
+
+        // Click on track to jump
+        scrollbarTrack.addEventListener('click', function(e) {
+          if (e.target === scrollbarThumb || scrollbarThumb.contains(e.target)) return;
+
+          const trackRect = scrollbarTrack.getBoundingClientRect();
+          const clickY = e.clientY - trackRect.top;
+          const trackHeight = scrollbarTrack.clientHeight;
+          const thumbHeight = scrollbarThumb.clientHeight;
+          const contentHeight = scrollContent.scrollHeight;
+          const visibleHeight = scrollContent.clientHeight;
+
+          const targetThumbTop = clickY - thumbHeight / 2;
+          const maxThumbTop = trackHeight - thumbHeight;
+          const maxScroll = contentHeight - visibleHeight;
+
+          const newScrollTop = (targetThumbTop / maxThumbTop) * maxScroll;
+          scrollContent.scrollTop = Math.max(0, Math.min(maxScroll, newScrollTop));
+        });
+      }
 
       setupTitledPanes();
       setupTreeTable();
@@ -3472,6 +3614,7 @@
       setupPillTabs();
       setupIndeterminateCheckbox();
       setupAquaEraSelector();
+      setupWaveScrollbar();
     })();
   </script>
 </body>

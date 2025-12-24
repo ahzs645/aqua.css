@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mac OS X Aqua Scrollbar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #d1d5db, #9ca3af);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      gap: 2rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #374151;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    .scroll-container {
+      position: relative;
+      width: 400px;
+      height: 300px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    .scroll-content {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      padding: 1rem;
+      padding-right: 2rem;
+      scrollbar-width: none;
+    }
+
+    .scroll-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scroll-content p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: #374151;
+    }
+
+    /* Scrollbar Track - same as progress-track but vertical */
+    .scrollbar-track {
+      --w: 18px;
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      bottom: 4px;
+      width: var(--w);
+      border-radius: 9px;
+      background: linear-gradient(90deg, #f5f5f5, #e9e9e9);
+      box-shadow:
+        inset 1px 0 2px rgba(0,0,0,0.25),
+        -1px 0 0 rgba(255,255,255,0.8);
+      overflow: hidden;
+
+      --g1: rgba(30, 90, 200, 0.92);
+      --g2: rgba(88, 132, 217, 0.95);
+      --g3: rgba(100, 170, 245, 0.90);
+      --drop: rgba(0, 0, 0, 0.32);
+      --rim: rgba(40, 90, 210, 0.65);
+      --ring: rgba(50, 110, 220, 0.85);
+      --inner: rgba(10, 30, 90, 0.75);
+    }
+
+    /* Scrollbar Thumb - same as progress-fill but vertical */
+    .scrollbar-thumb {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      min-height: 40px;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 9px;
+      background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
+      box-shadow:
+        0.125em 0 0.125em var(--rim),
+        inset 0.25em 0 0.5em var(--inner),
+        inset 0.375em 0 0.5em 0.25em var(--ring);
+    }
+
+    /* Left gloss - same as progress-fill::before but rotated */
+    .scrollbar-thumb::before {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 35%;
+      border-radius: 9px 0 0 9px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.18));
+      filter: blur(1px);
+      z-index: 2;
+    }
+
+    /* Right glow - same as progress-fill::after but rotated */
+    .scrollbar-thumb::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      top: -20px;
+      bottom: -20px;
+      right: 0;
+      width: 35%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.45));
+      filter: blur(3px);
+    }
+
+    /* Wave container - clips the wave to thumb bounds */
+    .thumb-wave-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: 9px;
+    }
+
+    /* Wave pattern - same as progress-wave but vertical (90deg rotated) */
+    .thumb-wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      /* Height set by JS to match track height */
+      background-image: repeating-linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 7.5%,
+        rgba(255, 255, 255, 0.4) 25%,
+        rgba(255, 255, 255, 0.15) 42.5%,
+        transparent 50%,
+        transparent 100%
+      );
+      background-size: 100% 20px;
+      filter: blur(4px);
+      /* Hourglass mask - rotated to horizontal */
+      -webkit-mask-image: linear-gradient(to right,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 28%,
+        rgba(0, 0, 0, 0.955) 50%,
+        rgba(0, 0, 0, 1) 72%,
+        rgba(0, 0, 0, 1) 100%
+      );
+      mask-image: linear-gradient(to right,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 28%,
+        rgba(0, 0, 0, 0.955) 50%,
+        rgba(0, 0, 0, 1) 72%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+  </style>
+</head>
+<body>
+  <h1>Mac OS X Aqua Scrollbar</h1>
+  
+  <div class="scroll-container">
+    <div class="scroll-content" id="scrollContent">
+      <p>Welcome to the Mac OS X Aqua experience. This scrollbar demonstrates the classic glossy appearance that made Apple's interface design so iconic in the early 2000s.</p>
+      <p>The Aqua interface was introduced with Mac OS X 10.0 in 2001. It featured translucent elements, subtle animations, and a liquid-like appearance that was revolutionary at the time.</p>
+      <p>Notice how the wave pattern in the scrollbar thumb creates a sense of depth and movement. As you scroll, the pattern shifts, giving the impression of light playing across a three-dimensional surface.</p>
+      <p>The design philosophy behind Aqua was to make interface elements feel tangible and responsive. Buttons appeared to press down, scrollbars seemed to slide smoothly, and windows cast soft shadows.</p>
+      <p>Steve Jobs famously said that Aqua was so beautiful "you want to lick it." The combination of subtle gradients, reflections, and animations created an interface that felt almost physical.</p>
+      <p>This scrollbar recreation captures the essence of that design: the glossy blue fill, the subtle highlights, and the characteristic wave pattern that made Aqua so distinctive.</p>
+      <p>The original Aqua scrollbars featured a similar pattern that would catch the light as you scrolled, creating a dynamic visual effect that made even simple interactions feel special.</p>
+      <p>Modern interfaces have moved toward flatter, more minimal designs, but there's still something magical about the attention to detail in Aqua's visual design.</p>
+      <p>Keep scrolling to see more of the wave effect. The pattern is static, but your movement through the content reveals different parts of it, creating the illusion of animation.</p>
+      <p>This technique uses a fixed background pattern that the thumb reveals as it moves, rather than an actual animation. It's a clever way to add visual interest without constant motion.</p>
+    </div>
+    
+    <div class="scrollbar-track" id="scrollbarTrack">
+      <div class="scrollbar-thumb" id="scrollbarThumb">
+        <div class="thumb-wave-container">
+          <div class="thumb-wave" id="thumbWave"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scrollContent = document.getElementById('scrollContent');
+    const scrollbarTrack = document.getElementById('scrollbarTrack');
+    const scrollbarThumb = document.getElementById('scrollbarThumb');
+    const thumbWave = document.getElementById('thumbWave');
+    
+    let isDragging = false;
+    let startY = 0;
+    let startScrollTop = 0;
+
+    function updateScrollbar() {
+      const contentHeight = scrollContent.scrollHeight;
+      const visibleHeight = scrollContent.clientHeight;
+      const scrollTop = scrollContent.scrollTop;
+      const trackHeight = scrollbarTrack.clientHeight;
+      
+      // Calculate thumb size (proportional to visible content)
+      const thumbHeight = Math.max(40, (visibleHeight / contentHeight) * trackHeight);
+      scrollbarThumb.style.height = thumbHeight + 'px';
+      
+      // Calculate thumb position
+      const maxScroll = contentHeight - visibleHeight;
+      const maxThumbTop = trackHeight - thumbHeight;
+      const thumbTop = maxScroll > 0 ? (scrollTop / maxScroll) * maxThumbTop : 0;
+      scrollbarThumb.style.top = thumbTop + 'px';
+      
+      // Wave is sized to track height, positioned to stay "fixed" relative to track
+      thumbWave.style.height = trackHeight + 'px';
+      thumbWave.style.top = -thumbTop + 'px';
+    }
+
+    scrollContent.addEventListener('scroll', updateScrollbar);
+    window.addEventListener('resize', updateScrollbar);
+    updateScrollbar();
+
+    // Drag functionality
+    scrollbarThumb.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startY = e.clientY;
+      startScrollTop = scrollContent.scrollTop;
+      document.body.style.userSelect = 'none';
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      
+      const trackHeight = scrollbarTrack.clientHeight;
+      const thumbHeight = scrollbarThumb.clientHeight;
+      const contentHeight = scrollContent.scrollHeight;
+      const visibleHeight = scrollContent.clientHeight;
+      
+      const deltaY = e.clientY - startY;
+      const maxThumbTop = trackHeight - thumbHeight;
+      const maxScroll = contentHeight - visibleHeight;
+      
+      const scrollDelta = (deltaY / maxThumbTop) * maxScroll;
+      scrollContent.scrollTop = startScrollTop + scrollDelta;
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      document.body.style.userSelect = '';
+    });
+
+    // Click on track to jump
+    scrollbarTrack.addEventListener('click', (e) => {
+      if (e.target === scrollbarThumb || scrollbarThumb.contains(e.target)) return;
+      
+      const trackRect = scrollbarTrack.getBoundingClientRect();
+      const clickY = e.clientY - trackRect.top;
+      const trackHeight = scrollbarTrack.clientHeight;
+      const thumbHeight = scrollbarThumb.clientHeight;
+      const contentHeight = scrollContent.scrollHeight;
+      const visibleHeight = scrollContent.clientHeight;
+      
+      const targetThumbTop = clickY - thumbHeight / 2;
+      const maxThumbTop = trackHeight - thumbHeight;
+      const maxScroll = contentHeight - visibleHeight;
+      
+      const newScrollTop = (targetThumbTop / maxThumbTop) * maxScroll;
+      scrollContent.scrollTop = Math.max(0, Math.min(maxScroll, newScrollTop));
+    });
+  </script>
+</body>
+</html>
