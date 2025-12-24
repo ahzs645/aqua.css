@@ -14,6 +14,17 @@
   --theme-color-dark: rgb(102, 102, 102);
   --theme-color-light: rgb(170, 170, 170);
 
+  /* Unified theme variables (for buttons & progress) */
+  --g1: rgba(160, 160, 160, 0.625);
+  --g2: rgba(255, 255, 255, 0.625);
+  --g3: rgba(255, 255, 255, 0.625);
+  --drop: rgba(0, 0, 0, 0.2);
+  --rim: rgba(0, 0, 0, 0.3);
+  --inner: rgba(0, 0, 0, 0.4);
+  --ring: #BBBBBB;
+  --glow: rgba(0, 0, 0, 0.25);
+  --txtShadow: rgba(0, 0, 0, 0.25);
+
   --button-blue-gradient: linear-gradient(
     rgb(187, 187, 187) 0%,
     rgb(153, 153, 153) 30%,
@@ -21,6 +32,25 @@
     rgb(119, 119, 119) 70%,
     rgb(102, 102, 102) 100%
   );
+
+  /* Aqua 3D button primary (graphite) */
+  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient-pressed: linear-gradient(
+    rgba(120, 120, 120, 0.75),
+    rgba(160, 160, 160, 0.75),
+    rgba(140, 140, 140, 0.75)
+  );
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.25em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.25em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring),
+    0 0 0.5em var(--glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
 
   --checkbox-selected-gradient: linear-gradient(
     rgb(200, 200, 200) 0%,
@@ -63,6 +93,36 @@
   --theme-color: rgb(248, 248, 248);
   --theme-color-dark: rgb(200, 200, 200);
   --theme-color-light: rgb(255, 255, 255);
+
+  /* Unified theme variables (for buttons & progress) */
+  --g1: rgba(230, 230, 230, 0.625);
+  --g2: rgba(255, 255, 255, 0.625);
+  --g3: rgba(245, 245, 245, 0.625);
+  --drop: rgba(0, 0, 0, 0.15);
+  --rim: rgba(0, 0, 0, 0.2);
+  --inner: rgba(0, 0, 0, 0.25);
+  --ring: #E0E0E0;
+  --glow: rgba(200, 200, 200, 0.4);
+  --txtShadow: rgba(0, 0, 0, 0.15);
+
+  /* Aqua 3D button primary (air/light) */
+  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient-pressed: linear-gradient(
+    rgba(200, 200, 200, 0.75),
+    rgba(230, 230, 230, 0.75),
+    rgba(220, 220, 220, 0.75)
+  );
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.25em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.25em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring),
+    0 0 0.5em var(--glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
 
   --checkbox-selected-gradient: linear-gradient(
     rgb(255, 255, 255) 0%,
@@ -108,6 +168,36 @@
   --theme-color-dark: rgb(69, 154, 73);
   --theme-color-light: rgb(180, 235, 145);
 
+  /* Unified theme variables (for buttons & progress) */
+  --g1: rgba(0, 120, 70, 0.625);
+  --g2: rgba(45, 170, 120, 0.625);
+  --g3: rgba(80, 210, 190, 0.625);
+  --drop: rgba(0, 0, 0, 0.3);
+  --rim: rgba(0, 130, 80, 0.50);
+  --inner: rgba(0, 35, 20, 0.80);
+  --ring: rgba(0, 130, 80, 0.75);
+  --glow: rgba(80, 220, 160, 0.5);
+  --txtShadow: rgba(0, 90, 50, 0.5);
+
+  /* Aqua 3D button primary (earth/green) */
+  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient-pressed: linear-gradient(
+    rgba(40, 110, 45, 0.75),
+    rgba(50, 150, 55, 0.75),
+    rgba(130, 190, 100, 0.75)
+  );
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.5em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.5em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring),
+    0 0 0.5em var(--glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
+
   --checkbox-selected-gradient: linear-gradient(
     rgb(184, 233, 154) 0%,
     rgb(69, 199, 73) 50%,
@@ -151,6 +241,36 @@
   --theme-color-dark: rgb(165, 64, 59);
   --theme-color-light: rgb(251, 207, 202);
 
+  /* Unified theme variables (for buttons & progress) */
+  --g1: rgba(180, 20, 40, 0.625);
+  --g2: rgba(235, 70, 90, 0.625);
+  --g3: rgba(255, 170, 165, 0.55);
+  --drop: rgba(0, 0, 0, 0.3);
+  --rim: rgba(170, 30, 60, 0.55);
+  --inner: rgba(55, 0, 10, 0.82);
+  --ring: rgba(170, 30, 60, 0.75);
+  --glow: rgba(255, 80, 110, 0.5);
+  --txtShadow: rgba(140, 20, 40, 0.5);
+
+  /* Aqua 3D button primary (fire/red) */
+  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient-pressed: linear-gradient(
+    rgba(120, 40, 35, 0.75),
+    rgba(180, 45, 40, 0.75),
+    rgba(210, 130, 125, 0.75)
+  );
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.5em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.5em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring),
+    0 0 0.5em var(--glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
+
   --checkbox-selected-gradient: linear-gradient(
     rgb(251, 177, 175) 0%,
     rgb(226, 61, 56) 50%,
@@ -184,6 +304,79 @@
   --tab-active-gradient: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
   --pagination-active-gradient: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
   --hyperlink-color: rgb(226, 61, 56);
+}
+
+/* ============================================
+   Purple Theme
+   ============================================ */
+.theme-purple {
+  --theme-color: rgb(140, 90, 220);
+  --theme-color-dark: rgb(85, 45, 170);
+  --theme-color-light: rgb(200, 170, 255);
+
+  /* Unified theme variables (for buttons & progress) */
+  --g1: rgba(85, 45, 170, 0.625);
+  --g2: rgba(140, 90, 220, 0.625);
+  --g3: rgba(120, 200, 235, 0.40);
+  --drop: rgba(0, 0, 0, 0.3);
+  --rim: rgba(110, 70, 210, 0.50);
+  --inner: rgba(25, 10, 45, 0.80);
+  --ring: rgba(110, 70, 210, 0.75);
+  --glow: rgba(170, 120, 255, 0.45);
+  --txtShadow: rgba(80, 45, 150, 0.45);
+
+  /* Aqua 3D button primary (purple) */
+  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient-pressed: linear-gradient(
+    rgba(60, 30, 130, 0.75),
+    rgba(100, 60, 180, 0.75),
+    rgba(90, 150, 200, 0.75)
+  );
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.5em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.5em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring),
+    0 0 0.5em var(--glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
+
+  --checkbox-selected-gradient: linear-gradient(
+    rgb(200, 170, 255) 0%,
+    rgb(140, 90, 220) 50%,
+    rgb(85, 45, 170) 51%,
+    rgb(200, 170, 255) 100%
+  );
+  --checkbox-selected-border: rgb(70, 40, 140);
+  --aqua-button-default-border: rgb(70, 40, 140);
+  --aqua-button-default-gradient: linear-gradient(
+    rgb(225, 210, 255) 0%,
+    rgb(160, 120, 230) 50%,
+    rgb(200, 170, 255) 100%
+  );
+  --progress-fill-gradient: linear-gradient(
+    rgb(200, 170, 255) 0%,
+    rgb(140, 90, 220) 50%,
+    rgb(160, 120, 230) 100%
+  );
+  --segmented-active-bg: linear-gradient(rgb(200, 170, 255), rgb(140, 90, 220));
+  --list-item-selected-focused-strip-gradient: linear-gradient(
+    rgb(200, 170, 255),
+    rgb(85, 45, 170)
+  );
+  --list-item-selected-focused-fill-gradient: linear-gradient(
+    rgb(200, 170, 255),
+    rgb(85, 45, 170)
+  );
+  --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
+  --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+  --table-row-selected: linear-gradient(rgb(200, 170, 255), rgb(85, 45, 170));
+  --tab-active-gradient: linear-gradient(rgb(200, 170, 255), rgb(140, 90, 220));
+  --pagination-active-gradient: linear-gradient(rgb(200, 170, 255), rgb(140, 90, 220));
+  --hyperlink-color: rgb(140, 90, 220);
 }
 
 /* ============================================

@@ -771,13 +771,13 @@
     `) %>
 
     <h4>Wave-Animated Progress Bar</h4>
-    <p>Alternative progress bar with liquid wave shimmer effect. Uses <code>--p</code> custom property for percentage.</p>
+    <p>Alternative progress bar with liquid wave shimmer effect. Uses <code>--p</code> custom property for percentage. Responds to theme changes in the <a href="#graphite-theme">Color Themes</a> section.</p>
 
     <%- example(`
-      <div style="display: grid; gap: 20px; max-width: 400px;">
+      <div style="display: grid; gap: 15px; max-width: 300px;">
         <div>
-          <span class="label">Blue (72%)</span>
-          <div class="progress-wave theme-blue" style="--p: 72;">
+          <span class="label">Wave (60%)</span>
+          <div class="progress-wave" style="--p: 60;">
             <div class="progress-wave__fill">
               <div class="progress-wave__ink" aria-hidden="true">
                 <span class="progress-wave__shimmer"></span>
@@ -785,51 +785,6 @@
             </div>
           </div>
         </div>
-
-        <div>
-          <span class="label">Graphite (35%)</span>
-          <div class="progress-wave theme-graphite" style="--p: 35;">
-            <div class="progress-wave__fill">
-              <div class="progress-wave__ink" aria-hidden="true">
-                <span class="progress-wave__shimmer"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <span class="label">Green (55%)</span>
-          <div class="progress-wave theme-green" style="--p: 55;">
-            <div class="progress-wave__fill">
-              <div class="progress-wave__ink" aria-hidden="true">
-                <span class="progress-wave__shimmer"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <span class="label">Purple (80%)</span>
-          <div class="progress-wave theme-purple" style="--p: 80;">
-            <div class="progress-wave__fill">
-              <div class="progress-wave__ink" aria-hidden="true">
-                <span class="progress-wave__shimmer"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <span class="label">Red (25%)</span>
-          <div class="progress-wave theme-red" style="--p: 25;">
-            <div class="progress-wave__fill">
-              <div class="progress-wave__ink" aria-hidden="true">
-                <span class="progress-wave__shimmer"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div>
           <span class="label">Disabled (50%)</span>
           <div class="progress-wave disabled" style="--p: 50;">
@@ -1717,6 +1672,7 @@
           <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-air')"><span>Air (Light)</span></button>
           <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-earth')"><span>Earth (Green)</span></button>
           <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-fire')"><span>Fire (Red)</span></button>
+          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-purple')"><span>Purple</span></button>
         </div>
 
         <div id="theme-preview-pre106" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
@@ -1739,6 +1695,15 @@
           <div class="label" style="margin-top: 15px;">Progress Bar</div>
           <div class="aqua-progress" style="width: 200px;">
             <div class="bar" style="width: 60%;"></div>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Wave Progress Bar</div>
+          <div class="progress-wave" style="--p: 60; width: 200px;">
+            <div class="progress-wave__fill">
+              <div class="progress-wave__ink" aria-hidden="true">
+                <span class="progress-wave__shimmer"></span>
+              </div>
+            </div>
           </div>
 
           <div class="label" style="margin-top: 15px;">Segmented Control</div>
@@ -1765,6 +1730,7 @@
           <button onclick="setTheme('theme-air')">Air (Light)</button>
           <button onclick="setTheme('theme-earth')">Earth (Green)</button>
           <button onclick="setTheme('theme-fire')">Fire (Red)</button>
+          <button onclick="setTheme('theme-purple')">Purple</button>
         </div>
 
         <div id="theme-preview" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
@@ -1787,6 +1753,15 @@
           <div class="label" style="margin-top: 15px;">Progress Bar</div>
           <div class="aqua-progress" style="width: 200px;">
             <div class="bar" style="width: 60%;"></div>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Wave Progress Bar</div>
+          <div class="progress-wave" style="--p: 60; width: 200px;">
+            <div class="progress-wave__fill">
+              <div class="progress-wave__ink" aria-hidden="true">
+                <span class="progress-wave__shimmer"></span>
+              </div>
+            </div>
           </div>
 
           <div class="label" style="margin-top: 15px;">Segmented Control</div>
@@ -2070,14 +2045,21 @@
 
       // Theme switching for the theme preview section
       window.setTheme = function(theme) {
-        const preview = document.getElementById('theme-preview');
-        if (preview) {
-          preview.className = theme;
-          // Re-apply the background style
-          preview.style.padding = '16px';
-          preview.style.background = '#ECECEC';
-          preview.style.borderRadius = '8px';
-        }
+        // Update both pre-10.6 and 10.6+ preview sections
+        const previews = [
+          document.getElementById('theme-preview'),
+          document.getElementById('theme-preview-pre106')
+        ];
+
+        previews.forEach(function(preview) {
+          if (preview) {
+            preview.className = theme;
+            // Re-apply the background style
+            preview.style.padding = '16px';
+            preview.style.background = '#ECECEC';
+            preview.style.borderRadius = '8px';
+          }
+        });
       };
 
       setupTitledPanes();

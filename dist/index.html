@@ -1191,13 +1191,13 @@
     </div>
 
     <h4>Wave-Animated Progress Bar</h4>
-    <p>Alternative progress bar with liquid wave shimmer effect. Uses <code>--p</code> custom property for percentage.</p>
+    <p>Alternative progress bar with liquid wave shimmer effect. Uses <code>--p</code> custom property for percentage. Responds to theme changes in the <a href="#graphite-theme">Color Themes</a> section.</p>
 
     <div class="example">
-      <div style="display: grid; gap: 20px; max-width: 400px;">
+      <div style="display: grid; gap: 15px; max-width: 300px;">
   <div>
-    <span class="label">Blue (72%)</span>
-    <div class="progress-wave theme-blue" style="--p: 72;">
+    <span class="label">Wave (60%)</span>
+    <div class="progress-wave" style="--p: 60;">
       <div class="progress-wave__fill">
         <div class="progress-wave__ink" aria-hidden="true">
           <span class="progress-wave__shimmer"></span>
@@ -1205,51 +1205,6 @@
       </div>
     </div>
   </div>
-
-  <div>
-    <span class="label">Graphite (35%)</span>
-    <div class="progress-wave theme-graphite" style="--p: 35;">
-      <div class="progress-wave__fill">
-        <div class="progress-wave__ink" aria-hidden="true">
-          <span class="progress-wave__shimmer"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <span class="label">Green (55%)</span>
-    <div class="progress-wave theme-green" style="--p: 55;">
-      <div class="progress-wave__fill">
-        <div class="progress-wave__ink" aria-hidden="true">
-          <span class="progress-wave__shimmer"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <span class="label">Purple (80%)</span>
-    <div class="progress-wave theme-purple" style="--p: 80;">
-      <div class="progress-wave__fill">
-        <div class="progress-wave__ink" aria-hidden="true">
-          <span class="progress-wave__shimmer"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <span class="label">Red (25%)</span>
-    <div class="progress-wave theme-red" style="--p: 25;">
-      <div class="progress-wave__fill">
-        <div class="progress-wave__ink" aria-hidden="true">
-          <span class="progress-wave__shimmer"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div>
     <span class="label">Disabled (50%)</span>
     <div class="progress-wave disabled" style="--p: 50;">
@@ -1263,10 +1218,10 @@
 </div>
       <details>
         <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: grid; gap: 20px; max-width: 400px;&quot;</span>&gt;</span>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: grid; gap: 15px; max-width: 300px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Blue (72%)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave theme-blue&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--p: 72;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Wave (60%)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--p: 60;&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__fill&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__ink&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
@@ -1274,51 +1229,6 @@
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Graphite (35%)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave theme-graphite&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--p: 35;&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__fill&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__ink&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Green (55%)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave theme-green&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--p: 55;&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__fill&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__ink&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Purple (80%)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave theme-purple&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--p: 80;&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__fill&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__ink&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Red (25%)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave theme-red&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--p: 25;&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__fill&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__ink&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Disabled (50%)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave disabled&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--p: 50;&quot;</span>&gt;</span>
@@ -2976,6 +2886,7 @@
     <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-air')"><span>Air (Light)</span></button>
     <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-earth')"><span>Earth (Green)</span></button>
     <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-fire')"><span>Fire (Red)</span></button>
+    <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-purple')"><span>Purple</span></button>
   </div>
 
   <div id="theme-preview-pre106" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
@@ -2998,6 +2909,15 @@
     <div class="label" style="margin-top: 15px;">Progress Bar</div>
     <div class="aqua-progress" style="width: 200px;">
       <div class="bar" style="width: 60%;"></div>
+    </div>
+
+    <div class="label" style="margin-top: 15px;">Wave Progress Bar</div>
+    <div class="progress-wave" style="--p: 60; width: 200px;">
+      <div class="progress-wave__fill">
+        <div class="progress-wave__ink" aria-hidden="true">
+          <span class="progress-wave__shimmer"></span>
+        </div>
+      </div>
     </div>
 
     <div class="label" style="margin-top: 15px;">Segmented Control</div>
@@ -3024,6 +2944,7 @@
     <button onclick="setTheme('theme-air')">Air (Light)</button>
     <button onclick="setTheme('theme-earth')">Earth (Green)</button>
     <button onclick="setTheme('theme-fire')">Fire (Red)</button>
+    <button onclick="setTheme('theme-purple')">Purple</button>
   </div>
 
   <div id="theme-preview" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
@@ -3046,6 +2967,15 @@
     <div class="label" style="margin-top: 15px;">Progress Bar</div>
     <div class="aqua-progress" style="width: 200px;">
       <div class="bar" style="width: 60%;"></div>
+    </div>
+
+    <div class="label" style="margin-top: 15px;">Wave Progress Bar</div>
+    <div class="progress-wave" style="--p: 60; width: 200px;">
+      <div class="progress-wave__fill">
+        <div class="progress-wave__ink" aria-hidden="true">
+          <span class="progress-wave__shimmer"></span>
+        </div>
+      </div>
     </div>
 
     <div class="label" style="margin-top: 15px;">Segmented Control</div>
@@ -3073,6 +3003,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-air&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Air (Light)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-earth&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Earth (Green)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-fire&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Fire (Red)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-purple&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Purple<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-preview-pre106&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 16px; background: #ECECEC; border-radius: 8px;&quot;</span>&gt;</span>
@@ -3095,6 +3026,15 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Progress Bar<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-progress&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 60%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Wave Progress Bar<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--p: 60; width: 200px;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__fill&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__ink&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Segmented Control<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -3121,6 +3061,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-air&#x27;)&quot;</span>&gt;</span>Air (Light)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-earth&#x27;)&quot;</span>&gt;</span>Earth (Green)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-fire&#x27;)&quot;</span>&gt;</span>Fire (Red)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-purple&#x27;)&quot;</span>&gt;</span>Purple<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-preview&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 16px; background: #ECECEC; border-radius: 8px;&quot;</span>&gt;</span>
@@ -3143,6 +3084,15 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Progress Bar<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-progress&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 60%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Wave Progress Bar<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--p: 60; width: 200px;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__fill&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__ink&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;progress-wave__shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 15px;&quot;</span>&gt;</span>Segmented Control<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -3499,14 +3449,21 @@
 
       // Theme switching for the theme preview section
       window.setTheme = function(theme) {
-        const preview = document.getElementById('theme-preview');
-        if (preview) {
-          preview.className = theme;
-          // Re-apply the background style
-          preview.style.padding = '16px';
-          preview.style.background = '#ECECEC';
-          preview.style.borderRadius = '8px';
-        }
+        // Update both pre-10.6 and 10.6+ preview sections
+        const previews = [
+          document.getElementById('theme-preview'),
+          document.getElementById('theme-preview-pre106')
+        ];
+
+        previews.forEach(function(preview) {
+          if (preview) {
+            preview.className = theme;
+            // Re-apply the background style
+            preview.style.padding = '16px';
+            preview.style.background = '#ECECEC';
+            preview.style.borderRadius = '8px';
+          }
+        });
       };
 
       setupTitledPanes();

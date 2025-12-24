@@ -36,6 +36,18 @@
   --maximize-green-dark: #1AAB30;
   --button-inactive: #DDDDDD;
 
+  /* Unified Theme Variables (for buttons & progress bars) */
+  /* These can be overridden by theme classes */
+  --g1: rgba(0, 65, 184, 0.625);
+  --g2: rgba(45, 115, 199, 0.625);
+  --g3: rgba(33, 160, 196, 0.625);
+  --drop: rgba(0, 0, 0, 0.30);
+  --rim: rgba(0, 78, 187, 0.50);
+  --inner: rgba(0, 17, 49, 0.80);
+  --ring: rgba(0, 78, 187, 0.75);
+  --glow: rgba(52, 106, 227, 0.50);
+  --txtShadow: rgba(30, 77, 161, 0.5);
+
   /* Shadows */
   --window-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
   --button-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -466,17 +478,17 @@
   /* Buttons */
   --aqua-button-primary-gradient: var(--aqua-blue-gradient);
   --aqua-button-primary-gradient-pressed: var(--aqua-blue-gradient-pressed);
-  --aqua-button-primary-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.3),
-    0 0.125em 0.125em rgba(0, 78, 187, 0.5),
-    inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8),
-    inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75);
-  --aqua-button-primary-shadow-active: 0 0.375em 0.5em rgba(0, 0, 0, 0.3),
-    0 0.125em 0.125em rgba(0, 78, 187, 0.5),
-    inset 0 0.25em 0.5em rgba(0, 17, 49, 0.8),
-    inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.75),
-    0 0 0.5em rgba(52, 106, 227, 0.5);
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.5em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.5em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring),
+    0 0 0.5em var(--glow);
   --aqua-button-primary-text: var(--text-color);
-  --aqua-button-primary-text-shadow: 0 0.25em 0.2em rgba(30, 77, 161, 0.5);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
   --aqua-button-secondary-gradient: var(--aqua-gray-gradient);
   --aqua-button-secondary-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.2),
     0 0.125em 0.125em rgba(0, 0, 0, 0.3),

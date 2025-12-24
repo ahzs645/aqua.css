@@ -318,6 +318,7 @@
 /* ============================================
    WAVE-ANIMATED PROGRESS BAR (Aqua Liquid Style)
    Uses --p custom property for percentage (0-100)
+   Uses same theme variables as aqua-button for consistency
    ============================================ */
 .progress-wave {
   --h: 18px;
@@ -332,16 +333,16 @@
     inset 0 1px 2px rgba(0,0,0,0.25),
     0 1px 0 rgba(255,255,255,0.8);
 
-  /* Theme defaults (blue) */
-  --wave-g1: rgba(0, 65, 184, 0.625);
-  --wave-g2: rgba(45, 115, 199, 0.625);
-  --wave-g3: rgba(33, 160, 196, 0.625);
+  /* Theme defaults (blue) - same variable names as buttons */
+  --g1: rgba(0, 65, 184, 0.625);
+  --g2: rgba(45, 115, 199, 0.625);
+  --g3: rgba(33, 160, 196, 0.625);
 
-  --wave-drop: rgba(0, 0, 0, 0.30);
-  --wave-rim:  rgba(0, 78, 187, 0.50);
-  --wave-inner: rgba(0, 17, 49, 0.80);
-  --wave-ring: rgba(0, 78, 187, 0.75);
-  --wave-glow: rgba(52, 106, 227, 0.50);
+  --drop: rgba(0, 0, 0, 0.30);
+  --rim:  rgba(0, 78, 187, 0.50);
+  --inner: rgba(0, 17, 49, 0.80);
+  --ring: rgba(0, 78, 187, 0.75);
+  --glow: rgba(52, 106, 227, 0.50);
 
   /* Wave animation knobs */
   --waveSize: 20px;
@@ -356,12 +357,12 @@
   height: 100%;
   position: relative;
 
-  background: linear-gradient(var(--wave-g1), var(--wave-g2), var(--wave-g3));
+  background: linear-gradient(var(--g1), var(--g2), var(--g3));
   box-shadow:
-    0 0.375em 0.5em var(--wave-drop),
-    0 0.125em 0.125em var(--wave-rim),
-    inset 0 0.25em 0.5em var(--wave-inner),
-    inset 0 0.375em 0.5em 0.25em var(--wave-ring);
+    0 0.375em 0.5em var(--drop),
+    0 0.125em 0.125em var(--rim),
+    inset 0 0.25em 0.5em var(--inner),
+    inset 0 0.375em 0.5em 0.25em var(--ring);
 }
 
 /* Inner clipping layer so blurred wave doesn't bleed past the fill edge */
@@ -445,61 +446,95 @@
 .progress-wave.is-active {
   box-shadow:
     inset 0 1px 2px rgba(0,0,0,0.25),
-    0 0 0.5em var(--wave-glow),
+    0 0 0.5em var(--glow),
     0 1px 0 rgba(255,255,255,0.8);
 }
 
-/* Wave progress themes */
-.progress-wave.theme-blue {
-  --wave-g1: rgba(0, 65, 184, 0.625);
-  --wave-g2: rgba(45, 115, 199, 0.625);
-  --wave-g3: rgba(33, 160, 196, 0.625);
-  --wave-rim: rgba(0, 78, 187, 0.5);
-  --wave-ring: rgba(0, 78, 187, 0.75);
-  --wave-inner: rgba(0, 17, 49, 0.8);
-  --wave-glow: rgba(52, 106, 227, 0.5);
+/* ===== Unified Theme System =====
+   Works both as direct class (.progress-wave.theme-blue)
+   and as parent class (.theme-blue .progress-wave)
+*/
+
+/* Blue (default) */
+.progress-wave.theme-blue,
+.theme-blue .progress-wave {
+  --g1: rgba(0, 65, 184, 0.625);
+  --g2: rgba(45, 115, 199, 0.625);
+  --g3: rgba(33, 160, 196, 0.625);
+  --rim: rgba(0, 78, 187, 0.5);
+  --ring: rgba(0, 78, 187, 0.75);
+  --inner: rgba(0, 17, 49, 0.8);
+  --glow: rgba(52, 106, 227, 0.5);
 }
 
-.progress-wave.theme-graphite {
-  --wave-g1: rgba(160, 160, 160, 0.625);
-  --wave-g2: rgba(255, 255, 255, 0.625);
-  --wave-g3: rgba(255, 255, 255, 0.625);
-  --wave-drop: rgba(0, 0, 0, 0.2);
-  --wave-rim: rgba(0, 0, 0, 0.3);
-  --wave-inner: rgba(0, 0, 0, 0.4);
-  --wave-ring: #BBBBBB;
-  --wave-glow: rgba(0, 0, 0, 0.25);
+/* Metal / Graphite (secondary gray) */
+.progress-wave.theme-metal,
+.theme-metal .progress-wave,
+.progress-wave.theme-graphite,
+.theme-graphite .progress-wave {
+  --g1: rgba(160, 160, 160, 0.625);
+  --g2: rgba(255, 255, 255, 0.625);
+  --g3: rgba(255, 255, 255, 0.625);
+  --drop: rgba(0, 0, 0, 0.2);
+  --rim: rgba(0, 0, 0, 0.3);
+  --inner: rgba(0, 0, 0, 0.4);
+  --ring: #BBBBBB;
+  --glow: rgba(0, 0, 0, 0.25);
   --waveAlpha: 0.55;
 }
 
-.progress-wave.theme-green {
-  --wave-g1: rgba(0, 120, 70, 0.625);
-  --wave-g2: rgba(45, 170, 120, 0.625);
-  --wave-g3: rgba(80, 210, 190, 0.625);
-  --wave-rim: rgba(0, 130, 80, 0.50);
-  --wave-ring: rgba(0, 130, 80, 0.75);
-  --wave-inner: rgba(0, 35, 20, 0.80);
-  --wave-glow: rgba(80, 220, 160, 0.45);
+/* Air (light/white) */
+.progress-wave.theme-air,
+.theme-air .progress-wave {
+  --g1: rgba(230, 230, 230, 0.625);
+  --g2: rgba(255, 255, 255, 0.625);
+  --g3: rgba(245, 245, 245, 0.625);
+  --drop: rgba(0, 0, 0, 0.15);
+  --rim: rgba(0, 0, 0, 0.2);
+  --inner: rgba(0, 0, 0, 0.25);
+  --ring: #E0E0E0;
+  --glow: rgba(200, 200, 200, 0.4);
+  --waveAlpha: 0.7;
 }
 
-.progress-wave.theme-purple {
-  --wave-g1: rgba(85, 45, 170, 0.625);
-  --wave-g2: rgba(140, 90, 220, 0.625);
-  --wave-g3: rgba(120, 200, 235, 0.40);
-  --wave-rim: rgba(110, 70, 210, 0.50);
-  --wave-ring: rgba(110, 70, 210, 0.75);
-  --wave-inner: rgba(25, 10, 45, 0.80);
-  --wave-glow: rgba(170, 120, 255, 0.45);
+/* Green / Earth */
+.progress-wave.theme-green,
+.theme-green .progress-wave,
+.progress-wave.theme-earth,
+.theme-earth .progress-wave {
+  --g1: rgba(0, 120, 70, 0.625);
+  --g2: rgba(45, 170, 120, 0.625);
+  --g3: rgba(80, 210, 190, 0.625);
+  --rim: rgba(0, 130, 80, 0.50);
+  --ring: rgba(0, 130, 80, 0.75);
+  --inner: rgba(0, 35, 20, 0.80);
+  --glow: rgba(80, 220, 160, 0.45);
 }
 
-.progress-wave.theme-red {
-  --wave-g1: rgba(180, 20, 40, 0.625);
-  --wave-g2: rgba(235, 70, 90, 0.625);
-  --wave-g3: rgba(255, 170, 165, 0.55);
-  --wave-rim: rgba(170, 30, 60, 0.55);
-  --wave-ring: rgba(170, 30, 60, 0.75);
-  --wave-inner: rgba(55, 0, 10, 0.82);
-  --wave-glow: rgba(255, 80, 110, 0.45);
+/* Purple */
+.progress-wave.theme-purple,
+.theme-purple .progress-wave {
+  --g1: rgba(85, 45, 170, 0.625);
+  --g2: rgba(140, 90, 220, 0.625);
+  --g3: rgba(120, 200, 235, 0.40);
+  --rim: rgba(110, 70, 210, 0.50);
+  --ring: rgba(110, 70, 210, 0.75);
+  --inner: rgba(25, 10, 45, 0.80);
+  --glow: rgba(170, 120, 255, 0.45);
+}
+
+/* Red / Fire */
+.progress-wave.theme-red,
+.theme-red .progress-wave,
+.progress-wave.theme-fire,
+.theme-fire .progress-wave {
+  --g1: rgba(180, 20, 40, 0.625);
+  --g2: rgba(235, 70, 90, 0.625);
+  --g3: rgba(255, 170, 165, 0.55);
+  --rim: rgba(170, 30, 60, 0.55);
+  --ring: rgba(170, 30, 60, 0.75);
+  --inner: rgba(55, 0, 10, 0.82);
+  --glow: rgba(255, 80, 110, 0.45);
 }
 
 /* Disabled state */

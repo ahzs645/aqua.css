@@ -83,12 +83,8 @@
   --aqua-selection-text: #ffffff;
   --aqua-selection-glow: rgba(48, 103, 218, 0.5);
 
-  /* Primary blue gradient (for buttons, progress bars) */
-  --aqua-blue-gradient: linear-gradient(
-    rgba(0, 65, 184, 0.625),
-    rgba(45, 115, 199, 0.625),
-    rgba(33, 160, 196, 0.625)
-  );
+  /* Primary gradient (for buttons, progress bars) - uses unified theme variables */
+  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
 
   /* Darker blue gradient for pressed state (10.4 and earlier) */
   --aqua-blue-gradient-pressed: linear-gradient(
