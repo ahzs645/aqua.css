@@ -298,6 +298,84 @@
         });
       }
 
+      function setupCustomSliders() {
+        document.querySelectorAll('.aqua-slider-custom').forEach((slider) => {
+          const thumb = slider.querySelector('.thumb');
+          const track = slider.querySelector('.track');
+          if (!thumb || !track) return;
+
+          const isVertical = slider.classList.contains('vertical');
+          const isDisabled = slider.classList.contains('disabled');
+          const isDiscrete = slider.classList.contains('discrete');
+          if (isDisabled) return;
+
+          // Count ticks for discrete snapping
+          const ticks = slider.querySelectorAll('.tick');
+          const tickCount = ticks.length > 1 ? ticks.length : 5; // default 5 stops
+
+          let isDragging = false;
+
+          function getPosition(e) {
+            const rect = slider.getBoundingClientRect();
+            let percent;
+            if (isVertical) {
+              const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+              percent = clamp((y / rect.height) * 100, 0, 100);
+            } else {
+              const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+              percent = clamp((x / rect.width) * 100, 0, 100);
+            }
+
+            // Snap to nearest tick if discrete
+            if (isDiscrete && tickCount > 1) {
+              const step = 100 / (tickCount - 1);
+              percent = Math.round(percent / step) * step;
+            }
+
+            return percent;
+          }
+
+          function updateThumb(percent) {
+            if (isVertical) {
+              thumb.style.top = percent + '%';
+            } else {
+              thumb.style.left = percent + '%';
+            }
+          }
+
+          function onStart(e) {
+            if (isDisabled) return;
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+            updateThumb(getPosition(e));
+            e.preventDefault();
+          }
+
+          function onMove(e) {
+            if (!isDragging) return;
+            updateThumb(getPosition(e));
+            e.preventDefault();
+          }
+
+          function onEnd() {
+            isDragging = false;
+            document.body.style.userSelect = '';
+          }
+
+          // Mouse events
+          thumb.addEventListener('mousedown', onStart);
+          slider.addEventListener('mousedown', onStart);
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup', onEnd);
+
+          // Touch events
+          thumb.addEventListener('touchstart', onStart, { passive: false });
+          slider.addEventListener('touchstart', onStart, { passive: false });
+          document.addEventListener('touchmove', onMove, { passive: false });
+          document.addEventListener('touchend', onEnd);
+        });
+      }
+
       setupTitledPanes();
       setupTreeTable();
       setupSplitPanes();
@@ -305,6 +383,7 @@
       setupIndeterminateCheckbox();
       setupAquaEraSelector();
       setupWaveScrollbar();
+      setupCustomSliders();
     })();
   </script>
 </body>

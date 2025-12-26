@@ -1840,7 +1840,7 @@
       <div>
   <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
     <div>
-      <span class="label">Horizontal (Circle Thumb)</span><br>
+      <span class="label">Horizontal</span><br>
       <input class="aqua-slider" type="range" min="0" max="100" value="50">
     </div>
 
@@ -1850,10 +1850,18 @@
     </div>
 
     <div>
-      <span class="label">With Tick Marks (Pointer Thumb)</span><br>
+      <span class="label">Pointer Thumb</span><br>
+      <div class="aqua-slider-custom alternative-thumb">
+        <div class="track"></div>
+        <div class="thumb" style="left: 50%;"></div>
+      </div>
+    </div>
+
+    <div>
+      <span class="label">With Tick Marks</span><br>
       <div class="aqua-slider-custom alternative-thumb show-ticks">
         <div class="track"></div>
-        <div class="thumb" style="left: 45%;"></div>
+        <div class="thumb" style="left: 50%;"></div>
         <div class="ticks">
           <div class="tick"></div>
           <div class="tick"></div>
@@ -1865,28 +1873,40 @@
     </div>
 
     <div>
-      <span class="label">Custom (Circle Thumb)</span><br>
-      <div class="aqua-slider-custom">
+      <span class="label">Discrete (Snaps)</span><br>
+      <div class="aqua-slider-custom alternative-thumb show-ticks discrete">
         <div class="track"></div>
-        <div class="thumb" style="left: 65%;"></div>
+        <div class="thumb" style="left: 50%;"></div>
+        <div class="ticks">
+          <div class="tick"></div>
+          <div class="tick"></div>
+          <div class="tick"></div>
+          <div class="tick"></div>
+          <div class="tick"></div>
+        </div>
       </div>
     </div>
   </div>
 
   <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; margin-top: 30px;">
     <div style="height: 180px;">
-      <span class="label">Vertical (Circle)</span><br>
-      <div class="aqua-slider-custom vertical" style="margin-top: 10px;">
+      <span class="label">Vertical</span><br>
+      <input class="aqua-slider vertical" type="range" min="0" max="100" value="40" style="margin-top: 10px;">
+    </div>
+
+    <div style="height: 180px;">
+      <span class="label">Vertical Pointer</span><br>
+      <div class="aqua-slider-custom vertical alternative-thumb" style="margin-top: 10px;">
         <div class="track"></div>
         <div class="thumb" style="top: 40%;"></div>
       </div>
     </div>
 
     <div style="height: 180px;">
-      <span class="label">Vertical (Pointer + Ticks)</span><br>
+      <span class="label">Vertical + Ticks</span><br>
       <div class="aqua-slider-custom vertical alternative-thumb show-ticks" style="margin-top: 10px;">
         <div class="track"></div>
-        <div class="thumb" style="top: 60%;"></div>
+        <div class="thumb" style="top: 50%;"></div>
         <div class="ticks">
           <div class="tick"></div>
           <div class="tick"></div>
@@ -1898,8 +1918,23 @@
     </div>
 
     <div style="height: 180px;">
-      <span class="label">Vertical Disabled</span><br>
-      <div class="aqua-slider-custom vertical disabled" style="margin-top: 10px;">
+      <span class="label">Discrete (Snaps)</span><br>
+      <div class="aqua-slider-custom vertical alternative-thumb show-ticks discrete" style="margin-top: 10px;">
+        <div class="track"></div>
+        <div class="thumb" style="top: 50%;"></div>
+        <div class="ticks">
+          <div class="tick"></div>
+          <div class="tick"></div>
+          <div class="tick"></div>
+          <div class="tick"></div>
+          <div class="tick"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 180px;">
+      <span class="label">Disabled</span><br>
+      <div class="aqua-slider-custom vertical alternative-thumb disabled" style="margin-top: 10px;">
         <div class="track"></div>
         <div class="thumb" style="top: 50%;"></div>
       </div>
@@ -1911,7 +1946,7 @@
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Horizontal (Circle Thumb)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Horizontal<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;range&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;50&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
@@ -1921,10 +1956,18 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>With Tick Marks (Pointer Thumb)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Pointer Thumb<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom alternative-thumb&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;track&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;left: 50%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>With Tick Marks<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom alternative-thumb show-ticks&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;track&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;left: 45%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;left: 50%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ticks&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1936,28 +1979,40 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Custom (Circle Thumb)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Discrete (Snaps)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom alternative-thumb show-ticks discrete&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;track&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;left: 65%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;left: 50%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ticks&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; margin-top: 30px;&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 180px;&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Vertical (Circle)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom vertical&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 10px;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Vertical<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider vertical&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;range&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;40&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 10px;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 180px;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Vertical Pointer<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom vertical alternative-thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 10px;&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;track&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;top: 40%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 180px;&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Vertical (Pointer + Ticks)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Vertical + Ticks<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom vertical alternative-thumb show-ticks&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 10px;&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;track&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;top: 60%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;top: 50%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ticks&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1969,8 +2024,23 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 180px;&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Vertical Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom vertical disabled&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 10px;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Discrete (Snaps)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom vertical alternative-thumb show-ticks discrete&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 10px;&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;track&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;top: 50%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ticks&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 180px;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-slider-custom vertical alternative-thumb disabled&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-top: 10px;&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;track&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;thumb&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;top: 50%;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -3713,6 +3783,84 @@
         });
       }
 
+      function setupCustomSliders() {
+        document.querySelectorAll('.aqua-slider-custom').forEach((slider) => {
+          const thumb = slider.querySelector('.thumb');
+          const track = slider.querySelector('.track');
+          if (!thumb || !track) return;
+
+          const isVertical = slider.classList.contains('vertical');
+          const isDisabled = slider.classList.contains('disabled');
+          const isDiscrete = slider.classList.contains('discrete');
+          if (isDisabled) return;
+
+          // Count ticks for discrete snapping
+          const ticks = slider.querySelectorAll('.tick');
+          const tickCount = ticks.length > 1 ? ticks.length : 5; // default 5 stops
+
+          let isDragging = false;
+
+          function getPosition(e) {
+            const rect = slider.getBoundingClientRect();
+            let percent;
+            if (isVertical) {
+              const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+              percent = clamp((y / rect.height) * 100, 0, 100);
+            } else {
+              const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+              percent = clamp((x / rect.width) * 100, 0, 100);
+            }
+
+            // Snap to nearest tick if discrete
+            if (isDiscrete && tickCount > 1) {
+              const step = 100 / (tickCount - 1);
+              percent = Math.round(percent / step) * step;
+            }
+
+            return percent;
+          }
+
+          function updateThumb(percent) {
+            if (isVertical) {
+              thumb.style.top = percent + '%';
+            } else {
+              thumb.style.left = percent + '%';
+            }
+          }
+
+          function onStart(e) {
+            if (isDisabled) return;
+            isDragging = true;
+            document.body.style.userSelect = 'none';
+            updateThumb(getPosition(e));
+            e.preventDefault();
+          }
+
+          function onMove(e) {
+            if (!isDragging) return;
+            updateThumb(getPosition(e));
+            e.preventDefault();
+          }
+
+          function onEnd() {
+            isDragging = false;
+            document.body.style.userSelect = '';
+          }
+
+          // Mouse events
+          thumb.addEventListener('mousedown', onStart);
+          slider.addEventListener('mousedown', onStart);
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup', onEnd);
+
+          // Touch events
+          thumb.addEventListener('touchstart', onStart, { passive: false });
+          slider.addEventListener('touchstart', onStart, { passive: false });
+          document.addEventListener('touchmove', onMove, { passive: false });
+          document.addEventListener('touchend', onEnd);
+        });
+      }
+
       setupTitledPanes();
       setupTreeTable();
       setupSplitPanes();
@@ -3720,6 +3868,7 @@
       setupIndeterminateCheckbox();
       setupAquaEraSelector();
       setupWaveScrollbar();
+      setupCustomSliders();
     })();
   </script>
 </body>

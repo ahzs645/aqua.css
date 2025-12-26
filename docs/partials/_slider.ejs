@@ -3,7 +3,7 @@
       <div>
         <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
           <div>
-            <span class="label">Horizontal (Circle Thumb)</span><br>
+            <span class="label">Horizontal</span><br>
             <input class="aqua-slider" type="range" min="0" max="100" value="50">
           </div>
 
@@ -13,10 +13,18 @@
           </div>
 
           <div>
-            <span class="label">With Tick Marks (Pointer Thumb)</span><br>
+            <span class="label">Pointer Thumb</span><br>
+            <div class="aqua-slider-custom alternative-thumb">
+              <div class="track"></div>
+              <div class="thumb" style="left: 50%;"></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="label">With Tick Marks</span><br>
             <div class="aqua-slider-custom alternative-thumb show-ticks">
               <div class="track"></div>
-              <div class="thumb" style="left: 45%;"></div>
+              <div class="thumb" style="left: 50%;"></div>
               <div class="ticks">
                 <div class="tick"></div>
                 <div class="tick"></div>
@@ -28,28 +36,40 @@
           </div>
 
           <div>
-            <span class="label">Custom (Circle Thumb)</span><br>
-            <div class="aqua-slider-custom">
+            <span class="label">Discrete (Snaps)</span><br>
+            <div class="aqua-slider-custom alternative-thumb show-ticks discrete">
               <div class="track"></div>
-              <div class="thumb" style="left: 65%;"></div>
+              <div class="thumb" style="left: 50%;"></div>
+              <div class="ticks">
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+              </div>
             </div>
           </div>
         </div>
 
         <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; margin-top: 30px;">
           <div style="height: 180px;">
-            <span class="label">Vertical (Circle)</span><br>
-            <div class="aqua-slider-custom vertical" style="margin-top: 10px;">
+            <span class="label">Vertical</span><br>
+            <input class="aqua-slider vertical" type="range" min="0" max="100" value="40" style="margin-top: 10px;">
+          </div>
+
+          <div style="height: 180px;">
+            <span class="label">Vertical Pointer</span><br>
+            <div class="aqua-slider-custom vertical alternative-thumb" style="margin-top: 10px;">
               <div class="track"></div>
               <div class="thumb" style="top: 40%;"></div>
             </div>
           </div>
 
           <div style="height: 180px;">
-            <span class="label">Vertical (Pointer + Ticks)</span><br>
+            <span class="label">Vertical + Ticks</span><br>
             <div class="aqua-slider-custom vertical alternative-thumb show-ticks" style="margin-top: 10px;">
               <div class="track"></div>
-              <div class="thumb" style="top: 60%;"></div>
+              <div class="thumb" style="top: 50%;"></div>
               <div class="ticks">
                 <div class="tick"></div>
                 <div class="tick"></div>
@@ -61,8 +81,23 @@
           </div>
 
           <div style="height: 180px;">
-            <span class="label">Vertical Disabled</span><br>
-            <div class="aqua-slider-custom vertical disabled" style="margin-top: 10px;">
+            <span class="label">Discrete (Snaps)</span><br>
+            <div class="aqua-slider-custom vertical alternative-thumb show-ticks discrete" style="margin-top: 10px;">
+              <div class="track"></div>
+              <div class="thumb" style="top: 50%;"></div>
+              <div class="ticks">
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+                <div class="tick"></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height: 180px;">
+            <span class="label">Disabled</span><br>
+            <div class="aqua-slider-custom vertical alternative-thumb disabled" style="margin-top: 10px;">
               <div class="track"></div>
               <div class="thumb" style="top: 50%;"></div>
             </div>

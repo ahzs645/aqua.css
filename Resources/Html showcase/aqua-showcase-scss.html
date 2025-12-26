@@ -268,17 +268,22 @@
             <h2>Slider</h2>
             <div class="component-row">
                 <div class="component-group">
-                    <span class="label">Horizontal (Circle Thumb)</span>
+                    <span class="label">Horizontal</span>
                     <input type="range" class="aqua-slider" min="0" max="100" value="50">
                 </div>
                 <div class="component-group">
                     <span class="label">Disabled</span>
                     <input type="range" class="aqua-slider" min="0" max="100" value="30" disabled>
                 </div>
-            </div>
-            <div class="component-row" style="margin-top: 20px; align-items: flex-start;">
                 <div class="component-group">
-                    <span class="label">With Tick Marks (Pointer Thumb)</span>
+                    <span class="label">Pointer Thumb</span>
+                    <div class="aqua-slider-custom alternative-thumb" style="margin-top: 10px;">
+                        <div class="track"></div>
+                        <div class="thumb" style="left: 50%;"></div>
+                    </div>
+                </div>
+                <div class="component-group">
+                    <span class="label">With Tick Marks</span>
                     <div class="aqua-slider-custom alternative-thumb show-ticks" style="margin-top: 10px;">
                         <div class="track"></div>
                         <div class="thumb" style="left: 50%;"></div>
@@ -292,26 +297,37 @@
                     </div>
                 </div>
                 <div class="component-group">
-                    <span class="label">Custom (Circle Thumb)</span>
-                    <div class="aqua-slider-custom" style="margin-top: 10px;">
+                    <span class="label">Discrete (Snaps)</span>
+                    <div class="aqua-slider-custom alternative-thumb show-ticks discrete" style="margin-top: 10px;">
                         <div class="track"></div>
-                        <div class="thumb" style="left: 30%;"></div>
+                        <div class="thumb" style="left: 50%;"></div>
+                        <div class="ticks">
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="component-row" style="margin-top: 30px; align-items: flex-start;">
                 <div class="component-group" style="height: 180px;">
-                    <span class="label">Vertical (Circle)</span>
-                    <div class="aqua-slider-custom vertical" style="margin-top: 10px;">
+                    <span class="label">Vertical</span>
+                    <input type="range" class="aqua-slider vertical" min="0" max="100" value="40" style="margin-top: 10px;">
+                </div>
+                <div class="component-group" style="height: 180px; margin-left: 40px;">
+                    <span class="label">Vertical Pointer</span>
+                    <div class="aqua-slider-custom vertical alternative-thumb" style="margin-top: 10px;">
                         <div class="track"></div>
                         <div class="thumb" style="top: 40%;"></div>
                     </div>
                 </div>
                 <div class="component-group" style="height: 180px; margin-left: 40px;">
-                    <span class="label">Vertical (Pointer + Ticks)</span>
+                    <span class="label">Vertical + Ticks</span>
                     <div class="aqua-slider-custom vertical alternative-thumb show-ticks" style="margin-top: 10px;">
                         <div class="track"></div>
-                        <div class="thumb" style="top: 60%;"></div>
+                        <div class="thumb" style="top: 50%;"></div>
                         <div class="ticks">
                             <div class="tick"></div>
                             <div class="tick"></div>
@@ -322,8 +338,22 @@
                     </div>
                 </div>
                 <div class="component-group" style="height: 180px; margin-left: 40px;">
-                    <span class="label">Vertical Disabled</span>
-                    <div class="aqua-slider-custom vertical disabled" style="margin-top: 10px;">
+                    <span class="label">Discrete (Snaps)</span>
+                    <div class="aqua-slider-custom vertical alternative-thumb show-ticks discrete" style="margin-top: 10px;">
+                        <div class="track"></div>
+                        <div class="thumb" style="top: 50%;"></div>
+                        <div class="ticks">
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                            <div class="tick"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="component-group" style="height: 180px; margin-left: 40px;">
+                    <span class="label">Disabled</span>
+                    <div class="aqua-slider-custom vertical alternative-thumb disabled" style="margin-top: 10px;">
                         <div class="track"></div>
                         <div class="thumb" style="top: 50%;"></div>
                     </div>
@@ -1044,6 +1074,85 @@
                 document.addEventListener('mousemove', onMouseMove);
                 document.addEventListener('mouseup', onMouseUp);
             });
+        });
+
+        // Custom slider drag functionality
+        function clamp(value, min, max) {
+            return Math.max(min, Math.min(max, value));
+        }
+
+        document.querySelectorAll('.aqua-slider-custom').forEach((slider) => {
+            const thumb = slider.querySelector('.thumb');
+            const track = slider.querySelector('.track');
+            if (!thumb || !track) return;
+
+            const isVertical = slider.classList.contains('vertical');
+            const isDisabled = slider.classList.contains('disabled');
+            const isDiscrete = slider.classList.contains('discrete');
+            if (isDisabled) return;
+
+            // Count ticks for discrete snapping
+            const ticks = slider.querySelectorAll('.tick');
+            const tickCount = ticks.length > 1 ? ticks.length : 5;
+
+            let isDragging = false;
+
+            function getPosition(e) {
+                const rect = slider.getBoundingClientRect();
+                let percent;
+                if (isVertical) {
+                    const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+                    percent = clamp((y / rect.height) * 100, 0, 100);
+                } else {
+                    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+                    percent = clamp((x / rect.width) * 100, 0, 100);
+                }
+
+                // Snap to nearest tick if discrete
+                if (isDiscrete && tickCount > 1) {
+                    const step = 100 / (tickCount - 1);
+                    percent = Math.round(percent / step) * step;
+                }
+
+                return percent;
+            }
+
+            function updateThumb(percent) {
+                if (isVertical) {
+                    thumb.style.top = percent + '%';
+                } else {
+                    thumb.style.left = percent + '%';
+                }
+            }
+
+            function onStart(e) {
+                if (isDisabled) return;
+                isDragging = true;
+                document.body.style.userSelect = 'none';
+                updateThumb(getPosition(e));
+                e.preventDefault();
+            }
+
+            function onMove(e) {
+                if (!isDragging) return;
+                updateThumb(getPosition(e));
+                e.preventDefault();
+            }
+
+            function onEnd() {
+                isDragging = false;
+                document.body.style.userSelect = '';
+            }
+
+            thumb.addEventListener('mousedown', onStart);
+            slider.addEventListener('mousedown', onStart);
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup', onEnd);
+
+            thumb.addEventListener('touchstart', onStart, { passive: false });
+            slider.addEventListener('touchstart', onStart, { passive: false });
+            document.addEventListener('touchmove', onMove, { passive: false });
+            document.addEventListener('touchend', onEnd);
         });
     </script>
 </body>
