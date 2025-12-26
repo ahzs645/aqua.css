@@ -82,20 +82,20 @@
     -webkit-mask-image: repeating-linear-gradient(
       45deg,
       transparent 0px,
-      transparent 10px,
-      black 10px,
-      black 20px
+      transparent 7px,
+      black 7px,
+      black 14px
     );
     mask-image: repeating-linear-gradient(
       45deg,
       transparent 0px,
-      transparent 10px,
-      black 10px,
-      black 20px
+      transparent 7px,
+      black 7px,
+      black 14px
     );
-    -webkit-mask-size: 28px 28px;
-    mask-size: 28px 28px;
-    animation: progress-indeterminate-mask 1s linear infinite;
+    -webkit-mask-size: 20px 20px;
+    mask-size: 20px 20px;
+    animation: progress-indeterminate-mask 0.7s linear infinite;
   }
 
   /* Top gloss overlay */
@@ -124,7 +124,7 @@
 
 @keyframes progress-indeterminate-mask {
   from { -webkit-mask-position: 0 0; mask-position: 0 0; }
-  to { -webkit-mask-position: -28px 0; mask-position: -28px 0; }
+  to { -webkit-mask-position: -20px 0; mask-position: -20px 0; }
 }
 
 /* Size variations */
