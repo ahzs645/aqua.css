@@ -727,14 +727,21 @@
     rgb(110, 190, 250) 5px,
     rgb(110, 190, 250) 10px
   );
-  --progress-indeterminate-background: repeating-linear-gradient(
+  --progress-indeterminate-background:
+    /* White/gray stripes on top */
+    repeating-linear-gradient(
       45deg,
-      rgb(84, 169, 239) 0px,
-      rgb(84, 169, 239) 10px,
-      rgb(236, 236, 236) 10px,
-      rgb(236, 236, 236) 20px
+      transparent 0px,
+      transparent 10px,
+      rgba(200, 200, 200, 0.95) 10px,
+      rgba(200, 200, 200, 0.95) 20px
     ),
-    linear-gradient(rgb(176, 176, 176), rgb(207, 207, 207));
+    /* Blue gradient base (g1 → g2 → g3) - same as progress-wave */
+    linear-gradient(
+      rgba(0, 65, 184, 0.85) 0%,
+      rgba(45, 115, 199, 0.85) 50%,
+      rgba(33, 160, 196, 0.85) 100%
+    );
   --progress-indicator-track-gradient: linear-gradient(
     to bottom,
     rgb(190, 190, 190) 0%,
