@@ -171,7 +171,51 @@
 /* ============================================
    PILL-STYLE TABS (Segmented Control)
    JavaFX AquaFX accurate
+   Note: Pill/segmented tabs didn't exist until 10.3 Panther
    ============================================ */
+
+/* Era-based tab visibility */
+/* Pre-10.3 section: hidden by default, shown for 10.0/10.2 */
+.era-pre-10-3 {
+  display: none;
+}
+
+.aqua-era-10-0 .era-pre-10-3,
+[data-aqua-era="10-0"] .era-pre-10-3,
+.aqua-era-10-2 .era-pre-10-3,
+[data-aqua-era="10-2"] .era-pre-10-3 {
+  display: block;
+}
+
+/* Center the folder tabs in pre-10.3 section */
+.era-pre-10-3 .aqua-tab-bar {
+  justify-content: center;
+}
+
+/* 10.3+ section: shown by default, hidden for 10.0/10.2 */
+.aqua-era-10-0 .era-10-3-plus,
+[data-aqua-era="10-0"] .era-10-3-plus,
+.aqua-era-10-2 .era-10-3-plus,
+[data-aqua-era="10-2"] .era-10-3-plus {
+  display: none;
+}
+
+/* Also hide pill tab components directly for pre-10.3 eras */
+.aqua-era-10-0 .tabs-pill,
+[data-aqua-era="10-0"] .tabs-pill,
+.aqua-era-10-0 .tabs-pill-container,
+[data-aqua-era="10-0"] .tabs-pill-container,
+.aqua-era-10-0 .aqua-tabs-container .aqua-tabs,
+[data-aqua-era="10-0"] .aqua-tabs-container .aqua-tabs,
+.aqua-era-10-2 .tabs-pill,
+[data-aqua-era="10-2"] .tabs-pill,
+.aqua-era-10-2 .tabs-pill-container,
+[data-aqua-era="10-2"] .tabs-pill-container,
+.aqua-era-10-2 .aqua-tabs-container .aqua-tabs,
+[data-aqua-era="10-2"] .aqua-tabs-container .aqua-tabs {
+  display: none;
+}
+
 .tabs-pill {
   display: flex;
   gap: 0;

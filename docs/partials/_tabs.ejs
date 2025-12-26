@@ -4,60 +4,37 @@
       Inactive tabs are slightly pushed down, active tab is flush with the bar.
     </p>
 
-    <h3>Folder-Style Tabs</h3>
-    <p class="description">Traditional folder tabs with the iconic Aqua liquid gradient bar separator.</p>
-    <%- example(`
-      <div class="aqua-tab-bar">
-        <button class="aqua-tab aqua-tab--active">Appearance</button>
-        <button class="aqua-tab">Sound</button>
-        <button class="aqua-tab">System</button>
-      </div>
-      <div class="aqua-tab-content">
-        <p>Appearance settings content goes here.</p>
-        <p>The active tab has a blue Aqua gradient and aligns flush with the separator bar.</p>
-      </div>
-    `) %>
+    <!-- Pill-Style Tabs: 10.3+ only -->
+    <div class="era-10-3-plus">
+      <h3>Pill-Style Tabs (Segmented)</h3>
+      <p class="description">Compact segmented tabs for inline controls and preferences.</p>
+      <%- example(`
+        <div class="aqua-tabs-container">
+          <div class="aqua-tabs">
+            <button class="aqua-tab active" data-tab="general">General</button>
+            <button class="aqua-tab" data-tab="security">Security</button>
+            <button class="aqua-tab" data-tab="privacy">Privacy</button>
+          </div>
+          <div class="aqua-tab-content" data-tab-content>
+            <p>General settings content goes here.</p>
+          </div>
+        </div>
+      `) %>
+    </div>
 
-    <h3>Tab Sizes</h3>
-    <%- example(`
-      <div style="margin-bottom: 20px;">
-        <p style="margin: 0 0 8px 0; font-weight: bold;">Small</p>
+    <!-- Folder-Style Tabs: Pre-10.3 fallback -->
+    <div class="era-pre-10-3">
+      <h3>Segmented Tabs</h3>
+      <p class="description">Folder-style tabs used for inline controls and preferences in earlier Mac OS X versions.</p>
+      <%- example(`
         <div class="aqua-tab-bar">
-          <button class="aqua-tab aqua-tab--small aqua-tab--active">Tab 1</button>
-          <button class="aqua-tab aqua-tab--small">Tab 2</button>
-          <button class="aqua-tab aqua-tab--small">Tab 3</button>
+          <button class="aqua-tab aqua-tab--active">General</button>
+          <button class="aqua-tab">Security</button>
+          <button class="aqua-tab">Privacy</button>
         </div>
-      </div>
-      <div style="margin-bottom: 20px; margin-top: 20px;">
-        <p style="margin: 0 0 8px 0; font-weight: bold;">Default</p>
-        <div class="aqua-tab-bar">
-          <button class="aqua-tab aqua-tab--active">Tab 1</button>
-          <button class="aqua-tab">Tab 2</button>
-          <button class="aqua-tab">Tab 3</button>
-        </div>
-      </div>
-      <div style="margin-top: 20px;">
-        <p style="margin: 0 0 8px 0; font-weight: bold;">Large</p>
-        <div class="aqua-tab-bar">
-          <button class="aqua-tab aqua-tab--large aqua-tab--active">Tab 1</button>
-          <button class="aqua-tab aqua-tab--large">Tab 2</button>
-          <button class="aqua-tab aqua-tab--large">Tab 3</button>
-        </div>
-      </div>
-    `) %>
-
-    <h3>Pill-Style Tabs (Segmented)</h3>
-    <p class="description">Compact segmented tabs for inline controls and preferences.</p>
-    <%- example(`
-      <div class="aqua-tabs-container">
-        <div class="aqua-tabs">
-          <button class="aqua-tab active" data-tab="general">General</button>
-          <button class="aqua-tab" data-tab="security">Security</button>
-          <button class="aqua-tab" data-tab="privacy">Privacy</button>
-        </div>
-        <div class="aqua-tab-content" data-tab-content>
+        <div class="aqua-tab-content">
           <p>General settings content goes here.</p>
         </div>
-      </div>
-    `) %>
+      `) %>
+    </div>
 

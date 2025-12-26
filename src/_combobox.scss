@@ -18,36 +18,47 @@
     font-size: 10pt;
     font-family: "Lucida Grande", "Lucida Sans Unicode", var(--font-system);
     padding: 0px 4px;
-    padding-right: 2em;
     border: 1px solid var(--input-border);
     border-top-color: var(--input-border-top);
-    border-radius: 0 0.4em 0.4em 0;
+    border-right: none;
+    border-radius: 0;
     box-shadow: var(--input-shadow);
     background: var(--input-bg);
     color: var(--text-color);
     outline: none;
   }
 
-  /* Blue dropdown button via ::after */
+  /* Blue dropdown button via ::after - as flex item */
   &::after {
     content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 1.5em;
-    border-radius: 0 0.4em 0.4em 0;
-    background: var(--aqua-button-primary-gradient);
-    box-shadow: var(--aqua-button-secondary-shadow), -2px 0 4px rgba(0, 0, 0, 0.15);
-    pointer-events: none;
-    z-index: 2;
+    width: 1.75em;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: 0 5px 5px 0;
+    background:
+      /* Top shine */
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.5) 40%,
+        transparent 50%
+      ),
+      /* Bottom glow */
+      linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 30%
+      ),
+      /* Blue gradient */
+      var(--aqua-button-primary-gradient);
+    border-left: 1px solid var(--aqua-button-pill-divider);
   }
 
   /* Down arrow via ::before */
   &::before {
     content: "";
     position: absolute;
-    right: 0.5em;
+    right: 0.55em;
     top: 50%;
     transform: translateY(-50%);
     width: 0;
