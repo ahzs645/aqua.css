@@ -4,15 +4,47 @@
  */
 
 .alert-dialog {
-  background: var(--window-bg);
+  background-color: var(--window-bg);
+  background-image: var(--pinstripe);
   border-radius: var(--radius-large);
-  box-shadow: var(--window-shadow);
+  box-shadow: var(--alert-dialog-shadow);
   padding: 20px;
   min-width: 300px;
   max-width: 450px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  // Unstriped variant
+  &.unstriped {
+    background-image: none;
+  }
+}
+
+// Era-specific styling for alert dialogs
+// macOS 10.0/10.1 - Full pinstripes
+[data-aqua-era="10-0"] .alert-dialog,
+.aqua-era-10-0 .alert-dialog,
+[data-aqua-era="10-1"] .alert-dialog,
+.aqua-era-10-1 .alert-dialog {
+  background-color: #ececec;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1.5px,
+    rgba(255, 255, 255, 0.85) 1.5px,
+    rgba(255, 255, 255, 0.85) 4px
+  );
+}
+
+// macOS 10.2+ (Jaguar onwards) - No pinstripes on dialogs by default
+[data-aqua-era="10-2"] .alert-dialog,
+.aqua-era-10-2 .alert-dialog,
+[data-aqua-era="10-3"] .alert-dialog,
+.aqua-era-10-3 .alert-dialog,
+[data-aqua-era="10-6"] .alert-dialog,
+.aqua-era-10-6 .alert-dialog {
+  background-image: none;
 }
 
 .alert-dialog-content {
