@@ -72,6 +72,13 @@
   border: none;
 }
 
+@mixin aqua-tab-pressed {
+  /* Pressed state matches active tab color */
+  background: var(--tab-active-gradient);
+  box-shadow: var(--tab-active-shadow);
+  text-shadow: var(--tab-active-text-shadow);
+}
+
 /* ===== Aqua Tab Classes (Recommended) ===== */
 .aqua-tab-bar {
   @include aqua-tab-bar-base;
@@ -82,6 +89,10 @@
 
   &:hover:not(.aqua-tab--active) {
     @include aqua-tab-hover;
+  }
+
+  &:active:not(.aqua-tab--active) {
+    @include aqua-tab-pressed;
   }
 
   &.aqua-tab--active {
@@ -132,6 +143,10 @@
 
     &:hover:not(.active):not([aria-selected="true"]) {
       @include aqua-tab-hover;
+    }
+
+    &:active:not(.active):not([aria-selected="true"]) {
+      @include aqua-tab-pressed;
     }
 
     &.active,
