@@ -153,6 +153,7 @@
       background-color: #A8A098;
     }
   }
+
 }
 
 .window-body {
@@ -164,6 +165,7 @@
 
 /* Title Bar */
 .title-bar {
+  position: relative;
   display: flex;
   align-items: center;
   height: 22px;
@@ -180,7 +182,9 @@
 }
 
 .title-bar-text {
-  flex: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
   text-align: center;
   font-size: var(--font-size-title);
   font-weight: 500;
@@ -190,11 +194,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   user-select: none;
-}
-
-/* Spacer to center title */
-.title-bar-spacer {
-  width: 54px;
+  pointer-events: none;
 }
 
 /* Traffic Light Controls */
@@ -354,12 +354,82 @@
     font-size: 11px;
   }
 
-  .title-bar-spacer {
-    width: 38px;
-  }
-
   .window-body {
     background: var(--window-bg);
     background-image: none;
+  }
+}
+
+/* ============================================
+   Mac OS X 10.0/10.1 Era Window Styling
+   Original Aqua with pinstripes throughout (2001)
+   ============================================ */
+[data-aqua-era="10-0"] {
+  .window:not(.brushed-metal):not(.brushed-metal-authentic):not(.brushed-metal-light):not(.brushed-metal-dark):not(.brushed-metal-warm) {
+    .title-bar {
+      background-color: #d0dce8;
+      background-image:
+        /* Gloss/shine overlay */
+        linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.7) 0%,
+          rgba(255, 255, 255, 0.3) 45%,
+          rgba(0, 0, 0, 0.03) 55%,
+          rgba(0, 0, 0, 0.08) 100%
+        ),
+        /* Horizontal pinstripes */
+        repeating-linear-gradient(
+          to bottom,
+          #c0cee0 0px,
+          #c0cee0 2px,
+          #e0e8f2 2px,
+          #e0e8f2 4px
+        );
+    }
+
+    .window-body {
+      background-color: #d8e4f0;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #c8d8e8 0px,
+        #c8d8e8 2px,
+        #e8f0f8 2px,
+        #e8f0f8 4px
+      );
+    }
+
+    &.inactive {
+      .title-bar {
+        background-color: #e4ecf4;
+        background-image:
+          /* Faded gloss for inactive state */
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(255, 255, 255, 0.2) 45%,
+            rgba(0, 0, 0, 0.02) 55%,
+            rgba(0, 0, 0, 0.04) 100%
+          ),
+          /* Faded pinstripes */
+          repeating-linear-gradient(
+            to bottom,
+            #d8e4ee 0px,
+            #d8e4ee 2px,
+            #f0f4fa 2px,
+            #f0f4fa 4px
+          );
+      }
+
+      .window-body {
+        background-color: #e8f0f8;
+        background-image: repeating-linear-gradient(
+          to bottom,
+          #dce8f2 0px,
+          #dce8f2 2px,
+          #f4f8fc 2px,
+          #f4f8fc 4px
+        );
+      }
+    }
   }
 }

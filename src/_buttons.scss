@@ -454,18 +454,62 @@ button.default.armed,
 /* Pill group (segmented) */
 .pill-group {
   display: inline-flex;
-  border: 1px solid var(--aqua-button-pill-border);
-  border-radius: 4px;
+  border-radius: 5px;
   overflow: hidden;
+  position: relative;
+  /* Base gradient and shadow for the entire control */
+  background: var(--aqua-button-secondary-gradient);
+  box-shadow: var(--aqua-button-secondary-shadow);
 
-  button {
+  /* Single unified gloss across the entire control - on top of buttons */
+  /* Wide shine that extends close to edges */
+  @include aqua-glass('pill', $overrides: (
+    shine: (
+      width: calc(100% - 0.25em),
+      height: 45%,
+      radius: 4px 4px 2px 2px,
+      z-index: 10
+    ),
+    glow: (
+      width: calc(100% - 0.5em),
+      radius: 3px,
+      z-index: 10
+    )
+  ));
+
+  button,
+  .aqua-button {
+    border: none;
     border-radius: 0;
     border-right: 1px solid var(--aqua-button-pill-divider);
     min-width: 60px;
+    /* Transparent background to show container's gradient */
+    background: transparent;
     box-shadow: none;
+    color: var(--aqua-button-secondary-text);
+    text-shadow: var(--aqua-button-secondary-text-shadow);
+
+    /* Remove individual button gloss - container has unified gloss */
+    &::before,
+    &::after {
+      display: none;
+    }
 
     &:last-child {
       border-right: none;
+    }
+
+    span {
+      position: relative;
+      z-index: 11;
+    }
+
+    &.active,
+    &[aria-pressed="true"] {
+      /* Active state matches aqua-button.default (primary) */
+      background: var(--aqua-button-primary-gradient);
+      color: var(--aqua-button-primary-text);
+      text-shadow: var(--aqua-button-primary-text-shadow);
     }
   }
 }
