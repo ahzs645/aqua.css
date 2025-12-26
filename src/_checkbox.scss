@@ -56,7 +56,7 @@
     position: absolute;
     z-index: 2;
     inset: -3.5px -2.5px 2.5px 1px;
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2012%2012%27%3E%3Cpath%20d%3D%27m%2018.174523%2C1027.137%20c%20-0.18077%2C-0.4575%20-0.184364%2C-0.8913%200.115901%2C-1.1721%200.300265%2C-0.2809%200.836622%2C-0.3601%201.288422%2C-0.041%200.4518%2C0.3191%202.020453%2C2.9316%202.020453%2C2.9316%20l%205.41194%2C-8.0232%20c%20-4e-6%2C0%200.516257%2C-0.6671%201.248682%2C-0.3099%200.648831%2C0.3165%200.559153%2C1.0373%200.559153%2C1.0373%200%2C0%20-5.940433%2C9.3556%20-6.15501%2C9.6287%20-0.214577%2C0.273%20-1.595078%2C0.2481%20-1.817995%2C-0.027%20-0.222917%2C-0.2751%20-2.490777%2C-3.567%20-2.671546%2C-4.0244%20z%27%20transform%3D%27translate%28-17%20-1019%29%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+    background-image: svg-load("./icon/checkbox-check.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -142,7 +142,7 @@ input[type="checkbox"]:not(.checkbox input) {
     position: absolute;
     z-index: 2;
     inset: -3.5px -2.5px 2.5px 1px;
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2012%2012%27%3E%3Cpath%20d%3D%27m%2018.174523%2C1027.137%20c%20-0.18077%2C-0.4575%20-0.184364%2C-0.8913%200.115901%2C-1.1721%200.300265%2C-0.2809%200.836622%2C-0.3601%201.288422%2C-0.041%200.4518%2C0.3191%202.020453%2C2.9316%202.020453%2C2.9316%20l%205.41194%2C-8.0232%20c%20-4e-6%2C0%200.516257%2C-0.6671%201.248682%2C-0.3099%200.648831%2C0.3165%200.559153%2C1.0373%200.559153%2C1.0373%200%2C0%20-5.940433%2C9.3556%20-6.15501%2C9.6287%20-0.214577%2C0.273%20-1.595078%2C0.2481%20-1.817995%2C-0.027%20-0.222917%2C-0.2751%20-2.490777%2C-3.567%20-2.671546%2C-4.0244%20z%27%20transform%3D%27translate%28-17%20-1019%29%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+    background-image: svg-load("./icon/checkbox-check.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

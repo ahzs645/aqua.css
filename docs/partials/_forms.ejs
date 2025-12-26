@@ -70,6 +70,31 @@
     `) %>
 
     <h3 id="checkboxes">Checkboxes</h3>
+    <p>Recommended class-based checkboxes:</p>
+    <%- example(`
+      <div class="field-row">
+        <label class="checkbox">
+          <input type="checkbox" checked>
+          <span class="box"><span class="mark"></span></span>
+          <span>Checked checkbox</span>
+        </label>
+      </div>
+      <div class="field-row">
+        <label class="checkbox">
+          <input type="checkbox">
+          <span class="box"><span class="mark"></span></span>
+          <span>Unchecked checkbox</span>
+        </label>
+      </div>
+      <div class="field-row">
+        <label class="checkbox">
+          <input type="checkbox" disabled checked>
+          <span class="box"><span class="mark"></span></span>
+          <span>Disabled checked</span>
+        </label>
+      </div>
+    `) %>
+    <p>Native inputs (fallback):</p>
     <%- example(`
       <div class="field-row">
         <input type="checkbox" id="check1" checked>
@@ -90,6 +115,31 @@
     `) %>
 
     <h3 id="radio-buttons">Radio Buttons</h3>
+    <p>Recommended class-based radio buttons:</p>
+    <%- example(`
+      <div class="field-row">
+        <label class="radio">
+          <input type="radio" name="radio-class-group" checked>
+          <span class="circle"><span class="dot"></span></span>
+          <span>Option A</span>
+        </label>
+      </div>
+      <div class="field-row">
+        <label class="radio">
+          <input type="radio" name="radio-class-group">
+          <span class="circle"><span class="dot"></span></span>
+          <span>Option B</span>
+        </label>
+      </div>
+      <div class="field-row">
+        <label class="radio">
+          <input type="radio" name="radio-class-group">
+          <span class="circle"><span class="dot"></span></span>
+          <span>Option C</span>
+        </label>
+      </div>
+    `) %>
+    <p>Native inputs (fallback):</p>
     <%- example(`
       <div class="field-row">
         <input type="radio" id="radio1" name="radio-group" checked>
@@ -104,4 +154,3 @@
         <label for="radio3">Option C</label>
       </div>
     `) %>
-

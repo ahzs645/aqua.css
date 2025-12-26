@@ -20,23 +20,32 @@ function buildCSS() {
 
   const input = `/*! aqua.css v${version} - ${homepage} */\n` + scssResult.css;
 
-  // Then process with PostCSS
-  return postcss()
-    .use(require("postcss-inline-svg"))
-    .use(require("postcss-css-variables")({ preserve: true }))
-    .use(require("postcss-calc"))
-    .use(require("postcss-copy")({ dest: "dist", template: "[name].[ext]" }))
-    .use(require("cssnano"))
-    .process(input, {
-      from: "src/index.scss",
-      to: "dist/aqua.css",
-      map: { inline: false },
-    })
-    .then((result) => {
-      mkdirp.sync("dist");
-      fs.writeFileSync("dist/aqua.css", result.css);
-      fs.writeFileSync("dist/aqua.css.map", result.map.toString());
-    });
+  function runPostCSS(outputFile, { preserveVars, copyAssets }) {
+    let pipeline = postcss()
+      .use(require("postcss-inline-svg"))
+      .use(require("postcss-css-variables")({ preserve: preserveVars }))
+      .use(require("postcss-calc"));
+
+    if (copyAssets) {
+      pipeline = pipeline.use(require("postcss-copy")({ dest: "dist", template: "[name].[ext]" }));
+    }
+
+    return pipeline
+      .use(require("cssnano"))
+      .process(input, {
+        from: "src/index.scss",
+        to: outputFile,
+        map: { inline: false },
+      })
+      .then((result) => {
+        fs.writeFileSync(outputFile, result.css);
+        fs.writeFileSync(`${outputFile}.map`, result.map.toString());
+      });
+  }
+
+  mkdirp.sync("dist");
+  return runPostCSS("dist/aqua.css", { preserveVars: true, copyAssets: true })
+    .then(() => runPostCSS("dist/aqua.legacy.css", { preserveVars: false, copyAssets: false }));
 }
 
 function buildDocs() {

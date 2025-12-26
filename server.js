@@ -3,7 +3,7 @@ const chokidar = require("chokidar");
 const build = require("./build");
 
 chokidar
-  .watch(["src/**/*", "docs/**/*", "icon/**/*", "fonts/**/*"])
+  .watch(["src/**/*", "docs/**/*", "icon/**/*", "fonts/**/*"], { usePolling: true })
   .on("change", () => {
     console.log("Rebuilding...");
     build();

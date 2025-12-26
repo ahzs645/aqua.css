@@ -6,6 +6,7 @@
   "style": "dist/aqua.css",
   "files": [
     "dist/",
+    "fonts/",
     "LICENSE",
     "README.md"
   ],

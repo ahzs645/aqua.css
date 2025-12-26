@@ -8,6 +8,36 @@
   height: 15px;
 }
 
+::-webkit-scrollbar-button {
+  width: 15px;
+  height: 15px;
+  background: var(--scrollbar-track-gradient);
+  box-shadow: var(--scrollbar-track-shadow);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8px 8px;
+}
+
+::-webkit-scrollbar-button:vertical:start {
+  background-image: svg-load("./icon/scrollbar-up.svg");
+}
+
+::-webkit-scrollbar-button:vertical:end {
+  background-image: svg-load("./icon/scrollbar-down.svg");
+}
+
+::-webkit-scrollbar-button:horizontal:start {
+  background-image: svg-load("./icon/scrollbar-left.svg");
+}
+
+::-webkit-scrollbar-button:horizontal:end {
+  background-image: svg-load("./icon/scrollbar-right.svg");
+}
+
+::-webkit-scrollbar-button:active {
+  filter: brightness(0.9);
+}
+
 ::-webkit-scrollbar-track {
   border-radius: 8px;
   background: var(--scrollbar-track-gradient);

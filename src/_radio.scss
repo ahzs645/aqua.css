@@ -54,6 +54,9 @@
     height: 6px;
     background: transparent;
     border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
 
   /* Armed/pressed state */
@@ -67,7 +70,7 @@
     background: var(--radio-selected-gradient);
 
     .dot {
-      background: var(--radio-dot-color);
+      background-image: svg-load("./icon/radio-dot.svg");
       box-shadow: var(--radio-dot-shadow);
     }
   }
@@ -120,6 +123,9 @@ input[type="radio"]:not(.radio input) {
     height: 6px;
     border-radius: 50%;
     background: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     transform: translate(-50%, -50%);
     transition: background 0.1s ease;
   }
@@ -129,7 +135,7 @@ input[type="radio"]:not(.radio input) {
     background: var(--radio-selected-gradient);
 
     &::after {
-      background: var(--radio-dot-color);
+      background-image: svg-load("./icon/radio-dot.svg");
       box-shadow: var(--radio-dot-shadow);
     }
   }

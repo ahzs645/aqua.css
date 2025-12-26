@@ -1,0 +1,26 @@
+/**
+ * Optional Fonts
+ * Uses locally installed fonts by default. Add licensed files to fonts/ if needed.
+ */
+
+@font-face {
+  font-family: "AquaSystem";
+  src: local("Lucida Grande"), local("LucidaGrande"), local("Lucida Grande Regular");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AquaSystem";
+  src: local("Lucida Grande Bold"), local("LucidaGrande-Bold");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+.aqua-fonts,
+[data-aqua-fonts] {
+  --font-system: "AquaSystem", -apple-system, BlinkMacSystemFont, "Lucida Grande",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

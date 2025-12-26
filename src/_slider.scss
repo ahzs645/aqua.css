@@ -342,33 +342,35 @@ input[type="range"].vertical,
         -webkit-mask-position: center;
         mask-position: center;
 
+        // Top shine - box-like with slight spacing
         &::before {
           content: '';
           position: absolute;
-          top: 5%;
-          left: 15%;
-          right: 15%;
-          height: 40%;
+          top: 10%;
+          left: 10%;
+          right: 10%;
+          height: 38%;
           background: linear-gradient(
             rgba(255, 255, 255, 0.9),
             rgba(255, 255, 255, 0.2)
           );
-          border-radius: 40% 40% 20% 20%;
+          border-radius: 8% 8% 5% 5%;
           filter: blur(0.5px);
         }
 
+        // Bottom glow - extends to the tip
         &::after {
           content: '';
           position: absolute;
-          bottom: 20%;
-          left: 20%;
-          right: 20%;
-          height: 35%;
+          bottom: 0;
+          left: 10%;
+          right: 10%;
+          height: 55%;
           background: linear-gradient(
             rgba(255, 255, 255, 0.1),
             rgba(255, 255, 255, 0.45)
           );
-          border-radius: 20% 20% 40% 40%;
+          border-radius: 5% 5% 8% 8%;
           filter: blur(0.8px);
         }
       }
@@ -401,6 +403,35 @@ input[type="range"].vertical,
       .shimmer {
         -webkit-mask-image: var(--slider-thumb-pointer-mask-vertical);
         mask-image: var(--slider-thumb-pointer-mask-vertical);
+
+        // Top shine - light from above, box-like with slight spacing
+        &::before {
+          top: 10%;
+          left: 10%;
+          right: 0;
+          width: auto;
+          height: 38%;
+          background: linear-gradient(
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.2)
+          );
+          border-radius: 8% 8% 5% 5%;
+        }
+
+        // Bottom glow - extends to the tip
+        &::after {
+          top: auto;
+          bottom: 0;
+          left: 10%;
+          right: 0;
+          width: auto;
+          height: 55%;
+          background: linear-gradient(
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.45)
+          );
+          border-radius: 5% 5% 8% 8%;
+        }
       }
     }
 

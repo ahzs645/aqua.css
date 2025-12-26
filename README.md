@@ -31,6 +31,11 @@ npm install aqua.css
 <link rel="stylesheet" href="https://unpkg.com/aqua.css">
 ```
 
+### Legacy browsers
+
+If you need a build with CSS custom properties resolved, use `dist/aqua.legacy.css`
+after running `npm run build`.
+
 ## Usage
 
 ```html
@@ -57,6 +62,11 @@ npm install aqua.css
 </body>
 </html>
 ```
+
+## Optional Fonts
+
+To prefer local Aqua-era fonts, add `class="aqua-fonts"` (or `data-aqua-fonts`) on
+`<body>`. For bundling custom font files, see `fonts/README.md`.
 
 ## Components
 
