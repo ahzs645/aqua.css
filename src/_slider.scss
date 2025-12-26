@@ -318,7 +318,7 @@ input[type="range"].vertical,
         mask-position: center;
       }
 
-      // Border layer (::after with stroke SVG)
+      // Border layer (::after with stroke SVG) - on top of shimmer
       &::after {
         content: '';
         position: absolute;
@@ -328,9 +328,11 @@ input[type="range"].vertical,
         background-repeat: no-repeat;
         background-position: center;
         pointer-events: none;
+        z-index: 2;
       }
 
       // Shimmer adjustments for pointer shape
+      // Using pixel values to prevent gloss shifting at different positions
       .shimmer {
         z-index: 1;
         -webkit-mask-image: var(--slider-thumb-pointer-mask);
@@ -346,15 +348,15 @@ input[type="range"].vertical,
         &::before {
           content: '';
           position: absolute;
-          top: 10%;
-          left: 10%;
-          right: 10%;
-          height: 38%;
+          top: 2px;
+          left: 2px;
+          right: 2px;
+          height: 7px;
           background: linear-gradient(
             rgba(255, 255, 255, 0.9),
             rgba(255, 255, 255, 0.2)
           );
-          border-radius: 8% 8% 5% 5%;
+          border-radius: 1px 1px 0.5px 0.5px;
           filter: blur(0.5px);
         }
 
@@ -363,14 +365,14 @@ input[type="range"].vertical,
           content: '';
           position: absolute;
           bottom: 0;
-          left: 10%;
-          right: 10%;
-          height: 55%;
+          left: 2px;
+          right: 2px;
+          height: 10px;
           background: linear-gradient(
             rgba(255, 255, 255, 0.1),
             rgba(255, 255, 255, 0.45)
           );
-          border-radius: 5% 5% 8% 8%;
+          border-radius: 0.5px 0.5px 1px 1px;
           filter: blur(0.8px);
         }
       }
@@ -406,31 +408,31 @@ input[type="range"].vertical,
 
         // Top shine - light from above, box-like with slight spacing
         &::before {
-          top: 10%;
-          left: 10%;
+          top: 2px;
+          left: 2px;
           right: 0;
           width: auto;
-          height: 38%;
+          height: 6px;
           background: linear-gradient(
             rgba(255, 255, 255, 0.9),
             rgba(255, 255, 255, 0.2)
           );
-          border-radius: 8% 8% 5% 5%;
+          border-radius: 1px 1px 0.5px 0.5px;
         }
 
         // Bottom glow - extends to the tip
         &::after {
           top: auto;
           bottom: 0;
-          left: 10%;
+          left: 2px;
           right: 0;
           width: auto;
-          height: 55%;
+          height: 9px;
           background: linear-gradient(
             rgba(255, 255, 255, 0.1),
             rgba(255, 255, 255, 0.45)
           );
-          border-radius: 5% 5% 8% 8%;
+          border-radius: 0.5px 0.5px 1px 1px;
         }
       }
     }
