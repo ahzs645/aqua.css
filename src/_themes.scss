@@ -80,6 +80,15 @@
   --table-row-selected: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
   --tab-active-gradient: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
   --pagination-active-gradient: linear-gradient(rgb(180, 180, 180), rgb(140, 140, 140));
+
+  // Slider theme overrides (opaque gradients)
+  --slider-track-gradient: linear-gradient(to bottom, rgb(130, 130, 130), rgb(190, 190, 190));
+  --slider-track-gradient-vertical: linear-gradient(to right, rgb(130, 130, 130), rgb(190, 190, 190));
+  --slider-track-border: rgb(100, 100, 100) rgb(150, 150, 150) rgb(150, 150, 150) rgb(100, 100, 100);
+  --slider-thumb-gradient: linear-gradient(rgb(160, 160, 160), rgb(200, 200, 200), rgb(180, 180, 180));
+  --slider-thumb-active-gradient: linear-gradient(rgb(120, 120, 120), rgb(160, 160, 160), rgb(140, 140, 140));
+  --slider-thumb-border: rgb(80, 80, 80);
+  --slider-tick: rgb(120, 120, 120);
 }
 
 /* ============================================
@@ -150,6 +159,15 @@
   --table-row-selected-text: var(--text-color);
   --tab-active-gradient: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
   --pagination-active-gradient: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
+
+  // Slider theme overrides (opaque gradients)
+  --slider-track-gradient: linear-gradient(to bottom, rgb(200, 200, 200), rgb(240, 240, 240));
+  --slider-track-gradient-vertical: linear-gradient(to right, rgb(200, 200, 200), rgb(240, 240, 240));
+  --slider-track-border: rgb(170, 170, 170) rgb(210, 210, 210) rgb(210, 210, 210) rgb(170, 170, 170);
+  --slider-thumb-gradient: linear-gradient(rgb(230, 230, 230), rgb(255, 255, 255), rgb(245, 245, 245));
+  --slider-thumb-active-gradient: linear-gradient(rgb(200, 200, 200), rgb(230, 230, 230), rgb(220, 220, 220));
+  --slider-thumb-border: rgb(180, 180, 180);
+  --slider-tick: rgb(180, 180, 180);
 }
 
 /* ============================================
@@ -219,6 +237,15 @@
   --tab-active-gradient: linear-gradient(rgb(180, 235, 145), rgb(69, 199, 73));
   --pagination-active-gradient: linear-gradient(rgb(180, 235, 145), rgb(69, 199, 73));
   --hyperlink-color: rgb(69, 154, 73);
+
+  // Slider theme overrides (opaque gradients)
+  --slider-track-gradient: linear-gradient(to bottom, rgb(100, 140, 90), rgb(170, 210, 150));
+  --slider-track-gradient-vertical: linear-gradient(to right, rgb(100, 140, 90), rgb(170, 210, 150));
+  --slider-track-border: rgb(60, 100, 50) rgb(130, 170, 110) rgb(130, 170, 110) rgb(60, 100, 50);
+  --slider-thumb-gradient: linear-gradient(rgb(0, 120, 70), rgb(45, 170, 120), rgb(80, 210, 190));
+  --slider-thumb-active-gradient: linear-gradient(rgb(0, 90, 50), rgb(30, 130, 90), rgb(60, 160, 140));
+  --slider-thumb-border: rgb(50, 120, 50);
+  --slider-tick: rgb(80, 130, 70);
 }
 
 /* ============================================
@@ -288,6 +315,15 @@
   --tab-active-gradient: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
   --pagination-active-gradient: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
   --hyperlink-color: rgb(226, 61, 56);
+
+  // Slider theme overrides (opaque gradients)
+  --slider-track-gradient: linear-gradient(to bottom, rgb(160, 100, 95), rgb(220, 170, 165));
+  --slider-track-gradient-vertical: linear-gradient(to right, rgb(160, 100, 95), rgb(220, 170, 165));
+  --slider-track-border: rgb(130, 70, 65) rgb(190, 140, 135) rgb(190, 140, 135) rgb(130, 70, 65);
+  --slider-thumb-gradient: linear-gradient(rgb(180, 20, 40), rgb(235, 70, 90), rgb(255, 170, 165));
+  --slider-thumb-active-gradient: linear-gradient(rgb(140, 15, 30), rgb(180, 50, 70), rgb(200, 130, 125));
+  --slider-thumb-border: rgb(140, 50, 50);
+  --slider-tick: rgb(160, 90, 85);
 }
 
 /* ============================================
@@ -357,6 +393,15 @@
   --tab-active-gradient: linear-gradient(rgb(200, 170, 255), rgb(140, 90, 220));
   --pagination-active-gradient: linear-gradient(rgb(200, 170, 255), rgb(140, 90, 220));
   --hyperlink-color: rgb(140, 90, 220);
+
+  // Slider theme overrides (opaque gradients)
+  --slider-track-gradient: linear-gradient(to bottom, rgb(120, 80, 160), rgb(180, 150, 210));
+  --slider-track-gradient-vertical: linear-gradient(to right, rgb(120, 80, 160), rgb(180, 150, 210));
+  --slider-track-border: rgb(90, 50, 130) rgb(150, 120, 180) rgb(150, 120, 180) rgb(90, 50, 130);
+  --slider-thumb-gradient: linear-gradient(rgb(85, 45, 170), rgb(140, 90, 220), rgb(120, 200, 235));
+  --slider-thumb-active-gradient: linear-gradient(rgb(60, 30, 130), rgb(100, 60, 180), rgb(90, 150, 200));
+  --slider-thumb-border: rgb(70, 40, 140);
+  --slider-tick: rgb(110, 70, 150);
 }
 
 /* ============================================

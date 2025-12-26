@@ -13,9 +13,20 @@
   cursor: pointer;
   font-family: var(--font-system);
   font-size: var(--font-size-base);
+  position: relative;
 
   input {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   /* The checkbox box */
@@ -81,6 +92,11 @@
     opacity: 0.6;
     cursor: default;
     pointer-events: none;
+  }
+
+  input:disabled ~ * {
+    opacity: 0.6;
+    cursor: default;
   }
 
   /* Indeterminate state */
@@ -185,6 +201,12 @@ input[type="checkbox"]:not(.checkbox input) {
 .field-row input[type="checkbox"] + label,
 label input[type="checkbox"] {
   cursor: pointer;
+}
+
+.field-row input[type="checkbox"]:disabled + label,
+input[type="checkbox"]:disabled + label {
+  color: var(--text-disabled);
+  cursor: not-allowed;
 }
 
 .field-row:has(input[type="checkbox"]:disabled) label,

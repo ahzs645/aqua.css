@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "description": "A CSS library for building Apple Aqua-style interfaces (Mac OS X 10.0-10.4)",
   "main": "dist/aqua.css",
+  "style": "dist/aqua.css",
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
   "directories": {
     "doc": "docs"
   },
@@ -45,9 +51,7 @@
     "postcss-calc": "^7.0.2",
     "postcss-copy": "^7.1.0",
     "postcss-css-variables": "^0.14.0",
-    "postcss-import": "^12.0.1",
     "postcss-inline-svg": "^4.1.0",
-    "postcss-nested": "^4.2.3",
     "sass": "^1.96.0"
   }
 }

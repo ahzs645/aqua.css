@@ -61,6 +61,7 @@
     }
 
     /* Section headers (non-link items) */
+    > li.window-pane-section,
     > li:not(:has(> a)):not(:has(ul)) {
       font-weight: bold;
       color: var(--text-color);
@@ -72,6 +73,7 @@
     }
 
     /* Category items with nested lists */
+    > li.window-pane-group,
     > li:has(> ul) {
       font-weight: bold;
       padding-top: 8px;

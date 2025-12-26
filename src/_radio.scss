@@ -13,9 +13,20 @@
   cursor: pointer;
   font-family: var(--font-system);
   font-size: var(--font-size-base);
+  position: relative;
 
   input {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
   /* The radio circle */
@@ -72,6 +83,11 @@
     opacity: 0.6;
     cursor: default;
     pointer-events: none;
+  }
+
+  input:disabled ~ * {
+    opacity: 0.6;
+    cursor: default;
   }
 }
 
@@ -137,6 +153,12 @@ input[type="radio"]:not(.radio input) {
 .field-row input[type="radio"] + label,
 label input[type="radio"] {
   cursor: pointer;
+}
+
+.field-row input[type="radio"]:disabled + label,
+input[type="radio"]:disabled + label {
+  color: var(--text-disabled);
+  cursor: not-allowed;
 }
 
 .field-row:has(input[type="radio"]:disabled) label,
