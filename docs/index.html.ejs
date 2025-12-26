@@ -933,8 +933,56 @@
 &lt;/svg&gt;</code></pre>
 
     <h2 id="tabs">Tabs</h2>
+    <p class="description">
+      Classic Mac OS X Aqua-style tabs with glossy gradients and liquid blue separator bar.
+      Inactive tabs are slightly pushed down, active tab is flush with the bar.
+    </p>
+
+    <h3>Folder-Style Tabs</h3>
+    <p class="description">Traditional folder tabs with the iconic Aqua liquid gradient bar separator.</p>
     <%- example(`
-      <h3 style="margin: 0 0 8px 0;">Tabs (Pill Style)</h3>
+      <div class="aqua-tab-bar">
+        <button class="aqua-tab aqua-tab--active">Appearance</button>
+        <button class="aqua-tab">Sound</button>
+        <button class="aqua-tab">System</button>
+      </div>
+      <div class="aqua-tab-content">
+        <p>Appearance settings content goes here.</p>
+        <p>The active tab has a blue Aqua gradient and aligns flush with the separator bar.</p>
+      </div>
+    `) %>
+
+    <h3>Tab Sizes</h3>
+    <%- example(`
+      <div style="margin-bottom: 20px;">
+        <p style="margin: 0 0 8px 0; font-weight: bold;">Small</p>
+        <div class="aqua-tab-bar">
+          <button class="aqua-tab aqua-tab--small aqua-tab--active">Tab 1</button>
+          <button class="aqua-tab aqua-tab--small">Tab 2</button>
+          <button class="aqua-tab aqua-tab--small">Tab 3</button>
+        </div>
+      </div>
+      <div style="margin-bottom: 20px; margin-top: 20px;">
+        <p style="margin: 0 0 8px 0; font-weight: bold;">Default</p>
+        <div class="aqua-tab-bar">
+          <button class="aqua-tab aqua-tab--active">Tab 1</button>
+          <button class="aqua-tab">Tab 2</button>
+          <button class="aqua-tab">Tab 3</button>
+        </div>
+      </div>
+      <div style="margin-top: 20px;">
+        <p style="margin: 0 0 8px 0; font-weight: bold;">Large</p>
+        <div class="aqua-tab-bar">
+          <button class="aqua-tab aqua-tab--large aqua-tab--active">Tab 1</button>
+          <button class="aqua-tab aqua-tab--large">Tab 2</button>
+          <button class="aqua-tab aqua-tab--large">Tab 3</button>
+        </div>
+      </div>
+    `) %>
+
+    <h3>Pill-Style Tabs (Segmented)</h3>
+    <p class="description">Compact segmented tabs for inline controls and preferences.</p>
+    <%- example(`
       <div class="aqua-tabs-container">
         <div class="aqua-tabs">
           <button class="aqua-tab active" data-tab="general">General</button>
