@@ -728,11 +728,11 @@
     rgb(110, 190, 250) 10px
   );
   --progress-indeterminate-background: repeating-linear-gradient(
-      135deg,
+      45deg,
       rgb(84, 169, 239) 0px,
-      rgb(84, 169, 239) 5px,
-      rgb(236, 236, 236) 5px,
-      rgb(236, 236, 236) 10px
+      rgb(84, 169, 239) 10px,
+      rgb(236, 236, 236) 10px,
+      rgb(236, 236, 236) 20px
     ),
     linear-gradient(rgb(176, 176, 176), rgb(207, 207, 207));
   --progress-indicator-track-gradient: linear-gradient(

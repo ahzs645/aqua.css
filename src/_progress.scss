@@ -63,8 +63,8 @@
 .aqua-progress.indeterminate {
   position: relative;
   background: var(--progress-indeterminate-background);
-  background-size: 14px 14px, 100% 100%;
-  animation: progress-indeterminate 2s linear infinite;
+  background-size: 28px 28px, 100% 100%;
+  animation: progress-indeterminate 1s linear infinite;
   border-radius: 2.5px;
 
   /* Aqua glass effect (top shine + bottom glow) */
@@ -81,7 +81,7 @@
 
 @keyframes progress-indeterminate {
   from { background-position: 0 0, 0 0; }
-  to { background-position: 200px 0, 0 0; }
+  to { background-position: -28px 0, 0 0; }
 }
 
 /* Size variations */
