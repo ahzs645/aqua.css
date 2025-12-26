@@ -28,48 +28,44 @@
     margin-right: 28px;
   }
 
-  /* Rounded blue button container */
-  .combobox-button {
+  /* Blue button wrapper - matches select-wrapper styling */
+  .combobox-button-wrapper {
     position: absolute;
     right: 0;
     top: 0;
-    height: 20px;
+    bottom: 0;
     width: 28px;
-    z-index: 2;
-    background: var(--aqua-button-secondary-gradient);
-    box-shadow: var(--aqua-button-secondary-shadow);
     border-radius: 5px;
     overflow: hidden;
-    box-sizing: border-box;
+    background: var(--aqua-button-secondary-gradient);
+    box-shadow: var(--aqua-button-secondary-shadow);
+
+    /* Unified gloss across button */
+    @include aqua-glass('pill', $overrides: (
+      shine: (
+        width: calc(100% - 4px),
+        height: 45%,
+        radius: 4px 4px 2px 2px,
+        z-index: 20
+      ),
+      glow: (
+        width: calc(100% - 6px),
+        radius: 3px,
+        z-index: 20
+      )
+    ));
   }
 
-  /* Blue active part of button */
-  .combobox-button::before {
-    content: '';
+  /* Blue background - inside wrapper */
+  .combobox-button {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 2;
     background: var(--aqua-button-primary-gradient);
     border-radius: 5px;
-  }
-
-  /* Gloss on button */
-  .combobox-button::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 5%;
-    width: calc(100% - 0.25em);
-    height: 45%;
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.3)
-    );
-    border-radius: 4px 4px 2px 2px;
-    z-index: 3;
     pointer-events: none;
   }
 
@@ -78,7 +74,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    height: 22px;
+    bottom: 0;
     width: 28px;
     display: flex;
     flex-direction: column;
