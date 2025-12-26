@@ -153,13 +153,13 @@ select {
     height: 1.75em;
     border-radius: 5px 0 0 5px;
     border: none;
-    padding: 0 0.75em;
+    padding: 0 2.25em 0 0.75em;
     box-shadow: none;
     font-family: "Lucida Grande", "myriad-pro", system-ui, var(--font-system);
     font-size: 1rem;
     color: var(--text-color);
     position: relative;
-    z-index: 21;
+    z-index: 1;
     cursor: pointer;
     background: transparent;
   }
