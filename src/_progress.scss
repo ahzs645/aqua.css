@@ -67,8 +67,20 @@
   animation: progress-indeterminate 1s linear infinite;
   border-radius: 2.5px;
 
-  /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass('bar');
+  /* Top gloss overlay */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.18));
+    filter: blur(1px);
+    border-radius: 2.5px 2.5px 0 0;
+    pointer-events: none;
+    z-index: 1;
+  }
 
   .progress-bar-fill {
     display: none;
