@@ -1,0 +1,55 @@
+    <h2 id="scrollbar">Scrollbar</h2>
+    <p class="label">Modern Mac-style overlay scrollbar - hover over the containers to see scrollbars appear</p>
+
+    <%- example(`
+      <div>
+        <span class="label">Vertical Scroll</span><br>
+        <div class="scroll-container scroll-demo-vertical">
+          <div style="padding: 12px;">
+            <div style="font-weight: bold; margin-bottom: 8px;">Scrollable Content</div>
+            <div style="margin: 0 0 6px 0;">Line 1 - Hover to see scrollbar</div>
+            <div style="margin: 0 0 6px 0;">Line 2 - Semi-transparent thumb</div>
+            <div style="margin: 0 0 6px 0;">Line 3 - Uses CSS variables</div>
+            <div style="margin: 0 0 6px 0;">Line 4 - 4px border radius</div>
+            <div style="margin: 0 0 6px 0;">Line 5 - Expands to 6px on hover</div>
+            <div style="margin: 0 0 6px 0;">Line 6 - Track appears on hover</div>
+            <div style="margin: 0 0 6px 0;">Line 7 - Light gradient background</div>
+            <div style="margin: 0 0 6px 0;">Line 8 - No arrow buttons</div>
+            <div style="margin: 0 0 6px 0;">Line 9 - Modern macOS style</div>
+            <div style="margin: 0 0 6px 0;">Line 10 - Overlay scrollbar</div>
+            <div style="margin: 0 0 6px 0;">Line 11 - Doesn't take space</div>
+            <div style="margin: 0 0 6px 0;">Line 12 - Content flows under</div>
+            <div style="margin: 0 0 6px 0;">Line 13 - Try scrolling!</div>
+            <div style="margin: 0 0 6px 0;">Line 14 - Smooth animation</div>
+            <div style="margin: 0;">Line 15 - End of content</div>
+          </div>
+        </div>
+      </div>
+    `) %>
+
+    <h4>Wave-Animated Scrollbar</h4>
+    <p>Custom scrollbar with the same liquid wave effect as the progress bar. Scroll or drag the thumb to see the wave pattern reveal.</p>
+
+    <%- example(`
+      <div class="scrollbar-wave-container" style="width: 300px; height: 200px;" id="scrollbar-wave-demo">
+        <div class="scrollbar-wave-content" id="scrollbar-wave-content">
+          <div style="padding: 12px;">
+            <div style="font-weight: bold; margin-bottom: 8px;">Wave Scrollbar Demo</div>
+            <p style="margin: 0 0 10px 0;">This scrollbar uses the same liquid wave effect as the progress bar, creating a cohesive Aqua experience.</p>
+            <p style="margin: 0 0 10px 0;">The wave pattern in the thumb creates a sense of depth and movement as you scroll through the content.</p>
+            <p style="margin: 0 0 10px 0;">Notice how the wave stays fixed relative to the track, revealing different parts of the pattern as the thumb moves.</p>
+            <p style="margin: 0 0 10px 0;">You can drag the thumb directly or scroll the content area to see the effect.</p>
+            <p style="margin: 0 0 10px 0;">The design matches the classic Mac OS X Aqua interface with its glossy, three-dimensional appearance.</p>
+            <p style="margin: 0;">This implementation responds to theme changes - try switching themes above!</p>
+          </div>
+        </div>
+        <div class="scrollbar-wave-track" id="scrollbar-wave-track">
+          <div class="scrollbar-wave-thumb" id="scrollbar-wave-thumb">
+            <div class="scrollbar-wave-ink">
+              <div class="scrollbar-wave-shimmer" id="scrollbar-wave-shimmer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `) %>
+

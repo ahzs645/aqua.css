@@ -1,0 +1,112 @@
+    <h2>Form Controls</h2>
+
+    <h3 id="text-inputs">Text Inputs</h3>
+    <%- example(`
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+        <div>
+          <span class="label">Regular (square corners)</span><br>
+          <input class="aqua-textfield" type="text" placeholder="Enter text...">
+        </div>
+
+        <div>
+          <span class="label">Search (with icon)</span><br>
+          <input class="aqua-textfield search" type="text" placeholder="Search...">
+        </div>
+
+        <div>
+          <span class="label">Round Rect</span><br>
+          <input class="aqua-textfield round-rect" type="text" placeholder="Round rect...">
+        </div>
+
+        <div>
+          <span class="label">Disabled</span><br>
+          <input class="aqua-textfield" type="text" placeholder="Disabled" disabled>
+        </div>
+
+        <div>
+          <span class="label">Password</span><br>
+          <input class="aqua-textfield" type="password" value="••••••••">
+        </div>
+      </div>
+    `) %>
+
+    <h3 id="select">Select Dropdown</h3>
+    <%- example(`
+      <div class="field-row">
+        <label for="select">Choose an option:</label>
+        <div class="select-wrapper">
+          <select id="select">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+          <span class="select-button"></span>
+          <span class="select-arrows">
+            <span class="arrow-up">&#9650;</span>
+            <span class="arrow-down">&#9660;</span>
+          </span>
+        </div>
+      </div>
+    `) %>
+
+    <h3 id="combobox">Combobox</h3>
+    <p>Text input combined with a dropdown button.</p>
+    <%- example(`
+      <div class="combobox" style="width: 200px;">
+        <input type="text" value="Automatic">
+        <span class="combobox-button"></span>
+        <span class="combobox-arrows">
+          <span class="arrow-up">&#9650;</span>
+          <span class="arrow-down">&#9660;</span>
+        </span>
+      </div>
+    `) %>
+
+    <h3 id="listbox">Listbox</h3>
+    <p>Multi-select list using <code>select[multiple]</code> or <code>role="listbox"</code>.</p>
+    <%- example(`
+      <select multiple style="width: 200px; height: 120px;">
+        <option>Documents</option>
+        <option selected>Pictures</option>
+        <option>Music</option>
+        <option>Movies</option>
+        <option>Downloads</option>
+      </select>
+    `) %>
+
+    <h3 id="checkboxes">Checkboxes</h3>
+    <%- example(`
+      <div class="field-row">
+        <input type="checkbox" id="check1" checked>
+        <label for="check1">Checked checkbox</label>
+      </div>
+      <div class="field-row">
+        <input type="checkbox" id="check2">
+        <label for="check2">Unchecked checkbox</label>
+      </div>
+      <div class="field-row">
+        <input type="checkbox" id="check3" disabled checked>
+        <label for="check3" class="disabled">Disabled checked</label>
+      </div>
+      <div class="field-row">
+        <input type="checkbox" id="check-indeterminate">
+        <label for="check-indeterminate">Indeterminate</label>
+      </div>
+    `) %>
+
+    <h3 id="radio-buttons">Radio Buttons</h3>
+    <%- example(`
+      <div class="field-row">
+        <input type="radio" id="radio1" name="radio-group" checked>
+        <label for="radio1">Option A</label>
+      </div>
+      <div class="field-row">
+        <input type="radio" id="radio2" name="radio-group">
+        <label for="radio2">Option B</label>
+      </div>
+      <div class="field-row">
+        <input type="radio" id="radio3" name="radio-group">
+        <label for="radio3">Option C</label>
+      </div>
+    `) %>
+

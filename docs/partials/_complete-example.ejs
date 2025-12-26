@@ -1,0 +1,74 @@
+    <h2 id="complete-example">Complete Example</h2>
+    <p>A window demonstrating multiple components together:</p>
+
+    <%- example(`
+      <!-- Pre-10.6 era complete example -->
+      <div class="era-pre-10-6">
+        <div class="window" style="max-width: 350px;">
+          <div class="title-bar">
+            <div class="traffic-lights traffic-lights--always-colored">
+              <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
+              <div class="aqua-light aqua-yellow" role="button" tabindex="0" aria-label="Minimize"><span class="icon">−</span></div>
+              <div class="aqua-light aqua-green" role="button" tabindex="0" aria-label="Maximize"><span class="icon">+</span></div>
+            </div>
+            <div class="title-bar-text">Preferences</div>
+          </div>
+          <div class="window-body">
+            <div class="field-row-stacked">
+              <label for="username-pre106">Username:</label>
+              <input type="text" id="username-pre106" value="admin">
+            </div>
+            <fieldset style="margin-top: 12px;">
+              <legend>Display</legend>
+              <div class="field-row">
+                <input type="radio" id="light-pre106" name="theme-pre106" checked>
+                <label for="light-pre106">Light mode</label>
+              </div>
+              <div class="field-row">
+                <input type="radio" id="dark-pre106" name="theme-pre106">
+                <label for="dark-pre106">Dark mode</label>
+              </div>
+            </fieldset>
+            <div class="field-row" style="margin-top: 16px; justify-content: flex-end;">
+              <button class="aqua-button aqua-button--secondary"><span>Cancel</span></button>
+              <button class="aqua-button default"><span>Save</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10.6+ era complete example -->
+      <div class="era-10-6-plus">
+        <div class="window" style="max-width: 350px;">
+          <div class="title-bar">
+            <div class="traffic-lights traffic-lights--always-colored">
+              <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
+              <div class="aqua-light aqua-yellow" role="button" tabindex="0" aria-label="Minimize"><span class="icon">−</span></div>
+              <div class="aqua-light aqua-green" role="button" tabindex="0" aria-label="Maximize"><span class="icon">+</span></div>
+            </div>
+            <div class="title-bar-text">Preferences</div>
+          </div>
+          <div class="window-body">
+            <div class="field-row-stacked">
+              <label for="username">Username:</label>
+              <input type="text" id="username" value="admin">
+            </div>
+            <fieldset style="margin-top: 12px;">
+              <legend>Display</legend>
+              <div class="field-row">
+                <input type="radio" id="light" name="theme" checked>
+                <label for="light">Light mode</label>
+              </div>
+              <div class="field-row">
+                <input type="radio" id="dark" name="theme">
+                <label for="dark">Dark mode</label>
+              </div>
+            </fieldset>
+            <div class="field-row" style="margin-top: 16px; justify-content: flex-end;">
+              <button>Cancel</button>
+              <button class="default">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `) %>

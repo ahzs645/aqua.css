@@ -1,0 +1,49 @@
+    <h2 id="focus-ring">Focus Ring (Aqua Blue Glow)</h2>
+    <p class="label">Focus colors: <span class="inline-code">$focus-outer</span>, <span class="inline-code">$focus-inner</span></p>
+
+    <%- example(`
+      <!-- Pre-10.6 era focus ring -->
+      <div class="era-pre-10-6">
+        <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+          <div>
+            <span class="label">Button</span><br>
+            <button class="aqua-button aqua-button--secondary aqua-focus-ring is-focused"><span>Button</span></button>
+          </div>
+          <div>
+            <span class="label">Text field</span><br>
+            <input class="aqua-textfield aqua-focus-ring is-focused" type="text" value="Focused">
+          </div>
+          <div>
+            <span class="label">Select</span><br>
+            <select class="aqua-focus-ring is-focused">
+              <option>Option 1</option>
+              <option selected>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10.6+ era focus ring -->
+      <div class="era-10-6-plus">
+        <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+          <div>
+            <span class="label">Button</span><br>
+            <button class="aqua-focus-ring is-focused">Button</button>
+          </div>
+          <div>
+            <span class="label">Text field</span><br>
+            <input class="aqua-textfield aqua-focus-ring is-focused" type="text" value="Focused">
+          </div>
+          <div>
+            <span class="label">Select</span><br>
+            <select class="aqua-focus-ring is-focused">
+              <option>Option 1</option>
+              <option selected>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    `) %>
+

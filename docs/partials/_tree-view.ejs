@@ -1,0 +1,24 @@
+    <h2 id="tree-view">Tree View</h2>
+    <p>Expandable hierarchical list.</p>
+
+    <%- example(`
+      <div class="aqua-tree" tabindex="0" style="width: 250px;">
+        <div class="aqua-tree-item expanded">
+          <span class="aqua-tree-arrow"></span>
+          <span>Documents</span>
+        </div>
+        <div class="aqua-tree-item" style="padding-left: 20px;">
+          <span style="width: 8px; display: inline-block;"></span>
+          <span>report.pdf</span>
+        </div>
+        <div class="aqua-tree-item" style="padding-left: 20px;">
+          <span style="width: 8px; display: inline-block;"></span>
+          <span>notes.txt</span>
+        </div>
+        <div class="aqua-tree-item selected">
+          <span class="aqua-tree-arrow"></span>
+          <span>Pictures</span>
+        </div>
+      </div>
+    `) %>
+

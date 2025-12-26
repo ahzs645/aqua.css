@@ -1,0 +1,27 @@
+    <h2 id="stepper">Stepper</h2>
+    <p>Number input with increment/decrement buttons.</p>
+
+    <%- example(`
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
+        <div>
+          <span class="label">Spinner / Stepper</span><br>
+          <div class="aqua-spinner">
+            <input type="number" value="5" min="0" max="100" aria-label="Value">
+            <div class="aqua-spinner-buttons" aria-hidden="true">
+              <button type="button">&#9650;</button>
+              <button type="button">&#9660;</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Legacy Stepper</span><br>
+          <div class="stepper">
+            <button>-</button>
+            <input type="number" value="5" min="0" max="100">
+            <button>+</button>
+          </div>
+        </div>
+      </div>
+    `) %>
+

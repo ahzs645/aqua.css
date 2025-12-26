@@ -181,6 +181,7 @@
     .hljs-attr { color: #9cdcfe; }
     .hljs-string { color: #ce9178; }
     .hljs-name { color: #569cd6; }
+    .hljs-comment { color: #6a9955; }
 
     @media (max-width: 800px) {
       body {
@@ -197,104 +198,107 @@
     }
   </style>
 </head>
+
 <body class="aqua-background" data-aqua-era="10-4">
   <aside class="sidebar">
-    <div class="window-pane version-switcher">
-      <div class="label">Aqua Era</div>
-      <div class="select-wrapper">
-        <select id="aqua-era-select" aria-label="Aqua era">
-          <option value="10-0">Mac OS X 10.0-10.1 (Cheetah/Puma)</option>
-          <option value="10-2">Mac OS X 10.2 (Jaguar)</option>
-          <option value="10-3">Mac OS X 10.3 (Panther)</option>
-          <option value="10-4" selected>Mac OS X 10.4 (Tiger)</option>
-          <option value="10-6">Mac OS X 10.6 (Snow Leopard)</option>
-        </select>
-      </div>
-      <div class="version-note">Adjusts palette, textures, and button shape to match each era.</div>
+  <div class="window-pane version-switcher">
+    <div class="label">Aqua Era</div>
+    <div class="select-wrapper">
+      <select id="aqua-era-select" aria-label="Aqua era">
+        <option value="10-0">Mac OS X 10.0-10.1 (Cheetah/Puma)</option>
+        <option value="10-2">Mac OS X 10.2 (Jaguar)</option>
+        <option value="10-3">Mac OS X 10.3 (Panther)</option>
+        <option value="10-4" selected>Mac OS X 10.4 (Tiger)</option>
+        <option value="10-6">Mac OS X 10.6 (Snow Leopard)</option>
+      </select>
     </div>
+    <div class="version-note">Adjusts palette, textures, and button shape to match each era.</div>
+  </div>
 
-    <div class="window-pane sidebar-nav">
-      <ul class="menu-items">
-        <li><a href="#intro">Introduction</a></li>
-        <li>Components
-          <ul>
-            <li><a href="#buttons">Buttons</a></li>
-            <li><a href="#text-inputs">Text Inputs</a></li>
-            <li><a href="#select">Select Menu</a></li>
-            <li><a href="#combobox">Combobox</a></li>
-            <li><a href="#listbox">Listbox</a></li>
-            <li><a href="#checkboxes">Checkboxes</a></li>
-            <li><a href="#radio-buttons">Radio Buttons</a></li>
-            <li><a href="#progress-bar">Progress Bar</a></li>
-            <li><a href="#spinner">Spinner</a></li>
-            <li><a href="#slider">Slider</a></li>
-            <li><a href="#search-field">Search Field</a></li>
-            <li><a href="#stepper">Stepper</a></li>
-            <li><a href="#separator">Separator</a></li>
-            <li><a href="#hyperlink">Hyperlink</a></li>
-          </ul>
-        </li>
-        <li>Windows
-          <ul>
-            <li><a href="#window">Window</a></li>
-            <li><a href="#tabs">Tabs</a></li>
-            <li><a href="#fieldset">Fieldset</a></li>
-            <li><a href="#alert-dialog">Alert Dialog</a></li>
-            <li><a href="#titled-pane">Titled Pane</a></li>
-            <li><a href="#split-pane">Split Pane</a></li>
-            <li><a href="#split-view">Split View</a></li>
-            <li><a href="#disclosure">Disclosure</a></li>
-            <li><a href="#scrollbar">Scrollbar</a></li>
-          </ul>
-        </li>
-        <li>Navigation
-          <ul>
-            <li><a href="#menu-bar">Menu Bar</a></li>
-            <li><a href="#context-menu">Context Menu</a></li>
-            <li><a href="#toolbar">Toolbar</a></li>
-            <li><a href="#segmented-control">Segmented Control</a></li>
-            <li><a href="#pagination">Pagination</a></li>
-          </ul>
-        </li>
-        <li>Data Display
-          <ul>
-            <li><a href="#table">Table</a></li>
-            <li><a href="#list-view">List View</a></li>
-            <li><a href="#tree-view">Tree View</a></li>
-            <li><a href="#tree-table-view">Tree Table View</a></li>
-            <li><a href="#tooltip">Tooltip</a></li>
-            <li><a href="#balloon">Balloon</a></li>
-            <li><a href="#badge">Badge</a></li>
-            <li><a href="#color-swatches">Color Swatches</a></li>
-            <li><a href="#focus-ring">Focus Ring</a></li>
-          </ul>
-        </li>
-        <li>Themes
-          <ul>
-            <li><a href="#graphite-theme">Color Themes</a></li>
-          </ul>
-        </li>
-        <li><a href="#complete-example">Complete Example</a></li>
-      </ul>
-    </div>
+  <div class="window-pane sidebar-nav">
+    <ul class="menu-items">
+      <li><a href="#intro">Introduction</a></li>
+      <li>Components
+        <ul>
+          <li><a href="#buttons">Buttons</a></li>
+          <li><a href="#text-inputs">Text Inputs</a></li>
+          <li><a href="#select">Select Menu</a></li>
+          <li><a href="#combobox">Combobox</a></li>
+          <li><a href="#listbox">Listbox</a></li>
+          <li><a href="#checkboxes">Checkboxes</a></li>
+          <li><a href="#radio-buttons">Radio Buttons</a></li>
+          <li><a href="#progress-bar">Progress Bar</a></li>
+          <li><a href="#spinner">Spinner</a></li>
+          <li><a href="#slider">Slider</a></li>
+          <li><a href="#search-field">Search Field</a></li>
+          <li><a href="#stepper">Stepper</a></li>
+          <li><a href="#separator">Separator</a></li>
+          <li><a href="#hyperlink">Hyperlink</a></li>
+        </ul>
+      </li>
+      <li>Windows
+        <ul>
+          <li><a href="#window">Window</a></li>
+          <li><a href="#tabs">Tabs</a></li>
+          <li><a href="#fieldset">Fieldset</a></li>
+          <li><a href="#alert-dialog">Alert Dialog</a></li>
+          <li><a href="#titled-pane">Titled Pane</a></li>
+          <li><a href="#split-pane">Split Pane</a></li>
+          <li><a href="#split-view">Split View</a></li>
+          <li><a href="#disclosure">Disclosure</a></li>
+          <li><a href="#scrollbar">Scrollbar</a></li>
+        </ul>
+      </li>
+      <li>Navigation
+        <ul>
+          <li><a href="#menu-bar">Menu Bar</a></li>
+          <li><a href="#context-menu">Context Menu</a></li>
+          <li><a href="#toolbar">Toolbar</a></li>
+          <li><a href="#segmented-control">Segmented Control</a></li>
+          <li><a href="#pagination">Pagination</a></li>
+        </ul>
+      </li>
+      <li>Data Display
+        <ul>
+          <li><a href="#table">Table</a></li>
+          <li><a href="#list-view">List View</a></li>
+          <li><a href="#tree-view">Tree View</a></li>
+          <li><a href="#tree-table-view">Tree Table View</a></li>
+          <li><a href="#tooltip">Tooltip</a></li>
+          <li><a href="#balloon">Balloon</a></li>
+          <li><a href="#badge">Badge</a></li>
+          <li><a href="#color-swatches">Color Swatches</a></li>
+          <li><a href="#focus-ring">Focus Ring</a></li>
+        </ul>
+      </li>
+      <li>Themes
+        <ul>
+          <li><a href="#graphite-theme">Color Themes</a></li>
+        </ul>
+      </li>
+      <li><a href="#complete-example">Complete Example</a></li>
+    </ul>
+  </div>
 
-    <!-- Scrollbar Demo in Sidebar -->
-    <div style="padding: 8px; background: #F5F5F5; border: 1px solid #888; border-radius: 5px;">
-      <div style="font-size: 11px; font-weight: bold; margin-bottom: 6px;">Scrollbar Preview</div>
-      <div class="scrollbar-demo">
-        <p style="margin: 0 0 8px 0;">Scroll me!</p>
-        <p style="margin: 0 0 8px 0;">Item 1</p>
-        <p style="margin: 0 0 8px 0;">Item 2</p>
-        <p style="margin: 0 0 8px 0;">Item 3</p>
-        <p style="margin: 0 0 8px 0;">Item 4</p>
-        <p style="margin: 0 0 8px 0;">Item 5</p>
-        <p style="margin: 0 0 8px 0;">Item 6</p>
-        <p style="margin: 0;">Item 7</p>
-      </div>
+  <!-- Scrollbar Demo in Sidebar -->
+  <div style="padding: 8px; background: #F5F5F5; border: 1px solid #888; border-radius: 5px;">
+    <div style="font-size: 11px; font-weight: bold; margin-bottom: 6px;">Scrollbar Preview</div>
+    <div class="scrollbar-demo">
+      <p style="margin: 0 0 8px 0;">Scroll me!</p>
+      <p style="margin: 0 0 8px 0;">Item 1</p>
+      <p style="margin: 0 0 8px 0;">Item 2</p>
+      <p style="margin: 0 0 8px 0;">Item 3</p>
+      <p style="margin: 0 0 8px 0;">Item 4</p>
+      <p style="margin: 0 0 8px 0;">Item 5</p>
+      <p style="margin: 0 0 8px 0;">Item 6</p>
+      <p style="margin: 0;">Item 7</p>
     </div>
-  </aside>
+  </div>
+</aside>
+
 
   <main class="main-content">
+      <main class="main-content">
     <h1 id="intro">aqua.css</h1>
     <div class="intro">
       <p>
@@ -312,7 +316,8 @@
       </p>
     </div>
 
-    <h2 id="window">Window</h2>
+
+        <h2 id="window">Window</h2>
     <p>
       The classic Aqua window with brushed metal title bar and traffic light buttons
       (close, minimize, maximize/zoom).
@@ -678,7 +683,8 @@
       </details>
     </div>
 
-    <h2 id="buttons">Buttons</h2>
+
+        <h2 id="buttons">Buttons</h2>
     <div class="example">
       <!-- Pre-10.6 era buttons (aqua-button style) -->
 <div class="era-pre-10-6">
@@ -939,7 +945,8 @@
       </details>
     </div>
 
-    <h2>Form Controls</h2>
+
+        <h2>Form Controls</h2>
 
     <h3 id="text-inputs">Text Inputs</h3>
     <div class="example">
@@ -1004,21 +1011,35 @@
     <div class="example">
       <div class="field-row">
   <label for="select">Choose an option:</label>
-  <select id="select">
-    <option>Option 1</option>
-    <option>Option 2</option>
-    <option>Option 3</option>
-  </select>
+  <div class="select-wrapper">
+    <select id="select">
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+    <span class="select-button"></span>
+    <span class="select-arrows">
+      <span class="arrow-up">&#9650;</span>
+      <span class="arrow-down">&#9660;</span>
+    </span>
+  </div>
 </div>
       <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;select&quot;</span>&gt;</span>Choose an option:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;select&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 1<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 2<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 3<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;select-wrapper&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;select&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 1<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 2<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Option 3<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;select-button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;select-arrows&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;arrow-up&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9650;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;arrow-down&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9660;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
       </details>
     </div>
@@ -1027,14 +1048,22 @@
     <p>Text input combined with a dropdown button.</p>
     <div class="example">
       <div class="combobox" style="width: 200px;">
-  <input type="text" placeholder="Type or select...">
-  <button></button>
+  <input type="text" value="Automatic">
+  <span class="combobox-button"></span>
+  <span class="combobox-arrows">
+    <span class="arrow-up">&#9650;</span>
+    <span class="arrow-down">&#9660;</span>
+  </span>
 </div>
       <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;combobox&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Type or select...&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Automatic&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;combobox-button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;combobox-arrows&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;arrow-up&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9650;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;arrow-down&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9660;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
       </details>
     </div>
@@ -1131,7 +1160,8 @@
       </details>
     </div>
 
-    <h2 id="progress-bar">Progress Bar</h2>
+
+        <h2 id="progress-bar">Progress Bar</h2>
     <div class="example">
       <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
   <div>
@@ -1357,7 +1387,8 @@
       </details>
     </div>
 
-    <h2 id="spinner">Spinner / Loader</h2>
+
+        <h2 id="spinner">Spinner / Loader</h2>
     <p>Animated loading indicators.</p>
 
     <div class="example">
@@ -1497,7 +1528,8 @@
   &lt;/defs&gt;
 &lt;/svg&gt;</code></pre>
 
-    <h2 id="tabs">Tabs</h2>
+
+        <h2 id="tabs">Tabs</h2>
     <p class="description">
       Classic Mac OS X Aqua-style tabs with glossy gradients and liquid blue separator bar.
       Inactive tabs are slightly pushed down, active tab is flush with the bar.
@@ -1612,7 +1644,8 @@
       </details>
     </div>
 
-    <h2 id="fieldset">Fieldset</h2>
+
+        <h2 id="fieldset">Fieldset</h2>
     <div class="example">
       <fieldset>
   <legend>Settings</legend>
@@ -1641,7 +1674,8 @@
       </details>
     </div>
 
-    <h2 id="menu-bar">Menu Bar</h2>
+
+        <h2 id="menu-bar">Menu Bar</h2>
     <p>Classic Mac menu bar with dropdown menus.</p>
 
     <div class="example">
@@ -1716,7 +1750,8 @@
       </details>
     </div>
 
-    <h2 id="context-menu">Context Menu</h2>
+
+        <h2 id="context-menu">Context Menu</h2>
     <p>Menu styling for right-click and contextual actions.</p>
 
     <div class="example">
@@ -1739,7 +1774,8 @@
       </details>
     </div>
 
-    <h2 id="toolbar">Toolbar</h2>
+
+        <h2 id="toolbar">Toolbar</h2>
     <p>Icon toolbar for application actions.</p>
 
     <div class="example">
@@ -1778,7 +1814,8 @@
       </details>
     </div>
 
-    <h2 id="alert-dialog">Alert Dialog</h2>
+
+        <h2 id="alert-dialog">Alert Dialog</h2>
     <p>Modal alert boxes with different icon types.</p>
 
     <div class="example">
@@ -1853,7 +1890,8 @@
       </details>
     </div>
 
-    <h2 id="slider">Slider</h2>
+
+        <h2 id="slider">Slider</h2>
     <div class="example">
       <div>
   <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
@@ -1998,7 +2036,8 @@
       </details>
     </div>
 
-    <h2 id="search-field">Search Field</h2>
+
+        <h2 id="search-field">Search Field</h2>
     <p>Rounded search input with magnifying glass icon.</p>
 
     <div class="example">
@@ -2009,7 +2048,8 @@
       </details>
     </div>
 
-    <h2 id="segmented-control">Segmented Control</h2>
+
+        <h2 id="segmented-control">Segmented Control</h2>
     <p>Button group for switching between views or options.</p>
 
     <div class="example">
@@ -2028,7 +2068,8 @@
       </details>
     </div>
 
-    <h2 id="table">Table View</h2>
+
+        <h2 id="table">Table View</h2>
     <p class="label">Alternating row colors: <span class="inline-code">--table-row-odd</span> and <span class="inline-code">--table-row-even</span></p>
 
     <div class="example">
@@ -2097,7 +2138,8 @@
       </details>
     </div>
 
-    <h2 id="list-view">List View</h2>
+
+        <h2 id="list-view">List View</h2>
     <p>Selectable list component with focused (blue) and unfocused (gray) selection.</p>
 
     <div class="example">
@@ -2218,7 +2260,8 @@
       </details>
     </div>
 
-    <h2 id="tree-view">Tree View</h2>
+
+        <h2 id="tree-view">Tree View</h2>
     <p>Expandable hierarchical list.</p>
 
     <div class="example">
@@ -2263,7 +2306,8 @@
       </details>
     </div>
 
-    <h2 id="tree-table-view">Tree Table View</h2>
+
+        <h2 id="tree-table-view">Tree Table View</h2>
     <p class="label">Combines tree hierarchy with table columns (click arrows to expand/collapse)</p>
 
     <div class="example">
@@ -2412,7 +2456,8 @@
       </details>
     </div>
 
-    <h2 id="separator">Separator</h2>
+
+        <h2 id="separator">Separator</h2>
 
     <div class="example">
       <hr class="aqua-separator">
@@ -2436,7 +2481,8 @@
       </details>
     </div>
 
-    <h2 id="hyperlink">Hyperlink</h2>
+
+        <h2 id="hyperlink">Hyperlink</h2>
     <p class="label">Matches JavaFX Hyperlink - underlines on hover/focus</p>
 
     <div class="example">
@@ -2481,7 +2527,8 @@
       </details>
     </div>
 
-    <h2 id="tooltip">Tooltip</h2>
+
+        <h2 id="tooltip">Tooltip</h2>
     <p class="label">Background: <span class="inline-code">--tooltip-bg</span></p>
 
     <div class="example">
@@ -2498,7 +2545,8 @@
       </details>
     </div>
 
-    <h2 id="pagination">Pagination</h2>
+
+        <h2 id="pagination">Pagination</h2>
 
     <div class="example">
       <div class="aqua-pagination">
@@ -2524,7 +2572,8 @@
       </details>
     </div>
 
-    <h2 id="badge">Badge</h2>
+
+        <h2 id="badge">Badge</h2>
 
     <div class="example">
       <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
@@ -2544,7 +2593,8 @@
       </details>
     </div>
 
-    <h2 id="color-swatches">Color Swatches</h2>
+
+        <h2 id="color-swatches">Color Swatches</h2>
 
     <div class="example">
       <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
@@ -2566,7 +2616,8 @@
       </details>
     </div>
 
-    <h2 id="focus-ring">Focus Ring (Aqua Blue Glow)</h2>
+
+        <h2 id="focus-ring">Focus Ring (Aqua Blue Glow)</h2>
     <p class="label">Focus colors: <span class="inline-code">$focus-outer</span>, <span class="inline-code">$focus-inner</span></p>
 
     <div class="example">
@@ -2661,7 +2712,8 @@
       </details>
     </div>
 
-    <h2 id="balloon">Balloon / Speech Bubble</h2>
+
+        <h2 id="balloon">Balloon / Speech Bubble</h2>
     <p>Tooltip with a speech bubble tail. Use <code>.balloon-bottom</code>, <code>.balloon-right</code>, etc. for positioning.</p>
 
     <div class="example">
@@ -2686,7 +2738,8 @@
       </details>
     </div>
 
-    <h2 id="stepper">Stepper</h2>
+
+        <h2 id="stepper">Stepper</h2>
     <p>Number input with increment/decrement buttons.</p>
 
     <div class="example">
@@ -2737,7 +2790,8 @@
       </details>
     </div>
 
-    <h2 id="disclosure">Disclosure</h2>
+
+        <h2 id="disclosure">Disclosure</h2>
     <p>Expandable section with disclosure triangle.</p>
 
     <div class="example">
@@ -2772,7 +2826,8 @@
       </details>
     </div>
 
-    <h2 id="titled-pane">Titled Pane / Accordion</h2>
+
+        <h2 id="titled-pane">Titled Pane / Accordion</h2>
 
     <div class="example">
       <div class="aqua-titled-pane expanded">
@@ -2816,7 +2871,8 @@
       </details>
     </div>
 
-    <h2 id="split-pane">Split Pane</h2>
+
+        <h2 id="split-pane">Split Pane</h2>
     <p class="label">Drag the divider to resize panes</p>
 
     <div class="example">
@@ -2877,7 +2933,8 @@
       </details>
     </div>
 
-    <h2 id="split-view">Split View</h2>
+
+        <h2 id="split-view">Split View</h2>
     <p>Sidebar and content area layout.</p>
 
     <div class="example">
@@ -2908,7 +2965,8 @@
       </details>
     </div>
 
-    <h2 id="scrollbar">Scrollbar</h2>
+
+        <h2 id="scrollbar">Scrollbar</h2>
     <p class="label">Modern Mac-style overlay scrollbar - hover over the containers to see scrollbars appear</p>
 
     <div class="example">
@@ -3012,7 +3070,8 @@
       </details>
     </div>
 
-    <h2 id="graphite-theme">Color Themes</h2>
+
+        <h2 id="graphite-theme">Color Themes</h2>
     <p>Add a theme class to your container to change the accent color. Available themes:</p>
     <ul style="margin: 1em 0;">
       <li><code>theme-graphite</code> - Gray/silver (like macOS Graphite appearance)</li>
@@ -3260,7 +3319,8 @@
       </details>
     </div>
 
-    <h2 id="complete-example">Complete Example</h2>
+
+        <h2 id="complete-example">Complete Example</h2>
     <p>A window demonstrating multiple components together:</p>
 
     <div class="example">
@@ -3407,6 +3467,9 @@
       </details>
     </div>
 
+  </main>
+
+  
     <footer style="margin-top: 3em; padding-top: 1em; border-top: 1px solid #ccc; font-size: 12px; color: #666;">
       <p>
         aqua.css is inspired by Apple's Aqua interface (Mac OS X 10.0-10.4).
@@ -3715,5 +3778,8 @@
       setupWaveScrollbar();
     })();
   </script>
+</body>
+</html>
+
 </body>
 </html>

@@ -68,7 +68,8 @@ function buildDocs() {
   glob("docs/*", (err, files) => {
     if (!err) {
       files.forEach((srcFile) => {
-        if (!srcFile.endsWith(".ejs")) {
+        // Skip directories and .ejs files
+        if (!srcFile.endsWith(".ejs") && fs.statSync(srcFile).isFile()) {
           fs.copyFileSync(srcFile, path.join("dist", path.basename(srcFile)));
         }
       });
@@ -77,7 +78,9 @@ function buildDocs() {
 
   fs.writeFileSync(
     path.join(__dirname, "/dist/index.html"),
-    ejs.render(template, { getNewId, getCurrentId, example })
+    ejs.render(template, { getNewId, getCurrentId, example }, {
+      filename: path.join(__dirname, "docs/index.html.ejs")
+    })
   );
 }
 

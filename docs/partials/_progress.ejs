@@ -1,0 +1,116 @@
+    <h2 id="progress-bar">Progress Bar</h2>
+    <%- example(`
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+        <div>
+          <span class="label">Determinate (60%)</span><br>
+          <div class="aqua-progress">
+            <div class="bar" style="width: 60%;"></div>
+          </div>
+        </div>
+        <div>
+          <span class="label">Determinate (30%)</span><br>
+          <div class="aqua-progress">
+            <div class="bar" style="width: 30%;"></div>
+          </div>
+        </div>
+        <div>
+          <span class="label">Complete (100%)</span><br>
+          <div class="aqua-progress">
+            <div class="bar" style="width: 100%;"></div>
+          </div>
+        </div>
+        <div>
+          <span class="label">Indeterminate</span><br>
+          <div class="aqua-progress indeterminate">
+            <div class="bar"></div>
+          </div>
+        </div>
+        <div>
+          <span class="label">Disabled</span><br>
+          <div class="aqua-progress disabled">
+            <div class="bar" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+    `) %>
+
+    <h4>Wave-Animated Progress Bar</h4>
+    <p>Alternative progress bar with liquid wave shimmer effect. Uses <code>--p</code> custom property for percentage. Responds to theme changes in the <a href="#graphite-theme">Color Themes</a> section.</p>
+
+    <%- example(`
+      <div style="display: grid; gap: 15px; max-width: 300px;">
+        <div>
+          <span class="label">Wave (60%)</span>
+          <div class="progress-wave" style="--p: 60;">
+            <div class="progress-wave__fill">
+              <div class="progress-wave__ink" aria-hidden="true">
+                <span class="progress-wave__shimmer"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="label">Disabled (50%)</span>
+          <div class="progress-wave disabled" style="--p: 50;">
+            <div class="progress-wave__fill">
+              <div class="progress-wave__ink" aria-hidden="true">
+                <span class="progress-wave__shimmer"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `) %>
+
+    <h3 style="margin-top: 0;">Progress Indicator</h3>
+
+    <%- example(`
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
+        <div>
+          <span class="label">Circular (75%)</span><br>
+          <div class="aqua-progress-indicator" style="--progress: 75;">
+            <div class="indicator"></div>
+            <div class="progress"></div>
+            <span class="percentage">75%</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Circular (25%)</span><br>
+          <div class="aqua-progress-indicator" style="--progress: 25;">
+            <div class="indicator"></div>
+            <div class="progress"></div>
+            <span class="percentage">25%</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Complete</span><br>
+          <div class="aqua-progress-indicator complete" style="--progress: 100;">
+            <div class="indicator"></div>
+            <div class="progress"></div>
+            <span class="tick" aria-hidden="true"></span>
+            <span class="percentage">100%</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Spinning (Indeterminate)</span><br>
+          <div class="aqua-spinner-indicator" aria-label="Loading">
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+          </div>
+        </div>
+      </div>
+    `) %>
+

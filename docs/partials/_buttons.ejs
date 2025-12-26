@@ -1,0 +1,131 @@
+    <h2 id="buttons">Buttons</h2>
+    <%- example(`
+      <!-- Pre-10.6 era buttons (aqua-button style) -->
+      <div class="era-pre-10-6">
+        <div class="label">Standard Buttons</div>
+        <div class="component-row">
+          <button class="aqua-button aqua-button--secondary"><span>Cancel</span></button>
+          <button class="aqua-button default"><span>Default</span></button>
+          <button class="aqua-button default pulse"><span>Pulsing</span></button>
+          <button class="aqua-button aqua-button--secondary" disabled><span>Disabled</span></button>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Button Types</div>
+        <div class="component-row">
+          <button class="aqua-button aqua-button--secondary"><span>Regular</span></button>
+          <button class="aqua-button help" aria-label="Help"><span>?</span></button>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Size Variants (from Apple HIG)</div>
+        <div class="component-row">
+          <div class="component-group">
+            <button class="aqua-button aqua-button--secondary"><span>Regular</span></button>
+            <span class="state-label">13px font</span>
+          </div>
+          <div class="component-group">
+            <button class="aqua-button aqua-button--secondary small"><span>Small</span></button>
+            <span class="state-label">11px font</span>
+          </div>
+          <div class="component-group">
+            <button class="aqua-button aqua-button--secondary mini"><span>Mini</span></button>
+            <span class="state-label">9px font</span>
+          </div>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Pill Buttons (Segmented Control)</div>
+        <div class="component-row">
+          <div class="pill-group">
+            <button class="aqua-button aqua-button--secondary left-pill"><span>Left</span></button>
+            <button class="aqua-button aqua-button--secondary center-pill"><span>Center</span></button>
+            <button class="aqua-button aqua-button--secondary right-pill"><span>Right</span></button>
+          </div>
+          <div class="segmented-control" style="margin-left: 10px;">
+            <button class="aqua-button aqua-button--secondary active" aria-pressed="true"><span>Left</span></button>
+            <button class="aqua-button aqua-button--secondary"><span>Center</span></button>
+            <button class="aqua-button aqua-button--secondary"><span>Right</span></button>
+          </div>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Color Variants</div>
+        <div class="component-row">
+          <button class="aqua-button aqua-button--secondary"><span>Cancel</span></button>
+          <button class="aqua-button default"><span>Default</span></button>
+          <button class="aqua-button aqua-button--orange"><span>Login</span></button>
+          <button class="aqua-button default armed"><span>Pressed</span></button>
+          <button class="aqua-button mini aqua-button--secondary"><span>Mini</span></button>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Button States</div>
+        <div class="states-demo">
+          <div class="state-box">
+            <button class="aqua-button aqua-button--secondary"><span>Normal</span></button>
+            <div class="state-label">Normal</div>
+          </div>
+          <div class="state-box">
+            <button class="aqua-button aqua-button--secondary armed"><span>Pressed</span></button>
+            <div class="state-label">Pressed/Armed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10.6+ era buttons (flat style) -->
+      <div class="era-10-6-plus">
+        <div class="label">Standard Buttons</div>
+        <div class="component-row">
+          <button>Button</button>
+          <button class="default">Default</button>
+          <button class="default pulse">Pulsing</button>
+          <button disabled>Disabled</button>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Button Types</div>
+        <div class="component-row">
+          <button>Regular</button>
+          <button class="round-rect">Round Rect</button>
+          <button class="help" aria-label="Help">?</button>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Size Variants (from Apple HIG)</div>
+        <div class="component-row">
+          <div class="component-group">
+            <button>Regular</button>
+            <span class="state-label">13px font</span>
+          </div>
+          <div class="component-group">
+            <button class="small">Small</button>
+            <span class="state-label">11px font</span>
+          </div>
+          <div class="component-group">
+            <button class="mini">Mini</button>
+            <span class="state-label">9px font</span>
+          </div>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Pill Buttons (Segmented Control)</div>
+        <div class="component-row">
+          <div class="pill-group">
+            <button class="left-pill">Left</button>
+            <button class="center-pill">Center</button>
+            <button class="right-pill">Right</button>
+          </div>
+          <div class="segmented-control" style="margin-left: 10px;">
+            <button class="active" aria-pressed="true">Left</button>
+            <button>Center</button>
+            <button>Right</button>
+          </div>
+        </div>
+
+        <div class="label" style="margin-top: 15px;">Button States</div>
+        <div class="states-demo">
+          <div class="state-box">
+            <button>Normal</button>
+            <div class="state-label">Normal</div>
+          </div>
+          <div class="state-box">
+            <button class="armed">Pressed</button>
+            <div class="state-label">Pressed/Armed</div>
+          </div>
+        </div>
+      </div>
+    `) %>
+

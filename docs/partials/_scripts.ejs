@@ -1,0 +1,311 @@
+
+    <footer style="margin-top: 3em; padding-top: 1em; border-top: 1px solid #ccc; font-size: 12px; color: #666;">
+      <p>
+        aqua.css is inspired by Apple's Aqua interface (Mac OS X 10.0-10.4).
+        <br>
+        Built following the patterns of
+        <a href="https://github.com/jdan/98.css">98.css</a>,
+        <a href="https://github.com/botoxparty/XP.css">XP.css</a>, and
+        <a href="https://github.com/sakofchit/system.css">system.css</a>.
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function setupTitledPanes() {
+        document.querySelectorAll('.aqua-titled-pane-header').forEach((header) => {
+          header.addEventListener('click', () => {
+            const pane = header.closest('.aqua-titled-pane');
+            if (pane) pane.classList.toggle('expanded');
+          });
+
+          header.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            const pane = header.closest('.aqua-titled-pane');
+            if (pane) pane.classList.toggle('expanded');
+          });
+        });
+      }
+
+      function setupTreeTable() {
+        const root = document.getElementById('tree-table-demo');
+        if (!root) return;
+
+        function toggleRows(parentId, expanded) {
+          root.querySelectorAll(`tr[data-parent="${parentId}"]`).forEach((row) => {
+            row.style.display = expanded ? '' : 'none';
+          });
+        }
+
+        root.querySelectorAll('.aqua-tree-table-arrow[data-toggle]').forEach((arrow) => {
+          const parentId = arrow.getAttribute('data-toggle');
+          if (!parentId) return;
+
+          toggleRows(parentId, arrow.classList.contains('expanded'));
+
+          const activate = () => {
+            arrow.classList.toggle('expanded');
+            toggleRows(parentId, arrow.classList.contains('expanded'));
+          };
+
+          arrow.addEventListener('click', (event) => {
+            event.preventDefault();
+            activate();
+          });
+
+          arrow.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            activate();
+          });
+        });
+      }
+
+      function setupSplitPanes() {
+        document.querySelectorAll('.aqua-split-divider[data-split]').forEach((divider) => {
+          divider.addEventListener('pointerdown', (event) => {
+            const splitId = divider.getAttribute('data-split');
+            if (!splitId) return;
+            const container = document.getElementById(splitId);
+            if (!container) return;
+
+            const isVertical = container.classList.contains('vertical');
+            const prevPane = divider.previousElementSibling;
+            const nextPane = divider.nextElementSibling;
+            if (!prevPane || !nextPane) return;
+
+            event.preventDefault();
+            divider.setPointerCapture(event.pointerId);
+
+            const containerRect = container.getBoundingClientRect();
+            const dividerRect = divider.getBoundingClientRect();
+
+            const dividerSize = isVertical ? dividerRect.height : dividerRect.width;
+            const minSize = 60;
+            const maxSize = (isVertical ? containerRect.height : containerRect.width) - dividerSize - minSize;
+
+            const startPos = isVertical ? event.clientY : event.clientX;
+            const startPrevSize = isVertical ? prevPane.getBoundingClientRect().height : prevPane.getBoundingClientRect().width;
+
+            function onMove(moveEvent) {
+              const currentPos = isVertical ? moveEvent.clientY : moveEvent.clientX;
+              const delta = currentPos - startPos;
+              const nextPrevSize = clamp(startPrevSize + delta, minSize, maxSize);
+
+              if (isVertical) {
+                prevPane.style.height = `${nextPrevSize}px`;
+                prevPane.style.flex = `0 0 ${nextPrevSize}px`;
+              } else {
+                prevPane.style.width = `${nextPrevSize}px`;
+                prevPane.style.flex = `0 0 ${nextPrevSize}px`;
+              }
+              nextPane.style.flex = '1 1 auto';
+            }
+
+            function onUp(upEvent) {
+              divider.releasePointerCapture(upEvent.pointerId);
+              divider.removeEventListener('pointermove', onMove);
+              divider.removeEventListener('pointerup', onUp);
+              divider.removeEventListener('pointercancel', onUp);
+            }
+
+            divider.addEventListener('pointermove', onMove);
+            divider.addEventListener('pointerup', onUp);
+            divider.addEventListener('pointercancel', onUp);
+          });
+        });
+      }
+
+      function setupPillTabs() {
+        document.querySelectorAll('.aqua-tabs-container').forEach((container) => {
+          const content = container.querySelector('[data-tab-content]');
+          if (!content) return;
+
+          const textByTab = {
+            general: 'General settings content goes here.',
+            security: 'Security settings content goes here.',
+            privacy: 'Privacy settings content goes here.',
+          };
+
+          function activate(tabId) {
+            container.querySelectorAll('.aqua-tabs .aqua-tab').forEach((btn) => {
+              btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+            });
+            content.innerHTML = `<p>${textByTab[tabId] || ''}</p>`;
+          }
+
+          container.querySelectorAll('.aqua-tabs .aqua-tab').forEach((btn) => {
+            btn.addEventListener('click', () => activate(btn.getAttribute('data-tab')));
+          });
+        });
+      }
+
+      function setupIndeterminateCheckbox() {
+        const checkbox = document.getElementById('check-indeterminate');
+        if (checkbox) {
+          checkbox.indeterminate = true;
+        }
+      }
+
+      function setupAquaEraSelector() {
+        const select = document.getElementById('aqua-era-select');
+        if (!select) return;
+
+        const body = document.body;
+        const valid = new Set(['10-0', '10-2', '10-3', '10-4', '10-6']);
+        const storageKey = 'aqua-era';
+
+        function applyEra(value) {
+          if (!valid.has(value)) return;
+          body.setAttribute('data-aqua-era', value);
+          select.value = value;
+          try {
+            localStorage.setItem(storageKey, value);
+          } catch (err) {
+            // Ignore storage errors (private mode, blocked, etc.)
+          }
+        }
+
+        let initial = body.getAttribute('data-aqua-era') || '10-4';
+        try {
+          const stored = localStorage.getItem(storageKey);
+          if (valid.has(stored)) {
+            initial = stored;
+          }
+        } catch (err) {
+          // Ignore storage errors (private mode, blocked, etc.)
+        }
+
+        applyEra(initial);
+        select.addEventListener('change', () => applyEra(select.value));
+      }
+
+      // Theme switching for the theme preview section
+      window.setTheme = function(theme) {
+        // Update both pre-10.6 and 10.6+ preview sections
+        const previews = [
+          document.getElementById('theme-preview'),
+          document.getElementById('theme-preview-pre106')
+        ];
+
+        previews.forEach(function(preview) {
+          if (preview) {
+            preview.className = theme;
+            // Re-apply the background style
+            preview.style.padding = '16px';
+            preview.style.background = '#ECECEC';
+            preview.style.borderRadius = '8px';
+          }
+        });
+
+        // Also update wave scrollbar track theme
+        const scrollbarTrack = document.getElementById('scrollbar-wave-track');
+        if (scrollbarTrack) {
+          scrollbarTrack.className = 'scrollbar-wave-track ' + theme;
+        }
+      };
+
+      function setupWaveScrollbar() {
+        const scrollContent = document.getElementById('scrollbar-wave-content');
+        const scrollbarTrack = document.getElementById('scrollbar-wave-track');
+        const scrollbarThumb = document.getElementById('scrollbar-wave-thumb');
+        const thumbShimmer = document.getElementById('scrollbar-wave-shimmer');
+
+        if (!scrollContent || !scrollbarTrack || !scrollbarThumb || !thumbShimmer) return;
+
+        let isDragging = false;
+        let startY = 0;
+        let startScrollTop = 0;
+
+        function updateScrollbar() {
+          const contentHeight = scrollContent.scrollHeight;
+          const visibleHeight = scrollContent.clientHeight;
+          const scrollTop = scrollContent.scrollTop;
+          const trackHeight = scrollbarTrack.clientHeight;
+
+          // Calculate thumb size (proportional to visible content)
+          const thumbHeight = Math.max(40, (visibleHeight / contentHeight) * trackHeight);
+          scrollbarThumb.style.height = thumbHeight + 'px';
+
+          // Calculate thumb position
+          const maxScroll = contentHeight - visibleHeight;
+          const maxThumbTop = trackHeight - thumbHeight;
+          const thumbTop = maxScroll > 0 ? (scrollTop / maxScroll) * maxThumbTop : 0;
+          scrollbarThumb.style.top = thumbTop + 'px';
+
+          // Wave is sized to track height, positioned to stay "fixed" relative to track
+          thumbShimmer.style.height = trackHeight + 'px';
+          thumbShimmer.style.top = -thumbTop + 'px';
+        }
+
+        scrollContent.addEventListener('scroll', updateScrollbar);
+        window.addEventListener('resize', updateScrollbar);
+        updateScrollbar();
+
+        // Drag functionality
+        scrollbarThumb.addEventListener('mousedown', function(e) {
+          isDragging = true;
+          startY = e.clientY;
+          startScrollTop = scrollContent.scrollTop;
+          document.body.style.userSelect = 'none';
+          e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', function(e) {
+          if (!isDragging) return;
+
+          const trackHeight = scrollbarTrack.clientHeight;
+          const thumbHeight = scrollbarThumb.clientHeight;
+          const contentHeight = scrollContent.scrollHeight;
+          const visibleHeight = scrollContent.clientHeight;
+
+          const deltaY = e.clientY - startY;
+          const maxThumbTop = trackHeight - thumbHeight;
+          const maxScroll = contentHeight - visibleHeight;
+
+          const scrollDelta = (deltaY / maxThumbTop) * maxScroll;
+          scrollContent.scrollTop = startScrollTop + scrollDelta;
+        });
+
+        document.addEventListener('mouseup', function() {
+          isDragging = false;
+          document.body.style.userSelect = '';
+        });
+
+        // Click on track to jump
+        scrollbarTrack.addEventListener('click', function(e) {
+          if (e.target === scrollbarThumb || scrollbarThumb.contains(e.target)) return;
+
+          const trackRect = scrollbarTrack.getBoundingClientRect();
+          const clickY = e.clientY - trackRect.top;
+          const trackHeight = scrollbarTrack.clientHeight;
+          const thumbHeight = scrollbarThumb.clientHeight;
+          const contentHeight = scrollContent.scrollHeight;
+          const visibleHeight = scrollContent.clientHeight;
+
+          const targetThumbTop = clickY - thumbHeight / 2;
+          const maxThumbTop = trackHeight - thumbHeight;
+          const maxScroll = contentHeight - visibleHeight;
+
+          const newScrollTop = (targetThumbTop / maxThumbTop) * maxScroll;
+          scrollContent.scrollTop = Math.max(0, Math.min(maxScroll, newScrollTop));
+        });
+      }
+
+      setupTitledPanes();
+      setupTreeTable();
+      setupSplitPanes();
+      setupPillTabs();
+      setupIndeterminateCheckbox();
+      setupAquaEraSelector();
+      setupWaveScrollbar();
+    })();
+  </script>
+</body>
+</html>

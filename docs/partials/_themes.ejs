@@ -1,0 +1,130 @@
+    <h2 id="graphite-theme">Color Themes</h2>
+    <p>Add a theme class to your container to change the accent color. Available themes:</p>
+    <ul style="margin: 1em 0;">
+      <li><code>theme-graphite</code> - Gray/silver (like macOS Graphite appearance)</li>
+      <li><code>theme-air</code> - Light/white (subtle, airy look)</li>
+      <li><code>theme-earth</code> - Green (nature-inspired)</li>
+      <li><code>theme-fire</code> - Red/orange (bold, fiery)</li>
+    </ul>
+
+    <h3>Theme Selector</h3>
+    <p class="label">Click a button to preview different themes on the components below</p>
+
+    <%- example(`
+      <!-- Pre-10.6 era theme selector -->
+      <div class="era-pre-10-6">
+        <div class="button-row" style="margin-bottom: 20px;">
+          <button class="aqua-button aqua-button--secondary" onclick="setTheme('')"><span>Default (Aqua Blue)</span></button>
+          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-graphite')"><span>Graphite</span></button>
+          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-air')"><span>Air (Light)</span></button>
+          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-earth')"><span>Earth (Green)</span></button>
+          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-fire')"><span>Fire (Red)</span></button>
+          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-purple')"><span>Purple</span></button>
+        </div>
+
+        <div id="theme-preview-pre106" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
+          <div class="label">Buttons</div>
+          <div class="button-row">
+            <button class="aqua-button aqua-button--secondary"><span>Regular</span></button>
+            <button class="aqua-button default"><span>Default</span></button>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Checkboxes & Radio</div>
+          <div class="field-row">
+            <input type="checkbox" id="theme-check1-pre106" checked>
+            <label for="theme-check1-pre106">Checked checkbox</label>
+          </div>
+          <div class="field-row">
+            <input type="radio" id="theme-radio1-pre106" name="theme-radio-pre106" checked>
+            <label for="theme-radio1-pre106">Selected radio</label>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Progress Bar</div>
+          <div class="aqua-progress" style="width: 200px;">
+            <div class="bar" style="width: 60%;"></div>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Wave Progress Bar</div>
+          <div class="progress-wave" style="--p: 60; width: 200px;">
+            <div class="progress-wave__fill">
+              <div class="progress-wave__ink" aria-hidden="true">
+                <span class="progress-wave__shimmer"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Segmented Control</div>
+          <div class="segmented-control">
+            <button class="aqua-button aqua-button--secondary active"><span>Selected</span></button>
+            <button class="aqua-button aqua-button--secondary"><span>Option</span></button>
+            <button class="aqua-button aqua-button--secondary"><span>Option</span></button>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">List Selection</div>
+          <div class="aqua-list focused" tabindex="0" style="width: 150px;">
+            <div class="aqua-list-item">Item 1</div>
+            <div class="aqua-list-item selected">Item 2</div>
+            <div class="aqua-list-item">Item 3</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10.6+ era theme selector -->
+      <div class="era-10-6-plus">
+        <div class="button-row" style="margin-bottom: 20px;">
+          <button onclick="setTheme('')">Default (Aqua Blue)</button>
+          <button onclick="setTheme('theme-graphite')">Graphite</button>
+          <button onclick="setTheme('theme-air')">Air (Light)</button>
+          <button onclick="setTheme('theme-earth')">Earth (Green)</button>
+          <button onclick="setTheme('theme-fire')">Fire (Red)</button>
+          <button onclick="setTheme('theme-purple')">Purple</button>
+        </div>
+
+        <div id="theme-preview" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
+          <div class="label">Buttons</div>
+          <div class="button-row">
+            <button>Regular</button>
+            <button class="default">Default</button>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Checkboxes & Radio</div>
+          <div class="field-row">
+            <input type="checkbox" id="theme-check1" checked>
+            <label for="theme-check1">Checked checkbox</label>
+          </div>
+          <div class="field-row">
+            <input type="radio" id="theme-radio1" name="theme-radio" checked>
+            <label for="theme-radio1">Selected radio</label>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Progress Bar</div>
+          <div class="aqua-progress" style="width: 200px;">
+            <div class="bar" style="width: 60%;"></div>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Wave Progress Bar</div>
+          <div class="progress-wave" style="--p: 60; width: 200px;">
+            <div class="progress-wave__fill">
+              <div class="progress-wave__ink" aria-hidden="true">
+                <span class="progress-wave__shimmer"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">Segmented Control</div>
+          <div class="segmented-control">
+            <button class="active">Selected</button>
+            <button>Option</button>
+            <button>Option</button>
+          </div>
+
+          <div class="label" style="margin-top: 15px;">List Selection</div>
+          <div class="aqua-list focused" tabindex="0" style="width: 150px;">
+            <div class="aqua-list-item">Item 1</div>
+            <div class="aqua-list-item selected">Item 2</div>
+            <div class="aqua-list-item">Item 3</div>
+          </div>
+        </div>
+      </div>
+    `) %>
+

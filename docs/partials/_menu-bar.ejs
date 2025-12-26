@@ -1,0 +1,39 @@
+    <h2 id="menu-bar">Menu Bar</h2>
+    <p>Classic Mac menu bar with dropdown menus.</p>
+
+    <%- example(`
+      <nav class="menu-bar">
+        <ul>
+          <li>
+            <span class="menu-title">File</span>
+            <ul class="menu-dropdown">
+              <li>New <span class="shortcut">Cmd+N</span></li>
+              <li>Open... <span class="shortcut">Cmd+O</span></li>
+              <li class="separator"></li>
+              <li>Save <span class="shortcut">Cmd+S</span></li>
+              <li class="disabled">Save As...</li>
+            </ul>
+          </li>
+          <li>
+            <span class="menu-title">Edit</span>
+            <ul class="menu-dropdown">
+              <li>Undo <span class="shortcut">Cmd+Z</span></li>
+              <li>Redo <span class="shortcut">Cmd+Shift+Z</span></li>
+              <li class="separator"></li>
+              <li>Cut <span class="shortcut">Cmd+X</span></li>
+              <li>Copy <span class="shortcut">Cmd+C</span></li>
+              <li>Paste <span class="shortcut">Cmd+V</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="menu-title">View</span>
+            <ul class="menu-dropdown">
+              <li>as Icons</li>
+              <li>as List</li>
+              <li>as Columns</li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    `) %>
+

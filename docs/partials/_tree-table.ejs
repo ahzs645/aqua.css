@@ -1,0 +1,76 @@
+    <h2 id="tree-table-view">Tree Table View</h2>
+    <p class="label">Combines tree hierarchy with table columns (click arrows to expand/collapse)</p>
+
+    <%- example(`
+      <table class="aqua-tree-table" tabindex="0" id="tree-table-demo" style="width: 100%; max-width: 700px;">
+        <thead>
+          <tr>
+            <th style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
+            <th>Date Modified</th>
+            <th>Size</th>
+            <th>Kind</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="selected" data-id="documents">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-arrow expanded" data-toggle="documents" role="button" tabindex="0" aria-label="Toggle Documents"></span>
+                <span>Documents</span>
+              </div>
+            </td>
+            <td>Dec 10, 2024</td>
+            <td>--</td>
+            <td>Folder</td>
+          </tr>
+          <tr data-parent="documents">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-indent"></span>
+                <span class="aqua-tree-table-arrow leaf"></span>
+                <span>report.pdf</span>
+              </div>
+            </td>
+            <td>Dec 9, 2024</td>
+            <td>2.4 MB</td>
+            <td>PDF Document</td>
+          </tr>
+          <tr data-parent="documents">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-indent"></span>
+                <span class="aqua-tree-table-arrow leaf"></span>
+                <span>notes.txt</span>
+              </div>
+            </td>
+            <td>Dec 8, 2024</td>
+            <td>12 KB</td>
+            <td>Text File</td>
+          </tr>
+          <tr data-id="pictures">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-arrow" data-toggle="pictures" role="button" tabindex="0" aria-label="Toggle Pictures"></span>
+                <span>Pictures</span>
+              </div>
+            </td>
+            <td>Dec 7, 2024</td>
+            <td>--</td>
+            <td>Folder</td>
+          </tr>
+          <tr data-parent="pictures" style="display: none;">
+            <td>
+              <div class="aqua-tree-cell">
+                <span class="aqua-tree-table-indent"></span>
+                <span class="aqua-tree-table-arrow leaf"></span>
+                <span>photo.jpg</span>
+              </div>
+            </td>
+            <td>Dec 6, 2024</td>
+            <td>3.2 MB</td>
+            <td>JPEG Image</td>
+          </tr>
+        </tbody>
+      </table>
+    `) %>
+

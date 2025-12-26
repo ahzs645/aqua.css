@@ -1,0 +1,32 @@
+    <h2 id="split-pane">Split Pane</h2>
+    <p class="label">Drag the divider to resize panes</p>
+
+    <%- example(`
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+        <div>
+          <span class="label">Horizontal (Left / Right)</span><br>
+          <div class="aqua-split-pane" style="height: 100px; width: 300px;" id="split-h">
+            <div style="width: 150px; padding: 10px;">Left pane</div>
+            <div class="aqua-split-divider" data-split="split-h" aria-label="Resize panes" role="separator" aria-orientation="vertical" tabindex="0">
+              <div class="aqua-split-grabber"></div>
+              <div class="aqua-split-grabber"></div>
+              <div class="aqua-split-grabber"></div>
+            </div>
+            <div style="flex: 1; padding: 10px;">Right pane</div>
+          </div>
+        </div>
+        <div>
+          <span class="label">Vertical (Top / Bottom)</span><br>
+          <div class="aqua-split-pane vertical" style="height: 150px; width: 200px;" id="split-v">
+            <div style="height: 75px; padding: 10px;">Top pane</div>
+            <div class="aqua-split-divider" data-split="split-v" aria-label="Resize panes" role="separator" aria-orientation="horizontal" tabindex="0">
+              <div class="aqua-split-grabber"></div>
+              <div class="aqua-split-grabber"></div>
+              <div class="aqua-split-grabber"></div>
+            </div>
+            <div style="flex: 1; padding: 10px;">Bottom pane</div>
+          </div>
+        </div>
+      </div>
+    `) %>
+

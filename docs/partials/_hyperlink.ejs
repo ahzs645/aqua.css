@@ -1,0 +1,24 @@
+    <h2 id="hyperlink">Hyperlink</h2>
+    <p class="label">Matches JavaFX Hyperlink - underlines on hover/focus</p>
+
+    <%- example(`
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: baseline;">
+        <div>
+          <span class="label">Normal</span><br>
+          <a href="#" class="aqua-hyperlink">Click this hyperlink</a>
+        </div>
+        <div>
+          <span class="label">Visited</span><br>
+          <a href="#visited-example" class="aqua-hyperlink" id="visited-example">Visited hyperlink</a>
+        </div>
+        <div>
+          <span class="label">Disabled</span><br>
+          <a href="#" class="aqua-hyperlink disabled">Disabled hyperlink</a>
+        </div>
+        <div>
+          <span class="label">Button as Link</span><br>
+          <button class="aqua-hyperlink">Button styled as link</button>
+        </div>
+      </div>
+    `) %>
+

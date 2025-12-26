@@ -1,0 +1,62 @@
+    <h2 id="list-view">List View</h2>
+    <p>Selectable list component with focused (blue) and unfocused (gray) selection.</p>
+
+    <%- example(`
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+        <div>
+          <span class="label">Vertical (Focused - Blue)</span><br>
+          <div class="aqua-list focused" tabindex="0" style="width: 150px;">
+            <div class="aqua-list-item">Document 1</div>
+            <div class="aqua-list-item selected">Document 2</div>
+            <div class="aqua-list-item">Document 3</div>
+            <div class="aqua-list-item">Document 4</div>
+            <div class="aqua-list-item">Document 5</div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Vertical (Unfocused - Gray)</span><br>
+          <div class="aqua-list" style="width: 150px;">
+            <div class="aqua-list-item">Photo 1</div>
+            <div class="aqua-list-item selected">Photo 2</div>
+            <div class="aqua-list-item">Photo 3</div>
+            <div class="aqua-list-item">Photo 4</div>
+            <div class="aqua-list-item">Photo 5</div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Striped Rows</span><br>
+          <div class="aqua-list striped focused" tabindex="0" style="width: 150px;">
+            <div class="aqua-list-item">Row 1</div>
+            <div class="aqua-list-item">Row 2</div>
+            <div class="aqua-list-item selected">Row 3</div>
+            <div class="aqua-list-item">Row 4</div>
+            <div class="aqua-list-item">Row 5</div>
+          </div>
+        </div>
+
+        <div>
+          <span class="label">Disabled</span><br>
+          <div class="aqua-list disabled" style="width: 150px;">
+            <div class="aqua-list-item">Item A</div>
+            <div class="aqua-list-item selected">Item B</div>
+            <div class="aqua-list-item">Item C</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <span class="label">Horizontal List</span><br>
+        <div class="aqua-list horizontal focused" tabindex="0" style="width: 520px;">
+          <div class="aqua-list-item">January</div>
+          <div class="aqua-list-item selected">February</div>
+          <div class="aqua-list-item">March</div>
+          <div class="aqua-list-item">April</div>
+          <div class="aqua-list-item">May</div>
+          <div class="aqua-list-item">June</div>
+          <div class="aqua-list-item">July</div>
+        </div>
+      </div>
+    `) %>
+

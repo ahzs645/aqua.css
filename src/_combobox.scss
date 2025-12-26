@@ -1,46 +1,104 @@
 /**
  * Combobox
- * Text input with dropdown button
+ * Square text field connected to rounded blue arrow button
  */
+
+@use "mixins" as *;
 
 .combobox {
   position: relative;
   display: inline-flex;
   align-items: stretch;
 
+  /* Square text field on the left */
   input[type="text"] {
-    padding-right: 28px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: none;
     flex: 1;
+    height: 20px;
+    font-size: 10pt;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", var(--font-system);
+    padding: 0px 4px;
+    border: 1px solid var(--input-border);
+    border-top-color: var(--input-border-top);
+    border-right: none;
+    border-radius: 0;
+    box-shadow: var(--input-shadow);
+    background: var(--input-bg);
+    color: var(--text-color);
+    outline: none;
+    margin-right: 28px;
   }
 
-  button {
-    min-width: 20px;
-    padding: 0 4px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    margin: 0;
+  /* Rounded blue button container */
+  .combobox-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 20px;
+    width: 28px;
+    z-index: 2;
+    background: var(--aqua-button-secondary-gradient);
+    box-shadow: var(--aqua-button-secondary-shadow);
+    border-radius: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Blue active part of button */
+  .combobox-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--aqua-button-primary-gradient);
+    border-radius: 5px;
+  }
+
+  /* Gloss on button */
+  .combobox-button::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5%;
+    width: calc(100% - 0.25em);
+    height: 45%;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 4px 4px 2px 2px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  /* Arrow triangles - on top of gloss */
+  .combobox-arrows {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 22px;
+    width: 28px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 2px;
+    pointer-events: none;
+    z-index: 21;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
 
-    &::after {
-      content: "";
-      width: 0;
-      height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 5px solid var(--text-color);
-    }
-
-    &:hover::after {
-      border-top-color: var(--text-color);
-    }
-
-    &:disabled::after {
-      border-top-color: var(--text-disabled);
+    .arrow-up,
+    .arrow-down {
+      font-size: 8px;
+      line-height: 1;
+      color: var(--text-color);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+      display: block;
     }
   }
 

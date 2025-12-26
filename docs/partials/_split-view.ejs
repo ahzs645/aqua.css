@@ -1,0 +1,17 @@
+    <h2 id="split-view">Split View</h2>
+    <p>Sidebar and content area layout.</p>
+
+    <%- example(`
+      <div class="split-view" style="height: 200px;">
+        <div class="split-view-sidebar" style="padding: 8px;">
+          <div style="padding: 4px; background: #2B99FF; color: white; border-radius: 3px;">Inbox</div>
+          <div style="padding: 4px;">Sent</div>
+          <div style="padding: 4px;">Drafts</div>
+          <div style="padding: 4px;">Trash</div>
+        </div>
+        <div class="split-view-content">
+          <p>Select a folder to view messages.</p>
+        </div>
+      </div>
+    `) %>
+
