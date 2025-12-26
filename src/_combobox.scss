@@ -14,61 +14,64 @@
   /* Square text field */
   input[type="text"] {
     flex: 1;
-    height: 20px;
-    font-size: 10pt;
+    height: 22px;
+    font-size: 13px;
     font-family: "Lucida Grande", "Lucida Sans Unicode", var(--font-system);
     padding: 0px 4px;
-    border: 1px solid var(--input-border);
-    border-top-color: var(--input-border-top);
-    border-right: none;
+    border: none;
     border-radius: 0;
-    box-shadow: var(--input-shadow);
-    background: var(--input-bg);
-    color: var(--text-color);
+    box-shadow:
+      inset 0 1px 0 rgba(130, 130, 130, 0.38),
+      inset 0 1px 3px rgba(0, 0, 0, 0.5),
+      inset -2px 0 2px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    color: rgba(0, 0, 0, 0.8);
     outline: none;
   }
 
   /* Blue dropdown button via ::after - as flex item */
   &::after {
     content: "";
-    width: 1.75em;
+    width: 21px;
     flex-shrink: 0;
     align-self: stretch;
     border-radius: 0 5px 5px 0;
     background:
-      /* Top shine */
+      /* Top gloss shine */
       linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.8) 0%,
-        rgba(255, 255, 255, 0.5) 40%,
-        transparent 50%
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.4) 20%,
+        transparent 45%
       ),
-      /* Bottom glow */
+      /* Blue gradient - dark top to light bottom */
       linear-gradient(
-        to top,
-        rgba(255, 255, 255, 0.3) 0%,
-        transparent 30%
-      ),
-      /* Blue gradient */
-      var(--aqua-button-primary-gradient);
-    border-left: 1px solid var(--aqua-button-pill-divider);
+        to bottom,
+        #1D4E9B 0%,
+        #8CC0F8 52%,
+        #BDF5FF 100%
+      );
+    box-shadow:
+      inset -1px 0 3px rgba(0, 0, 0, 0.3),
+      inset 1px 0 0 rgba(0, 0, 0, 0.06),
+      inset -1px 0 1px rgba(48, 117, 199, 0.24);
   }
 
   /* Down arrow via ::before */
   &::before {
     content: "";
     position: absolute;
-    right: 0.55em;
+    right: 6px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-35%);
     width: 0;
     height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 5px solid var(--text-color);
+    border-left: 4.5px solid transparent;
+    border-right: 4.5px solid transparent;
+    border-top: 7.5px solid rgba(0, 0, 0, 0.8);
     z-index: 3;
     pointer-events: none;
-    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.4));
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
   }
 
   /* Dropdown list */
