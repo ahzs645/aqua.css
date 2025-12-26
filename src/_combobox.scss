@@ -33,11 +33,11 @@
   .combobox-button-wrapper {
     position: relative;
     width: 1.75em;
-    height: 1.375em;
+    align-self: stretch;
     border-radius: 0 0.4em 0.4em 0;
     overflow: hidden;
     background: var(--aqua-button-secondary-gradient);
-    box-shadow: var(--aqua-button-secondary-shadow);
+    box-shadow: var(--aqua-button-secondary-shadow), -2px 0 4px rgba(0, 0, 0, 0.15);
     z-index: 2;
 
     /* Unified gloss across button */
@@ -74,8 +74,8 @@
     position: absolute;
     right: 0;
     top: 0;
+    bottom: 0;
     width: 1.75em;
-    height: 1.375em;
     display: flex;
     flex-direction: column;
     align-items: center;

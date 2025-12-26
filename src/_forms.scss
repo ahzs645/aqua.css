@@ -123,7 +123,7 @@ select {
   }
 }
 
-/* Select wrapper for custom arrows - Classic Aqua style with blue button */
+/* Select wrapper - with button wrapper for proper gradient rendering */
 .select-wrapper {
   position: relative;
   display: inline-flex;
@@ -133,7 +133,7 @@ select {
   background: var(--aqua-button-secondary-gradient);
   box-shadow: var(--aqua-button-secondary-shadow);
 
-  /* Unified gloss across entire control - on top of everything */
+  /* Unified gloss across entire control */
   @include aqua-glass('pill', $overrides: (
     shine: (
       width: calc(100% - 0.25em),
@@ -153,39 +153,38 @@ select {
     height: 1.75em;
     border-radius: 5px 0 0 5px;
     border: none;
-    border-right: 1px solid var(--aqua-button-pill-divider);
     padding: 0 0.75em;
-    margin-right: 28px;
-    background: transparent;
     box-shadow: none;
     font-family: "Lucida Grande", "myriad-pro", system-ui, var(--font-system);
     font-size: 1rem;
     color: var(--text-color);
     position: relative;
-    z-index: 1;
+    z-index: 21;
+    cursor: pointer;
+    background: transparent;
   }
 
-  /* Blue arrow button background */
+  /* Blue background - positioned on right side only */
   .select-button {
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     bottom: 0;
-    width: 28px;
-    pointer-events: none;
+    width: 1.75em;
     z-index: 2;
     background: var(--aqua-button-primary-gradient);
     border-left: 1px solid var(--aqua-button-pill-divider);
     border-radius: 0 5px 5px 0;
+    pointer-events: none;
   }
 
-  /* Arrow triangles - on top of gloss */
+  /* Arrow triangles - on top of gloss, right side only */
   .select-arrows {
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     bottom: 0;
-    width: 28px;
+    width: 1.75em;
     display: flex;
     flex-direction: column;
     align-items: center;
