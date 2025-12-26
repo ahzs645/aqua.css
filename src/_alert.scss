@@ -27,28 +27,46 @@
   flex-shrink: 0;
 
   &.warning {
-    background-image: svg-load("./icon/alert-warning.svg");
+    background-image: url("./icon/alert-warning.svg");
     background-size: contain;
     background-repeat: no-repeat;
   }
 
   &.error {
-    background-image: svg-load("./icon/alert-error.svg");
+    background-image: url("./icon/alert-error.svg");
     background-size: contain;
     background-repeat: no-repeat;
   }
 
   &.info {
-    background-image: svg-load("./icon/alert-info.svg");
+    background-image: url("./icon/alert-info.svg");
     background-size: contain;
     background-repeat: no-repeat;
   }
 
   &.question {
-    background-image: svg-load("./icon/alert-question.svg");
+    background-image: url("./icon/alert-question.svg");
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+  // Finder icon - uses different icons based on macOS era
+  // 10.2+ uses the modern Finder SVG icon
+  &.finder {
+    background-image: url("./icon/finder.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+// macOS 10.0 and 10.1 (Cheetah/Puma) - use Jaguar-era Finder icon
+.aqua-era-10-0 .alert-dialog-icon.finder,
+[data-aqua-era="10-0"] .alert-dialog-icon.finder,
+.aqua-era-10-1 .alert-dialog-icon.finder,
+[data-aqua-era="10-1"] .alert-dialog-icon.finder {
+  background-image: url("./icon/finder-jaguar.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .alert-dialog-text {

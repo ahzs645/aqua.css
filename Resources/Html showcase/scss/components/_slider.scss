@@ -29,29 +29,29 @@
     appearance: none;
     width: 17px;
     height: 17px;
-    border: 0.5px solid rgba(87, 87, 87, 0.8);
+    border: 0.5px solid rgb(100, 103, 124);
     border-radius: 50%;
+    // Default: Aqua blue gradient
     background: linear-gradient(
-      rgb(255, 255, 255) 0%,
-      rgb(252, 252, 252) 25%,
-      rgb(244, 244, 244) 50%,
-      rgb(238, 238, 238) 51%,
-      rgb(243, 243, 243) 95%,
-      rgb(255, 255, 255) 97.5%,
-      rgb(243, 243, 243) 100%
+      to bottom,
+      rgb(183, 206, 238) 0%,
+      rgb(142, 188, 237) 50%,
+      rgb(114, 174, 236) 50%,
+      rgb(178, 218, 242) 100%
     );
     cursor: pointer;
-    box-shadow: 0 0 2px rgba(192, 192, 198, 0.5);
+    box-shadow: 0 0.8px 1px rgba(172, 172, 184, 0.5);
   }
 
+  // Active/pressed: darker Aqua blue gradient
   &::-webkit-slider-thumb:active {
     background: linear-gradient(
-      rgb(224, 224, 224) 0%,
-      rgb(214, 214, 214) 50%,
-      rgb(207, 207, 207) 51%,
-      rgb(208, 208, 208) 95%,
-      rgb(220, 220, 220) 97.5%,
-      rgb(208, 208, 208) 100%
+      to bottom,
+      rgb(165, 193, 238) 0%,
+      rgb(108, 161, 231) 50%,
+      rgb(74, 138, 217) 50%,
+      rgb(105, 167, 236) 75%,
+      rgb(152, 201, 238) 100%
     );
   }
 
@@ -59,29 +59,29 @@
   &::-moz-range-thumb {
     width: 17px;
     height: 17px;
-    border: 0.5px solid rgba(87, 87, 87, 0.8);
+    border: 0.5px solid rgb(100, 103, 124);
     border-radius: 50%;
+    // Default: Aqua blue gradient
     background: linear-gradient(
-      rgb(255, 255, 255) 0%,
-      rgb(252, 252, 252) 25%,
-      rgb(244, 244, 244) 50%,
-      rgb(238, 238, 238) 51%,
-      rgb(243, 243, 243) 95%,
-      rgb(255, 255, 255) 97.5%,
-      rgb(243, 243, 243) 100%
+      to bottom,
+      rgb(183, 206, 238) 0%,
+      rgb(142, 188, 237) 50%,
+      rgb(114, 174, 236) 50%,
+      rgb(178, 218, 242) 100%
     );
     cursor: pointer;
-    box-shadow: 0 0 2px rgba(192, 192, 198, 0.5);
+    box-shadow: 0 0.8px 1px rgba(172, 172, 184, 0.5);
   }
 
+  // Active/pressed: darker Aqua blue gradient
   &::-moz-range-thumb:active {
     background: linear-gradient(
-      rgb(224, 224, 224) 0%,
-      rgb(214, 214, 214) 50%,
-      rgb(207, 207, 207) 51%,
-      rgb(208, 208, 208) 95%,
-      rgb(220, 220, 220) 97.5%,
-      rgb(208, 208, 208) 100%
+      to bottom,
+      rgb(165, 193, 238) 0%,
+      rgb(108, 161, 231) 50%,
+      rgb(74, 138, 217) 50%,
+      rgb(105, 167, 236) 75%,
+      rgb(152, 201, 238) 100%
     );
   }
 
@@ -146,32 +146,32 @@
     position: absolute;
     width: 17px;
     height: 17px;
-    border: 0.5px solid rgba(87, 87, 87, 0.8);
+    border: 0.5px solid rgb(100, 103, 124);
     border-radius: 50%;
+    // Default: Aqua blue gradient
     background: linear-gradient(
-      rgb(255, 255, 255) 0%,
-      rgb(252, 252, 252) 25%,
-      rgb(244, 244, 244) 50%,
-      rgb(238, 238, 238) 51%,
-      rgb(243, 243, 243) 95%,
-      rgb(255, 255, 255) 97.5%,
-      rgb(243, 243, 243) 100%
+      to bottom,
+      rgb(183, 206, 238) 0%,
+      rgb(142, 188, 237) 50%,
+      rgb(114, 174, 236) 50%,
+      rgb(178, 218, 242) 100%
     );
     cursor: pointer;
-    box-shadow: 0 0 2px rgba(192, 192, 198, 0.5);
+    box-shadow: 0 0.8px 1px rgba(172, 172, 184, 0.5);
     top: 50%;
     transform: translateY(-50%);
     left: 50%; // Adjust via JS or inline style
   }
 
+  // Active/pressed: darker Aqua blue gradient
   .thumb:active {
     background: linear-gradient(
-      rgb(224, 224, 224) 0%,
-      rgb(214, 214, 214) 50%,
-      rgb(207, 207, 207) 51%,
-      rgb(208, 208, 208) 95%,
-      rgb(220, 220, 220) 97.5%,
-      rgb(208, 208, 208) 100%
+      to bottom,
+      rgb(165, 193, 238) 0%,
+      rgb(108, 161, 231) 50%,
+      rgb(74, 138, 217) 50%,
+      rgb(105, 167, 236) 75%,
+      rgb(152, 201, 238) 100%
     );
   }
 
@@ -249,6 +249,7 @@
   // ALTERNATIVE THUMB (Pointer/Arrow)
   // Used when showing tick marks
   // JavaFX SVG path dimensions: ~17 wide x ~19 tall
+  // Default: Aqua blue gradient, Active: darker blue
   // ============================================
   &.alternative-thumb {
     .thumb {
@@ -259,27 +260,31 @@
       background: none;
       box-shadow: none;
       transform: translateY(-35%);
-      // Wider body shape matching JavaFX proportions
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cdefs%3E%3ClinearGradient id='thumbGrad' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(255,255,255)'/%3E%3Cstop offset='15%25' style='stop-color:rgb(253,253,253)'/%3E%3Cstop offset='34%25' style='stop-color:rgb(244,244,244)'/%3E%3Cstop offset='35%25' style='stop-color:rgb(236,236,236)'/%3E%3Cstop offset='100%25' style='stop-color:rgb(243,243,243)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='url(%23thumbGrad)' stroke='rgba(87,87,87,0.8)' stroke-width='1'/%3E%3C/svg%3E");
+      // Default: Aqua blue gradient
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cdefs%3E%3ClinearGradient id='thumbGrad' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(183,206,238)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(142,188,237)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(114,174,236)'/%3E%3Cstop offset='100%25' style='stop-color:rgb(178,218,242)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='url(%23thumbGrad)' stroke='rgb(100,103,124)' stroke-width='1'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
     }
 
+    // Active/pressed: darker Aqua blue gradient
     .thumb:active {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cdefs%3E%3ClinearGradient id='thumbGradActive' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(224,224,224)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(214,214,214)'/%3E%3Cstop offset='51%25' style='stop-color:rgb(207,207,207)'/%3E%3Cstop offset='95%25' style='stop-color:rgb(208,208,208)'/%3E%3Cstop offset='100%25' style='stop-color:rgb(220,220,220)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='url(%23thumbGradActive)' stroke='rgba(87,87,87,0.8)' stroke-width='1'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cdefs%3E%3ClinearGradient id='thumbGradActive' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(165,193,238)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(108,161,231)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(74,138,217)'/%3E%3Cstop offset='75%25' style='stop-color:rgb(105,167,236)'/%3E%3Cstop offset='100%25' style='stop-color:rgb(152,201,238)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='url(%23thumbGradActive)' stroke='rgb(100,103,124)' stroke-width='1'/%3E%3C/svg%3E");
     }
 
     // Vertical alternative thumb - rotated (points right)
+    // Gradient still flows top-to-bottom to match button's light direction
     &.vertical .thumb {
       width: 19px;
       height: 17px;
       transform: translate(-35%, -50%);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 19 17'%3E%3Cdefs%3E%3ClinearGradient id='thumbGradV' x1='100%25' y1='0%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(255,255,255)'/%3E%3Cstop offset='25%25' style='stop-color:rgb(253,253,253)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(244,244,244)'/%3E%3Cstop offset='51%25' style='stop-color:rgb(236,236,236)'/%3E%3Cstop offset='100%25' style='stop-color:rgb(243,243,243)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M18.5 8.5 C12 14.5 10.5 16.5 9 16.5 L3 16.5 C1.5 16.5 0.5 15.5 0.5 14 L0.5 3 C0.5 1.5 1.5 0.5 3 0.5 L9 0.5 C10.5 0.5 12 2.5 18.5 8.5 Z' fill='url(%23thumbGradV)' stroke='rgba(87,87,87,0.8)' stroke-width='1'/%3E%3C/svg%3E");
+      // Default: Aqua blue gradient
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 19 17'%3E%3Cdefs%3E%3ClinearGradient id='thumbGradV' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(183,206,238)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(142,188,237)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(114,174,236)'/%3E%3Cstop offset='100%25' style='stop-color:rgb(178,218,242)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M18.5 8.5 C12 14.5 10.5 16.5 9 16.5 L3 16.5 C1.5 16.5 0.5 15.5 0.5 14 L0.5 3 C0.5 1.5 1.5 0.5 3 0.5 L9 0.5 C10.5 0.5 12 2.5 18.5 8.5 Z' fill='url(%23thumbGradV)' stroke='rgb(100,103,124)' stroke-width='1'/%3E%3C/svg%3E");
     }
 
+    // Active/pressed: darker Aqua blue gradient
     &.vertical .thumb:active {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 19 17'%3E%3Cdefs%3E%3ClinearGradient id='thumbGradVActive' x1='100%25' y1='0%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(224,224,224)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(214,214,214)'/%3E%3Cstop offset='51%25' style='stop-color:rgb(207,207,207)'/%3E%3Cstop offset='95%25' style='stop-color:rgb(208,208,208)'/%3E%3Cstop offset='100%25' style='stop-color:rgb(220,220,220)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M18.5 8.5 C12 14.5 10.5 16.5 9 16.5 L3 16.5 C1.5 16.5 0.5 15.5 0.5 14 L0.5 3 C0.5 1.5 1.5 0.5 3 0.5 L9 0.5 C10.5 0.5 12 2.5 18.5 8.5 Z' fill='url(%23thumbGradVActive)' stroke='rgba(87,87,87,0.8)' stroke-width='1'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 19 17'%3E%3Cdefs%3E%3ClinearGradient id='thumbGradVActive' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgb(165,193,238)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(108,161,231)'/%3E%3Cstop offset='50%25' style='stop-color:rgb(74,138,217)'/%3E%3Cstop offset='75%25' style='stop-color:rgb(105,167,236)'/%3E%3Cstop offset='100%25' style='stop-color:rgb(152,201,238)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M18.5 8.5 C12 14.5 10.5 16.5 9 16.5 L3 16.5 C1.5 16.5 0.5 15.5 0.5 14 L0.5 3 C0.5 1.5 1.5 0.5 3 0.5 L9 0.5 C10.5 0.5 12 2.5 18.5 8.5 Z' fill='url(%23thumbGradVActive)' stroke='rgb(100,103,124)' stroke-width='1'/%3E%3C/svg%3E");
     }
   }
 
