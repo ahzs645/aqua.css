@@ -139,20 +139,22 @@
     justify-content: center;
     cursor: default;
     position: relative;
-    z-index: 5;
+    z-index: 0;
     font-size: 0;
     color: transparent;
     box-shadow: none;
     outline: none;
 
-    /* Blue overlay when active */
+    /* Blue overlay when active - gradient spans full pill height */
     &::before {
       content: "";
       position: absolute;
       inset: 0;
       background: var(--aqua-button-primary-gradient);
+      background-size: 100% 200%;
       opacity: 0;
       pointer-events: none;
+      z-index: -1;
     }
 
     &:active::before {
@@ -167,14 +169,14 @@
       border-left: 2px solid transparent;
       border-right: 2px solid transparent;
       position: relative;
-      z-index: 10;
+      z-index: 0;
     }
 
     &:first-child {
       padding-top: 3px;
 
       &::before {
-        border-radius: 4px 4px 0 0;
+        background-position: 0 0;
       }
 
       &::after {
@@ -186,7 +188,7 @@
       padding-bottom: 3px;
 
       &::before {
-        border-radius: 0 0 4px 4px;
+        background-position: 0 100%;
       }
 
       &::after {

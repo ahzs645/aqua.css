@@ -153,7 +153,7 @@
     </p>
 
     <div class="example">
-      <div class="raw"><div class="window">
+      <div class="window">
   <div class="title-bar">
     <div class="traffic-lights traffic-lights--always-colored">
       <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
@@ -165,8 +165,8 @@
   <div class="window-body">
     <p>This is a window with Aqua styling.</p>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar&quot;</span>&gt;</span>
@@ -181,7 +181,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a window with Aqua styling.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -189,7 +188,7 @@
     <p>Windows that are not in focus have grayed-out traffic lights.</p>
 
     <div class="example">
-      <div class="raw"><div class="window inactive">
+      <div class="window inactive">
   <div class="title-bar">
     <div class="traffic-lights">
       <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
@@ -201,8 +200,8 @@
   <div class="window-body">
     <p>This window is not focused.</p>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window inactive&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar&quot;</span>&gt;</span>
@@ -217,7 +216,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This window is not focused.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -233,7 +231,7 @@
     </p>
 
     <div class="example">
-      <div class="raw"><div class="window" style="width: 100%; max-width: 520px; position: relative; overflow: hidden;">
+      <div class="window" style="width: 100%; max-width: 520px; position: relative; overflow: hidden;">
   <!-- Metal canvas renders behind everything -->
   <div id="metal-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
 
@@ -296,8 +294,8 @@
     }
     updatePixels();
   }
-</script></div>
-      <details class="code">
+</script>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 520px; position: relative; overflow: hidden;&quot;</span>&gt;</span>
   <span class="hljs-comment">&lt;!-- Metal canvas renders behind everything --&gt;</span>
@@ -363,7 +361,6 @@
     updatePixels();
   }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -374,7 +371,7 @@
     </p>
 
     <div class="example">
-      <div class="raw"><div class="metal-window" style="width: 100%; max-width: 520px; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <div class="metal-window" style="width: 100%; max-width: 520px; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
   <!-- Base metal layer with SVG texture filter -->
   <div class="metal-layer" style="position: absolute; inset: 0; z-index: 0; background-color: rgb(183, 183, 183); filter: url(#brushed-metal-filter); transform: scale(1.02);"></div>
 
@@ -441,8 +438,8 @@
     <!-- Apply texture to source -->
     <feComposite in="SourceGraphic" in2="textureBoost" operator="arithmetic" k1="0" k2="1" k3="0.30" k4="-0.15" result="final"/>
   </filter>
-</svg></div>
-      <details class="code">
+</svg>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;metal-window&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 520px; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);&quot;</span>&gt;</span>
   <span class="hljs-comment">&lt;!-- Base metal layer with SVG texture filter --&gt;</span>
@@ -512,14 +509,13 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">feComposite</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;SourceGraphic&quot;</span> <span class="hljs-attr">in2</span>=<span class="hljs-string">&quot;textureBoost&quot;</span> <span class="hljs-attr">operator</span>=<span class="hljs-string">&quot;arithmetic&quot;</span> <span class="hljs-attr">k1</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">k2</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">k3</span>=<span class="hljs-string">&quot;0.30&quot;</span> <span class="hljs-attr">k4</span>=<span class="hljs-string">&quot;-0.15&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;final&quot;</span>/&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
 
         <h2 id="buttons">Buttons</h2>
     <div class="example">
-      <div class="raw"><!-- Pre-10.6 era buttons (aqua-button style) -->
+      <!-- Pre-10.6 era buttons (aqua-button style) -->
 <div class="era-pre-10-6">
   <div class="label">Standard Buttons</div>
   <div class="component-row">
@@ -645,8 +641,8 @@
       <div class="state-label">Pressed/Armed</div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-comment">&lt;!-- Pre-10.6 era buttons (aqua-button style) --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;era-pre-10-6&quot;</span>&gt;</span>
@@ -775,7 +771,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -784,7 +779,7 @@
 
     <h3 id="text-inputs">Text Inputs</h3>
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
   <div>
     <span class="label">Regular (square corners)</span><br>
     <input class="aqua-textfield" type="text" placeholder="Enter text...">
@@ -809,8 +804,8 @@
     <span class="label">Password</span><br>
     <input class="aqua-textfield" type="password" value="••••••••">
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -838,13 +833,12 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-textfield&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;••••••••&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
     <h3 id="select">Select Dropdown</h3>
     <div class="example">
-      <div class="raw"><div class="field-row">
+      <div class="field-row">
   <label for="select">Choose an option:</label>
   <div class="select-wrapper">
     <select id="select">
@@ -858,8 +852,8 @@
       <span class="arrow-down">&#9660;</span>
     </span>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;select&quot;</span>&gt;</span>Choose an option:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
@@ -876,36 +870,34 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
     <h3 id="combobox">Combobox</h3>
     <p>Text input combined with a dropdown button.</p>
     <div class="example">
-      <div class="raw"><div class="combobox" style="width: 200px;">
+      <div class="combobox" style="width: 200px;">
   <input type="text" value="Automatic">
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;combobox&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Automatic&quot;</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
     <h3 id="listbox">Listbox</h3>
     <p>Multi-select list using <code>select[multiple]</code> or <code>role="listbox"</code>.</p>
     <div class="example">
-      <div class="raw"><select multiple style="width: 200px; height: 120px;">
+      <select multiple style="width: 200px; height: 120px;">
   <option>Documents</option>
   <option selected>Pictures</option>
   <option>Music</option>
   <option>Movies</option>
   <option>Downloads</option>
-</select></div>
-      <details class="code">
+</select>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px; height: 120px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Documents<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
@@ -914,14 +906,13 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Movies<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>Downloads<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
     <h3 id="checkboxes">Checkboxes</h3>
     <p>Recommended class-based checkboxes:</p>
     <div class="example">
-      <div class="raw"><div class="field-row">
+      <div class="field-row">
   <label class="checkbox">
     <input type="checkbox" checked>
     <span class="box"><span class="mark"></span></span>
@@ -941,8 +932,8 @@
     <span class="box"><span class="mark"></span></span>
     <span>Disabled checked</span>
   </label>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;checkbox&quot;</span>&gt;</span>
@@ -965,12 +956,11 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Disabled checked<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
     <p>Native inputs (fallback):</p>
     <div class="example">
-      <div class="raw"><div class="field-row">
+      <div class="field-row">
   <input type="checkbox" id="check1" checked>
   <label for="check1">Checked checkbox</label>
 </div>
@@ -985,8 +975,8 @@
 <div class="field-row">
   <input type="checkbox" id="check-indeterminate">
   <label for="check-indeterminate">Indeterminate</label>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;check1&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
@@ -1004,14 +994,13 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;check-indeterminate&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;check-indeterminate&quot;</span>&gt;</span>Indeterminate<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
     <h3 id="radio-buttons">Radio Buttons</h3>
     <p>Recommended class-based radio buttons:</p>
     <div class="example">
-      <div class="raw"><div class="field-row">
+      <div class="field-row">
   <label class="radio">
     <input type="radio" name="radio-class-group" checked>
     <span class="circle"><span class="dot"></span></span>
@@ -1031,8 +1020,8 @@
     <span class="circle"><span class="dot"></span></span>
     <span>Option C</span>
   </label>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;radio&quot;</span>&gt;</span>
@@ -1055,12 +1044,11 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Option C<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
     <p>Native inputs (fallback):</p>
     <div class="example">
-      <div class="raw"><div class="field-row">
+      <div class="field-row">
   <input type="radio" id="radio1" name="radio-group" checked>
   <label for="radio1">Option A</label>
 </div>
@@ -1071,8 +1059,8 @@
 <div class="field-row">
   <input type="radio" id="radio3" name="radio-group">
   <label for="radio3">Option C</label>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radio1&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-group&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
@@ -1086,13 +1074,12 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radio3&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-group&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;radio3&quot;</span>&gt;</span>Option C<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
         <h2 id="progress-bar">Progress Bar</h2>
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
   <div>
     <span class="label">Determinate (60%)</span><br>
     <div class="aqua-progress">
@@ -1123,8 +1110,8 @@
       <div class="bar" style="width: 50%;"></div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -1158,7 +1145,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -1166,7 +1152,7 @@
     <p>Alternative progress bar with liquid wave shimmer effect. Uses <code>--p</code> custom property for percentage. Responds to theme changes in the <a href="#graphite-theme">Color Themes</a> section.</p>
 
     <div class="example">
-      <div class="raw"><div style="display: grid; gap: 15px; max-width: 300px;">
+      <div style="display: grid; gap: 15px; max-width: 300px;">
   <div>
     <span class="label">Wave (60%)</span>
     <div class="progress-wave" style="--p: 60;">
@@ -1187,8 +1173,8 @@
       </div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: grid; gap: 15px; max-width: 300px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -1212,14 +1198,13 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
     <h3 style="margin-top: 0;">Progress Indicator</h3>
 
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
   <div>
     <span class="label">Circular (75%)</span><br>
     <div class="aqua-progress-indicator" style="--progress: 75;">
@@ -1265,8 +1250,8 @@
       <div class="segment"></div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; flex-wrap: wrap; align-items: center;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -1315,7 +1300,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -1324,7 +1308,7 @@
     <p>Animated loading indicators.</p>
 
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center;">
   <div>
     <span class="label">Spinning (Indeterminate)</span><br>
     <div class="aqua-spinner-indicator" aria-label="Loading">
@@ -1384,8 +1368,8 @@
       </div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; flex-wrap: wrap; align-items: center;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -1448,7 +1432,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -1473,7 +1456,7 @@
       <h3>Pill-Style Tabs (Segmented)</h3>
       <p class="description">Compact segmented tabs for inline controls and preferences.</p>
       <div class="example">
-      <div class="raw"><div class="aqua-tabs-container">
+      <div class="aqua-tabs-container">
   <div class="aqua-tabs">
     <button class="aqua-tab active" data-tab="general">General</button>
     <button class="aqua-tab" data-tab="security">Security</button>
@@ -1482,8 +1465,8 @@
   <div class="aqua-tab-content" data-tab-content>
     <p>General settings content goes here.</p>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tabs-container&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tabs&quot;</span>&gt;</span>
@@ -1495,7 +1478,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>General settings content goes here.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
     </div>
@@ -1505,7 +1487,7 @@
       <h3>Segmented Tabs</h3>
       <p class="description">Folder-style tabs used for inline controls and preferences in earlier Mac OS X versions.</p>
       <div class="example">
-      <div class="raw"><div class="aqua-folder-tabs">
+      <div class="aqua-folder-tabs">
   <div class="aqua-tab-bar">
     <button class="aqua-tab aqua-tab--active" data-tab="general">General</button>
     <button class="aqua-tab" data-tab="security">Security</button>
@@ -1514,8 +1496,8 @@
   <div class="aqua-tab-content" data-tab-content>
     <p>General settings content goes here.</p>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-folder-tabs&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab-bar&quot;</span>&gt;</span>
@@ -1527,7 +1509,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>General settings content goes here.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
     </div>
@@ -1535,7 +1516,7 @@
 
         <h2 id="fieldset">Fieldset</h2>
     <div class="example">
-      <div class="raw"><fieldset>
+      <fieldset>
   <legend>Settings</legend>
   <div class="field-row">
     <input type="checkbox" id="fs-check1" checked>
@@ -1545,8 +1526,8 @@
     <input type="checkbox" id="fs-check2">
     <label for="fs-check2">Option 2</label>
   </div>
-</fieldset></div>
-      <details class="code">
+</fieldset>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Settings<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
@@ -1559,7 +1540,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;fs-check2&quot;</span>&gt;</span>Option 2<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -1568,7 +1548,7 @@
     <p>Classic Mac menu bar with dropdown menus.</p>
 
     <div class="example">
-      <div class="raw"><nav class="menu-bar">
+      <nav class="menu-bar">
   <ul>
     <li>
       <span class="menu-title">File</span>
@@ -1600,8 +1580,8 @@
       </ul>
     </li>
   </ul>
-</nav></div>
-      <details class="code">
+</nav>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;menu-bar&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
@@ -1636,7 +1616,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -1645,14 +1624,14 @@
     <p>Menu styling for right-click and contextual actions.</p>
 
     <div class="example">
-      <div class="raw"><div class="aqua-menu" style="display: inline-block;">
+      <div class="aqua-menu" style="display: inline-block;">
   <div class="aqua-menu-item"><span>Cut</span> <span class="shortcut">&#8984;X</span></div>
   <div class="aqua-menu-item"><span>Copy</span> <span class="shortcut">&#8984;C</span></div>
   <div class="aqua-menu-item"><span>Paste</span> <span class="shortcut">&#8984;V</span></div>
   <div class="aqua-menu-separator"></div>
   <div class="aqua-menu-item"><span>Select All</span> <span class="shortcut">&#8984;A</span></div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-menu&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: inline-block;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-menu-item&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Cut<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#8984;</span>X<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1661,7 +1640,6 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-menu-separator&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-menu-item&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Select All<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;shortcut&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#8984;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -1670,7 +1648,7 @@
     <p>Icon toolbar for application actions.</p>
 
     <div class="example">
-      <div class="raw"><div class="toolbar">
+      <div class="toolbar">
   <button class="toolbar-button">
     <span>Back</span>
   </button>
@@ -1684,8 +1662,8 @@
   <button class="toolbar-button" disabled>
     <span>Stop</span>
   </button>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;toolbar&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;toolbar-button&quot;</span>&gt;</span>
@@ -1702,7 +1680,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Stop<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -1711,7 +1688,7 @@
     <p>Modal alert boxes with different icon types.</p>
 
     <div class="example">
-      <div class="raw"><!-- Pre-10.6 era alert dialog -->
+      <!-- Pre-10.6 era alert dialog -->
 <div class="era-pre-10-6">
   <div class="window" style="width: 420px;">
     <div class="title-bar">
@@ -1753,8 +1730,8 @@
       </div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-comment">&lt;!-- Pre-10.6 era alert dialog --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;era-pre-10-6&quot;</span>&gt;</span>
@@ -1799,14 +1776,13 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
 
         <h2 id="slider">Slider</h2>
     <div class="example">
-      <div class="raw"><div>
+      <div>
   <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
     <div>
       <span class="label">Horizontal</span><br>
@@ -1918,8 +1894,8 @@
       </div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;&quot;</span>&gt;</span>
@@ -2034,7 +2010,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2043,11 +2018,10 @@
     <p>Rounded search input with magnifying glass icon.</p>
 
     <div class="example">
-      <div class="raw"><input type="search" class="search-field" placeholder="Search..." style="width: 200px;"></div>
-      <details class="code">
+      <input type="search" class="search-field" placeholder="Search..." style="width: 200px;">
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;search-field&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Search...&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2056,19 +2030,18 @@
     <p>Button group for switching between views or options.</p>
 
     <div class="example">
-      <div class="raw"><div class="segmented-control">
+      <div class="segmented-control">
   <button class="active">Icons</button>
   <button>List</button>
   <button>Columns</button>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;segmented-control&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;active&quot;</span>&gt;</span>Icons<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>List<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Columns<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2077,7 +2050,7 @@
     <p class="label">Alternating row colors: <span class="inline-code">--table-row-odd</span> and <span class="inline-code">--table-row-even</span></p>
 
     <div class="example">
-      <div class="raw"><table class="aqua-table" style="width: 100%; max-width: 600px;">
+      <table class="aqua-table" style="width: 100%; max-width: 600px;">
   <thead>
     <tr>
       <th>Name</th>
@@ -2106,8 +2079,8 @@
       <td>PNG Image</td>
     </tr>
   </tbody>
-</table></div>
-      <details class="code">
+</table>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-table&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 600px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
@@ -2139,7 +2112,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2148,7 +2120,7 @@
     <p>Selectable list component with focused (blue) and unfocused (gray) selection.</p>
 
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
   <div>
     <span class="label">Vertical (Focused - Blue)</span><br>
     <div class="aqua-list focused" tabindex="0" style="width: 150px;">
@@ -2203,8 +2175,8 @@
     <div class="aqua-list-item">June</div>
     <div class="aqua-list-item">July</div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -2262,7 +2234,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-list-item&quot;</span>&gt;</span>July<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2271,7 +2242,7 @@
     <p>Expandable hierarchical list.</p>
 
     <div class="example">
-      <div class="raw"><div class="aqua-tree" tabindex="0" style="width: 250px;">
+      <div class="aqua-tree" tabindex="0" style="width: 250px;">
   <div class="aqua-tree-item expanded">
     <span class="aqua-tree-arrow"></span>
     <span>Documents</span>
@@ -2288,8 +2259,8 @@
     <span class="aqua-tree-arrow"></span>
     <span>Pictures</span>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 250px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-item expanded&quot;</span>&gt;</span>
@@ -2309,7 +2280,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Pictures<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2318,7 +2288,7 @@
     <p class="label">Combines tree hierarchy with table columns (click arrows to expand/collapse)</p>
 
     <div class="example">
-      <div class="raw"><table class="aqua-tree-table" tabindex="0" id="tree-table-demo" style="width: 100%; max-width: 700px;">
+      <table class="aqua-tree-table" tabindex="0" id="tree-table-demo" style="width: 100%; max-width: 700px;">
   <thead>
     <tr>
       <th style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
@@ -2387,8 +2357,8 @@
       <td>JPEG Image</td>
     </tr>
   </tbody>
-</table></div>
-      <details class="code">
+</table>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tree-table-demo&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 700px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
@@ -2460,7 +2430,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2468,15 +2437,15 @@
         <h2 id="separator">Separator</h2>
 
     <div class="example">
-      <div class="raw"><hr class="aqua-separator">
+      <hr class="aqua-separator">
 <div style="display: flex; align-items: center;">
   <span>Item 1</span>
   <div class="aqua-separator vertical"></div>
   <span>Item 2</span>
   <div class="aqua-separator vertical"></div>
   <span>Item 3</span>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-separator&quot;</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; align-items: center;&quot;</span>&gt;</span>
@@ -2486,7 +2455,6 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-separator vertical&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Item 3<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2495,7 +2463,7 @@
     <p class="label">Matches JavaFX Hyperlink - underlines on hover/focus</p>
 
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: baseline;">
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: baseline;">
   <div>
     <span class="label">Normal</span><br>
     <a href="#" class="aqua-hyperlink">Click this hyperlink</a>
@@ -2512,8 +2480,8 @@
     <span class="label">Button as Link</span><br>
     <button class="aqua-hyperlink">Button styled as link</button>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; flex-wrap: wrap; align-items: baseline;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -2533,7 +2501,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-hyperlink&quot;</span>&gt;</span>Button styled as link<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2542,17 +2509,16 @@
     <p class="label">Background: <span class="inline-code">--tooltip-bg</span></p>
 
     <div class="example">
-      <div class="raw"><div class="aqua-tooltip">
+      <div class="aqua-tooltip">
   <button>Hover for tooltip</button>
   <span class="tooltip-text">This is a tooltip!</span>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tooltip&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Hover for tooltip<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tooltip-text&quot;</span>&gt;</span>This is a tooltip!<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2560,7 +2526,7 @@
         <h2 id="pagination">Pagination</h2>
 
     <div class="example">
-      <div class="raw"><div class="aqua-pagination">
+      <div class="aqua-pagination">
   <button class="aqua-pagination-arrow">&lt;</button>
   <button class="aqua-pagination-btn">1</button>
   <button class="aqua-pagination-btn active">2</button>
@@ -2568,8 +2534,8 @@
   <button class="aqua-pagination-btn">4</button>
   <button class="aqua-pagination-btn">5</button>
   <button class="aqua-pagination-arrow">&gt;</button>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-pagination&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-pagination-arrow&quot;</span>&gt;</span><span class="hljs-symbol">&amp;lt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
@@ -2580,7 +2546,6 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-pagination-btn&quot;</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-pagination-arrow&quot;</span>&gt;</span><span class="hljs-symbol">&amp;gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2588,13 +2553,13 @@
         <h2 id="badge">Badge</h2>
 
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
   <span>Messages</span>
   <span class="aqua-badge">5</span>
   <span style="margin-left: 20px;">Notifications</span>
   <span class="aqua-badge">99+</span>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 20px; align-items: center; flex-wrap: wrap;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Messages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
@@ -2602,7 +2567,6 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-left: 20px;&quot;</span>&gt;</span>Notifications<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-badge&quot;</span>&gt;</span>99+<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2610,14 +2574,14 @@
         <h2 id="color-swatches">Color Swatches</h2>
 
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
   <div class="aqua-color-swatch" style="background: #FF5F57;"></div>
   <div class="aqua-color-swatch" style="background: #FFBD2E;"></div>
   <div class="aqua-color-swatch" style="background: #28CA41;"></div>
   <div class="aqua-color-swatch" style="background: #2B99FF;"></div>
   <div class="aqua-color-swatch" style="background: #5856D6;"></div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 10px; align-items: center; flex-wrap: wrap;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: #FF5F57;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -2626,7 +2590,6 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: #2B99FF;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-color-swatch&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: #5856D6;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2635,7 +2598,7 @@
     <p class="label">Focus colors: <span class="inline-code">$focus-outer</span>, <span class="inline-code">$focus-inner</span></p>
 
     <div class="example">
-      <div class="raw"><!-- Pre-10.6 era focus ring -->
+      <!-- Pre-10.6 era focus ring -->
 <div class="era-pre-10-6">
   <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
     <div>
@@ -2677,8 +2640,8 @@
       </select>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-comment">&lt;!-- Pre-10.6 era focus ring --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;era-pre-10-6&quot;</span>&gt;</span>
@@ -2723,7 +2686,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2732,15 +2694,15 @@
     <p>Tooltip with a speech bubble tail. Use <code>.balloon-bottom</code>, <code>.balloon-right</code>, etc. for positioning.</p>
 
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 20px; flex-wrap: wrap; padding-top: 20px;">
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; padding-top: 20px;">
   <div class="balloon" style="max-width: 200px;">
     This is a balloon tooltip with the tail pointing up.
   </div>
   <div class="balloon balloon-bottom" style="max-width: 200px; margin-top: 0; margin-bottom: 20px;">
     Tail pointing down.
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 20px; flex-wrap: wrap; padding-top: 20px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;balloon&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;max-width: 200px;&quot;</span>&gt;</span>
@@ -2750,7 +2712,6 @@
     Tail pointing down.
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2759,7 +2720,7 @@
     <p>Number input with increment/decrement buttons.</p>
 
     <div class="example">
-      <div class="raw"><div>
+      <div>
   <span class="label">Spinner / Stepper</span><br>
   <div class="aqua-spinner">
     <input type="number" value="5" min="0" max="100" aria-label="Value">
@@ -2768,8 +2729,8 @@
       <button type="button">&#9660;</button>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Spinner / Stepper<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
@@ -2781,7 +2742,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2790,7 +2750,7 @@
     <p>Expandable section with disclosure triangle.</p>
 
     <div class="example">
-      <div class="raw"><details class="disclosure" style="width: 300px;">
+      <details class="disclosure" style="width: 300px;">
   <summary>Advanced Options</summary>
   <div class="disclosure-content">
     <div class="field-row">
@@ -2802,8 +2762,8 @@
       <label for="disc-check2">Debug mode</label>
     </div>
   </div>
-</details></div>
-      <details class="code">
+</details>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">details</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;disclosure&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 300px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Advanced Options<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
@@ -2818,7 +2778,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2826,7 +2785,7 @@
         <h2 id="titled-pane">Titled Pane / Accordion</h2>
 
     <div class="example">
-      <div class="raw"><div class="aqua-titled-pane expanded">
+      <div class="aqua-titled-pane expanded">
   <div class="aqua-titled-pane-header" role="button" tabindex="0">
     <span class="aqua-titled-pane-arrow"></span>
     <span>General Options</span>
@@ -2843,8 +2802,8 @@
   <div class="aqua-titled-pane-content">
     <p style="margin: 5px 0;">Content for advanced options goes here.</p>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-titled-pane expanded&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-titled-pane-header&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>
@@ -2864,7 +2823,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 5px 0;&quot;</span>&gt;</span>Content for advanced options goes here.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2873,7 +2831,7 @@
     <p class="label">Drag the divider to resize panes</p>
 
     <div class="example">
-      <div class="raw"><div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
   <div>
     <span class="label">Horizontal (Left / Right)</span><br>
     <div class="aqua-split-pane" style="height: 100px; width: 300px;" id="split-h">
@@ -2898,8 +2856,8 @@
       <div style="flex: 1; padding: 10px;">Bottom pane</div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -2927,7 +2885,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2936,7 +2893,7 @@
     <p>Sidebar and content area layout.</p>
 
     <div class="example">
-      <div class="raw"><div class="split-view" style="height: 200px;">
+      <div class="split-view" style="height: 200px;">
   <div class="split-view-sidebar" style="padding: 8px;">
     <div style="padding: 4px; background: #2B99FF; color: white; border-radius: 3px;">Inbox</div>
     <div style="padding: 4px;">Sent</div>
@@ -2946,8 +2903,8 @@
   <div class="split-view-content">
     <p>Select a folder to view messages.</p>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;split-view&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 200px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;split-view-sidebar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 8px;&quot;</span>&gt;</span>
@@ -2960,7 +2917,6 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Select a folder to view messages.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -2969,7 +2925,7 @@
     <p class="label">Modern Mac-style overlay scrollbar - hover over the containers to see scrollbars appear</p>
 
     <div class="example">
-      <div class="raw"><div>
+      <div>
   <span class="label">Vertical Scroll</span><br>
   <div class="scroll-container scroll-demo-vertical">
     <div style="padding: 12px;">
@@ -2991,8 +2947,8 @@
       <div style="margin: 0;">Line 15 - End of content</div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Vertical Scroll<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
@@ -3017,7 +2973,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -3030,7 +2985,7 @@
     </div>
 
     <div class="example">
-      <div class="raw"><div class="scrollbar-wave-container" style="width: 300px; height: 220px;" id="scrollbar-wave-demo">
+      <div class="scrollbar-wave-container" style="width: 300px; height: 220px;" id="scrollbar-wave-demo">
   <div class="scrollbar-wave-content" id="scrollbar-wave-content">
     <div style="padding: 12px;">
       <div style="font-weight: bold; margin-bottom: 8px;">Wave Scrollbar Demo</div>
@@ -3058,8 +3013,8 @@
   <!-- Split mode buttons -->
   <button class="scrollbar-wave-btn-top" id="scrollbar-btn-top" title="Scroll up">▲</button>
   <button class="scrollbar-wave-btn-bottom" id="scrollbar-btn-bottom" title="Scroll down">▼</button>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-container&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 300px; height: 220px;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-demo&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-content&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-content&quot;</span>&gt;</span>
@@ -3090,7 +3045,6 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn-top&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-btn-top&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll up&quot;</span>&gt;</span>▲<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn-bottom&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-btn-bottom&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll down&quot;</span>&gt;</span>▼<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -3108,7 +3062,7 @@
     <p class="label">Click a button to preview different themes on the components below</p>
 
     <div class="example">
-      <div class="raw"><!-- Pre-10.6 era theme selector -->
+      <!-- Pre-10.6 era theme selector -->
 <div class="era-pre-10-6">
   <div class="button-row" style="margin-bottom: 20px;">
     <button class="aqua-button aqua-button--secondary" onclick="setTheme('')"><span>Default (Aqua Blue)</span></button>
@@ -3222,8 +3176,8 @@
       <div class="aqua-list-item">Item 3</div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-comment">&lt;!-- Pre-10.6 era theme selector --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;era-pre-10-6&quot;</span>&gt;</span>
@@ -3340,7 +3294,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
@@ -3349,7 +3302,7 @@
     <p>A window demonstrating multiple components together:</p>
 
     <div class="example">
-      <div class="raw"><!-- Pre-10.6 era complete example -->
+      <!-- Pre-10.6 era complete example -->
 <div class="era-pre-10-6">
   <div class="window" style="max-width: 350px;">
     <div class="title-bar">
@@ -3417,8 +3370,8 @@
       </div>
     </div>
   </div>
-</div></div>
-      <details class="code">
+</div>
+      <details>
         <summary>Show code</summary>
         <pre><code><span class="hljs-comment">&lt;!-- Pre-10.6 era complete example --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;era-pre-10-6&quot;</span>&gt;</span>
@@ -3489,7 +3442,6 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
 
