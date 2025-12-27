@@ -1505,23 +1505,27 @@
       <h3>Segmented Tabs</h3>
       <p class="description">Folder-style tabs used for inline controls and preferences in earlier Mac OS X versions.</p>
       <div class="example">
-      <div class="raw"><div class="aqua-tab-bar">
-  <button class="aqua-tab aqua-tab--active">General</button>
-  <button class="aqua-tab">Security</button>
-  <button class="aqua-tab">Privacy</button>
-</div>
-<div class="aqua-tab-content">
-  <p>General settings content goes here.</p>
+      <div class="raw"><div class="aqua-folder-tabs">
+  <div class="aqua-tab-bar">
+    <button class="aqua-tab aqua-tab--active" data-tab="general">General</button>
+    <button class="aqua-tab" data-tab="security">Security</button>
+    <button class="aqua-tab" data-tab="privacy">Privacy</button>
+  </div>
+  <div class="aqua-tab-content" data-tab-content>
+    <p>General settings content goes here.</p>
+  </div>
 </div></div>
       <details class="code">
         <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab-bar&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab aqua-tab--active&quot;</span>&gt;</span>General<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab&quot;</span>&gt;</span>Security<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab&quot;</span>&gt;</span>Privacy<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab-content&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>General settings content goes here.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-folder-tabs&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab-bar&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab aqua-tab--active&quot;</span> <span class="hljs-attr">data-tab</span>=<span class="hljs-string">&quot;general&quot;</span>&gt;</span>General<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab&quot;</span> <span class="hljs-attr">data-tab</span>=<span class="hljs-string">&quot;security&quot;</span>&gt;</span>Security<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab&quot;</span> <span class="hljs-attr">data-tab</span>=<span class="hljs-string">&quot;privacy&quot;</span>&gt;</span>Privacy<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tab-content&quot;</span> <span class="hljs-attr">data-tab-content</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>General settings content goes here.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
         <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
@@ -3636,7 +3640,40 @@
           }
 
           container.querySelectorAll('.aqua-tabs .aqua-tab').forEach((btn) => {
-            btn.addEventListener('click', () => activate(btn.getAttribute('data-tab')));
+            btn.addEventListener('click', () => {
+              activate(btn.getAttribute('data-tab'));
+              btn.blur();
+            });
+          });
+        });
+      }
+
+      function setupFolderTabs() {
+        document.querySelectorAll('.aqua-folder-tabs').forEach((container) => {
+          const tabBar = container.querySelector('.aqua-tab-bar');
+          const content = container.querySelector('[data-tab-content]');
+          if (!tabBar || !content) return;
+
+          const tabs = tabBar.querySelectorAll('.aqua-tab');
+
+          const textByTab = {
+            general: 'General settings content goes here.',
+            security: 'Security settings content goes here.',
+            privacy: 'Privacy settings content goes here.',
+          };
+
+          function activate(tabId) {
+            tabs.forEach((t) => {
+              t.classList.toggle('aqua-tab--active', t.getAttribute('data-tab') === tabId);
+            });
+            content.innerHTML = `<p>${textByTab[tabId] || ''}</p>`;
+          }
+
+          tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+              activate(tab.getAttribute('data-tab'));
+              tab.blur();
+            });
           });
         });
       }
@@ -3976,6 +4013,7 @@
       setupTreeTable();
       setupSplitPanes();
       setupPillTabs();
+      setupFolderTabs();
       setupIndeterminateCheckbox();
       setupCopyButtons();
       setupAquaEraSelector();

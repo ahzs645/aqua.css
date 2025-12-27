@@ -141,7 +141,40 @@
           }
 
           container.querySelectorAll('.aqua-tabs .aqua-tab').forEach((btn) => {
-            btn.addEventListener('click', () => activate(btn.getAttribute('data-tab')));
+            btn.addEventListener('click', () => {
+              activate(btn.getAttribute('data-tab'));
+              btn.blur();
+            });
+          });
+        });
+      }
+
+      function setupFolderTabs() {
+        document.querySelectorAll('.aqua-folder-tabs').forEach((container) => {
+          const tabBar = container.querySelector('.aqua-tab-bar');
+          const content = container.querySelector('[data-tab-content]');
+          if (!tabBar || !content) return;
+
+          const tabs = tabBar.querySelectorAll('.aqua-tab');
+
+          const textByTab = {
+            general: 'General settings content goes here.',
+            security: 'Security settings content goes here.',
+            privacy: 'Privacy settings content goes here.',
+          };
+
+          function activate(tabId) {
+            tabs.forEach((t) => {
+              t.classList.toggle('aqua-tab--active', t.getAttribute('data-tab') === tabId);
+            });
+            content.innerHTML = `<p>${textByTab[tabId] || ''}</p>`;
+          }
+
+          tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+              activate(tab.getAttribute('data-tab'));
+              tab.blur();
+            });
           });
         });
       }
@@ -481,6 +514,7 @@
       setupTreeTable();
       setupSplitPanes();
       setupPillTabs();
+      setupFolderTabs();
       setupIndeterminateCheckbox();
       setupCopyButtons();
       setupAquaEraSelector();

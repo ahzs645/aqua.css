@@ -26,35 +26,49 @@
     z-index: 3;
     background: var(--tab-bar-gradient);
     box-shadow: var(--tab-bar-shadow);
+    border: 1px solid;
+    border-image: var(--tab-bar-stroke-gradient) 1;
+    border-bottom: none;
   }
 }
 
 /* Tab item mixin for shared styles */
 @mixin aqua-tab-base {
   position: relative;
-  border: 1px solid var(--tab-border);
+  border: none;
   border-radius: 6px 6px 0 0;
-  transition: all 150ms;
   overflow: hidden;
-  height: 28px;
-  padding: 0 16px;
-  margin-top: 4px;
+  height: 24px;
+  padding: 0 12px;
+  margin-bottom: 4px;
   cursor: default;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: "Lucida Grande", "Helvetica Neue", sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   white-space: nowrap;
 
-  /* Inactive tab (secondary aqua button style) */
+  /* Inactive tab */
   background: var(--tab-inactive-gradient);
   box-shadow: var(--tab-inactive-shadow);
   color: var(--text-color);
   text-shadow: var(--tab-inactive-text-shadow);
 
-  /* Aqua glass effect (top shine + bottom glow) */
-  @include aqua-glass('box');
+  /* Gloss highlight at top */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.5px;
+    left: 3px;
+    right: 3px;
+    height: 4px;
+    background: #fff;
+    border-radius: 2px;
+    opacity: 0.5;
+    filter: blur(1px);
+    pointer-events: none;
+  }
 }
 
 @mixin aqua-tab-hover {
@@ -62,20 +76,35 @@
 }
 
 @mixin aqua-tab-active {
-  margin-top: 0;
   z-index: 10;
 
   /* Active tab (primary aqua button style) */
   background: var(--tab-active-gradient);
-  box-shadow: var(--tab-active-shadow);
+  box-shadow: var(--tab-active-inner-shadow);
   text-shadow: var(--tab-active-text-shadow);
   border: none;
+
+  /* Add radial overlay for depth */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 6px 6px 0 0;
+    background: radial-gradient(
+      ellipse 52% 73% at 50% 100%,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    opacity: 0.2;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
 }
 
 @mixin aqua-tab-pressed {
   /* Pressed state matches active tab color */
   background: var(--tab-active-gradient);
-  box-shadow: var(--tab-active-shadow);
+  box-shadow: var(--tab-active-inner-shadow);
   text-shadow: var(--tab-active-text-shadow);
 }
 
@@ -86,6 +115,14 @@
 
 .aqua-tab {
   @include aqua-tab-base;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus,
+  &:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 
   &:hover:not(.aqua-tab--active) {
     @include aqua-tab-hover;
@@ -97,14 +134,24 @@
 
   &.aqua-tab--active {
     @include aqua-tab-active;
+
+    &:focus,
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: var(--tab-active-inner-shadow) !important;
+    }
   }
 }
 
 /* Tab content panel */
 .aqua-tab-content {
-  background: transparent;
-  padding: 16px;
-  margin-top: 5px;
+  border: 1px solid #999;
+  border-top: 1px solid #88b7ea;
+  border-radius: 0 0 8px 8px;
+  padding: 24px;
+  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  margin-top: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Size variations */
@@ -140,6 +187,14 @@
 
   li {
     @include aqua-tab-base;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+
+    &:focus,
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: none !important;
+    }
 
     &:hover:not(.active):not([aria-selected="true"]) {
       @include aqua-tab-hover;
@@ -152,15 +207,25 @@
     &.active,
     &[aria-selected="true"] {
       @include aqua-tab-active;
+
+      &:focus,
+      &:focus-visible {
+        outline: none !important;
+        box-shadow: var(--tab-active-inner-shadow) !important;
+      }
     }
   }
 }
 
 /* Tab content panel */
 .tab-panel {
-  background: transparent;
-  padding: 16px;
-  margin-top: 5px;
+  border: 1px solid #999;
+  border-top: 1px solid #88b7ea;
+  border-radius: 0 0 8px 8px;
+  padding: 24px;
+  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  margin-top: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Size variations */
