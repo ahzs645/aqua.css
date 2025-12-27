@@ -79,17 +79,16 @@
 .aqua-spinner {
   display: inline-flex;
   align-items: stretch;
+  gap: 4px;
   font-family: var(--font-system);
   font-size: var(--font-size-base);
 
   input {
     width: 60px;
-    height: auto;
     padding: 4px 8px;
     text-align: center;
     border: 1px solid var(--stepper-spinner-border);
-    border-right: none;
-    border-radius: 3px 0 0 3px;
+    border-radius: 0;
     outline: none;
     background: var(--stepper-bg);
     box-shadow: var(--stepper-spinner-shadow);
@@ -110,48 +109,87 @@
 }
 
 .aqua-spinner-buttons {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 13px;
+  max-width: 13px;
+  width: 13px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to bottom,
+    #eaeaea 0%,
+    #b3b1b1 29%,
+    #e5e5e5 54%,
+    #ffffff 100%
+  );
+  border: 1px solid #4f4f4f;
+  box-shadow: none;
+  cursor: default;
+  padding: 3px 0;
+  flex-shrink: 0;
+
+  /* Top gloss highlight */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    right: 2px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px 2px 50% 50%;
+    opacity: 0.3;
+    filter: blur(0.5px);
+    pointer-events: none;
+  }
 
   button {
-    font-size: 8px;
-    padding: 0 6px;
-    min-width: 18px;
-    border: 1px solid var(--stepper-spinner-border);
-    border-left: none;
-    background: var(--stepper-spinner-button-gradient);
-    cursor: default;
-    flex: 1;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    width: 13px;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
-    color: var(--stepper-button-text);
+    cursor: default;
     position: relative;
+    font-size: 0;
+    color: transparent;
     overflow: hidden;
+    box-shadow: none;
+    outline: none;
 
-    /* Aqua glass effect */
-    @include aqua-glass('box');
-
-    &:first-child {
-      border-radius: 0 3px 0 0;
-      border-bottom: none;
+    /* Triangle arrows */
+    &::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
     }
 
-    &:last-child {
-      border-radius: 0 0 3px 0;
+    &:first-child::after {
+      border-bottom: 3px solid rgba(0, 0, 0, 0.7);
     }
 
-    &:active {
-      background: var(--stepper-spinner-button-active-gradient);
+    &:last-child::after {
+      border-top: 3px solid rgba(0, 0, 0, 0.7);
     }
 
-    &:hover {
-      background: var(--stepper-spinner-button-hover-gradient);
+    &:hover::after {
+      border-bottom-color: rgba(0, 0, 0, 0.9);
+      border-top-color: rgba(0, 0, 0, 0.9);
     }
 
-    &:active {
-      background: var(--stepper-button-active-gradient);
+    &:active::after {
+      border-bottom-color: #000;
+      border-top-color: #000;
     }
   }
 }
