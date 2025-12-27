@@ -369,7 +369,7 @@
   );
   --checkbox-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.1);
   --checkbox-mark-color: var(--text-color);
-  --checkbox-mark-shadow: drop-shadow(-1px 1px 0 rgba(255, 255, 255, 0.8));
+  --checkbox-mark-shadow: none;
   --checkbox-pressed-gradient: linear-gradient(
     rgb(224, 224, 224) 0%,
     rgb(214, 214, 214) 50%,
@@ -400,7 +400,7 @@
   --radio-selected-border: var(--checkbox-selected-border);
   --radio-selected-gradient: var(--checkbox-selected-gradient);
   --radio-dot-color: var(--text-color);
-  --radio-dot-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  --radio-dot-shadow: none;
   --radio-focus-ring: 0 0 0 3px rgba(120, 171, 217, 1);
 
   /* Pagination */

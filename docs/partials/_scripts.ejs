@@ -244,6 +244,26 @@
         }
       };
 
+      // Arrow mode switching for wave scrollbar
+      window.setArrowMode = function(mode) {
+        const container = document.getElementById('scrollbar-wave-demo');
+        if (container) {
+          if (mode === 'split') {
+            container.classList.add('arrows-split');
+          } else {
+            container.classList.remove('arrows-split');
+          }
+        }
+
+        // Update button states
+        const togetherBtn = document.getElementById('arrows-together-btn');
+        const splitBtn = document.getElementById('arrows-split-btn');
+        if (togetherBtn && splitBtn) {
+          togetherBtn.classList.toggle('active', mode === 'together');
+          splitBtn.classList.toggle('active', mode === 'split');
+        }
+      };
+
       function setupWaveScrollbar() {
         const scrollContent = document.getElementById('scrollbar-wave-content');
         const scrollbarTrack = document.getElementById('scrollbar-wave-track');
@@ -329,6 +349,54 @@
           const newScrollTop = (targetThumbTop / maxThumbTop) * maxScroll;
           scrollContent.scrollTop = Math.max(0, Math.min(maxScroll, newScrollTop));
         });
+
+        // Arrow button functionality
+        const btnUp = document.getElementById('scrollbar-btn-up');
+        const btnDown = document.getElementById('scrollbar-btn-down');
+        const btnTop = document.getElementById('scrollbar-btn-top');
+        const btnBottom = document.getElementById('scrollbar-btn-bottom');
+        const scrollStep = 20;
+        let scrollInterval = null;
+
+        function startScrolling(direction) {
+          scrollContent.scrollTop += direction * scrollStep;
+          scrollInterval = setInterval(function() {
+            scrollContent.scrollTop += direction * scrollStep;
+          }, 50);
+        }
+
+        function stopScrolling() {
+          if (scrollInterval) {
+            clearInterval(scrollInterval);
+            scrollInterval = null;
+          }
+        }
+
+        // Together mode buttons
+        if (btnUp) {
+          btnUp.addEventListener('mousedown', function() { startScrolling(-1); });
+          btnUp.addEventListener('mouseup', stopScrolling);
+          btnUp.addEventListener('mouseleave', stopScrolling);
+        }
+
+        if (btnDown) {
+          btnDown.addEventListener('mousedown', function() { startScrolling(1); });
+          btnDown.addEventListener('mouseup', stopScrolling);
+          btnDown.addEventListener('mouseleave', stopScrolling);
+        }
+
+        // Split mode buttons
+        if (btnTop) {
+          btnTop.addEventListener('mousedown', function() { startScrolling(-1); });
+          btnTop.addEventListener('mouseup', stopScrolling);
+          btnTop.addEventListener('mouseleave', stopScrolling);
+        }
+
+        if (btnBottom) {
+          btnBottom.addEventListener('mousedown', function() { startScrolling(1); });
+          btnBottom.addEventListener('mouseup', stopScrolling);
+          btnBottom.addEventListener('mouseleave', stopScrolling);
+        }
       }
 
       function setupCustomSliders() {

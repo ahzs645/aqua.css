@@ -3022,8 +3022,13 @@
     <h4>Wave-Animated Scrollbar</h4>
     <p>Custom scrollbar with the same liquid wave effect as the progress bar. Scroll or drag the thumb to see the wave pattern reveal.</p>
 
+    <div class="button-row" style="margin-bottom: 12px;">
+      <button class="aqua-button aqua-button--secondary active" id="arrows-together-btn" onclick="setArrowMode('together')"><span>Arrows Together</span></button>
+      <button class="aqua-button aqua-button--secondary" id="arrows-split-btn" onclick="setArrowMode('split')"><span>Arrows Split</span></button>
+    </div>
+
     <div class="example">
-      <div class="raw"><div class="scrollbar-wave-container" style="width: 300px; height: 200px;" id="scrollbar-wave-demo">
+      <div class="raw"><div class="scrollbar-wave-container" style="width: 300px; height: 220px;" id="scrollbar-wave-demo">
   <div class="scrollbar-wave-content" id="scrollbar-wave-content">
     <div style="padding: 12px;">
       <div style="font-weight: bold; margin-bottom: 8px;">Wave Scrollbar Demo</div>
@@ -3032,9 +3037,11 @@
       <p style="margin: 0 0 10px 0;">Notice how the wave stays fixed relative to the track, revealing different parts of the pattern as the thumb moves.</p>
       <p style="margin: 0 0 10px 0;">You can drag the thumb directly or scroll the content area to see the effect.</p>
       <p style="margin: 0 0 10px 0;">The design matches the classic Mac OS X Aqua interface with its glossy, three-dimensional appearance.</p>
-      <p style="margin: 0;">This implementation responds to theme changes - try switching themes above!</p>
+      <p style="margin: 0 0 10px 0;">Try switching between "Arrows Together" and "Arrows Split" modes above!</p>
+      <p style="margin: 0;">This implementation responds to theme changes - try switching themes!</p>
     </div>
   </div>
+  <div class="scrollbar-wave-cap"></div>
   <div class="scrollbar-wave-track" id="scrollbar-wave-track">
     <div class="scrollbar-wave-thumb" id="scrollbar-wave-thumb">
       <div class="scrollbar-wave-ink">
@@ -3042,10 +3049,33 @@
       </div>
     </div>
   </div>
+  <div class="scrollbar-wave-buttons">
+    <button class="scrollbar-wave-btn" id="scrollbar-btn-up" title="Scroll up">
+      <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 2L1 5H7L4 2Z" fill="#333"/>
+      </svg>
+    </button>
+    <button class="scrollbar-wave-btn" id="scrollbar-btn-down" title="Scroll down">
+      <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 6L1 3H7L4 6Z" fill="#333"/>
+      </svg>
+    </button>
+  </div>
+  <!-- Split mode buttons -->
+  <button class="scrollbar-wave-btn-top" id="scrollbar-btn-top" title="Scroll up">
+    <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 2L1 5H7L4 2Z" fill="#333"/>
+    </svg>
+  </button>
+  <button class="scrollbar-wave-btn-bottom" id="scrollbar-btn-bottom" title="Scroll down">
+    <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 6L1 3H7L4 6Z" fill="#333"/>
+    </svg>
+  </button>
 </div></div>
       <details class="code">
         <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-container&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 300px; height: 200px;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-demo&quot;</span>&gt;</span>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-container&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 300px; height: 220px;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-demo&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-content&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-content&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 12px;&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;font-weight: bold; margin-bottom: 8px;&quot;</span>&gt;</span>Wave Scrollbar Demo<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -3054,9 +3084,11 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0 0 10px 0;&quot;</span>&gt;</span>Notice how the wave stays fixed relative to the track, revealing different parts of the pattern as the thumb moves.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0 0 10px 0;&quot;</span>&gt;</span>You can drag the thumb directly or scroll the content area to see the effect.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0 0 10px 0;&quot;</span>&gt;</span>The design matches the classic Mac OS X Aqua interface with its glossy, three-dimensional appearance.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0;&quot;</span>&gt;</span>This implementation responds to theme changes - try switching themes above!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0 0 10px 0;&quot;</span>&gt;</span>Try switching between &quot;Arrows Together&quot; and &quot;Arrows Split&quot; modes above!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0;&quot;</span>&gt;</span>This implementation responds to theme changes - try switching themes!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-cap&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-track&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-track&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-thumb&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-wave-thumb&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-ink&quot;</span>&gt;</span>
@@ -3064,6 +3096,29 @@
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-buttons&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-btn-up&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll up&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 8 8&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;none&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">&quot;M4 2L1 5H7L4 2Z&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;#333&quot;</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-btn-down&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll down&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 8 8&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;none&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">&quot;M4 6L1 3H7L4 6Z&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;#333&quot;</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Split mode buttons --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn-top&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-btn-top&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll up&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 8 8&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;none&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">&quot;M4 2L1 5H7L4 2Z&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;#333&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn-bottom&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;scrollbar-btn-bottom&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll down&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 8 8&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;none&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">&quot;M4 6L1 3H7L4 6Z&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;#333&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
         <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
@@ -3716,6 +3771,26 @@
         }
       };
 
+      // Arrow mode switching for wave scrollbar
+      window.setArrowMode = function(mode) {
+        const container = document.getElementById('scrollbar-wave-demo');
+        if (container) {
+          if (mode === 'split') {
+            container.classList.add('arrows-split');
+          } else {
+            container.classList.remove('arrows-split');
+          }
+        }
+
+        // Update button states
+        const togetherBtn = document.getElementById('arrows-together-btn');
+        const splitBtn = document.getElementById('arrows-split-btn');
+        if (togetherBtn && splitBtn) {
+          togetherBtn.classList.toggle('active', mode === 'together');
+          splitBtn.classList.toggle('active', mode === 'split');
+        }
+      };
+
       function setupWaveScrollbar() {
         const scrollContent = document.getElementById('scrollbar-wave-content');
         const scrollbarTrack = document.getElementById('scrollbar-wave-track');
@@ -3801,6 +3876,54 @@
           const newScrollTop = (targetThumbTop / maxThumbTop) * maxScroll;
           scrollContent.scrollTop = Math.max(0, Math.min(maxScroll, newScrollTop));
         });
+
+        // Arrow button functionality
+        const btnUp = document.getElementById('scrollbar-btn-up');
+        const btnDown = document.getElementById('scrollbar-btn-down');
+        const btnTop = document.getElementById('scrollbar-btn-top');
+        const btnBottom = document.getElementById('scrollbar-btn-bottom');
+        const scrollStep = 20;
+        let scrollInterval = null;
+
+        function startScrolling(direction) {
+          scrollContent.scrollTop += direction * scrollStep;
+          scrollInterval = setInterval(function() {
+            scrollContent.scrollTop += direction * scrollStep;
+          }, 50);
+        }
+
+        function stopScrolling() {
+          if (scrollInterval) {
+            clearInterval(scrollInterval);
+            scrollInterval = null;
+          }
+        }
+
+        // Together mode buttons
+        if (btnUp) {
+          btnUp.addEventListener('mousedown', function() { startScrolling(-1); });
+          btnUp.addEventListener('mouseup', stopScrolling);
+          btnUp.addEventListener('mouseleave', stopScrolling);
+        }
+
+        if (btnDown) {
+          btnDown.addEventListener('mousedown', function() { startScrolling(1); });
+          btnDown.addEventListener('mouseup', stopScrolling);
+          btnDown.addEventListener('mouseleave', stopScrolling);
+        }
+
+        // Split mode buttons
+        if (btnTop) {
+          btnTop.addEventListener('mousedown', function() { startScrolling(-1); });
+          btnTop.addEventListener('mouseup', stopScrolling);
+          btnTop.addEventListener('mouseleave', stopScrolling);
+        }
+
+        if (btnBottom) {
+          btnBottom.addEventListener('mousedown', function() { startScrolling(1); });
+          btnBottom.addEventListener('mouseup', stopScrolling);
+          btnBottom.addEventListener('mouseleave', stopScrolling);
+        }
       }
 
       function setupCustomSliders() {

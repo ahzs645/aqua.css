@@ -30,8 +30,13 @@
     <h4>Wave-Animated Scrollbar</h4>
     <p>Custom scrollbar with the same liquid wave effect as the progress bar. Scroll or drag the thumb to see the wave pattern reveal.</p>
 
+    <div class="button-row" style="margin-bottom: 12px;">
+      <button class="aqua-button aqua-button--secondary active" id="arrows-together-btn" onclick="setArrowMode('together')"><span>Arrows Together</span></button>
+      <button class="aqua-button aqua-button--secondary" id="arrows-split-btn" onclick="setArrowMode('split')"><span>Arrows Split</span></button>
+    </div>
+
     <%- example(`
-      <div class="scrollbar-wave-container" style="width: 300px; height: 200px;" id="scrollbar-wave-demo">
+      <div class="scrollbar-wave-container" style="width: 300px; height: 220px;" id="scrollbar-wave-demo">
         <div class="scrollbar-wave-content" id="scrollbar-wave-content">
           <div style="padding: 12px;">
             <div style="font-weight: bold; margin-bottom: 8px;">Wave Scrollbar Demo</div>
@@ -40,9 +45,11 @@
             <p style="margin: 0 0 10px 0;">Notice how the wave stays fixed relative to the track, revealing different parts of the pattern as the thumb moves.</p>
             <p style="margin: 0 0 10px 0;">You can drag the thumb directly or scroll the content area to see the effect.</p>
             <p style="margin: 0 0 10px 0;">The design matches the classic Mac OS X Aqua interface with its glossy, three-dimensional appearance.</p>
-            <p style="margin: 0;">This implementation responds to theme changes - try switching themes above!</p>
+            <p style="margin: 0 0 10px 0;">Try switching between "Arrows Together" and "Arrows Split" modes above!</p>
+            <p style="margin: 0;">This implementation responds to theme changes - try switching themes!</p>
           </div>
         </div>
+        <div class="scrollbar-wave-cap"></div>
         <div class="scrollbar-wave-track" id="scrollbar-wave-track">
           <div class="scrollbar-wave-thumb" id="scrollbar-wave-thumb">
             <div class="scrollbar-wave-ink">
@@ -50,6 +57,29 @@
             </div>
           </div>
         </div>
+        <div class="scrollbar-wave-buttons">
+          <button class="scrollbar-wave-btn" id="scrollbar-btn-up" title="Scroll up">
+            <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 2L1 5H7L4 2Z" fill="#333"/>
+            </svg>
+          </button>
+          <button class="scrollbar-wave-btn" id="scrollbar-btn-down" title="Scroll down">
+            <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 6L1 3H7L4 6Z" fill="#333"/>
+            </svg>
+          </button>
+        </div>
+        <!-- Split mode buttons -->
+        <button class="scrollbar-wave-btn-top" id="scrollbar-btn-top" title="Scroll up">
+          <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 2L1 5H7L4 2Z" fill="#333"/>
+          </svg>
+        </button>
+        <button class="scrollbar-wave-btn-bottom" id="scrollbar-btn-bottom" title="Scroll down">
+          <svg viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6L1 3H7L4 6Z" fill="#333"/>
+          </svg>
+        </button>
       </div>
     `) %>
 
