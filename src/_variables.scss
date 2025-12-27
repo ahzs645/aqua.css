@@ -1485,4 +1485,44 @@
   --overlay-scrollbar-track-hover-start: rgba(238, 238, 238, 0.7);
   --overlay-scrollbar-track-hover-end: rgba(255, 255, 255, 0.7);
   --overlay-scrollbar-track-border: rgb(198, 198, 198);
+
+  /* Blockquote */
+  --blockquote-text: #333333;
+  --blockquote-cite-text: #666666;
+  --blockquote-border: #999999;
+  --blockquote-accent: var(--aqua-blue);
+  --blockquote-accent-graphite: #6b7280;
+  --blockquote-pinstripe-light: #f5f5f5;
+  --blockquote-pinstripe-dark: #e8e8e8;
+  --blockquote-quote-mark: var(--aqua-blue);
+  --blockquote-quote-mark-opacity: 0.4;
+  --blockquote-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  --blockquote-glossy-gradient: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(240, 240, 240, 0.8) 51%,
+    rgba(250, 250, 250, 0.95) 100%
+  );
+  --blockquote-glossy-accent-gradient: linear-gradient(180deg,
+    #7eb4f0 0%,
+    #4a90d9 30%,
+    #2563eb 60%,
+    #1d4ed8 100%
+  );
+  --blockquote-glossy-shadow: inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05),
+    0 2px 6px rgba(0, 0, 0, 0.15),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  --blockquote-metal-accent: #666666;
+  --blockquote-metal-border: #888888;
+  --blockquote-metal-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+  --blockquote-inline-bg: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(240, 240, 240, 0.6) 100%
+  );
+  --blockquote-inline-border: #cccccc;
 }

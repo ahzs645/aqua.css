@@ -10,6 +10,53 @@ const postcss = require("postcss");
 const sass = require("sass");
 
 const { homepage, version } = require("./package.json");
+const INLINE_ASSET_EXTENSIONS = [".png", ".svg", ".gif", ".jpg"];
+
+function createPipeline({ preserveVars, copyAssets, prefixSelector, inlineAssets, inlineAssetRoot }) {
+  let pipeline = postcss()
+    .use(require("postcss-inline-svg"))
+    .use(require("postcss-css-variables")({ preserve: preserveVars }))
+    .use(require("postcss-calc"))
+    .use(require("autoprefixer"));
+
+  if (inlineAssets) {
+    pipeline = pipeline.use(require("postcss-base64")({
+      root: inlineAssetRoot,
+      extensions: INLINE_ASSET_EXTENSIONS,
+    }));
+  }
+
+  if (prefixSelector) {
+    pipeline = pipeline.use(require("postcss-prefix-selector")({
+      prefix: prefixSelector,
+      transform: (prefix, selector, prefixed) => {
+        if (selector === ":root") return prefix;
+        if (selector === "body" || selector === "html") return `${selector}${prefix}`;
+        return prefixed;
+      },
+    }));
+  }
+
+  if (copyAssets) {
+    pipeline = pipeline.use(require("postcss-copy")({ dest: "dist", template: "[name].[ext]" }));
+  }
+
+  return pipeline.use(require("cssnano"));
+}
+
+function runPostCSS(input, { from, to, preserveVars, copyAssets, prefixSelector, inlineAssets, inlineAssetRoot }) {
+  return createPipeline({
+    preserveVars,
+    copyAssets,
+    prefixSelector,
+    inlineAssets,
+    inlineAssetRoot,
+  }).process(input, {
+    from,
+    to,
+    map: { inline: false },
+  });
+}
 
 function buildCSS() {
   // First, compile SCSS to CSS
@@ -19,33 +66,99 @@ function buildCSS() {
   });
 
   const input = `/*! aqua.css v${version} - ${homepage} */\n` + scssResult.css;
-
-  function runPostCSS(outputFile, { preserveVars, copyAssets }) {
-    let pipeline = postcss()
-      .use(require("postcss-inline-svg"))
-      .use(require("postcss-css-variables")({ preserve: preserveVars }))
-      .use(require("postcss-calc"));
-
-    if (copyAssets) {
-      pipeline = pipeline.use(require("postcss-copy")({ dest: "dist", template: "[name].[ext]" }));
-    }
-
-    return pipeline
-      .use(require("cssnano"))
-      .process(input, {
-        from: "src/index.scss",
-        to: outputFile,
-        map: { inline: false },
-      })
-      .then((result) => {
-        fs.writeFileSync(outputFile, result.css);
-        fs.writeFileSync(`${outputFile}.map`, result.map.toString());
-      });
-  }
-
   mkdirp.sync("dist");
-  return runPostCSS("dist/aqua.css", { preserveVars: true, copyAssets: true })
-    .then(() => runPostCSS("dist/aqua.legacy.css", { preserveVars: false, copyAssets: false }));
+  return runPostCSS(input, {
+    from: "src/index.scss",
+    to: "dist/aqua.css",
+    preserveVars: true,
+    copyAssets: true,
+  })
+    .then((result) => {
+      fs.writeFileSync("dist/aqua.css", result.css);
+      fs.writeFileSync("dist/aqua.css.map", result.map.toString());
+    })
+    .then(() => runPostCSS(input, {
+      from: "src/index.scss",
+      to: "dist/aqua.legacy.css",
+      preserveVars: false,
+      copyAssets: false,
+    }))
+    .then((result) => {
+      fs.writeFileSync("dist/aqua.legacy.css", result.css);
+      fs.writeFileSync("dist/aqua.legacy.css.map", result.map.toString());
+    })
+    .then(() => runPostCSS(input, {
+      from: "src/index.scss",
+      to: "dist/aqua.scoped.css",
+      preserveVars: true,
+      copyAssets: false,
+      prefixSelector: ".aqua",
+    }))
+    .then((result) => {
+      fs.writeFileSync("dist/aqua.scoped.css", result.css);
+      fs.writeFileSync("dist/aqua.scoped.css.map", result.map.toString());
+    })
+    .then(() => {
+      const inlineSource = fs.readFileSync("dist/aqua.css", "utf-8");
+      return runPostCSS(inlineSource, {
+        from: "dist/aqua.css",
+        to: "dist/aqua.inline.css",
+        preserveVars: true,
+        copyAssets: false,
+        inlineAssets: true,
+        inlineAssetRoot: path.join(process.cwd(), "dist"),
+      });
+    })
+    .then((result) => {
+      fs.writeFileSync("dist/aqua.inline.css", result.css);
+      fs.writeFileSync("dist/aqua.inline.css.map", result.map.toString());
+    })
+    .then(() => buildComponents());
+}
+
+function buildComponents() {
+  const componentDir = path.join("dist", "components");
+  mkdirp.sync(componentDir);
+
+  const exclude = new Set([
+    "_variables.scss",
+    "_mixins.scss",
+    "_base.scss",
+    "_backgrounds.scss",
+    "_themes.scss",
+    "_fonts.scss",
+  ]);
+
+  const componentFiles = fs.readdirSync("src")
+    .filter((file) => file.startsWith("_") && file.endsWith(".scss") && !exclude.has(file));
+
+  return Promise.all(componentFiles.map((file) => {
+    const name = file.replace(/^_/, "").replace(/\.scss$/, "");
+    const scssInput = [
+      `@use "variables";`,
+      `@use "backgrounds";`,
+      `@use "themes";`,
+      `@use "${name}";`,
+    ].join("\n");
+    const result = sass.compileString(scssInput, {
+      loadPaths: ["src"],
+      sourceMap: true,
+    });
+    const input = `/*! aqua.css v${version} - ${homepage} */\n` + result.css;
+    const target = path.join(componentDir, `${name}.css`);
+
+    return runPostCSS(input, {
+      from: `src/${file}`,
+      to: target,
+      preserveVars: true,
+      copyAssets: false,
+      inlineAssets: true,
+      inlineAssetRoot: path.join(process.cwd(), "dist"),
+    }).then((processed) => {
+      fs.writeFileSync(target, processed.css);
+      fs.writeFileSync(`${target}.map`, processed.map.toString());
+    });
+  }));
 }
 
 function buildDocs() {
@@ -66,10 +179,11 @@ function buildDocs() {
     const escaped = hljs.highlight(dedented.replace(magicBrackets, ""), { language: "html" }).value;
 
     return `<div class="example">
-      ${inline}
-      <details>
+      <div class="raw">${inline}</div>
+      <details class="code">
         <summary>Show code</summary>
         <pre><code>${escaped}</code></pre>
+        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>`;
   }

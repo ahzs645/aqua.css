@@ -36,6 +36,20 @@ npm install aqua.css
 If you need a build with CSS custom properties resolved, use `dist/aqua.legacy.css`
 after running `npm run build`.
 
+### Scoped build
+
+Use `dist/aqua.scoped.css` to scope styles to a container:
+
+```html
+<div class="aqua">
+  <!-- Aqua UI -->
+</div>
+```
+
+### Inline assets
+
+For a single-file drop-in (icons inlined), use `dist/aqua.inline.css`.
+
 ## Usage
 
 ```html
@@ -67,6 +81,10 @@ after running `npm run build`.
 
 To prefer local Aqua-era fonts, add `class="aqua-fonts"` (or `data-aqua-fonts`) on
 `<body>`. For bundling custom font files, see `fonts/README.md`.
+
+## Component Builds
+
+Component-only builds are emitted to `dist/components/*.css` for cherry-picking.
 
 ## Components
 

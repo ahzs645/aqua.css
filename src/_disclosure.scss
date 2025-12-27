@@ -25,7 +25,7 @@ details.disclosure {
       content: "";
       width: 8px;
       height: 8px;
-      background-image: svg-load("./icon/disclosure-closed.svg");
+      background-image: svg-load("../icon/disclosure-closed.svg");
       background-size: contain;
       background-repeat: no-repeat;
       transition: transform 0.2s;
@@ -37,7 +37,7 @@ details.disclosure {
   }
 
   &[open] > summary::before {
-    background-image: svg-load("./icon/disclosure-open.svg");
+    background-image: svg-load("../icon/disclosure-open.svg");
   }
 
   > .disclosure-content {

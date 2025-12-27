@@ -19,19 +19,19 @@
 }
 
 ::-webkit-scrollbar-button:vertical:start {
-  background-image: svg-load("./icon/scrollbar-up.svg");
+  background-image: svg-load("../icon/scrollbar-up.svg");
 }
 
 ::-webkit-scrollbar-button:vertical:end {
-  background-image: svg-load("./icon/scrollbar-down.svg");
+  background-image: svg-load("../icon/scrollbar-down.svg");
 }
 
 ::-webkit-scrollbar-button:horizontal:start {
-  background-image: svg-load("./icon/scrollbar-left.svg");
+  background-image: svg-load("../icon/scrollbar-left.svg");
 }
 
 ::-webkit-scrollbar-button:horizontal:end {
-  background-image: svg-load("./icon/scrollbar-right.svg");
+  background-image: svg-load("../icon/scrollbar-right.svg");
 }
 
 ::-webkit-scrollbar-button:active {

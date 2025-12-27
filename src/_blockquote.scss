@@ -1,0 +1,377 @@
+/**
+ * Blockquote
+ * Aqua-styled blockquote components for displaying quotes
+ * Inspired by Mac OS X 10.0-10.4 (2001-2005)
+ */
+
+/* ============================================
+   Standard Aqua Quote (Pinstripe)
+   Classic pinstripe background with blue accent
+   ============================================ */
+
+.aqua-quote {
+  position: relative;
+  margin: 16px 0;
+  padding: 16px 20px 16px 24px;
+  font-family: var(--font-system);
+  font-size: var(--font-size-small);
+  line-height: 1.6;
+  color: var(--blockquote-text);
+
+  /* Pinstripe background */
+  background: repeating-linear-gradient(
+    0deg,
+    var(--blockquote-pinstripe-light) 0px,
+    var(--blockquote-pinstripe-light) 1px,
+    var(--blockquote-pinstripe-dark) 1px,
+    var(--blockquote-pinstripe-dark) 2px
+  );
+
+  /* Aqua-style inset border */
+  border: 1px solid var(--blockquote-border);
+  border-radius: var(--radius-medium);
+
+  /* Dimensional shadow */
+  box-shadow: var(--blockquote-shadow);
+
+  /* Left accent bar */
+  border-left: 4px solid var(--blockquote-accent);
+
+  &::before {
+    content: "\201C";
+    position: absolute;
+    top: 8px;
+    left: 28px;
+    font-size: 32px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--blockquote-quote-mark);
+    opacity: var(--blockquote-quote-mark-opacity);
+    line-height: 1;
+  }
+
+  p {
+    margin: 0;
+    padding-left: 16px;
+  }
+
+  cite,
+  footer {
+    display: block;
+    margin-top: 10px;
+    padding-left: 16px;
+    font-size: 11px;
+    font-style: normal;
+    color: var(--blockquote-cite-text);
+
+    &::before {
+      content: "\2014\00A0";
+    }
+  }
+}
+
+/* ============================================
+   Brushed Metal Quote
+   iTunes/QuickTime metal texture style
+   ============================================ */
+
+.metal-quote {
+  position: relative;
+  margin: 16px 0;
+  padding: 16px 20px 16px 24px;
+  font-family: var(--font-system);
+  font-size: var(--font-size-small);
+  line-height: 1.6;
+  color: #222222;
+
+  /* Brushed metal gradient */
+  background:
+    linear-gradient(90deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.1) 100%
+    ),
+    linear-gradient(180deg,
+      #d4d4d4 0%,
+      #c0c0c0 20%,
+      #b8b8b8 40%,
+      #c4c4c4 60%,
+      #b0b0b0 80%,
+      #a8a8a8 100%
+    );
+
+  /* Metal border styling */
+  border: 1px solid var(--blockquote-metal-border);
+  border-radius: 4px;
+
+  /* Metal dimensional effects */
+  box-shadow: var(--blockquote-metal-shadow);
+
+  /* Left accent - darker metal bar */
+  border-left: 4px solid var(--blockquote-metal-accent);
+
+  /* Noise texture overlay for authentic metal grain */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  p {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding-left: 16px;
+  }
+
+  cite,
+  footer {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 10px;
+    padding-left: 16px;
+    font-size: 11px;
+    font-style: normal;
+    color: #555555;
+
+    &::before {
+      content: "\2014\00A0";
+    }
+  }
+}
+
+/* ============================================
+   Glossy Aqua Quote
+   Full Aqua gel/glass effect
+   ============================================ */
+
+.glossy-quote {
+  position: relative;
+  margin: 16px 0;
+  padding: 18px 22px 18px 26px;
+  font-family: var(--font-system);
+  font-size: var(--font-size-small);
+  line-height: 1.6;
+  color: #1a1a1a;
+
+  /* Aqua gel gradient */
+  background: var(--blockquote-glossy-gradient);
+
+  /* Rounded aqua border */
+  border: 1px solid #b0b0b0;
+  border-radius: var(--radius-large);
+
+  /* Glossy dimensional shadow */
+  box-shadow: var(--blockquote-glossy-shadow);
+
+  /* Blue accent bar with gel effect */
+  border-left: 5px solid transparent;
+  background-clip: padding-box;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    border-radius: 8px 0 0 8px;
+    background: var(--blockquote-glossy-accent-gradient);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      1px 0 2px rgba(0, 0, 0, 0.1);
+  }
+
+  p {
+    margin: 0;
+    padding-left: 12px;
+  }
+
+  cite,
+  footer {
+    display: block;
+    margin-top: 12px;
+    padding-left: 12px;
+    font-size: 11px;
+    font-style: normal;
+    color: #555555;
+
+    &::before {
+      content: "\2014\00A0";
+    }
+  }
+}
+
+/* ============================================
+   Graphite Variant
+   For Graphite appearance option
+   ============================================ */
+
+.graphite-quote {
+  position: relative;
+  margin: 16px 0;
+  padding: 16px 20px 16px 24px;
+  font-family: var(--font-system);
+  font-size: var(--font-size-small);
+  line-height: 1.6;
+  color: var(--blockquote-text);
+
+  /* Subtle gray pinstripe */
+  background: repeating-linear-gradient(
+    0deg,
+    #f0f0f0 0px,
+    #f0f0f0 1px,
+    #e4e4e4 1px,
+    #e4e4e4 2px
+  );
+
+  border: 1px solid var(--blockquote-border);
+  border-radius: var(--radius-medium);
+
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.12),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.08);
+
+  /* Graphite accent bar */
+  border-left: 4px solid var(--blockquote-accent-graphite);
+
+  p {
+    margin: 0;
+    padding-left: 12px;
+  }
+
+  cite,
+  footer {
+    display: block;
+    margin-top: 10px;
+    padding-left: 12px;
+    font-size: 11px;
+    font-style: normal;
+    color: var(--blockquote-cite-text);
+
+    &::before {
+      content: "\2014\00A0";
+    }
+  }
+}
+
+/* ============================================
+   Inline Quote
+   For shorter inline quotes within text
+   ============================================ */
+
+.aqua-inline-quote,
+q.aqua-inline-quote {
+  display: inline;
+  font-family: var(--font-system);
+  font-size: inherit;
+  font-style: italic;
+  color: #444444;
+  padding: 2px 6px;
+  background: var(--blockquote-inline-bg);
+  border-radius: var(--radius-small);
+  border: 1px solid var(--blockquote-inline-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  /* Override default quote marks for q element */
+  quotes: none;
+
+  &::before,
+  &::after {
+    content: none;
+  }
+}
+
+/* ============================================
+   Theme Variants (when used with .graphite class)
+   ============================================ */
+
+.graphite {
+  .aqua-quote {
+    border-left-color: var(--blockquote-accent-graphite);
+
+    &::before {
+      color: var(--blockquote-accent-graphite);
+    }
+  }
+
+  .glossy-quote::before {
+    background: linear-gradient(180deg,
+      #9ca3af 0%,
+      #6b7280 30%,
+      #4b5563 60%,
+      #374151 100%
+    );
+  }
+}
+
+/* ============================================
+   Size Variants
+   ============================================ */
+
+.aqua-quote--small,
+.metal-quote--small,
+.glossy-quote--small,
+.graphite-quote--small {
+  padding: 12px 16px 12px 20px;
+  font-size: 11px;
+
+  &::before {
+    font-size: 24px;
+    top: 6px;
+    left: 22px;
+  }
+
+  p {
+    padding-left: 12px;
+  }
+
+  cite,
+  footer {
+    margin-top: 8px;
+    padding-left: 12px;
+    font-size: 10px;
+  }
+}
+
+.aqua-quote--large,
+.metal-quote--large,
+.glossy-quote--large,
+.graphite-quote--large {
+  padding: 20px 24px 20px 28px;
+  font-size: 14px;
+
+  &::before {
+    font-size: 40px;
+    top: 10px;
+    left: 32px;
+  }
+
+  p {
+    padding-left: 20px;
+  }
+
+  cite,
+  footer {
+    margin-top: 12px;
+    padding-left: 20px;
+    font-size: 12px;
+  }
+}
+
+/* ============================================
+   Utility: No quote mark
+   ============================================ */
+
+.aqua-quote--no-mark::before {
+  display: none;
+}

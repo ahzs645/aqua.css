@@ -96,17 +96,40 @@ p {
   );
 }
 
-.example details {
+.example .raw {
+  display: block;
+}
+
+.example .code {
   margin-top: 15px;
 }
 
-.example summary {
+.example .code summary {
   cursor: pointer;
   color: #0066cc;
   font-size: 12px;
 }
 
-.example pre {
+.example .code[open] summary {
+  margin-bottom: 8px;
+}
+
+.example .code .copy {
+  margin-top: 10px;
+  margin-left: auto;
+  display: inline-flex;
+  min-width: 0;
+  height: 1.6em;
+  padding: 0 0.85em;
+  font-size: 0.85rem;
+}
+
+.example .code .copy span {
+  top: 0;
+  letter-spacing: 0.02em;
+}
+
+.example .code pre {
   margin-top: 10px;
   padding: 15px;
   background: #1e1e1e;
@@ -114,7 +137,7 @@ p {
   overflow-x: auto;
 }
 
-.example code {
+.example .code code {
   color: #d4d4d4;
   font-family: "SF Mono", Monaco, "Courier New", monospace;
   font-size: 12px;

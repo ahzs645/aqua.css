@@ -153,6 +153,39 @@
         }
       }
 
+      function setupCopyButtons() {
+        document.querySelectorAll('.example .copy').forEach((button) => {
+          button.addEventListener('click', () => {
+            const example = button.closest('.example');
+            const raw = example ? example.querySelector('.raw') : null;
+            if (!raw) return;
+            const html = raw.innerHTML.trim();
+
+            function setCopied() {
+              button.querySelector('span').textContent = 'Copied';
+              setTimeout(() => {
+                button.querySelector('span').textContent = 'Copy code';
+              }, 1200);
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(html).then(setCopied);
+            } else {
+              const temp = document.createElement('textarea');
+              temp.value = html;
+              temp.setAttribute('readonly', '');
+              temp.style.position = 'absolute';
+              temp.style.left = '-9999px';
+              document.body.appendChild(temp);
+              temp.select();
+              document.execCommand('copy');
+              document.body.removeChild(temp);
+              setCopied();
+            }
+          });
+        });
+      }
+
       function setupAquaEraSelector() {
         const select = document.getElementById('aqua-era-select');
         if (!select) return;
@@ -381,6 +414,7 @@
       setupSplitPanes();
       setupPillTabs();
       setupIndeterminateCheckbox();
+      setupCopyButtons();
       setupAquaEraSelector();
       setupWaveScrollbar();
       setupCustomSliders();

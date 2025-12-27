@@ -70,7 +70,7 @@
     background: var(--radio-selected-gradient);
 
     .dot {
-      background-image: svg-load("./icon/radio-dot.svg");
+      background-image: svg-load("../icon/radio-dot.svg");
       box-shadow: var(--radio-dot-shadow);
     }
   }
@@ -135,7 +135,7 @@ input[type="radio"]:not(.radio input) {
     background: var(--radio-selected-gradient);
 
     &::after {
-      background-image: svg-load("./icon/radio-dot.svg");
+      background-image: svg-load("../icon/radio-dot.svg");
       box-shadow: var(--radio-dot-shadow);
     }
   }
