@@ -510,6 +510,32 @@
         });
       }
 
+      function setupSpinners() {
+        document.querySelectorAll('.aqua-spinner').forEach((spinner) => {
+          const input = spinner.querySelector('input');
+          const buttons = spinner.querySelectorAll('.aqua-spinner-buttons button');
+          if (!input || buttons.length < 2) return;
+
+          const min = parseFloat(input.min) || -Infinity;
+          const max = parseFloat(input.max) || Infinity;
+          const step = parseFloat(input.step) || 1;
+
+          // Up button (first)
+          buttons[0].addEventListener('click', () => {
+            const current = parseFloat(input.value) || 0;
+            input.value = Math.min(max, current + step);
+            input.dispatchEvent(new Event('change'));
+          });
+
+          // Down button (second)
+          buttons[1].addEventListener('click', () => {
+            const current = parseFloat(input.value) || 0;
+            input.value = Math.max(min, current - step);
+            input.dispatchEvent(new Event('change'));
+          });
+        });
+      }
+
       setupTitledPanes();
       setupTreeTable();
       setupSplitPanes();
@@ -520,6 +546,7 @@
       setupAquaEraSelector();
       setupWaveScrollbar();
       setupCustomSliders();
+      setupSpinners();
     })();
   </script>
 </body>
