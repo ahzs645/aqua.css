@@ -104,8 +104,17 @@
     border-color: var(--checkbox-selected-border);
     background: var(--checkbox-selected-gradient);
 
+    /* Hide the glow overlay */
+    &::after {
+      display: none;
+    }
+
     .mark {
       display: block;
+      inset: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 8px;
       height: 2px;
       background-image: none;

@@ -5,21 +5,21 @@
 
 /* CSS Variables for Aqua theming */
 :root {
-  /* Pinstripe patterns */
+  /* Pinstripe patterns - standardized 4px equal stripes */
   --aqua-pinstripe-light: repeating-linear-gradient(
     0deg,
     transparent 0px,
-    transparent 1.5px,
-    rgba(255, 255, 255, 0.85) 1.5px,
-    rgba(255, 255, 255, 0.85) 4px
+    transparent 4px,
+    rgba(255, 255, 255, 0.85) 4px,
+    rgba(255, 255, 255, 0.85) 8px
   );
 
   --aqua-pinstripe-window: repeating-linear-gradient(
       0deg,
       transparent 0px,
-      transparent 1.5px,
-      rgba(255, 255, 255, 0.85) 1.5px,
-      rgba(255, 255, 255, 0.85) 4px
+      transparent 4px,
+      rgba(255, 255, 255, 0.85) 4px,
+      rgba(255, 255, 255, 0.85) 8px
     ),
     linear-gradient(to bottom, #ececec 0%, #ececec 100%);
 
@@ -33,17 +33,17 @@
   --aqua-pinstripe-menubar: repeating-linear-gradient(
     0deg,
     transparent 0px,
-    transparent 1.5px,
-    rgba(255, 255, 255, 0.55) 1.5px,
-    rgba(255, 255, 255, 0.55) 4px
+    transparent 4px,
+    rgba(255, 255, 255, 0.55) 4px,
+    rgba(255, 255, 255, 0.55) 8px
   );
 
   --aqua-pinstripe-diagonal: repeating-linear-gradient(
     -45deg,
     #eee 0px,
-    #eee 2px,
-    #e3e3e3 2px,
-    #e3e3e3 4px
+    #eee 4px,
+    #e3e3e3 4px,
+    #e3e3e3 8px
   );
 
   --aqua-background-classic: repeating-linear-gradient(
