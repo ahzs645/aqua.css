@@ -920,9 +920,9 @@
   --table-cell-border: rgb(240, 240, 240);
   --table-row-odd: #ffffff;
   --table-row-even: rgb(243, 246, 250);
-  --table-row-hover: rgb(182, 214, 253);
-  --table-row-selected: rgb(60, 119, 212);
-  --table-row-selected-text: var(--text-highlight);
+  --table-row-hover: var(--selection-hover);
+  --table-row-selected: var(--selection-focused-solid);
+  --table-row-selected-text: var(--selection-focused-text);
   --table-sort-arrow: rgba(0, 0, 0, 0.4);
   --table-legacy-header-border: #888888;
   --table-legacy-header-divider: #CCCCCC;
@@ -930,56 +930,95 @@
   --table-legacy-row-hover: var(--surface);
   --table-legacy-row-border: var(--surface);
 
-  /* List View */
+  /* List View - now references unified selection system */
   --list-border: var(--table-border);
   --list-bg: var(--text-highlight);
-  --list-focus-ring: 0 0 8px 0 rgba(120, 171, 217, 0.8);
+  --list-focus-ring: var(--selection-focus-ring);
   --list-item-bg: var(--text-highlight);
   --list-item-color: var(--text-color);
-  --list-item-hover-bg: rgb(182, 214, 253);
-  --list-item-selected-strip-gradient: linear-gradient(
-    rgb(187, 197, 214),
-    rgb(147, 160, 185)
-  );
-  --list-item-selected-fill-gradient: linear-gradient(
-    rgb(195, 204, 223),
-    rgb(195, 204, 223) 1%,
-    rgb(189, 199, 220) 1%,
-    rgb(155, 169, 196) 100%
-  );
-  --list-item-selected-text: var(--text-highlight);
-  --list-item-selected-focused-text: var(--list-item-selected-text);
-  --list-item-selected-focused-strip-gradient: linear-gradient(
-    rgb(95, 165, 221),
-    rgb(54, 124, 192)
-  );
-  --list-item-selected-focused-fill-gradient: linear-gradient(
-    rgb(116, 186, 232),
-    rgb(116, 186, 232) 1%,
-    rgb(109, 178, 227) 1%,
-    rgb(59, 136, 208) 100%
-  );
-  --list-item-selected-focused-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  --list-item-hover-bg: var(--selection-hover);
+  --list-item-selected-strip-gradient: var(--selection-unfocused-strip-gradient);
+  --list-item-selected-fill-gradient: var(--selection-unfocused-fill-gradient);
+  --list-item-selected-text: var(--selection-unfocused-text);
+  --list-item-selected-focused-text: var(--selection-focused-text);
+  --list-item-selected-focused-strip-gradient: var(--selection-focused-strip-gradient);
+  --list-item-selected-focused-fill-gradient: var(--selection-focused-fill-gradient);
+  --list-item-selected-focused-text-shadow: var(--selection-focused-text-shadow);
   --list-item-odd-bg: var(--table-row-even);
   --list-item-even-bg: var(--text-highlight);
-  --list-item-selected-strip-gradient-horizontal: linear-gradient(
+  --list-item-selected-strip-gradient-horizontal: var(--selection-unfocused-strip-gradient-horizontal);
+  --list-item-selected-fill-gradient-horizontal: var(--selection-unfocused-fill-gradient-horizontal);
+  --list-item-selected-focused-strip-gradient-horizontal: var(--selection-focused-strip-gradient-horizontal);
+  --list-item-selected-focused-fill-gradient-horizontal: var(--selection-focused-fill-gradient-horizontal);
+
+  /* Tree View - now references unified selection system */
+  --tree-border: var(--list-border);
+  --tree-bg: var(--list-bg);
+  --tree-focus-ring: var(--selection-focus-ring);
+  --tree-item-hover-bg: var(--selection-hover);
+  --tree-item-selected-strip-gradient: var(--selection-unfocused-strip-gradient);
+  --tree-item-selected-fill-gradient: var(--selection-unfocused-fill-gradient);
+  --tree-item-selected-text: var(--selection-unfocused-text);
+  --tree-item-selected-focused-text: var(--selection-focused-text);
+  --tree-item-selected-focused-strip-gradient: var(--selection-focused-strip-gradient);
+  --tree-item-selected-focused-fill-gradient: var(--selection-focused-fill-gradient);
+  --tree-item-selected-focused-text-shadow: var(--selection-focused-text-shadow);
+  --tree-arrow-color: rgb(134, 134, 134);
+  --tree-item-selected-solid-bg: var(--selection-focused-solid);
+  --tree-item-selected-solid-text: var(--selection-focused-text);
+
+  /* ============================================
+     Unified Selection System
+     Standardized selection colors for all table-like components
+     ============================================ */
+  /* Unfocused selection (gray) - vertical */
+  --selection-unfocused-strip-gradient: linear-gradient(
+    rgb(187, 197, 214),
+    rgb(147, 160, 185)
+  );
+  --selection-unfocused-fill-gradient: linear-gradient(
+    rgb(195, 204, 223),
+    rgb(195, 204, 223) 1%,
+    rgb(189, 199, 220) 1%,
+    rgb(155, 169, 196) 100%
+  );
+  --selection-unfocused-text: var(--text-highlight);
+
+  /* Focused selection (blue) - vertical */
+  --selection-focused-strip-gradient: linear-gradient(
+    rgb(95, 165, 221),
+    rgb(54, 124, 192)
+  );
+  --selection-focused-fill-gradient: linear-gradient(
+    rgb(116, 186, 232),
+    rgb(116, 186, 232) 1%,
+    rgb(109, 178, 227) 1%,
+    rgb(59, 136, 208) 100%
+  );
+  --selection-focused-text: var(--text-highlight);
+  --selection-focused-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+
+  /* Unfocused selection (gray) - horizontal */
+  --selection-unfocused-strip-gradient-horizontal: linear-gradient(
     to right,
     rgb(187, 197, 214),
     rgb(147, 160, 185)
   );
-  --list-item-selected-fill-gradient-horizontal: linear-gradient(
+  --selection-unfocused-fill-gradient-horizontal: linear-gradient(
     to right,
     rgb(195, 204, 223),
     rgb(195, 204, 223) 1%,
     rgb(189, 199, 220) 1%,
     rgb(155, 169, 196) 100%
   );
-  --list-item-selected-focused-strip-gradient-horizontal: linear-gradient(
+
+  /* Focused selection (blue) - horizontal */
+  --selection-focused-strip-gradient-horizontal: linear-gradient(
     to right,
     rgb(95, 165, 221),
     rgb(54, 124, 192)
   );
-  --list-item-selected-focused-fill-gradient-horizontal: linear-gradient(
+  --selection-focused-fill-gradient-horizontal: linear-gradient(
     to right,
     rgb(116, 186, 232),
     rgb(116, 186, 232) 1%,
@@ -987,29 +1026,18 @@
     rgb(59, 136, 208) 100%
   );
 
-  /* Tree View */
-  --tree-border: var(--list-border);
-  --tree-bg: var(--list-bg);
-  --tree-focus-ring: var(--list-focus-ring);
-  --tree-item-hover-bg: var(--list-item-hover-bg);
-  --tree-item-selected-strip-gradient: var(--list-item-selected-strip-gradient);
-  --tree-item-selected-fill-gradient: var(--list-item-selected-fill-gradient);
-  --tree-item-selected-text: var(--list-item-selected-text);
-  --tree-item-selected-focused-text: var(--tree-item-selected-text);
-  --tree-item-selected-focused-strip-gradient: var(--list-item-selected-focused-strip-gradient);
-  --tree-item-selected-focused-fill-gradient: var(--list-item-selected-focused-fill-gradient);
-  --tree-item-selected-focused-text-shadow: var(--list-item-selected-focused-text-shadow);
-  --tree-arrow-color: rgb(134, 134, 134);
-  --tree-item-selected-solid-bg: rgb(60, 119, 212);
-  --tree-item-selected-solid-text: var(--text-highlight);
+  /* Solid variants (for simpler components) */
+  --selection-focused-solid: rgb(60, 119, 212);
+  --selection-hover: rgb(182, 214, 253);
+  --selection-focus-ring: 0 0 8px 0 rgba(120, 171, 217, 0.8);
 
-  /* Listbox */
+  /* Listbox - now references unified selection system */
   --listbox-bg: var(--text-highlight);
   --listbox-border: #888888;
   --listbox-focus-shadow: 0 0 3px rgba(43, 153, 255, 0.5);
-  --listbox-option-selected-bg: var(--aqua-blue);
-  --listbox-option-selected-text: var(--text-highlight);
-  --listbox-option-hover-bg: var(--surface);
+  --listbox-option-selected-bg: var(--selection-focused-solid);
+  --listbox-option-selected-text: var(--selection-focused-text);
+  --listbox-option-hover-bg: var(--selection-hover);
 
   /* Fieldset */
   --fieldset-border: #888888;

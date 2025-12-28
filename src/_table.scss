@@ -60,15 +60,158 @@ table.aqua-table {
     background: var(--table-row-hover);
   }
 
-  /* Selected row */
+  /* Selected row (unfocused - gray gradient) */
   tr.selected td {
-    background: var(--table-row-selected);
-    color: var(--table-row-selected-text);
+    background:
+      var(--selection-unfocused-strip-gradient),
+      var(--selection-unfocused-fill-gradient);
+    background-size: 100% 1px, 100% 100%;
+    background-position: 0 0, 0 1px;
+    background-repeat: no-repeat;
+    color: var(--selection-unfocused-text);
+  }
+
+  /* Focus state */
+  &:focus,
+  &:focus-within {
+    box-shadow: var(--selection-focus-ring);
+
+    tr.selected td {
+      background:
+        var(--selection-focused-strip-gradient),
+        var(--selection-focused-fill-gradient);
+      background-size: 100% 1px, 100% 100%;
+      background-position: 0 0, 0 1px;
+      background-repeat: no-repeat;
+      color: var(--selection-focused-text);
+      text-shadow: var(--selection-focused-text-shadow);
+    }
   }
 
   /* Interactive table */
   &.interactive tbody tr {
     cursor: pointer;
+  }
+
+  /* Disabled state */
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* Sort arrow */
+  th .sort-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    vertical-align: middle;
+
+    &.asc {
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      border-bottom: 4px solid var(--table-sort-arrow);
+    }
+
+    &.desc {
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      border-top: 4px solid var(--table-sort-arrow);
+    }
+  }
+
+  /* Unified header style (segmented control look with gloss) */
+  &.unified-header,
+  &.aqua-unified-header {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
+    thead {
+      position: relative;
+      background: var(--aqua-button-secondary-gradient);
+      box-shadow: var(--aqua-button-secondary-shadow-inset);
+      border-radius: 0;
+      overflow: hidden;
+
+      /* Unified gloss across entire header */
+      @include aqua-glass('pill', $overrides: (
+        shine: (
+          width: calc(100% - 0.25em),
+          height: 45%,
+          radius: 0,
+          z-index: 10
+        ),
+        glow: (
+          width: calc(100% - 0.5em),
+          radius: 0,
+          z-index: 10
+        )
+      ));
+
+      th {
+        background: transparent;
+        border-bottom: none;
+        border-right: 1px solid var(--segmented-divider);
+        color: var(--aqua-button-secondary-text);
+        text-shadow: var(--aqua-button-secondary-text-shadow);
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+
+        /* Remove aqua-glass from individual headers in unified mode */
+        &::before,
+        &::after {
+          display: none;
+        }
+
+        &:last-child {
+          border-right: none;
+        }
+
+        /* No hover state for unified header */
+        &:hover:not(.active):not(.sorted):not([aria-sort]) {
+          background: transparent;
+        }
+
+        /* Active/sorted column state */
+        &.active,
+        &.sorted,
+        &[aria-sort] {
+          background: var(--aqua-button-primary-gradient);
+          color: var(--aqua-button-primary-text);
+          text-shadow: var(--aqua-button-primary-text-shadow);
+
+          &:hover {
+            background: var(--aqua-button-primary-gradient);
+          }
+
+          .sort-arrow {
+            &.asc {
+              border-bottom-color: var(--aqua-button-primary-text);
+            }
+            &.desc {
+              border-top-color: var(--aqua-button-primary-text);
+            }
+          }
+        }
+
+        &:active {
+          background: var(--aqua-button-primary-gradient);
+          color: var(--aqua-button-primary-text);
+          text-shadow: var(--aqua-button-primary-text-shadow);
+        }
+
+        /* Sort arrow - fixed width, doesn't shift content */
+        .sort-arrow {
+          position: absolute;
+          right: 8px;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 11;
+        }
+      }
+    }
   }
 }
 
@@ -115,11 +258,17 @@ table:not(.aqua):not(.table-view) {
 
       &.selected,
       &.highlighted {
-        background: var(--aqua-blue);
-        color: var(--table-row-selected-text);
+        background:
+          var(--selection-focused-strip-gradient),
+          var(--selection-focused-fill-gradient);
+        background-size: 100% 1px, 100% 100%;
+        background-position: 0 0, 0 1px;
+        background-repeat: no-repeat;
+        color: var(--selection-focused-text);
+        text-shadow: var(--selection-focused-text-shadow);
 
         td {
-          border-bottom-color: var(--aqua-blue-dark);
+          border-bottom-color: transparent;
         }
       }
 
@@ -139,8 +288,12 @@ table:not(.aqua):not(.table-view) {
   table:not(.aqua):not(.table-view) tbody tr {
     &.selected,
     &.highlighted {
-      background: rgb(210, 210, 210);
+      background: linear-gradient(
+        rgb(220, 220, 220) 0%,
+        rgb(200, 200, 200) 100%
+      );
       color: var(--text-color);
+      text-shadow: none;
 
       td {
         border-bottom-color: rgb(180, 180, 180);
@@ -148,10 +301,28 @@ table:not(.aqua):not(.table-view) {
     }
   }
 
-  .table-view tr.selected td,
-  table.aqua tr.selected td,
-  table.aqua-table tr.selected td {
-    background: rgb(210, 210, 210);
-    color: var(--text-color);
+  .table-view,
+  table.aqua,
+  table.aqua-table {
+    /* Gray selection for 10.0 era (unfocused) */
+    tr.selected td {
+      background: linear-gradient(
+        rgb(220, 220, 220) 0%,
+        rgb(200, 200, 200) 100%
+      );
+      color: var(--text-color);
+      text-shadow: none;
+    }
+
+    /* Gray selection for 10.0 era (focused) */
+    &:focus tr.selected td,
+    &:focus-within tr.selected td {
+      background: linear-gradient(
+        rgb(200, 200, 200) 0%,
+        rgb(180, 180, 180) 100%
+      );
+      color: var(--text-color);
+      text-shadow: none;
+    }
   }
 }

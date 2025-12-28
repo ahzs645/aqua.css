@@ -40,6 +40,7 @@ body {
   justify-content: center;
 }
 
+
 /* Hamburger toggle button (hidden on desktop) */
 .sidebar-toggle {
   display: none;

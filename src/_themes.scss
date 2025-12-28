@@ -933,4 +933,37 @@
   --aqua-button-standard-radius: 4.5px;
   --aqua-button-round-rect-radius: 6px;
   --aqua-button-pill-radius: 6px;
+
+  /* 10.6 Snow Leopard Tab Styling */
+  --tab-bar-gradient: linear-gradient(
+    to bottom,
+    #b8d4f0 0%,
+    #a8c8e8 47%,
+    #90bce6 51%,
+    #88b8ec 64%,
+    #c8e8ff 100%
+  );
+  --tab-bar-stroke-gradient: linear-gradient(
+    to bottom,
+    #4080c4 0%,
+    rgba(64, 128, 196, 0.85) 11%,
+    rgba(200, 232, 255, 0) 100%
+  );
+  --tab-inactive-gradient: linear-gradient(
+    to bottom,
+    #b8b8b8 0%,
+    #d8d8d8 38%,
+    #ececec 60%,
+    #fcfcfc 84%,
+    #fdfdfd 100%
+  );
+  --tab-active-gradient: linear-gradient(
+    to bottom,
+    #5080c0 0%,
+    #88b0dc 36%,
+    #a8cef0 57%,
+    #c0e4ff 83%,
+    #c8ecf0 100%
+  );
+  --tab-active-inner-shadow: inset 0 1px 1px rgba(48, 96, 176, 1);
 }
