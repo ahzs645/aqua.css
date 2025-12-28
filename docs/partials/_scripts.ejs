@@ -530,10 +530,15 @@
 
         if (!navTabs.length || !sections.length) return;
 
+        // Flag to pause scroll-spy during click navigation
+        let isScrolling = false;
+
         // Intersection Observer for scroll-spy
         let currentSection = 'components';
 
         const observer = new IntersectionObserver((entries) => {
+          if (isScrolling) return; // Skip updates during programmatic scroll
+
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               currentSection = entry.target.dataset.sectionId;
@@ -554,9 +559,23 @@
         navTabs.forEach(tab => {
           tab.addEventListener('click', () => {
             const sectionId = tab.dataset.section;
+
+            // Pause scroll-spy
+            isScrolling = true;
+
+            // Immediately activate the clicked tab
+            navTabs.forEach(t => {
+              t.classList.toggle('aqua-tab--active', t.dataset.section === sectionId);
+            });
+
             const target = document.querySelector(`section[data-section-id="${sectionId}"]`);
             if (target) {
               target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+              // Re-enable scroll-spy after animation completes
+              setTimeout(() => {
+                isScrolling = false;
+              }, 800);
             }
             tab.blur();
           });
