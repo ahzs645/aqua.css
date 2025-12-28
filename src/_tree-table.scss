@@ -4,6 +4,8 @@
  * Matches JavaFX TreeTableView
  */
 
+@use "mixins" as *;
+
 /* ============================================
    TREE TABLE CONTAINER
    ============================================ */
@@ -54,6 +56,78 @@ table.aqua-tree-table {
         border-right: 3.5px solid transparent;
         border-top: 4px solid var(--table-sort-arrow);
       }
+    }
+  }
+
+  /* Unified header style (active aqua look) */
+  &.unified-header thead,
+  &.aqua-unified-header thead {
+    display: block;
+    position: relative;
+    background: var(--aqua-button-primary-gradient);
+    box-shadow: var(--aqua-button-primary-shadow);
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+
+    /* Unified gloss across entire header */
+    @include aqua-glass('pill', $overrides: (
+      shine: (
+        width: calc(100% - 0.25em),
+        height: 45%,
+        radius: 4px 4px 2px 2px,
+        z-index: 10
+      ),
+      glow: (
+        width: calc(100% - 0.5em),
+        radius: 3px,
+        z-index: 10
+      )
+    ));
+
+    tr {
+      display: flex;
+      width: 100%;
+    }
+
+    th {
+      flex: 1;
+      background: transparent;
+      border-bottom: none;
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
+      color: var(--aqua-button-primary-text);
+      text-shadow: var(--aqua-button-primary-text-shadow);
+      position: relative;
+      z-index: 1;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &:active {
+        background: rgba(0, 0, 0, 0.15);
+      }
+
+      /* Text needs higher z-index to appear above gloss */
+      span {
+        position: relative;
+        z-index: 11;
+      }
+    }
+  }
+
+  /* Adjust body for unified header */
+  &.unified-header tbody,
+  &.aqua-unified-header tbody {
+    display: block;
+    border-top: 0.5px solid var(--table-header-border-bottom);
+
+    tr {
+      display: flex;
+      width: 100%;
+    }
+
+    td {
+      flex: 1;
     }
   }
 

@@ -40,6 +40,7 @@
   overflow: hidden;
   height: 24px;
   padding: 0 12px;
+  margin-bottom: -1px; /* Extend 1px to overlap the bottom bar */
   cursor: default;
   display: inline-flex;
   align-items: center;
@@ -47,6 +48,7 @@
   font-family: "Lucida Grande", "Helvetica Neue", sans-serif;
   font-size: 13px;
   white-space: nowrap;
+  z-index: 1; /* Inactive tabs behind the bar (bar is z-index: 3) */
 
   /* Inactive tab */
   background: var(--tab-inactive-gradient);
@@ -296,51 +298,70 @@
 }
 
 .tabs-pill {
-  display: flex;
-  gap: 0;
+  display: inline-flex;
   justify-content: center;
   position: relative;
   z-index: 1;
+  border-radius: 5px;
+  overflow: hidden;
+  /* Base gradient and shadow for the entire control */
+  background: var(--aqua-button-secondary-gradient);
+  box-shadow: var(--aqua-button-secondary-shadow);
+
+  /* Single unified gloss across the entire control */
+  @include aqua-glass('pill', $overrides: (
+    shine: (
+      width: calc(100% - 0.25em),
+      height: 45%,
+      radius: 4px 4px 2px 2px,
+      z-index: 10
+    ),
+    glow: (
+      width: calc(100% - 0.5em),
+      radius: 3px,
+      z-index: 10
+    )
+  ));
 }
 
 .tab-pill {
   font-family: var(--font-system);
   font-size: var(--font-size-base);
-  padding: 1px 10px 1px 10px;
+  padding: 1px 10px;
   border: none;
-  background: var(--tab-pill-gradient);
+  border-radius: 0;
+  border-right: 1px solid var(--segmented-divider);
+  min-width: 60px;
+  min-height: 24px;
+  /* Transparent background to show container's gradient */
+  background: transparent;
+  box-shadow: none;
   cursor: pointer;
-  color: var(--text-color);
+  color: var(--aqua-button-secondary-text);
+  text-shadow: var(--aqua-button-secondary-text-shadow);
   outline: none;
-  border: 0.5px solid;
-  border-color: var(--tab-pill-border);
-  border-left-style: dashed;
 
-  /* First tab */
-  &:first-child {
-    border-radius: 4px 0 0 4px;
-    border-left-style: solid;
-    border-left-color: var(--tab-pill-border-left);
+  /* Remove individual button gloss */
+  &::before,
+  &::after {
+    display: none;
   }
 
   /* Last tab */
   &:last-child {
-    border-radius: 0 4px 4px 0;
+    border-right: none;
   }
 
-  /* Hover state */
-  &:hover:not(.active) {
-    background: var(--tab-pill-hover-gradient);
+  span {
+    position: relative;
+    z-index: 11;
   }
 
   /* Active/selected state */
   &.active {
-    background: var(--tab-pill-active-gradient);
-    color: var(--text-highlight);
-    box-shadow: var(--tab-pill-active-shadow);
-    text-shadow: var(--tab-pill-active-text-shadow);
-    border-style: solid;
-    border-color: var(--tab-pill-active-border);
+    background: var(--aqua-button-primary-gradient);
+    color: var(--aqua-button-primary-text);
+    text-shadow: var(--aqua-button-primary-text-shadow);
   }
 
   /* Disabled */
@@ -354,6 +375,7 @@
 /* Pill tabs container with content panel */
 .tabs-pill-container {
   margin-top: 12px;
+  text-align: center;
 
   .tabs-pill {
     justify-content: center;
@@ -377,14 +399,32 @@
 
 .aqua-tabs-container {
   margin-top: 12px;
+  text-align: center;
 }
 
 .aqua-tabs-container .aqua-tabs {
-  display: flex;
-  gap: 0;
+  display: inline-flex;
   justify-content: center;
   position: relative;
   z-index: 1;
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--aqua-button-secondary-gradient);
+  box-shadow: var(--aqua-button-secondary-shadow);
+
+  @include aqua-glass('pill', $overrides: (
+    shine: (
+      width: calc(100% - 0.25em),
+      height: 45%,
+      radius: 4px 4px 2px 2px,
+      z-index: 10
+    ),
+    glow: (
+      width: calc(100% - 0.5em),
+      radius: 3px,
+      z-index: 10
+    )
+  ));
 }
 
 .aqua-tabs-container .aqua-tab {
@@ -392,35 +432,35 @@
   font-size: var(--font-size-base);
   padding: 1px 10px;
   border: none;
-  background: var(--tab-pill-gradient);
+  border-radius: 0;
+  border-right: 1px solid var(--segmented-divider);
+  min-width: 60px;
+  min-height: 24px;
+  background: transparent;
+  box-shadow: none;
   cursor: pointer;
-  color: var(--text-color);
+  color: var(--aqua-button-secondary-text);
+  text-shadow: var(--aqua-button-secondary-text-shadow);
   outline: none;
-  border: 0.5px solid;
-  border-color: var(--tab-pill-border);
-  border-left-style: dashed;
 
-  &:first-child {
-    border-radius: 4px 0 0 4px;
-    border-left-style: solid;
-    border-left-color: var(--tab-pill-border-left);
+  &::before,
+  &::after {
+    display: none;
   }
 
   &:last-child {
-    border-radius: 0 4px 4px 0;
+    border-right: none;
   }
 
-  &:hover:not(.active) {
-    background: var(--tab-pill-hover-gradient);
+  span {
+    position: relative;
+    z-index: 11;
   }
 
   &.active {
-    background: var(--tab-pill-active-gradient);
-    color: var(--text-highlight);
-    box-shadow: var(--tab-pill-active-shadow);
-    text-shadow: var(--tab-pill-active-text-shadow);
-    border-style: solid;
-    border-color: var(--tab-pill-active-border);
+    background: var(--aqua-button-primary-gradient);
+    color: var(--aqua-button-primary-text);
+    text-shadow: var(--aqua-button-primary-text-shadow);
   }
 }
 
