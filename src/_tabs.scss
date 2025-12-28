@@ -493,3 +493,92 @@
   color: var(--text-color);
   margin-bottom: 10px;
 }
+
+/* ============================================
+   SITE NAV TABS - Era-adaptive styling
+   Folder tabs for pre-10.3, pill tabs for 10.3+
+   ============================================ */
+
+/* 10.3+ eras: Transform folder tabs to pill-style */
+@each $era in ('10-3', '10-4', '10-6') {
+  @include aqua-era($era) {
+    /* Don't expand - just be a compact centered pill */
+    .site-nav-tabs {
+      flex: none;
+      margin: 0 auto;
+    }
+
+    .site-nav-tabs .aqua-tab-bar {
+      display: inline-flex;
+      /* Reset folder tab bar styles */
+      align-items: center;
+      gap: 0;
+      border-radius: 5px;
+      overflow: hidden;
+      background: var(--aqua-button-secondary-gradient);
+      box-shadow: var(--aqua-button-secondary-shadow);
+
+      /* Add pill gloss effect */
+      @include aqua-glass('pill', $overrides: (
+        shine: (
+          width: calc(100% - 0.25em),
+          height: 45%,
+          radius: 4px 4px 2px 2px,
+          z-index: 10
+        ),
+        glow: (
+          width: calc(100% - 0.5em),
+          radius: 3px,
+          z-index: 10
+        )
+      ));
+
+      /* Remove the folder tab colorful gradient bar */
+      &::after {
+        display: none;
+      }
+    }
+
+    .site-nav-tabs .aqua-tab {
+      /* Reset folder tab styles to pill style */
+      border-radius: 0;
+      height: auto;
+      min-height: 24px;
+      padding: 1px 10px;
+      margin-bottom: 0;
+      background: transparent;
+      box-shadow: none;
+      border-right: 1px solid var(--segmented-divider);
+      color: var(--aqua-button-secondary-text);
+      text-shadow: var(--aqua-button-secondary-text-shadow);
+      z-index: 1;
+
+      /* Remove folder tab gloss */
+      &::before {
+        display: none;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+
+      /* Active state - pill style */
+      &.aqua-tab--active {
+        background: var(--aqua-button-primary-gradient);
+        color: var(--aqua-button-primary-text);
+        text-shadow: var(--aqua-button-primary-text-shadow);
+        box-shadow: none;
+
+        &::after {
+          display: none;
+        }
+      }
+
+      /* Hover state for inactive tabs */
+      &:hover:not(.aqua-tab--active) {
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: none;
+      }
+    }
+  }
+}

@@ -11,139 +11,19 @@
    ============================================ */
 .tree-table,
 table.aqua-tree-table {
-  width: 100%;
-  border-collapse: collapse;
+  @include aqua-table-base(
+    $header-padding: 4px 8px,
+    $cell-padding: 3px 8px,
+    $header-border-right: 1px solid var(--table-header-border-right-muted),
+    $cell-border: none,
+    $header-glass: false
+  );
   background: var(--table-row-odd);
-  border: 1px solid;
-  border-color: var(--table-border);
-  font-family: var(--font-ui);
-  font-size: var(--font-size-base);
 
   /* Column headers */
   thead th {
-    background: var(--table-header-gradient);
-    padding: 4px 8px;
-    text-align: left;
-    font-weight: normal;
-    border-bottom: 0.5px solid var(--table-header-border-bottom);
-    border-right: 1px solid var(--table-header-border-right-muted);
-    height: 22px;
-
-    &:last-child {
-      border-right: none;
-    }
-
     &:active {
       background: var(--table-header-active-gradient);
-    }
-
-    /* Sort arrow */
-    .sort-arrow {
-      display: inline-block;
-      width: 0;
-      height: 0;
-      margin-left: 4px;
-      vertical-align: middle;
-
-      &.asc {
-        border-left: 3.5px solid transparent;
-        border-right: 3.5px solid transparent;
-        border-bottom: 4px solid var(--table-sort-arrow);
-      }
-
-      &.desc {
-        border-left: 3.5px solid transparent;
-        border-right: 3.5px solid transparent;
-        border-top: 4px solid var(--table-sort-arrow);
-      }
-    }
-  }
-
-  /* Unified header style (segmented control look with gloss) */
-  &.unified-header,
-  &.aqua-unified-header {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-
-    thead {
-      position: relative;
-      background: var(--aqua-button-secondary-gradient);
-      box-shadow: var(--aqua-button-secondary-shadow-inset);
-      border-radius: 0;
-      overflow: hidden;
-
-      /* Unified gloss across entire header */
-      @include aqua-glass('pill', $overrides: (
-        shine: (
-          width: calc(100% - 0.25em),
-          height: 45%,
-          radius: 0,
-          z-index: 10
-        ),
-        glow: (
-          width: calc(100% - 0.5em),
-          radius: 0,
-          z-index: 10
-        )
-      ));
-
-      th {
-        background: transparent;
-        border-bottom: none;
-        border-right: 1px solid var(--segmented-divider);
-        color: var(--aqua-button-secondary-text);
-        text-shadow: var(--aqua-button-secondary-text-shadow);
-        position: relative;
-        z-index: 1;
-        cursor: pointer;
-
-        &:last-child {
-          border-right: none;
-        }
-
-        /* No hover state for unified header */
-        &:hover:not(.active):not(.sorted):not([aria-sort]) {
-          background: transparent;
-        }
-
-        /* Active/sorted column state */
-        &.active,
-        &.sorted,
-        &[aria-sort] {
-          background: var(--aqua-button-primary-gradient);
-          color: var(--aqua-button-primary-text);
-          text-shadow: var(--aqua-button-primary-text-shadow);
-
-          &:hover {
-            background: var(--aqua-button-primary-gradient);
-          }
-
-          .sort-arrow {
-            &.asc {
-              border-bottom-color: var(--aqua-button-primary-text);
-            }
-            &.desc {
-              border-top-color: var(--aqua-button-primary-text);
-            }
-          }
-        }
-
-        &:active {
-          background: var(--aqua-button-primary-gradient);
-          color: var(--aqua-button-primary-text);
-          text-shadow: var(--aqua-button-primary-text-shadow);
-        }
-
-        /* Sort arrow - fixed width, doesn't shift content */
-        .sort-arrow {
-          position: absolute;
-          right: 8px;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 11;
-        }
-      }
     }
   }
 
@@ -173,10 +53,7 @@ table.aqua-tree-table {
 
   /* Table cells */
   tbody td {
-    padding: 3px 8px;
-    border: none;
     vertical-align: middle;
-    height: 22px;
   }
 
   /* Focus state */

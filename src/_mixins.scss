@@ -364,3 +364,151 @@ $aqua-glass-aliases: (
 @mixin aqua-glass-glow($shape: 'circle') {
   @include aqua-glass($shape, $parts: 'glow', $glow: true);
 }
+
+@mixin aqua-table-base(
+  $header-padding: 0 10px,
+  $cell-padding: 0 10px,
+  $header-border-right: 1px solid var(--table-header-border-right),
+  $cell-border: 1px solid var(--table-cell-border),
+  $header-glass: true
+) {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid;
+  border-color: var(--table-border);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
+
+  th {
+    background: var(--table-header-gradient);
+    padding: $header-padding;
+    text-align: left;
+    font-weight: normal;
+    border-bottom: 0.5px solid var(--table-header-border-bottom);
+    border-right: $header-border-right;
+    height: 22px;
+    position: relative;
+
+    @if $header-glass {
+      @include aqua-glass('bar');
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  td {
+    padding: $cell-padding;
+    border-bottom: $cell-border;
+    height: 22px;
+  }
+
+  th .sort-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    vertical-align: middle;
+
+    &.asc {
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      border-bottom: 4px solid var(--table-sort-arrow);
+    }
+
+    &.desc {
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      border-top: 4px solid var(--table-sort-arrow);
+    }
+  }
+
+  &.unified-header,
+  &.aqua-unified-header {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
+    thead {
+      position: relative;
+      background: var(--aqua-button-secondary-gradient);
+      box-shadow: var(--aqua-button-secondary-shadow-inset);
+      border-radius: 0;
+      overflow: hidden;
+
+      @include aqua-glass('pill', $overrides: (
+        shine: (
+          width: calc(100% - 0.25em),
+          height: 45%,
+          radius: 0,
+          z-index: 10
+        ),
+        glow: (
+          width: calc(100% - 0.5em),
+          radius: 0,
+          z-index: 10
+        )
+      ));
+
+      th {
+        background: transparent;
+        border-bottom: none;
+        border-right: 1px solid var(--segmented-divider);
+        color: var(--aqua-button-secondary-text);
+        text-shadow: var(--aqua-button-secondary-text-shadow);
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+          display: none;
+        }
+
+        &:last-child {
+          border-right: none;
+        }
+
+        &:hover:not(.active):not(.sorted):not([aria-sort]) {
+          background: transparent;
+        }
+
+        &.active,
+        &.sorted,
+        &[aria-sort] {
+          background: var(--aqua-button-primary-gradient);
+          color: var(--aqua-button-primary-text);
+          text-shadow: var(--aqua-button-primary-text-shadow);
+
+          &:hover {
+            background: var(--aqua-button-primary-gradient);
+          }
+
+          .sort-arrow {
+            &.asc {
+              border-bottom-color: var(--aqua-button-primary-text);
+            }
+            &.desc {
+              border-top-color: var(--aqua-button-primary-text);
+            }
+          }
+        }
+
+        &:active {
+          background: var(--aqua-button-primary-gradient);
+          color: var(--aqua-button-primary-text);
+          text-shadow: var(--aqua-button-primary-text-shadow);
+        }
+
+        .sort-arrow {
+          position: absolute;
+          right: 8px;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 11;
+        }
+      }
+    }
+  }
+}

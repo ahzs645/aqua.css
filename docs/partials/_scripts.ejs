@@ -21,72 +21,69 @@
       }
 
       function setupTreeTable() {
-        const root = document.getElementById('tree-table-demo');
-        if (!root) return;
+        const roots = document.querySelectorAll('[data-tree-table]');
+        if (!roots.length) return;
 
-        function toggleRows(parentId, expanded) {
-          root.querySelectorAll(`tr[data-parent="${parentId}"]`).forEach((row) => {
-            row.style.display = expanded ? '' : 'none';
-          });
-        }
+        roots.forEach((root) => {
+          function toggleRows(parentId, expanded) {
+            root.querySelectorAll(`tr[data-parent="${parentId}"]`).forEach((row) => {
+              row.style.display = expanded ? '' : 'none';
+            });
+          }
 
-        root.querySelectorAll('.aqua-tree-table-arrow[data-toggle]').forEach((arrow) => {
-          const parentId = arrow.getAttribute('data-toggle');
-          if (!parentId) return;
+          root.querySelectorAll('.aqua-tree-table-arrow[data-toggle]').forEach((arrow) => {
+            const parentId = arrow.getAttribute('data-toggle');
+            if (!parentId) return;
 
-          toggleRows(parentId, arrow.classList.contains('expanded'));
-
-          const activate = () => {
-            arrow.classList.toggle('expanded');
             toggleRows(parentId, arrow.classList.contains('expanded'));
-          };
 
-          arrow.addEventListener('click', (event) => {
-            event.preventDefault();
-            activate();
-          });
+            const activate = () => {
+              arrow.classList.toggle('expanded');
+              toggleRows(parentId, arrow.classList.contains('expanded'));
+            };
 
-          arrow.addEventListener('keydown', (event) => {
-            if (event.key !== 'Enter' && event.key !== ' ') return;
-            event.preventDefault();
-            activate();
-          });
-        });
-
-        // Header sorting functionality
-        root.querySelectorAll('thead th').forEach((th) => {
-          th.addEventListener('click', function() {
-            const thead = this.closest('thead');
-            const allThs = thead.querySelectorAll('th');
-
-            // Remove active class and sort arrows from all headers
-            allThs.forEach(header => {
-              header.classList.remove('active');
-              const arrow = header.querySelector('.sort-arrow');
-              if (arrow) {
-                arrow.classList.remove('asc', 'desc');
-              }
+            arrow.addEventListener('click', (event) => {
+              event.preventDefault();
+              activate();
             });
 
-            // Add active class to clicked header
-            this.classList.add('active');
+            arrow.addEventListener('keydown', (event) => {
+              if (event.key !== 'Enter' && event.key !== ' ') return;
+              event.preventDefault();
+              activate();
+            });
+          });
 
-            // Toggle or add sort arrow
-            let arrow = this.querySelector('.sort-arrow');
-            if (!arrow) {
-              arrow = document.createElement('span');
-              arrow.className = 'sort-arrow';
-              this.appendChild(arrow);
-            }
+          root.querySelectorAll('thead th').forEach((th) => {
+            th.addEventListener('click', function() {
+              const thead = this.closest('thead');
+              const allThs = thead.querySelectorAll('th');
 
-            // Toggle between asc and desc
-            if (this.dataset.sortDir === 'asc') {
-              arrow.classList.add('desc');
-              this.dataset.sortDir = 'desc';
-            } else {
-              arrow.classList.add('asc');
-              this.dataset.sortDir = 'asc';
-            }
+              allThs.forEach(header => {
+                header.classList.remove('active');
+                const arrow = header.querySelector('.sort-arrow');
+                if (arrow) {
+                  arrow.classList.remove('asc', 'desc');
+                }
+              });
+
+              this.classList.add('active');
+
+              let arrow = this.querySelector('.sort-arrow');
+              if (!arrow) {
+                arrow = document.createElement('span');
+                arrow.className = 'sort-arrow';
+                this.appendChild(arrow);
+              }
+
+              if (this.dataset.sortDir === 'asc') {
+                arrow.classList.add('desc');
+                this.dataset.sortDir = 'desc';
+              } else {
+                arrow.classList.add('asc');
+                this.dataset.sortDir = 'asc';
+              }
+            });
           });
         });
       }

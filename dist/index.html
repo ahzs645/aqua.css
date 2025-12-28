@@ -2606,7 +2606,157 @@
             <h2 id="table">Table View</h2>
     <p class="label">Alternating row colors: <span class="inline-code">--table-row-odd</span> and <span class="inline-code">--table-row-even</span></p>
 
-    <div class="example">
+    <div class="era-pre-10-4">
+      <div class="example">
+      <div class="raw"><table class="aqua-tree-table unified-header" tabindex="0" data-tree-table style="width: 100%; max-width: 700px;">
+  <thead>
+    <tr>
+      <th class="active" data-sort-dir="asc" style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
+      <th>Date Modified</th>
+      <th>Size</th>
+      <th>Kind</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="selected" data-id="documents-pre">
+      <td>
+        <div class="aqua-tree-cell">
+          <span class="aqua-tree-table-arrow expanded" data-toggle="documents-pre" role="button" tabindex="0" aria-label="Toggle Documents"></span>
+          <span>Documents</span>
+        </div>
+      </td>
+      <td>Dec 10, 2024</td>
+      <td>--</td>
+      <td>Folder</td>
+    </tr>
+    <tr data-parent="documents-pre">
+      <td>
+        <div class="aqua-tree-cell">
+          <span class="aqua-tree-table-indent"></span>
+          <span class="aqua-tree-table-arrow leaf"></span>
+          <span>report.pdf</span>
+        </div>
+      </td>
+      <td>Dec 9, 2024</td>
+      <td>2.4 MB</td>
+      <td>PDF Document</td>
+    </tr>
+    <tr data-parent="documents-pre">
+      <td>
+        <div class="aqua-tree-cell">
+          <span class="aqua-tree-table-indent"></span>
+          <span class="aqua-tree-table-arrow leaf"></span>
+          <span>notes.txt</span>
+        </div>
+      </td>
+      <td>Dec 8, 2024</td>
+      <td>12 KB</td>
+      <td>Text File</td>
+    </tr>
+    <tr data-id="pictures-pre">
+      <td>
+        <div class="aqua-tree-cell">
+          <span class="aqua-tree-table-arrow" data-toggle="pictures-pre" role="button" tabindex="0" aria-label="Toggle Pictures"></span>
+          <span>Pictures</span>
+        </div>
+      </td>
+      <td>Dec 7, 2024</td>
+      <td>--</td>
+      <td>Folder</td>
+    </tr>
+    <tr data-parent="pictures-pre" style="display: none;">
+      <td>
+        <div class="aqua-tree-cell">
+          <span class="aqua-tree-table-indent"></span>
+          <span class="aqua-tree-table-arrow leaf"></span>
+          <span>photo.jpg</span>
+        </div>
+      </td>
+      <td>Dec 6, 2024</td>
+      <td>3.2 MB</td>
+      <td>JPEG Image</td>
+    </tr>
+  </tbody>
+</table></div>
+      <details class="code">
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table unified-header&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">data-tree-table</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 700px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;active&quot;</span> <span class="hljs-attr">data-sort-dir</span>=<span class="hljs-string">&quot;asc&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>Name <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sort-arrow asc&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Date Modified<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Size<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Kind<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;selected&quot;</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;documents-pre&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-cell&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table-arrow expanded&quot;</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">&quot;documents-pre&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Toggle Documents&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Documents<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dec 10, 2024<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>--<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Folder<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">data-parent</span>=<span class="hljs-string">&quot;documents-pre&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-cell&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table-indent&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table-arrow leaf&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>report.pdf<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dec 9, 2024<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2.4 MB<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>PDF Document<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">data-parent</span>=<span class="hljs-string">&quot;documents-pre&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-cell&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table-indent&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table-arrow leaf&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>notes.txt<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dec 8, 2024<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>12 KB<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Text File<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">&quot;pictures-pre&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-cell&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table-arrow&quot;</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">&quot;pictures-pre&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Toggle Pictures&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Pictures<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dec 7, 2024<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>--<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Folder<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">data-parent</span>=<span class="hljs-string">&quot;pictures-pre&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-cell&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table-indent&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table-arrow leaf&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>photo.jpg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Dec 6, 2024<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>3.2 MB<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>JPEG Image<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
+        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
+      </details>
+    </div>
+    </div>
+
+    <div class="era-10-4-plus">
+      <div class="example">
       <div class="raw"><table class="aqua-table" style="width: 100%; max-width: 600px;">
   <thead>
     <tr>
@@ -2672,7 +2822,7 @@
         <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
-
+    </div>
 
             <h2 id="list-view">List View</h2>
     <p>Selectable list component with focused (blue) and unfocused (gray) selection.</p>
@@ -2848,7 +2998,7 @@
     <p class="label">Combines tree hierarchy with table columns (click arrows to expand/collapse)</p>
 
     <div class="example">
-      <div class="raw"><table class="aqua-tree-table unified-header" tabindex="0" id="tree-table-demo" style="width: 100%; max-width: 700px;">
+      <div class="raw"><table class="aqua-tree-table unified-header" tabindex="0" id="tree-table-demo" data-tree-table style="width: 100%; max-width: 700px;">
   <thead>
     <tr>
       <th class="active" data-sort-dir="asc" style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
@@ -2920,7 +3070,7 @@
 </table></div>
       <details class="code">
         <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table unified-header&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tree-table-demo&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 700px;&quot;</span>&gt;</span>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table unified-header&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tree-table-demo&quot;</span> <span class="hljs-attr">data-tree-table</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 700px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;active&quot;</span> <span class="hljs-attr">data-sort-dir</span>=<span class="hljs-string">&quot;asc&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>Name <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sort-arrow asc&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
@@ -2993,7 +3143,6 @@
         <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>
     </div>
-
 
             <h2 id="tooltip">Tooltip</h2>
     <p class="label">Background: <span class="inline-code">--tooltip-bg</span></p>
@@ -3728,72 +3877,69 @@
       }
 
       function setupTreeTable() {
-        const root = document.getElementById('tree-table-demo');
-        if (!root) return;
+        const roots = document.querySelectorAll('[data-tree-table]');
+        if (!roots.length) return;
 
-        function toggleRows(parentId, expanded) {
-          root.querySelectorAll(`tr[data-parent="${parentId}"]`).forEach((row) => {
-            row.style.display = expanded ? '' : 'none';
-          });
-        }
+        roots.forEach((root) => {
+          function toggleRows(parentId, expanded) {
+            root.querySelectorAll(`tr[data-parent="${parentId}"]`).forEach((row) => {
+              row.style.display = expanded ? '' : 'none';
+            });
+          }
 
-        root.querySelectorAll('.aqua-tree-table-arrow[data-toggle]').forEach((arrow) => {
-          const parentId = arrow.getAttribute('data-toggle');
-          if (!parentId) return;
+          root.querySelectorAll('.aqua-tree-table-arrow[data-toggle]').forEach((arrow) => {
+            const parentId = arrow.getAttribute('data-toggle');
+            if (!parentId) return;
 
-          toggleRows(parentId, arrow.classList.contains('expanded'));
-
-          const activate = () => {
-            arrow.classList.toggle('expanded');
             toggleRows(parentId, arrow.classList.contains('expanded'));
-          };
 
-          arrow.addEventListener('click', (event) => {
-            event.preventDefault();
-            activate();
-          });
+            const activate = () => {
+              arrow.classList.toggle('expanded');
+              toggleRows(parentId, arrow.classList.contains('expanded'));
+            };
 
-          arrow.addEventListener('keydown', (event) => {
-            if (event.key !== 'Enter' && event.key !== ' ') return;
-            event.preventDefault();
-            activate();
-          });
-        });
-
-        // Header sorting functionality
-        root.querySelectorAll('thead th').forEach((th) => {
-          th.addEventListener('click', function() {
-            const thead = this.closest('thead');
-            const allThs = thead.querySelectorAll('th');
-
-            // Remove active class and sort arrows from all headers
-            allThs.forEach(header => {
-              header.classList.remove('active');
-              const arrow = header.querySelector('.sort-arrow');
-              if (arrow) {
-                arrow.classList.remove('asc', 'desc');
-              }
+            arrow.addEventListener('click', (event) => {
+              event.preventDefault();
+              activate();
             });
 
-            // Add active class to clicked header
-            this.classList.add('active');
+            arrow.addEventListener('keydown', (event) => {
+              if (event.key !== 'Enter' && event.key !== ' ') return;
+              event.preventDefault();
+              activate();
+            });
+          });
 
-            // Toggle or add sort arrow
-            let arrow = this.querySelector('.sort-arrow');
-            if (!arrow) {
-              arrow = document.createElement('span');
-              arrow.className = 'sort-arrow';
-              this.appendChild(arrow);
-            }
+          root.querySelectorAll('thead th').forEach((th) => {
+            th.addEventListener('click', function() {
+              const thead = this.closest('thead');
+              const allThs = thead.querySelectorAll('th');
 
-            // Toggle between asc and desc
-            if (this.dataset.sortDir === 'asc') {
-              arrow.classList.add('desc');
-              this.dataset.sortDir = 'desc';
-            } else {
-              arrow.classList.add('asc');
-              this.dataset.sortDir = 'asc';
-            }
+              allThs.forEach(header => {
+                header.classList.remove('active');
+                const arrow = header.querySelector('.sort-arrow');
+                if (arrow) {
+                  arrow.classList.remove('asc', 'desc');
+                }
+              });
+
+              this.classList.add('active');
+
+              let arrow = this.querySelector('.sort-arrow');
+              if (!arrow) {
+                arrow = document.createElement('span');
+                arrow.className = 'sort-arrow';
+                this.appendChild(arrow);
+              }
+
+              if (this.dataset.sortDir === 'asc') {
+                arrow.classList.add('desc');
+                this.dataset.sortDir = 'desc';
+              } else {
+                arrow.classList.add('asc');
+                this.dataset.sortDir = 'asc';
+              }
+            });
           });
         });
       }
