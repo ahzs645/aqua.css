@@ -1,44 +1,79 @@
 <%- include('partials/_head') %>
-<body class="aqua-background" data-aqua-era="10-4">
-  <%- include('partials/_sidebar') %>
+<body data-aqua-era="10-4">
+  <%- include('partials/_header') %>
 
-  <main class="main-content">
-    <%- include('partials/_intro') %>
-    <%- include('partials/_window') %>
-    <%- include('partials/_buttons') %>
-    <%- include('partials/_forms') %>
-    <%- include('partials/_progress') %>
-    <%- include('partials/_spinner') %>
-    <%- include('partials/_tabs') %>
-    <%- include('partials/_fieldset') %>
-    <%- include('partials/_menu-bar') %>
-    <%- include('partials/_context-menu') %>
-    <%- include('partials/_toolbar') %>
-    <%- include('partials/_alert-dialog') %>
-    <%- include('partials/_slider') %>
-    <%- include('partials/_search-field') %>
-    <%- include('partials/_segmented-control') %>
-    <%- include('partials/_table') %>
-    <%- include('partials/_list-view') %>
-    <%- include('partials/_tree-view') %>
-    <%- include('partials/_tree-table') %>
-    <%- include('partials/_separator') %>
-    <%- include('partials/_hyperlink') %>
-    <%- include('partials/_tooltip') %>
-    <%- include('partials/_pagination') %>
-    <%- include('partials/_badge') %>
-    <%- include('partials/_color-swatches') %>
-    <%- include('partials/_focus-ring') %>
-    <%- include('partials/_balloon') %>
-    <%- include('partials/_stepper') %>
-    <%- include('partials/_disclosure') %>
-    <%- include('partials/_titled-pane') %>
-    <%- include('partials/_split-pane') %>
-    <%- include('partials/_split-view') %>
-    <%- include('partials/_scrollbar') %>
-    <%- include('partials/_themes') %>
-    <%- include('partials/_complete-example') %>
-  </main>
+  <div class="content-wrapper">
+    <%- include('partials/_sidebar') %>
+
+    <main class="main-content">
+      <%- include('partials/_intro') %>
+
+      <!-- Components Section -->
+      <section data-section-id="components">
+        <%- include('partials/_window') %>
+        <%- include('partials/_buttons') %>
+        <%- include('partials/_forms') %>
+        <%- include('partials/_progress') %>
+        <%- include('partials/_spinner') %>
+        <%- include('partials/_slider') %>
+        <%- include('partials/_search-field') %>
+        <%- include('partials/_stepper') %>
+        <%- include('partials/_separator') %>
+        <%- include('partials/_hyperlink') %>
+      </section>
+
+      <!-- Windows Section -->
+      <section data-section-id="windows">
+        <%- include('partials/_tabs') %>
+        <%- include('partials/_fieldset') %>
+        <%- include('partials/_alert-dialog') %>
+        <%- include('partials/_titled-pane') %>
+        <%- include('partials/_split-pane') %>
+        <%- include('partials/_split-view') %>
+        <%- include('partials/_disclosure') %>
+        <%- include('partials/_scrollbar') %>
+      </section>
+
+      <!-- Navigation Section -->
+      <section data-section-id="navigation">
+        <%- include('partials/_menu-bar') %>
+        <%- include('partials/_context-menu') %>
+        <%- include('partials/_toolbar') %>
+        <%- include('partials/_segmented-control') %>
+        <%- include('partials/_pagination') %>
+      </section>
+
+      <!-- Data Display Section -->
+      <section data-section-id="data-display">
+        <%- include('partials/_table') %>
+        <%- include('partials/_list-view') %>
+        <%- include('partials/_tree-view') %>
+        <%- include('partials/_tree-table') %>
+        <%- include('partials/_tooltip') %>
+        <%- include('partials/_balloon') %>
+        <%- include('partials/_badge') %>
+        <%- include('partials/_color-swatches') %>
+        <%- include('partials/_focus-ring') %>
+      </section>
+
+      <!-- Themes Section -->
+      <section data-section-id="themes">
+        <%- include('partials/_themes') %>
+        <%- include('partials/_complete-example') %>
+      </section>
+
+      <footer style="margin-top: 3em; padding-top: 1em; border-top: 1px solid #ccc; font-size: 12px; color: #666;">
+        <p>
+          aqua.css is inspired by Apple's Aqua interface (Mac OS X 10.0-10.4).
+          <br>
+          Built following the patterns of
+          <a href="https://github.com/jdan/98.css">98.css</a>,
+          <a href="https://github.com/botoxparty/XP.css">XP.css</a>, and
+          <a href="https://github.com/sakofchit/system.css">system.css</a>.
+        </p>
+      </footer>
+    </main>
+  </div>
 
   <%- include('partials/_scripts') %>
 </body>

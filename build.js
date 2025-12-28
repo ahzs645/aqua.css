@@ -59,14 +59,24 @@ function runPostCSS(input, { from, to, preserveVars, copyAssets, prefixSelector,
 }
 
 function buildCSS() {
-  // First, compile SCSS to CSS
+  mkdirp.sync("dist");
+
+  // Copy icon folder to dist before CSS processing (needed for postcss-base64)
+  if (fs.existsSync("icon")) {
+    copyDirectorySync("icon", path.join("dist", "icon"));
+    // Copy favicon.ico to dist root for browsers that request /favicon.ico
+    if (fs.existsSync("icon/finder-jaguar.ico")) {
+      fs.copyFileSync("icon/finder-jaguar.ico", path.join("dist", "favicon.ico"));
+    }
+  }
+
+  // Compile SCSS to CSS
   const scssResult = sass.compile("src/index.scss", {
     loadPaths: ["src"],
     sourceMap: true,
   });
 
   const input = `/*! aqua.css v${version} - ${homepage} */\n` + scssResult.css;
-  mkdirp.sync("dist");
   return runPostCSS(input, {
     from: "src/index.scss",
     to: "dist/aqua.css",
@@ -159,6 +169,20 @@ function buildComponents() {
       fs.writeFileSync(`${target}.map`, processed.map.toString());
     });
   }));
+}
+
+function copyDirectorySync(src, dest) {
+  mkdirp.sync(dest);
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+    if (entry.isDirectory()) {
+      copyDirectorySync(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
 }
 
 function buildDocs() {

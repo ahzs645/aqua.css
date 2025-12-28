@@ -1,17 +1,4 @@
-
-    <footer style="margin-top: 3em; padding-top: 1em; border-top: 1px solid #ccc; font-size: 12px; color: #666;">
-      <p>
-        aqua.css is inspired by Apple's Aqua interface (Mac OS X 10.0-10.4).
-        <br>
-        Built following the patterns of
-        <a href="https://github.com/jdan/98.css">98.css</a>,
-        <a href="https://github.com/botoxparty/XP.css">XP.css</a>, and
-        <a href="https://github.com/sakofchit/system.css">system.css</a>.
-      </p>
-    </footer>
-  </main>
-
-  <script>
+<script>
     (function () {
       function clamp(value, min, max) {
         return Math.max(min, Math.min(max, value));
@@ -536,6 +523,67 @@
         });
       }
 
+      // Section navigation with scroll-spy
+      function setupSectionNav() {
+        const navTabs = document.querySelectorAll('.site-nav-tabs .aqua-tab');
+        const sections = document.querySelectorAll('section[data-section-id]');
+
+        if (!navTabs.length || !sections.length) return;
+
+        // Intersection Observer for scroll-spy
+        let currentSection = 'components';
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              currentSection = entry.target.dataset.sectionId;
+              navTabs.forEach(tab => {
+                tab.classList.toggle('aqua-tab--active',
+                  tab.dataset.section === currentSection);
+              });
+            }
+          });
+        }, {
+          threshold: 0,
+          rootMargin: '-80px 0px -60% 0px'
+        });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Click handlers for tab navigation
+        navTabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            const sectionId = tab.dataset.section;
+            const target = document.querySelector(`section[data-section-id="${sectionId}"]`);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            tab.blur();
+          });
+        });
+      }
+
+      // Sidebar toggle for mobile
+      function setupSidebarToggle() {
+        const toggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+
+        if (!toggle || !sidebar) return;
+
+        toggle.addEventListener('click', () => {
+          toggle.classList.toggle('is-active');
+          sidebar.classList.toggle('is-open');
+        });
+
+        // Close sidebar when clicking a link
+        sidebar.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            toggle.classList.remove('is-active');
+            sidebar.classList.remove('is-open');
+          });
+        });
+      }
+
       setupTitledPanes();
       setupTreeTable();
       setupSplitPanes();
@@ -547,7 +595,7 @@
       setupWaveScrollbar();
       setupCustomSliders();
       setupSpinners();
+      setupSectionNav();
+      setupSidebarToggle();
     })();
   </script>
-</body>
-</html>
