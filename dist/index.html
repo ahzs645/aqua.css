@@ -121,6 +121,7 @@
       </li>
       <li class="window-pane-group">Themes
         <ul>
+          <li><a href="#stripes">Stripes & Pinstripes</a></li>
           <li><a href="#graphite-theme">Color Themes</a></li>
         </ul>
       </li>
@@ -3123,6 +3124,100 @@
 
       <!-- Themes Section -->
       <section data-section-id="themes">
+            <h2 id="stripes">Stripes & Pinstripes</h2>
+    <p>The horizontal stripes (pinstripes) were a signature visual element of Mac OS X from 10.0 through 10.3. Apple phased them out with Mac OS X 10.4 Tiger, moving toward cleaner, stripe-free interfaces.</p>
+
+    <h3>Era Availability</h3>
+    <table class="aqua-table">
+      <thead>
+        <tr>
+          <th>Era</th>
+          <th>Stripes</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10.0-10.1 (Cheetah/Puma)</td>
+          <td>Yes</td>
+          <td>Prominent blue-tinted stripes throughout the UI</td>
+        </tr>
+        <tr>
+          <td>10.2 (Jaguar)</td>
+          <td>Yes</td>
+          <td>Stripes with slightly cooler blue tint</td>
+        </tr>
+        <tr>
+          <td>10.3 (Panther)</td>
+          <td>Yes</td>
+          <td>Neutral gray stripes, more subtle</td>
+        </tr>
+        <tr>
+          <td>10.4 (Tiger)</td>
+          <td>No</td>
+          <td>Stripes phased out, cleaner UI</td>
+        </tr>
+        <tr>
+          <td>10.6 (Snow Leopard)</td>
+          <td>No</td>
+          <td>Continued stripe-free design</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Classic Horizontal Stripes</h3>
+    <p>The signature horizontal stripe pattern used in early Finder windows and dialogs. Use the <code>.aqua-background-striped</code> class or apply <code>--aqua-background-classic</code> directly.</p>
+
+    <div class="example">
+      <div class="raw"><div class="aqua-background-striped" style="padding: 20px; border-radius: 5px; border: 1px solid #ccc;">
+<p style="margin: 0;">This container uses the classic horizontal stripe pattern from Mac OS X 10.0-10.3.</p>
+</div></div>
+      <details class="code">
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-background-striped&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 20px; border-radius: 5px; border: 1px solid #ccc;&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin: 0;&quot;</span>&gt;</span>This container uses the classic horizontal stripe pattern from Mac OS X 10.0-10.3.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
+      </details>
+    </div>
+
+    <h3>Pinstripe Variants</h3>
+    <p>Several pinstripe patterns are available for different UI contexts:</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin: 1em 0;">
+      <div>
+        <div class="label">Classic</div>
+        <div style="height: 60px; border-radius: 5px; border: 1px solid #ccc; background: var(--aqua-background-classic);"></div>
+        <code style="font-size: 10px;">--aqua-background-classic</code>
+      </div>
+      <div>
+        <div class="label">Light Pinstripe</div>
+        <div class="aqua-bg-pinstripe" style="height: 60px; border-radius: 5px; border: 1px solid #ccc;"></div>
+        <code style="font-size: 10px;">--aqua-pinstripe-light</code>
+      </div>
+      <div>
+        <div class="label">Window</div>
+        <div class="aqua-bg-window" style="height: 60px; border-radius: 5px; border: 1px solid #ccc;"></div>
+        <code style="font-size: 10px;">--aqua-pinstripe-window</code>
+      </div>
+      <div>
+        <div class="label">Titlebar</div>
+        <div class="aqua-bg-titlebar" style="height: 60px; border-radius: 5px; border: 1px solid #ccc;"></div>
+        <code style="font-size: 10px;">--aqua-pinstripe-titlebar</code>
+      </div>
+      <div>
+        <div class="label">Menubar</div>
+        <div class="aqua-bg-menubar" style="height: 60px; border-radius: 5px; border: 1px solid #ccc;"></div>
+        <code style="font-size: 10px;">--aqua-pinstripe-menubar</code>
+      </div>
+      <div>
+        <div class="label">Diagonal</div>
+        <div class="aqua-bg-pinstripe-diagonal" style="height: 60px; border-radius: 5px; border: 1px solid #ccc;"></div>
+        <code style="font-size: 10px;">--aqua-pinstripe-diagonal</code>
+      </div>
+    </div>
+
+
             <h2 id="graphite-theme">Color Themes</h2>
     <p>Add a theme class to your container to change the accent color. Available themes:</p>
     <ul style="margin: 1em 0;">
