@@ -62,11 +62,15 @@ table.aqua-tree-table {
   /* Unified header style (segmented control look with gloss) */
   &.unified-header,
   &.aqua-unified-header {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
     thead {
       position: relative;
       background: var(--aqua-button-secondary-gradient);
       box-shadow: var(--aqua-button-secondary-shadow);
-      border-radius: 5px 5px 0 0;
+      border-radius: 0;
       overflow: hidden;
 
       /* Unified gloss across entire header */
@@ -74,12 +78,12 @@ table.aqua-tree-table {
         shine: (
           width: calc(100% - 0.25em),
           height: 45%,
-          radius: 4px 4px 2px 2px,
+          radius: 0,
           z-index: 10
         ),
         glow: (
           width: calc(100% - 0.5em),
-          radius: 3px,
+          radius: 0,
           z-index: 10
         )
       ));
@@ -99,7 +103,7 @@ table.aqua-tree-table {
         }
 
         /* No hover state for unified header */
-        &:hover {
+        &:hover:not(.active):not(.sorted):not([aria-sort]) {
           background: transparent;
         }
 
@@ -131,9 +135,12 @@ table.aqua-tree-table {
           text-shadow: var(--aqua-button-primary-text-shadow);
         }
 
-        /* Sort arrow styling */
+        /* Sort arrow - fixed width, doesn't shift content */
         .sort-arrow {
-          position: relative;
+          position: absolute;
+          right: 8px;
+          top: 50%;
+          transform: translateY(-50%);
           z-index: 11;
         }
       }
