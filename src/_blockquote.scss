@@ -13,7 +13,7 @@
   position: relative;
   margin: 16px 0;
   padding: 16px 20px 16px 24px;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-small);
   line-height: 1.6;
   color: var(--blockquote-text);
@@ -42,7 +42,7 @@
     position: absolute;
     top: 8px;
     left: 28px;
-    font-size: 32px;
+    font-size: var(--font-size-display-medium);
     font-family: Georgia, "Times New Roman", serif;
     color: var(--blockquote-quote-mark);
     opacity: var(--blockquote-quote-mark-opacity);
@@ -59,7 +59,7 @@
     display: block;
     margin-top: 10px;
     padding-left: 16px;
-    font-size: 11px;
+    font-size: var(--font-size-small);
     font-style: normal;
     color: var(--blockquote-cite-text);
 
@@ -78,7 +78,7 @@
   position: relative;
   margin: 16px 0;
   padding: 16px 20px 16px 24px;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-small);
   line-height: 1.6;
   color: #222222;
@@ -138,7 +138,7 @@
     display: block;
     margin-top: 10px;
     padding-left: 16px;
-    font-size: 11px;
+    font-size: var(--font-size-small);
     font-style: normal;
     color: #555555;
 
@@ -157,7 +157,7 @@
   position: relative;
   margin: 16px 0;
   padding: 18px 22px 18px 26px;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-small);
   line-height: 1.6;
   color: #1a1a1a;
@@ -200,7 +200,7 @@
     display: block;
     margin-top: 12px;
     padding-left: 12px;
-    font-size: 11px;
+    font-size: var(--font-size-small);
     font-style: normal;
     color: #555555;
 
@@ -219,7 +219,7 @@
   position: relative;
   margin: 16px 0;
   padding: 16px 20px 16px 24px;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-small);
   line-height: 1.6;
   color: var(--blockquote-text);
@@ -254,7 +254,7 @@
     display: block;
     margin-top: 10px;
     padding-left: 12px;
-    font-size: 11px;
+    font-size: var(--font-size-small);
     font-style: normal;
     color: var(--blockquote-cite-text);
 
@@ -272,7 +272,7 @@
 .aqua-inline-quote,
 q.aqua-inline-quote {
   display: inline;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: inherit;
   font-style: italic;
   color: #444444;
@@ -323,10 +323,10 @@ q.aqua-inline-quote {
 .glossy-quote--small,
 .graphite-quote--small {
   padding: 12px 16px 12px 20px;
-  font-size: 11px;
+  font-size: var(--font-size-small);
 
   &::before {
-    font-size: 24px;
+    font-size: var(--font-size-display-small);
     top: 6px;
     left: 22px;
   }
@@ -339,7 +339,7 @@ q.aqua-inline-quote {
   footer {
     margin-top: 8px;
     padding-left: 12px;
-    font-size: 10px;
+    font-size: var(--font-size-xsmall);
   }
 }
 
@@ -348,10 +348,10 @@ q.aqua-inline-quote {
 .glossy-quote--large,
 .graphite-quote--large {
   padding: 20px 24px 20px 28px;
-  font-size: 14px;
+  font-size: var(--font-size-large);
 
   &::before {
-    font-size: 40px;
+    font-size: var(--font-size-display-large);
     top: 10px;
     left: 32px;
   }
@@ -364,7 +364,7 @@ q.aqua-inline-quote {
   footer {
     margin-top: 12px;
     padding-left: 20px;
-    font-size: 12px;
+    font-size: var(--font-size-medium);
   }
 }
 

@@ -7,7 +7,7 @@
 
 /* ===== Aqua 3D Button (Glossy Pill Style) ===== */
 .aqua-button {
-  font-family: "Lucida Grande", "myriad-pro", system-ui, var(--font-system);
+  font-family: var(--font-ui);
   height: 1.75em;
   padding: 0 2em;
   min-width: 6em;
@@ -17,7 +17,7 @@
   cursor: default;
   outline: none;
   border: none;
-  font-size: 1rem;
+  font-size: var(--font-size-button-base);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -35,11 +35,11 @@
   }
 }
 
-.aqua-era-10-6 .aqua-button::before,
-[data-aqua-era="10-6"] .aqua-button::before,
-.aqua-era-10-6 .aqua-button::after,
-[data-aqua-era="10-6"] .aqua-button::after {
-  border-radius: inherit;
+@include aqua-era('10-6') {
+  .aqua-button::before,
+  .aqua-button::after {
+    border-radius: inherit;
+  }
 }
 
 /* Primary Button - Blue */
@@ -76,76 +76,39 @@
 }
 
 /* 10.4 and earlier: primary button becomes darker when pressed */
-.aqua-era-10-0 .aqua-button--primary:active,
-[data-aqua-era="10-0"] .aqua-button--primary:active,
-.aqua-era-10-0 .aqua-button.default:active,
-[data-aqua-era="10-0"] .aqua-button.default:active,
-.aqua-era-10-2 .aqua-button--primary:active,
-[data-aqua-era="10-2"] .aqua-button--primary:active,
-.aqua-era-10-2 .aqua-button.default:active,
-[data-aqua-era="10-2"] .aqua-button.default:active,
-.aqua-era-10-3 .aqua-button--primary:active,
-[data-aqua-era="10-3"] .aqua-button--primary:active,
-.aqua-era-10-3 .aqua-button.default:active,
-[data-aqua-era="10-3"] .aqua-button.default:active,
-.aqua-era-10-4 .aqua-button--primary:active,
-[data-aqua-era="10-4"] .aqua-button--primary:active,
-.aqua-era-10-4 .aqua-button.default:active,
-[data-aqua-era="10-4"] .aqua-button.default:active {
-  background: var(--aqua-button-primary-gradient-pressed);
+@each $era in ('10-0', '10-2', '10-3', '10-4') {
+  @include aqua-era($era) {
+    .aqua-button--primary:active,
+    .aqua-button.default:active {
+      background: var(--aqua-button-primary-gradient-pressed);
+    }
+  }
 }
 
 /* 10.4 and earlier: secondary/help button turns blue when pressed */
-.aqua-era-10-0 .aqua-button--secondary:active,
-[data-aqua-era="10-0"] .aqua-button--secondary:active,
-.aqua-era-10-0 .aqua-button--secondary.armed,
-[data-aqua-era="10-0"] .aqua-button--secondary.armed,
-.aqua-era-10-0 .aqua-button.help:active,
-[data-aqua-era="10-0"] .aqua-button.help:active,
-.aqua-era-10-2 .aqua-button--secondary:active,
-[data-aqua-era="10-2"] .aqua-button--secondary:active,
-.aqua-era-10-2 .aqua-button--secondary.armed,
-[data-aqua-era="10-2"] .aqua-button--secondary.armed,
-.aqua-era-10-2 .aqua-button.help:active,
-[data-aqua-era="10-2"] .aqua-button.help:active,
-.aqua-era-10-3 .aqua-button--secondary:active,
-[data-aqua-era="10-3"] .aqua-button--secondary:active,
-.aqua-era-10-3 .aqua-button--secondary.armed,
-[data-aqua-era="10-3"] .aqua-button--secondary.armed,
-.aqua-era-10-3 .aqua-button.help:active,
-[data-aqua-era="10-3"] .aqua-button.help:active,
-.aqua-era-10-4 .aqua-button--secondary:active,
-[data-aqua-era="10-4"] .aqua-button--secondary:active,
-.aqua-era-10-4 .aqua-button--secondary.armed,
-[data-aqua-era="10-4"] .aqua-button--secondary.armed,
-.aqua-era-10-4 .aqua-button.help:active,
-[data-aqua-era="10-4"] .aqua-button.help:active {
-  background: var(--aqua-button-primary-gradient-pressed);
-  box-shadow: var(--aqua-button-primary-shadow-active);
+@each $era in ('10-0', '10-2', '10-3', '10-4') {
+  @include aqua-era($era) {
+    .aqua-button--secondary:active,
+    .aqua-button--secondary.armed,
+    .aqua-button.help:active {
+      background: var(--aqua-button-primary-gradient-pressed);
+      box-shadow: var(--aqua-button-primary-shadow-active);
 
-  span {
-    text-shadow: var(--aqua-button-primary-text-shadow);
+      span {
+        text-shadow: var(--aqua-button-primary-text-shadow);
+      }
+    }
   }
 }
 
 /* 10.4 and earlier: primary button armed state */
-.aqua-era-10-0 .aqua-button--primary.armed,
-[data-aqua-era="10-0"] .aqua-button--primary.armed,
-.aqua-era-10-0 .aqua-button.default.armed,
-[data-aqua-era="10-0"] .aqua-button.default.armed,
-.aqua-era-10-2 .aqua-button--primary.armed,
-[data-aqua-era="10-2"] .aqua-button--primary.armed,
-.aqua-era-10-2 .aqua-button.default.armed,
-[data-aqua-era="10-2"] .aqua-button.default.armed,
-.aqua-era-10-3 .aqua-button--primary.armed,
-[data-aqua-era="10-3"] .aqua-button--primary.armed,
-.aqua-era-10-3 .aqua-button.default.armed,
-[data-aqua-era="10-3"] .aqua-button.default.armed,
-.aqua-era-10-4 .aqua-button--primary.armed,
-[data-aqua-era="10-4"] .aqua-button--primary.armed,
-.aqua-era-10-4 .aqua-button.default.armed,
-[data-aqua-era="10-4"] .aqua-button.default.armed {
-  background: var(--aqua-button-primary-gradient-pressed);
+@each $era in ('10-0', '10-2', '10-3', '10-4') {
+  @include aqua-era($era) {
+    .aqua-button--primary.armed,
+    .aqua-button.default.armed {
+      background: var(--aqua-button-primary-gradient-pressed);
+    }
+  }
 }
 
 /* Orange Button - macOS login style */
@@ -167,20 +130,20 @@
 
 /* Size variations */
 .aqua-button--small {
-  font-size: 0.75rem;
+  font-size: var(--font-size-button-small);
 }
 
 .aqua-button--large {
-  font-size: 1.5rem;
+  font-size: var(--font-size-button-large);
 }
 
 .aqua-button--xlarge {
-  font-size: 2rem;
+  font-size: var(--font-size-button-xlarge);
 }
 
 /* HIG-style aliases */
-.aqua-button.small { font-size: 11px; }
-.aqua-button.mini { font-size: 9px; }
+.aqua-button.small { font-size: var(--font-size-small); }
+.aqua-button.mini { font-size: var(--font-size-xxsmall); }
 
 /* Button types */
 .aqua-button.round-rect {
@@ -234,8 +197,8 @@
   padding: 1px;
   text-align: center;
   text-decoration: none;
-  font-size: 13px;
-  font-family: "Lucida Grande", sans-serif;
+  font-size: var(--font-size-base);
+  font-family: var(--font-ui);
   color: var(--aqua-button-flat-text);
   border-radius: 4.5px;
   border: none;
@@ -327,7 +290,7 @@
 
 /* Flat button sizes */
 .aqua-button-flat--small {
-  font-size: 11px;
+  font-size: var(--font-size-small);
 }
 
 .aqua-button-flat--small .aqua-button-flat__inner {
@@ -337,7 +300,7 @@
 }
 
 .aqua-button-flat--large {
-  font-size: 15px;
+  font-size: var(--font-size-xlarge);
 }
 
 .aqua-button-flat--large .aqua-button-flat__inner {
@@ -358,7 +321,7 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"],
 .button {
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
   padding: 1px 12px;
   height: 20px;
@@ -408,7 +371,7 @@ button.help,
 /* Size variants (Apple HIG-ish) */
 button.small,
 .button.small {
-  font-size: 11px;
+  font-size: var(--font-size-small);
   height: 17px;
   min-width: 44px;
   padding: 0 10px;
@@ -416,7 +379,7 @@ button.small,
 
 button.mini,
 .button.mini {
-  font-size: 9px;
+  font-size: var(--font-size-xxsmall);
   height: 15px;
   min-width: 36px;
   padding: 0 8px;
@@ -538,21 +501,11 @@ button.default.armed,
   }
 }
 
-.aqua-era-10-0 .aqua-button.default.pulse,
-[data-aqua-era="10-0"] .aqua-button.default.pulse,
-.aqua-era-10-0 .aqua-button--primary.pulse,
-[data-aqua-era="10-0"] .aqua-button--primary.pulse,
-.aqua-era-10-2 .aqua-button.default.pulse,
-[data-aqua-era="10-2"] .aqua-button.default.pulse,
-.aqua-era-10-2 .aqua-button--primary.pulse,
-[data-aqua-era="10-2"] .aqua-button--primary.pulse,
-.aqua-era-10-3 .aqua-button.default.pulse,
-[data-aqua-era="10-3"] .aqua-button.default.pulse,
-.aqua-era-10-3 .aqua-button--primary.pulse,
-[data-aqua-era="10-3"] .aqua-button--primary.pulse,
-.aqua-era-10-4 .aqua-button.default.pulse,
-[data-aqua-era="10-4"] .aqua-button.default.pulse,
-.aqua-era-10-4 .aqua-button--primary.pulse,
-[data-aqua-era="10-4"] .aqua-button--primary.pulse {
-  animation: aqua-button-breathe 1.5s ease-in-out infinite;
+@each $era in ('10-0', '10-2', '10-3', '10-4') {
+  @include aqua-era($era) {
+    .aqua-button.default.pulse,
+    .aqua-button--primary.pulse {
+      animation: aqua-button-breathe 1.5s ease-in-out infinite;
+    }
+  }
 }

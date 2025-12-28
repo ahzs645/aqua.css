@@ -383,180 +383,132 @@
 
     <div class="example">
       <div class="raw"><div class="metal-window" style="width: 100%; max-width: 520px; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-  <!-- Brushed-metal backplate (higher-res filter + grayscale-safe) -->
-  <svg class="metal-bg" viewBox="0 0 520 320" preserveAspectRatio="none" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none; transform: scale(1.02); z-index: 0;">
+  <!-- Brushed metal background -->
+  <svg viewBox="0 0 520 320" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;">
     <defs>
-      <!-- Cylindrical "Apple-ish" sheen -->
+      <!-- Gaussian-like center highlight matching JS version -->
       <linearGradient id="metalSheen" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%"   stop-color="rgb(155,155,155)"/>
-        <stop offset="22%"  stop-color="rgb(165,165,165)"/>
-        <stop offset="40%"  stop-color="rgb(188,188,188)"/>
-        <stop offset="50%"  stop-color="rgb(204,204,204)"/>
-        <stop offset="60%"  stop-color="rgb(188,188,188)"/>
-        <stop offset="78%"  stop-color="rgb(165,165,165)"/>
-        <stop offset="100%" stop-color="rgb(155,155,155)"/>
+        <stop offset="0%" stop-color="rgb(163,163,163)"/>
+        <stop offset="15%" stop-color="rgb(170,170,170)"/>
+        <stop offset="30%" stop-color="rgb(182,182,182)"/>
+        <stop offset="42%" stop-color="rgb(195,195,195)"/>
+        <stop offset="50%" stop-color="rgb(204,204,204)"/>
+        <stop offset="58%" stop-color="rgb(195,195,195)"/>
+        <stop offset="70%" stop-color="rgb(182,182,182)"/>
+        <stop offset="85%" stop-color="rgb(170,170,170)"/>
+        <stop offset="100%" stop-color="rgb(163,163,163)"/>
       </linearGradient>
 
-      <!-- Subtle vertical gloss -->
-      <linearGradient id="verticalGloss" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%"   stop-color="white" stop-opacity="0.18"/>
-        <stop offset="38%"  stop-color="white" stop-opacity="0.06"/>
-        <stop offset="100%" stop-color="white" stop-opacity="0.00"/>
-      </linearGradient>
+      <filter id="metalTexture" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <!-- Displacement source - creates row-varying offsets -->
+        <feTurbulence type="fractalNoise" baseFrequency="0.001 0.6" numOctaves="2" seed="5" result="displace"/>
 
-      <!-- Brushed texture (rendered at higher resolution) -->
-      <filter id="metalTexture"
-              x="-20%" y="-20%" width="140%" height="140%"
-              filterRes="1600 900"
-              color-interpolation-filters="sRGB">
+        <!-- Main horizontal texture -->
+        <feTurbulence type="fractalNoise" baseFrequency="0.015 1.4" numOctaves="2" seed="17" result="texture"/>
 
-        <!-- Coarse "brush" (row-varying, smeared horizontally) -->
-        <feTurbulence type="fractalNoise"
-                      baseFrequency="0.010 0.75"
-                      numOctaves="1"
-                      seed="11"
-                      result="coarse"/>
-        <feGaussianBlur in="coarse" stdDeviation="12 0" result="coarseStreak"/>
+        <!-- Warp texture based on displacement - mimics per-row offset -->
+        <feDisplacementMap in="texture" in2="displace" scale="50" xChannelSelector="R" yChannelSelector="G" result="warped"/>
 
-        <!-- Fine grain (tighter, still horizontally smeared) -->
-        <feTurbulence type="fractalNoise"
-                      baseFrequency="0.060 1.10"
-                      numOctaves="2"
-                      seed="3"
-                      result="fine"/>
-        <feGaussianBlur in="fine" stdDeviation="1.2 0" result="fineStreak"/>
+        <!-- Strong horizontal blur for brush strokes -->
+        <feGaussianBlur in="warped" stdDeviation="12 0" result="streak"/>
 
-        <!-- Mix coarse + fine -->
-        <feComposite in="coarseStreak" in2="fineStreak"
-                     operator="arithmetic"
-                     k1="0" k2="0.82" k3="0.18" k4="0"
-                     result="mix"/>
+        <!-- Ensure grayscale -->
+        <feColorMatrix in="streak" type="saturate" values="0" result="gray"/>
 
-        <!-- Force grayscale (prevents "rainbow" tinting) -->
-        <feColorMatrix in="mix" type="saturate" values="0" result="mixGray"/>
-
-        <!-- Keep it subtle / clean -->
-        <feComponentTransfer in="mixGray" result="mixSubtle">
-          <feFuncR type="linear" slope="1.10" intercept="-0.05"/>
-          <feFuncG type="linear" slope="1.10" intercept="-0.05"/>
-          <feFuncB type="linear" slope="1.10" intercept="-0.05"/>
+        <!-- Adjust contrast to match JS noiseStrength ~20 -->
+        <feComponentTransfer in="gray" result="adjusted">
+          <feFuncR type="linear" slope="0.8" intercept="0.1"/>
+          <feFuncG type="linear" slope="0.8" intercept="0.1"/>
+          <feFuncB type="linear" slope="0.8" intercept="0.1"/>
         </feComponentTransfer>
 
-        <!-- Apply texture in a "metal" way (less muddy than arithmetic) -->
-        <feBlend in="SourceGraphic" in2="mixSubtle" mode="soft-light" result="textured"/>
+        <!-- Blend with source -->
+        <feBlend in="SourceGraphic" in2="adjusted" mode="soft-light"/>
       </filter>
     </defs>
-
-    <!-- Base sheen + texture -->
-    <rect x="0" y="0" width="520" height="320"
-          fill="url(#metalSheen)"
-          filter="url(#metalTexture)"/>
-
-    <!-- Vertical gloss -->
-    <rect x="0" y="0" width="520" height="320" fill="url(#verticalGloss)"/>
+    <rect width="520" height="320" fill="url(#metalSheen)" filter="url(#metalTexture)"/>
   </svg>
 
   <!-- Title bar -->
-  <div class="title-bar" style="background: transparent; position: relative; z-index: 1; border-bottom: none;">
-    <div class="traffic-lights traffic-lights--always-colored">
-      <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
-      <div class="aqua-light aqua-yellow" role="button" tabindex="0" aria-label="Minimize"><span class="icon">−</span></div>
-      <div class="aqua-light aqua-green" role="button" tabindex="0" aria-label="Maximize"><span class="icon">+</span></div>
+  <div style="background: transparent; position: relative; z-index: 1; padding: 8px 12px; display: flex; align-items: center;">
+    <!-- Traffic lights -->
+    <div style="display: flex; gap: 8px;">
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #ff6058 0%, #c14443 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2);"></div>
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e 0%, #c59a1a 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2);"></div>
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #28c840 0%, #1a9a2c 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2);"></div>
     </div>
-    <div class="title-bar-text" style="position: absolute; left: 0; right: 0; text-align: center; pointer-events: none;">Window</div>
+
+    <!-- Window title -->
+    <div style="position: absolute; left: 0; right: 0; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 500; color: rgba(0,0,0,0.8); pointer-events: none;">Window</div>
   </div>
 
   <!-- Window body -->
-  <div class="window-body" style="background: transparent; position: relative; z-index: 1; min-height: 280px;"></div>
+  <div style="background: transparent; position: relative; z-index: 1; min-height: 280px;"></div>
 </div></div>
       <details class="code">
         <summary>Show code</summary>
         <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;metal-window&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 520px; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);&quot;</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- Brushed-metal backplate (higher-res filter + grayscale-safe) --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;metal-bg&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 520 320&quot;</span> <span class="hljs-attr">preserveAspectRatio</span>=<span class="hljs-string">&quot;none&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position:absolute; inset:0; width:100%; height:100%; pointer-events:none; transform: scale(1.02); z-index: 0;&quot;</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Brushed metal background --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 520 320&quot;</span> <span class="hljs-attr">preserveAspectRatio</span>=<span class="hljs-string">&quot;none&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">defs</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- Cylindrical &quot;Apple-ish&quot; sheen --&gt;</span>
+      <span class="hljs-comment">&lt;!-- Gaussian-like center highlight matching JS version --&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">linearGradient</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;metalSheen&quot;</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;0%&quot;</span>   <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(155,155,155)&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;22%&quot;</span>  <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(165,165,165)&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;40%&quot;</span>  <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(188,188,188)&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;50%&quot;</span>  <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(204,204,204)&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;60%&quot;</span>  <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(188,188,188)&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;78%&quot;</span>  <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(165,165,165)&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(155,155,155)&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(163,163,163)&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;15%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(170,170,170)&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;30%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(182,182,182)&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;42%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(195,195,195)&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;50%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(204,204,204)&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;58%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(195,195,195)&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;70%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(182,182,182)&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;85%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(170,170,170)&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;rgb(163,163,163)&quot;</span>/&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">linearGradient</span>&gt;</span>
 
-      <span class="hljs-comment">&lt;!-- Subtle vertical gloss --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">linearGradient</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;verticalGloss&quot;</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;0%&quot;</span>   <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;white&quot;</span> <span class="hljs-attr">stop-opacity</span>=<span class="hljs-string">&quot;0.18&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;38%&quot;</span>  <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;white&quot;</span> <span class="hljs-attr">stop-opacity</span>=<span class="hljs-string">&quot;0.06&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;white&quot;</span> <span class="hljs-attr">stop-opacity</span>=<span class="hljs-string">&quot;0.00&quot;</span>/&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">linearGradient</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">filter</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;metalTexture&quot;</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;-20%&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;-20%&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;140%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;140%&quot;</span> <span class="hljs-attr">color-interpolation-filters</span>=<span class="hljs-string">&quot;sRGB&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- Displacement source - creates row-varying offsets --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">feTurbulence</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;fractalNoise&quot;</span> <span class="hljs-attr">baseFrequency</span>=<span class="hljs-string">&quot;0.001 0.6&quot;</span> <span class="hljs-attr">numOctaves</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">seed</span>=<span class="hljs-string">&quot;5&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;displace&quot;</span>/&gt;</span>
 
-      <span class="hljs-comment">&lt;!-- Brushed texture (rendered at higher resolution) --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">filter</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;metalTexture&quot;</span>
-              <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;-20%&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;-20%&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;140%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;140%&quot;</span>
-              <span class="hljs-attr">filterRes</span>=<span class="hljs-string">&quot;1600 900&quot;</span>
-              <span class="hljs-attr">color-interpolation-filters</span>=<span class="hljs-string">&quot;sRGB&quot;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- Main horizontal texture --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">feTurbulence</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;fractalNoise&quot;</span> <span class="hljs-attr">baseFrequency</span>=<span class="hljs-string">&quot;0.015 1.4&quot;</span> <span class="hljs-attr">numOctaves</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">seed</span>=<span class="hljs-string">&quot;17&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;texture&quot;</span>/&gt;</span>
 
-        <span class="hljs-comment">&lt;!-- Coarse &quot;brush&quot; (row-varying, smeared horizontally) --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">feTurbulence</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;fractalNoise&quot;</span>
-                      <span class="hljs-attr">baseFrequency</span>=<span class="hljs-string">&quot;0.010 0.75&quot;</span>
-                      <span class="hljs-attr">numOctaves</span>=<span class="hljs-string">&quot;1&quot;</span>
-                      <span class="hljs-attr">seed</span>=<span class="hljs-string">&quot;11&quot;</span>
-                      <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;coarse&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">feGaussianBlur</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;coarse&quot;</span> <span class="hljs-attr">stdDeviation</span>=<span class="hljs-string">&quot;12 0&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;coarseStreak&quot;</span>/&gt;</span>
+        <span class="hljs-comment">&lt;!-- Warp texture based on displacement - mimics per-row offset --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">feDisplacementMap</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;texture&quot;</span> <span class="hljs-attr">in2</span>=<span class="hljs-string">&quot;displace&quot;</span> <span class="hljs-attr">scale</span>=<span class="hljs-string">&quot;50&quot;</span> <span class="hljs-attr">xChannelSelector</span>=<span class="hljs-string">&quot;R&quot;</span> <span class="hljs-attr">yChannelSelector</span>=<span class="hljs-string">&quot;G&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;warped&quot;</span>/&gt;</span>
 
-        <span class="hljs-comment">&lt;!-- Fine grain (tighter, still horizontally smeared) --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">feTurbulence</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;fractalNoise&quot;</span>
-                      <span class="hljs-attr">baseFrequency</span>=<span class="hljs-string">&quot;0.060 1.10&quot;</span>
-                      <span class="hljs-attr">numOctaves</span>=<span class="hljs-string">&quot;2&quot;</span>
-                      <span class="hljs-attr">seed</span>=<span class="hljs-string">&quot;3&quot;</span>
-                      <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;fine&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">feGaussianBlur</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;fine&quot;</span> <span class="hljs-attr">stdDeviation</span>=<span class="hljs-string">&quot;1.2 0&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;fineStreak&quot;</span>/&gt;</span>
+        <span class="hljs-comment">&lt;!-- Strong horizontal blur for brush strokes --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">feGaussianBlur</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;warped&quot;</span> <span class="hljs-attr">stdDeviation</span>=<span class="hljs-string">&quot;12 0&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;streak&quot;</span>/&gt;</span>
 
-        <span class="hljs-comment">&lt;!-- Mix coarse + fine --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">feComposite</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;coarseStreak&quot;</span> <span class="hljs-attr">in2</span>=<span class="hljs-string">&quot;fineStreak&quot;</span>
-                     <span class="hljs-attr">operator</span>=<span class="hljs-string">&quot;arithmetic&quot;</span>
-                     <span class="hljs-attr">k1</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">k2</span>=<span class="hljs-string">&quot;0.82&quot;</span> <span class="hljs-attr">k3</span>=<span class="hljs-string">&quot;0.18&quot;</span> <span class="hljs-attr">k4</span>=<span class="hljs-string">&quot;0&quot;</span>
-                     <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;mix&quot;</span>/&gt;</span>
+        <span class="hljs-comment">&lt;!-- Ensure grayscale --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">feColorMatrix</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;streak&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;saturate&quot;</span> <span class="hljs-attr">values</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;gray&quot;</span>/&gt;</span>
 
-        <span class="hljs-comment">&lt;!-- Force grayscale (prevents &quot;rainbow&quot; tinting) --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">feColorMatrix</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;mix&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;saturate&quot;</span> <span class="hljs-attr">values</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;mixGray&quot;</span>/&gt;</span>
-
-        <span class="hljs-comment">&lt;!-- Keep it subtle / clean --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">feComponentTransfer</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;mixGray&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;mixSubtle&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">feFuncR</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;linear&quot;</span> <span class="hljs-attr">slope</span>=<span class="hljs-string">&quot;1.10&quot;</span> <span class="hljs-attr">intercept</span>=<span class="hljs-string">&quot;-0.05&quot;</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">feFuncG</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;linear&quot;</span> <span class="hljs-attr">slope</span>=<span class="hljs-string">&quot;1.10&quot;</span> <span class="hljs-attr">intercept</span>=<span class="hljs-string">&quot;-0.05&quot;</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">feFuncB</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;linear&quot;</span> <span class="hljs-attr">slope</span>=<span class="hljs-string">&quot;1.10&quot;</span> <span class="hljs-attr">intercept</span>=<span class="hljs-string">&quot;-0.05&quot;</span>/&gt;</span>
+        <span class="hljs-comment">&lt;!-- Adjust contrast to match JS noiseStrength ~20 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">feComponentTransfer</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;gray&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;adjusted&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">feFuncR</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;linear&quot;</span> <span class="hljs-attr">slope</span>=<span class="hljs-string">&quot;0.8&quot;</span> <span class="hljs-attr">intercept</span>=<span class="hljs-string">&quot;0.1&quot;</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">feFuncG</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;linear&quot;</span> <span class="hljs-attr">slope</span>=<span class="hljs-string">&quot;0.8&quot;</span> <span class="hljs-attr">intercept</span>=<span class="hljs-string">&quot;0.1&quot;</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">feFuncB</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;linear&quot;</span> <span class="hljs-attr">slope</span>=<span class="hljs-string">&quot;0.8&quot;</span> <span class="hljs-attr">intercept</span>=<span class="hljs-string">&quot;0.1&quot;</span>/&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">feComponentTransfer</span>&gt;</span>
 
-        <span class="hljs-comment">&lt;!-- Apply texture in a &quot;metal&quot; way (less muddy than arithmetic) --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">feBlend</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;SourceGraphic&quot;</span> <span class="hljs-attr">in2</span>=<span class="hljs-string">&quot;mixSubtle&quot;</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">&quot;soft-light&quot;</span> <span class="hljs-attr">result</span>=<span class="hljs-string">&quot;textured&quot;</span>/&gt;</span>
+        <span class="hljs-comment">&lt;!-- Blend with source --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">feBlend</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;SourceGraphic&quot;</span> <span class="hljs-attr">in2</span>=<span class="hljs-string">&quot;adjusted&quot;</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">&quot;soft-light&quot;</span>/&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">defs</span>&gt;</span>
-
-    <span class="hljs-comment">&lt;!-- Base sheen + texture --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;520&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;320&quot;</span>
-          <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;url(#metalSheen)&quot;</span>
-          <span class="hljs-attr">filter</span>=<span class="hljs-string">&quot;url(#metalTexture)&quot;</span>/&gt;</span>
-
-    <span class="hljs-comment">&lt;!-- Vertical gloss --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;520&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;320&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;url(#verticalGloss)&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;520&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;320&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;url(#metalSheen)&quot;</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">&quot;url(#metalTexture)&quot;</span>/&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
 
   <span class="hljs-comment">&lt;!-- Title bar --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: transparent; position: relative; z-index: 1; border-bottom: none;&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;traffic-lights traffic-lights--always-colored&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-light aqua-red&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Close&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>×<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-light aqua-yellow&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Minimize&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>−<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-light aqua-green&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Maximize&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: transparent; position: relative; z-index: 1; padding: 8px 12px; display: flex; align-items: center;&quot;</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Traffic lights --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: flex; gap: 8px;&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #ff6058 0%, #c14443 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e 0%, #c59a1a 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #28c840 0%, #1a9a2c 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2);&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title-bar-text&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position: absolute; left: 0; right: 0; text-align: center; pointer-events: none;&quot;</span>&gt;</span>Window<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Window title --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position: absolute; left: 0; right: 0; text-align: center; font-family: -apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, Roboto, sans-serif; font-size: 13px; font-weight: 500; color: rgba(0,0,0,0.8); pointer-events: none;&quot;</span>&gt;</span>Window<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-comment">&lt;!-- Window body --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;window-body&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: transparent; position: relative; z-index: 1; min-height: 280px;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background: transparent; position: relative; z-index: 1; min-height: 280px;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
         <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
       </details>

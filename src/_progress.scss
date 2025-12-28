@@ -208,7 +208,7 @@
 
   /* Percentage text */
   .percentage {
-    font-family: var(--font-system);
+    font-family: var(--font-ui);
     font-size: 0.916667em;
     color: var(--text-color);
     z-index: 1;
@@ -351,14 +351,14 @@
 }
 
 .progress-label {
-  font-family: var(--font-system);
-  font-size: 13px;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
   color: var(--progress-label-color);
 }
 
 .progress-value {
-  font-family: var(--font-system);
-  font-size: 12px;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-medium);
   color: var(--progress-value-color);
 }
 
@@ -404,12 +404,12 @@
   height: 100%;
   position: relative;
 
-  background: linear-gradient(var(--g1), var(--g2), var(--g3));
+  background: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   box-shadow:
-    0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.5em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring);
+    0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.5em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring);
 }
 
 /* Inner clipping layer so blurred wave doesn't bleed past the fill edge */
@@ -493,7 +493,7 @@
 .progress-wave.is-active {
   box-shadow:
     inset 0 1px 2px rgba(0,0,0,0.25),
-    0 0 0.5em var(--glow),
+    0 0 0.5em var(--theme-shadow-glow),
     0 1px 0 rgba(255,255,255,0.8);
 }
 

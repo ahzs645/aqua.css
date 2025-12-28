@@ -11,8 +11,8 @@
   display: inline-block;
   background: var(--badge-gradient);
   color: var(--badge-text);
-  font-family: var(--font-system);
-  font-size: 10px;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xsmall);
   font-weight: bold;
   padding: 2px 6px;
   border-radius: 10px;
@@ -62,7 +62,7 @@
 .badge-small,
 .badge.small,
 .aqua-badge.small {
-  font-size: 9px;
+  font-size: var(--font-size-xxsmall);
   padding: 1px 4px;
   min-width: 12px;
   border-radius: 8px;
@@ -72,7 +72,7 @@
 .badge-large,
 .badge.large,
 .aqua-badge.large {
-  font-size: 12px;
+  font-size: var(--font-size-medium);
   padding: 3px 8px;
   min-width: 20px;
   border-radius: 12px;

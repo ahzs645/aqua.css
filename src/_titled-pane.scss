@@ -13,7 +13,7 @@
 .aqua-titled-pane {
   border: 1px solid var(--titled-pane-border);
   border-width: 1px 0;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
 
   & + .titled-pane {

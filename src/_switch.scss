@@ -102,8 +102,8 @@
 }
 
 .aqua-switch-label {
-  font-family: "Lucida Grande", "Helvetica Neue", sans-serif;
-  font-size: 13px;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
   color: var(--switch-label-color);
   cursor: pointer;
 }

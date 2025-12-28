@@ -15,8 +15,8 @@ input[type="number"],
 .aqua-textfield,
 textarea {
   height: 20px;
-  font-size: 10pt;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", var(--font-system);
+  font-size: var(--font-size-input);
+  font-family: var(--font-ui);
   padding: 0px 4px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -79,13 +79,13 @@ textarea {
 /* Size variants */
 input.small {
   height: 16px;
-  font-size: 9pt;
+  font-size: var(--font-size-input-small);
   padding: 0px 3px;
 }
 
 input.large {
   height: 26px;
-  font-size: 12pt;
+  font-size: var(--font-size-input-large);
   padding: 0px 6px;
 }
 
@@ -95,8 +95,8 @@ select {
   height: 22px;
   min-width: 130px;
   padding: 0 28px 0 10px;
-  font-size: 10pt;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", var(--font-system);
+  font-size: var(--font-size-input);
+  font-family: var(--font-ui);
   border: 1px solid var(--select-border);
   border-radius: 4px;
   background: transparent;
@@ -155,8 +155,8 @@ select {
     border: none;
     padding: 0 2.25em 0 0.75em;
     box-shadow: none;
-    font-family: "Lucida Grande", "myriad-pro", system-ui, var(--font-system);
-    font-size: 1rem;
+    font-family: var(--font-ui);
+    font-size: var(--font-size-button-base);
     color: var(--text-color);
     position: relative;
     z-index: 21;
@@ -195,7 +195,7 @@ select {
 
     .arrow-up,
     .arrow-down {
-      font-size: 8px;
+      font-size: var(--font-size-tiny);
       line-height: 1;
       color: var(--text-color);
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
@@ -206,7 +206,7 @@ select {
 
 /* Labels */
 label {
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
   color: var(--text-color);
   user-select: none;
@@ -227,8 +227,8 @@ input[type="search"],
   border-radius: 11px;
   background: var(--search-field-gradient);
   box-shadow: var(--search-field-shadow);
-  font-family: var(--font-system);
-  font-size: 12px;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-medium);
   border: none;
   -webkit-appearance: none;
   appearance: none;
@@ -270,8 +270,8 @@ input[type="search"],
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-system);
-  font-size: 10pt;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-input);
 
   label {
     min-width: 70px;

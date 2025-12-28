@@ -3,6 +3,8 @@
  * Layout helpers and common patterns
  */
 
+@use "mixins" as *;
+
 .field-row {
   display: flex;
   align-items: center;
@@ -44,15 +46,17 @@
   display: none;
 }
 
-/* 10.4 era: swap visibility */
-[data-aqua-era="10-4"] .era-pre-10-4,
-[data-aqua-era="10-6"] .era-pre-10-4 {
-  display: none;
-}
+/* 10.4+ era: swap visibility */
+@each $era in ('10-4', '10-6') {
+  @include aqua-era($era) {
+    .era-pre-10-4 {
+      display: none;
+    }
 
-[data-aqua-era="10-4"] .era-10-4-plus,
-[data-aqua-era="10-6"] .era-10-4-plus {
-  display: block;
+    .era-10-4-plus {
+      display: block;
+    }
+  }
 }
 
 /* Show only in eras before 10.6 (10-0, 10-2, 10-3, 10-4) */
@@ -66,10 +70,12 @@
 }
 
 /* 10.6 era: swap visibility */
-[data-aqua-era="10-6"] .era-pre-10-6 {
-  display: none;
-}
+@include aqua-era('10-6') {
+  .era-pre-10-6 {
+    display: none;
+  }
 
-[data-aqua-era="10-6"] .era-10-6-plus {
-  display: block;
+  .era-10-6-plus {
+    display: block;
+  }
 }

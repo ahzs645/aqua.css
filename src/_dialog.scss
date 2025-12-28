@@ -8,7 +8,7 @@
   padding: 11px 12px;
   display: block;
   position: relative;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", "PT Sans", Verdana, sans-serif;
+  font-family: var(--font-ui);
   box-shadow: var(--dialog-shadow);
   border-radius: 8px;
 }
@@ -32,7 +32,7 @@
 
 /* Dialog sections */
 .aqua-dialog__header {
-  font-size: 11pt;
+  font-size: var(--font-size-dialog-title);
   font-weight: bold;
   margin-bottom: 14px;
   text-align: center;
@@ -48,18 +48,18 @@
   text-align: center;
   border-radius: 4px;
   box-shadow: var(--dialog-section-shadow);
-  font-size: 10pt;
+  font-size: var(--font-size-dialog-body);
   margin: 10px 0;
 }
 
 .aqua-dialog__section-description {
   margin-top: 5px;
-  font-size: 7.7pt;
+  font-size: var(--font-size-dialog-meta);
   color: var(--dialog-section-description);
 }
 
 .aqua-dialog__row {
-  font-size: 10pt;
+  font-size: var(--font-size-dialog-body);
   text-align: left;
   margin-top: 10px;
   margin-left: 6px;
@@ -98,7 +98,7 @@
   padding: 16px 20px;
   border-radius: 10px;
   max-width: 400px;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  font-family: var(--font-ui);
   box-shadow: var(--alert-dialog-shadow);
 }
 
@@ -140,14 +140,14 @@
 
   h3 {
     margin: 0 0 8px 0;
-    font-size: 13px;
+    font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--alert-dialog-title);
   }
 
   p {
     margin: 0;
-    font-size: 12px;
+    font-size: var(--font-size-medium);
     color: var(--alert-dialog-text);
     line-height: 1.4;
   }

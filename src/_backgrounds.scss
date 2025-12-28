@@ -101,7 +101,11 @@
   --aqua-selection-glow: rgba(48, 103, 218, 0.5);
 
   /* Primary gradient (for buttons, progress bars) - uses unified theme variables */
-  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient: linear-gradient(
+    var(--theme-gradient-1),
+    var(--theme-gradient-2),
+    var(--theme-gradient-3)
+  );
 
   /* Darker blue gradient for pressed state (10.4 and earlier) */
   --aqua-blue-gradient-pressed: linear-gradient(
@@ -323,7 +327,7 @@
 
 /* Font family utility */
 .aqua-font {
-  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
 }
 

@@ -48,6 +48,17 @@
   --glow: rgba(52, 106, 227, 0.50);
   --txtShadow: rgba(30, 77, 161, 0.5);
 
+  /* Normalized theme tokens (compat: legacy --g1/--drop/etc.) */
+  --theme-gradient-1: var(--g1);
+  --theme-gradient-2: var(--g2);
+  --theme-gradient-3: var(--g3);
+  --theme-shadow-drop: var(--drop);
+  --theme-shadow-rim: var(--rim);
+  --theme-shadow-inner: var(--inner);
+  --theme-shadow-ring: var(--ring);
+  --theme-shadow-glow: var(--glow);
+  --theme-text-shadow: var(--txtShadow);
+
   /* Shadows */
   --window-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
   --button-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -64,10 +75,30 @@
   --grouped-element-spacing: 6px;
 
   /* Typography */
-  --font-system: -apple-system, BlinkMacSystemFont, "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-system: -apple-system, BlinkMacSystemFont, "Lucida Grande", "Lucida Sans Unicode", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-ui: var(--font-system);
+  --font-size-tiny: 8px;
+  --font-size-xxsmall: 9px;
+  --font-size-xsmall: 10px;
   --font-size-base: 13px;
   --font-size-small: 11px;
+  --font-size-medium: 12px;
+  --font-size-large: 14px;
+  --font-size-xlarge: 15px;
+  --font-size-display-small: 24px;
+  --font-size-display-medium: 32px;
+  --font-size-display-large: 40px;
   --font-size-title: 13px;
+  --font-size-button-base: 1rem;
+  --font-size-button-small: 0.75rem;
+  --font-size-button-large: 1.5rem;
+  --font-size-button-xlarge: 2rem;
+  --font-size-input: 10pt;
+  --font-size-input-small: 9pt;
+  --font-size-input-large: 12pt;
+  --font-size-dialog-title: 11pt;
+  --font-size-dialog-body: 10pt;
+  --font-size-dialog-meta: 7.7pt;
 
   /* Brushed Metal Gradient */
   --brushed-metal: linear-gradient(
@@ -377,7 +408,11 @@
     rgb(208, 208, 208) 100%
   );
   --checkbox-selected-border: rgb(100, 103, 124);
-  --checkbox-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --checkbox-selected-gradient: linear-gradient(
+    var(--theme-gradient-1),
+    var(--theme-gradient-2),
+    var(--theme-gradient-3)
+  );
   --checkbox-focus-border: rgb(104, 155, 201);
   --checkbox-focus-ring: 0 0 0 3px rgba(120, 171, 217, 1);
   --checkbox-indeterminate-shadow: drop-shadow(0 1.5px 0 rgba(255, 255, 255, 0.8));
@@ -435,17 +470,17 @@
   /* Buttons */
   --aqua-button-primary-gradient: var(--aqua-blue-gradient);
   --aqua-button-primary-gradient-pressed: var(--aqua-blue-gradient-pressed);
-  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.5em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring);
-  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.5em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring),
-    0 0 0.5em var(--glow);
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.5em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.5em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring),
+    0 0 0.5em var(--theme-shadow-glow);
   --aqua-button-primary-text: var(--text-color);
-  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--theme-text-shadow);
   --aqua-button-secondary-gradient: var(--aqua-gray-gradient);
   --aqua-button-secondary-shadow: 0 0.375em 0.5em rgba(0, 0, 0, 0.2),
     0 0.125em 0.125em rgba(0, 0, 0, 0.3),

@@ -10,7 +10,7 @@
   flex-direction: column;
   border-radius: 8px 8px 0 0;
   overflow: hidden;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
 
   /* Window border */
@@ -222,7 +222,7 @@
     overflow: visible;
     transition: all 0.15s ease;
     background: none;
-    font-size: 14px;
+    font-size: var(--font-size-large);
 
     /* Icon inside button */
     .icon {
@@ -230,13 +230,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -55%);
-      font-size: 8px;
+      font-size: var(--font-size-tiny);
       font-weight: bold;
       line-height: 1;
       opacity: 0;
       z-index: 10;
       transition: opacity 0.1s ease;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font-ui);
     }
 
     /* Aqua glass effect (top shine + bottom glow) */
@@ -351,7 +351,7 @@
   }
 
   .title-bar-text {
-    font-size: 11px;
+    font-size: var(--font-size-small);
   }
 
   .window-body {
@@ -364,72 +364,73 @@
    Mac OS X 10.0/10.1/10.2 Era Window Styling
    Original Aqua with pinstripes throughout (2001-2002)
    ============================================ */
-[data-aqua-era="10-0"],
-[data-aqua-era="10-2"] {
-  .window:not(.brushed-metal):not(.brushed-metal-authentic):not(.brushed-metal-light):not(.brushed-metal-dark):not(.brushed-metal-warm) {
-    .title-bar {
-      background-color: #ececec;
-      background-image:
-        /* Gloss/shine overlay */
-        linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0.7) 0%,
-          rgba(255, 255, 255, 0.3) 45%,
-          rgba(0, 0, 0, 0.03) 55%,
-          rgba(0, 0, 0, 0.08) 100%
-        ),
-        /* Horizontal pinstripes - white on gray */
-        repeating-linear-gradient(
+@each $era in ('10-0', '10-2') {
+  @include aqua-era($era) {
+    .window:not(.brushed-metal):not(.brushed-metal-authentic):not(.brushed-metal-light):not(.brushed-metal-dark):not(.brushed-metal-warm) {
+      .title-bar {
+        background-color: #ececec;
+        background-image:
+          /* Gloss/shine overlay */
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 45%,
+            rgba(0, 0, 0, 0.03) 55%,
+            rgba(0, 0, 0, 0.08) 100%
+          ),
+          /* Horizontal pinstripes - white on gray */
+          repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 4px,
+            rgba(255, 255, 255, 0.85) 4px,
+            rgba(255, 255, 255, 0.85) 8px
+          );
+      }
+
+      .window-body {
+        background-color: #ececec;
+        background-image: repeating-linear-gradient(
           0deg,
           transparent 0px,
           transparent 4px,
           rgba(255, 255, 255, 0.85) 4px,
           rgba(255, 255, 255, 0.85) 8px
         );
-    }
+      }
 
-    .window-body {
-      background-color: #ececec;
-      background-image: repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent 4px,
-        rgba(255, 255, 255, 0.85) 4px,
-        rgba(255, 255, 255, 0.85) 8px
-      );
-    }
+      &.inactive {
+        .title-bar {
+          background-color: #f4f4f4;
+          background-image:
+            /* Faded gloss for inactive state */
+            linear-gradient(
+              to bottom,
+              rgba(255, 255, 255, 0.5) 0%,
+              rgba(255, 255, 255, 0.2) 45%,
+              rgba(0, 0, 0, 0.02) 55%,
+              rgba(0, 0, 0, 0.04) 100%
+            ),
+            /* Faded pinstripes */
+            repeating-linear-gradient(
+              0deg,
+              transparent 0px,
+              transparent 4px,
+              rgba(255, 255, 255, 0.7) 4px,
+              rgba(255, 255, 255, 0.7) 8px
+            );
+        }
 
-    &.inactive {
-      .title-bar {
-        background-color: #f4f4f4;
-        background-image:
-          /* Faded gloss for inactive state */
-          linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.5) 0%,
-            rgba(255, 255, 255, 0.2) 45%,
-            rgba(0, 0, 0, 0.02) 55%,
-            rgba(0, 0, 0, 0.04) 100%
-          ),
-          /* Faded pinstripes */
-          repeating-linear-gradient(
+        .window-body {
+          background-color: #f4f4f4;
+          background-image: repeating-linear-gradient(
             0deg,
             transparent 0px,
             transparent 4px,
             rgba(255, 255, 255, 0.7) 4px,
             rgba(255, 255, 255, 0.7) 8px
           );
-      }
-
-      .window-body {
-        background-color: #f4f4f4;
-        background-image: repeating-linear-gradient(
-          0deg,
-          transparent 0px,
-          transparent 4px,
-          rgba(255, 255, 255, 0.7) 4px,
-          rgba(255, 255, 255, 0.7) 8px
-        );
+        }
       }
     }
   }

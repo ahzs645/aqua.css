@@ -3,6 +3,8 @@
  * Navigation pane with nested menu items
  */
 
+@use "mixins" as *;
+
 .window-pane {
   background: var(--surface-light);
   border: 1px solid var(--window-pane-border);
@@ -10,9 +12,12 @@
   padding: 8px 0;
 
   /* Striped background for early Mac OS X eras */
-  [data-aqua-era="10-0"] &,
-  [data-aqua-era="10-2"] & {
-    background: var(--aqua-background-classic);
+  @each $era in ('10-0', '10-2') {
+    @include aqua-era($era) {
+      & {
+        background: var(--aqua-background-classic);
+      }
+    }
   }
 
   .menu-items {

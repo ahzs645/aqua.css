@@ -22,7 +22,7 @@
     padding: 4px 8px;
     text-align: center;
     background: var(--stepper-bg);
-    font-family: var(--font-system);
+    font-family: var(--font-ui);
     font-size: var(--font-size-base);
     -moz-appearance: textfield;
 
@@ -42,7 +42,7 @@
     padding: 4px 8px;
     border: none;
     border-radius: 0;
-    font-size: 14px;
+    font-size: var(--font-size-large);
     font-weight: 500;
     line-height: 1;
     background: var(--stepper-button-gradient);
@@ -80,7 +80,7 @@
   display: inline-flex;
   align-items: stretch;
   gap: 4px;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
 
   input {

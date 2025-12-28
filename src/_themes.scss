@@ -3,10 +3,12 @@
  * Color theme variants: Graphite, Air, Earth, Fire
  */
 
+@use "mixins" as *;
+
 /* ============================================
    Graphite Theme (Gray)
    ============================================ */
-.theme-graphite {
+@include aqua-theme('graphite') {
   --aqua-blue: #8C8C8C;
   --aqua-blue-dark: #666666;
   --aqua-blue-light: #AAAAAA;
@@ -34,26 +36,26 @@
   );
 
   /* Aqua 3D button primary (graphite) */
-  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --aqua-button-primary-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-blue-gradient-pressed: linear-gradient(
     rgba(120, 120, 120, 0.75),
     rgba(160, 160, 160, 0.75),
     rgba(140, 140, 140, 0.75)
   );
-  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.25em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring);
-  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.25em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring),
-    0 0 0.5em var(--glow);
-  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.25em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.25em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring),
+    0 0 0.5em var(--theme-shadow-glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--theme-text-shadow);
 
-  --checkbox-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --radio-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --checkbox-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --radio-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --checkbox-selected-border: rgb(80, 80, 80);
   --aqua-button-default-border: rgb(80, 80, 80);
   --aqua-button-default-gradient: linear-gradient(
@@ -94,7 +96,7 @@
 /* ============================================
    Air Theme (Light/White)
    ============================================ */
-.theme-air {
+@include aqua-theme('air') {
   --theme-color: rgb(248, 248, 248);
   --theme-color-dark: rgb(200, 200, 200);
   --theme-color-light: rgb(255, 255, 255);
@@ -111,26 +113,26 @@
   --txtShadow: rgba(0, 0, 0, 0.15);
 
   /* Aqua 3D button primary (air/light) */
-  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --aqua-button-primary-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-blue-gradient-pressed: linear-gradient(
     rgba(200, 200, 200, 0.75),
     rgba(230, 230, 230, 0.75),
     rgba(220, 220, 220, 0.75)
   );
-  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.25em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring);
-  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.25em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring),
-    0 0 0.5em var(--glow);
-  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.25em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.25em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring),
+    0 0 0.5em var(--theme-shadow-glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--theme-text-shadow);
 
-  --checkbox-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --radio-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --checkbox-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --radio-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --checkbox-selected-border: rgb(180, 180, 180);
   --aqua-button-default-border: rgb(180, 180, 180);
   --aqua-button-default-gradient: linear-gradient(
@@ -173,7 +175,7 @@
 /* ============================================
    Earth Theme (Green)
    ============================================ */
-.theme-earth {
+@include aqua-theme('earth') {
   --theme-color: rgb(69, 199, 73);
   --theme-color-dark: rgb(69, 154, 73);
   --theme-color-light: rgb(180, 235, 145);
@@ -190,26 +192,26 @@
   --txtShadow: rgba(0, 90, 50, 0.5);
 
   /* Aqua 3D button primary (earth/green) */
-  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --aqua-button-primary-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-blue-gradient-pressed: linear-gradient(
     rgba(40, 110, 45, 0.75),
     rgba(50, 150, 55, 0.75),
     rgba(130, 190, 100, 0.75)
   );
-  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.5em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring);
-  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.5em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring),
-    0 0 0.5em var(--glow);
-  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.5em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.5em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring),
+    0 0 0.5em var(--theme-shadow-glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--theme-text-shadow);
 
-  --checkbox-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --radio-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --checkbox-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --radio-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --checkbox-selected-border: rgb(50, 120, 50);
   --aqua-button-default-border: rgb(50, 120, 50);
   --aqua-button-default-gradient: linear-gradient(
@@ -251,7 +253,7 @@
 /* ============================================
    Fire Theme (Red)
    ============================================ */
-.theme-fire {
+@include aqua-theme('fire') {
   --theme-color: rgb(226, 61, 56);
   --theme-color-dark: rgb(165, 64, 59);
   --theme-color-light: rgb(251, 207, 202);
@@ -268,26 +270,26 @@
   --txtShadow: rgba(140, 20, 40, 0.5);
 
   /* Aqua 3D button primary (fire/red) */
-  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --aqua-button-primary-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-blue-gradient-pressed: linear-gradient(
     rgba(120, 40, 35, 0.75),
     rgba(180, 45, 40, 0.75),
     rgba(210, 130, 125, 0.75)
   );
-  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.5em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring);
-  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.5em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring),
-    0 0 0.5em var(--glow);
-  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.5em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.5em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring),
+    0 0 0.5em var(--theme-shadow-glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--theme-text-shadow);
 
-  --checkbox-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --radio-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --checkbox-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --radio-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --checkbox-selected-border: rgb(140, 50, 50);
   --aqua-button-default-border: rgb(140, 50, 50);
   --aqua-button-default-gradient: linear-gradient(
@@ -329,7 +331,7 @@
 /* ============================================
    Purple Theme
    ============================================ */
-.theme-purple {
+@include aqua-theme('purple') {
   --theme-color: rgb(140, 90, 220);
   --theme-color-dark: rgb(85, 45, 170);
   --theme-color-light: rgb(200, 170, 255);
@@ -346,26 +348,26 @@
   --txtShadow: rgba(80, 45, 150, 0.45);
 
   /* Aqua 3D button primary (purple) */
-  --aqua-blue-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --aqua-button-primary-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --aqua-button-primary-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-blue-gradient-pressed: linear-gradient(
     rgba(60, 30, 130, 0.75),
     rgba(100, 60, 180, 0.75),
     rgba(90, 150, 200, 0.75)
   );
-  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.5em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring);
-  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--drop),
-    0 0.125em 0.125em var(--rim),
-    inset 0 0.25em 0.5em var(--inner),
-    inset 0 0.375em 0.5em 0.25em var(--ring),
-    0 0 0.5em var(--glow);
-  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--txtShadow);
+  --aqua-button-primary-shadow: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.5em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring);
+  --aqua-button-primary-shadow-active: 0 0.375em 0.5em var(--theme-shadow-drop),
+    0 0.125em 0.125em var(--theme-shadow-rim),
+    inset 0 0.25em 0.5em var(--theme-shadow-inner),
+    inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring),
+    0 0 0.5em var(--theme-shadow-glow);
+  --aqua-button-primary-text-shadow: 0 0.25em 0.2em var(--theme-text-shadow);
 
-  --checkbox-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
-  --radio-selected-gradient: linear-gradient(var(--g1), var(--g2), var(--g3));
+  --checkbox-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+  --radio-selected-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --checkbox-selected-border: rgb(70, 40, 140);
   --aqua-button-default-border: rgb(70, 40, 140);
   --aqua-button-default-gradient: linear-gradient(
@@ -407,8 +409,7 @@
 /* ============================================
    Aqua Era Presets (approximate)
    ============================================ */
-.aqua-era-10-0,
-[data-aqua-era="10-0"] {
+@include aqua-era('10-0') {
   --aqua-blue: #3B9CFF;
   --aqua-blue-dark: #0054D6;
   --aqua-blue-darker: #003B9E;
@@ -573,8 +574,7 @@
   --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
 }
 
-.aqua-era-10-2,
-[data-aqua-era="10-2"] {
+@include aqua-era('10-2') {
   --aqua-blue: #2F95FF;
   --aqua-blue-dark: #0060C9;
   --aqua-blue-darker: #00468F;
@@ -739,8 +739,7 @@
   --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
 }
 
-.aqua-era-10-3,
-[data-aqua-era="10-3"] {
+@include aqua-era('10-3') {
   --aqua-blue: #2A8DEB;
   --aqua-blue-dark: #0055B3;
   --aqua-blue-darker: #003E87;
@@ -928,8 +927,7 @@
   --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
 }
 
-.aqua-era-10-6,
-[data-aqua-era="10-6"] {
+@include aqua-era('10-6') {
   --aqua-button-standard-radius: 4.5px;
   --aqua-button-round-rect-radius: 6px;
   --aqua-button-pill-radius: 6px;

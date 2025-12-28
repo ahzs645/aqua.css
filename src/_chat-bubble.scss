@@ -11,8 +11,8 @@
   overflow: hidden;
   padding: 6px 12px;
   min-height: 29.875px;
-  font-family: "Lucida Grande", "Helvetica Neue", sans-serif;
-  font-size: 13px;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
   text-shadow: var(--chat-bubble-text-shadow);
@@ -99,7 +99,7 @@
 /* Size variations */
 .aqua-chat-bubble--small {
   padding: 4px 10px;
-  font-size: 12px;
+  font-size: var(--font-size-medium);
   min-height: 24px;
   border-radius: 12px;
 
@@ -113,7 +113,7 @@
 
 .aqua-chat-bubble--large {
   padding: 10px 16px;
-  font-size: 14px;
+  font-size: var(--font-size-large);
   min-height: 40px;
   border-radius: 20px;
 
@@ -127,7 +127,7 @@
 
 /* Message metadata */
 .aqua-chat-bubble-meta {
-  font-size: 11px;
+  font-size: var(--font-size-small);
   color: var(--chat-bubble-meta-text);
   margin-bottom: 4px;
   display: flex;

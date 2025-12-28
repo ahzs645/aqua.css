@@ -13,7 +13,7 @@ table.aqua-table {
   background: var(--table-bg);
   border: 1px solid;
   border-color: var(--table-border);
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
 
   /* Column headers */
@@ -283,8 +283,7 @@ table:not(.aqua):not(.table-view) {
 /* ============================================
    ERA-SPECIFIC: Mac OS X 10.0 Gray Selection
    ============================================ */
-.aqua-era-10-0,
-[data-aqua-era="10-0"] {
+@include aqua-era('10-0') {
   table:not(.aqua):not(.table-view) tbody tr {
     &.selected,
     &.highlighted {

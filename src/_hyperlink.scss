@@ -13,7 +13,7 @@ a.aqua-hyperlink {
   color: var(--hyperlink-color);
   text-decoration: none;
   cursor: pointer;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
 
   &:hover,
   &:focus {
@@ -51,7 +51,7 @@ button.aqua-hyperlink {
   border: none;
   padding: 0;
   font: inherit;
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   display: inline;
 
   &:hover,

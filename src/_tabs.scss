@@ -45,8 +45,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: "Lucida Grande", "Helvetica Neue", sans-serif;
-  font-size: 13px;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
   white-space: nowrap;
   z-index: 1; /* Inactive tabs behind the bar (bar is z-index: 3) */
 
@@ -158,13 +158,13 @@
 /* Size variations */
 .aqua-tab--small {
   height: 22px;
-  font-size: 11px;
+  font-size: var(--font-size-small);
   padding: 0 12px;
 }
 
 .aqua-tab--large {
   height: 34px;
-  font-size: 14px;
+  font-size: var(--font-size-large);
   padding: 0 20px;
 }
 
@@ -232,13 +232,13 @@
 /* Size variations */
 .tab-list.small li {
   height: 22px;
-  font-size: 11px;
+  font-size: var(--font-size-small);
   padding: 0 12px;
 }
 
 .tab-list.large li {
   height: 34px;
-  font-size: 14px;
+  font-size: var(--font-size-large);
   padding: 0 20px;
 }
 
@@ -261,11 +261,12 @@
   display: none;
 }
 
-.aqua-era-10-0 .era-pre-10-3,
-[data-aqua-era="10-0"] .era-pre-10-3,
-.aqua-era-10-2 .era-pre-10-3,
-[data-aqua-era="10-2"] .era-pre-10-3 {
-  display: block;
+@each $era in ('10-0', '10-2') {
+  @include aqua-era($era) {
+    .era-pre-10-3 {
+      display: block;
+    }
+  }
 }
 
 /* Center the folder tabs in pre-10.3 section */
@@ -274,27 +275,23 @@
 }
 
 /* 10.3+ section: shown by default, hidden for 10.0/10.2 */
-.aqua-era-10-0 .era-10-3-plus,
-[data-aqua-era="10-0"] .era-10-3-plus,
-.aqua-era-10-2 .era-10-3-plus,
-[data-aqua-era="10-2"] .era-10-3-plus {
-  display: none;
+@each $era in ('10-0', '10-2') {
+  @include aqua-era($era) {
+    .era-10-3-plus {
+      display: none;
+    }
+  }
 }
 
 /* Also hide pill tab components directly for pre-10.3 eras */
-.aqua-era-10-0 .tabs-pill,
-[data-aqua-era="10-0"] .tabs-pill,
-.aqua-era-10-0 .tabs-pill-container,
-[data-aqua-era="10-0"] .tabs-pill-container,
-.aqua-era-10-0 .aqua-tabs-container .aqua-tabs,
-[data-aqua-era="10-0"] .aqua-tabs-container .aqua-tabs,
-.aqua-era-10-2 .tabs-pill,
-[data-aqua-era="10-2"] .tabs-pill,
-.aqua-era-10-2 .tabs-pill-container,
-[data-aqua-era="10-2"] .tabs-pill-container,
-.aqua-era-10-2 .aqua-tabs-container .aqua-tabs,
-[data-aqua-era="10-2"] .aqua-tabs-container .aqua-tabs {
-  display: none;
+@each $era in ('10-0', '10-2') {
+  @include aqua-era($era) {
+    .tabs-pill,
+    .tabs-pill-container,
+    .aqua-tabs-container .aqua-tabs {
+      display: none;
+    }
+  }
 }
 
 .tabs-pill {
@@ -325,7 +322,7 @@
 }
 
 .tab-pill {
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
   padding: 1px 10px;
   border: none;
@@ -428,7 +425,7 @@
 }
 
 .aqua-tabs-container .aqua-tab {
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
   padding: 1px 10px;
   border: none;
@@ -490,7 +487,7 @@
 }
 
 .group-box-title {
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
   font-weight: bold;
   color: var(--text-color);

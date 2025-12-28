@@ -65,8 +65,8 @@
   max-width: 400px;
   padding: 12px 14px;
   border-radius: 8px;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-  font-size: 13px;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
   pointer-events: auto;
 
   /* Semi-transparent pinstripe background */
@@ -162,7 +162,7 @@
   border: none;
   border-radius: 12px;
   font-family: inherit;
-  font-size: 12px;
+  font-size: var(--font-size-medium);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -242,10 +242,10 @@
   }
 
   .aqua-toast-title {
-    font-size: 12px;
+    font-size: var(--font-size-medium);
   }
 
   .aqua-toast-description {
-    font-size: 11px;
+    font-size: var(--font-size-small);
   }
 }

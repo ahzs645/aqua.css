@@ -24,6 +24,24 @@
 @use "sass:meta";
 
 /* ============================================
+   Era/Theme helpers
+   ============================================ */
+
+@mixin aqua-era($era) {
+  .aqua-era-#{$era},
+  [data-aqua-era="#{$era}"] {
+    @content;
+  }
+}
+
+@mixin aqua-theme($theme) {
+  .theme-#{$theme},
+  [data-aqua-theme="#{$theme}"] {
+    @content;
+  }
+}
+
+/* ============================================
    Presets + aliases (single source of truth)
    ============================================ */
 

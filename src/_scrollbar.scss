@@ -221,11 +221,11 @@
   overflow: hidden;
   cursor: pointer;
   border-radius: 9px;
-  background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
+  background: linear-gradient(90deg, var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   box-shadow:
-    0.125em 0 0.125em var(--rim),
-    inset 0.25em 0 0.5em var(--inner),
-    inset 0.375em 0 0.5em 0.25em var(--ring);
+    0.125em 0 0.125em var(--theme-shadow-rim),
+    inset 0.25em 0 0.5em var(--theme-shadow-inner),
+    inset 0.375em 0 0.5em 0.25em var(--theme-shadow-ring);
 }
 
 /* Left gloss - matches progress-wave::before but vertical */
@@ -414,7 +414,7 @@
     outline: none !important;
   }
 
-  font-size: 8px;
+  font-size: var(--font-size-tiny);
   line-height: 1;
   color: var(--aqua-button-secondary-text);
   text-shadow: var(--aqua-button-secondary-text-shadow);
@@ -498,7 +498,7 @@
     outline: none !important;
   }
 
-  font-size: 8px;
+  font-size: var(--font-size-tiny);
   line-height: 1;
   color: var(--aqua-button-secondary-text);
   text-shadow: var(--aqua-button-secondary-text-shadow);

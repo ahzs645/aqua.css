@@ -16,7 +16,7 @@ table.aqua-tree-table {
   background: var(--table-row-odd);
   border: 1px solid;
   border-color: var(--table-border);
-  font-family: var(--font-system);
+  font-family: var(--font-ui);
   font-size: var(--font-size-base);
 
   /* Column headers */
@@ -264,8 +264,7 @@ table.aqua-tree-table {
 /* ============================================
    ERA-SPECIFIC: Mac OS X 10.0 Gray Selection
    ============================================ */
-.aqua-era-10-0,
-[data-aqua-era="10-0"] {
+@include aqua-era('10-0') {
   .tree-table,
   table.aqua-tree-table {
     /* Gray selection for 10.0 era (unfocused) */
