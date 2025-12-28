@@ -894,7 +894,81 @@
     </div>
 
     <h3 id="listbox">Listbox</h3>
-    <p>Multi-select list using <code>select[multiple]</code> or <code>role="listbox"</code>.</p>
+    <p>Mac OS 10.1 style listbox with wave scrollbar. Click items to select.</p>
+    <div class="example">
+      <div class="raw"><div class="aqua-listbox" style="width: 200px; height: 200px;" id="aqua-listbox-demo">
+  <div class="aqua-listbox-content" id="aqua-listbox-content">
+    <ul class="aqua-listbox-list" role="listbox" id="aqua-listbox-list">
+      <li class="aqua-listbox-item" role="option">640 x 480</li>
+      <li class="aqua-listbox-item" role="option">800 x 600</li>
+      <li class="aqua-listbox-item selected" role="option" aria-selected="true">1024 x 768</li>
+      <li class="aqua-listbox-item" role="option">1152 x 864</li>
+      <li class="aqua-listbox-item" role="option">1280 x 720</li>
+      <li class="aqua-listbox-item" role="option">1280 x 768</li>
+      <li class="aqua-listbox-item" role="option">1280 x 960</li>
+      <li class="aqua-listbox-item" role="option">1280 x 1024</li>
+      <li class="aqua-listbox-item" role="option">1360 x 768</li>
+      <li class="aqua-listbox-item" role="option">1440 x 900</li>
+      <li class="aqua-listbox-item" role="option">1600 x 900</li>
+      <li class="aqua-listbox-item" role="option">1680 x 1050</li>
+      <li class="aqua-listbox-item" role="option">1920 x 1080</li>
+    </ul>
+  </div>
+  <div class="scrollbar-wave-cap"></div>
+  <div class="scrollbar-wave-track" id="aqua-listbox-track">
+    <div class="scrollbar-wave-thumb" id="aqua-listbox-thumb">
+      <div class="scrollbar-wave-ink">
+        <div class="scrollbar-wave-shimmer" id="aqua-listbox-shimmer"></div>
+      </div>
+    </div>
+  </div>
+  <div class="scrollbar-wave-buttons">
+    <button class="scrollbar-wave-btn" id="aqua-listbox-btn-up" title="Scroll up">&#9650;</button>
+    <button class="scrollbar-wave-btn" id="aqua-listbox-btn-down" title="Scroll down">&#9660;</button>
+  </div>
+  <button class="scrollbar-wave-btn-top" id="aqua-listbox-btn-top" title="Scroll up">&#9650;</button>
+  <button class="scrollbar-wave-btn-bottom" id="aqua-listbox-btn-bottom" title="Scroll down">&#9660;</button>
+</div></div>
+      <details class="code">
+        <summary>Show code</summary>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px; height: 200px;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-demo&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-content&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-list&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;listbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-list&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>640 x 480<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>800 x 600<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item selected&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span> <span class="hljs-attr">aria-selected</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>1024 x 768<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1152 x 864<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1280 x 720<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1280 x 768<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1280 x 960<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1280 x 1024<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1360 x 768<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1440 x 900<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1600 x 900<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1680 x 1050<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1920 x 1080<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-cap&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-track&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-track&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-thumb&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-thumb&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-ink&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-shimmer&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-buttons&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-btn-up&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll up&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9650;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-btn-down&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll down&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9660;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn-top&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-btn-top&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll up&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9650;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-btn-bottom&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-btn-bottom&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll down&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9660;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
+      </details>
+    </div>
+
+    <p style="margin-top: 20px;">Native <code>select[multiple]</code> fallback:</p>
     <div class="example">
       <div class="raw"><select multiple style="width: 200px; height: 120px;">
   <option>Documents</option>
@@ -4089,6 +4163,163 @@
         }
       }
 
+      function setupAquaListbox() {
+        const listbox = document.getElementById('aqua-listbox-demo');
+        const scrollContent = document.getElementById('aqua-listbox-content');
+        const scrollbarTrack = document.getElementById('aqua-listbox-track');
+        const scrollbarThumb = document.getElementById('aqua-listbox-thumb');
+        const thumbShimmer = document.getElementById('aqua-listbox-shimmer');
+        const listboxList = document.getElementById('aqua-listbox-list');
+
+        if (!listbox || !scrollContent || !scrollbarTrack || !scrollbarThumb || !thumbShimmer) return;
+
+        let isDragging = false;
+        let startY = 0;
+        let startScrollTop = 0;
+
+        function updateScrollbar() {
+          const contentHeight = scrollContent.scrollHeight;
+          const visibleHeight = scrollContent.clientHeight;
+          const scrollTop = scrollContent.scrollTop;
+          const trackHeight = scrollbarTrack.clientHeight;
+
+          // Calculate thumb size (proportional to visible content)
+          const thumbHeight = Math.max(40, (visibleHeight / contentHeight) * trackHeight);
+          scrollbarThumb.style.height = thumbHeight + 'px';
+
+          // Calculate thumb position
+          const maxScroll = contentHeight - visibleHeight;
+          const maxThumbTop = trackHeight - thumbHeight;
+          const thumbTop = maxScroll > 0 ? (scrollTop / maxScroll) * maxThumbTop : 0;
+          scrollbarThumb.style.top = thumbTop + 'px';
+
+          // Wave is sized to track height, positioned to stay "fixed" relative to track
+          thumbShimmer.style.height = trackHeight + 'px';
+          thumbShimmer.style.top = -thumbTop + 'px';
+        }
+
+        scrollContent.addEventListener('scroll', updateScrollbar);
+        window.addEventListener('resize', updateScrollbar);
+        updateScrollbar();
+
+        // Drag functionality
+        scrollbarThumb.addEventListener('mousedown', function(e) {
+          isDragging = true;
+          startY = e.clientY;
+          startScrollTop = scrollContent.scrollTop;
+          document.body.style.userSelect = 'none';
+          e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', function(e) {
+          if (!isDragging) return;
+
+          const trackHeight = scrollbarTrack.clientHeight;
+          const thumbHeight = scrollbarThumb.clientHeight;
+          const contentHeight = scrollContent.scrollHeight;
+          const visibleHeight = scrollContent.clientHeight;
+
+          const deltaY = e.clientY - startY;
+          const maxThumbTop = trackHeight - thumbHeight;
+          const maxScroll = contentHeight - visibleHeight;
+
+          const scrollDelta = (deltaY / maxThumbTop) * maxScroll;
+          scrollContent.scrollTop = startScrollTop + scrollDelta;
+        });
+
+        document.addEventListener('mouseup', function() {
+          if (isDragging) {
+            isDragging = false;
+            document.body.style.userSelect = '';
+          }
+        });
+
+        // Click on track to jump
+        scrollbarTrack.addEventListener('click', function(e) {
+          if (e.target === scrollbarThumb || scrollbarThumb.contains(e.target)) return;
+
+          const trackRect = scrollbarTrack.getBoundingClientRect();
+          const clickY = e.clientY - trackRect.top;
+          const trackHeight = scrollbarTrack.clientHeight;
+          const thumbHeight = scrollbarThumb.clientHeight;
+          const contentHeight = scrollContent.scrollHeight;
+          const visibleHeight = scrollContent.clientHeight;
+
+          const targetThumbTop = clickY - thumbHeight / 2;
+          const maxThumbTop = trackHeight - thumbHeight;
+          const maxScroll = contentHeight - visibleHeight;
+
+          const newScrollTop = (targetThumbTop / maxThumbTop) * maxScroll;
+          scrollContent.scrollTop = Math.max(0, Math.min(maxScroll, newScrollTop));
+        });
+
+        // Arrow button functionality
+        const btnUp = document.getElementById('aqua-listbox-btn-up');
+        const btnDown = document.getElementById('aqua-listbox-btn-down');
+        const btnTop = document.getElementById('aqua-listbox-btn-top');
+        const btnBottom = document.getElementById('aqua-listbox-btn-bottom');
+        const scrollStep = 20;
+        let scrollInterval = null;
+
+        function startScrolling(direction) {
+          scrollContent.scrollTop += direction * scrollStep;
+          scrollInterval = setInterval(function() {
+            scrollContent.scrollTop += direction * scrollStep;
+          }, 50);
+        }
+
+        function stopScrolling() {
+          if (scrollInterval) {
+            clearInterval(scrollInterval);
+            scrollInterval = null;
+          }
+        }
+
+        // Together mode buttons
+        if (btnUp) {
+          btnUp.addEventListener('mousedown', function() { startScrolling(-1); });
+          btnUp.addEventListener('mouseup', stopScrolling);
+          btnUp.addEventListener('mouseleave', stopScrolling);
+        }
+
+        if (btnDown) {
+          btnDown.addEventListener('mousedown', function() { startScrolling(1); });
+          btnDown.addEventListener('mouseup', stopScrolling);
+          btnDown.addEventListener('mouseleave', stopScrolling);
+        }
+
+        // Split mode buttons
+        if (btnTop) {
+          btnTop.addEventListener('mousedown', function() { startScrolling(-1); });
+          btnTop.addEventListener('mouseup', stopScrolling);
+          btnTop.addEventListener('mouseleave', stopScrolling);
+        }
+
+        if (btnBottom) {
+          btnBottom.addEventListener('mousedown', function() { startScrolling(1); });
+          btnBottom.addEventListener('mouseup', stopScrolling);
+          btnBottom.addEventListener('mouseleave', stopScrolling);
+        }
+
+        // Item selection functionality
+        if (listboxList) {
+          listboxList.addEventListener('click', function(e) {
+            const item = e.target.closest('.aqua-listbox-item');
+            if (!item) return;
+
+            // Remove selected from all items
+            listboxList.querySelectorAll('.aqua-listbox-item').forEach(function(li) {
+              li.classList.remove('selected');
+              li.removeAttribute('aria-selected');
+            });
+
+            // Add selected to clicked item
+            item.classList.add('selected');
+            item.setAttribute('aria-selected', 'true');
+          });
+        }
+      }
+
       function setupCustomSliders() {
         document.querySelectorAll('.aqua-slider-custom').forEach((slider) => {
           const thumb = slider.querySelector('.thumb');
@@ -4282,6 +4513,7 @@
       setupCopyButtons();
       setupAquaEraSelector();
       setupWaveScrollbar();
+      setupAquaListbox();
       setupCustomSliders();
       setupSpinners();
       setupSectionNav();

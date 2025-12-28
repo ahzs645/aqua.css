@@ -58,7 +58,44 @@
     `) %>
 
     <h3 id="listbox">Listbox</h3>
-    <p>Multi-select list using <code>select[multiple]</code> or <code>role="listbox"</code>.</p>
+    <p>Mac OS 10.1 style listbox with wave scrollbar. Click items to select.</p>
+    <%- example(`
+      <div class="aqua-listbox" style="width: 200px; height: 200px;" id="aqua-listbox-demo">
+        <div class="aqua-listbox-content" id="aqua-listbox-content">
+          <ul class="aqua-listbox-list" role="listbox" id="aqua-listbox-list">
+            <li class="aqua-listbox-item" role="option">640 x 480</li>
+            <li class="aqua-listbox-item" role="option">800 x 600</li>
+            <li class="aqua-listbox-item selected" role="option" aria-selected="true">1024 x 768</li>
+            <li class="aqua-listbox-item" role="option">1152 x 864</li>
+            <li class="aqua-listbox-item" role="option">1280 x 720</li>
+            <li class="aqua-listbox-item" role="option">1280 x 768</li>
+            <li class="aqua-listbox-item" role="option">1280 x 960</li>
+            <li class="aqua-listbox-item" role="option">1280 x 1024</li>
+            <li class="aqua-listbox-item" role="option">1360 x 768</li>
+            <li class="aqua-listbox-item" role="option">1440 x 900</li>
+            <li class="aqua-listbox-item" role="option">1600 x 900</li>
+            <li class="aqua-listbox-item" role="option">1680 x 1050</li>
+            <li class="aqua-listbox-item" role="option">1920 x 1080</li>
+          </ul>
+        </div>
+        <div class="scrollbar-wave-cap"></div>
+        <div class="scrollbar-wave-track" id="aqua-listbox-track">
+          <div class="scrollbar-wave-thumb" id="aqua-listbox-thumb">
+            <div class="scrollbar-wave-ink">
+              <div class="scrollbar-wave-shimmer" id="aqua-listbox-shimmer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-wave-buttons">
+          <button class="scrollbar-wave-btn" id="aqua-listbox-btn-up" title="Scroll up">&#9650;</button>
+          <button class="scrollbar-wave-btn" id="aqua-listbox-btn-down" title="Scroll down">&#9660;</button>
+        </div>
+        <button class="scrollbar-wave-btn-top" id="aqua-listbox-btn-top" title="Scroll up">&#9650;</button>
+        <button class="scrollbar-wave-btn-bottom" id="aqua-listbox-btn-bottom" title="Scroll down">&#9660;</button>
+      </div>
+    `) %>
+
+    <p style="margin-top: 20px;">Native <code>select[multiple]</code> fallback:</p>
     <%- example(`
       <select multiple style="width: 200px; height: 120px;">
         <option>Documents</option>

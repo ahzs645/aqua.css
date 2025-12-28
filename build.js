@@ -232,7 +232,7 @@ function buildDocs() {
 }
 
 function build() {
-  buildCSS()
+  return buildCSS()
     .then(buildDocs)
     .catch((err) => console.log(err));
 }
