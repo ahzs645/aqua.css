@@ -53,6 +53,23 @@
     #FFFFFF 8px
   );
 
+  /* Authentic pinstripe variants (System Preferences style) */
+  --aqua-pinstripe-white: repeating-linear-gradient(
+    0deg,
+    #FFFFFF 0px,
+    #FFFFFF 7px,
+    #ECECEC 7px,
+    #ECECEC 8px
+  );
+
+  --aqua-pinstripe-gray: repeating-linear-gradient(
+    0deg,
+    #DBDBDB 0px,
+    #DBDBDB 7px,
+    #FFFFFF 7px,
+    #FFFFFF 8px
+  );
+
   --aqua-background-diagonal: repeating-linear-gradient(
     45deg,
     #eee,
@@ -162,6 +179,15 @@
 
 .aqua-bg-pinstripe-diagonal {
   background-image: var(--aqua-pinstripe-diagonal);
+}
+
+/* Authentic thin pinstripe variants */
+.aqua-bg-pinstripe-white {
+  background: var(--aqua-pinstripe-white);
+}
+
+.aqua-bg-pinstripe-gray {
+  background: var(--aqua-pinstripe-gray);
 }
 
 .aqua-bg-titlebar {
