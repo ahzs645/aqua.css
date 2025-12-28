@@ -13,27 +13,19 @@ hr.aqua,
 hr.aqua-separator {
   border: none;
   height: 1px;
-  background: var(--separator-gradient-horizontal);
+  background: rgba(0, 0, 0, 0.15);
   margin: 8px 0;
 }
 
 /* ============================================
    VERTICAL SEPARATOR
    ============================================ */
-.separator.vertical {
-  width: 1px;
-  height: 20px;
-  margin: 0 8px;
-  background: var(--separator-gradient-vertical);
-  display: inline-block;
-  vertical-align: middle;
-}
-
+.separator.vertical,
 .aqua-separator.vertical {
   width: 1px;
   height: 20px;
   margin: 0 8px;
-  background: var(--separator-gradient-vertical);
+  background: rgba(0, 0, 0, 0.15);
   display: inline-block;
   vertical-align: middle;
 }
