@@ -24,7 +24,6 @@ body {
   background: color-mix(in srgb, var(--docs-bg-color) 95%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
