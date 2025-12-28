@@ -2822,10 +2822,10 @@
     <p class="label">Combines tree hierarchy with table columns (click arrows to expand/collapse)</p>
 
     <div class="example">
-      <div class="raw"><table class="aqua-tree-table" tabindex="0" id="tree-table-demo" style="width: 100%; max-width: 700px;">
+      <div class="raw"><table class="aqua-tree-table unified-header" tabindex="0" id="tree-table-demo" style="width: 100%; max-width: 700px;">
   <thead>
     <tr>
-      <th style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
+      <th class="active" data-sort-dir="asc" style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
       <th>Date Modified</th>
       <th>Size</th>
       <th>Kind</th>
@@ -2894,10 +2894,10 @@
 </table></div>
       <details class="code">
         <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tree-table-demo&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 700px;&quot;</span>&gt;</span>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-tree-table unified-header&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tree-table-demo&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%; max-width: 700px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>Name <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sort-arrow asc&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;active&quot;</span> <span class="hljs-attr">data-sort-dir</span>=<span class="hljs-string">&quot;asc&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px;&quot;</span>&gt;</span>Name <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sort-arrow asc&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Date Modified<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Size<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Kind<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
@@ -3731,6 +3731,43 @@
             if (event.key !== 'Enter' && event.key !== ' ') return;
             event.preventDefault();
             activate();
+          });
+        });
+
+        // Header sorting functionality
+        root.querySelectorAll('thead th').forEach((th) => {
+          th.addEventListener('click', function() {
+            const thead = this.closest('thead');
+            const allThs = thead.querySelectorAll('th');
+
+            // Remove active class and sort arrows from all headers
+            allThs.forEach(header => {
+              header.classList.remove('active');
+              const arrow = header.querySelector('.sort-arrow');
+              if (arrow) {
+                arrow.classList.remove('asc', 'desc');
+              }
+            });
+
+            // Add active class to clicked header
+            this.classList.add('active');
+
+            // Toggle or add sort arrow
+            let arrow = this.querySelector('.sort-arrow');
+            if (!arrow) {
+              arrow = document.createElement('span');
+              arrow.className = 'sort-arrow';
+              this.appendChild(arrow);
+            }
+
+            // Toggle between asc and desc
+            if (this.dataset.sortDir === 'asc') {
+              arrow.classList.add('desc');
+              this.dataset.sortDir = 'desc';
+            } else {
+              arrow.classList.add('asc');
+              this.dataset.sortDir = 'asc';
+            }
           });
         });
       }

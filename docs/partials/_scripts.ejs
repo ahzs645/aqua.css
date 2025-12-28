@@ -52,6 +52,43 @@
             activate();
           });
         });
+
+        // Header sorting functionality
+        root.querySelectorAll('thead th').forEach((th) => {
+          th.addEventListener('click', function() {
+            const thead = this.closest('thead');
+            const allThs = thead.querySelectorAll('th');
+
+            // Remove active class and sort arrows from all headers
+            allThs.forEach(header => {
+              header.classList.remove('active');
+              const arrow = header.querySelector('.sort-arrow');
+              if (arrow) {
+                arrow.classList.remove('asc', 'desc');
+              }
+            });
+
+            // Add active class to clicked header
+            this.classList.add('active');
+
+            // Toggle or add sort arrow
+            let arrow = this.querySelector('.sort-arrow');
+            if (!arrow) {
+              arrow = document.createElement('span');
+              arrow.className = 'sort-arrow';
+              this.appendChild(arrow);
+            }
+
+            // Toggle between asc and desc
+            if (this.dataset.sortDir === 'asc') {
+              arrow.classList.add('desc');
+              this.dataset.sortDir = 'desc';
+            } else {
+              arrow.classList.add('asc');
+              this.dataset.sortDir = 'asc';
+            }
+          });
+        });
       }
 
       function setupSplitPanes() {

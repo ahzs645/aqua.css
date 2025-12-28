@@ -2,10 +2,10 @@
     <p class="label">Combines tree hierarchy with table columns (click arrows to expand/collapse)</p>
 
     <%- example(`
-      <table class="aqua-tree-table" tabindex="0" id="tree-table-demo" style="width: 100%; max-width: 700px;">
+      <table class="aqua-tree-table unified-header" tabindex="0" id="tree-table-demo" style="width: 100%; max-width: 700px;">
         <thead>
           <tr>
-            <th style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
+            <th class="active" data-sort-dir="asc" style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
             <th>Date Modified</th>
             <th>Size</th>
             <th>Kind</th>

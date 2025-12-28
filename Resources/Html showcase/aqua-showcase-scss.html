@@ -630,10 +630,10 @@
         <div class="demo-section">
             <h2>Tree Table View</h2>
             <p class="label">Combines tree hierarchy with table columns (click arrows to expand/collapse)</p>
-            <table class="aqua-tree-table" tabindex="0" id="tree-table-demo">
+            <table class="aqua-tree-table unified-header" tabindex="0" id="tree-table-demo">
                 <thead>
                     <tr>
-                        <th style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
+                        <th class="active" data-sort-dir="asc" style="width: 200px;">Name <span class="sort-arrow asc"></span></th>
                         <th>Date Modified</th>
                         <th>Size</th>
                         <th>Kind</th>
@@ -983,6 +983,43 @@
 
                 document.querySelectorAll('.aqua-tree-table tbody tr').forEach(r => r.classList.remove('selected'));
                 this.classList.add('selected');
+            });
+        });
+
+        // Tree table header sorting
+        document.querySelectorAll('.aqua-tree-table.unified-header thead th').forEach(th => {
+            th.addEventListener('click', function() {
+                const thead = this.closest('thead');
+                const allThs = thead.querySelectorAll('th');
+
+                // Remove active class and sort arrows from all headers
+                allThs.forEach(header => {
+                    header.classList.remove('active');
+                    const arrow = header.querySelector('.sort-arrow');
+                    if (arrow) {
+                        arrow.classList.remove('asc', 'desc');
+                    }
+                });
+
+                // Add active class to clicked header
+                this.classList.add('active');
+
+                // Toggle or add sort arrow
+                let arrow = this.querySelector('.sort-arrow');
+                if (!arrow) {
+                    arrow = document.createElement('span');
+                    arrow.className = 'sort-arrow';
+                    this.appendChild(arrow);
+                }
+
+                // Toggle between asc and desc
+                if (this.dataset.sortDir === 'asc') {
+                    arrow.classList.add('desc');
+                    this.dataset.sortDir = 'desc';
+                } else {
+                    arrow.classList.add('asc');
+                    this.dataset.sortDir = 'asc';
+                }
             });
         });
 

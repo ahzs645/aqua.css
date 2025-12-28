@@ -59,75 +59,84 @@ table.aqua-tree-table {
     }
   }
 
-  /* Unified header style (active aqua look) */
-  &.unified-header thead,
-  &.aqua-unified-header thead {
-    display: block;
-    position: relative;
-    background: var(--aqua-button-primary-gradient);
-    box-shadow: var(--aqua-button-primary-shadow);
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-
-    /* Unified gloss across entire header */
-    @include aqua-glass('pill', $overrides: (
-      shine: (
-        width: calc(100% - 0.25em),
-        height: 45%,
-        radius: 4px 4px 2px 2px,
-        z-index: 10
-      ),
-      glow: (
-        width: calc(100% - 0.5em),
-        radius: 3px,
-        z-index: 10
-      )
-    ));
-
-    tr {
-      display: flex;
-      width: 100%;
-    }
-
-    th {
-      flex: 1;
-      background: transparent;
-      border-bottom: none;
-      border-right: 1px solid rgba(255, 255, 255, 0.3);
-      color: var(--aqua-button-primary-text);
-      text-shadow: var(--aqua-button-primary-text-shadow);
+  /* Unified header style (segmented control look with gloss) */
+  &.unified-header,
+  &.aqua-unified-header {
+    thead {
       position: relative;
-      z-index: 1;
+      background: var(--aqua-button-secondary-gradient);
+      box-shadow: var(--aqua-button-secondary-shadow);
+      border-radius: 5px 5px 0 0;
+      overflow: hidden;
 
-      &:last-child {
-        border-right: none;
-      }
+      /* Unified gloss across entire header */
+      @include aqua-glass('pill', $overrides: (
+        shine: (
+          width: calc(100% - 0.25em),
+          height: 45%,
+          radius: 4px 4px 2px 2px,
+          z-index: 10
+        ),
+        glow: (
+          width: calc(100% - 0.5em),
+          radius: 3px,
+          z-index: 10
+        )
+      ));
 
-      &:active {
-        background: rgba(0, 0, 0, 0.15);
-      }
-
-      /* Text needs higher z-index to appear above gloss */
-      span {
+      th {
+        background: transparent;
+        border-bottom: none;
+        border-right: 1px solid var(--segmented-divider);
+        color: var(--aqua-button-secondary-text);
+        text-shadow: var(--aqua-button-secondary-text-shadow);
         position: relative;
-        z-index: 11;
+        z-index: 1;
+        cursor: pointer;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        /* No hover state for unified header */
+        &:hover {
+          background: transparent;
+        }
+
+        /* Active/sorted column state */
+        &.active,
+        &.sorted,
+        &[aria-sort] {
+          background: var(--aqua-button-primary-gradient);
+          color: var(--aqua-button-primary-text);
+          text-shadow: var(--aqua-button-primary-text-shadow);
+
+          &:hover {
+            background: var(--aqua-button-primary-gradient);
+          }
+
+          .sort-arrow {
+            &.asc {
+              border-bottom-color: var(--aqua-button-primary-text);
+            }
+            &.desc {
+              border-top-color: var(--aqua-button-primary-text);
+            }
+          }
+        }
+
+        &:active {
+          background: var(--aqua-button-primary-gradient);
+          color: var(--aqua-button-primary-text);
+          text-shadow: var(--aqua-button-primary-text-shadow);
+        }
+
+        /* Sort arrow styling */
+        .sort-arrow {
+          position: relative;
+          z-index: 11;
+        }
       }
-    }
-  }
-
-  /* Adjust body for unified header */
-  &.unified-header tbody,
-  &.aqua-unified-header tbody {
-    display: block;
-    border-top: 0.5px solid var(--table-header-border-bottom);
-
-    tr {
-      display: flex;
-      width: 100%;
-    }
-
-    td {
-      flex: 1;
     }
   }
 
@@ -243,4 +252,45 @@ table.aqua-tree-table {
   display: inline-block;
   width: 16px;
   flex-shrink: 0;
+}
+
+/* ============================================
+   ERA-SPECIFIC: Mac OS X 10.0 Gray Selection
+   ============================================ */
+.aqua-era-10-0,
+[data-aqua-era="10-0"] {
+  .tree-table,
+  table.aqua-tree-table {
+    /* Gray selection for 10.0 era (unfocused) */
+    tbody tr.selected {
+      background: linear-gradient(
+        rgb(220, 220, 220) 0%,
+        rgb(200, 200, 200) 100%
+      );
+      background-size: 100% 100%;
+      background-position: 0 0;
+      color: var(--text-color);
+
+      td {
+        border-bottom-color: rgb(180, 180, 180);
+      }
+    }
+
+    /* Gray selection for 10.0 era (focused) */
+    &:focus tbody tr.selected,
+    &:focus-within tbody tr.selected {
+      background: linear-gradient(
+        rgb(200, 200, 200) 0%,
+        rgb(180, 180, 180) 100%
+      );
+      background-size: 100% 100%;
+      background-position: 0 0;
+      color: var(--text-color);
+      text-shadow: none;
+
+      td {
+        border-bottom-color: rgb(160, 160, 160);
+      }
+    }
+  }
 }
