@@ -185,6 +185,14 @@ p {
   background: var(--aqua-background-classic);
 }
 
+.era-availability-table {
+  background: #ECECEC;
+}
+
+.era-availability-table thead {
+  background: linear-gradient(#A0A0A0, #E0E0E0);
+}
+
 .era-availability-table td {
   transition: background 0.2s ease, color 0.2s ease;
 }
