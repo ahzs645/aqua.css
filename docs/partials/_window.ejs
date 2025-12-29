@@ -180,17 +180,15 @@
           <rect width="520" height="320" fill="url(#metalSheen)" filter="url(#metalTexture)"/>
         </svg>
 
-        <!-- Title bar -->
-        <div style="background: transparent; position: relative; z-index: 1; padding: 8px 12px; display: flex; align-items: center;">
-          <!-- Traffic lights -->
-          <div style="display: flex; gap: 8px;">
-            <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #ff6058 0%, #c14443 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2);"></div>
-            <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e 0%, #c59a1a 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2);"></div>
-            <div style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #28c840 0%, #1a9a2c 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.2);"></div>
+        <!-- Title bar overlays the metal (transparent background) -->
+        <div class="title-bar" style="background: transparent; position: relative; z-index: 1; border-bottom: none;">
+          <div class="traffic-lights traffic-lights--always-colored">
+            <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
+            <div class="aqua-light aqua-yellow" role="button" tabindex="0" aria-label="Minimize"><span class="icon">−</span></div>
+            <div class="aqua-light aqua-green" role="button" tabindex="0" aria-label="Maximize"><span class="icon">+</span></div>
           </div>
-
-          <!-- Window title -->
-          <div style="position: absolute; left: 0; right: 0; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 500; color: rgba(0,0,0,0.8); pointer-events: none;">Window</div>
+          <!-- Title centered across full width, overlapping traffic lights layer -->
+          <div class="title-bar-text" style="position: absolute; left: 0; right: 0; text-align: center; pointer-events: none;">Window</div>
         </div>
 
         <!-- Window body -->

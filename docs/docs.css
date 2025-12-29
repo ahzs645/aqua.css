@@ -185,6 +185,28 @@ p {
   background: var(--aqua-background-classic);
 }
 
+.era-availability-table td {
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+[data-aqua-era="10-0"] .era-availability-table tr[data-era="10-0"] td,
+[data-aqua-era="10-2"] .era-availability-table tr[data-era="10-2"] td,
+[data-aqua-era="10-3"] .era-availability-table tr[data-era="10-3"] td,
+[data-aqua-era="10-4"] .era-availability-table tr[data-era="10-4"] td,
+[data-aqua-era="10-6"] .era-availability-table tr[data-era="10-6"] td {
+  background: var(--table-row-selected);
+  color: var(--table-row-selected-text);
+  text-shadow: var(--selection-focused-text-shadow);
+}
+
+[data-aqua-era="10-0"] .era-availability-table tr[data-era="10-0"] td:first-child,
+[data-aqua-era="10-2"] .era-availability-table tr[data-era="10-2"] td:first-child,
+[data-aqua-era="10-3"] .era-availability-table tr[data-era="10-3"] td:first-child,
+[data-aqua-era="10-4"] .era-availability-table tr[data-era="10-4"] td:first-child,
+[data-aqua-era="10-6"] .era-availability-table tr[data-era="10-6"] td:first-child {
+  font-weight: 600;
+}
+
 .example .raw {
   display: block;
 }

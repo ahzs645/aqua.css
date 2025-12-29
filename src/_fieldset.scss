@@ -8,7 +8,7 @@
 fieldset {
   border: 1px solid var(--fieldset-border);
   border-radius: var(--radius-medium);
-  padding: 16px;
+  padding: 8px 16px 16px;
   margin: 0;
   background: var(--fieldset-bg);
 }
@@ -17,7 +17,9 @@ legend {
   font-family: var(--font-ui);
   font-size: var(--font-size-base);
   font-weight: bold;
-  padding: 0 8px;
+  padding: 0 4px;
+  margin-left: 8px;
+  margin-bottom: 0;
   color: var(--text-color);
   /* Align text baseline with fieldset border */
   line-height: 1;
