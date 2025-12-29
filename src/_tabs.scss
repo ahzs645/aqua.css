@@ -495,20 +495,32 @@
 }
 
 /* ============================================
-   SITE NAV TABS - Era-adaptive styling
+   ERA-ADAPTIVE TABS
    Folder tabs for pre-10.3, pill tabs for 10.3+
    ============================================ */
+
+/* Default: Center doc tabs like header tabs */
+.doc-tabbed-example {
+  text-align: center;
+
+  .aqua-tab-bar {
+    display: inline-flex;
+    justify-content: center;
+  }
+}
 
 /* 10.3+ eras: Transform folder tabs to pill-style */
 @each $era in ('10-3', '10-4', '10-6') {
   @include aqua-era($era) {
     /* Don't expand - just be a compact centered pill */
-    .site-nav-tabs {
+    .site-nav-tabs,
+    .doc-tabbed-example {
       flex: none;
       margin: 0 auto;
     }
 
-    .site-nav-tabs .aqua-tab-bar {
+    .site-nav-tabs .aqua-tab-bar,
+    .doc-tabbed-example .aqua-tab-bar {
       display: inline-flex;
       /* Reset folder tab bar styles */
       align-items: center;
@@ -539,7 +551,8 @@
       }
     }
 
-    .site-nav-tabs .aqua-tab {
+    .site-nav-tabs .aqua-tab,
+    .doc-tabbed-example .aqua-tab {
       /* Reset folder tab styles to pill style */
       border-radius: 0;
       height: auto;

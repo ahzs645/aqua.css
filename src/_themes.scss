@@ -572,6 +572,21 @@
   --list-item-selected-focused-fill-gradient: linear-gradient(rgb(74, 141, 225), rgb(38, 102, 198));
   --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
   --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+
+  /* Classic context menu - square, semi-transparent with pinstripe */
+  --context-menu-border-radius: 0;
+  --context-menu-bg: rgba(255, 255, 255, 0.85);
+  --context-menu-pinstripe: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(200, 215, 235, 0.4) 1px,
+    rgba(200, 215, 235, 0.4) 2px
+  );
+  --context-menu-border: rgba(100, 110, 130, 0.6);
+  --context-menu-shadow:
+    1px 1px 0 rgba(80, 90, 110, 0.5),
+    2px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 @include aqua-era('10-2') {
@@ -737,6 +752,21 @@
   --list-item-selected-focused-fill-gradient: linear-gradient(rgb(67, 130, 218), rgb(42, 106, 204));
   --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
   --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+
+  /* Classic context menu - square, semi-transparent with pinstripe */
+  --context-menu-border-radius: 0;
+  --context-menu-bg: rgba(255, 255, 255, 0.85);
+  --context-menu-pinstripe: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(195, 210, 230, 0.4) 1px,
+    rgba(195, 210, 230, 0.4) 2px
+  );
+  --context-menu-border: rgba(95, 105, 125, 0.6);
+  --context-menu-shadow:
+    1px 1px 0 rgba(75, 85, 105, 0.5),
+    2px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 @include aqua-era('10-3') {

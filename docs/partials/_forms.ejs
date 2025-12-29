@@ -107,8 +107,10 @@
     `) %>
 
     <h3 id="checkboxes">Checkboxes</h3>
-    <p>Recommended class-based checkboxes:</p>
-    <%- example(`
+    <%- tabbedExample([
+      {
+        label: 'Class-based (Recommended)',
+        code: `
       <div class="field-row">
         <label class="checkbox">
           <input type="checkbox" checked>
@@ -130,9 +132,11 @@
           <span>Disabled checked</span>
         </label>
       </div>
-    `) %>
-    <p>Native inputs (fallback):</p>
-    <%- example(`
+        `
+      },
+      {
+        label: 'Native (Fallback)',
+        code: `
       <div class="field-row">
         <input type="checkbox" id="check1" checked>
         <label for="check1">Checked checkbox</label>
@@ -149,11 +153,15 @@
         <input type="checkbox" id="check-indeterminate">
         <label for="check-indeterminate">Indeterminate</label>
       </div>
-    `) %>
+        `
+      }
+    ]) %>
 
     <h3 id="radio-buttons">Radio Buttons</h3>
-    <p>Recommended class-based radio buttons:</p>
-    <%- example(`
+    <%- tabbedExample([
+      {
+        label: 'Class-based (Recommended)',
+        code: `
       <div class="field-row">
         <label class="radio">
           <input type="radio" name="radio-class-group" checked>
@@ -175,9 +183,11 @@
           <span>Option C</span>
         </label>
       </div>
-    `) %>
-    <p>Native inputs (fallback):</p>
-    <%- example(`
+        `
+      },
+      {
+        label: 'Native (Fallback)',
+        code: `
       <div class="field-row">
         <input type="radio" id="radio1" name="radio-group" checked>
         <label for="radio1">Option A</label>
@@ -190,4 +200,6 @@
         <input type="radio" id="radio3" name="radio-group">
         <label for="radio3">Option C</label>
       </div>
-    `) %>
+        `
+      }
+    ]) %>

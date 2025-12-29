@@ -396,3 +396,12 @@ section[data-section-id] {
     top: 0;
   }
 }
+
+/* Doc tabbed examples */
+.doc-tabbed-example .aqua-tab-bar {
+  justify-content: center;
+}
+
+.doc-tabbed-example .aqua-tab-content.hidden {
+  display: none;
+}

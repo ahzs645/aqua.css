@@ -1009,9 +1009,11 @@
     </div>
 
     <h3 id="checkboxes">Checkboxes</h3>
-    <p>Recommended class-based checkboxes:</p>
-    <div class="example">
-      <div class="raw"><div class="field-row">
+    <div class="aqua-folder-tabs doc-tabbed-example">
+      <div class="aqua-tab-bar"><button class="aqua-tab aqua-tab--active" data-doc-tab="1-0">Class-based (Recommended)</button><button class="aqua-tab" data-doc-tab="1-1">Native (Fallback)</button></div>
+      <div class="aqua-tab-content" data-doc-panel="1-0">
+        <div class="example">
+          <div class="raw"><div class="field-row">
   <label class="checkbox">
     <input type="checkbox" checked>
     <span class="box"><span class="mark"></span></span>
@@ -1032,9 +1034,9 @@
     <span>Disabled checked</span>
   </label>
 </div></div>
-      <details class="code">
-        <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+          <details class="code">
+            <summary>Show code</summary>
+            <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;checkbox&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mark&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
@@ -1055,12 +1057,12 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Disabled checked<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
-      </details>
-    </div>
-    <p>Native inputs (fallback):</p>
-    <div class="example">
-      <div class="raw"><div class="field-row">
+            <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
+          </details>
+        </div>
+      </div><div class="aqua-tab-content hidden" data-doc-panel="1-1">
+        <div class="example">
+          <div class="raw"><div class="field-row">
   <input type="checkbox" id="check1" checked>
   <label for="check1">Checked checkbox</label>
 </div>
@@ -1076,9 +1078,9 @@
   <input type="checkbox" id="check-indeterminate">
   <label for="check-indeterminate">Indeterminate</label>
 </div></div>
-      <details class="code">
-        <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+          <details class="code">
+            <summary>Show code</summary>
+            <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;check1&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;check1&quot;</span>&gt;</span>Checked checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1094,14 +1096,18 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;check-indeterminate&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;check-indeterminate&quot;</span>&gt;</span>Indeterminate<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
-      </details>
+            <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
+          </details>
+        </div>
+      </div>
     </div>
 
     <h3 id="radio-buttons">Radio Buttons</h3>
-    <p>Recommended class-based radio buttons:</p>
-    <div class="example">
-      <div class="raw"><div class="field-row">
+    <div class="aqua-folder-tabs doc-tabbed-example">
+      <div class="aqua-tab-bar"><button class="aqua-tab aqua-tab--active" data-doc-tab="2-0">Class-based (Recommended)</button><button class="aqua-tab" data-doc-tab="2-1">Native (Fallback)</button></div>
+      <div class="aqua-tab-content" data-doc-panel="2-0">
+        <div class="example">
+          <div class="raw"><div class="field-row">
   <label class="radio">
     <input type="radio" name="radio-class-group" checked>
     <span class="circle"><span class="dot"></span></span>
@@ -1122,9 +1128,9 @@
     <span>Option C</span>
   </label>
 </div></div>
-      <details class="code">
-        <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+          <details class="code">
+            <summary>Show code</summary>
+            <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;radio&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-class-group&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;circle&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;dot&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
@@ -1145,12 +1151,12 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Option C<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
-      </details>
-    </div>
-    <p>Native inputs (fallback):</p>
-    <div class="example">
-      <div class="raw"><div class="field-row">
+            <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
+          </details>
+        </div>
+      </div><div class="aqua-tab-content hidden" data-doc-panel="2-1">
+        <div class="example">
+          <div class="raw"><div class="field-row">
   <input type="radio" id="radio1" name="radio-group" checked>
   <label for="radio1">Option A</label>
 </div>
@@ -1162,9 +1168,9 @@
   <input type="radio" id="radio3" name="radio-group">
   <label for="radio3">Option C</label>
 </div></div>
-      <details class="code">
-        <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
+          <details class="code">
+            <summary>Show code</summary>
+            <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radio1&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-group&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;radio1&quot;</span>&gt;</span>Option A<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1176,8 +1182,10 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radio3&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-group&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;radio3&quot;</span>&gt;</span>Option C<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
-      </details>
+            <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
+          </details>
+        </div>
+      </div>
     </div>
 
             <h2 id="progress-bar">Progress Bar</h2>
@@ -1204,7 +1212,19 @@
   <div>
     <span class="label">Indeterminate</span><br>
     <div class="aqua-progress indeterminate">
-      <div class="bar"></div>
+      <div class="stripes">
+        <div class="stripes-inner">
+          <div class="stripe"></div>
+          <div class="stripe"></div>
+          <div class="stripe"></div>
+          <div class="stripe"></div>
+          <div class="stripe"></div>
+          <div class="stripe"></div>
+          <div class="stripe"></div>
+          <div class="stripe"></div>
+          <div class="stripe"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div>
@@ -1238,7 +1258,19 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Indeterminate<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-progress indeterminate&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bar&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripes&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripes-inner&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripe&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripe&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripe&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripe&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripe&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripe&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripe&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripe&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;stripe&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
@@ -4081,6 +4113,28 @@
         }
       }
 
+      function setupDocTabs() {
+        document.querySelectorAll('.doc-tabbed-example').forEach((container) => {
+          const tabs = container.querySelectorAll('.aqua-tab[data-doc-tab]');
+          const panels = container.querySelectorAll('.aqua-tab-content[data-doc-panel]');
+
+          tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+              const targetId = tab.getAttribute('data-doc-tab');
+
+              tabs.forEach((t) => t.classList.remove('aqua-tab--active'));
+              panels.forEach((p) => p.classList.add('hidden'));
+
+              tab.classList.add('aqua-tab--active');
+              const targetPanel = container.querySelector(`[data-doc-panel="${targetId}"]`);
+              if (targetPanel) targetPanel.classList.remove('hidden');
+
+              tab.blur();
+            });
+          });
+        });
+      }
+
       function setupCopyButtons() {
         document.querySelectorAll('.example .copy').forEach((button) => {
           button.addEventListener('click', () => {
@@ -4673,6 +4727,7 @@
       setupSplitPanes();
       setupPillTabs();
       setupFolderTabs();
+      setupDocTabs();
       setupIndeterminateCheckbox();
       setupCopyButtons();
       setupAquaEraSelector();

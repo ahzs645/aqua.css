@@ -228,6 +228,36 @@ function buildDocs() {
     </div>`;
   }
 
+  function tabbedExample(tabs) {
+    const tabId = getNewId();
+    const tabButtons = tabs.map((tab, i) =>
+      `<button class="aqua-tab${i === 0 ? ' aqua-tab--active' : ''}" data-doc-tab="${tabId}-${i}">${tab.label}</button>`
+    ).join('');
+
+    const tabPanels = tabs.map((tab, i) => {
+      const magicBrackets = /\[\[(.*)\]\]/g;
+      const dedented = dedent(tab.code);
+      const inline = dedented.replace(magicBrackets, "$1");
+      const escaped = hljs.highlight(dedented.replace(magicBrackets, ""), { language: "html" }).value;
+
+      return `<div class="aqua-tab-content${i === 0 ? '' : ' hidden'}" data-doc-panel="${tabId}-${i}">
+        <div class="example">
+          <div class="raw">${inline}</div>
+          <details class="code">
+            <summary>Show code</summary>
+            <pre><code>${escaped}</code></pre>
+            <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
+          </details>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div class="aqua-folder-tabs doc-tabbed-example">
+      <div class="aqua-tab-bar">${tabButtons}</div>
+      ${tabPanels}
+    </div>`;
+  }
+
   glob("docs/*", (err, files) => {
     if (!err) {
       files.forEach((srcFile) => {
@@ -241,7 +271,7 @@ function buildDocs() {
 
   fs.writeFileSync(
     path.join(__dirname, "/dist/index.html"),
-    ejs.render(template, { getNewId, getCurrentId, example, bareExample }, {
+    ejs.render(template, { getNewId, getCurrentId, example, bareExample, tabbedExample }, {
       filename: path.join(__dirname, "docs/index.html.ejs")
     })
   );

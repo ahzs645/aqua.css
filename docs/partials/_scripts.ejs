@@ -207,6 +207,28 @@
         }
       }
 
+      function setupDocTabs() {
+        document.querySelectorAll('.doc-tabbed-example').forEach((container) => {
+          const tabs = container.querySelectorAll('.aqua-tab[data-doc-tab]');
+          const panels = container.querySelectorAll('.aqua-tab-content[data-doc-panel]');
+
+          tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+              const targetId = tab.getAttribute('data-doc-tab');
+
+              tabs.forEach((t) => t.classList.remove('aqua-tab--active'));
+              panels.forEach((p) => p.classList.add('hidden'));
+
+              tab.classList.add('aqua-tab--active');
+              const targetPanel = container.querySelector(`[data-doc-panel="${targetId}"]`);
+              if (targetPanel) targetPanel.classList.remove('hidden');
+
+              tab.blur();
+            });
+          });
+        });
+      }
+
       function setupCopyButtons() {
         document.querySelectorAll('.example .copy').forEach((button) => {
           button.addEventListener('click', () => {
@@ -799,6 +821,7 @@
       setupSplitPanes();
       setupPillTabs();
       setupFolderTabs();
+      setupDocTabs();
       setupIndeterminateCheckbox();
       setupCopyButtons();
       setupAquaEraSelector();
