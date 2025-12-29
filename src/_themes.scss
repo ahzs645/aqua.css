@@ -50,9 +50,9 @@
   --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-button-primary-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-blue-gradient-pressed: linear-gradient(
-    rgba(120, 120, 120, 0.75),
-    rgba(160, 160, 160, 0.75),
-    rgba(140, 140, 140, 0.75)
+    rgba(35, 35, 38, 0.85),
+    rgba(62, 62, 68, 0.85),
+    rgba(95, 100, 110, 0.75)
   );
   --aqua-button-primary-gradient-pressed: var(--aqua-blue-gradient-pressed);
   --aqua-button-primary-shadow: 0 0.375em 0.5em var(--theme-shadow-drop),
