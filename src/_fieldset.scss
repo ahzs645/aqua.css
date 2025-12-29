@@ -3,6 +3,8 @@
  * Grouped form controls with legend
  */
 
+@use "mixins" as *;
+
 fieldset {
   border: 1px solid var(--fieldset-border);
   border-radius: var(--radius-medium);
@@ -17,4 +19,22 @@ legend {
   font-weight: bold;
   padding: 0 8px;
   color: var(--text-color);
+  /* Align text baseline with fieldset border */
+  line-height: 1;
+  transform: translateY(-0.35em);
+}
+
+/* Classic era (10.0, 10.2): square corners, transparent background */
+@include aqua-era('10-0') {
+  fieldset {
+    border-radius: 0;
+    background: transparent;
+  }
+}
+
+@include aqua-era('10-2') {
+  fieldset {
+    border-radius: 0;
+    background: transparent;
+  }
 }
