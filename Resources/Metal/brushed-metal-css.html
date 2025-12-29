@@ -27,65 +27,14 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
-    /* Base metal layer with SVG texture filter */
-    .metal-layer {
+    /* Brushed metal SVG background layer */
+    .metal-svg {
       position: absolute;
       inset: 0;
-      z-index: 0;
-      background-color: rgb(183, 183, 183);
-      filter: url(#brushed-metal);
-      transform: scale(1.02);
-    }
-
-    /* Gaussian highlight layer */
-    .highlight-layer {
-      position: absolute;
-      inset: -100px;
-      z-index: 1;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-      /*
-        Settings:
-        - Light Brightness: 66 -> peak opacity 0.66
-        - Light Concentration: 1.0
-        - Spread Width: 20% -> spreadFactor = 5
-
-        Formula: opacity = exp(-(normDist * concentration)^2) * peakOpacity
-        where normDist = ((percent - 50) / 50) * spreadFactor
-      */
-      background-image: linear-gradient(90deg,
-        rgba(255,255,255,0.0000) 0.0%,
-        rgba(255,255,255,0.0000) 3.3%,
-        rgba(255,255,255,0.0000) 6.7%,
-        rgba(255,255,255,0.0000) 10.0%,
-        rgba(255,255,255,0.0000) 13.3%,
-        rgba(255,255,255,0.0000) 16.7%,
-        rgba(255,255,255,0.0001) 20.0%,
-        rgba(255,255,255,0.0005) 23.3%,
-        rgba(255,255,255,0.0029) 26.7%,
-        rgba(255,255,255,0.0121) 30.0%,
-        rgba(255,255,255,0.0405) 33.3%,
-        rgba(255,255,255,0.1124) 36.7%,
-        rgba(255,255,255,0.2428) 40.0%,
-        rgba(255,255,255,0.4208) 43.3%,
-        rgba(255,255,255,0.5912) 46.7%,
-        rgba(255,255,255,0.6600) 50.0%,
-        rgba(255,255,255,0.5912) 53.3%,
-        rgba(255,255,255,0.4208) 56.7%,
-        rgba(255,255,255,0.2428) 60.0%,
-        rgba(255,255,255,0.1124) 63.3%,
-        rgba(255,255,255,0.0405) 66.7%,
-        rgba(255,255,255,0.0121) 70.0%,
-        rgba(255,255,255,0.0029) 73.3%,
-        rgba(255,255,255,0.0005) 76.7%,
-        rgba(255,255,255,0.0001) 80.0%,
-        rgba(255,255,255,0.0000) 83.3%,
-        rgba(255,255,255,0.0000) 86.7%,
-        rgba(255,255,255,0.0000) 90.0%,
-        rgba(255,255,255,0.0000) 93.3%,
-        rgba(255,255,255,0.0000) 96.7%,
-        rgba(255,255,255,0.0000) 100.0%
-      );
-      filter: blur(75px);
+      z-index: 0;
     }
 
     /* ========== WINDOW CHROME ========== */
@@ -152,8 +101,47 @@
 <body>
 
   <div class="metal-window">
-    <div class="metal-layer"></div>
-    <div class="highlight-layer"></div>
+    <!-- Brushed metal background using SVG filter -->
+    <svg class="metal-svg" viewBox="0 0 520 320" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <!-- Gaussian-like center highlight: intensity=79, width=8.80, edgeBlur=17.01, baseGray=157 -->
+        <linearGradient id="metalSheen" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0.0%" stop-color="rgb(158,158,158)"/>
+          <stop offset="5.9%" stop-color="rgb(159,159,159)"/>
+          <stop offset="11.8%" stop-color="rgb(163,163,163)"/>
+          <stop offset="17.6%" stop-color="rgb(169,169,169)"/>
+          <stop offset="23.5%" stop-color="rgb(179,179,179)"/>
+          <stop offset="29.4%" stop-color="rgb(194,194,194)"/>
+          <stop offset="35.3%" stop-color="rgb(210,210,210)"/>
+          <stop offset="41.2%" stop-color="rgb(226,226,226)"/>
+          <stop offset="47.1%" stop-color="rgb(235,235,235)"/>
+          <stop offset="52.9%" stop-color="rgb(235,235,235)"/>
+          <stop offset="58.8%" stop-color="rgb(226,226,226)"/>
+          <stop offset="64.7%" stop-color="rgb(210,210,210)"/>
+          <stop offset="70.6%" stop-color="rgb(194,194,194)"/>
+          <stop offset="76.5%" stop-color="rgb(179,179,179)"/>
+          <stop offset="82.4%" stop-color="rgb(169,169,169)"/>
+          <stop offset="88.2%" stop-color="rgb(163,163,163)"/>
+          <stop offset="94.1%" stop-color="rgb(159,159,159)"/>
+          <stop offset="100.0%" stop-color="rgb(158,158,158)"/>
+        </linearGradient>
+
+        <filter id="metalTexture" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.001 0.6" numOctaves="2" seed="5" result="displace"/>
+          <feTurbulence type="fractalNoise" baseFrequency="0.015 1.4" numOctaves="2" seed="17" result="texture"/>
+          <feDisplacementMap in="texture" in2="displace" scale="50" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+          <feGaussianBlur in="warped" stdDeviation="12 0" result="streak"/>
+          <feColorMatrix in="streak" type="saturate" values="0" result="gray"/>
+          <feComponentTransfer in="gray" result="adjusted">
+            <feFuncR type="linear" slope="0.8" intercept="0.1"/>
+            <feFuncG type="linear" slope="0.8" intercept="0.1"/>
+            <feFuncB type="linear" slope="0.8" intercept="0.1"/>
+          </feComponentTransfer>
+          <feBlend in="SourceGraphic" in2="adjusted" mode="soft-light"/>
+        </filter>
+      </defs>
+      <rect width="520" height="320" fill="url(#metalSheen)" filter="url(#metalTexture)"/>
+    </svg>
 
     <div class="title-bar">
       <div class="traffic-lights">
@@ -166,34 +154,6 @@
 
     <div class="window-body"></div>
   </div>
-
-  <!-- SVG filter for brushed metal texture -->
-  <svg style="position:absolute; width:0; height:0;">
-    <filter id="brushed-metal" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
-      <!-- Coarse brushed streaks -->
-      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.55" numOctaves="1" seed="11" result="noiseCoarse"/>
-      <feGaussianBlur in="noiseCoarse" stdDeviation="14 0" result="streaks"/>
-      <feColorMatrix in="streaks" type="saturate" values="0" result="streaksGray"/>
-
-      <!-- Fine grain texture -->
-      <feTurbulence type="fractalNoise" baseFrequency="0.035 0.95" numOctaves="2" seed="3" result="noiseFine"/>
-      <feGaussianBlur in="noiseFine" stdDeviation="2 0" result="grain"/>
-      <feColorMatrix in="grain" type="saturate" values="0" result="grainGray"/>
-
-      <!-- Mix coarse + fine -->
-      <feComposite in="streaksGray" in2="grainGray" operator="arithmetic" k1="0" k2="0.82" k3="0.18" k4="0" result="texture"/>
-
-      <!-- Contrast boost -->
-      <feComponentTransfer in="texture" result="textureBoost">
-        <feFuncR type="linear" slope="1.55" intercept="-0.275"/>
-        <feFuncG type="linear" slope="1.55" intercept="-0.275"/>
-        <feFuncB type="linear" slope="1.55" intercept="-0.275"/>
-      </feComponentTransfer>
-
-      <!-- Apply texture to source (noise strength: 0.30) -->
-      <feComposite in="SourceGraphic" in2="textureBoost" operator="arithmetic" k1="0" k2="1" k3="0.30" k4="-0.15" result="final"/>
-    </filter>
-  </svg>
 
 </body>
 </html>
