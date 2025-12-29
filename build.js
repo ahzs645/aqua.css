@@ -212,6 +212,22 @@ function buildDocs() {
     </div>`;
   }
 
+  function bareExample(code) {
+    const magicBrackets = /\[\[(.*)\]\]/g;
+    const dedented = dedent(code);
+    const inline = dedented.replace(magicBrackets, "$1");
+    const escaped = hljs.highlight(dedented.replace(magicBrackets, ""), { language: "html" }).value;
+
+    return `<div class="example example--bare">
+      <div class="raw">${inline}</div>
+      <details class="code">
+        <summary>Show code</summary>
+        <pre><code>${escaped}</code></pre>
+        <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
+      </details>
+    </div>`;
+  }
+
   glob("docs/*", (err, files) => {
     if (!err) {
       files.forEach((srcFile) => {
@@ -225,7 +241,7 @@ function buildDocs() {
 
   fs.writeFileSync(
     path.join(__dirname, "/dist/index.html"),
-    ejs.render(template, { getNewId, getCurrentId, example }, {
+    ejs.render(template, { getNewId, getCurrentId, example, bareExample }, {
       filename: path.join(__dirname, "docs/index.html.ejs")
     })
   );
