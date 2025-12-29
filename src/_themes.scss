@@ -579,14 +579,17 @@
   --context-menu-pinstripe: repeating-linear-gradient(
     0deg,
     transparent 0px,
-    transparent 1px,
-    rgba(200, 215, 235, 0.4) 1px,
-    rgba(200, 215, 235, 0.4) 2px
+    transparent 4px,
+    rgba(200, 215, 235, 0.5) 4px,
+    rgba(200, 215, 235, 0.5) 8px
   );
   --context-menu-border: rgba(100, 110, 130, 0.6);
   --context-menu-shadow:
     1px 1px 0 rgba(80, 90, 110, 0.5),
     2px 2px 4px rgba(0, 0, 0, 0.25);
+
+  /* Solid color hover for classic era (not gradient) */
+  --context-menu-item-hover-gradient: rgb(48, 116, 214);
 }
 
 @include aqua-era('10-2') {
@@ -759,14 +762,17 @@
   --context-menu-pinstripe: repeating-linear-gradient(
     0deg,
     transparent 0px,
-    transparent 1px,
-    rgba(195, 210, 230, 0.4) 1px,
-    rgba(195, 210, 230, 0.4) 2px
+    transparent 4px,
+    rgba(195, 210, 230, 0.5) 4px,
+    rgba(195, 210, 230, 0.5) 8px
   );
   --context-menu-border: rgba(95, 105, 125, 0.6);
   --context-menu-shadow:
     1px 1px 0 rgba(75, 85, 105, 0.5),
     2px 2px 4px rgba(0, 0, 0, 0.25);
+
+  /* Solid color hover for classic era (not gradient) */
+  --context-menu-item-hover-gradient: rgb(45, 112, 206);
 }
 
 @include aqua-era('10-3') {

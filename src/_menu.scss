@@ -210,6 +210,14 @@
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
+
+  /* Classic era separators - spacing only, no visible line */
+  .context-menu-separator,
+  .aqua-menu-separator {
+    background: transparent;
+    height: 8px;
+    margin: 0;
+  }
 }
 
 .context-menu-item,
