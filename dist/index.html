@@ -3436,7 +3436,7 @@
     <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-purple')"><span>Purple</span></button>
   </div>
 
-  <div id="theme-preview-pre106" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
+  <div id="theme-preview-pre106" class="example">
     <div class="label">Buttons</div>
     <div class="button-row">
       <button class="aqua-button aqua-button--secondary"><span>Regular</span></button>
@@ -3494,7 +3494,7 @@
     <button onclick="setTheme('theme-purple')">Purple</button>
   </div>
 
-  <div id="theme-preview" style="padding: 16px; background: #ECECEC; border-radius: 8px;">
+  <div id="theme-preview" class="example">
     <div class="label">Buttons</div>
     <div class="button-row">
       <button>Regular</button>
@@ -3553,7 +3553,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-purple&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Purple<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-preview-pre106&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 16px; background: #ECECEC; border-radius: 8px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-preview-pre106&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Buttons<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-row&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Regular<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
@@ -3611,7 +3611,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-purple&#x27;)&quot;</span>&gt;</span>Purple<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-preview&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 16px; background: #ECECEC; border-radius: 8px;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-preview&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label&quot;</span>&gt;</span>Buttons<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-row&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Regular<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
@@ -4132,11 +4132,7 @@
 
         previews.forEach(function(preview) {
           if (preview) {
-            preview.className = theme;
-            // Re-apply the background style
-            preview.style.padding = '16px';
-            preview.style.background = '#ECECEC';
-            preview.style.borderRadius = '8px';
+            preview.className = 'example ' + theme;
           }
         });
 

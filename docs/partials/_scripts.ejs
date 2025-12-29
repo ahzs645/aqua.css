@@ -305,11 +305,7 @@
 
         previews.forEach(function(preview) {
           if (preview) {
-            preview.className = theme;
-            // Re-apply the background style
-            preview.style.padding = '16px';
-            preview.style.background = '#ECECEC';
-            preview.style.borderRadius = '8px';
+            preview.className = 'example ' + theme;
           }
         });
 

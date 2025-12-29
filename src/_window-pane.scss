@@ -6,7 +6,7 @@
 @use "mixins" as *;
 
 .window-pane {
-  background: var(--surface-light);
+  background: #ECECEC;
   border: 1px solid var(--window-pane-border);
   border-radius: var(--radius-medium);
   padding: 8px 0;

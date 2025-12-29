@@ -181,7 +181,9 @@ p {
 
 /* Striped background for early Mac OS X eras */
 [data-aqua-era="10-0"] .example:not(.example--bare),
-[data-aqua-era="10-2"] .example:not(.example--bare) {
+[data-aqua-era="10-2"] .example:not(.example--bare),
+[data-aqua-era="10-0"] .sidebar .window-pane,
+[data-aqua-era="10-2"] .sidebar .window-pane {
   background: var(--aqua-background-classic);
 }
 
