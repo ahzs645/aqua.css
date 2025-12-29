@@ -27,6 +27,17 @@
   --glow: rgba(0, 0, 0, 0.25);
   --txtShadow: rgba(0, 0, 0, 0.25);
 
+  /* Re-resolve theme tokens for cascade */
+  --theme-gradient-1: var(--g1);
+  --theme-gradient-2: var(--g2);
+  --theme-gradient-3: var(--g3);
+  --theme-shadow-drop: var(--drop);
+  --theme-shadow-rim: var(--rim);
+  --theme-shadow-inner: var(--inner);
+  --theme-shadow-ring: var(--ring);
+  --theme-shadow-glow: var(--glow);
+  --theme-text-shadow: var(--txtShadow);
+
   --button-blue-gradient: linear-gradient(
     rgb(187, 187, 187) 0%,
     rgb(153, 153, 153) 30%,
@@ -112,6 +123,17 @@
   --glow: rgba(200, 200, 200, 0.4);
   --txtShadow: rgba(0, 0, 0, 0.15);
 
+  /* Re-resolve theme tokens for cascade */
+  --theme-gradient-1: var(--g1);
+  --theme-gradient-2: var(--g2);
+  --theme-gradient-3: var(--g3);
+  --theme-shadow-drop: var(--drop);
+  --theme-shadow-rim: var(--rim);
+  --theme-shadow-inner: var(--inner);
+  --theme-shadow-ring: var(--ring);
+  --theme-shadow-glow: var(--glow);
+  --theme-text-shadow: var(--txtShadow);
+
   /* Aqua 3D button primary (air/light) */
   --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-button-primary-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
@@ -191,6 +213,17 @@
   --glow: rgba(80, 220, 160, 0.5);
   --txtShadow: rgba(0, 90, 50, 0.5);
 
+  /* Re-resolve theme tokens for cascade */
+  --theme-gradient-1: var(--g1);
+  --theme-gradient-2: var(--g2);
+  --theme-gradient-3: var(--g3);
+  --theme-shadow-drop: var(--drop);
+  --theme-shadow-rim: var(--rim);
+  --theme-shadow-inner: var(--inner);
+  --theme-shadow-ring: var(--ring);
+  --theme-shadow-glow: var(--glow);
+  --theme-text-shadow: var(--txtShadow);
+
   /* Aqua 3D button primary (earth/green) */
   --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-button-primary-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
@@ -269,6 +302,17 @@
   --glow: rgba(255, 80, 110, 0.5);
   --txtShadow: rgba(140, 20, 40, 0.5);
 
+  /* Re-resolve theme tokens for cascade */
+  --theme-gradient-1: var(--g1);
+  --theme-gradient-2: var(--g2);
+  --theme-gradient-3: var(--g3);
+  --theme-shadow-drop: var(--drop);
+  --theme-shadow-rim: var(--rim);
+  --theme-shadow-inner: var(--inner);
+  --theme-shadow-ring: var(--ring);
+  --theme-shadow-glow: var(--glow);
+  --theme-text-shadow: var(--txtShadow);
+
   /* Aqua 3D button primary (fire/red) */
   --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
   --aqua-button-primary-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
@@ -346,6 +390,17 @@
   --ring: rgba(110, 70, 210, 0.75);
   --glow: rgba(170, 120, 255, 0.45);
   --txtShadow: rgba(80, 45, 150, 0.45);
+
+  /* Re-resolve theme tokens for cascade */
+  --theme-gradient-1: var(--g1);
+  --theme-gradient-2: var(--g2);
+  --theme-gradient-3: var(--g3);
+  --theme-shadow-drop: var(--drop);
+  --theme-shadow-rim: var(--rim);
+  --theme-shadow-inner: var(--inner);
+  --theme-shadow-ring: var(--ring);
+  --theme-shadow-glow: var(--glow);
+  --theme-text-shadow: var(--txtShadow);
 
   /* Aqua 3D button primary (purple) */
   --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
