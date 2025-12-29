@@ -17,15 +17,15 @@
   --theme-color-light: rgb(170, 170, 170);
 
   /* Unified theme variables (for buttons & progress) */
-  --g1: rgba(160, 160, 160, 0.625);
-  --g2: rgba(255, 255, 255, 0.625);
-  --g3: rgba(255, 255, 255, 0.625);
-  --drop: rgba(0, 0, 0, 0.2);
-  --rim: rgba(0, 0, 0, 0.3);
-  --inner: rgba(0, 0, 0, 0.4);
-  --ring: #BBBBBB;
-  --glow: rgba(0, 0, 0, 0.25);
-  --txtShadow: rgba(0, 0, 0, 0.25);
+  --g1: rgba(55, 55, 58, 0.75);      /* top: dark graphite */
+  --g2: rgba(92, 92, 98, 0.75);      /* mid: lifted grey */
+  --g3: rgba(125, 130, 140, 0.55);   /* bottom: cool highlight */
+  --drop: rgba(0, 0, 0, 0.38);
+  --rim: rgba(255, 255, 255, 0.12);  /* subtle light rim */
+  --inner: rgba(0, 0, 0, 0.70);      /* deep inner shading */
+  --ring: rgba(210, 220, 255, 0.18); /* cool "edge ring" */
+  --glow: rgba(120, 170, 255, 0.35); /* soft blue focus glow */
+  --txtShadow: rgba(0, 0, 0, 0.55);
 
   /* Re-resolve theme tokens for cascade */
   --theme-gradient-1: var(--g1);
