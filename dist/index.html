@@ -908,9 +908,9 @@
     </div>
 
     <h3 id="listbox">Listbox</h3>
-    <p>Mac OS 10.1 style listbox with wave scrollbar. Click items to select.</p>
+    <p>Mac OS 10.1 style listbox with wave scrollbar. The scrollbar uses <code>data-scrollbar-for</code> to connect to any scrollable element.</p>
     <div class="example">
-      <div class="raw"><div class="aqua-listbox" style="width: 200px; height: 200px;" id="aqua-listbox-demo">
+      <div class="raw"><div class="aqua-listbox" style="width: 220px; height: 200px;">
   <div class="aqua-listbox-content" id="aqua-listbox-content">
     <ul class="aqua-listbox-list" role="listbox" id="aqua-listbox-list">
       <li class="aqua-listbox-item" role="option">640 x 480</li>
@@ -928,22 +928,24 @@
       <li class="aqua-listbox-item" role="option">1920 x 1080</li>
     </ul>
   </div>
-  <div class="scrollbar-cap aqua-glass-v"></div>
-  <div class="scrollbar-track" id="aqua-listbox-track">
-    <div class="scrollbar-thumb-v" id="aqua-listbox-thumb">
-      <div class="scrollbar-wave-ink-v">
-        <div class="scrollbar-wave-shimmer-v" id="aqua-listbox-shimmer"></div>
+  <div class="scrollbar vertical" data-scrollbar-for="aqua-listbox-content">
+    <div class="scrollbar-cap aqua-glass-v"></div>
+    <div class="scrollbar-track">
+      <div class="scrollbar-thumb-v">
+        <div class="scrollbar-wave-ink-v">
+          <div class="scrollbar-wave-shimmer-v"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="scrollbar-buttons aqua-glass-v">
-    <button type="button" id="aqua-listbox-btn-up" title="Scroll up">&#9650;</button>
-    <button type="button" id="aqua-listbox-btn-down" title="Scroll down">&#9660;</button>
+    <div class="scrollbar-buttons aqua-glass-v">
+      <button type="button" title="Scroll up">&#9650;</button>
+      <button type="button" title="Scroll down">&#9660;</button>
+    </div>
   </div>
 </div></div>
       <details class="code">
         <summary>Show code</summary>
-        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 200px; height: 200px;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-demo&quot;</span>&gt;</span>
+        <pre><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 220px; height: 200px;&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-content&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-content&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-list&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;listbox&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-list&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>640 x 480<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
@@ -961,17 +963,19 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-listbox-item&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>1920 x 1080<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-cap aqua-glass-v&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-track&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-track&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-thumb-v&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-thumb&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-ink-v&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-shimmer-v&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-shimmer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar vertical&quot;</span> <span class="hljs-attr">data-scrollbar-for</span>=<span class="hljs-string">&quot;aqua-listbox-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-cap aqua-glass-v&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-track&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-thumb-v&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-ink-v&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-wave-shimmer-v&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-buttons aqua-glass-v&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-btn-up&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll up&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9650;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;aqua-listbox-btn-down&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll down&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9660;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scrollbar-buttons aqua-glass-v&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll up&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9650;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Scroll down&quot;</span>&gt;</span><span class="hljs-symbol">&amp;#9660;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
         <button class="aqua-button aqua-button--secondary copy" type="button"><span>Copy code</span></button>
@@ -4219,7 +4223,7 @@
         });
       };
 
-      // Unified scrollbar setup - makes all scrollbar thumbs draggable and buttons functional
+      // Unified scrollbar setup - handles both standalone demos and connected scrollbars
       function setupScrollbars() {
         document.querySelectorAll('.scrollbar').forEach(function(scrollbar) {
           const isVertical = scrollbar.classList.contains('vertical');
@@ -4229,265 +4233,281 @@
 
           if (!thumb || !shimmer || !track) return;
 
+          // Check if this scrollbar is connected to a scrollable element
+          const targetId = scrollbar.getAttribute('data-scrollbar-for');
+          const scrollTarget = targetId ? document.getElementById(targetId) : null;
+
           // Set shimmer size to match track
-          if (isVertical) {
-            shimmer.style.height = track.offsetHeight + 'px';
-          } else {
-            shimmer.style.width = track.offsetWidth + 'px';
-          }
-
-          // Get current thumb position
-          function getThumbPos() {
+          function initShimmer() {
             if (isVertical) {
-              return parseFloat(thumb.style.top) || 20;
+              shimmer.style.height = track.offsetHeight + 'px';
             } else {
-              return parseFloat(thumb.style.left) || 40;
+              shimmer.style.width = track.offsetWidth + 'px';
             }
           }
-
-          // Set thumb position with bounds checking
-          function setThumbPos(pos) {
-            const trackSize = isVertical ? track.offsetHeight : track.offsetWidth;
-            const thumbSize = isVertical ? thumb.offsetHeight : thumb.offsetWidth;
-            const maxPos = trackSize - thumbSize;
-            const newPos = Math.max(0, Math.min(maxPos, pos));
-
-            if (isVertical) {
-              thumb.style.top = newPos + 'px';
-            } else {
-              thumb.style.left = newPos + 'px';
-            }
-            updateShimmer();
-          }
+          initShimmer();
 
           // Update shimmer position based on thumb position
           function updateShimmer() {
             if (isVertical) {
-              const thumbTop = parseFloat(thumb.style.top) || 20;
+              const thumbTop = parseFloat(thumb.style.top) || 0;
               shimmer.style.top = -thumbTop + 'px';
             } else {
-              const thumbLeft = parseFloat(thumb.style.left) || 40;
+              const thumbLeft = parseFloat(thumb.style.left) || 0;
               shimmer.style.left = -thumbLeft + 'px';
             }
           }
 
-          updateShimmer();
+          // ===== CONNECTED SCROLLBAR MODE =====
+          if (scrollTarget) {
+            // Update thumb size and position based on scroll target
+            function updateFromScroll() {
+              const contentSize = isVertical ? scrollTarget.scrollHeight : scrollTarget.scrollWidth;
+              const visibleSize = isVertical ? scrollTarget.clientHeight : scrollTarget.clientWidth;
+              const scrollPos = isVertical ? scrollTarget.scrollTop : scrollTarget.scrollLeft;
+              const trackSize = isVertical ? track.offsetHeight : track.offsetWidth;
 
-          // Button click handling
-          const stepSize = 20; // pixels to move per click
-          let scrollInterval = null;
+              // Calculate thumb size (proportional to visible content)
+              const thumbSize = Math.max(40, (visibleSize / contentSize) * trackSize);
+              if (isVertical) {
+                thumb.style.height = thumbSize + 'px';
+              } else {
+                thumb.style.width = thumbSize + 'px';
+              }
 
-          function startScrolling(direction) {
-            // Move immediately on first click
-            setThumbPos(getThumbPos() + direction * stepSize);
-            // Continue scrolling while held
-            scrollInterval = setInterval(function() {
-              setThumbPos(getThumbPos() + direction * stepSize);
-            }, 80);
-          }
+              // Calculate thumb position
+              const maxScroll = contentSize - visibleSize;
+              const maxThumbPos = trackSize - thumbSize;
+              const thumbPos = maxScroll > 0 ? (scrollPos / maxScroll) * maxThumbPos : 0;
 
-          function stopScrolling() {
-            if (scrollInterval) {
-              clearInterval(scrollInterval);
-              scrollInterval = null;
-            }
-          }
+              if (isVertical) {
+                thumb.style.top = thumbPos + 'px';
+              } else {
+                thumb.style.left = thumbPos + 'px';
+              }
 
-          // Find all buttons in this scrollbar
-          const buttons = scrollbar.querySelectorAll('button');
-          buttons.forEach(function(btn) {
-            const title = btn.getAttribute('title') || '';
-
-            // Determine direction based on button title
-            let direction = 0;
-            if (title.includes('up') || title.includes('left')) {
-              direction = -1;
-            } else if (title.includes('down') || title.includes('right')) {
-              direction = 1;
+              updateShimmer();
             }
 
-            if (direction !== 0) {
-              btn.addEventListener('mousedown', function(e) {
-                startScrolling(direction);
-                e.preventDefault();
-              });
-              btn.addEventListener('mouseup', stopScrolling);
-              btn.addEventListener('mouseleave', stopScrolling);
+            // Scroll the target element
+            function scrollTargetBy(delta) {
+              if (isVertical) {
+                scrollTarget.scrollTop += delta;
+              } else {
+                scrollTarget.scrollLeft += delta;
+              }
             }
-          });
 
-          // Dragging
-          let isDragging = false;
-          let startPos = 0;
-          let startThumbPos = 0;
+            // Listen to scroll events
+            scrollTarget.addEventListener('scroll', updateFromScroll);
+            window.addEventListener('resize', function() {
+              initShimmer();
+              updateFromScroll();
+            });
+            updateFromScroll();
 
-          thumb.addEventListener('mousedown', function(e) {
-            isDragging = true;
-            if (isVertical) {
-              startPos = e.clientY;
-              startThumbPos = parseFloat(thumb.style.top) || 20;
-            } else {
-              startPos = e.clientX;
-              startThumbPos = parseFloat(thumb.style.left) || 40;
+            // Button handling for connected scrollbar
+            const stepSize = 20;
+            let scrollInterval = null;
+
+            function startScrolling(direction) {
+              scrollTargetBy(direction * stepSize);
+              scrollInterval = setInterval(function() {
+                scrollTargetBy(direction * stepSize);
+              }, 50);
             }
-            e.preventDefault();
-          });
 
-          document.addEventListener('mousemove', function(e) {
-            if (!isDragging) return;
+            function stopScrolling() {
+              if (scrollInterval) {
+                clearInterval(scrollInterval);
+                scrollInterval = null;
+              }
+            }
 
-            const trackSize = isVertical ? track.offsetHeight : track.offsetWidth;
-            const thumbSize = isVertical ? thumb.offsetHeight : thumb.offsetWidth;
-            const maxPos = trackSize - thumbSize;
+            scrollbar.querySelectorAll('button').forEach(function(btn) {
+              const title = btn.getAttribute('title') || '';
+              let direction = 0;
+              if (title.includes('up') || title.includes('left')) direction = -1;
+              else if (title.includes('down') || title.includes('right')) direction = 1;
 
-            const delta = isVertical ? e.clientY - startPos : e.clientX - startPos;
-            const newPos = Math.max(0, Math.min(maxPos, startThumbPos + delta));
+              if (direction !== 0) {
+                btn.addEventListener('mousedown', function(e) {
+                  startScrolling(direction);
+                  e.preventDefault();
+                });
+                btn.addEventListener('mouseup', stopScrolling);
+                btn.addEventListener('mouseleave', stopScrolling);
+              }
+            });
 
-            if (isVertical) {
-              thumb.style.top = newPos + 'px';
-            } else {
-              thumb.style.left = newPos + 'px';
+            // Thumb dragging for connected scrollbar
+            let isDragging = false;
+            let startPos = 0;
+            let startScrollPos = 0;
+
+            thumb.addEventListener('mousedown', function(e) {
+              isDragging = true;
+              startPos = isVertical ? e.clientY : e.clientX;
+              startScrollPos = isVertical ? scrollTarget.scrollTop : scrollTarget.scrollLeft;
+              document.body.style.userSelect = 'none';
+              e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+              if (!isDragging) return;
+
+              const trackSize = isVertical ? track.offsetHeight : track.offsetWidth;
+              const thumbSize = isVertical ? thumb.offsetHeight : thumb.offsetWidth;
+              const contentSize = isVertical ? scrollTarget.scrollHeight : scrollTarget.scrollWidth;
+              const visibleSize = isVertical ? scrollTarget.clientHeight : scrollTarget.clientWidth;
+
+              const delta = (isVertical ? e.clientY : e.clientX) - startPos;
+              const maxThumbPos = trackSize - thumbSize;
+              const maxScroll = contentSize - visibleSize;
+
+              const scrollDelta = (delta / maxThumbPos) * maxScroll;
+              if (isVertical) {
+                scrollTarget.scrollTop = startScrollPos + scrollDelta;
+              } else {
+                scrollTarget.scrollLeft = startScrollPos + scrollDelta;
+              }
+            });
+
+            document.addEventListener('mouseup', function() {
+              if (isDragging) {
+                isDragging = false;
+                document.body.style.userSelect = '';
+                stopScrolling();
+              }
+            });
+
+            // Click on track to jump
+            track.addEventListener('click', function(e) {
+              if (e.target === thumb || thumb.contains(e.target)) return;
+
+              const trackRect = track.getBoundingClientRect();
+              const clickPos = isVertical ? e.clientY - trackRect.top : e.clientX - trackRect.left;
+              const trackSize = isVertical ? track.offsetHeight : track.offsetWidth;
+              const thumbSize = isVertical ? thumb.offsetHeight : thumb.offsetWidth;
+              const contentSize = isVertical ? scrollTarget.scrollHeight : scrollTarget.scrollWidth;
+              const visibleSize = isVertical ? scrollTarget.clientHeight : scrollTarget.clientWidth;
+
+              const targetThumbPos = clickPos - thumbSize / 2;
+              const maxThumbPos = trackSize - thumbSize;
+              const maxScroll = contentSize - visibleSize;
+
+              const newScrollPos = (targetThumbPos / maxThumbPos) * maxScroll;
+              if (isVertical) {
+                scrollTarget.scrollTop = Math.max(0, Math.min(maxScroll, newScrollPos));
+              } else {
+                scrollTarget.scrollLeft = Math.max(0, Math.min(maxScroll, newScrollPos));
+              }
+            });
+
+          // ===== STANDALONE DEMO MODE =====
+          } else {
+            // Get current thumb position
+            function getThumbPos() {
+              if (isVertical) {
+                return parseFloat(thumb.style.top) || 20;
+              } else {
+                return parseFloat(thumb.style.left) || 40;
+              }
+            }
+
+            // Set thumb position with bounds checking
+            function setThumbPos(pos) {
+              const trackSize = isVertical ? track.offsetHeight : track.offsetWidth;
+              const thumbSize = isVertical ? thumb.offsetHeight : thumb.offsetWidth;
+              const maxPos = trackSize - thumbSize;
+              const newPos = Math.max(0, Math.min(maxPos, pos));
+
+              if (isVertical) {
+                thumb.style.top = newPos + 'px';
+              } else {
+                thumb.style.left = newPos + 'px';
+              }
+              updateShimmer();
             }
 
             updateShimmer();
-          });
 
-          document.addEventListener('mouseup', function() {
-            isDragging = false;
-            stopScrolling();
-          });
+            // Button click handling
+            const stepSize = 20;
+            let scrollInterval = null;
+
+            function startScrolling(direction) {
+              setThumbPos(getThumbPos() + direction * stepSize);
+              scrollInterval = setInterval(function() {
+                setThumbPos(getThumbPos() + direction * stepSize);
+              }, 80);
+            }
+
+            function stopScrolling() {
+              if (scrollInterval) {
+                clearInterval(scrollInterval);
+                scrollInterval = null;
+              }
+            }
+
+            scrollbar.querySelectorAll('button').forEach(function(btn) {
+              const title = btn.getAttribute('title') || '';
+              let direction = 0;
+              if (title.includes('up') || title.includes('left')) direction = -1;
+              else if (title.includes('down') || title.includes('right')) direction = 1;
+
+              if (direction !== 0) {
+                btn.addEventListener('mousedown', function(e) {
+                  startScrolling(direction);
+                  e.preventDefault();
+                });
+                btn.addEventListener('mouseup', stopScrolling);
+                btn.addEventListener('mouseleave', stopScrolling);
+              }
+            });
+
+            // Dragging for standalone demo
+            let isDragging = false;
+            let startPos = 0;
+            let startThumbPos = 0;
+
+            thumb.addEventListener('mousedown', function(e) {
+              isDragging = true;
+              startPos = isVertical ? e.clientY : e.clientX;
+              startThumbPos = getThumbPos();
+              e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+              if (!isDragging) return;
+
+              const trackSize = isVertical ? track.offsetHeight : track.offsetWidth;
+              const thumbSize = isVertical ? thumb.offsetHeight : thumb.offsetWidth;
+              const maxPos = trackSize - thumbSize;
+
+              const delta = (isVertical ? e.clientY : e.clientX) - startPos;
+              const newPos = Math.max(0, Math.min(maxPos, startThumbPos + delta));
+
+              if (isVertical) {
+                thumb.style.top = newPos + 'px';
+              } else {
+                thumb.style.left = newPos + 'px';
+              }
+
+              updateShimmer();
+            });
+
+            document.addEventListener('mouseup', function() {
+              isDragging = false;
+              stopScrolling();
+            });
+          }
         });
       }
 
       function setupAquaListbox() {
-        const listbox = document.getElementById('aqua-listbox-demo');
-        const scrollContent = document.getElementById('aqua-listbox-content');
-        const scrollbarTrack = document.getElementById('aqua-listbox-track');
-        const scrollbarThumb = document.getElementById('aqua-listbox-thumb');
-        const thumbShimmer = document.getElementById('aqua-listbox-shimmer');
+        // Item selection functionality for listbox
         const listboxList = document.getElementById('aqua-listbox-list');
-
-        if (!listbox || !scrollContent || !scrollbarTrack || !scrollbarThumb || !thumbShimmer) return;
-
-        let isDragging = false;
-        let startY = 0;
-        let startScrollTop = 0;
-
-        function updateScrollbar() {
-          const contentHeight = scrollContent.scrollHeight;
-          const visibleHeight = scrollContent.clientHeight;
-          const scrollTop = scrollContent.scrollTop;
-          const trackHeight = scrollbarTrack.clientHeight;
-
-          // Calculate thumb size (proportional to visible content)
-          const thumbHeight = Math.max(40, (visibleHeight / contentHeight) * trackHeight);
-          scrollbarThumb.style.height = thumbHeight + 'px';
-
-          // Calculate thumb position
-          const maxScroll = contentHeight - visibleHeight;
-          const maxThumbTop = trackHeight - thumbHeight;
-          const thumbTop = maxScroll > 0 ? (scrollTop / maxScroll) * maxThumbTop : 0;
-          scrollbarThumb.style.top = thumbTop + 'px';
-
-          // Wave is sized to track height, positioned to stay "fixed" relative to track
-          thumbShimmer.style.height = trackHeight + 'px';
-          thumbShimmer.style.top = -thumbTop + 'px';
-        }
-
-        scrollContent.addEventListener('scroll', updateScrollbar);
-        window.addEventListener('resize', updateScrollbar);
-        updateScrollbar();
-
-        // Drag functionality
-        scrollbarThumb.addEventListener('mousedown', function(e) {
-          isDragging = true;
-          startY = e.clientY;
-          startScrollTop = scrollContent.scrollTop;
-          document.body.style.userSelect = 'none';
-          e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', function(e) {
-          if (!isDragging) return;
-
-          const trackHeight = scrollbarTrack.clientHeight;
-          const thumbHeight = scrollbarThumb.clientHeight;
-          const contentHeight = scrollContent.scrollHeight;
-          const visibleHeight = scrollContent.clientHeight;
-
-          const deltaY = e.clientY - startY;
-          const maxThumbTop = trackHeight - thumbHeight;
-          const maxScroll = contentHeight - visibleHeight;
-
-          const scrollDelta = (deltaY / maxThumbTop) * maxScroll;
-          scrollContent.scrollTop = startScrollTop + scrollDelta;
-        });
-
-        document.addEventListener('mouseup', function() {
-          if (isDragging) {
-            isDragging = false;
-            document.body.style.userSelect = '';
-          }
-        });
-
-        // Click on track to jump
-        scrollbarTrack.addEventListener('click', function(e) {
-          if (e.target === scrollbarThumb || scrollbarThumb.contains(e.target)) return;
-
-          const trackRect = scrollbarTrack.getBoundingClientRect();
-          const clickY = e.clientY - trackRect.top;
-          const trackHeight = scrollbarTrack.clientHeight;
-          const thumbHeight = scrollbarThumb.clientHeight;
-          const contentHeight = scrollContent.scrollHeight;
-          const visibleHeight = scrollContent.clientHeight;
-
-          const targetThumbTop = clickY - thumbHeight / 2;
-          const maxThumbTop = trackHeight - thumbHeight;
-          const maxScroll = contentHeight - visibleHeight;
-
-          const newScrollTop = (targetThumbTop / maxThumbTop) * maxScroll;
-          scrollContent.scrollTop = Math.max(0, Math.min(maxScroll, newScrollTop));
-        });
-
-        // Arrow button functionality
-        const btnUp = document.getElementById('aqua-listbox-btn-up');
-        const btnDown = document.getElementById('aqua-listbox-btn-down');
-        const scrollStep = 20;
-        let scrollInterval = null;
-
-        function startScrolling(direction) {
-          scrollContent.scrollTop += direction * scrollStep;
-          scrollInterval = setInterval(function() {
-            scrollContent.scrollTop += direction * scrollStep;
-          }, 50);
-        }
-
-        function stopScrolling() {
-          if (scrollInterval) {
-            clearInterval(scrollInterval);
-            scrollInterval = null;
-          }
-        }
-
-        if (btnUp) {
-          btnUp.addEventListener('mousedown', function(e) {
-            startScrolling(-1);
-            e.preventDefault();
-          });
-          btnUp.addEventListener('mouseup', stopScrolling);
-          btnUp.addEventListener('mouseleave', stopScrolling);
-        }
-
-        if (btnDown) {
-          btnDown.addEventListener('mousedown', function(e) {
-            startScrolling(1);
-            e.preventDefault();
-          });
-          btnDown.addEventListener('mouseup', stopScrolling);
-          btnDown.addEventListener('mouseleave', stopScrolling);
-        }
-
-        // Item selection functionality
         if (listboxList) {
           listboxList.addEventListener('click', function(e) {
             const item = e.target.closest('.aqua-listbox-item');

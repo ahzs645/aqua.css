@@ -93,10 +93,10 @@ select[multiple] {
   color: #fff;
 }
 
-/* ===== Aqua Listbox Scrollbar (uses unified scrollbar components) ===== */
+/* ===== Aqua Listbox Scrollbar (uses unified scrollbar component) ===== */
 
-/* Scrollbar top cap - positioned absolutely inside listbox */
-.aqua-listbox .scrollbar-cap {
+/* The scrollbar component inside listbox - positioned absolutely */
+.aqua-listbox .scrollbar.vertical {
   --w: 18px;
   --btn-height: 15px;
   --radius: 9px;
@@ -104,63 +104,8 @@ select[multiple] {
   position: absolute;
   top: var(--padding);
   right: var(--padding);
-  width: var(--w) !important;
-  height: var(--btn-height) !important;
-  background: linear-gradient(90deg, rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
-  box-shadow: inset 0.375em 0 0.5em 0 rgba(0, 0, 0, 0.4),
-              inset -0.375em 0 0.5em 0.25em #BBBBBB;
-  border-radius: 0;
-  z-index: 1;
-  flex-shrink: 0;
-}
-
-/* Scrollbar Track - positioned absolutely inside listbox */
-.aqua-listbox .scrollbar-track {
-  --w: 18px;
-  --radius: 9px;
-  --padding: 1px;
-  --btn-height: 15px;
-  position: absolute;
-  top: calc(var(--padding) + var(--btn-height) - var(--radius));
-  right: var(--padding);
-  bottom: calc(var(--padding) + var(--btn-height) + var(--btn-height));
-  width: var(--w) !important;
-  flex: none;
-  margin: 0;
-  border-radius: var(--radius);
-  background: linear-gradient(90deg, #d6d6d6, #e8e8e8, #fafafa);
-  box-shadow:
-    inset 4px 0 10px rgba(0,0,0,0.16),
-    inset 0 4.5px 8px rgba(0,0,0,0.15),
-    inset 0 -4.5px 8px rgba(0,0,0,0.15);
-  overflow: hidden;
-  z-index: 2;
-}
-
-/* Scrollbar Arrow Buttons Container - positioned absolutely inside listbox */
-.aqua-listbox .scrollbar-buttons {
-  --w: 18px;
-  --btn-height: 15px;
-  --radius: 9px;
-  --padding: 1px;
-  position: absolute;
-  right: var(--padding);
   bottom: var(--padding);
-  width: var(--w) !important;
-  height: calc(var(--btn-height) * 2 + var(--radius)) !important;
-  display: flex;
+  width: var(--w);
+  height: auto;
   flex-direction: column;
-  background: linear-gradient(90deg, rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
-  box-shadow: inset 0.375em 0 0.5em 0 rgba(0, 0, 0, 0.4),
-              inset -0.375em 0 0.5em 0.25em #BBBBBB;
-  z-index: 1;
-}
-
-.aqua-listbox .scrollbar-buttons button {
-  flex: 1;
-  width: 100%;
-}
-
-.aqua-listbox .scrollbar-buttons button:first-child {
-  padding-top: var(--radius);
 }
