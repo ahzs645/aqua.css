@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aqua Scrollbar Components - Unified with Thumbs</title>
+  <style>
+    :root {
+      /* Theme gradient colors (Aqua blue) */
+      --theme-gradient-1: rgba(0, 65, 184, 0.92);
+      --theme-gradient-2: rgba(45, 115, 199, 0.95);
+      --theme-gradient-3: rgba(33, 160, 196, 0.90);
+      --theme-shadow-rim: rgba(0, 78, 187, 0.65);
+      --theme-shadow-ring: rgba(0, 78, 187, 0.85);
+      --theme-shadow-inner: rgba(0, 17, 49, 0.75);
+
+      /* Shared gradients */
+      --aqua-secondary-h: linear-gradient(
+        rgba(160, 160, 160, 0.625),
+        rgba(255, 255, 255, 0.625)
+      );
+      --aqua-secondary-v: linear-gradient(90deg,
+        rgba(160, 160, 160, 0.625),
+        rgba(255, 255, 255, 0.625)
+      );
+      --aqua-primary-h: linear-gradient(
+        var(--theme-gradient-1),
+        var(--theme-gradient-2),
+        var(--theme-gradient-3)
+      );
+      --aqua-primary-v: linear-gradient(90deg,
+        var(--theme-gradient-1),
+        var(--theme-gradient-2),
+        var(--theme-gradient-3)
+      );
+
+      /* Shared shadows */
+      --aqua-shadow-h: inset 0 -0.375em 0.5em 0 rgba(0, 0, 0, 0.4),
+                       inset 0 0.375em 0.5em 0.25em #BBBBBB;
+      --aqua-shadow-v: inset 0.375em 0 0.5em 0 rgba(0, 0, 0, 0.4),
+                       inset -0.375em 0 0.5em 0.25em #BBBBBB;
+
+      --font-size-tiny: 8px;
+
+      /* Scrollbar dimensions */
+      --scrollbar-size: 18px;
+      --scrollbar-radius: 9px;
+      --scrollbar-btn-size: 15px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 40px;
+      background: #e0e0e0;
+    }
+
+    .demo-container {
+      display: flex;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .demo-section {
+      margin-bottom: 40px;
+    }
+
+    .demo-section h3 {
+      margin: 0 0 16px 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* ========================================
+       BASE SCROLLBAR STYLES (SHARED)
+       ======================================== */
+
+    .scrollbar {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .scrollbar button {
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      font-size: var(--font-size-tiny);
+      color: rgba(0, 0, 0, 0.7);
+      outline: none;
+      z-index: 0;
+    }
+
+    .scrollbar button:hover {
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    .scrollbar button:active {
+      color: #000;
+    }
+
+    .scrollbar button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .scrollbar button:active::before {
+      opacity: 1;
+    }
+
+    /* ========================================
+       GLASS EFFECT CLASSES
+       ======================================== */
+
+    .aqua-glass-h {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .aqua-glass-h::before {
+      content: '';
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 33%;
+      background: linear-gradient(
+        hsla(0, 0%, 100%, 0.9),
+        hsla(0, 0%, 100%, 0.3)
+      );
+      filter: blur(1px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .aqua-glass-h::after {
+      content: '';
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 33%;
+      background: linear-gradient(
+        hsla(0, 0%, 100%, 0.2),
+        hsla(0, 0%, 100%, 0.5)
+      );
+      filter: blur(3px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .aqua-glass-v {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .aqua-glass-v::before {
+      content: '';
+      position: absolute;
+      left: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 90%;
+      width: 33%;
+      background: linear-gradient(90deg,
+        hsla(0, 0%, 100%, 0.9),
+        hsla(0, 0%, 100%, 0.3)
+      );
+      filter: blur(1px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .aqua-glass-v::after {
+      content: '';
+      position: absolute;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 90%;
+      width: 33%;
+      background: linear-gradient(90deg,
+        hsla(0, 0%, 100%, 0.2),
+        hsla(0, 0%, 100%, 0.5)
+      );
+      filter: blur(3px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ========================================
+       VERTICAL SCROLLBAR THUMB
+       ======================================== */
+    .scrollbar-thumb-v {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      min-height: 40px;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: var(--scrollbar-radius);
+      background: linear-gradient(90deg, var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+      box-shadow:
+        0.125em 0 0.125em var(--theme-shadow-rim),
+        inset 0.25em 0 0.5em var(--theme-shadow-inner),
+        inset 0.375em 0 0.5em 0.25em var(--theme-shadow-ring);
+    }
+
+    .scrollbar-thumb-v::before {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 35%;
+      border-radius: var(--scrollbar-radius) 0 0 var(--scrollbar-radius);
+      background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.18));
+      filter: blur(1px);
+      z-index: 2;
+    }
+
+    .scrollbar-thumb-v::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      top: -20px;
+      bottom: -20px;
+      right: 0;
+      width: 35%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.45));
+      filter: blur(3px);
+    }
+
+    /* Vertical wave container */
+    .scrollbar-wave-ink-v {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: var(--scrollbar-radius);
+    }
+
+    /* Vertical wave pattern - static, revealed by thumb position */
+    .scrollbar-wave-shimmer-v {
+      position: absolute;
+      left: 0;
+      right: 0;
+      /* Height matches track, top is set to negative of thumb position via JS */
+      /* For static demo, we just show a slice */
+      top: -20px; /* Would be: -thumbTop via JS */
+      height: 200px; /* Would match track height */
+      background-image: repeating-linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 7.5%,
+        rgba(255, 255, 255, 0.4) 25%,
+        rgba(255, 255, 255, 0.15) 42.5%,
+        transparent 50%,
+        transparent 100%
+      );
+      background-size: 100% 20px;
+      filter: blur(4px);
+      -webkit-mask-image: linear-gradient(to right,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 28%,
+        rgba(0, 0, 0, 0.955) 50%,
+        rgba(0, 0, 0, 1) 72%,
+        rgba(0, 0, 0, 1) 100%
+      );
+      mask-image: linear-gradient(to right,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 28%,
+        rgba(0, 0, 0, 0.955) 50%,
+        rgba(0, 0, 0, 1) 72%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+
+    /* ========================================
+       HORIZONTAL SCROLLBAR THUMB
+       ======================================== */
+    .scrollbar-thumb-h {
+      position: absolute;
+      left: 40px;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      min-width: 40px;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: var(--scrollbar-radius);
+      background: linear-gradient(180deg, var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
+      box-shadow:
+        0 0.125em 0.125em var(--theme-shadow-rim),
+        inset 0 0.25em 0.5em var(--theme-shadow-inner),
+        inset 0 0.375em 0.5em 0.25em var(--theme-shadow-ring);
+    }
+
+    .scrollbar-thumb-h::before {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 35%;
+      border-radius: var(--scrollbar-radius) var(--scrollbar-radius) 0 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.18));
+      filter: blur(1px);
+      z-index: 2;
+    }
+
+    .scrollbar-thumb-h::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+      left: -20px;
+      right: -20px;
+      bottom: 0;
+      height: 35%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.45));
+      filter: blur(3px);
+    }
+
+    /* Horizontal wave container */
+    .scrollbar-wave-ink-h {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: var(--scrollbar-radius);
+    }
+
+    /* Horizontal wave pattern - static, revealed by thumb position */
+    .scrollbar-wave-shimmer-h {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      /* Width matches track, left is set to negative of thumb position via JS */
+      /* For static demo, we just show a slice */
+      left: -40px; /* Would be: -thumbLeft via JS */
+      width: 300px; /* Would match track width */
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 7.5%,
+        rgba(255, 255, 255, 0.4) 25%,
+        rgba(255, 255, 255, 0.15) 42.5%,
+        transparent 50%,
+        transparent 100%
+      );
+      background-size: 20px 100%;
+      filter: blur(4px);
+      -webkit-mask-image: linear-gradient(to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 28%,
+        rgba(0, 0, 0, 0.955) 50%,
+        rgba(0, 0, 0, 1) 72%,
+        rgba(0, 0, 0, 1) 100%
+      );
+      mask-image: linear-gradient(to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 28%,
+        rgba(0, 0, 0, 0.955) 50%,
+        rgba(0, 0, 0, 1) 72%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+
+    /* ========================================
+       HORIZONTAL SCROLLBAR
+       ======================================== */
+    .scrollbar.horizontal {
+      flex-direction: row;
+      height: var(--scrollbar-size);
+      width: 300px;
+    }
+
+    .scrollbar.horizontal .scrollbar-cap {
+      width: var(--scrollbar-btn-size);
+      height: var(--scrollbar-size);
+      background: var(--aqua-secondary-h);
+      box-shadow: var(--aqua-shadow-h);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .scrollbar.horizontal .scrollbar-track {
+      position: relative;
+      flex: 1;
+      height: var(--scrollbar-size);
+      border-radius: var(--scrollbar-radius);
+      background: linear-gradient(180deg, #d6d6d6, #e8e8e8, #fafafa);
+      box-shadow:
+        inset 0 4px 10px rgba(0,0,0,0.16),
+        inset 4.5px 0 8px rgba(0,0,0,0.15),
+        inset -4.5px 0 8px rgba(0,0,0,0.15);
+      margin-left: calc(-1 * var(--scrollbar-radius));
+      margin-right: calc(-1 * var(--scrollbar-radius));
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .scrollbar.horizontal .scrollbar-buttons {
+      display: flex;
+      flex-direction: row;
+      width: calc(var(--scrollbar-btn-size) * 2 + var(--scrollbar-radius));
+      height: var(--scrollbar-size);
+      background: var(--aqua-secondary-h);
+      box-shadow: var(--aqua-shadow-h);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .scrollbar.horizontal .scrollbar-buttons button {
+      flex: 1;
+      height: 100%;
+    }
+
+    .scrollbar.horizontal .scrollbar-buttons button::before {
+      background: var(--aqua-primary-h);
+    }
+
+    .scrollbar.horizontal .scrollbar-buttons button:first-child {
+      padding-left: var(--scrollbar-radius);
+    }
+
+    .scrollbar.horizontal .scrollbar-btn-wrap {
+      width: calc(var(--scrollbar-btn-size) + var(--scrollbar-radius));
+      height: var(--scrollbar-size);
+      background: var(--aqua-secondary-h);
+      box-shadow: var(--aqua-shadow-h);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .scrollbar.horizontal .scrollbar-btn-wrap button {
+      width: 100%;
+      height: 100%;
+    }
+
+    .scrollbar.horizontal .scrollbar-btn-wrap button::before {
+      background: var(--aqua-primary-h);
+    }
+
+    .scrollbar.horizontal .scrollbar-btn-wrap.start button {
+      padding-right: var(--scrollbar-radius);
+    }
+
+    .scrollbar.horizontal .scrollbar-btn-wrap.end button {
+      padding-left: var(--scrollbar-radius);
+    }
+
+    /* ========================================
+       VERTICAL SCROLLBAR
+       ======================================== */
+    .scrollbar.vertical {
+      flex-direction: column;
+      width: var(--scrollbar-size);
+      height: 200px;
+    }
+
+    .scrollbar.vertical .scrollbar-cap {
+      width: var(--scrollbar-size);
+      height: var(--scrollbar-btn-size);
+      background: var(--aqua-secondary-v);
+      box-shadow: var(--aqua-shadow-v);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .scrollbar.vertical .scrollbar-track {
+      position: relative;
+      flex: 1;
+      width: var(--scrollbar-size);
+      border-radius: var(--scrollbar-radius);
+      background: linear-gradient(90deg, #d6d6d6, #e8e8e8, #fafafa);
+      box-shadow:
+        inset 4px 0 10px rgba(0,0,0,0.16),
+        inset 0 4.5px 8px rgba(0,0,0,0.15),
+        inset 0 -4.5px 8px rgba(0,0,0,0.15);
+      margin-top: calc(-1 * var(--scrollbar-radius));
+      margin-bottom: calc(-1 * var(--scrollbar-radius));
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .scrollbar.vertical .scrollbar-buttons {
+      display: flex;
+      flex-direction: column;
+      width: var(--scrollbar-size);
+      height: calc(var(--scrollbar-btn-size) * 2 + var(--scrollbar-radius));
+      background: var(--aqua-secondary-v);
+      box-shadow: var(--aqua-shadow-v);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .scrollbar.vertical .scrollbar-buttons button {
+      flex: 1;
+      width: 100%;
+    }
+
+    .scrollbar.vertical .scrollbar-buttons button::before {
+      background: var(--aqua-primary-v);
+    }
+
+    .scrollbar.vertical .scrollbar-buttons button:first-child {
+      padding-top: var(--scrollbar-radius);
+    }
+
+    .scrollbar.vertical .scrollbar-btn-wrap {
+      width: var(--scrollbar-size);
+      height: calc(var(--scrollbar-btn-size) + var(--scrollbar-radius));
+      background: var(--aqua-secondary-v);
+      box-shadow: var(--aqua-shadow-v);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .scrollbar.vertical .scrollbar-btn-wrap button {
+      width: 100%;
+      height: 100%;
+    }
+
+    .scrollbar.vertical .scrollbar-btn-wrap button::before {
+      background: var(--aqua-primary-v);
+    }
+
+    .scrollbar.vertical .scrollbar-btn-wrap.start button {
+      padding-bottom: var(--scrollbar-radius);
+    }
+
+    .scrollbar.vertical .scrollbar-btn-wrap.end button {
+      padding-top: var(--scrollbar-radius);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Unified Aqua Scrollbar Components with Wave Thumbs</h2>
+
+  <div class="demo-container">
+
+    <!-- Horizontal Together -->
+    <div class="demo-section">
+      <h3>Horizontal - Together</h3>
+      <div class="scrollbar horizontal">
+        <div class="scrollbar-cap aqua-glass-h"></div>
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb-h">
+            <div class="scrollbar-wave-ink-h">
+              <div class="scrollbar-wave-shimmer-h"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-buttons aqua-glass-h">
+          <button type="button" title="Scroll left">&#9664;</button>
+          <button type="button" title="Scroll right">&#9654;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Horizontal Split -->
+    <div class="demo-section">
+      <h3>Horizontal - Split</h3>
+      <div class="scrollbar horizontal">
+        <div class="scrollbar-btn-wrap start aqua-glass-h">
+          <button type="button" title="Scroll left">&#9664;</button>
+        </div>
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb-h">
+            <div class="scrollbar-wave-ink-h">
+              <div class="scrollbar-wave-shimmer-h"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-btn-wrap end aqua-glass-h">
+          <button type="button" title="Scroll right">&#9654;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vertical Together -->
+    <div class="demo-section">
+      <h3>Vertical - Together</h3>
+      <div class="scrollbar vertical">
+        <div class="scrollbar-cap aqua-glass-v"></div>
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb-v">
+            <div class="scrollbar-wave-ink-v">
+              <div class="scrollbar-wave-shimmer-v"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-buttons aqua-glass-v">
+          <button type="button" title="Scroll up">&#9650;</button>
+          <button type="button" title="Scroll down">&#9660;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vertical Split -->
+    <div class="demo-section">
+      <h3>Vertical - Split</h3>
+      <div class="scrollbar vertical">
+        <div class="scrollbar-btn-wrap start aqua-glass-v">
+          <button type="button" title="Scroll up">&#9650;</button>
+        </div>
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb-v">
+            <div class="scrollbar-wave-ink-v">
+              <div class="scrollbar-wave-shimmer-v"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-btn-wrap end aqua-glass-v">
+          <button type="button" title="Scroll down">&#9660;</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+<script>
+  // Make thumbs draggable and update wave reveal position
+  document.querySelectorAll('.scrollbar').forEach(scrollbar => {
+    const isVertical = scrollbar.classList.contains('vertical');
+    const track = scrollbar.querySelector('.scrollbar-track');
+    const thumb = track.querySelector(isVertical ? '.scrollbar-thumb-v' : '.scrollbar-thumb-h');
+    const shimmer = thumb.querySelector(isVertical ? '.scrollbar-wave-shimmer-v' : '.scrollbar-wave-shimmer-h');
+
+    if (!thumb || !shimmer) return;
+
+    // Set shimmer size to match track
+    if (isVertical) {
+      shimmer.style.height = track.offsetHeight + 'px';
+    } else {
+      shimmer.style.width = track.offsetWidth + 'px';
+    }
+
+    // Update shimmer position based on thumb position
+    function updateShimmer() {
+      if (isVertical) {
+        const thumbTop = parseFloat(thumb.style.top) || 20;
+        shimmer.style.top = -thumbTop + 'px';
+      } else {
+        const thumbLeft = parseFloat(thumb.style.left) || 40;
+        shimmer.style.left = -thumbLeft + 'px';
+      }
+    }
+
+    updateShimmer();
+
+    // Dragging
+    let isDragging = false;
+    let startPos = 0;
+    let startThumbPos = 0;
+
+    thumb.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      if (isVertical) {
+        startPos = e.clientY;
+        startThumbPos = parseFloat(thumb.style.top) || 20;
+      } else {
+        startPos = e.clientX;
+        startThumbPos = parseFloat(thumb.style.left) || 40;
+      }
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+
+      const trackSize = isVertical ? track.offsetHeight : track.offsetWidth;
+      const thumbSize = isVertical ? thumb.offsetHeight : thumb.offsetWidth;
+      const maxPos = trackSize - thumbSize;
+
+      let delta = isVertical ? e.clientY - startPos : e.clientX - startPos;
+      let newPos = Math.max(0, Math.min(maxPos, startThumbPos + delta));
+
+      if (isVertical) {
+        thumb.style.top = newPos + 'px';
+      } else {
+        thumb.style.left = newPos + 'px';
+      }
+
+      updateShimmer();
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+  });
+</script>
+</body>
+</html>

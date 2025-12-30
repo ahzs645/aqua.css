@@ -53,21 +53,22 @@
     #FFFFFF 8px
   );
 
-  /* Authentic pinstripe variants (System Preferences style) */
+  /* Authentic pinstripe variants (ryos-style) */
   --aqua-pinstripe-white: repeating-linear-gradient(
-    0deg,
-    #FFFFFF 0px,
-    #FFFFFF 6px,
-    #ECECEC 6px,
-    #ECECEC 8px
-  );
+      0deg,
+      transparent 0px,
+      transparent 1.5px,
+      rgba(255, 255, 255, 0.85) 1.5px,
+      rgba(255, 255, 255, 0.85) 4px
+    ),
+    linear-gradient(to bottom, #ececec 0%, #ececec 100%);
 
   --aqua-pinstripe-gray: repeating-linear-gradient(
     0deg,
-    #DBDBDB 0px,
-    #DBDBDB 6px,
-    #FFFFFF 6px,
-    #FFFFFF 8px
+    transparent 0px,
+    transparent 1.5px,
+    rgba(255, 255, 255, 0.55) 1.5px,
+    rgba(255, 255, 255, 0.55) 4px
   );
 
   --aqua-background-diagonal: repeating-linear-gradient(

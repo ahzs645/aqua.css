@@ -1,5 +1,90 @@
     <h2 id="scrollbar">Scrollbar</h2>
-    <p class="label">Modern Mac-style overlay scrollbar - hover over the containers to see scrollbars appear</p>
+    <p class="label">Unified Aqua Scrollbar Components with Wave Thumbs - Available in horizontal and vertical variants with together or split arrow modes.</p>
+
+    <h4>Horizontal Scrollbar - Together</h4>
+    <p>Horizontal scrollbar with arrow buttons grouped together on the right side.</p>
+
+    <%- example(`
+      <div class="scrollbar horizontal" id="scrollbar-h-together">
+        <div class="scrollbar-cap aqua-glass-h"></div>
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb-h">
+            <div class="scrollbar-wave-ink-h">
+              <div class="scrollbar-wave-shimmer-h"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-buttons aqua-glass-h">
+          <button type="button" title="Scroll left">&#9664;</button>
+          <button type="button" title="Scroll right">&#9654;</button>
+        </div>
+      </div>
+    `) %>
+
+    <h4>Horizontal Scrollbar - Split</h4>
+    <p>Horizontal scrollbar with arrow buttons split on each end.</p>
+
+    <%- example(`
+      <div class="scrollbar horizontal" id="scrollbar-h-split">
+        <div class="scrollbar-btn-wrap start aqua-glass-h">
+          <button type="button" title="Scroll left">&#9664;</button>
+        </div>
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb-h">
+            <div class="scrollbar-wave-ink-h">
+              <div class="scrollbar-wave-shimmer-h"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-btn-wrap end aqua-glass-h">
+          <button type="button" title="Scroll right">&#9654;</button>
+        </div>
+      </div>
+    `) %>
+
+    <h4>Vertical Scrollbar - Together</h4>
+    <p>Vertical scrollbar with arrow buttons grouped together at the bottom.</p>
+
+    <%- example(`
+      <div class="scrollbar vertical" id="scrollbar-v-together">
+        <div class="scrollbar-cap aqua-glass-v"></div>
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb-v">
+            <div class="scrollbar-wave-ink-v">
+              <div class="scrollbar-wave-shimmer-v"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-buttons aqua-glass-v">
+          <button type="button" title="Scroll up">&#9650;</button>
+          <button type="button" title="Scroll down">&#9660;</button>
+        </div>
+      </div>
+    `) %>
+
+    <h4>Vertical Scrollbar - Split</h4>
+    <p>Vertical scrollbar with arrow buttons split at top and bottom.</p>
+
+    <%- example(`
+      <div class="scrollbar vertical" id="scrollbar-v-split">
+        <div class="scrollbar-btn-wrap start aqua-glass-v">
+          <button type="button" title="Scroll up">&#9650;</button>
+        </div>
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb-v">
+            <div class="scrollbar-wave-ink-v">
+              <div class="scrollbar-wave-shimmer-v"></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrollbar-btn-wrap end aqua-glass-v">
+          <button type="button" title="Scroll down">&#9660;</button>
+        </div>
+      </div>
+    `) %>
+
+    <h4>Overlay Scrollbar</h4>
+    <p class="label">Modern Mac-style overlay scrollbar - hover over the container to see the scrollbar appear</p>
 
     <%- example(`
       <div>
@@ -24,46 +109,6 @@
             <div style="margin: 0;">Line 15 - End of content</div>
           </div>
         </div>
-      </div>
-    `) %>
-
-    <h4>Wave-Animated Scrollbar</h4>
-    <p>Custom scrollbar with the same liquid wave effect as the progress bar. Scroll or drag the thumb to see the wave pattern reveal.</p>
-
-    <div class="button-row" style="margin-bottom: 12px;">
-      <button class="aqua-button aqua-button--secondary active" id="arrows-together-btn" onclick="setArrowMode('together')"><span>Arrows Together</span></button>
-      <button class="aqua-button aqua-button--secondary" id="arrows-split-btn" onclick="setArrowMode('split')"><span>Arrows Split</span></button>
-    </div>
-
-    <%- example(`
-      <div class="scrollbar-wave-container" style="width: 300px; height: 220px;" id="scrollbar-wave-demo">
-        <div class="scrollbar-wave-content" id="scrollbar-wave-content">
-          <div style="padding: 12px;">
-            <div style="font-weight: bold; margin-bottom: 8px;">Wave Scrollbar Demo</div>
-            <p style="margin: 0 0 10px 0;">This scrollbar uses the same liquid wave effect as the progress bar, creating a cohesive Aqua experience.</p>
-            <p style="margin: 0 0 10px 0;">The wave pattern in the thumb creates a sense of depth and movement as you scroll through the content.</p>
-            <p style="margin: 0 0 10px 0;">Notice how the wave stays fixed relative to the track, revealing different parts of the pattern as the thumb moves.</p>
-            <p style="margin: 0 0 10px 0;">You can drag the thumb directly or scroll the content area to see the effect.</p>
-            <p style="margin: 0 0 10px 0;">The design matches the classic Mac OS X Aqua interface with its glossy, three-dimensional appearance.</p>
-            <p style="margin: 0 0 10px 0;">Try switching between "Arrows Together" and "Arrows Split" modes above!</p>
-            <p style="margin: 0;">This implementation responds to theme changes - try switching themes!</p>
-          </div>
-        </div>
-        <div class="scrollbar-wave-cap"></div>
-        <div class="scrollbar-wave-track" id="scrollbar-wave-track">
-          <div class="scrollbar-wave-thumb" id="scrollbar-wave-thumb">
-            <div class="scrollbar-wave-ink">
-              <div class="scrollbar-wave-shimmer" id="scrollbar-wave-shimmer"></div>
-            </div>
-          </div>
-        </div>
-        <div class="scrollbar-wave-buttons">
-          <button class="scrollbar-wave-btn" id="scrollbar-btn-up" title="Scroll up">▲</button>
-          <button class="scrollbar-wave-btn" id="scrollbar-btn-down" title="Scroll down">▼</button>
-        </div>
-        <!-- Split mode buttons -->
-        <button class="scrollbar-wave-btn-top" id="scrollbar-btn-top" title="Scroll up">▲</button>
-        <button class="scrollbar-wave-btn-bottom" id="scrollbar-btn-bottom" title="Scroll down">▼</button>
       </div>
     `) %>
 

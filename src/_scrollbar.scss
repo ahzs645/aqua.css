@@ -1,7 +1,499 @@
 /**
- * Scrollbars
+ * Aqua Scrollbar Components - Unified with Wave Thumbs
  * Mac OS X Aqua-style custom scrollbars with translucent blue thumbs
  */
+
+/* ========================================
+   BASE SCROLLBAR STYLES (SHARED)
+   ======================================== */
+
+.scrollbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.scrollbar button {
+  /* Reset global button styles */
+  background: transparent;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  height: auto;
+  width: auto;
+
+  /* Scrollbar button styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  font-size: 8px;
+  color: rgba(0, 0, 0, 0.7);
+  outline: none;
+  z-index: 0;
+}
+
+.scrollbar button:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.scrollbar button:active {
+  color: #000;
+}
+
+.scrollbar button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.scrollbar button:active::before {
+  opacity: 1;
+}
+
+/* ========================================
+   GLASS EFFECT CLASSES
+   ======================================== */
+
+.aqua-glass-h {
+  position: relative;
+  overflow: hidden;
+}
+
+.aqua-glass-h::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 33%;
+  background: linear-gradient(
+    hsla(0, 0%, 100%, 0.9),
+    hsla(0, 0%, 100%, 0.3)
+  );
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.aqua-glass-h::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 33%;
+  background: linear-gradient(
+    hsla(0, 0%, 100%, 0.2),
+    hsla(0, 0%, 100%, 0.5)
+  );
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.aqua-glass-v {
+  position: relative;
+  overflow: hidden;
+}
+
+.aqua-glass-v::before {
+  content: '';
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 90%;
+  width: 33%;
+  background: linear-gradient(90deg,
+    hsla(0, 0%, 100%, 0.9),
+    hsla(0, 0%, 100%, 0.3)
+  );
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.aqua-glass-v::after {
+  content: '';
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 90%;
+  width: 33%;
+  background: linear-gradient(90deg,
+    hsla(0, 0%, 100%, 0.2),
+    hsla(0, 0%, 100%, 0.5)
+  );
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ========================================
+   VERTICAL SCROLLBAR THUMB
+   ======================================== */
+.scrollbar-thumb-v {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  min-height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 9px;
+  background: linear-gradient(90deg, rgba(0, 65, 184, 0.92), rgba(45, 115, 199, 0.95), rgba(33, 160, 196, 0.90));
+  box-shadow:
+    0.125em 0 0.125em rgba(0, 78, 187, 0.65),
+    inset 0.25em 0 0.5em rgba(0, 17, 49, 0.75),
+    inset 0.375em 0 0.5em 0.25em rgba(0, 78, 187, 0.85);
+}
+
+.scrollbar-thumb-v::before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 35%;
+  border-radius: 9px 0 0 9px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.18));
+  filter: blur(1px);
+  z-index: 2;
+}
+
+.scrollbar-thumb-v::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -20px;
+  bottom: -20px;
+  right: 0;
+  width: 35%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.45));
+  filter: blur(3px);
+}
+
+/* Vertical wave container */
+.scrollbar-wave-ink-v {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 9px;
+}
+
+/* Vertical wave pattern */
+.scrollbar-wave-shimmer-v {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20px;
+  height: 200px;
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 7.5%,
+    rgba(255, 255, 255, 0.4) 25%,
+    rgba(255, 255, 255, 0.15) 42.5%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-size: 100% 20px;
+  filter: blur(4px);
+  -webkit-mask-image: linear-gradient(to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 28%,
+    rgba(0, 0, 0, 0.955) 50%,
+    rgba(0, 0, 0, 1) 72%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  mask-image: linear-gradient(to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 28%,
+    rgba(0, 0, 0, 0.955) 50%,
+    rgba(0, 0, 0, 1) 72%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+/* ========================================
+   HORIZONTAL SCROLLBAR THUMB
+   ======================================== */
+.scrollbar-thumb-h {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  min-width: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 9px;
+  background: linear-gradient(180deg, rgba(0, 65, 184, 0.92), rgba(45, 115, 199, 0.95), rgba(33, 160, 196, 0.90));
+  box-shadow:
+    0 0.125em 0.125em rgba(0, 78, 187, 0.65),
+    inset 0 0.25em 0.5em rgba(0, 17, 49, 0.75),
+    inset 0 0.375em 0.5em 0.25em rgba(0, 78, 187, 0.85);
+}
+
+.scrollbar-thumb-h::before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 35%;
+  border-radius: 9px 9px 0 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.18));
+  filter: blur(1px);
+  z-index: 2;
+}
+
+.scrollbar-thumb-h::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  left: -20px;
+  right: -20px;
+  bottom: 0;
+  height: 35%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.45));
+  filter: blur(3px);
+}
+
+/* Horizontal wave container */
+.scrollbar-wave-ink-h {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 9px;
+}
+
+/* Horizontal wave pattern */
+.scrollbar-wave-shimmer-h {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40px;
+  width: 300px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 7.5%,
+    rgba(255, 255, 255, 0.4) 25%,
+    rgba(255, 255, 255, 0.15) 42.5%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-size: 20px 100%;
+  filter: blur(4px);
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 28%,
+    rgba(0, 0, 0, 0.955) 50%,
+    rgba(0, 0, 0, 1) 72%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  mask-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 28%,
+    rgba(0, 0, 0, 0.955) 50%,
+    rgba(0, 0, 0, 1) 72%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+/* ========================================
+   HORIZONTAL SCROLLBAR
+   ======================================== */
+.scrollbar.horizontal {
+  flex-direction: row;
+  height: 18px;
+  width: 300px;
+}
+
+.scrollbar.horizontal .scrollbar-cap {
+  width: 15px;
+  height: 18px;
+  background: linear-gradient(rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
+  box-shadow: inset 0 -0.375em 0.5em 0 rgba(0, 0, 0, 0.4),
+              inset 0 0.375em 0.5em 0.25em #BBBBBB;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.scrollbar.horizontal .scrollbar-track {
+  position: relative;
+  flex: 1;
+  height: 18px;
+  border-radius: 9px;
+  background: linear-gradient(180deg, #d6d6d6, #e8e8e8, #fafafa);
+  box-shadow:
+    inset 0 4px 10px rgba(0,0,0,0.16),
+    inset 4.5px 0 8px rgba(0,0,0,0.15),
+    inset -4.5px 0 8px rgba(0,0,0,0.15);
+  margin-left: -9px;
+  margin-right: -9px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.scrollbar.horizontal .scrollbar-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 39px; /* 15px * 2 + 9px */
+  height: 18px;
+  background: linear-gradient(rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
+  box-shadow: inset 0 -0.375em 0.5em 0 rgba(0, 0, 0, 0.4),
+              inset 0 0.375em 0.5em 0.25em #BBBBBB;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.scrollbar.horizontal .scrollbar-buttons button {
+  flex: 1;
+  height: 100%;
+}
+
+.scrollbar.horizontal .scrollbar-buttons button::before {
+  background: linear-gradient(rgba(0, 65, 184, 0.92), rgba(45, 115, 199, 0.95), rgba(33, 160, 196, 0.90));
+}
+
+.scrollbar.horizontal .scrollbar-buttons button:first-child {
+  padding-left: 9px;
+}
+
+.scrollbar.horizontal .scrollbar-btn-wrap {
+  width: 24px; /* 15px + 9px */
+  height: 18px;
+  background: linear-gradient(rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
+  box-shadow: inset 0 -0.375em 0.5em 0 rgba(0, 0, 0, 0.4),
+              inset 0 0.375em 0.5em 0.25em #BBBBBB;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.scrollbar.horizontal .scrollbar-btn-wrap button {
+  width: 100%;
+  height: 100%;
+}
+
+.scrollbar.horizontal .scrollbar-btn-wrap button::before {
+  background: linear-gradient(rgba(0, 65, 184, 0.92), rgba(45, 115, 199, 0.95), rgba(33, 160, 196, 0.90));
+}
+
+.scrollbar.horizontal .scrollbar-btn-wrap.start button {
+  padding-right: 9px;
+}
+
+.scrollbar.horizontal .scrollbar-btn-wrap.end button {
+  padding-left: 9px;
+}
+
+/* ========================================
+   VERTICAL SCROLLBAR
+   ======================================== */
+.scrollbar.vertical {
+  flex-direction: column;
+  width: 18px;
+  height: 200px;
+}
+
+.scrollbar.vertical .scrollbar-cap {
+  width: 18px;
+  height: 15px;
+  background: linear-gradient(90deg, rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
+  box-shadow: inset 0.375em 0 0.5em 0 rgba(0, 0, 0, 0.4),
+              inset -0.375em 0 0.5em 0.25em #BBBBBB;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.scrollbar.vertical .scrollbar-track {
+  position: relative;
+  flex: 1;
+  width: 18px;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #d6d6d6, #e8e8e8, #fafafa);
+  box-shadow:
+    inset 4px 0 10px rgba(0,0,0,0.16),
+    inset 0 4.5px 8px rgba(0,0,0,0.15),
+    inset 0 -4.5px 8px rgba(0,0,0,0.15);
+  margin-top: -9px;
+  margin-bottom: -9px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.scrollbar.vertical .scrollbar-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 18px;
+  height: 39px; /* 15px * 2 + 9px */
+  background: linear-gradient(90deg, rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
+  box-shadow: inset 0.375em 0 0.5em 0 rgba(0, 0, 0, 0.4),
+              inset -0.375em 0 0.5em 0.25em #BBBBBB;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.scrollbar.vertical .scrollbar-buttons button {
+  flex: 1;
+  width: 100%;
+}
+
+.scrollbar.vertical .scrollbar-buttons button::before {
+  background: linear-gradient(90deg, rgba(0, 65, 184, 0.92), rgba(45, 115, 199, 0.95), rgba(33, 160, 196, 0.90));
+}
+
+.scrollbar.vertical .scrollbar-buttons button:first-child {
+  padding-top: 9px;
+}
+
+.scrollbar.vertical .scrollbar-btn-wrap {
+  width: 18px;
+  height: 24px; /* 15px + 9px */
+  background: linear-gradient(90deg, rgba(160, 160, 160, 0.625), rgba(255, 255, 255, 0.625));
+  box-shadow: inset 0.375em 0 0.5em 0 rgba(0, 0, 0, 0.4),
+              inset -0.375em 0 0.5em 0.25em #BBBBBB;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.scrollbar.vertical .scrollbar-btn-wrap button {
+  width: 100%;
+  height: 100%;
+}
+
+.scrollbar.vertical .scrollbar-btn-wrap button::before {
+  background: linear-gradient(90deg, rgba(0, 65, 184, 0.92), rgba(45, 115, 199, 0.95), rgba(33, 160, 196, 0.90));
+}
+
+.scrollbar.vertical .scrollbar-btn-wrap.start button {
+  padding-bottom: 9px;
+}
+
+.scrollbar.vertical .scrollbar-btn-wrap.end button {
+  padding-top: 9px;
+}
+
+/* ========================================
+   WEBKIT NATIVE SCROLLBAR STYLES
+   ======================================== */
 
 ::-webkit-scrollbar {
   width: 15px;
@@ -53,8 +545,6 @@
   border-radius: 8px;
   min-height: 30px;
   min-width: 30px;
-
-  /* Aqua blue translucent gradient */
   background: var(--scrollbar-thumb-gradient);
   box-shadow: var(--scrollbar-thumb-shadow);
 }
@@ -93,9 +583,9 @@
   scrollbar-color: var(--scrollbar-firefox-thumb) var(--scrollbar-firefox-track);
 }
 
-/* ============================================
-   OPTIONAL OVERLAY SCROLLBAR (scoped)
-   ============================================ */
+/* ========================================
+   OVERLAY SCROLLBAR (scoped)
+   ======================================== */
 
 .scroll-container {
   overflow: auto;
@@ -158,412 +648,4 @@
   width: 280px;
   height: 180px;
   overflow: scroll;
-}
-
-/* ============================================
-   WAVE-ANIMATED SCROLLBAR (Aqua Liquid Style)
-   Custom scrollbar with same wave effect as progress-wave
-   ============================================ */
-.scrollbar-wave-container {
-  position: relative;
-  overflow: hidden;
-  background: var(--scroll-container-bg, #fff);
-  border: 1px solid var(--scroll-container-border, #888);
-  border-radius: 4px;
-}
-
-.scrollbar-wave-container .scrollbar-wave-content {
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  padding-right: 22px; /* Space for custom scrollbar */
-  scrollbar-width: none; /* Firefox */
-}
-
-.scrollbar-wave-container .scrollbar-wave-content::-webkit-scrollbar {
-  display: none;
-}
-
-/* Scrollbar Track - matches progress-wave track */
-.scrollbar-wave-track {
-  --w: 18px;
-  --radius: 9px;
-  --padding: 4px;
-  --btn-height: 15px;
-  position: absolute;
-  top: calc(var(--padding) + var(--btn-height) - var(--radius)); /* Track overlaps cap by radius */
-  right: var(--padding);
-  bottom: calc(var(--padding) + var(--btn-height) + var(--btn-height)); /* Room for 2 buttons, track overlaps up button */
-  width: var(--w);
-  border-radius: var(--radius);
-  background: linear-gradient(90deg, #f5f5f5, #e9e9e9);
-  box-shadow: inset 1px 0 2px rgba(0,0,0,0.25);
-  overflow: hidden;
-  z-index: 2; /* Track on top of cap */
-
-  /* Theme defaults (blue) - same as progress-wave */
-  --g1: rgba(0, 65, 184, 0.92);
-  --g2: rgba(45, 115, 199, 0.95);
-  --g3: rgba(33, 160, 196, 0.90);
-  --drop: rgba(0, 0, 0, 0.32);
-  --rim: rgba(0, 78, 187, 0.65);
-  --ring: rgba(0, 78, 187, 0.85);
-  --inner: rgba(0, 17, 49, 0.75);
-}
-
-/* Scrollbar Thumb - matches progress-wave fill */
-.scrollbar-wave-thumb {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  min-height: 40px;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: 9px;
-  background: linear-gradient(90deg, var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
-  box-shadow:
-    0.125em 0 0.125em var(--theme-shadow-rim),
-    inset 0.25em 0 0.5em var(--theme-shadow-inner),
-    inset 0.375em 0 0.5em 0.25em var(--theme-shadow-ring);
-}
-
-/* Left gloss - matches progress-wave::before but vertical */
-.scrollbar-wave-thumb::before {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 35%;
-  border-radius: 9px 0 0 9px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.18));
-  filter: blur(1px);
-  z-index: 2;
-}
-
-/* Right glow - matches progress-wave::after but vertical */
-.scrollbar-wave-thumb::after {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-  top: -20px;
-  bottom: -20px;
-  right: 0;
-  width: 35%;
-  background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.45));
-  filter: blur(3px);
-}
-
-/* Wave container - clips the wave to thumb bounds */
-.scrollbar-wave-ink {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: 9px;
-}
-
-/* Wave pattern - matches progress-wave shimmer but vertical (90deg rotated) */
-.scrollbar-wave-shimmer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  /* Height set by JS to match track height */
-  background-image: repeating-linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.15) 7.5%,
-    rgba(255, 255, 255, 0.4) 25%,
-    rgba(255, 255, 255, 0.15) 42.5%,
-    transparent 50%,
-    transparent 100%
-  );
-  background-size: 100% 20px;
-  filter: blur(4px);
-  /* Hourglass mask - rotated to horizontal */
-  -webkit-mask-image: linear-gradient(to right,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 28%,
-    rgba(0, 0, 0, 0.955) 50%,
-    rgba(0, 0, 0, 1) 72%,
-    rgba(0, 0, 0, 1) 100%
-  );
-  mask-image: linear-gradient(to right,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 28%,
-    rgba(0, 0, 0, 0.955) 50%,
-    rgba(0, 0, 0, 1) 72%,
-    rgba(0, 0, 0, 1) 100%
-  );
-}
-
-/* ===== Scrollbar Arrow Buttons ===== */
-
-/* Scrollbar top cap - flat top, fills gap above pill track */
-.scrollbar-wave-cap {
-  --w: 18px;
-  --btn-height: 15px;
-  --radius: 9px;
-  --padding: 4px;
-  position: absolute;
-  top: var(--padding);
-  right: var(--padding);
-  width: var(--w);
-  height: var(--btn-height);
-  background: var(--aqua-button-secondary-gradient);
-  box-shadow: var(--aqua-button-secondary-shadow);
-  border-radius: 0;
-  z-index: 1; /* Behind the track */
-  overflow: hidden;
-
-  /* Gloss effect */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.7) 0%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0.1) 100%
-    );
-    pointer-events: none;
-  }
-}
-
-/* Scrollbar arrow buttons container */
-.scrollbar-wave-buttons {
-  --w: 18px;
-  --btn-height: 15px;
-  --radius: 9px;
-  --padding: 4px;
-  position: absolute;
-  right: var(--padding);
-  bottom: var(--padding);
-  width: var(--w);
-  display: flex;
-  flex-direction: column;
-  z-index: 1; /* Behind the track */
-}
-
-/* Arrow button base styles */
-.scrollbar-wave-btn {
-  --w: 18px;
-  --btn-height: 15px;
-  --radius: 9px;
-  box-sizing: border-box;
-  width: 18px;
-  min-width: 18px;
-  max-width: 18px;
-  height: var(--btn-height);
-  padding: 0;
-  margin: 0;
-  background: var(--aqua-button-secondary-gradient);
-  box-shadow: var(--aqua-button-secondary-shadow);
-  border: none;
-  border-radius: 0;
-  outline: none !important;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-
-  /* Gloss effect */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.7) 0%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0.1) 100%
-    );
-    pointer-events: none;
-  }
-
-  &:first-child {
-    border-bottom: 1px solid rgba(0,0,0,0.15);
-    padding-top: var(--radius); /* Extra space for pill overlap */
-    height: calc(var(--btn-height) + var(--radius));
-  }
-
-  &:hover {
-    filter: brightness(0.97);
-  }
-
-  &:active {
-    filter: brightness(0.92);
-    box-shadow: var(--aqua-button-secondary-shadow-active);
-  }
-
-  &:focus,
-  &:focus-visible {
-    outline: none !important;
-  }
-
-  font-size: var(--font-size-tiny);
-  line-height: 1;
-  color: var(--aqua-button-secondary-text);
-  text-shadow: var(--aqua-button-secondary-text-shadow);
-}
-
-/* ===== Split Arrows Mode ===== */
-/* Arrows at top and bottom separately */
-
-.scrollbar-wave-container.arrows-split .scrollbar-wave-cap {
-  display: none; /* No cap needed, up button takes its place */
-}
-
-.scrollbar-wave-container.arrows-split .scrollbar-wave-track {
-  top: calc(var(--padding) + var(--btn-height)); /* Room for up button, track overlaps it */
-  bottom: calc(var(--padding) + var(--btn-height)); /* Room for down button, track overlaps it */
-}
-
-.scrollbar-wave-container.arrows-split .scrollbar-wave-buttons {
-  display: none; /* Hide the grouped buttons container */
-}
-
-/* Individual buttons for split mode */
-.scrollbar-wave-btn-top,
-.scrollbar-wave-btn-bottom {
-  --w: 18px;
-  --btn-height: 15px;
-  --radius: 9px;
-  --padding: 4px;
-  display: none; /* Hidden by default */
-  position: absolute;
-  right: var(--padding);
-  box-sizing: border-box;
-  width: 18px;
-  min-width: 18px;
-  max-width: 18px;
-  height: calc(var(--btn-height) + var(--radius));
-  padding: 0;
-  margin: 0;
-  background: var(--aqua-button-secondary-gradient);
-  box-shadow: var(--aqua-button-secondary-shadow);
-  border: none;
-  border-radius: 0;
-  outline: none !important;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  overflow: hidden;
-
-  /* Gloss effect */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.7) 0%,
-      rgba(255, 255, 255, 0.3) 50%,
-      rgba(255, 255, 255, 0.1) 100%
-    );
-    pointer-events: none;
-  }
-
-  &:hover {
-    filter: brightness(0.97);
-  }
-
-  &:active {
-    filter: brightness(0.92);
-    box-shadow: var(--aqua-button-secondary-shadow-active);
-  }
-
-  &:focus,
-  &:focus-visible {
-    outline: none !important;
-  }
-
-  font-size: var(--font-size-tiny);
-  line-height: 1;
-  color: var(--aqua-button-secondary-text);
-  text-shadow: var(--aqua-button-secondary-text-shadow);
-}
-
-.scrollbar-wave-btn-top {
-  top: var(--padding);
-  padding-bottom: var(--radius); /* Pill overlaps from bottom */
-}
-
-.scrollbar-wave-btn-bottom {
-  bottom: var(--padding);
-  padding-top: var(--radius); /* Pill overlaps from top */
-}
-
-.scrollbar-wave-container.arrows-split .scrollbar-wave-btn-top,
-.scrollbar-wave-container.arrows-split .scrollbar-wave-btn-bottom {
-  display: flex; /* Show in split mode */
-}
-
-/* ===== Theme Variants ===== */
-
-/* Metal / Graphite */
-.scrollbar-wave-track.theme-metal,
-.scrollbar-wave-track.theme-graphite,
-.theme-metal .scrollbar-wave-track,
-.theme-graphite .scrollbar-wave-track {
-  --g1: rgba(160, 160, 160, 0.92);
-  --g2: rgba(200, 200, 200, 0.95);
-  --g3: rgba(220, 220, 220, 0.90);
-  --drop: rgba(0, 0, 0, 0.2);
-  --rim: rgba(0, 0, 0, 0.35);
-  --inner: rgba(0, 0, 0, 0.4);
-  --ring: rgba(150, 150, 150, 0.85);
-}
-
-/* Green */
-.scrollbar-wave-track.theme-green,
-.theme-green .scrollbar-wave-track {
-  --g1: rgba(0, 120, 70, 0.92);
-  --g2: rgba(45, 170, 120, 0.95);
-  --g3: rgba(80, 210, 190, 0.90);
-  --rim: rgba(0, 130, 80, 0.65);
-  --ring: rgba(0, 130, 80, 0.85);
-  --inner: rgba(0, 35, 20, 0.75);
-}
-
-/* Purple */
-.scrollbar-wave-track.theme-purple,
-.theme-purple .scrollbar-wave-track {
-  --g1: rgba(85, 45, 170, 0.92);
-  --g2: rgba(140, 90, 220, 0.95);
-  --g3: rgba(120, 200, 235, 0.60);
-  --rim: rgba(110, 70, 210, 0.65);
-  --ring: rgba(110, 70, 210, 0.85);
-  --inner: rgba(25, 10, 45, 0.75);
-}
-
-/* Red */
-.scrollbar-wave-track.theme-red,
-.theme-red .scrollbar-wave-track {
-  --g1: rgba(180, 20, 40, 0.92);
-  --g2: rgba(235, 70, 90, 0.95);
-  --g3: rgba(255, 170, 165, 0.75);
-  --rim: rgba(170, 30, 60, 0.65);
-  --ring: rgba(170, 30, 60, 0.85);
-  --inner: rgba(55, 0, 10, 0.75);
 }
