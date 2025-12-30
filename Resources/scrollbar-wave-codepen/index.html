@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aqua Wave Scrollbar Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scrollbar-wave-container" style="width: 300px; height: 220px;" id="scrollbar-wave-demo">
+    <div class="scrollbar-wave-content" id="scrollbar-wave-content">
+      <div style="padding: 12px;">
+        <div style="font-weight: bold; margin-bottom: 8px;">Wave Scrollbar Demo</div>
+        <p style="margin: 0 0 10px 0;">This scrollbar uses the same liquid wave effect as the progress bar, creating a cohesive Aqua experience.</p>
+        <p style="margin: 0 0 10px 0;">The wave pattern in the thumb creates a sense of depth and movement as you scroll through the content.</p>
+        <p style="margin: 0 0 10px 0;">Notice how the wave stays fixed relative to the track, revealing different parts of the pattern as the thumb moves.</p>
+        <p style="margin: 0 0 10px 0;">You can drag the thumb directly or scroll the content area to see the effect.</p>
+        <p style="margin: 0 0 10px 0;">The design matches the classic Mac OS X Aqua interface with its glossy, three-dimensional appearance.</p>
+        <p style="margin: 0 0 10px 0;">Try switching between "Arrows Together" and "Arrows Split" modes!</p>
+        <p style="margin: 0;">This implementation responds to theme changes.</p>
+      </div>
+    </div>
+    <div class="scrollbar-wave-cap"></div>
+    <div class="scrollbar-wave-track" id="scrollbar-wave-track">
+      <div class="scrollbar-wave-thumb" id="scrollbar-wave-thumb">
+        <div class="scrollbar-wave-ink">
+          <div class="scrollbar-wave-shimmer" id="scrollbar-wave-shimmer"></div>
+        </div>
+      </div>
+    </div>
+    <div class="scrollbar-wave-buttons">
+      <button class="scrollbar-wave-btn" id="scrollbar-btn-up" title="Scroll up">&#9650;</button>
+      <button class="scrollbar-wave-btn" id="scrollbar-btn-down" title="Scroll down">&#9660;</button>
+    </div>
+    <button class="scrollbar-wave-btn-top" id="scrollbar-btn-top" title="Scroll up">&#9650;</button>
+    <button class="scrollbar-wave-btn-bottom" id="scrollbar-btn-bottom" title="Scroll down">&#9660;</button>
+  </div>
+
+  <!-- Controls -->
+  <div style="margin-top: 16px;">
+    <button onclick="setArrowMode('together')">Arrows Together</button>
+    <button onclick="setArrowMode('split')">Arrows Split</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
