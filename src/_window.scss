@@ -56,8 +56,8 @@
     .title-bar {
       background: var(--brushed-metal-titlebar);
       background-color: #B4B4B4;
-      border-bottom-color: var(--brushed-metal-border-light);
-      box-shadow: var(--brushed-metal-shadow);
+      border-bottom: none;
+      box-shadow: none;
     }
 
     .title-bar-text {
@@ -67,6 +67,11 @@
     .window-body {
       background: var(--brushed-metal-authentic);
       background-color: #A0A0A0;
+
+      /* Remove any pinstripe pseudo-elements */
+      &::before {
+        display: none;
+      }
     }
 
     .toolbar {

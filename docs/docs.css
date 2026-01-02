@@ -17,7 +17,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 12px 0;
+  padding: 12px 0 0;
   margin: 0 -20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -38,6 +38,14 @@ body {
 
 .site-nav-tabs .aqua-tab-bar {
   justify-content: center;
+}
+
+/* Extend tab bar bottom edge to full viewport width */
+.site-nav-tabs .aqua-tab-bar::after {
+  left: 50%;
+  right: auto;
+  width: 100vw;
+  transform: translateX(-50%);
 }
 
 
