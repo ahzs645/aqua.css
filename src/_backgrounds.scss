@@ -3,25 +3,14 @@
  * Mac OS X Aqua-style background patterns and utility classes
  */
 
+@use "mixins" as *;
+
 /* CSS Variables for Aqua theming */
 :root {
-  /* Pinstripe patterns - standardized 4px equal stripes */
-  --aqua-pinstripe-light: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 4px,
-    rgba(255, 255, 255, 0.85) 4px,
-    rgba(255, 255, 255, 0.85) 8px
-  );
-
-  --aqua-pinstripe-window: repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 4px,
-      rgba(255, 255, 255, 0.85) 4px,
-      rgba(255, 255, 255, 0.85) 8px
-    ),
-    linear-gradient(to bottom, #ececec 0%, #ececec 100%);
+  /* Pinstripe aliases - all reference the main --pinstripe variable from _variables.scss */
+  --aqua-pinstripe-light: var(--pinstripe);
+  --aqua-pinstripe-window: var(--pinstripe);
+  --aqua-background-classic: var(--pinstripe);
 
   --aqua-pinstripe-titlebar: linear-gradient(
     to bottom,
@@ -30,13 +19,7 @@
     rgba(206, 206, 206, 0.7) 100%
   );
 
-  --aqua-pinstripe-menubar: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 4px,
-    rgba(255, 255, 255, 0.55) 4px,
-    rgba(255, 255, 255, 0.55) 8px
-  );
+  --aqua-pinstripe-menubar: var(--pinstripe);
 
   --aqua-pinstripe-diagonal: repeating-linear-gradient(
     -45deg,
@@ -44,13 +27,6 @@
     #eee 4px,
     #e3e3e3 4px,
     #e3e3e3 8px
-  );
-
-  --aqua-background-classic: repeating-linear-gradient(
-    #F0F0F0,
-    #F0F0F0 4px,
-    #FFFFFF 4px,
-    #FFFFFF 8px
   );
 
   /* Authentic pinstripe variants (ryos-style) */
@@ -70,6 +46,19 @@
     rgba(255, 255, 255, 0.55) 1.5px,
     rgba(255, 255, 255, 0.55) 4px
   );
+
+  /* Window Pinstripe - gray stripes on white base (window content areas) */
+  --aqua-window-pinstripe: var(--pinstripe);
+
+  /* Menu Pinstripe - white stripes on gray base (menubar/toolbar areas) */
+  --aqua-menu-pinstripe: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 1.5px,
+      rgba(255, 255, 255, 0.85) 1.5px,
+      rgba(255, 255, 255, 0.85) 4px
+    ),
+    linear-gradient(to bottom, #e1e1e1 0%, #e1e1e1 100%);
 
   --aqua-background-diagonal: repeating-linear-gradient(
     45deg,
@@ -142,8 +131,9 @@
 }
 
 /* Classic horizontal stripes (like Finder windows) */
-.aqua-background {
-  background: var(--aqua-background-classic);
+.aqua-background,
+.aqua-background-striped {
+  @include pinstripe-window;
 }
 
 /* Diagonal stripes */
@@ -193,6 +183,16 @@
 
 .aqua-bg-pinstripe-gray {
   background: var(--aqua-pinstripe-gray);
+}
+
+/* Window Pinstripe - gray stripes on white base */
+.aqua-bg-window-pinstripe {
+  @include pinstripe-window;
+}
+
+/* Menu Pinstripe - white stripes on gray base */
+.aqua-bg-menu-pinstripe {
+  @include pinstripe-menu;
 }
 
 .aqua-bg-titlebar {

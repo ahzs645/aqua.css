@@ -42,6 +42,54 @@
 }
 
 /* ============================================
+   Pinstripe mixins
+   ============================================ */
+
+/// Window pinstripe - gray stripes on white base
+/// Uses pseudo-element to blur only the background, not content
+@mixin pinstripe-window {
+  position: relative;
+  background: #ffffff;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--pinstripe);
+    filter: blur(0.5px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/// Menu pinstripe - white stripes on gray base
+/// Uses pseudo-element to blur only the background, not content
+@mixin pinstripe-menu {
+  position: relative;
+  background: #e1e1e1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--aqua-menu-pinstripe);
+    filter: blur(0.5px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* ============================================
    Presets + aliases (single source of truth)
    ============================================ */
 

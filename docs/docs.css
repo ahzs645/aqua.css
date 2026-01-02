@@ -181,10 +181,27 @@ p {
 
 /* Striped background for early Mac OS X eras */
 [data-aqua-era="10-0"] .example:not(.example--bare),
-[data-aqua-era="10-2"] .example:not(.example--bare),
-[data-aqua-era="10-0"] .sidebar .window-pane,
-[data-aqua-era="10-2"] .sidebar .window-pane {
-  background: var(--aqua-background-classic);
+[data-aqua-era="10-2"] .example:not(.example--bare) {
+  position: relative;
+  background: #ffffff;
+}
+
+[data-aqua-era="10-0"] .example:not(.example--bare)::before,
+[data-aqua-era="10-2"] .example:not(.example--bare)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--pinstripe);
+  filter: blur(0.5px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+[data-aqua-era="10-0"] .example:not(.example--bare) > *,
+[data-aqua-era="10-2"] .example:not(.example--bare) > * {
+  position: relative;
+  z-index: 1;
 }
 
 .era-availability-table {

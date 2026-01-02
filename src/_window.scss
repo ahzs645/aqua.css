@@ -368,8 +368,7 @@
   @include aqua-era($era) {
     .window:not(.brushed-metal):not(.brushed-metal-authentic):not(.brushed-metal-light):not(.brushed-metal-dark):not(.brushed-metal-warm) {
       .title-bar {
-        background-color: #ececec;
-        background-image:
+        background:
           /* Gloss/shine overlay */
           linear-gradient(
             to bottom,
@@ -378,31 +377,17 @@
             rgba(0, 0, 0, 0.03) 55%,
             rgba(0, 0, 0, 0.08) 100%
           ),
-          /* Horizontal pinstripes - white on gray */
-          repeating-linear-gradient(
-            0deg,
-            transparent 0px,
-            transparent 4px,
-            rgba(255, 255, 255, 0.85) 4px,
-            rgba(255, 255, 255, 0.85) 8px
-          );
+          /* Menu pinstripe - white on gray */
+          var(--aqua-menu-pinstripe);
       }
 
       .window-body {
-        background-color: #ececec;
-        background-image: repeating-linear-gradient(
-          0deg,
-          transparent 0px,
-          transparent 4px,
-          rgba(255, 255, 255, 0.85) 4px,
-          rgba(255, 255, 255, 0.85) 8px
-        );
+        @include pinstripe-window;
       }
 
       &.inactive {
         .title-bar {
-          background-color: #f4f4f4;
-          background-image:
+          background:
             /* Faded gloss for inactive state */
             linear-gradient(
               to bottom,
@@ -411,25 +396,14 @@
               rgba(0, 0, 0, 0.02) 55%,
               rgba(0, 0, 0, 0.04) 100%
             ),
-            /* Faded pinstripes */
-            repeating-linear-gradient(
-              0deg,
-              transparent 0px,
-              transparent 4px,
-              rgba(255, 255, 255, 0.7) 4px,
-              rgba(255, 255, 255, 0.7) 8px
-            );
+            /* Menu pinstripe - white on gray */
+            var(--aqua-menu-pinstripe);
+          opacity: 0.85;
         }
 
         .window-body {
-          background-color: #f4f4f4;
-          background-image: repeating-linear-gradient(
-            0deg,
-            transparent 0px,
-            transparent 4px,
-            rgba(255, 255, 255, 0.7) 4px,
-            rgba(255, 255, 255, 0.7) 8px
-          );
+          @include pinstripe-window;
+          opacity: 0.85;
         }
       }
     }

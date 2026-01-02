@@ -28,14 +28,7 @@
 @each $era in ('10-0', '10-1') {
   @include aqua-era($era) {
     .alert-dialog {
-      background-color: #ececec;
-      background-image: repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent 1.5px,
-        rgba(255, 255, 255, 0.85) 1.5px,
-        rgba(255, 255, 255, 0.85) 4px
-      );
+      @include pinstripe-window;
     }
   }
 }

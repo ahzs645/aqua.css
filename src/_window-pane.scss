@@ -15,7 +15,7 @@
   @each $era in ('10-0', '10-2') {
     @include aqua-era($era) {
       & {
-        background: var(--aqua-background-classic);
+        @include pinstripe-window;
       }
     }
   }

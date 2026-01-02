@@ -12,13 +12,18 @@ select[multiple] {
   font-family: var(--font-ui);
   font-size: var(--font-size-base);
   overflow-y: auto;
-  box-shadow: var(--inset-shadow);
   padding: 2px;
   min-height: 80px;
 
+  /* Remove gloss inherited from select */
+  &::before,
+  &::after {
+    display: none;
+  }
+
   &:focus {
     border-color: var(--aqua-blue);
-    box-shadow: var(--inset-shadow), var(--listbox-focus-shadow);
+    box-shadow: var(--listbox-focus-shadow);
     outline: none;
   }
 
