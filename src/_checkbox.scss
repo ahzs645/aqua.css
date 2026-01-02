@@ -80,11 +80,6 @@
     }
   }
 
-  /* Focus state */
-  input:focus + .box {
-    border-color: var(--checkbox-focus-border);
-    box-shadow: var(--checkbox-focus-ring);
-  }
 
   /* Disabled state */
   &.disabled,
@@ -171,8 +166,6 @@ input[type="checkbox"]:not(.checkbox input) {
   }
 
   &:focus {
-    border-color: var(--checkbox-focus-border);
-    box-shadow: var(--checkbox-focus-ring);
     outline: none;
   }
 

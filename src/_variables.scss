@@ -418,7 +418,7 @@
   );
   --checkbox-focus-border: rgb(104, 155, 201);
   --checkbox-focus-ring: 0 0 0 3px rgba(120, 171, 217, 1);
-  --checkbox-indeterminate-shadow: drop-shadow(0 1.5px 0 rgba(255, 255, 255, 0.8));
+  --checkbox-indeterminate-shadow: none;
 
   /* Radio */
   --radio-border: rgb(129, 129, 129);

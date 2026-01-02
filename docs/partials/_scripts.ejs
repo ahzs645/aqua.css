@@ -203,7 +203,30 @@
       function setupIndeterminateCheckbox() {
         const checkbox = document.getElementById('check-indeterminate');
         if (checkbox) {
+          // Track state: 0 = indeterminate, 1 = checked, 2 = unchecked
+          let state = 0;
           checkbox.indeterminate = true;
+          checkbox.checked = false;
+
+          // Cycle: indeterminate → checked → unchecked → indeterminate
+          checkbox.addEventListener('change', function() {
+            // Move to next state
+            state = (state + 1) % 3;
+
+            if (state === 0) {
+              // Indeterminate
+              checkbox.indeterminate = true;
+              checkbox.checked = false;
+            } else if (state === 1) {
+              // Checked
+              checkbox.indeterminate = false;
+              checkbox.checked = true;
+            } else {
+              // Unchecked
+              checkbox.indeterminate = false;
+              checkbox.checked = false;
+            }
+          });
         }
       }
 
@@ -797,6 +820,53 @@
         });
       }
 
+      function setupScrollbarDemoTabs() {
+        const orientationControl = document.getElementById('scrollbar-orientation');
+        const arrowModeControl = document.getElementById('scrollbar-arrow-mode');
+        if (!orientationControl || !arrowModeControl) return;
+
+        let currentOrientation = 'horizontal';
+        let currentArrowMode = 'together';
+
+        function updatePanel() {
+          // Hide all panels
+          document.querySelectorAll('.scrollbar-demo-panel').forEach(function(panel) {
+            panel.style.display = 'none';
+          });
+
+          // Show the active panel
+          const panelId = 'panel-' + currentOrientation + '-' + currentArrowMode;
+          const activePanel = document.getElementById(panelId);
+          if (activePanel) {
+            activePanel.style.display = 'block';
+          }
+        }
+
+        // Orientation control
+        orientationControl.querySelectorAll('button').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            orientationControl.querySelectorAll('button').forEach(function(b) {
+              b.classList.remove('active');
+            });
+            btn.classList.add('active');
+            currentOrientation = btn.getAttribute('data-value');
+            updatePanel();
+          });
+        });
+
+        // Arrow mode control
+        arrowModeControl.querySelectorAll('button').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            arrowModeControl.querySelectorAll('button').forEach(function(b) {
+              b.classList.remove('active');
+            });
+            btn.classList.add('active');
+            currentArrowMode = btn.getAttribute('data-value');
+            updatePanel();
+          });
+        });
+      }
+
       setupTitledPanes();
       setupTreeTable();
       setupSplitPanes();
@@ -807,6 +877,7 @@
       setupCopyButtons();
       setupAquaEraSelector();
       setupScrollbars();
+      setupScrollbarDemoTabs();
       setupAquaListbox();
       setupCustomSliders();
       setupSpinners();

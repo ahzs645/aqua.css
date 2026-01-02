@@ -1,87 +1,106 @@
     <h2 id="scrollbar">Scrollbar</h2>
     <p class="label">Unified Aqua Scrollbar Components with Wave Thumbs - Available in horizontal and vertical variants with together or split arrow modes.</p>
 
-    <h4>Horizontal Scrollbar - Together</h4>
-    <p>Horizontal scrollbar with arrow buttons grouped together on the right side.</p>
-
-    <%- example(`
-      <div class="scrollbar horizontal" id="scrollbar-h-together">
-        <div class="scrollbar-cap aqua-glass-h"></div>
-        <div class="scrollbar-track">
-          <div class="scrollbar-thumb-h">
-            <div class="scrollbar-wave-ink-h">
-              <div class="scrollbar-wave-shimmer-h"></div>
-            </div>
-          </div>
-        </div>
-        <div class="scrollbar-buttons aqua-glass-h">
-          <button type="button" title="Scroll left">&#9664;</button>
-          <button type="button" title="Scroll right">&#9654;</button>
+    <div class="scrollbar-demo-controls" style="display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+      <div>
+        <span class="label" style="display: block; margin-bottom: 4px;">Orientation</span>
+        <div class="segmented-control" id="scrollbar-orientation">
+          <button class="active" data-value="horizontal">Horizontal</button>
+          <button data-value="vertical">Vertical</button>
         </div>
       </div>
-    `) %>
-
-    <h4>Horizontal Scrollbar - Split</h4>
-    <p>Horizontal scrollbar with arrow buttons split on each end.</p>
-
-    <%- example(`
-      <div class="scrollbar horizontal" id="scrollbar-h-split">
-        <div class="scrollbar-btn-wrap start aqua-glass-h">
-          <button type="button" title="Scroll left">&#9664;</button>
-        </div>
-        <div class="scrollbar-track">
-          <div class="scrollbar-thumb-h">
-            <div class="scrollbar-wave-ink-h">
-              <div class="scrollbar-wave-shimmer-h"></div>
-            </div>
-          </div>
-        </div>
-        <div class="scrollbar-btn-wrap end aqua-glass-h">
-          <button type="button" title="Scroll right">&#9654;</button>
+      <div>
+        <span class="label" style="display: block; margin-bottom: 4px;">Arrow Mode</span>
+        <div class="segmented-control" id="scrollbar-arrow-mode">
+          <button class="active" data-value="together">Together</button>
+          <button data-value="split">Split</button>
         </div>
       </div>
-    `) %>
+    </div>
 
-    <h4>Vertical Scrollbar - Together</h4>
-    <p>Vertical scrollbar with arrow buttons grouped together at the bottom.</p>
-
-    <%- example(`
-      <div class="scrollbar vertical" id="scrollbar-v-together">
-        <div class="scrollbar-cap aqua-glass-v"></div>
-        <div class="scrollbar-track">
-          <div class="scrollbar-thumb-v">
-            <div class="scrollbar-wave-ink-v">
-              <div class="scrollbar-wave-shimmer-v"></div>
+    <div class="scrollbar-demo-container">
+      <!-- Horizontal Together -->
+      <div class="scrollbar-demo-panel" id="panel-horizontal-together">
+        <%- example(`
+          <div class="scrollbar horizontal" id="scrollbar-h-together">
+            <div class="scrollbar-cap aqua-glass-h"></div>
+            <div class="scrollbar-track">
+              <div class="scrollbar-thumb-h">
+                <div class="scrollbar-wave-ink-h">
+                  <div class="scrollbar-wave-shimmer-h"></div>
+                </div>
+              </div>
+            </div>
+            <div class="scrollbar-buttons aqua-glass-h">
+              <button type="button" title="Scroll left">&#9664;</button>
+              <button type="button" title="Scroll right">&#9654;</button>
             </div>
           </div>
-        </div>
-        <div class="scrollbar-buttons aqua-glass-v">
-          <button type="button" title="Scroll up">&#9650;</button>
-          <button type="button" title="Scroll down">&#9660;</button>
-        </div>
+        `) %>
       </div>
-    `) %>
 
-    <h4>Vertical Scrollbar - Split</h4>
-    <p>Vertical scrollbar with arrow buttons split at top and bottom.</p>
-
-    <%- example(`
-      <div class="scrollbar vertical" id="scrollbar-v-split">
-        <div class="scrollbar-btn-wrap start aqua-glass-v">
-          <button type="button" title="Scroll up">&#9650;</button>
-        </div>
-        <div class="scrollbar-track">
-          <div class="scrollbar-thumb-v">
-            <div class="scrollbar-wave-ink-v">
-              <div class="scrollbar-wave-shimmer-v"></div>
+      <!-- Horizontal Split -->
+      <div class="scrollbar-demo-panel" id="panel-horizontal-split" style="display: none;">
+        <%- example(`
+          <div class="scrollbar horizontal" id="scrollbar-h-split">
+            <div class="scrollbar-btn-wrap start aqua-glass-h">
+              <button type="button" title="Scroll left">&#9664;</button>
+            </div>
+            <div class="scrollbar-track">
+              <div class="scrollbar-thumb-h">
+                <div class="scrollbar-wave-ink-h">
+                  <div class="scrollbar-wave-shimmer-h"></div>
+                </div>
+              </div>
+            </div>
+            <div class="scrollbar-btn-wrap end aqua-glass-h">
+              <button type="button" title="Scroll right">&#9654;</button>
             </div>
           </div>
-        </div>
-        <div class="scrollbar-btn-wrap end aqua-glass-v">
-          <button type="button" title="Scroll down">&#9660;</button>
-        </div>
+        `) %>
       </div>
-    `) %>
+
+      <!-- Vertical Together -->
+      <div class="scrollbar-demo-panel" id="panel-vertical-together" style="display: none;">
+        <%- example(`
+          <div class="scrollbar vertical" id="scrollbar-v-together">
+            <div class="scrollbar-cap aqua-glass-v"></div>
+            <div class="scrollbar-track">
+              <div class="scrollbar-thumb-v">
+                <div class="scrollbar-wave-ink-v">
+                  <div class="scrollbar-wave-shimmer-v"></div>
+                </div>
+              </div>
+            </div>
+            <div class="scrollbar-buttons aqua-glass-v">
+              <button type="button" title="Scroll up">&#9650;</button>
+              <button type="button" title="Scroll down">&#9660;</button>
+            </div>
+          </div>
+        `) %>
+      </div>
+
+      <!-- Vertical Split -->
+      <div class="scrollbar-demo-panel" id="panel-vertical-split" style="display: none;">
+        <%- example(`
+          <div class="scrollbar vertical" id="scrollbar-v-split">
+            <div class="scrollbar-btn-wrap start aqua-glass-v">
+              <button type="button" title="Scroll up">&#9650;</button>
+            </div>
+            <div class="scrollbar-track">
+              <div class="scrollbar-thumb-v">
+                <div class="scrollbar-wave-ink-v">
+                  <div class="scrollbar-wave-shimmer-v"></div>
+                </div>
+              </div>
+            </div>
+            <div class="scrollbar-btn-wrap end aqua-glass-v">
+              <button type="button" title="Scroll down">&#9660;</button>
+            </div>
+          </div>
+        `) %>
+      </div>
+    </div>
 
     <h4>Overlay Scrollbar</h4>
     <p class="label">Modern Mac-style overlay scrollbar - hover over the container to see the scrollbar appear</p>

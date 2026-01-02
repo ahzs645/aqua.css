@@ -6,17 +6,14 @@
 
 // Slider CSS Variables
 :root {
-  --slider-track-gradient: linear-gradient(
-    to bottom,
-    rgb(147, 147, 147),
-    rgb(217, 217, 217)
-  );
-  --slider-track-gradient-vertical: linear-gradient(
-    to right,
-    rgb(147, 147, 147),
-    rgb(217, 217, 217)
-  );
-  --slider-track-border: rgb(111, 111, 111) rgb(171, 171, 171) rgb(171, 171, 171) rgb(111, 111, 111);
+  --slider-track-gradient: linear-gradient(180deg, #b1b1b1 0%, #d4d4d4 100%);
+  --slider-track-gradient-vertical: linear-gradient(90deg, #b1b1b1 0%, #d4d4d4 100%);
+  --slider-track-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6),
+    inset 2px 0 2px rgba(0, 0, 0, 0.1),
+    inset -2px 0 2px rgba(0, 0, 0, 0.1);
+  --slider-track-shadow-vertical: inset 2px 0 4px rgba(0, 0, 0, 0.6),
+    inset 0 2px 2px rgba(0, 0, 0, 0.1),
+    inset 0 -2px 2px rgba(0, 0, 0, 0.1);
   --slider-thumb-border: rgb(100, 103, 124);
 
   // Blue Aqua gradient matching .aqua-button.default (3D gel style) - OPAQUE version
@@ -65,11 +62,11 @@ input[type="range"],
   -webkit-appearance: none;
   appearance: none;
   width: 200px;
-  height: 4px;
+  height: 7px;
   background: var(--slider-track-gradient);
-  border: 0.5px solid;
-  border-color: var(--slider-track-border);
-  border-radius: 2.5px;
+  border: none;
+  border-radius: 3.5px;
+  box-shadow: var(--slider-track-shadow);
   outline: none;
 
   /* Webkit thumb (Chrome, Safari, Edge) */
@@ -116,11 +113,11 @@ input[type="range"],
 
   /* Mozilla track */
   &::-moz-range-track {
-    height: 4px;
+    height: 7px;
     background: var(--slider-track-gradient);
-    border: 0.5px solid;
-    border-color: var(--slider-track-border);
-    border-radius: 2.5px;
+    border: none;
+    border-radius: 3.5px;
+    box-shadow: var(--slider-track-shadow);
   }
 
   &:disabled {
@@ -143,9 +140,10 @@ input[type="range"].vertical,
 .slider.vertical {
   writing-mode: vertical-lr;
   direction: rtl;
-  width: 4px;
+  width: 7px;
   height: 150px;
   background: var(--slider-track-gradient-vertical);
+  box-shadow: var(--slider-track-shadow-vertical);
 }
 
 /* ============================================
@@ -161,11 +159,11 @@ input[type="range"].vertical,
 
   .track {
     width: 100%;
-    height: 4px;
+    height: 7px;
     background: var(--slider-track-gradient);
-    border: 0.5px solid;
-    border-color: var(--slider-track-border);
-    border-radius: 2.5px;
+    border: none;
+    border-radius: 3.5px;
+    box-shadow: var(--slider-track-shadow);
     position: relative;
   }
 
@@ -258,10 +256,10 @@ input[type="range"].vertical,
     flex-direction: column;
 
     .track {
-      width: 4px;
+      width: 7px;
       height: 100%;
       background: var(--slider-track-gradient-vertical);
-      border-color: var(--slider-track-border);
+      box-shadow: var(--slider-track-shadow-vertical);
     }
 
     .thumb {

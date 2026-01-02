@@ -110,8 +110,15 @@
 }
 
 /* ===== Aqua Tab Classes (Recommended) ===== */
+
+/* Folder tabs wrapper */
+.aqua-folder-tabs {
+  position: relative;
+}
+
 .aqua-tab-bar {
   @include aqua-tab-bar-base;
+  width: 100%; /* Ensure the ::after bar extends full width */
 }
 
 .aqua-tab {

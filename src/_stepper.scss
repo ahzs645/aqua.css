@@ -85,13 +85,14 @@
 
   input {
     width: 60px;
-    padding: 4px 8px;
+    height: 22px;
+    padding: 0 8px;
     text-align: center;
-    border: 1px solid var(--stepper-spinner-border);
+    border: none;
     border-radius: 0;
     outline: none;
-    background: var(--stepper-bg);
-    box-shadow: var(--stepper-spinner-shadow);
+    background: var(--input-bg);
+    box-shadow: var(--input-shadow);
 
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
@@ -102,8 +103,8 @@
     -moz-appearance: textfield;
 
     &:focus {
-      border-color: var(--stepper-spinner-focus-border);
-      box-shadow: var(--stepper-spinner-focus-shadow);
+      border-radius: 2px;
+      box-shadow: var(--input-focus-shadow);
     }
   }
 }
