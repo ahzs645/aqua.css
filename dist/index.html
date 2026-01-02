@@ -3461,18 +3461,24 @@
     </ul>
 
     <h3>Theme Selector</h3>
-    <p class="label">Click a button to preview different themes on the components below</p>
+    <p class="label">Select a theme to preview different color schemes on the components below</p>
 
     <div class="example">
       <div class="raw"><!-- Pre-10.6 era theme selector -->
 <div class="era-pre-10-6">
-  <div class="button-row" style="margin-bottom: 20px;">
-    <button class="aqua-button aqua-button--secondary" onclick="setTheme('')"><span>Default (Aqua Blue)</span></button>
-    <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-graphite')"><span>Graphite</span></button>
-    <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-air')"><span>Air (Light)</span></button>
-    <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-earth')"><span>Earth (Green)</span></button>
-    <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-fire')"><span>Fire (Red)</span></button>
-    <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-purple')"><span>Purple</span></button>
+  <div class="field-row" style="margin-bottom: 20px;">
+    <label for="theme-select-pre106">Theme:</label>
+    <div class="select-wrapper">
+      <select id="theme-select-pre106" onchange="setTheme(this.value)">
+        <option value="">Default (Aqua Blue)</option>
+        <option value="theme-graphite">Graphite</option>
+        <option value="theme-air">Air (Light)</option>
+        <option value="theme-earth">Earth (Green)</option>
+        <option value="theme-fire">Fire (Red)</option>
+        <option value="theme-purple">Purple</option>
+      </select>
+      <span class="select-button"></span>
+    </div>
   </div>
 
   <div id="theme-preview-pre106" class="example">
@@ -3524,13 +3530,19 @@
 
 <!-- 10.6+ era theme selector -->
 <div class="era-10-6-plus">
-  <div class="button-row" style="margin-bottom: 20px;">
-    <button onclick="setTheme('')">Default (Aqua Blue)</button>
-    <button onclick="setTheme('theme-graphite')">Graphite</button>
-    <button onclick="setTheme('theme-air')">Air (Light)</button>
-    <button onclick="setTheme('theme-earth')">Earth (Green)</button>
-    <button onclick="setTheme('theme-fire')">Fire (Red)</button>
-    <button onclick="setTheme('theme-purple')">Purple</button>
+  <div class="field-row" style="margin-bottom: 20px;">
+    <label for="theme-select">Theme:</label>
+    <div class="select-wrapper">
+      <select id="theme-select" onchange="setTheme(this.value)">
+        <option value="">Default (Aqua Blue)</option>
+        <option value="theme-graphite">Graphite</option>
+        <option value="theme-air">Air (Light)</option>
+        <option value="theme-earth">Earth (Green)</option>
+        <option value="theme-fire">Fire (Red)</option>
+        <option value="theme-purple">Purple</option>
+      </select>
+      <span class="select-button"></span>
+    </div>
   </div>
 
   <div id="theme-preview" class="example">
@@ -3583,13 +3595,19 @@
         <summary>Show code</summary>
         <pre><code><span class="hljs-comment">&lt;!-- Pre-10.6 era theme selector --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;era-pre-10-6&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-row&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-bottom: 20px;&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Default (Aqua Blue)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-graphite&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Graphite<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-air&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Air (Light)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-earth&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Earth (Green)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-fire&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Fire (Red)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;aqua-button aqua-button--secondary&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-purple&#x27;)&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Purple<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-bottom: 20px;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;theme-select-pre106&quot;</span>&gt;</span>Theme:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;select-wrapper&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-select-pre106&quot;</span> <span class="hljs-attr">onchange</span>=<span class="hljs-string">&quot;setTheme(this.value)&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Default (Aqua Blue)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-graphite&quot;</span>&gt;</span>Graphite<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-air&quot;</span>&gt;</span>Air (Light)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-earth&quot;</span>&gt;</span>Earth (Green)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-fire&quot;</span>&gt;</span>Fire (Red)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-purple&quot;</span>&gt;</span>Purple<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;select-button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-preview-pre106&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example&quot;</span>&gt;</span>
@@ -3641,13 +3659,19 @@
 
 <span class="hljs-comment">&lt;!-- 10.6+ era theme selector --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;era-10-6-plus&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;button-row&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-bottom: 20px;&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;&#x27;)&quot;</span>&gt;</span>Default (Aqua Blue)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-graphite&#x27;)&quot;</span>&gt;</span>Graphite<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-air&#x27;)&quot;</span>&gt;</span>Air (Light)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-earth&#x27;)&quot;</span>&gt;</span>Earth (Green)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-fire&#x27;)&quot;</span>&gt;</span>Fire (Red)<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;setTheme(&#x27;theme-purple&#x27;)&quot;</span>&gt;</span>Purple<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;field-row&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-bottom: 20px;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;theme-select&quot;</span>&gt;</span>Theme:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;select-wrapper&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-select&quot;</span> <span class="hljs-attr">onchange</span>=<span class="hljs-string">&quot;setTheme(this.value)&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Default (Aqua Blue)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-graphite&quot;</span>&gt;</span>Graphite<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-air&quot;</span>&gt;</span>Air (Light)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-earth&quot;</span>&gt;</span>Earth (Green)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-fire&quot;</span>&gt;</span>Fire (Red)<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;theme-purple&quot;</span>&gt;</span>Purple<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;select-button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;theme-preview&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example&quot;</span>&gt;</span>

@@ -287,13 +287,14 @@
     0 2px 8px rgba(0, 0, 0, 0.2);
 
   /* Pinstripe Pattern - gray stripes on white base */
-  --pinstripe: repeating-linear-gradient(
+  --pinstripe-stripes: repeating-linear-gradient(
       0deg,
       transparent 0px,
       transparent 1.5px,
-      rgba(225, 225, 225, 0.85) 1.5px,
-      rgba(225, 225, 225, 0.85) 4px
-    ),
+      rgba(200, 200, 200, 0.4) 1.5px,
+      rgba(200, 200, 200, 0.4) 4px
+    );
+  --pinstripe: var(--pinstripe-stripes),
     linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
 
   /* Aqua Button Gradient */
@@ -1280,7 +1281,7 @@
   --menu-bar-dark-title-hover-bg: rgba(255, 255, 255, 0.1);
 
   /* Context Menu */
-  --context-menu-bg: rgba(255, 255, 255, 0.95);
+  --context-menu-bg: rgba(255, 255, 255, 0.85);
   --context-menu-border: rgba(209, 209, 209, 0.4);
   --context-menu-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   --context-menu-item-text: var(--text-color);

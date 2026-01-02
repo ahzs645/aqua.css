@@ -186,7 +186,8 @@
    ============================================ */
 .context-menu,
 .aqua-menu {
-  background: var(--context-menu-bg);
+  background-color: var(--context-menu-bg);
+  background-image: var(--pinstripe-stripes);
   border: 0.5px solid var(--context-menu-border);
   border-radius: var(--context-menu-border-radius, 6px);
   padding: 3px 0;
@@ -205,8 +206,6 @@
 [data-aqua-era="10-2"] {
   .context-menu,
   .aqua-menu {
-    background-image: var(--context-menu-pinstripe);
-    background-color: var(--context-menu-bg);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }

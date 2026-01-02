@@ -157,7 +157,7 @@
   border-top: 1px solid #88b7ea;
   border-radius: 0;
   padding: 24px;
-  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  background: var(--pinstripe);
   margin-top: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -231,7 +231,7 @@
   border-top: 1px solid #88b7ea;
   border-radius: 0;
   padding: 24px;
-  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  background: var(--pinstripe);
   margin-top: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }

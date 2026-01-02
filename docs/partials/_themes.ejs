@@ -8,18 +8,24 @@
     </ul>
 
     <h3>Theme Selector</h3>
-    <p class="label">Click a button to preview different themes on the components below</p>
+    <p class="label">Select a theme to preview different color schemes on the components below</p>
 
     <%- example(`
       <!-- Pre-10.6 era theme selector -->
       <div class="era-pre-10-6">
-        <div class="button-row" style="margin-bottom: 20px;">
-          <button class="aqua-button aqua-button--secondary" onclick="setTheme('')"><span>Default (Aqua Blue)</span></button>
-          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-graphite')"><span>Graphite</span></button>
-          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-air')"><span>Air (Light)</span></button>
-          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-earth')"><span>Earth (Green)</span></button>
-          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-fire')"><span>Fire (Red)</span></button>
-          <button class="aqua-button aqua-button--secondary" onclick="setTheme('theme-purple')"><span>Purple</span></button>
+        <div class="field-row" style="margin-bottom: 20px;">
+          <label for="theme-select-pre106">Theme:</label>
+          <div class="select-wrapper">
+            <select id="theme-select-pre106" onchange="setTheme(this.value)">
+              <option value="">Default (Aqua Blue)</option>
+              <option value="theme-graphite">Graphite</option>
+              <option value="theme-air">Air (Light)</option>
+              <option value="theme-earth">Earth (Green)</option>
+              <option value="theme-fire">Fire (Red)</option>
+              <option value="theme-purple">Purple</option>
+            </select>
+            <span class="select-button"></span>
+          </div>
         </div>
 
         <div id="theme-preview-pre106" class="example">
@@ -71,13 +77,19 @@
 
       <!-- 10.6+ era theme selector -->
       <div class="era-10-6-plus">
-        <div class="button-row" style="margin-bottom: 20px;">
-          <button onclick="setTheme('')">Default (Aqua Blue)</button>
-          <button onclick="setTheme('theme-graphite')">Graphite</button>
-          <button onclick="setTheme('theme-air')">Air (Light)</button>
-          <button onclick="setTheme('theme-earth')">Earth (Green)</button>
-          <button onclick="setTheme('theme-fire')">Fire (Red)</button>
-          <button onclick="setTheme('theme-purple')">Purple</button>
+        <div class="field-row" style="margin-bottom: 20px;">
+          <label for="theme-select">Theme:</label>
+          <div class="select-wrapper">
+            <select id="theme-select" onchange="setTheme(this.value)">
+              <option value="">Default (Aqua Blue)</option>
+              <option value="theme-graphite">Graphite</option>
+              <option value="theme-air">Air (Light)</option>
+              <option value="theme-earth">Earth (Green)</option>
+              <option value="theme-fire">Fire (Red)</option>
+              <option value="theme-purple">Purple</option>
+            </select>
+            <span class="select-button"></span>
+          </div>
         </div>
 
         <div id="theme-preview" class="example">
