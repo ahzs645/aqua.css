@@ -74,6 +74,7 @@
   input:checked + .box {
     border-color: var(--checkbox-selected-border);
     background: var(--checkbox-selected-gradient);
+    box-shadow: var(--checkbox-selected-shadow);
 
     .mark {
       display: block;
@@ -98,6 +99,7 @@
   input:indeterminate + .box {
     border-color: var(--checkbox-selected-border);
     background: var(--checkbox-selected-gradient);
+    box-shadow: var(--checkbox-selected-shadow);
 
     /* Hide the glow overlay */
     &::after {
@@ -159,6 +161,7 @@ input[type="checkbox"]:not(.checkbox input) {
   &:checked {
     border-color: var(--checkbox-selected-border);
     background: var(--checkbox-selected-gradient);
+    box-shadow: var(--checkbox-selected-shadow);
 
     &::after {
       opacity: 1;
@@ -182,6 +185,7 @@ input[type="checkbox"]:not(.checkbox input) {
   &:indeterminate {
     border-color: var(--checkbox-selected-border);
     background: var(--checkbox-selected-gradient);
+    box-shadow: var(--checkbox-selected-shadow);
 
     &::after {
       inset: auto;

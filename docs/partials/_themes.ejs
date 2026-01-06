@@ -13,22 +13,26 @@
     <%- example(`
       <!-- Pre-10.6 era theme selector -->
       <div class="era-pre-10-6">
-        <div class="field-row" style="margin-bottom: 20px;">
-          <label for="theme-select-pre106">Theme:</label>
-          <div class="select-wrapper">
-            <select id="theme-select-pre106" onchange="setTheme(this.value)">
-              <option value="">Default (Aqua Blue)</option>
-              <option value="theme-graphite">Graphite</option>
-              <option value="theme-air">Air (Light)</option>
-              <option value="theme-earth">Earth (Green)</option>
-              <option value="theme-fire">Fire (Red)</option>
-              <option value="theme-purple">Purple</option>
-            </select>
-            <span class="select-button"></span>
+        <div id="theme-preview-pre106">
+          <div class="field-row" style="margin-bottom: 20px;">
+            <label for="theme-select-pre106">Theme:</label>
+            <div class="select-wrapper">
+              <select id="theme-select-pre106" onchange="setTheme(this.value)">
+                <option value="">Default (Aqua Blue)</option>
+                <option value="theme-graphite">Graphite</option>
+                <option value="theme-air">Air (Light)</option>
+                <option value="theme-earth">Earth (Green)</option>
+                <option value="theme-fire">Fire (Red)</option>
+                <option value="theme-purple">Purple</option>
+              </select>
+              <span class="select-button"></span>
+              <span class="select-arrows">
+                <span class="arrow-up">&#9650;</span>
+                <span class="arrow-down">&#9660;</span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div id="theme-preview-pre106" class="example">
           <div class="label">Buttons</div>
           <div class="button-row">
             <button class="aqua-button aqua-button--secondary"><span>Regular</span></button>
@@ -77,22 +81,26 @@
 
       <!-- 10.6+ era theme selector -->
       <div class="era-10-6-plus">
-        <div class="field-row" style="margin-bottom: 20px;">
-          <label for="theme-select">Theme:</label>
-          <div class="select-wrapper">
-            <select id="theme-select" onchange="setTheme(this.value)">
-              <option value="">Default (Aqua Blue)</option>
-              <option value="theme-graphite">Graphite</option>
-              <option value="theme-air">Air (Light)</option>
-              <option value="theme-earth">Earth (Green)</option>
-              <option value="theme-fire">Fire (Red)</option>
-              <option value="theme-purple">Purple</option>
-            </select>
-            <span class="select-button"></span>
+        <div id="theme-preview">
+          <div class="field-row" style="margin-bottom: 20px;">
+            <label for="theme-select">Theme:</label>
+            <div class="select-wrapper">
+              <select id="theme-select" onchange="setTheme(this.value)">
+                <option value="">Default (Aqua Blue)</option>
+                <option value="theme-graphite">Graphite</option>
+                <option value="theme-air">Air (Light)</option>
+                <option value="theme-earth">Earth (Green)</option>
+                <option value="theme-fire">Fire (Red)</option>
+                <option value="theme-purple">Purple</option>
+              </select>
+              <span class="select-button"></span>
+              <span class="select-arrows">
+                <span class="arrow-up">&#9650;</span>
+                <span class="arrow-down">&#9660;</span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div id="theme-preview" class="example">
           <div class="label">Buttons</div>
           <div class="button-row">
             <button>Regular</button>

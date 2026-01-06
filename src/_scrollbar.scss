@@ -147,8 +147,8 @@
 .scrollbar-thumb-v {
   position: absolute;
   top: 20px;
-  left: 0;
-  right: 0;
+  left: 1px;
+  right: 1px;
   height: 60px;
   min-height: 40px;
   overflow: hidden;
@@ -235,8 +235,8 @@
 .scrollbar-thumb-h {
   position: absolute;
   left: 40px;
-  top: 0;
-  bottom: 0;
+  top: 1px;
+  bottom: 1px;
   width: 80px;
   min-width: 40px;
   overflow: hidden;
@@ -375,6 +375,7 @@
 
 .scrollbar.horizontal .scrollbar-buttons button:first-child {
   padding-left: 9px;
+  border-right: 1px solid var(--aqua-button-pill-divider);
 }
 
 .scrollbar.horizontal .scrollbar-btn-wrap {
@@ -462,6 +463,7 @@
 
 .scrollbar.vertical .scrollbar-buttons button:first-child {
   padding-top: 9px;
+  border-bottom: 1px solid var(--aqua-button-pill-divider);
 }
 
 .scrollbar.vertical .scrollbar-btn-wrap {

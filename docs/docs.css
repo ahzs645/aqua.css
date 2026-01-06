@@ -14,6 +14,7 @@ body {
 
 /* Sticky Header */
 .site-header {
+  position: relative;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -21,9 +22,19 @@ body {
   margin: 0 -20px;
   padding-left: 20px;
   padding-right: 20px;
+  background: var(--docs-bg-color);
 }
 
-.site-header::before {
+/* Pinstripe header for 10.3 and earlier */
+[data-aqua-era="10-0"] .site-header,
+[data-aqua-era="10-2"] .site-header,
+[data-aqua-era="10-3"] .site-header {
+  background: #e1e1e1;
+}
+
+[data-aqua-era="10-0"] .site-header::before,
+[data-aqua-era="10-2"] .site-header::before,
+[data-aqua-era="10-3"] .site-header::before {
   content: '';
   position: absolute;
   top: 0;
@@ -33,7 +44,15 @@ body {
   transform: translateX(-50%);
   background: var(--aqua-menu-pinstripe);
   filter: blur(0.5px);
-  z-index: -1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-aqua-era="10-0"] .site-header > *,
+[data-aqua-era="10-2"] .site-header > *,
+[data-aqua-era="10-3"] .site-header > * {
+  position: relative;
+  z-index: 1;
 }
 
 .header-content {
@@ -183,10 +202,52 @@ p {
 .example {
   margin: 1em 0;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: var(--example-border-radius, 8px);
   background: transparent;
   border: none;
   box-shadow: none;
+}
+
+/* Square corners for pre-10.3 eras */
+[data-aqua-era="10-0"],
+[data-aqua-era="10-2"] {
+  --example-border-radius: 0;
+}
+
+/* Pinstripe backgrounds for pre-10.4 eras */
+[data-aqua-era="10-0"] .example:not(.example--bare),
+[data-aqua-era="10-2"] .example:not(.example--bare),
+[data-aqua-era="10-3"] .example:not(.example--bare) {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #ccc;
+}
+
+[data-aqua-era="10-0"] .example:not(.example--bare)::before,
+[data-aqua-era="10-2"] .example:not(.example--bare)::before,
+[data-aqua-era="10-3"] .example:not(.example--bare)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--pinstripe);
+  filter: blur(0.5px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+[data-aqua-era="10-0"] .example:not(.example--bare) > *,
+[data-aqua-era="10-2"] .example:not(.example--bare) > *,
+[data-aqua-era="10-3"] .example:not(.example--bare) > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Clean background for 10.4+ eras */
+[data-aqua-era="10-4"] .example,
+[data-aqua-era="10-6"] .example {
+  background: linear-gradient(180deg, #f7f7f7 0%, #e8e8e8 100%);
+  border: 1px solid #ccc;
 }
 
 .example--bare,
@@ -249,7 +310,6 @@ p {
 
 .example .code .copy {
   margin-top: 10px;
-  margin-left: auto;
   display: inline-flex;
   min-width: 0;
   height: 1.6em;
@@ -445,6 +505,15 @@ section[data-section-id] {
 /* Doc tabbed examples */
 .doc-tabbed-example .aqua-tab-bar {
   justify-content: center;
+}
+
+/* Extend tab bar bottom strip full width for older eras */
+[data-aqua-era="10-0"] .doc-tabbed-example .aqua-tab-bar::after,
+[data-aqua-era="10-2"] .doc-tabbed-example .aqua-tab-bar::after,
+[data-aqua-era="10-3"] .doc-tabbed-example .aqua-tab-bar::after {
+  left: -21px;
+  right: -21px;
+  width: auto;
 }
 
 .doc-tabbed-example .aqua-tab-content.hidden {

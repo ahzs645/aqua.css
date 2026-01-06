@@ -37,6 +37,7 @@
     border-radius: 50%;
     background: var(--checkbox-bg);
     background: var(--radio-gradient);
+    box-shadow: var(--radio-shadow);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,6 +69,7 @@
   input:checked + .circle {
     border-color: var(--radio-selected-border);
     background: var(--radio-selected-gradient);
+    box-shadow: var(--radio-selected-shadow);
 
     .dot {
       background-image: svg-load("../icon/radio-dot.svg");
@@ -75,10 +77,6 @@
     }
   }
 
-  /* Focus state */
-  input:focus + .circle {
-    box-shadow: var(--radio-focus-ring);
-  }
 
   /* Disabled state */
   &.disabled,
@@ -104,6 +102,7 @@ input[type="radio"]:not(.radio input) {
   border-radius: 50%;
   border: 0.5px solid var(--radio-border);
   background: var(--radio-gradient);
+  box-shadow: var(--radio-shadow);
   cursor: default;
   vertical-align: middle;
   position: relative;
@@ -133,6 +132,7 @@ input[type="radio"]:not(.radio input) {
   &:checked {
     border-color: var(--radio-selected-border);
     background: var(--radio-selected-gradient);
+    box-shadow: var(--radio-selected-shadow);
 
     &::after {
       background-image: svg-load("../icon/radio-dot.svg");
@@ -141,7 +141,6 @@ input[type="radio"]:not(.radio input) {
   }
 
   &:focus {
-    box-shadow: var(--radio-focus-ring);
     outline: none;
   }
 
