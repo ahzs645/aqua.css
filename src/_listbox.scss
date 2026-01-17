@@ -6,7 +6,6 @@
 [role="listbox"],
 select[multiple] {
   background: var(--listbox-bg);
-  border: 1px solid var(--listbox-border);
   display: block;
   font-family: var(--font-ui);
   font-size: var(--font-size-base);
@@ -53,6 +52,7 @@ select[multiple] {
   position: relative;
   background: #fff;
   overflow: hidden;
+  border: 1px solid #888;
 }
 
 /* Fixed shadow overlay that stays on top while content scrolls */
