@@ -1,26 +1,38 @@
     <h2 id="progress-bar">Progress Bar</h2>
     <%- example(`
-      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+      <div style="display: grid; gap: 20px;">
         <div>
-          <span class="label">Determinate (60%)</span><br>
-          <div class="aqua-progress">
-            <div class="bar" style="width: 60%;"></div>
+          <span class="label">Determinate (60%)</span>
+          <div class="progress-wave" style="--p: 60; --h: 13px; width: 200px;">
+            <div class="progress-wave__fill">
+              <div class="progress-wave__ink" aria-hidden="true">
+                <span class="progress-wave__shimmer"></span>
+              </div>
+            </div>
           </div>
         </div>
         <div>
-          <span class="label">Determinate (30%)</span><br>
-          <div class="aqua-progress">
-            <div class="bar" style="width: 30%;"></div>
+          <span class="label">Determinate (30%)</span>
+          <div class="progress-wave" style="--p: 30; --h: 13px; width: 200px;">
+            <div class="progress-wave__fill">
+              <div class="progress-wave__ink" aria-hidden="true">
+                <span class="progress-wave__shimmer"></span>
+              </div>
+            </div>
           </div>
         </div>
         <div>
-          <span class="label">Complete (100%)</span><br>
-          <div class="aqua-progress">
-            <div class="bar" style="width: 100%;"></div>
+          <span class="label">Complete (100%)</span>
+          <div class="progress-wave" style="--p: 100; --h: 13px; width: 200px;">
+            <div class="progress-wave__fill">
+              <div class="progress-wave__ink" aria-hidden="true">
+                <span class="progress-wave__shimmer"></span>
+              </div>
+            </div>
           </div>
         </div>
         <div>
-          <span class="label">Indeterminate</span><br>
+          <span class="label">Indeterminate</span>
           <div class="aqua-progress indeterminate">
             <div class="stripes">
               <div class="stripes-inner">
@@ -38,32 +50,8 @@
           </div>
         </div>
         <div>
-          <span class="label">Disabled</span><br>
-          <div class="aqua-progress disabled">
-            <div class="bar" style="width: 50%;"></div>
-          </div>
-        </div>
-      </div>
-    `) %>
-
-    <h4>Wave-Animated Progress Bar</h4>
-    <p>Alternative progress bar with liquid wave shimmer effect. Uses <code>--p</code> custom property for percentage. Responds to theme changes in the <a href="#graphite-theme">Color Themes</a> section.</p>
-
-    <%- example(`
-      <div style="display: grid; gap: 15px; max-width: 300px;">
-        <div>
-          <span class="label">Wave (60%)</span>
-          <div class="progress-wave" style="--p: 60;">
-            <div class="progress-wave__fill">
-              <div class="progress-wave__ink" aria-hidden="true">
-                <span class="progress-wave__shimmer"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
           <span class="label">Disabled (50%)</span>
-          <div class="progress-wave disabled" style="--p: 50;">
+          <div class="progress-wave disabled" style="--p: 50; --h: 13px; width: 200px;">
             <div class="progress-wave__fill">
               <div class="progress-wave__ink" aria-hidden="true">
                 <span class="progress-wave__shimmer"></span>

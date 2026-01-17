@@ -54,7 +54,6 @@ select[multiple] {
 .aqua-listbox {
   position: relative;
   background: #fff;
-  border: 1px solid #888;
   border-radius: 3px;
   overflow: hidden;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
@@ -64,7 +63,7 @@ select[multiple] {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  padding-right: 22px; /* Space for custom scrollbar */
+  padding-right: 18px; /* Space for custom scrollbar */
   scrollbar-width: none; /* Firefox */
 }
 
@@ -105,11 +104,10 @@ select[multiple] {
   --w: 18px;
   --btn-height: 15px;
   --radius: 9px;
-  --padding: 1px;
   position: absolute;
-  top: var(--padding);
-  right: var(--padding);
-  bottom: var(--padding);
+  top: 0;
+  right: 0;
+  bottom: 0;
   width: var(--w);
   height: auto;
   flex-direction: column;
