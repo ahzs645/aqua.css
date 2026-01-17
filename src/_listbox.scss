@@ -7,7 +7,6 @@
 select[multiple] {
   background: var(--listbox-bg);
   border: 1px solid var(--listbox-border);
-  border-radius: var(--radius-small);
   display: block;
   font-family: var(--font-ui);
   font-size: var(--font-size-base);
@@ -54,7 +53,6 @@ select[multiple] {
 .aqua-listbox {
   position: relative;
   background: #fff;
-  border-radius: 3px;
   overflow: hidden;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
 }
@@ -86,6 +84,7 @@ select[multiple] {
   line-height: 1.3;
   background: #fff;
   user-select: none;
+  border-radius: 0;
 }
 
 .aqua-listbox-item:hover:not(.selected) {
