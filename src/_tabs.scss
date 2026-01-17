@@ -508,10 +508,7 @@
 
 /* Default: Center doc tabs like header tabs */
 .doc-tabbed-example {
-  text-align: center;
-
   .aqua-tab-bar {
-    display: inline-flex;
     justify-content: center;
   }
 }
@@ -524,11 +521,13 @@
     .doc-tabbed-example {
       flex: none;
       margin: 0 auto;
+      text-align: center;
     }
 
     .site-nav-tabs .aqua-tab-bar,
     .doc-tabbed-example .aqua-tab-bar {
       display: inline-flex;
+      width: auto;
       /* Reset folder tab bar styles */
       align-items: center;
       gap: 0;
