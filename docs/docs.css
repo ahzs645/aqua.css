@@ -507,14 +507,6 @@ section[data-section-id] {
   justify-content: center;
 }
 
-/* Extend tab bar bottom strip full width for older eras */
-[data-aqua-era="10-0"] .doc-tabbed-example .aqua-tab-bar::after,
-[data-aqua-era="10-2"] .doc-tabbed-example .aqua-tab-bar::after,
-[data-aqua-era="10-3"] .doc-tabbed-example .aqua-tab-bar::after {
-  left: -21px;
-  right: -21px;
-  width: auto;
-}
 
 .doc-tabbed-example .aqua-tab-content.hidden {
   display: none;

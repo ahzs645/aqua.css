@@ -554,7 +554,12 @@
 
       /* Remove the folder tab colorful gradient bar */
       &::after {
+        content: none;
         display: none;
+        background: none;
+        box-shadow: none;
+        border: none;
+        height: 0;
       }
     }
 
@@ -599,6 +604,18 @@
         background: rgba(255, 255, 255, 0.15);
         box-shadow: none;
       }
+    }
+
+    /* Transform content panel to pill-style */
+    .doc-tabbed-example .aqua-tab-content {
+      margin-top: -10px;
+      background: var(--tab-pill-panel-bg);
+      border: 0.5px solid var(--tab-pill-panel-border);
+      border-radius: 6px;
+      padding: 15px;
+      padding-top: 20px;
+      box-shadow: var(--tab-pill-panel-shadow);
+      background-image: var(--tab-pill-panel-edge-gradient);
     }
   }
 }
