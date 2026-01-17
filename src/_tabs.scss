@@ -517,14 +517,12 @@
 @each $era in ('10-3', '10-4', '10-6') {
   @include aqua-era($era) {
     /* Don't expand - just be a compact centered pill */
-    .site-nav-tabs,
     .doc-tabbed-example {
       flex: none;
       margin: 0 auto;
       text-align: center;
     }
 
-    .site-nav-tabs .aqua-tab-bar,
     .doc-tabbed-example .aqua-tab-bar {
       display: inline-flex;
       width: auto;
@@ -562,7 +560,6 @@
       }
     }
 
-    .site-nav-tabs .aqua-tab,
     .doc-tabbed-example .aqua-tab {
       /* Reset folder tab styles to pill style */
       border-radius: 0;
@@ -615,6 +612,151 @@
       padding-top: 20px;
       box-shadow: var(--tab-pill-panel-shadow);
       background-image: var(--tab-pill-panel-edge-gradient);
+    }
+  }
+}
+
+/* ============================================
+   ADAPTIVE TABS
+   Single component that auto-switches based on era:
+   - Pre-10.3: Folder tabs with gradient bar
+   - 10.3+: Pill/segmented tabs
+   ============================================ */
+
+.aqua-adaptive-tabs {
+  text-align: center;
+
+  .aqua-tab-bar {
+    @include aqua-tab-bar-base;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .aqua-tab {
+    @include aqua-tab-base;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+
+    &:focus,
+    &:focus-visible {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    &:hover:not(.aqua-tab--active) {
+      @include aqua-tab-hover;
+    }
+
+    &:active:not(.aqua-tab--active) {
+      @include aqua-tab-pressed;
+    }
+
+    &.aqua-tab--active {
+      @include aqua-tab-active;
+
+      &:focus,
+      &:focus-visible {
+        outline: none !important;
+        box-shadow: var(--tab-active-inner-shadow) !important;
+      }
+    }
+  }
+
+  .aqua-tab-content {
+    border: 1px solid #999;
+    border-top: 1px solid #88b7ea;
+    border-radius: 0;
+    padding: 24px;
+    background: var(--pinstripe);
+    margin-top: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* 10.3+ eras: Transform adaptive tabs to pill-style */
+@each $era in ('10-3', '10-4', '10-6') {
+  @include aqua-era($era) {
+    .aqua-adaptive-tabs {
+      text-align: center;
+
+      .aqua-tab-bar {
+        display: inline-flex;
+        width: auto;
+        align-items: center;
+        gap: 0;
+        border-radius: 5px;
+        overflow: hidden;
+        background: var(--aqua-button-secondary-gradient);
+        box-shadow: var(--aqua-button-secondary-shadow);
+
+        @include aqua-glass('pill', $overrides: (
+          shine: (
+            width: calc(100% - 0.25em),
+            height: 45%,
+            radius: 4px 4px 2px 2px,
+            z-index: 10
+          ),
+          glow: (
+            width: calc(100% - 0.5em),
+            radius: 3px,
+            z-index: 10
+          )
+        ));
+
+        /* Remove the folder tab gradient bar */
+        &::after {
+          display: none;
+        }
+      }
+
+      .aqua-tab {
+        border-radius: 0;
+        height: auto;
+        min-height: 24px;
+        padding: 1px 10px;
+        margin-bottom: 0;
+        background: transparent;
+        box-shadow: none;
+        border-right: 1px solid var(--segmented-divider);
+        color: var(--aqua-button-secondary-text);
+        text-shadow: var(--aqua-button-secondary-text-shadow);
+        z-index: 1;
+
+        &::before {
+          display: none;
+        }
+
+        &:last-child {
+          border-right: none;
+        }
+
+        &.aqua-tab--active {
+          background: var(--aqua-button-primary-gradient);
+          color: var(--aqua-button-primary-text);
+          text-shadow: var(--aqua-button-primary-text-shadow);
+          box-shadow: none;
+
+          &::after {
+            display: none;
+          }
+        }
+
+        &:hover:not(.aqua-tab--active) {
+          background: rgba(255, 255, 255, 0.15);
+          box-shadow: none;
+        }
+      }
+
+      .aqua-tab-content {
+        margin-top: -10px;
+        background: var(--tab-pill-panel-bg);
+        border: 0.5px solid var(--tab-pill-panel-border);
+        border-radius: 6px;
+        padding: 15px;
+        padding-top: 20px;
+        box-shadow: var(--tab-pill-panel-shadow);
+        background-image: var(--tab-pill-panel-edge-gradient);
+      }
     }
   }
 }
