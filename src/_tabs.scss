@@ -679,6 +679,11 @@
     .aqua-adaptive-tabs {
       text-align: center;
 
+      /* Add bottom padding for header tabs */
+      &.site-nav-tabs {
+        padding-bottom: 12px;
+      }
+
       .aqua-tab-bar {
         display: inline-flex;
         width: auto;
