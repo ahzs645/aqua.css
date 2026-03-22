@@ -1,7 +1,7 @@
 # aqua.css
 
 A CSS library for building interfaces that look like Apple's Aqua UI (Mac OS X 10.0 - 10.4 era).
-Docs and demo: http://projects.ahmadjalil.com/aqua.css
+Docs and demo: https://ahmadjalil.github.io/aqua.css/
 
 ## Features
 

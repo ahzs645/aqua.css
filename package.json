@@ -5,7 +5,17 @@
   "main": "dist/aqua.css",
   "style": "dist/aqua.css",
   "files": [
-    "dist/",
+    "dist/aqua.css",
+    "dist/aqua.css.map",
+    "dist/aqua.inline.css",
+    "dist/aqua.inline.css.map",
+    "dist/aqua.legacy.css",
+    "dist/aqua.legacy.css.map",
+    "dist/aqua.scoped.css",
+    "dist/aqua.scoped.css.map",
+    "dist/components/",
+    "dist/icon/",
+    "dist/progress.png",
     "fonts/",
     "LICENSE",
     "README.md"
@@ -16,8 +26,8 @@
   "scripts": {
     "build": "node build.js",
     "start": "node server.js",
-    "deploy:docs": "npm run build && gh-pages -d dist",
-    "release": "npm run build && npm publish"
+    "release": "npm publish",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -37,7 +47,7 @@
   "bugs": {
     "url": "https://github.com/ahmadjalil/aqua.css/issues"
   },
-  "homepage": "http://projects.ahmadjalil.com/aqua.css",
+  "homepage": "https://ahmadjalil.github.io/aqua.css/",
   "browserslist": [
     ">0.5%",
     "last 2 versions",
@@ -49,7 +59,6 @@
     "cssnano": "^5.0.1",
     "dedent": "^0.7.0",
     "ejs": "^3.0.2",
-    "gh-pages": "^2.2.0",
     "glob": "^7.1.6",
     "highlight.js": "^10.4.1",
     "live-server": "^1.2.1",

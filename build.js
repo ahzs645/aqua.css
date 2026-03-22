@@ -59,6 +59,7 @@ function runPostCSS(input, { from, to, preserveVars, copyAssets, prefixSelector,
 }
 
 function buildCSS() {
+  fs.rmSync("dist", { recursive: true, force: true });
   mkdirp.sync("dist");
 
   // Copy icon folder to dist before CSS processing (needed for postcss-base64)
@@ -258,20 +259,16 @@ function buildDocs() {
     </div>`;
   }
 
-  glob("docs/*", (err, files) => {
-    if (!err) {
-      files.forEach((srcFile) => {
-        // Skip directories and .ejs files
-        if (!srcFile.endsWith(".ejs") && fs.statSync(srcFile).isFile()) {
-          fs.copyFileSync(srcFile, path.join("dist", path.basename(srcFile)));
-        }
-      });
-    } else throw "error globbing docs directory.";
+  glob.sync("docs/*").forEach((srcFile) => {
+    // Skip directories and .ejs files
+    if (!srcFile.endsWith(".ejs") && fs.statSync(srcFile).isFile()) {
+      fs.copyFileSync(srcFile, path.join("dist", path.basename(srcFile)));
+    }
   });
 
   fs.writeFileSync(
     path.join(__dirname, "/dist/index.html"),
-    ejs.render(template, { getNewId, getCurrentId, example, bareExample, tabbedExample }, {
+    ejs.render(template, { getNewId, getCurrentId, example, bareExample, tabbedExample, homepage }, {
       filename: path.join(__dirname, "docs/index.html.ejs")
     })
   );
@@ -279,10 +276,14 @@ function buildDocs() {
 
 function build() {
   return buildCSS()
-    .then(buildDocs)
-    .catch((err) => console.log(err));
+    .then(buildDocs);
 }
 
 module.exports = build;
 
-build();
+if (require.main === module) {
+  build().catch((err) => {
+    console.error(err);
+    process.exitCode = 1;
+  });
+}

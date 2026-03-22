@@ -621,6 +621,54 @@
 
   /* Solid color hover for classic era (not gradient) */
   --context-menu-item-hover-gradient: rgb(48, 116, 214);
+
+  /* Traffic Lights - Classic Aqua style (10.0-10.4) */
+  --traffic-light-red-gradient: linear-gradient(
+    rgb(137, 28, 18) 0%,
+    rgb(203, 85, 73) 50%,
+    rgb(197, 67, 54) 100%
+  );
+  --traffic-light-red-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(137, 28, 18, 0.5),
+    inset 0 0.125em 0.2em rgba(137, 28, 18, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(203, 85, 73, 0.75);
+  --traffic-light-red-hover-gradient: linear-gradient(
+    rgb(157, 48, 38) 0%,
+    rgb(223, 105, 93) 50%,
+    rgb(217, 87, 74) 100%
+  );
+  --traffic-light-yellow-gradient: linear-gradient(
+    rgb(192, 105, 1) 0%,
+    rgb(253, 162, 43) 48%,
+    rgb(224, 192, 47) 100%
+  );
+  --traffic-light-yellow-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(192, 105, 1, 0.5),
+    inset 0 0.125em 0.2em rgba(192, 105, 1, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(253, 162, 43, 0.75);
+  --traffic-light-yellow-hover-gradient: linear-gradient(
+    rgb(212, 125, 21) 0%,
+    rgb(255, 182, 63) 48%,
+    rgb(244, 212, 67) 100%
+  );
+  --traffic-light-green-gradient: linear-gradient(
+    rgb(67, 124, 48) 0%,
+    rgb(125, 188, 71) 32%,
+    rgb(132, 196, 74) 49%,
+    rgb(128, 193, 69) 64%,
+    rgb(98, 169, 33) 100%
+  );
+  --traffic-light-green-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(67, 124, 48, 0.5),
+    inset 0 0.125em 0.2em rgba(67, 124, 48, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(132, 196, 74, 0.75);
+  --traffic-light-green-hover-gradient: linear-gradient(
+    rgb(87, 144, 68) 0%,
+    rgb(145, 208, 91) 32%,
+    rgb(152, 216, 94) 49%,
+    rgb(148, 213, 89) 64%,
+    rgb(118, 189, 53) 100%
+  );
 }
 
 @include aqua-era('10-2') {
@@ -775,6 +823,54 @@
 
   /* Solid color hover for classic era (not gradient) */
   --context-menu-item-hover-gradient: rgb(45, 112, 206);
+
+  /* Traffic Lights - Classic Aqua style (10.0-10.4) */
+  --traffic-light-red-gradient: linear-gradient(
+    rgb(137, 28, 18) 0%,
+    rgb(203, 85, 73) 50%,
+    rgb(197, 67, 54) 100%
+  );
+  --traffic-light-red-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(137, 28, 18, 0.5),
+    inset 0 0.125em 0.2em rgba(137, 28, 18, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(203, 85, 73, 0.75);
+  --traffic-light-red-hover-gradient: linear-gradient(
+    rgb(157, 48, 38) 0%,
+    rgb(223, 105, 93) 50%,
+    rgb(217, 87, 74) 100%
+  );
+  --traffic-light-yellow-gradient: linear-gradient(
+    rgb(192, 105, 1) 0%,
+    rgb(253, 162, 43) 48%,
+    rgb(224, 192, 47) 100%
+  );
+  --traffic-light-yellow-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(192, 105, 1, 0.5),
+    inset 0 0.125em 0.2em rgba(192, 105, 1, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(253, 162, 43, 0.75);
+  --traffic-light-yellow-hover-gradient: linear-gradient(
+    rgb(212, 125, 21) 0%,
+    rgb(255, 182, 63) 48%,
+    rgb(244, 212, 67) 100%
+  );
+  --traffic-light-green-gradient: linear-gradient(
+    rgb(67, 124, 48) 0%,
+    rgb(125, 188, 71) 32%,
+    rgb(132, 196, 74) 49%,
+    rgb(128, 193, 69) 64%,
+    rgb(98, 169, 33) 100%
+  );
+  --traffic-light-green-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(67, 124, 48, 0.5),
+    inset 0 0.125em 0.2em rgba(67, 124, 48, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(132, 196, 74, 0.75);
+  --traffic-light-green-hover-gradient: linear-gradient(
+    rgb(87, 144, 68) 0%,
+    rgb(145, 208, 91) 32%,
+    rgb(152, 216, 94) 49%,
+    rgb(148, 213, 89) 64%,
+    rgb(118, 189, 53) 100%
+  );
 }
 
 @include aqua-era('10-3') {
@@ -934,6 +1030,104 @@
   --list-item-selected-focused-fill-gradient: linear-gradient(rgb(58, 116, 203), rgb(36, 92, 177));
   --list-item-selected-focused-strip-gradient-horizontal: var(--list-item-selected-focused-strip-gradient);
   --list-item-selected-focused-fill-gradient-horizontal: var(--list-item-selected-focused-fill-gradient);
+
+  /* Traffic Lights - Classic Aqua style (10.0-10.4) */
+  --traffic-light-red-gradient: linear-gradient(
+    rgb(137, 28, 18) 0%,
+    rgb(203, 85, 73) 50%,
+    rgb(197, 67, 54) 100%
+  );
+  --traffic-light-red-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(137, 28, 18, 0.5),
+    inset 0 0.125em 0.2em rgba(137, 28, 18, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(203, 85, 73, 0.75);
+  --traffic-light-red-hover-gradient: linear-gradient(
+    rgb(157, 48, 38) 0%,
+    rgb(223, 105, 93) 50%,
+    rgb(217, 87, 74) 100%
+  );
+  --traffic-light-yellow-gradient: linear-gradient(
+    rgb(192, 105, 1) 0%,
+    rgb(253, 162, 43) 48%,
+    rgb(224, 192, 47) 100%
+  );
+  --traffic-light-yellow-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(192, 105, 1, 0.5),
+    inset 0 0.125em 0.2em rgba(192, 105, 1, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(253, 162, 43, 0.75);
+  --traffic-light-yellow-hover-gradient: linear-gradient(
+    rgb(212, 125, 21) 0%,
+    rgb(255, 182, 63) 48%,
+    rgb(244, 212, 67) 100%
+  );
+  --traffic-light-green-gradient: linear-gradient(
+    rgb(67, 124, 48) 0%,
+    rgb(125, 188, 71) 32%,
+    rgb(132, 196, 74) 49%,
+    rgb(128, 193, 69) 64%,
+    rgb(98, 169, 33) 100%
+  );
+  --traffic-light-green-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(67, 124, 48, 0.5),
+    inset 0 0.125em 0.2em rgba(67, 124, 48, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(132, 196, 74, 0.75);
+  --traffic-light-green-hover-gradient: linear-gradient(
+    rgb(87, 144, 68) 0%,
+    rgb(145, 208, 91) 32%,
+    rgb(152, 216, 94) 49%,
+    rgb(148, 213, 89) 64%,
+    rgb(118, 189, 53) 100%
+  );
+}
+
+@include aqua-era('10-4') {
+  /* Traffic Lights - Classic Aqua style (10.0-10.4) */
+  --traffic-light-red-gradient: linear-gradient(
+    rgb(137, 28, 18) 0%,
+    rgb(203, 85, 73) 50%,
+    rgb(197, 67, 54) 100%
+  );
+  --traffic-light-red-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(137, 28, 18, 0.5),
+    inset 0 0.125em 0.2em rgba(137, 28, 18, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(203, 85, 73, 0.75);
+  --traffic-light-red-hover-gradient: linear-gradient(
+    rgb(157, 48, 38) 0%,
+    rgb(223, 105, 93) 50%,
+    rgb(217, 87, 74) 100%
+  );
+  --traffic-light-yellow-gradient: linear-gradient(
+    rgb(192, 105, 1) 0%,
+    rgb(253, 162, 43) 48%,
+    rgb(224, 192, 47) 100%
+  );
+  --traffic-light-yellow-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(192, 105, 1, 0.5),
+    inset 0 0.125em 0.2em rgba(192, 105, 1, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(253, 162, 43, 0.75);
+  --traffic-light-yellow-hover-gradient: linear-gradient(
+    rgb(212, 125, 21) 0%,
+    rgb(255, 182, 63) 48%,
+    rgb(244, 212, 67) 100%
+  );
+  --traffic-light-green-gradient: linear-gradient(
+    rgb(67, 124, 48) 0%,
+    rgb(125, 188, 71) 32%,
+    rgb(132, 196, 74) 49%,
+    rgb(128, 193, 69) 64%,
+    rgb(98, 169, 33) 100%
+  );
+  --traffic-light-green-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+    0 0.0625em 0.0625em rgba(67, 124, 48, 0.5),
+    inset 0 0.125em 0.2em rgba(67, 124, 48, 0.8),
+    inset 0 0.15em 0.25em 0.1em rgba(132, 196, 74, 0.75);
+  --traffic-light-green-hover-gradient: linear-gradient(
+    rgb(87, 144, 68) 0%,
+    rgb(145, 208, 91) 32%,
+    rgb(152, 216, 94) 49%,
+    rgb(148, 213, 89) 64%,
+    rgb(118, 189, 53) 100%
+  );
 }
 
 @include aqua-era('10-6') {

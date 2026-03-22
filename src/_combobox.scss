@@ -10,10 +10,13 @@
   position: relative;
   display: inline-flex;
   align-items: stretch;
+  border-radius: 5px;
+  overflow: hidden;
 
   /* Square text field */
   input[type="text"] {
     flex: 1;
+    min-width: 0;
     height: 22px;
     font-size: var(--font-size-base);
     font-family: var(--font-ui);
@@ -29,29 +32,33 @@
     outline: none;
   }
 
-  /* Blue dropdown button via ::after - as flex item */
+  /* Glossy dropdown button - visually isolated from the text field */
   &::after {
     content: "";
     width: 21px;
     flex-shrink: 0;
     align-self: stretch;
+    border-left: 1px solid var(--aqua-button-pill-divider);
     border-radius: 0 5px 5px 0;
     background:
-      /* Top gloss shine */
+      /* Select-style top gloss, clipped to the button only */
       linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(255, 255, 255, 0.4) 20%,
-        transparent 45%
-      ),
-      /* Blue gradient - dark top to light bottom */
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(255, 255, 255, 0.38) 38%,
+        rgba(255, 255, 255, 0.08) 52%,
+        transparent 65%
+      ) 1px 1px / calc(100% - 2px) calc(45% - 2px) no-repeat,
+      /* Bottom reflection */
       linear-gradient(
         to bottom,
-        #1D4E9B 0%,
-        #8CC0F8 52%,
-        #BDF5FF 100%
-      );
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.28) 100%
+      ) 1px calc(100% - 6px) / calc(100% - 6px) calc(28% - 1px) no-repeat,
+      var(--aqua-button-primary-gradient);
     box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.18),
       inset -1px 0 3px rgba(0, 0, 0, 0.3),
       inset 1px 0 0 rgba(0, 0, 0, 0.06),
       inset -1px 0 1px rgba(48, 117, 199, 0.24);

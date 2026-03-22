@@ -10,32 +10,6 @@ const watchPaths = [
 ];
 const usePolling = process.env.CHOKIDAR_USEPOLLING === "true";
 
-const watcher = chokidar.watch(watchPaths, {
-  ignoreInitial: true,
-  ignored: [
-    "**/.DS_Store",
-    "**/.git/**",
-    "**/node_modules/**",
-    "**/dist/**",
-    "**/.cache/**",
-    "**/.sass-cache/**",
-    "**/.idea/**",
-    "**/.vscode/**",
-    "**/*.swp",
-    "**/*.swo",
-    "**/*~",
-    "**/#*#",
-    "**/.#*",
-    "**/*.tmp",
-    "**/*.temp",
-  ],
-  awaitWriteFinish: {
-    stabilityThreshold: 200,
-    pollInterval: 100,
-  },
-  usePolling,
-});
-
 let buildInProgress = false;
 let buildQueued = false;
 let buildTimer = null;
@@ -50,7 +24,9 @@ function runBuild(reason) {
   buildInProgress = true;
   console.log(`Rebuilding...${reason ? ` (${reason})` : ""}`);
   Promise.resolve(build())
-    .catch(() => {})
+    .catch((error) => {
+      console.error(error);
+    })
     .finally(() => {
       buildInProgress = false;
       if (buildQueued) {
@@ -69,15 +45,48 @@ function scheduleBuild(reason) {
   }, 150);
 }
 
-["add", "change", "unlink"].forEach((event) => {
-  watcher.on(event, (filePath) => {
-    scheduleBuild(`${event}: ${filePath}`);
-  });
-});
+Promise.resolve(build())
+  .then(() => {
+    const watcher = chokidar.watch(watchPaths, {
+      ignoreInitial: true,
+      ignored: [
+        "**/.DS_Store",
+        "**/.git/**",
+        "**/node_modules/**",
+        "**/dist/**",
+        "**/.cache/**",
+        "**/.sass-cache/**",
+        "**/.idea/**",
+        "**/.vscode/**",
+        "**/*.swp",
+        "**/*.swo",
+        "**/*~",
+        "**/#*#",
+        "**/.#*",
+        "**/*.tmp",
+        "**/*.temp",
+      ],
+      awaitWriteFinish: {
+        stabilityThreshold: 200,
+        pollInterval: 100,
+      },
+      usePolling,
+    });
 
-liveServer.start({
-  port: 3000,
-  root: "./dist",
-  open: true,
-  wait: 500,
-});
+    ["add", "change", "unlink"].forEach((event) => {
+      watcher.on(event, (filePath) => {
+        scheduleBuild(`${event}: ${filePath}`);
+      });
+    });
+
+    liveServer.start({
+      port: 3000,
+      root: "./dist",
+      open: true,
+      wait: 500,
+    });
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
