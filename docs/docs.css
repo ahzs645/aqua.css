@@ -475,10 +475,8 @@ section[data-section-id] {
   .site-nav-tabs {
     min-width: 0;
     overflow-x: auto;
-    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding-bottom: 6px;
     position: relative;
   }
 
@@ -486,19 +484,20 @@ section[data-section-id] {
     display: none;
   }
 
-  /* Replace the tab bar's ::after with one that spans full width */
-  .site-nav-tabs .aqua-tab-bar::after {
-    left: 0;
-    width: max(100%, 100vw);
-    transform: none;
-    z-index: 1;
-  }
-
+  /* Keep the bar inside the scroll area with padding */
   .site-nav-tabs .aqua-tab-bar {
     justify-content: flex-start;
     white-space: nowrap;
     width: max-content;
     min-width: 100%;
+    padding-bottom: 7px;
+  }
+
+  .site-nav-tabs .aqua-tab-bar::after {
+    left: 0;
+    width: max(100%, 100vw);
+    transform: none;
+    z-index: 1;
   }
 
   .site-nav-tabs .aqua-tab-bar .aqua-tab {
