@@ -462,7 +462,7 @@ section[data-section-id] {
     border: 1px solid;
     border-image: var(--tab-bar-stroke-gradient) 1;
     border-bottom: none;
-    z-index: 3;
+    z-index: 0;
   }
 
   .header-content {
@@ -489,6 +489,9 @@ section[data-section-id] {
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    padding-bottom: 6px;
+    position: relative;
+    z-index: 1;
   }
 
   .site-nav-tabs::-webkit-scrollbar {
@@ -511,6 +514,9 @@ section[data-section-id] {
     flex-shrink: 0;
     padding-left: 16px;
     padding-right: 16px;
+    position: relative;
+    z-index: 4;
+    margin-bottom: -7px;
   }
 
   /* Collapsible sidebar */
