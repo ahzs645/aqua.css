@@ -1,0 +1,64 @@
+    <h2 id="dock">Dock</h2>
+    <p>The Mac OS X application dock with icon launcher and running indicators.</p>
+
+    <%- example(`
+      <div class="dock">
+        <div class="dock-icon running">
+          <img src="icon/finder.svg" alt="Finder">
+          <span class="dock-label">Finder</span>
+        </div>
+        <div class="dock-icon">
+          <img src="icon/finder.svg" alt="Mail">
+          <span class="dock-label">Mail</span>
+        </div>
+        <div class="dock-icon running">
+          <img src="icon/finder.svg" alt="Safari">
+          <span class="dock-label">Safari</span>
+        </div>
+        <div class="dock-icon">
+          <img src="icon/finder.svg" alt="iTunes">
+          <span class="dock-label">iTunes</span>
+        </div>
+        <div class="dock-separator"></div>
+        <div class="dock-icon">
+          <img src="icon/finder.svg" alt="Downloads">
+          <span class="dock-label">Downloads</span>
+        </div>
+        <div class="dock-icon">
+          <img src="icon/finder.svg" alt="Trash">
+          <span class="dock-label">Trash</span>
+        </div>
+      </div>
+    `) %>
+
+    <h3>Small Dock</h3>
+    <%- example(`
+      <div class="dock small">
+        <div class="dock-icon running">
+          <img src="icon/finder.svg" alt="Finder">
+        </div>
+        <div class="dock-icon">
+          <img src="icon/finder.svg" alt="Mail">
+        </div>
+        <div class="dock-separator"></div>
+        <div class="dock-icon">
+          <img src="icon/finder.svg" alt="Trash">
+        </div>
+      </div>
+    `) %>
+
+    <h3>Large Dock</h3>
+    <%- example(`
+      <div class="dock large">
+        <div class="dock-icon running">
+          <img src="icon/finder.svg" alt="Finder">
+        </div>
+        <div class="dock-icon">
+          <img src="icon/finder.svg" alt="Mail">
+        </div>
+        <div class="dock-separator"></div>
+        <div class="dock-icon">
+          <img src="icon/finder.svg" alt="Trash">
+        </div>
+      </div>
+    `) %>

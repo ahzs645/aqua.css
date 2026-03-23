@@ -1604,4 +1604,28 @@
     rgba(240, 240, 240, 0.6) 100%
   );
   --blockquote-inline-border: #cccccc;
+
+  /* ============================================
+     Dock
+     ============================================ */
+  --dock-bg: rgba(248, 248, 248, 0.75);
+  --dock-pinstripe: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1.5px,
+    rgba(255, 255, 255, 0.55) 1.5px,
+    rgba(255, 255, 255, 0.55) 4px
+  );
+  --dock-border: none;
+  --dock-border-radius: 0px;
+  --dock-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --dock-reflection: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 100%
+  );
+  --dock-separator: rgba(0, 0, 0, 0.2);
+  --dock-indicator: #000000;
+  --dock-label-bg: rgba(30, 30, 30, 0.85);
+  --dock-label-text: #ffffff;
 }

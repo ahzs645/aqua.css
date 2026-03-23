@@ -1,0 +1,129 @@
+/**
+ * Dock
+ * Mac OS X Aqua-style application dock with icon magnification
+ */
+
+.dock {
+  display: inline-flex;
+  align-items: flex-end;
+  padding: 4px;
+  gap: 0;
+
+  /* Pinstripe glass background */
+  background-color: var(--dock-bg);
+  background-image: var(--dock-pinstripe);
+  border: var(--dock-border);
+  border-radius: var(--dock-border-radius);
+  box-shadow: var(--dock-shadow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  /* Shelf reflection */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: var(--dock-reflection);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  position: relative;
+  overflow: visible;
+}
+
+/* Individual dock icon container */
+.dock-icon {
+  flex-shrink: 0;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: width 0.15s ease, height 0.15s ease, transform 0.15s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    image-rendering: -webkit-optimize-contrast;
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Running indicator dot */
+  &.running::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid var(--dock-indicator);
+  }
+
+  /* Tooltip label on hover */
+  &:hover .dock-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+}
+
+/* Dock separator (divider between sections) */
+.dock-separator {
+  align-self: center;
+  width: 1px;
+  height: 48px;
+  margin: 0 10px;
+  background: var(--dock-separator);
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+/* Dock label tooltip */
+.dock-label {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  white-space: nowrap;
+  padding: 4px 12px;
+  background: var(--dock-label-bg);
+  color: var(--dock-label-text);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-small, 11px);
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 10;
+}
+
+/* Size variants */
+.dock.small .dock-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.dock.small .dock-separator {
+  height: 32px;
+}
+
+.dock.large .dock-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.dock.large .dock-separator {
+  height: 64px;
+}
