@@ -74,8 +74,7 @@
   --element-spacing: 8px;
   --grouped-element-spacing: 6px;
 
-  /* Typography */
-  --font-system: -apple-system, BlinkMacSystemFont, "Lucida Grande", "Lucida Sans Unicode", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Typography (--font-system is defined in _fonts.scss) */
   --font-ui: var(--font-system);
   --font-size-tiny: 8px;
   --font-size-xxsmall: 9px;

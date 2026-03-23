@@ -1,26 +1,78 @@
 /**
- * Optional Fonts
- * Uses locally installed fonts by default. Add licensed files to fonts/ if needed.
+ * Fonts
+ * macOS system fonts by era, selectable via data-aqua-theme attribute.
+ * Bundles Lucida Grande (woff) for non-macOS systems.
  */
 
+/* Bundled Lucida Grande for cross-platform support */
 @font-face {
-  font-family: "AquaSystem";
-  src: local("Lucida Grande"), local("LucidaGrande"), local("Lucida Grande Regular");
+  font-family: "Lucida Grande";
+  src: local("Lucida Grande"), local("LucidaGrande"),
+    url("../fonts/LucidaGrande.woff") format("woff");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "AquaSystem";
-  src: local("Lucida Grande Bold"), local("LucidaGrande-Bold");
+  font-family: "Lucida Grande";
+  src: local("Lucida Grande Medium"),
+    url("../fonts/Lucida Grande-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lucida Grande";
+  src: local("Lucida Grande Demi Bold"), local("Lucida Grande DemiBold"),
+    url("../fonts/Lucida Grande-Deml Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lucida Grande";
+  src: local("Lucida Grande Bold"), local("LucidaGrande-Bold"),
+    url("../fonts/LucidaGrandeBold.woff") format("woff");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
 }
 
-.aqua-fonts,
-[data-aqua-fonts] {
-  --font-system: "AquaSystem", -apple-system, BlinkMacSystemFont, "Lucida Grande",
+/* Default: Lucida Grande (Mac OS X 10.0–10.9, 2001–2013) */
+:root {
+  --font-system: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+/* System 1.0–7.6 (1984–1997): Chicago */
+[data-aqua-theme="chicago"],
+[data-aqua-theme="system1"] {
+  --font-system: "Chicago", "ChicagoFLF", sans-serif;
+}
+
+/* Mac OS 8–9.2.2 (1997–2001): Charcoal */
+[data-aqua-theme="charcoal"],
+[data-aqua-theme="macos9"] {
+  --font-system: "Charcoal", "Charcoal CY", sans-serif;
+}
+
+/* Mac OS X 10.0–10.9 (2001–2013): Lucida Grande (default) */
+[data-aqua-theme="lucida-grande"],
+[data-aqua-theme="aqua"] {
+  --font-system: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+/* OS X 10.10 Yosemite (2014–2015): Helvetica Neue */
+[data-aqua-theme="helvetica-neue"],
+[data-aqua-theme="yosemite"] {
+  --font-system: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
+
+/* OS X 10.11+ El Capitan (2015+): San Francisco */
+[data-aqua-theme="san-francisco"],
+[data-aqua-theme="el-capitan"] {
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
