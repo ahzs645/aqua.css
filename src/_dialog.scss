@@ -95,11 +95,15 @@
 /* Alert dialog variant */
 .alert-dialog {
   background: var(--alert-dialog-bg);
-  padding: 16px 20px;
+  padding: 16px 32px;
   border-radius: 10px;
 
   font-family: var(--font-ui);
   box-shadow: var(--alert-dialog-shadow);
+}
+
+.window:has(.alert-dialog-content) .window-body {
+  padding: 16px 28px;
 }
 
 .alert-dialog-content {
@@ -110,8 +114,8 @@
 
 .alert-dialog-icon {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   border-radius: 8px;
 
   &.warning {
@@ -157,4 +161,8 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+
+  .aqua-button, button {
+    font-size: var(--font-size-large);
+  }
 }
