@@ -446,6 +446,23 @@ section[data-section-id] {
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 8px;
+    position: relative;
+  }
+
+  /* Full-width blue gradient bar on the header bottom */
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--tab-bar-gradient);
+    box-shadow: var(--tab-bar-shadow);
+    border: 1px solid;
+    border-image: var(--tab-bar-stroke-gradient) 1;
+    border-bottom: none;
+    z-index: 3;
   }
 
   .header-content {
@@ -466,15 +483,34 @@ section[data-section-id] {
   }
 
   /* Make tabs scrollable on mobile */
-  .site-nav-tabs .aqua-tab-bar {
-    justify-content: flex-start;
+  .site-nav-tabs {
+    min-width: 0;
     overflow-x: auto;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
 
-  .site-nav-tabs .aqua-tab-bar::-webkit-scrollbar {
+  .site-nav-tabs::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Hide the tab bar's ::after — the gradient bar is now on .site-header */
+  .site-nav-tabs .aqua-tab-bar::after {
+    display: none;
+  }
+
+  .site-nav-tabs .aqua-tab-bar {
+    justify-content: flex-start;
+    white-space: nowrap;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .site-nav-tabs .aqua-tab-bar .aqua-tab {
+    flex-shrink: 0;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   /* Collapsible sidebar */
