@@ -163,6 +163,14 @@
   gap: 8px;
 
   .aqua-button, button {
-    font-size: var(--font-size-large);
+    font-size: 14px !important;
+    height: 1.4em;
+    padding: 0 1.6em;
+    min-width: 5em;
+    letter-spacing: -0.02em;
+
+    span {
+      letter-spacing: -0.02em;
+    }
   }
 }
