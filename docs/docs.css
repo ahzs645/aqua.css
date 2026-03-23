@@ -449,11 +449,6 @@ section[data-section-id] {
     position: relative;
   }
 
-  /* Hide header ::after — bar is on .site-nav-tabs instead */
-  .site-header::after {
-    display: none;
-  }
-
   .header-content {
     gap: 8px;
   }
@@ -484,7 +479,6 @@ section[data-section-id] {
     display: none;
   }
 
-  /* Keep the bar inside the scroll area with padding */
   .site-nav-tabs .aqua-tab-bar {
     justify-content: flex-start;
     white-space: nowrap;
@@ -497,7 +491,8 @@ section[data-section-id] {
     left: 0;
     width: max(100%, 100vw);
     transform: none;
-    z-index: 1;
+    bottom: 0;
+    z-index: 3 !important;
   }
 
   .site-nav-tabs .aqua-tab-bar .aqua-tab {
@@ -505,12 +500,13 @@ section[data-section-id] {
     padding-left: 16px;
     padding-right: 16px;
     position: relative;
-    z-index: 0;
-    margin-bottom: -7px;
+    z-index: 1 !important;
+    margin-bottom: -1px;
   }
 
   .site-nav-tabs .aqua-tab-bar .aqua-tab.aqua-tab--active {
-    z-index: 4;
+    z-index: 10 !important;
+    margin-bottom: -1px;
   }
 
   /* Collapsible sidebar */
