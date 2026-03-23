@@ -449,20 +449,9 @@ section[data-section-id] {
     position: relative;
   }
 
-  /* Full-width blue gradient bar on the header bottom */
+  /* Hide header ::after — bar is on .site-nav-tabs instead */
   .site-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-    background: var(--tab-bar-gradient);
-    box-shadow: var(--tab-bar-shadow);
-    border: 1px solid;
-    border-image: var(--tab-bar-stroke-gradient) 1;
-    border-bottom: none;
-    z-index: 0;
+    display: none;
   }
 
   .header-content {
@@ -491,16 +480,18 @@ section[data-section-id] {
     scrollbar-width: none;
     padding-bottom: 6px;
     position: relative;
-    z-index: 1;
   }
 
   .site-nav-tabs::-webkit-scrollbar {
     display: none;
   }
 
-  /* Hide the tab bar's ::after — the gradient bar is now on .site-header */
+  /* Replace the tab bar's ::after with one that spans full width */
   .site-nav-tabs .aqua-tab-bar::after {
-    display: none;
+    left: 0;
+    width: max(100%, 100vw);
+    transform: none;
+    z-index: 1;
   }
 
   .site-nav-tabs .aqua-tab-bar {
@@ -515,8 +506,12 @@ section[data-section-id] {
     padding-left: 16px;
     padding-right: 16px;
     position: relative;
-    z-index: 4;
+    z-index: 0;
     margin-bottom: -7px;
+  }
+
+  .site-nav-tabs .aqua-tab-bar .aqua-tab.aqua-tab--active {
+    z-index: 4;
   }
 
   /* Collapsible sidebar */
