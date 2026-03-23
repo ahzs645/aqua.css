@@ -287,7 +287,7 @@
 
       function setupAquaEraSelector() {
         const select = document.getElementById('aqua-era-select');
-        if (!select) return;
+        const mobileSelect = document.querySelector('.aqua-era-select-mobile');
 
         const body = document.body;
         const valid = new Set(['10-0', '10-2', '10-3', '10-4', '10-6']);
@@ -296,7 +296,8 @@
         function applyEra(value) {
           if (!valid.has(value)) return;
           body.setAttribute('data-aqua-era', value);
-          select.value = value;
+          if (select) select.value = value;
+          if (mobileSelect) mobileSelect.value = value;
           try {
             localStorage.setItem(storageKey, value);
           } catch (err) {
@@ -315,7 +316,8 @@
         }
 
         applyEra(initial);
-        select.addEventListener('change', () => applyEra(select.value));
+        if (select) select.addEventListener('change', () => applyEra(select.value));
+        if (mobileSelect) mobileSelect.addEventListener('change', () => applyEra(mobileSelect.value));
       }
 
       // Theme switching for the theme preview section

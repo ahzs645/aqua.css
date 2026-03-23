@@ -435,6 +435,11 @@ section[data-section-id] {
   scroll-margin-top: 80px;
 }
 
+/* Hide mobile version switcher on desktop */
+.mobile-version-switcher {
+  display: none;
+}
+
 @media (max-width: 800px) {
   body {
     padding: 0 12px 20px;
@@ -459,11 +464,18 @@ section[data-section-id] {
     padding-top: 12px;
   }
 
-  /* Show hamburger button on mobile */
+  /* Hide hamburger and sidebar on mobile */
   .sidebar-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none !important;
+  }
+
+  .sidebar {
+    display: none !important;
+  }
+
+  /* Show mobile version switcher */
+  .mobile-version-switcher {
+    display: block;
   }
 
   /* Make tabs scrollable on mobile */
