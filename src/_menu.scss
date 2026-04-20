@@ -9,7 +9,6 @@
   height: 28px;
   min-height: 28px;
   max-height: 28px;
-  overflow: hidden;
   /* Safe-area aware horizontal padding (notch / mobile) */
   padding: 0 calc(8px + env(safe-area-inset-right, 0px)) 0 calc(8px + env(safe-area-inset-left, 0px));
   gap: 2px;
@@ -33,6 +32,16 @@
   box-shadow: var(--menu-bar-shadow), 0 2px 8px rgba(0, 0, 0, 0.15);
 
   position: relative;
+  /* Isolate so dropdowns stack predictably relative to any sibling bar
+     (e.g. frosted variant creates its own stacking context via
+     backdrop-filter). Lift further while a menu is open. */
+  isolation: isolate;
+  z-index: 10;
+
+  &:hover,
+  &:focus-within {
+    z-index: 9999;
+  }
 
   /* Top gloss effect */
   &::before {
@@ -52,6 +61,8 @@
     margin: 0;
     padding: 0;
     display: flex;
+    align-self: stretch;
+    align-items: stretch;
     position: relative;
     z-index: 2;
   }
