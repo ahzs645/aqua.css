@@ -6,8 +6,12 @@
 .menu-bar {
   display: flex;
   align-items: center;
-  height: 24px;
-  padding: 0 8px;
+  height: 28px;
+  min-height: 28px;
+  max-height: 28px;
+  overflow: hidden;
+  /* Safe-area aware horizontal padding (notch / mobile) */
+  padding: 0 calc(8px + env(safe-area-inset-right, 0px)) 0 calc(8px + env(safe-area-inset-left, 0px));
   gap: 2px;
   font-family: var(--font-ui);
   font-size: var(--font-size-base);
@@ -24,9 +28,9 @@
     var(--menu-bar-pinstripe),
     var(--menu-bar-gradient);
 
-  /* Border and shadow */
+  /* Border and shadow (bottom drop + inner gloss) */
   border-bottom: 1px solid var(--menu-bar-border);
-  box-shadow: var(--menu-bar-shadow);
+  box-shadow: var(--menu-bar-shadow), 0 2px 8px rgba(0, 0, 0, 0.15);
 
   position: relative;
 
@@ -54,6 +58,8 @@
 
   > ul > li {
     position: relative;
+    display: flex;
+    align-items: stretch;
 
     &:hover,
     &:focus-within {
@@ -72,12 +78,12 @@
   .menu-title {
     display: inline-flex;
     align-items: center;
-    height: 20px;
+    align-self: stretch;
     padding: 0 10px;
     border: none;
     background: transparent;
     cursor: default;
-    border-radius: 3px;
+    border-radius: 0;
     transition: background-color 0.1s ease;
     text-shadow: var(--menu-title-text-shadow);
 
@@ -149,6 +155,102 @@
       color: var(--menu-item-shortcut);
       font-size: var(--font-size-medium);
     }
+  }
+
+  /* Apple logo menu item (leftmost) */
+  .menu-apple {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    padding: 0 8px;
+    border-radius: 0;
+    cursor: default;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    /* PNG sources (e.g. icon/apple.png) have transparent padding baked in,
+       so render larger to match the visual size of a tightly-cropped SVG. */
+    img {
+      width: 26px;
+      height: 26px;
+      display: block;
+      object-fit: contain;
+    }
+  }
+
+  /* Active app name — rendered bold, like Finder/active app in macOS */
+  .menu-title.active,
+  > ul > li.active > .menu-title {
+    font-weight: 700;
+  }
+
+  /* Right-side status cluster: volume, clock, spotlight, etc. */
+  .menu-bar-status {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-right: 2px;
+    font-size: var(--font-size-medium);
+    white-space: nowrap;
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+      min-width: 0;
+      padding: 0 4px;
+      margin: 0;
+      background: transparent;
+      background-image: none;
+      border: none;
+      box-shadow: none;
+      color: inherit;
+      cursor: default;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: transparent;
+        background-image: none;
+        border: none;
+        box-shadow: none;
+        outline: none;
+      }
+
+      svg {
+        width: 12px;
+        height: 12px;
+        display: block;
+      }
+    }
+
+    .menu-bar-clock {
+      padding: 0 4px;
+    }
+  }
+}
+
+/* Frosted / modern macOS variant — translucent + blur */
+.menu-bar.frosted {
+  background: rgba(248, 248, 248, 0.85);
+  background-image: var(--menu-bar-pinstripe);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  .menu-title,
+  .menu-apple,
+  .menu-bar-status {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   }
 }
 

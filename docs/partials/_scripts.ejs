@@ -869,6 +869,118 @@
         });
       }
 
+      // Dock magnification — continuous cursor-distance scaling with
+      // spring physics, mirroring ryos/framer-motion.
+      // For each icon: target = base + t*(max-base) where t = 1 - dist/DISTANCE.
+      // Each icon's rendered size is then driven by a spring toward its target
+      // (mass 0.15, stiffness 160, damping 18 — same constants ryos uses),
+      // stepped in a shared requestAnimationFrame loop.
+      function setupDockMagnification() {
+        const DISTANCE = 140;
+        const MAX_SCALE = 2.3;
+        const STIFFNESS = 160;
+        const DAMPING = 18;
+        const MASS = 0.15;
+
+        function baseSize(dock) {
+          if (dock.classList.contains('small')) return 32;
+          if (dock.classList.contains('large')) return 64;
+          return 48;
+        }
+
+        document.querySelectorAll('.dock').forEach((dock) => {
+          const base = baseSize(dock);
+          const max = base * MAX_SCALE;
+          const icons = Array.from(dock.querySelectorAll('.dock-icon'));
+
+          // Per-icon spring state: current size, velocity, target size.
+          const state = icons.map(() => ({ size: base, vel: 0, target: base }));
+
+          let cursorX = null;
+          let rafId = null;
+
+          function computeTargets() {
+            icons.forEach((icon, i) => {
+              if (cursorX === null) {
+                state[i].target = base;
+                return;
+              }
+              const rect = icon.getBoundingClientRect();
+              const center = rect.left + rect.width / 2;
+              const dist = Math.abs(cursorX - center);
+              if (dist > DISTANCE) {
+                state[i].target = base;
+              } else {
+                const t = 1 - dist / DISTANCE;
+                state[i].target = base + t * (max - base);
+              }
+            });
+          }
+
+          let lastTime = null;
+          function tick(time) {
+            if (lastTime === null) lastTime = time;
+            // Clamp dt to avoid instability after tab-switch / long frames.
+            const dt = Math.min((time - lastTime) / 1000, 1 / 30);
+            lastTime = time;
+
+            let settled = true;
+            for (let i = 0; i < icons.length; i++) {
+              const s = state[i];
+              const force = -STIFFNESS * (s.size - s.target);
+              const damp = -DAMPING * s.vel;
+              const accel = (force + damp) / MASS;
+              s.vel += accel * dt;
+              s.size += s.vel * dt;
+              icons[i].style.width = s.size + 'px';
+              icons[i].style.height = s.size + 'px';
+              if (Math.abs(s.vel) > 0.05 || Math.abs(s.size - s.target) > 0.1) {
+                settled = false;
+              }
+            }
+
+            // Keep animating while cursor is over the dock (targets may shift
+            // as the mouse moves) OR until the spring has settled after leave.
+            if (cursorX !== null || !settled) {
+              rafId = requestAnimationFrame(tick);
+            } else {
+              rafId = null;
+              lastTime = null;
+              // Snap final values to exact base to avoid sub-pixel drift.
+              icons.forEach((icon, i) => {
+                state[i].size = base;
+                state[i].vel = 0;
+                icon.style.width = '';
+                icon.style.height = '';
+              });
+            }
+          }
+
+          function start() {
+            if (rafId === null) {
+              lastTime = null;
+              rafId = requestAnimationFrame(tick);
+            }
+          }
+
+          dock.addEventListener('pointerenter', (e) => {
+            cursorX = e.clientX;
+            computeTargets();
+            start();
+          });
+          dock.addEventListener('pointermove', (e) => {
+            cursorX = e.clientX;
+            computeTargets();
+            start();
+          });
+          dock.addEventListener('pointerleave', () => {
+            cursorX = null;
+            computeTargets();
+            start();
+          });
+        });
+      }
+
       setupTitledPanes();
       setupTreeTable();
       setupSplitPanes();
@@ -885,5 +997,6 @@
       setupSpinners();
       setupSectionNav();
       setupSidebarToggle();
+      setupDockMagnification();
     })();
   </script>
