@@ -4,7 +4,7 @@
     <%- example(`
       <!-- Pre-10.6 era focus ring -->
       <div class="era-pre-10-6">
-        <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+        [[<div class="demo-row">]]
           <div>
             <span class="label">Button</span><br>
             <button class="aqua-button aqua-button--secondary aqua-focus-ring is-focused"><span>Button</span></button>
@@ -21,12 +21,12 @@
               <option>Option 3</option>
             </select>
           </div>
-        </div>
+        [[</div>]]
       </div>
 
       <!-- 10.6+ era focus ring -->
       <div class="era-10-6-plus">
-        <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+        [[<div class="demo-row">]]
           <div>
             <span class="label">Button</span><br>
             <button class="aqua-focus-ring is-focused">Button</button>
@@ -43,7 +43,7 @@
               <option>Option 3</option>
             </select>
           </div>
-        </div>
+        [[</div>]]
       </div>
     `) %>
 

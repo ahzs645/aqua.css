@@ -146,6 +146,11 @@ select {
     )
   ));
 
+  /* Keyboard focus ring (overflow: hidden clips rings on the select) */
+  &:has(select:focus-visible) {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow);
+  }
+
   select {
     flex: 1;
     height: 1.75em;
@@ -217,6 +222,7 @@ label {
 
 /* Search Field - Rounded Aqua style */
 input[type="search"],
+.aqua-search-field,
 .search-field {
   position: relative;
   height: 22px;

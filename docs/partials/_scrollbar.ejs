@@ -1,17 +1,17 @@
     <h2 id="scrollbar">Scrollbar</h2>
     <p class="label">Unified Aqua Scrollbar Components with Wave Thumbs - Available in horizontal and vertical variants with together or split arrow modes.</p>
 
-    <div class="scrollbar-demo-controls" style="display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+    <div class="scrollbar-demo-controls">
       <div>
-        <span class="label" style="display: block; margin-bottom: 4px;">Orientation</span>
-        <div class="segmented-control" id="scrollbar-orientation">
+        <span class="label">Orientation</span>
+        <div class="aqua-segmented-control" id="scrollbar-orientation">
           <button class="active" data-value="horizontal">Horizontal</button>
           <button data-value="vertical">Vertical</button>
         </div>
       </div>
       <div>
-        <span class="label" style="display: block; margin-bottom: 4px;">Arrow Mode</span>
-        <div class="segmented-control" id="scrollbar-arrow-mode">
+        <span class="label">Arrow Mode</span>
+        <div class="aqua-segmented-control" id="scrollbar-arrow-mode">
           <button class="active" data-value="together">Together</button>
           <button data-value="split">Split</button>
         </div>
@@ -40,7 +40,7 @@
       </div>
 
       <!-- Horizontal Split -->
-      <div class="scrollbar-demo-panel" id="panel-horizontal-split" style="display: none;">
+      <div class="scrollbar-demo-panel hidden" id="panel-horizontal-split">
         <%- example(`
           <div class="scrollbar horizontal" id="scrollbar-h-split">
             <div class="scrollbar-btn-wrap start aqua-glass-h">
@@ -61,7 +61,7 @@
       </div>
 
       <!-- Vertical Together -->
-      <div class="scrollbar-demo-panel" id="panel-vertical-together" style="display: none;">
+      <div class="scrollbar-demo-panel hidden" id="panel-vertical-together">
         <%- example(`
           <div class="scrollbar vertical" id="scrollbar-v-together">
             <div class="scrollbar-cap aqua-glass-v"></div>
@@ -81,7 +81,7 @@
       </div>
 
       <!-- Vertical Split -->
-      <div class="scrollbar-demo-panel" id="panel-vertical-split" style="display: none;">
+      <div class="scrollbar-demo-panel hidden" id="panel-vertical-split">
         <%- example(`
           <div class="scrollbar vertical" id="scrollbar-v-split">
             <div class="scrollbar-btn-wrap start aqua-glass-v">
@@ -109,24 +109,24 @@
       <div>
         <span class="label">Vertical Scroll</span><br>
         <div class="scroll-container scroll-demo-vertical">
-          <div style="padding: 12px;">
-            <div style="font-weight: bold; margin-bottom: 8px;">Scrollable Content</div>
-            <div style="margin: 0 0 6px 0;">Line 1 - Hover to see scrollbar</div>
-            <div style="margin: 0 0 6px 0;">Line 2 - Semi-transparent thumb</div>
-            <div style="margin: 0 0 6px 0;">Line 3 - Uses CSS variables</div>
-            <div style="margin: 0 0 6px 0;">Line 4 - 4px border radius</div>
-            <div style="margin: 0 0 6px 0;">Line 5 - Expands to 6px on hover</div>
-            <div style="margin: 0 0 6px 0;">Line 6 - Track appears on hover</div>
-            <div style="margin: 0 0 6px 0;">Line 7 - Light gradient background</div>
-            <div style="margin: 0 0 6px 0;">Line 8 - No arrow buttons</div>
-            <div style="margin: 0 0 6px 0;">Line 9 - Modern macOS style</div>
-            <div style="margin: 0 0 6px 0;">Line 10 - Overlay scrollbar</div>
-            <div style="margin: 0 0 6px 0;">Line 11 - Doesn't take space</div>
-            <div style="margin: 0 0 6px 0;">Line 12 - Content flows under</div>
-            <div style="margin: 0 0 6px 0;">Line 13 - Try scrolling!</div>
-            <div style="margin: 0 0 6px 0;">Line 14 - Smooth animation</div>
-            <div style="margin: 0;">Line 15 - End of content</div>
-          </div>
+          [[<div class="demo-scroll-content">]]
+            <div>Scrollable Content</div>
+            <div>Line 1 - Hover to see scrollbar</div>
+            <div>Line 2 - Semi-transparent thumb</div>
+            <div>Line 3 - Uses CSS variables</div>
+            <div>Line 4 - 4px border radius</div>
+            <div>Line 5 - Expands to 6px on hover</div>
+            <div>Line 6 - Track appears on hover</div>
+            <div>Line 7 - Light gradient background</div>
+            <div>Line 8 - No arrow buttons</div>
+            <div>Line 9 - Modern macOS style</div>
+            <div>Line 10 - Overlay scrollbar</div>
+            <div>Line 11 - Doesn't take space</div>
+            <div>Line 12 - Content flows under</div>
+            <div>Line 13 - Try scrolling!</div>
+            <div>Line 14 - Smooth animation</div>
+            <div>Line 15 - End of content</div>
+          [[</div>]]
         </div>
       </div>
     `) %>

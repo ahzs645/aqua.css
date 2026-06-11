@@ -688,3 +688,150 @@ section[data-section-id] {
 .doc-tabbed-example .aqua-tab-content.hidden {
   display: none;
 }
+
+/* ============================================
+   Docs chrome (layout outside examples)
+   ============================================ */
+.docs-footer {
+  margin-top: 3em;
+  padding-top: 1em;
+  border-top: 1px solid #ccc;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Zero-size SVG holding shared <defs> (e.g. pinwheel blade clip path) */
+.docs-svg-defs {
+  position: absolute;
+}
+
+.docs-list {
+  margin: 1em 0;
+}
+
+.docs-gap-top {
+  margin-top: 20px;
+}
+
+/* Pinstripe pattern swatch grid (Stripes section) */
+.docs-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin: 1em 0;
+}
+
+.docs-swatch-grid code {
+  font-size: 10px;
+}
+
+.docs-swatch {
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Scrollbar demo controls + switchable panels */
+.scrollbar-demo-controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.scrollbar-demo-controls .label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.scrollbar-demo-panel.hidden {
+  display: none;
+}
+
+/* ============================================
+   Demo scaffolding utilities
+   Used inside example(...) blocks on [[...]] magic-bracket
+   lines so they render in the live demo but are stripped
+   from the "Show code" snippet.
+   ============================================ */
+.demo-row {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.demo-row--top {
+  align-items: flex-start;
+}
+
+.demo-row--baseline {
+  align-items: baseline;
+}
+
+.demo-row--tight {
+  gap: 16px;
+}
+
+.demo-row--compact {
+  gap: 8px;
+}
+
+.demo-row--flush {
+  gap: 0;
+}
+
+.demo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.demo-stack--start {
+  align-items: flex-start;
+}
+
+.demo-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.demo-gap-top {
+  margin-top: 20px;
+}
+
+.demo-pad-top {
+  padding-top: 20px;
+}
+
+/* Tall cell for vertical slider demos */
+.demo-tall {
+  height: 180px;
+}
+
+.demo-tall > .aqua-slider-custom {
+  margin-top: 10px;
+}
+
+/* Section label spacing between demo groups */
+.label--spaced {
+  margin-top: 15px;
+}
+
+/* Overlay scrollbar demo content */
+.demo-scroll-content {
+  padding: 12px;
+}
+
+.demo-scroll-content > div {
+  margin: 0 0 6px 0;
+}
+
+.demo-scroll-content > div:first-child {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.demo-scroll-content > div:last-child {
+  margin-bottom: 0;
+}

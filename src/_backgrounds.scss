@@ -74,7 +74,7 @@
   --aqua-inset-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15),
     inset 0 0 0 1px rgba(0, 0, 0, 0.2),
     0 1px 0 rgba(255, 255, 255, 0.8);
-  --aqua-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  --aqua-text-shadow: var(--shadow-text-emboss);
   --aqua-text-shadow-dark: 0 -1px 0 rgba(0, 0, 0, 0.3);
 
   /* Brushed metal texture */
@@ -125,7 +125,7 @@
   --aqua-focus-ring: 0 0 0 3px var(--focus-outer), 0 0 0 1px var(--focus-inner);
 
   /* Shadows */
-  --aqua-window-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --aqua-window-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), var(--shadow-drop-strong);
   --aqua-window-shadow-inactive: 0 4px 15px rgba(0, 0, 0, 0.2), 0 1px 4px rgba(0, 0, 0, 0.1);
   --aqua-button-shadow: 0 2px 3px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 78, 187, 0.5);
 }

@@ -30,15 +30,13 @@ aqua.css/
 │   ├── aqua.css           ✅ 12KB minified
 │   ├── aqua.css.map       ✅ Source map
 │   └── index.html         ✅ Generated docs
-├── .editorconfig          ✅
+├── src/                   ✅ SCSS source (index.scss + partials)
 ├── .gitignore             ✅
-├── .npmignore             ✅
 ├── build.js               ✅ PostCSS build pipeline
 ├── LICENSE                ✅ MIT
 ├── package.json           ✅
 ├── README.md              ✅
 ├── server.js              ✅ Dev server with hot reload
-├── style.css              ✅ Main CSS source (~19KB)
 ├── TODO.md                ✅ Detailed task list
 └── ROADMAP.md             ✅ This file
 ```
@@ -114,7 +112,7 @@ icon/
 1. [ ] Create close/minimize/maximize symbols (show on hover)
 2. [ ] Create checkmark SVG for checkboxes
 3. [ ] Create disclosure triangles for tree view
-4. [ ] Update style.css to use `svg-load()` for icons
+4. [ ] Update src/ SCSS to use `svg-load()` for icons
 5. [ ] Test icon rendering at different sizes
 
 ---
@@ -477,14 +475,14 @@ npm start          # Dev server at localhost:3000
 npm run build      # Creates dist/aqua.css
 
 # File structure
-style.css          # Edit this - main source
+src/               # Edit this - SCSS source (index.scss + partials)
 docs/index.html.ejs # Edit this - documentation
 icon/              # Add SVGs here
 ```
 
 ### Adding a New Component
 
-1. Add CSS to `style.css` (follow existing patterns)
+1. Add a partial in `src/` and `@use` it from `src/index.scss` (follow existing patterns)
 2. Add example to `docs/index.html.ejs`
 3. Run `npm run build` to test
 4. Update TODO.md and ROADMAP.md

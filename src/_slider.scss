@@ -69,6 +69,11 @@ input[type="range"],
   box-shadow: var(--slider-track-shadow);
   outline: none;
 
+  /* Keyboard focus ring */
+  &:focus-visible {
+    box-shadow: var(--aqua-focus-ring), var(--slider-track-shadow);
+  }
+
   /* Webkit thumb (Chrome, Safari, Edge) */
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -144,6 +149,11 @@ input[type="range"].vertical,
   height: 150px;
   background: var(--slider-track-gradient-vertical);
   box-shadow: var(--slider-track-shadow-vertical);
+
+  /* Keyboard focus ring */
+  &:focus-visible {
+    box-shadow: var(--aqua-focus-ring), var(--slider-track-shadow-vertical);
+  }
 }
 
 /* ============================================

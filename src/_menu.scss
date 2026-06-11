@@ -29,7 +29,7 @@
 
   /* Border and shadow (bottom drop + inner gloss) */
   border-bottom: 1px solid var(--menu-bar-border);
-  box-shadow: var(--menu-bar-shadow), 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--menu-bar-shadow), var(--shadow-drop-medium);
 
   position: relative;
   /* Isolate so dropdowns stack predictably relative to any sibling bar
@@ -236,6 +236,11 @@
         border: none;
         box-shadow: none;
         outline: none;
+      }
+
+      /* Keyboard focus ring */
+      &:focus-visible {
+        box-shadow: var(--aqua-focus-ring);
       }
 
       svg {

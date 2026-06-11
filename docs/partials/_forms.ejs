@@ -2,7 +2,7 @@
 
     <h3 id="text-inputs">Text Inputs</h3>
     <%- example(`
-      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+      [[<div class="demo-row demo-row--top">]]
         <div>
           <span class="label">Regular (square corners)</span><br>
           <input class="aqua-textfield" type="text" placeholder="Enter text...">
@@ -27,7 +27,7 @@
           <span class="label">Password</span><br>
           <input class="aqua-textfield" type="password" value="••••••••">
         </div>
-      </div>
+      [[</div>]]
     `) %>
 
     <h3 id="select">Select Dropdown</h3>
@@ -50,9 +50,9 @@
     `) %>
 
     <h3 id="combobox">Combobox</h3>
-    <p>Text input combined with a dropdown button.</p>
+    <p>Text input combined with a dropdown button. The bare <code>combobox</code> class still works as a legacy alias.</p>
     <%- example(`
-      <div class="combobox" style="width: 200px;">
+      <div class="aqua-combobox" style="width: 200px;">
         <input type="text" value="Automatic">
       </div>
     `) %>
@@ -95,7 +95,7 @@
       </div>
     `) %>
 
-    <p style="margin-top: 20px;">Native <code>select[multiple]</code> fallback:</p>
+    <p class="docs-gap-top">Native <code>select[multiple]</code> fallback:</p>
     <%- example(`
       <select multiple style="width: 200px; height: 120px;">
         <option>Documents</option>
@@ -107,26 +107,27 @@
     `) %>
 
     <h3 id="checkboxes">Checkboxes</h3>
+    <p>The bare <code>checkbox</code> class still works as a legacy alias.</p>
     <%- tabbedExample([
       {
         label: 'Class-based (Recommended)',
         code: `
       <div class="field-row">
-        <label class="checkbox">
+        <label class="aqua-checkbox">
           <input type="checkbox" checked>
           <span class="box"><span class="mark"></span></span>
           <span>Checked checkbox</span>
         </label>
       </div>
       <div class="field-row">
-        <label class="checkbox">
+        <label class="aqua-checkbox">
           <input type="checkbox">
           <span class="box"><span class="mark"></span></span>
           <span>Unchecked checkbox</span>
         </label>
       </div>
       <div class="field-row">
-        <label class="checkbox">
+        <label class="aqua-checkbox">
           <input type="checkbox" disabled checked>
           <span class="box"><span class="mark"></span></span>
           <span>Disabled checked</span>
@@ -158,26 +159,27 @@
     ]) %>
 
     <h3 id="radio-buttons">Radio Buttons</h3>
+    <p>The bare <code>radio</code> class still works as a legacy alias.</p>
     <%- tabbedExample([
       {
         label: 'Class-based (Recommended)',
         code: `
       <div class="field-row">
-        <label class="radio">
+        <label class="aqua-radio">
           <input type="radio" name="radio-class-group" checked>
           <span class="circle"><span class="dot"></span></span>
           <span>Option A</span>
         </label>
       </div>
       <div class="field-row">
-        <label class="radio">
+        <label class="aqua-radio">
           <input type="radio" name="radio-class-group">
           <span class="circle"><span class="dot"></span></span>
           <span>Option B</span>
         </label>
       </div>
       <div class="field-row">
-        <label class="radio">
+        <label class="aqua-radio">
           <input type="radio" name="radio-class-group">
           <span class="circle"><span class="dot"></span></span>
           <span>Option C</span>

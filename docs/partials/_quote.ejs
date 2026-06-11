@@ -1,0 +1,68 @@
+    <h2 id="blockquote">Blockquote</h2>
+    <p>
+      Quote styles from the Aqua era. The standard <code>.aqua-quote</code> uses a pinstripe background
+      with a blue accent bar and decorative quote mark; <code>cite</code> or <code>footer</code> elements
+      get an em-dash attribution automatically.
+    </p>
+
+    <%- example(`
+      <blockquote class="aqua-quote">
+        <p>We made the buttons on the screen look so good you'll want to lick them.</p>
+        <cite>Steve Jobs, on Aqua</cite>
+      </blockquote>
+    `) %>
+
+    <h3>Style Variants</h3>
+    <p>Use <code>.metal-quote</code> for iTunes-style brushed metal, <code>.glossy-quote</code> for the full Aqua gel look, or <code>.graphite-quote</code> for the Graphite appearance.</p>
+
+    <%- example(`
+      <blockquote class="metal-quote">
+        <p>Rip. Mix. Burn.</p>
+        <cite>Apple, 2001</cite>
+      </blockquote>
+
+      <blockquote class="glossy-quote">
+        <p>One of the design goals was that when people saw it they would want to lick it.</p>
+        <cite>Steve Jobs, Macworld 2000</cite>
+      </blockquote>
+
+      <blockquote class="graphite-quote">
+        <p>For the professional who prefers a more subdued interface.</p>
+        <cite>Graphite appearance</cite>
+      </blockquote>
+    `) %>
+
+    <h3>Sizes</h3>
+    <p>Add <code>--small</code> or <code>--large</code> to any quote variant, e.g. <code>.aqua-quote--large</code>.</p>
+
+    <%- example(`
+      <blockquote class="aqua-quote aqua-quote--small">
+        <p>Think different.</p>
+        <cite>Apple, 1997</cite>
+      </blockquote>
+
+      <blockquote class="aqua-quote aqua-quote--large">
+        <p>It's the next generation Macintosh operating system.</p>
+        <cite>Mac OS X introduction</cite>
+      </blockquote>
+    `) %>
+
+    <h3>Without Quote Mark</h3>
+    <p>Add <code>.aqua-quote--no-mark</code> to hide the decorative quote mark.</p>
+
+    <%- example(`
+      <blockquote class="aqua-quote aqua-quote--no-mark">
+        <p>A note or callout without the decorative quotation mark.</p>
+      </blockquote>
+    `) %>
+
+    <h3>Inline Quote</h3>
+    <p>Use <code>.aqua-inline-quote</code> on a <code>q</code> or <code>span</code> for short quotes within text.</p>
+
+    <%- example(`
+      <p>
+        Steve Jobs described Aqua as <q class="aqua-inline-quote">liquid, one of the design goals
+        was that when you saw it you wanted to lick it</q> during the Macworld 2000 keynote.
+      </p>
+    `) %>
+

@@ -11,10 +11,6 @@
 @include aqua-theme('graphite') {
   --aqua-blue: #8C8C8C;
   --aqua-blue-dark: #666666;
-  --aqua-blue-light: #AAAAAA;
-  --theme-color: rgb(140, 140, 140);
-  --theme-color-dark: rgb(102, 102, 102);
-  --theme-color-light: rgb(170, 170, 170);
 
   /* Unified theme variables (for buttons & progress) */
   --g1: rgba(55, 55, 58, 0.75);      /* top: dark graphite */
@@ -37,14 +33,6 @@
   --theme-shadow-ring: var(--ring);
   --theme-shadow-glow: var(--glow);
   --theme-text-shadow: var(--txtShadow);
-
-  --button-blue-gradient: linear-gradient(
-    rgb(187, 187, 187) 0%,
-    rgb(153, 153, 153) 30%,
-    rgb(140, 140, 140) 50%,
-    rgb(119, 119, 119) 70%,
-    rgb(102, 102, 102) 100%
-  );
 
   /* Aqua 3D button primary (graphite) */
   --aqua-blue-gradient: linear-gradient(var(--theme-gradient-1), var(--theme-gradient-2), var(--theme-gradient-3));
@@ -98,7 +86,6 @@
   // Slider theme overrides (opaque gradients)
   --slider-track-gradient: linear-gradient(to bottom, rgb(130, 130, 130), rgb(190, 190, 190));
   --slider-track-gradient-vertical: linear-gradient(to right, rgb(130, 130, 130), rgb(190, 190, 190));
-  --slider-track-border: rgb(100, 100, 100) rgb(150, 150, 150) rgb(150, 150, 150) rgb(100, 100, 100);
   --slider-thumb-gradient: linear-gradient(rgb(160, 160, 160), rgb(200, 200, 200), rgb(180, 180, 180));
   --slider-thumb-active-gradient: linear-gradient(rgb(120, 120, 120), rgb(160, 160, 160), rgb(140, 140, 140));
   --slider-thumb-border: rgb(80, 80, 80);
@@ -109,10 +96,6 @@
    Air Theme (Light/White)
    ============================================ */
 @include aqua-theme('air') {
-  --theme-color: rgb(248, 248, 248);
-  --theme-color-dark: rgb(200, 200, 200);
-  --theme-color-light: rgb(255, 255, 255);
-
   /* Unified theme variables (for buttons & progress) */
   --g1: rgba(230, 230, 230, 0.625);
   --g2: rgba(255, 255, 255, 0.625);
@@ -169,7 +152,6 @@
     rgb(235, 235, 235) 50%,
     rgb(248, 248, 248) 100%
   );
-  --segmented-active-bg: linear-gradient(rgb(255, 255, 255), rgb(235, 235, 235));
   --list-item-selected-focused-text: var(--text-color);
   --list-item-selected-focused-strip-gradient: linear-gradient(
     rgb(255, 255, 255),
@@ -189,7 +171,6 @@
   // Slider theme overrides (opaque gradients)
   --slider-track-gradient: linear-gradient(to bottom, rgb(200, 200, 200), rgb(240, 240, 240));
   --slider-track-gradient-vertical: linear-gradient(to right, rgb(200, 200, 200), rgb(240, 240, 240));
-  --slider-track-border: rgb(170, 170, 170) rgb(210, 210, 210) rgb(210, 210, 210) rgb(170, 170, 170);
   --slider-thumb-gradient: linear-gradient(rgb(230, 230, 230), rgb(255, 255, 255), rgb(245, 245, 245));
   --slider-thumb-active-gradient: linear-gradient(rgb(200, 200, 200), rgb(230, 230, 230), rgb(220, 220, 220));
   --slider-thumb-border: rgb(180, 180, 180);
@@ -200,10 +181,6 @@
    Earth Theme (Green)
    ============================================ */
 @include aqua-theme('earth') {
-  --theme-color: rgb(69, 199, 73);
-  --theme-color-dark: rgb(69, 154, 73);
-  --theme-color-light: rgb(180, 235, 145);
-
   /* Unified theme variables (for buttons & progress) */
   --g1: rgba(0, 120, 70, 0.625);
   --g2: rgba(45, 170, 120, 0.625);
@@ -260,7 +237,6 @@
     rgb(69, 199, 73) 50%,
     rgb(148, 212, 112) 100%
   );
-  --segmented-active-bg: linear-gradient(rgb(180, 235, 145), rgb(69, 199, 73));
   --list-item-selected-focused-strip-gradient: linear-gradient(
     rgb(184, 233, 154),
     rgb(69, 154, 73)
@@ -279,7 +255,6 @@
   // Slider theme overrides (opaque gradients)
   --slider-track-gradient: linear-gradient(to bottom, rgb(100, 140, 90), rgb(170, 210, 150));
   --slider-track-gradient-vertical: linear-gradient(to right, rgb(100, 140, 90), rgb(170, 210, 150));
-  --slider-track-border: rgb(60, 100, 50) rgb(130, 170, 110) rgb(130, 170, 110) rgb(60, 100, 50);
   --slider-thumb-gradient: linear-gradient(rgb(0, 120, 70), rgb(45, 170, 120), rgb(80, 210, 190));
   --slider-thumb-active-gradient: linear-gradient(rgb(0, 90, 50), rgb(30, 130, 90), rgb(60, 160, 140));
   --slider-thumb-border: rgb(50, 120, 50);
@@ -290,10 +265,6 @@
    Fire Theme (Red)
    ============================================ */
 @include aqua-theme('fire') {
-  --theme-color: rgb(226, 61, 56);
-  --theme-color-dark: rgb(165, 64, 59);
-  --theme-color-light: rgb(251, 207, 202);
-
   /* Unified theme variables (for buttons & progress) */
   --g1: rgba(180, 20, 40, 0.625);
   --g2: rgba(235, 70, 90, 0.625);
@@ -350,7 +321,6 @@
     rgb(226, 61, 56) 50%,
     rgb(226, 90, 56) 100%
   );
-  --segmented-active-bg: linear-gradient(rgb(251, 207, 202), rgb(226, 61, 56));
   --list-item-selected-focused-strip-gradient: linear-gradient(
     rgb(251, 177, 175),
     rgb(165, 64, 59)
@@ -369,7 +339,6 @@
   // Slider theme overrides (opaque gradients)
   --slider-track-gradient: linear-gradient(to bottom, rgb(160, 100, 95), rgb(220, 170, 165));
   --slider-track-gradient-vertical: linear-gradient(to right, rgb(160, 100, 95), rgb(220, 170, 165));
-  --slider-track-border: rgb(130, 70, 65) rgb(190, 140, 135) rgb(190, 140, 135) rgb(130, 70, 65);
   --slider-thumb-gradient: linear-gradient(rgb(180, 20, 40), rgb(235, 70, 90), rgb(255, 170, 165));
   --slider-thumb-active-gradient: linear-gradient(rgb(140, 15, 30), rgb(180, 50, 70), rgb(200, 130, 125));
   --slider-thumb-border: rgb(140, 50, 50);
@@ -380,10 +349,6 @@
    Purple Theme
    ============================================ */
 @include aqua-theme('purple') {
-  --theme-color: rgb(140, 90, 220);
-  --theme-color-dark: rgb(85, 45, 170);
-  --theme-color-light: rgb(200, 170, 255);
-
   /* Unified theme variables (for buttons & progress) */
   --g1: rgba(85, 45, 170, 0.625);
   --g2: rgba(140, 90, 220, 0.625);
@@ -440,7 +405,6 @@
     rgb(140, 90, 220) 50%,
     rgb(160, 120, 230) 100%
   );
-  --segmented-active-bg: linear-gradient(rgb(200, 170, 255), rgb(140, 90, 220));
   --list-item-selected-focused-strip-gradient: linear-gradient(
     rgb(200, 170, 255),
     rgb(85, 45, 170)
@@ -459,7 +423,6 @@
   // Slider theme overrides (opaque gradients)
   --slider-track-gradient: linear-gradient(to bottom, rgb(120, 80, 160), rgb(180, 150, 210));
   --slider-track-gradient-vertical: linear-gradient(to right, rgb(120, 80, 160), rgb(180, 150, 210));
-  --slider-track-border: rgb(90, 50, 130) rgb(150, 120, 180) rgb(150, 120, 180) rgb(90, 50, 130);
   --slider-thumb-gradient: linear-gradient(rgb(85, 45, 170), rgb(140, 90, 220), rgb(120, 200, 235));
   --slider-thumb-active-gradient: linear-gradient(rgb(60, 30, 130), rgb(100, 60, 180), rgb(90, 150, 200));
   --slider-thumb-border: rgb(70, 40, 140);
@@ -472,13 +435,9 @@
 @include aqua-era('10-0') {
   --aqua-blue: #3B9CFF;
   --aqua-blue-dark: #0054D6;
-  --aqua-blue-darker: #003B9E;
-  --aqua-blue-light: #8AD7FF;
-  --aqua-blue-lighter: #BDEBFF;
 
   --surface: #E4EDF7;
   --surface-light: #F2F7FC;
-  --surface-dark: #C8D7E8;
   --window-bg: #E7EFF9;
   --aqua-window-bg: #E7EFF9;
 
@@ -574,22 +533,6 @@
     rgba(39, 126, 214, 0.75),
     rgba(53, 172, 218, 0.75)
   );
-  --button-blue-gradient: linear-gradient(
-    180deg,
-    #8AD7FF 0%,
-    #5ABEFF 30%,
-    #2B99FF 50%,
-    #0078E5 70%,
-    #005BBF 100%
-  );
-  --button-blue-gradient-active: linear-gradient(
-    180deg,
-    #5ABEFF 0%,
-    #2B99FF 30%,
-    #0078E5 50%,
-    #005BBF 70%,
-    #004A99 100%
-  );
   --progress-fill-gradient: linear-gradient(
     to right,
     rgb(88, 176, 248),
@@ -607,13 +550,6 @@
   /* Classic context menu - square, semi-transparent with pinstripe */
   --context-menu-border-radius: 0;
   --context-menu-bg: rgba(255, 255, 255, 0.85);
-  --context-menu-pinstripe: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 4px,
-    rgba(200, 215, 235, 0.5) 4px,
-    rgba(200, 215, 235, 0.5) 8px
-  );
   --context-menu-border: rgba(100, 110, 130, 0.6);
   --context-menu-shadow:
     1px 1px 0 rgba(80, 90, 110, 0.5),
@@ -628,7 +564,7 @@
     rgb(203, 85, 73) 50%,
     rgb(197, 67, 54) 100%
   );
-  --traffic-light-red-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-red-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(137, 28, 18, 0.5),
     inset 0 0.125em 0.2em rgba(137, 28, 18, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(203, 85, 73, 0.75);
@@ -642,7 +578,7 @@
     rgb(253, 162, 43) 48%,
     rgb(224, 192, 47) 100%
   );
-  --traffic-light-yellow-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-yellow-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(192, 105, 1, 0.5),
     inset 0 0.125em 0.2em rgba(192, 105, 1, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(253, 162, 43, 0.75);
@@ -658,7 +594,7 @@
     rgb(128, 193, 69) 64%,
     rgb(98, 169, 33) 100%
   );
-  --traffic-light-green-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-green-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(67, 124, 48, 0.5),
     inset 0 0.125em 0.2em rgba(67, 124, 48, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(132, 196, 74, 0.75);
@@ -674,13 +610,9 @@
 @include aqua-era('10-2') {
   --aqua-blue: #2F95FF;
   --aqua-blue-dark: #0060C9;
-  --aqua-blue-darker: #00468F;
-  --aqua-blue-light: #7CD2FF;
-  --aqua-blue-lighter: #AEE5FF;
 
   --surface: #E7EDF3;
   --surface-light: #F3F7FB;
-  --surface-dark: #D1D9E3;
   --window-bg: #EBF0F6;
   --aqua-window-bg: #EBF0F6;
 
@@ -776,22 +708,6 @@
     rgba(46, 118, 206, 0.7),
     rgba(41, 160, 209, 0.7)
   );
-  --button-blue-gradient: linear-gradient(
-    180deg,
-    #7DD1FF 0%,
-    #52B8FF 30%,
-    #2E9EFF 50%,
-    #0086F0 70%,
-    #0066CC 100%
-  );
-  --button-blue-gradient-active: linear-gradient(
-    180deg,
-    #52B8FF 0%,
-    #2E9EFF 30%,
-    #0086F0 50%,
-    #0066CC 70%,
-    #004C99 100%
-  );
   --progress-fill-gradient: linear-gradient(
     to right,
     rgb(84, 170, 240),
@@ -809,13 +725,6 @@
   /* Classic context menu - square, semi-transparent with pinstripe */
   --context-menu-border-radius: 0;
   --context-menu-bg: rgba(255, 255, 255, 0.85);
-  --context-menu-pinstripe: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 4px,
-    rgba(195, 210, 230, 0.5) 4px,
-    rgba(195, 210, 230, 0.5) 8px
-  );
   --context-menu-border: rgba(95, 105, 125, 0.6);
   --context-menu-shadow:
     1px 1px 0 rgba(75, 85, 105, 0.5),
@@ -830,7 +739,7 @@
     rgb(203, 85, 73) 50%,
     rgb(197, 67, 54) 100%
   );
-  --traffic-light-red-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-red-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(137, 28, 18, 0.5),
     inset 0 0.125em 0.2em rgba(137, 28, 18, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(203, 85, 73, 0.75);
@@ -844,7 +753,7 @@
     rgb(253, 162, 43) 48%,
     rgb(224, 192, 47) 100%
   );
-  --traffic-light-yellow-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-yellow-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(192, 105, 1, 0.5),
     inset 0 0.125em 0.2em rgba(192, 105, 1, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(253, 162, 43, 0.75);
@@ -860,7 +769,7 @@
     rgb(128, 193, 69) 64%,
     rgb(98, 169, 33) 100%
   );
-  --traffic-light-green-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-green-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(67, 124, 48, 0.5),
     inset 0 0.125em 0.2em rgba(67, 124, 48, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(132, 196, 74, 0.75);
@@ -876,13 +785,9 @@
 @include aqua-era('10-3') {
   --aqua-blue: #2A8DEB;
   --aqua-blue-dark: #0055B3;
-  --aqua-blue-darker: #003E87;
-  --aqua-blue-light: #6CC9FF;
-  --aqua-blue-lighter: #9FDCFF;
 
   --surface: #E2E4E7;
   --surface-light: #F1F2F4;
-  --surface-dark: #C8CCD2;
   --window-bg: #E7E9EC;
   --aqua-window-bg: #E7E9EC;
 
@@ -1001,22 +906,6 @@
     rgba(42, 110, 198, 0.65),
     rgba(35, 150, 204, 0.65)
   );
-  --button-blue-gradient: linear-gradient(
-    180deg,
-    #6CC9FF 0%,
-    #3AAEF2 30%,
-    #2A8DEB 50%,
-    #0069D9 70%,
-    #0052A6 100%
-  );
-  --button-blue-gradient-active: linear-gradient(
-    180deg,
-    #3AAEF2 0%,
-    #2A8DEB 30%,
-    #0069D9 50%,
-    #0052A6 70%,
-    #003D7A 100%
-  );
   --progress-fill-gradient: linear-gradient(
     to right,
     rgb(76, 158, 230),
@@ -1037,7 +926,7 @@
     rgb(203, 85, 73) 50%,
     rgb(197, 67, 54) 100%
   );
-  --traffic-light-red-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-red-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(137, 28, 18, 0.5),
     inset 0 0.125em 0.2em rgba(137, 28, 18, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(203, 85, 73, 0.75);
@@ -1051,7 +940,7 @@
     rgb(253, 162, 43) 48%,
     rgb(224, 192, 47) 100%
   );
-  --traffic-light-yellow-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-yellow-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(192, 105, 1, 0.5),
     inset 0 0.125em 0.2em rgba(192, 105, 1, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(253, 162, 43, 0.75);
@@ -1067,7 +956,7 @@
     rgb(128, 193, 69) 64%,
     rgb(98, 169, 33) 100%
   );
-  --traffic-light-green-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-green-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(67, 124, 48, 0.5),
     inset 0 0.125em 0.2em rgba(67, 124, 48, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(132, 196, 74, 0.75);
@@ -1087,7 +976,7 @@
     rgb(203, 85, 73) 50%,
     rgb(197, 67, 54) 100%
   );
-  --traffic-light-red-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-red-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(137, 28, 18, 0.5),
     inset 0 0.125em 0.2em rgba(137, 28, 18, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(203, 85, 73, 0.75);
@@ -1101,7 +990,7 @@
     rgb(253, 162, 43) 48%,
     rgb(224, 192, 47) 100%
   );
-  --traffic-light-yellow-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-yellow-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(192, 105, 1, 0.5),
     inset 0 0.125em 0.2em rgba(192, 105, 1, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(253, 162, 43, 0.75);
@@ -1117,7 +1006,7 @@
     rgb(128, 193, 69) 64%,
     rgb(98, 169, 33) 100%
   );
-  --traffic-light-green-shadow: 0 0.125em 0.2em rgba(0, 0, 0, 0.3),
+  --traffic-light-green-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(67, 124, 48, 0.5),
     inset 0 0.125em 0.2em rgba(67, 124, 48, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(132, 196, 74, 0.75);

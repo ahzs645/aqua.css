@@ -1,0 +1,99 @@
+    <h2 id="toast">Toast</h2>
+    <p>
+      Toast notifications with a semi-transparent pinstripe background. A toast is built from
+      <code>.aqua-toast-icon</code>, <code>.aqua-toast-content</code> (with <code>.aqua-toast-title</code> and
+      <code>.aqua-toast-description</code>), and optional <code>.aqua-toast-action</code> /
+      <code>.aqua-toast-close</code> buttons. For fixed-position stacks, place toasts inside an
+      <code>.aqua-toast-container</code> with a position modifier such as
+      <code>.aqua-toast-container--top-right</code> or <code>.aqua-toast-container--bottom-center</code>.
+    </p>
+
+    <%- example(`
+      <div class="aqua-toast">
+        <div class="aqua-toast-icon aqua-toast-icon--success">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5.5 8.5l2 2 3.5-4.5"/></svg>
+        </div>
+        <div class="aqua-toast-content">
+          <div class="aqua-toast-title">File saved</div>
+          <div class="aqua-toast-description">"Report.pages" was saved to your Documents folder.</div>
+        </div>
+        <button class="aqua-toast-close" aria-label="Close">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3l6 6M9 3l-6 6"/></svg>
+        </button>
+      </div>
+    `) %>
+
+    <h3>Types</h3>
+    <p>Add <code>.aqua-toast--success</code>, <code>.aqua-toast--error</code>, <code>.aqua-toast--warning</code>, or <code>.aqua-toast--info</code> for a colored accent bar, with a matching <code>.aqua-toast-icon--*</code> class on the icon.</p>
+
+    <%- example(`
+      [[<div class="demo-stack demo-stack--start">]]
+        <div class="aqua-toast aqua-toast--success">
+          <div class="aqua-toast-icon aqua-toast-icon--success">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5.5 8.5l2 2 3.5-4.5"/></svg>
+          </div>
+          <div class="aqua-toast-content">
+            <div class="aqua-toast-title">Download complete</div>
+            <div class="aqua-toast-description">3 items were downloaded.</div>
+          </div>
+        </div>
+        <div class="aqua-toast aqua-toast--error">
+          <div class="aqua-toast-icon aqua-toast-icon--error">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5.5 5.5l5 5M10.5 5.5l-5 5"/></svg>
+          </div>
+          <div class="aqua-toast-content">
+            <div class="aqua-toast-title">Burn failed</div>
+            <div class="aqua-toast-description">The disc could not be burned.</div>
+          </div>
+        </div>
+        <div class="aqua-toast aqua-toast--warning">
+          <div class="aqua-toast-icon aqua-toast-icon--warning">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2l6.5 11.5h-13L8 2z"/><path d="M8 6.5v3.5M8 11.5v.5"/></svg>
+          </div>
+          <div class="aqua-toast-content">
+            <div class="aqua-toast-title">Low battery</div>
+            <div class="aqua-toast-description">You are now running on reserve power.</div>
+          </div>
+        </div>
+        <div class="aqua-toast aqua-toast--info">
+          <div class="aqua-toast-icon aqua-toast-icon--info">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 7.5V11M8 5v.5"/></svg>
+          </div>
+          <div class="aqua-toast-content">
+            <div class="aqua-toast-title">Software Update</div>
+            <div class="aqua-toast-description">New updates are available for your computer.</div>
+          </div>
+        </div>
+      [[</div>]]
+    `) %>
+
+    <h3>With Action</h3>
+    <p>Add an <code>.aqua-toast-action</code> button for an Aqua gel-style action.</p>
+
+    <%- example(`
+      <div class="aqua-toast aqua-toast--info">
+        <div class="aqua-toast-icon aqua-toast-icon--info">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 7.5V11M8 5v.5"/></svg>
+        </div>
+        <div class="aqua-toast-content">
+          <div class="aqua-toast-title">Update available</div>
+          <div class="aqua-toast-description">Mac OS X Update 10.4.11 is ready to install.</div>
+        </div>
+        <button class="aqua-toast-action">Install</button>
+      </div>
+    `) %>
+
+    <h3>Compact</h3>
+    <p>Use <code>.aqua-toast--compact</code> for a smaller toast.</p>
+
+    <%- example(`
+      <div class="aqua-toast aqua-toast--compact aqua-toast--success">
+        <div class="aqua-toast-icon aqua-toast-icon--success">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M5.5 8.5l2 2 3.5-4.5"/></svg>
+        </div>
+        <div class="aqua-toast-content">
+          <div class="aqua-toast-title">Copied to clipboard</div>
+        </div>
+      </div>
+    `) %>
+

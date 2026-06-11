@@ -34,6 +34,11 @@
     letter-spacing: 0.0375em;
     line-height: 1;
   }
+
+  /* Keyboard focus ring */
+  &:focus-visible {
+    box-shadow: var(--aqua-focus-ring);
+  }
 }
 
 @include aqua-era('10-6') {
@@ -58,6 +63,11 @@
   &:active {
     box-shadow: var(--aqua-button-primary-shadow-active);
   }
+
+  /* Keyboard focus ring */
+  &:focus-visible {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-primary-shadow-active);
+  }
 }
 
 /* Secondary Button - Gray/White */
@@ -73,6 +83,11 @@
   &:focus,
   &:active {
     box-shadow: var(--aqua-button-secondary-shadow-active);
+  }
+
+  /* Keyboard focus ring */
+  &:focus-visible {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow-active);
   }
 }
 
@@ -127,6 +142,11 @@
   &:active {
     box-shadow: var(--aqua-button-orange-shadow-active);
   }
+
+  /* Keyboard focus ring */
+  &:focus-visible {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-orange-shadow-active);
+  }
 }
 
 /* Size variations */
@@ -143,7 +163,7 @@
 }
 
 /* HIG-style aliases */
-.aqua-button.small { font-size: var(--font-size-small); }
+.aqua-button.small { font-size: var(--font-size-button-small); }
 .aqua-button.mini { font-size: var(--font-size-xxsmall); }
 
 /* Button types */
@@ -175,6 +195,11 @@
 
   &:active {
     box-shadow: var(--aqua-button-secondary-shadow-active);
+  }
+
+  /* Keyboard focus ring */
+  &:focus-visible {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow);
   }
 }
 
@@ -440,6 +465,11 @@ button.default.armed,
       z-index: 10
     )
   ));
+
+  /* Keyboard focus ring (overflow: hidden clips rings on the buttons) */
+  &:has(:focus-visible) {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow);
+  }
 
   button,
   .aqua-button {

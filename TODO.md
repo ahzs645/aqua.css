@@ -9,7 +9,7 @@
 - [x] Git repository initialized
 - [x] MIT License
 - [x] README.md with installation and usage instructions
-- [x] .gitignore, .npmignore, .editorconfig
+- [x] .gitignore
 
 ### CSS Variables (`:root`)
 - [x] Aqua blue color palette (light, medium, dark variants)
@@ -183,16 +183,13 @@ aqua.css/
 │   ├── aqua.css
 │   ├── aqua.css.map
 │   └── index.html
-├── .editorconfig         # ✅
+├── src/                  # ✅ SCSS source (index.scss + partials)
 ├── .gitignore            # ✅
-├── .npmignore            # ✅
 ├── build.js              # ✅ Build script
 ├── LICENSE               # ✅ MIT
-├── now.json              # ✅ Vercel config
 ├── package.json          # ✅
 ├── README.md             # ✅
 ├── server.js             # ✅ Dev server
-├── style.css             # ✅ Main source CSS
 └── TODO.md               # ✅ This file
 ```
 

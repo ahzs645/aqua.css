@@ -6,6 +6,7 @@
 
 @use "mixins" as *;
 
+.aqua-combobox,
 .combobox {
   position: relative;
   display: inline-flex;
@@ -30,6 +31,11 @@
     background: #ffffff;
     color: rgba(0, 0, 0, 0.8);
     outline: none;
+  }
+
+  /* Keyboard focus ring (overflow: hidden clips rings on the field) */
+  &:has(input:focus-visible) {
+    box-shadow: var(--aqua-focus-ring);
   }
 
   /* Glossy dropdown button - visually isolated from the text field */

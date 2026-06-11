@@ -1,0 +1,63 @@
+    <h2 id="switch">Switch</h2>
+    <p>An Aqua-style toggle switch with a glassy thumb. Add <code>.aqua-switch--checked</code> for the on state.</p>
+
+    <%- example(`
+      [[<div class="demo-row demo-row--tight">]]
+        <button type="button" class="aqua-switch" role="switch" aria-checked="false">
+          <span class="aqua-switch-thumb"></span>
+        </button>
+        <button type="button" class="aqua-switch aqua-switch--checked" role="switch" aria-checked="true">
+          <span class="aqua-switch-thumb"></span>
+        </button>
+      [[</div>]]
+    `) %>
+
+    <h3>Sizes</h3>
+    <p>Use <code>.aqua-switch--small</code> or <code>.aqua-switch--large</code> to adjust the size.</p>
+
+    <%- example(`
+      [[<div class="demo-row demo-row--tight">]]
+        <button type="button" class="aqua-switch aqua-switch--small aqua-switch--checked" role="switch" aria-checked="true">
+          <span class="aqua-switch-thumb"></span>
+        </button>
+        <button type="button" class="aqua-switch aqua-switch--checked" role="switch" aria-checked="true">
+          <span class="aqua-switch-thumb"></span>
+        </button>
+        <button type="button" class="aqua-switch aqua-switch--large aqua-switch--checked" role="switch" aria-checked="true">
+          <span class="aqua-switch-thumb"></span>
+        </button>
+      [[</div>]]
+    `) %>
+
+    <h3>With Label</h3>
+    <p>Wrap the switch in <code>.aqua-switch-wrapper</code> and place an <code>.aqua-switch-label</code> next to it.</p>
+
+    <%- example(`
+      <div class="aqua-switch-wrapper">
+        <button type="button" class="aqua-switch aqua-switch--checked" role="switch" aria-checked="true">
+          <span class="aqua-switch-thumb"></span>
+        </button>
+        <span class="aqua-switch-label">Enable AirPort</span>
+      </div>
+    `) %>
+
+    <h3>Disabled</h3>
+    <p>Add <code>.aqua-switch--disabled</code> (and the <code>disabled</code> attribute) to dim the switch and its label.</p>
+
+    <%- example(`
+      [[<div class="demo-row demo-row--tight">]]
+        <div class="aqua-switch-wrapper">
+          <button type="button" class="aqua-switch aqua-switch--disabled" role="switch" aria-checked="false" disabled>
+            <span class="aqua-switch-thumb"></span>
+          </button>
+          <span class="aqua-switch-label">Bluetooth</span>
+        </div>
+        <div class="aqua-switch-wrapper">
+          <button type="button" class="aqua-switch aqua-switch--checked aqua-switch--disabled" role="switch" aria-checked="true" disabled>
+            <span class="aqua-switch-thumb"></span>
+          </button>
+          <span class="aqua-switch-label">AirPort</span>
+        </div>
+      [[</div>]]
+    `) %>
+

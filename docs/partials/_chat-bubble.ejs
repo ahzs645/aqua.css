@@ -1,0 +1,63 @@
+    <h2 id="chat-bubble">Chat Bubble</h2>
+    <p>
+      iChat-style glossy chat bubbles. Wrap each message in <code>.aqua-chat-message</code> with
+      <code>.aqua-chat-message--left</code> or <code>.aqua-chat-message--right</code> for alignment, and wrap
+      the bubble text in an element (e.g. a <code>span</code>) so it sits above the glass shine.
+    </p>
+
+    <%- example(`
+      [[<div class="demo-stack">]]
+        <div class="aqua-chat-message aqua-chat-message--left">
+          <div class="aqua-chat-bubble-meta">
+            <span class="aqua-chat-bubble-username">Steve</span>
+            <span class="aqua-chat-bubble-time">10:24 AM</span>
+          </div>
+          <div class="aqua-chat-bubble aqua-chat-bubble--gray aqua-chat-bubble--left">
+            <span>Have you seen the new Aqua interface?</span>
+          </div>
+        </div>
+        <div class="aqua-chat-message aqua-chat-message--right">
+          <div class="aqua-chat-bubble-meta">
+            <span class="aqua-chat-bubble-username">You</span>
+            <span class="aqua-chat-bubble-time">10:25 AM</span>
+          </div>
+          <div class="aqua-chat-bubble aqua-chat-bubble--blue aqua-chat-bubble--right">
+            <span>Yes! The buttons look so good you want to lick them.</span>
+          </div>
+        </div>
+      [[</div>]]
+    `) %>
+
+    <h3>Colors</h3>
+    <p>Fourteen color modifiers are available via <code>.aqua-chat-bubble--&lt;color&gt;</code>.</p>
+
+    <%- example(`
+      [[<div class="demo-row demo-row--compact">]]
+        <div class="aqua-chat-bubble aqua-chat-bubble--blue"><span>blue</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--green"><span>green</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--yellow"><span>yellow</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--orange"><span>orange</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--red"><span>red</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--pink"><span>pink</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--rose"><span>rose</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--purple"><span>purple</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--indigo"><span>indigo</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--cyan"><span>cyan</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--teal"><span>teal</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--lime"><span>lime</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--amber"><span>amber</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--gray"><span>gray</span></div>
+      [[</div>]]
+    `) %>
+
+    <h3>Sizes</h3>
+    <p>Use <code>.aqua-chat-bubble--small</code> or <code>.aqua-chat-bubble--large</code> to adjust the size.</p>
+
+    <%- example(`
+      [[<div class="demo-row demo-row--compact">]]
+        <div class="aqua-chat-bubble aqua-chat-bubble--small aqua-chat-bubble--blue"><span>Small bubble</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--blue"><span>Default bubble</span></div>
+        <div class="aqua-chat-bubble aqua-chat-bubble--large aqua-chat-bubble--blue"><span>Large bubble</span></div>
+      [[</div>]]
+    `) %>
+

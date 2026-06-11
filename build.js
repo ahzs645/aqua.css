@@ -2,9 +2,7 @@
 const dedent = require("dedent");
 const ejs = require("ejs");
 const fs = require("fs");
-const glob = require("glob");
 const hljs = require("highlight.js");
-const mkdirp = require("mkdirp");
 const path = require("path");
 const postcss = require("postcss");
 const sass = require("sass");
@@ -60,11 +58,11 @@ function runPostCSS(input, { from, to, preserveVars, copyAssets, prefixSelector,
 
 function buildCSS() {
   fs.rmSync("dist", { recursive: true, force: true });
-  mkdirp.sync("dist");
+  fs.mkdirSync("dist", { recursive: true });
 
   // Copy icon folder to dist before CSS processing (needed for postcss-base64)
   if (fs.existsSync("icon")) {
-    copyDirectorySync("icon", path.join("dist", "icon"));
+    fs.cpSync("icon", path.join("dist", "icon"), { recursive: true });
     // Copy favicon.ico to dist root for browsers that request /favicon.ico
     if (fs.existsSync("icon/finder-jaguar.ico")) {
       fs.copyFileSync("icon/finder-jaguar.ico", path.join("dist", "favicon.ico"));
@@ -129,7 +127,7 @@ function buildCSS() {
 
 function buildComponents() {
   const componentDir = path.join("dist", "components");
-  mkdirp.sync(componentDir);
+  fs.mkdirSync(componentDir, { recursive: true });
 
   const exclude = new Set([
     "_variables.scss",
@@ -170,20 +168,6 @@ function buildComponents() {
       fs.writeFileSync(`${target}.map`, processed.map.toString());
     });
   }));
-}
-
-function copyDirectorySync(src, dest) {
-  mkdirp.sync(dest);
-  const entries = fs.readdirSync(src, { withFileTypes: true });
-  for (const entry of entries) {
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-    if (entry.isDirectory()) {
-      copyDirectorySync(srcPath, destPath);
-    } else {
-      fs.copyFileSync(srcPath, destPath);
-    }
-  }
 }
 
 function buildDocs() {
@@ -259,10 +243,10 @@ function buildDocs() {
     </div>`;
   }
 
-  glob.sync("docs/*").forEach((srcFile) => {
+  fs.readdirSync("docs", { withFileTypes: true }).forEach((entry) => {
     // Skip directories and .ejs files
-    if (!srcFile.endsWith(".ejs") && fs.statSync(srcFile).isFile()) {
-      fs.copyFileSync(srcFile, path.join("dist", path.basename(srcFile)));
+    if (entry.isFile() && !entry.name.endsWith(".ejs")) {
+      fs.copyFileSync(path.join("docs", entry.name), path.join("dist", entry.name));
     }
   });
 

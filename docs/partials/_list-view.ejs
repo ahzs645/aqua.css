@@ -2,7 +2,7 @@
     <p>Selectable list component with focused (blue) and unfocused (gray) selection.</p>
 
     <%- example(`
-      <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+      [[<div class="demo-row demo-row--top">]]
         <div>
           <span class="label">Vertical (Focused - Blue)</span><br>
           <div class="aqua-list focused" tabindex="0" style="width: 150px;">
@@ -44,9 +44,9 @@
             <div class="aqua-list-item">Item C</div>
           </div>
         </div>
-      </div>
+      [[</div>]]
 
-      <div style="margin-top: 20px;">
+      [[<div class="demo-gap-top">]]
         <span class="label">Horizontal List</span><br>
         <div class="aqua-list horizontal focused" tabindex="0" style="width: 520px;">
           <div class="aqua-list-item">January</div>
@@ -57,6 +57,6 @@
           <div class="aqua-list-item">June</div>
           <div class="aqua-list-item">July</div>
         </div>
-      </div>
+      [[</div>]]
     `) %>
 

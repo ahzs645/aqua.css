@@ -5,6 +5,7 @@
 
 @use "mixins" as *;
 
+.aqua-stepper,
 .stepper {
   display: inline-flex;
   align-items: stretch;
@@ -70,6 +71,11 @@
       background: var(--stepper-button-active-gradient);
     }
   }
+
+  /* Keyboard focus ring (overflow: hidden clips rings on the inner controls) */
+  &:has(:focus-visible) {
+    box-shadow: var(--aqua-focus-ring);
+  }
 }
 
 /* ============================================
@@ -126,6 +132,11 @@
 
   /* Aqua glass effect */
   @include aqua-glass('box');
+
+  /* Keyboard focus ring (overflow: hidden clips rings on the buttons) */
+  &:has(button:focus-visible) {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow);
+  }
 
   button {
     background: transparent;

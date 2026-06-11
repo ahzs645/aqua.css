@@ -6,6 +6,7 @@
 @use "mixins" as *;
 
 /* Class-based radio button (recommended) */
+.aqua-radio,
 .radio {
   display: inline-flex;
   align-items: center;
@@ -90,10 +91,19 @@
     opacity: 0.6;
     cursor: default;
   }
+
+  /* Keyboard focus ring */
+  input:focus-visible + .circle {
+    box-shadow: var(--radio-focus-ring), var(--radio-shadow);
+  }
+
+  input:focus-visible:checked + .circle {
+    box-shadow: var(--radio-focus-ring), var(--radio-selected-shadow);
+  }
 }
 
 /* Native radio fallback (element-based) */
-input[type="radio"]:not(.radio input) {
+input[type="radio"]:not(.radio input, .aqua-radio input) {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -142,6 +152,15 @@ input[type="radio"]:not(.radio input) {
 
   &:focus {
     outline: none;
+  }
+
+  /* Keyboard focus ring */
+  &:focus-visible {
+    box-shadow: var(--radio-focus-ring), var(--radio-shadow);
+
+    &:checked {
+      box-shadow: var(--radio-focus-ring), var(--radio-selected-shadow);
+    }
   }
 
   &:active:not(:disabled) {

@@ -28,3 +28,6 @@ coverage/
 # Environment
 .env
 .env.local
+
+# Generated source maps outside dist
+Resources/**/*.map

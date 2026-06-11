@@ -123,13 +123,17 @@
 
 .aqua-tab {
   @include aqua-tab-base;
-  outline: none !important;
+  outline: none;
   -webkit-tap-highlight-color: transparent;
 
-  &:focus,
+  /* Suppress the ring on mouse focus, show it for keyboard focus */
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
   &:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
+    box-shadow: var(--aqua-focus-ring), var(--tab-inactive-shadow);
   }
 
   &:hover:not(.aqua-tab--active) {
@@ -143,10 +147,13 @@
   &.aqua-tab--active {
     @include aqua-tab-active;
 
-    &:focus,
+    &:focus {
+      outline: none;
+      box-shadow: var(--tab-active-inner-shadow);
+    }
+
     &:focus-visible {
-      outline: none !important;
-      box-shadow: var(--tab-active-inner-shadow) !important;
+      box-shadow: var(--aqua-focus-ring), var(--tab-active-inner-shadow);
     }
   }
 }
@@ -154,12 +161,12 @@
 /* Tab content panel */
 .aqua-tab-content {
   border: 1px solid #999;
-  border-top: 1px solid #88b7ea;
+  border-top: 1px solid var(--tab-content-border-top);
   border-radius: 0;
   padding: 24px;
   background: var(--pinstripe);
   margin-top: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-drop-soft);
 }
 
 /* Size variations */
@@ -195,13 +202,17 @@
 
   li {
     @include aqua-tab-base;
-    outline: none !important;
+    outline: none;
     -webkit-tap-highlight-color: transparent;
 
-    &:focus,
+    /* Suppress the ring on mouse focus, show it for keyboard focus */
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
     &:focus-visible {
-      outline: none !important;
-      box-shadow: none !important;
+      box-shadow: var(--aqua-focus-ring), var(--tab-inactive-shadow);
     }
 
     &:hover:not(.active):not([aria-selected="true"]) {
@@ -216,10 +227,13 @@
     &[aria-selected="true"] {
       @include aqua-tab-active;
 
-      &:focus,
+      &:focus {
+        outline: none;
+        box-shadow: var(--tab-active-inner-shadow);
+      }
+
       &:focus-visible {
-        outline: none !important;
-        box-shadow: var(--tab-active-inner-shadow) !important;
+        box-shadow: var(--aqua-focus-ring), var(--tab-active-inner-shadow);
       }
     }
   }
@@ -228,12 +242,12 @@
 /* Tab content panel */
 .tab-panel {
   border: 1px solid #999;
-  border-top: 1px solid #88b7ea;
+  border-top: 1px solid var(--tab-content-border-top);
   border-radius: 0;
   padding: 24px;
   background: var(--pinstripe);
   margin-top: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-drop-soft);
 }
 
 /* Size variations */
@@ -326,6 +340,11 @@
       z-index: 10
     )
   ));
+
+  /* Keyboard focus ring (overflow: hidden clips rings on the tabs) */
+  &:has(:focus-visible) {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow);
+  }
 }
 
 .tab-pill {
@@ -429,6 +448,11 @@
       z-index: 10
     )
   ));
+
+  /* Keyboard focus ring (overflow: hidden clips rings on the tabs) */
+  &:has(:focus-visible) {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow);
+  }
 }
 
 .aqua-tabs-container .aqua-tab {
@@ -558,6 +582,11 @@
         border: none;
         height: 0;
       }
+
+      /* Keyboard focus ring (overflow: hidden clips rings on the tabs) */
+      &:has(.aqua-tab:focus-visible) {
+        box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow);
+      }
     }
 
     .doc-tabbed-example .aqua-tab {
@@ -634,13 +663,17 @@
 
   .aqua-tab {
     @include aqua-tab-base;
-    outline: none !important;
+    outline: none;
     -webkit-tap-highlight-color: transparent;
 
-    &:focus,
+    /* Suppress the ring on mouse focus, show it for keyboard focus */
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
     &:focus-visible {
-      outline: none !important;
-      box-shadow: none !important;
+      box-shadow: var(--aqua-focus-ring), var(--tab-inactive-shadow);
     }
 
     &:hover:not(.aqua-tab--active) {
@@ -654,22 +687,25 @@
     &.aqua-tab--active {
       @include aqua-tab-active;
 
-      &:focus,
+      &:focus {
+        outline: none;
+        box-shadow: var(--tab-active-inner-shadow);
+      }
+
       &:focus-visible {
-        outline: none !important;
-        box-shadow: var(--tab-active-inner-shadow) !important;
+        box-shadow: var(--aqua-focus-ring), var(--tab-active-inner-shadow);
       }
     }
   }
 
   .aqua-tab-content {
     border: 1px solid #999;
-    border-top: 1px solid #88b7ea;
+    border-top: 1px solid var(--tab-content-border-top);
     border-radius: 0;
     padding: 24px;
     background: var(--pinstripe);
     margin-top: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-drop-soft);
   }
 }
 
@@ -712,6 +748,11 @@
         &::after {
           display: none;
         }
+
+        /* Keyboard focus ring (overflow: hidden clips rings on the tabs) */
+        &:has(.aqua-tab:focus-visible) {
+          box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow);
+        }
       }
 
       .aqua-tab {
@@ -748,6 +789,12 @@
 
         &:hover:not(.aqua-tab--active) {
           background: rgba(255, 255, 255, 0.15);
+          box-shadow: none;
+        }
+
+        /* The pill bar shows the focus ring instead (overflow: hidden clips it here) */
+        &:focus-visible,
+        &.aqua-tab--active:focus-visible {
           box-shadow: none;
         }
       }
