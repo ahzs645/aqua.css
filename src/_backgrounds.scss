@@ -12,12 +12,23 @@
   --aqua-pinstripe-window: var(--pinstripe);
   --aqua-background-classic: var(--pinstripe);
 
-  --aqua-pinstripe-titlebar: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(219, 219, 219, 0.6) 70%,
-    rgba(206, 206, 206, 0.7) 100%
-  );
+  /* Authentic Aqua title-bar pinstripe: 1px hairlines layered over a soft
+     top-to-bottom gradient. The repeating gradient draws the stripes; the
+     smooth gradient underneath gives the bar its top-light/bottom-darker body. */
+  --aqua-pinstripe-titlebar:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.55) 0px,
+      rgba(255, 255, 255, 0.55) 1px,
+      rgba(0, 0, 0, 0.04) 1px,
+      rgba(0, 0, 0, 0.04) 2px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(219, 219, 219, 0.6) 70%,
+      rgba(206, 206, 206, 0.75) 100%
+    );
 
   --aqua-pinstripe-menubar: var(--pinstripe);
 

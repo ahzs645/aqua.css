@@ -21,15 +21,32 @@
 }
 
 .progress-bar-fill {
+  position: relative;
   height: 100%;
   background: var(--progress-fill-gradient);
   border-right: 0.5px solid var(--progress-fill-border);
   border-radius: 2px;
   transition: width 300ms ease;
+  overflow: hidden;
+
+  /* Top-half specular gloss over the blue body — gives the bar a wet, gel
+     reflection like real Aqua progress fills. */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 50% 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+  }
 }
 
 /* aqua-progress inner bar (uses progress.png pattern like the showcase) */
 .aqua-progress .bar {
+  position: relative;
   height: 100%;
   border-right: 0.5px solid var(--progress-fill-border);
   border-radius: 2px;
@@ -39,6 +56,19 @@
   background-repeat: repeat-x;
   background-size: auto 100%;
   animation: aqua-progress-scroll 1s linear infinite;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 50% 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+  }
 }
 
 /* Animated scrolling pattern */

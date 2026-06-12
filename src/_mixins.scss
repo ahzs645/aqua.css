@@ -96,44 +96,44 @@
 $aqua-glass-presets: (
   'round': (
     shine: (
-      height: 40%,
-      width: 75%,
-      top: 8%,
-      blur: 0.5px,
-      opacity-start: 0.8,
-      opacity-end: 0.15,
-      radius: 50% 50% 30% 30%,
+      height: 48%,
+      width: 72%,
+      top: 6%,
+      blur: 0.3px,
+      opacity-start: 0.95,
+      opacity-end: 0.05,
+      radius: 50% 50% 40% 40%,
       z-index: 2
     ),
     glow: (
-      height: 35%,
-      width: 70%,
-      bottom: 10%,
-      blur: 1px,
-      opacity-start: 0.1,
-      opacity-end: 0.35,
+      height: 38%,
+      width: 78%,
+      bottom: 6%,
+      blur: 1.5px,
+      opacity-start: 0.05,
+      opacity-end: 0.5,
       radius: 30% 30% 50% 50%,
       z-index: null
     )
   ),
   'box': (
     shine: (
-      height: 33%,
-      width: 90%,
-      top: 5%,
-      blur: 1px,
-      opacity-start: 0.9,
-      opacity-end: 0.3,
+      height: 42%,
+      width: 92%,
+      top: 4%,
+      blur: 0.5px,
+      opacity-start: 0.95,
+      opacity-end: 0.05,
       radius: inherit,
       z-index: 1
     ),
     glow: (
-      height: 33%,
+      height: 34%,
       width: 90%,
-      bottom: 10%,
-      blur: 3px,
-      opacity-start: 0.2,
-      opacity-end: 0.5,
+      bottom: 8%,
+      blur: 2.5px,
+      opacity-start: 0.15,
+      opacity-end: 0.6,
       radius: inherit,
       z-index: 1
     )
@@ -184,13 +184,23 @@ $aqua-glass-aliases: (
     preset: 'box',
     overrides: (
       shine: (
-        width: calc(100% - 0.875em),
+        height: 48%,
+        top: 3%,
+        width: calc(100% - 0.625em),
         radius: 2em 2em 0.5em 0.5em,
+        blur: 0,
+        opacity-start: 0.95,
+        opacity-end: 0,
         z-index: 2
       ),
       glow: (
-        width: calc(100% - 1.25em),
+        height: 32%,
+        bottom: 6%,
+        width: calc(100% - 1em),
         radius: 0.75em,
+        blur: 2px,
+        opacity-start: 0.1,
+        opacity-end: 0.65,
         z-index: null
       )
     )

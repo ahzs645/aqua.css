@@ -268,11 +268,14 @@
   background-image: var(--aqua-button-flat-active-gradient);
 }
 
-/* Pulsing animation for default primary button */
+/* Pulsing animation for default primary button.
+   Eases between 0 and 1 (sine-like) so the glow swells smoothly
+   instead of flashing — matches the slow "breathing" cadence of
+   Aqua's default button. */
 @keyframes aqua-button-pulse {
-  0%   { opacity: 0; }
+  0%   { opacity: 0.15; }
   50%  { opacity: 1; }
-  100% { opacity: 0; }
+  100% { opacity: 0.15; }
 }
 
 .aqua-button-flat--primary.aqua-button-flat--pulsing {
@@ -310,7 +313,7 @@
 
 .aqua-button-flat--primary.aqua-button-flat--pulsing .aqua-button-flat__pulse {
   z-index: 2;
-  animation: aqua-button-pulse 1s infinite;
+  animation: aqua-button-pulse 1.8s ease-in-out infinite;
   background-image: var(--aqua-button-flat-pulse-glow-gradient);
 }
 
@@ -430,7 +433,7 @@ input[type="submit"],
   }
 
   &.pulse {
-    animation: aqua-default-pulse 1.5s ease-in-out infinite;
+    animation: aqua-default-pulse 1.8s ease-in-out infinite;
   }
 }
 

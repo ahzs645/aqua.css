@@ -591,10 +591,10 @@
   --aqua-button-pill-divider: #888888;
   --aqua-button-default-pulse-shadow-low: inset 3px 0px 3px -3px rgba(0, 0, 0, 0.2),
     inset -3px 0px 3px -3px rgba(0, 0, 0, 0.2),
-    0 0 6px rgba(43, 153, 255, 0.3);
+    0 0 4px rgba(43, 153, 255, 0.2);
   --aqua-button-default-pulse-shadow-high: inset 3px 0px 3px -3px rgba(0, 0, 0, 0.2),
     inset -3px 0px 3px -3px rgba(0, 0, 0, 0.2),
-    0 0 12px rgba(43, 153, 255, 0.6);
+    0 0 16px rgba(43, 153, 255, 0.85);
 
   /* Switch */
   --switch-track-gradient: linear-gradient(#d0d0d0, #f5f5f5);
@@ -758,33 +758,36 @@
   --traffic-light-icon-yellow-shadow: 0 1px 0 rgba(255, 220, 150, 0.3);
   --traffic-light-icon-green: #0a4d12;
   --traffic-light-icon-green-shadow: 0 1px 0 rgba(150, 255, 150, 0.3);
-  --traffic-light-red-gradient: linear-gradient(rgb(193, 58, 45), rgb(205, 73, 52));
+  --traffic-light-red-gradient:
+    radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 28%),
+    linear-gradient(rgb(193, 58, 45), rgb(205, 73, 52));
   --traffic-light-red-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(150, 40, 30, 0.5),
     inset 0 0.125em 0.2em rgba(150, 40, 30, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(225, 70, 64, 0.75);
-  --traffic-light-red-hover-gradient: linear-gradient(
-    rgb(213, 78, 65),
-    rgb(225, 93, 72)
-  );
-  --traffic-light-yellow-gradient: linear-gradient(rgb(202, 130, 13), rgb(253, 253, 149));
+  --traffic-light-red-hover-gradient:
+    radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 28%),
+    linear-gradient(rgb(213, 78, 65), rgb(225, 93, 72));
+  --traffic-light-yellow-gradient:
+    radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 28%),
+    linear-gradient(rgb(202, 130, 13), rgb(253, 253, 149));
   --traffic-light-yellow-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(155, 78, 21, 0.5),
     inset 0 0.125em 0.2em rgba(155, 78, 21, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(241, 157, 20, 0.75);
-  --traffic-light-yellow-hover-gradient: linear-gradient(
-    rgb(222, 150, 33),
-    rgb(255, 255, 169)
-  );
-  --traffic-light-green-gradient: linear-gradient(rgb(111, 174, 58), rgb(138, 192, 50));
+  --traffic-light-yellow-hover-gradient:
+    radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 28%),
+    linear-gradient(rgb(222, 150, 33), rgb(255, 255, 169));
+  --traffic-light-green-gradient:
+    radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 28%),
+    linear-gradient(rgb(111, 174, 58), rgb(138, 192, 50));
   --traffic-light-green-shadow: var(--shadow-drop-small),
     0 0.0625em 0.0625em rgba(53, 91, 17, 0.5),
     inset 0 0.125em 0.2em rgba(53, 91, 17, 0.8),
     inset 0 0.15em 0.25em 0.1em rgba(98, 187, 19, 0.75);
-  --traffic-light-green-hover-gradient: linear-gradient(
-    rgb(131, 194, 78),
-    rgb(158, 212, 70)
-  );
+  --traffic-light-green-hover-gradient:
+    radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 28%),
+    linear-gradient(rgb(131, 194, 78), rgb(158, 212, 70));
   --traffic-light-unsaved-dot: #4d0f0a;
   --traffic-light-ryos-red-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px,
     rgba(0, 0, 0, 0.4) 0px 1px 2px,
