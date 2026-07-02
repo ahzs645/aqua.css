@@ -46,6 +46,19 @@ Styling is delivered through three layers, each requiring a different override s
    literal value, or **component template replacement** (the ryos-cus pattern already
    used for traffic lights) where markup must change.
 
+There is also a reverse hazard: aqua.css's **bare-element rules** (`.aqua button` in
+the scoped build) style every plain `<button>` as a 20px Aqua push button with
+`min-width: 50px`, border, gradient, and inset side shadows. ryOS renders menu
+titles, the menubar status cluster, dock icons, titlebar controls, and sidebar rows
+as plain `<button>`s — without countermeasures they all render as capsules.
+**Strategy: chrome neutralization** — the bridge resets bare-button chrome inside
+OS-chrome containers (`.mac-top-menubar`, `.mac-dock-surface`, `.traffic-lights`,
+`[data-titlebar-controls]`, `.os-app-sidebar`, `.os-sidebar`) using `:where()` so
+the library's own component classes still win, and buttons with explicit `aqua-*`
+classes keep full library styling. (Roadmap candidate for aqua.css: ship the
+bare-element rules in an optional layer, e.g. `aqua.forms.css`, so component-class
+usage doesn't require this.)
+
 > **Material/scheme caveat:** aqua.css recreates *classic* Aqua (10.0–10.4, light).
 > ryOS defaults to the `glass` material and supports dark mode — both load extra
 > override sheets that fight the skin. For accuracy testing, switch ryOS to
@@ -127,6 +140,10 @@ color themes (`[data-aqua-theme="graphite"|"air"|"earth"|"fire"|"purple"]`).
 - **Radix-friendly state selectors** — supporting `[data-state="active"|"checked"|"open"]` alongside `.active`/`.selected`/`--checked` modifiers would make aqua.css drop-in for Radix/shadcn apps (small SCSS addition, big integration win).
 - **Native scrollbar skin** — a `::-webkit-scrollbar` fallback so hosts without bespoke markup still get Aqua scrollbars.
 - **Menu bar height token** — expose `--menu-bar-height` instead of hardcoded 28px.
+- **Optional bare-element layer** — move the plain `button`/`input`/`select` styling
+  into a separable build (e.g. `aqua.forms.css`) so embedding the library in a
+  component-based app doesn't require neutralizing push-button chrome on every
+  plain `<button>` (see the "reverse hazard" note in §1).
 
 ---
 
