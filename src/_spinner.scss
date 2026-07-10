@@ -6,7 +6,11 @@
 @use "mixins" as *;
 
 .spinner,
-.loader {
+.loader,
+.spinner-large,
+.loader-large,
+.spinner-small,
+.loader-small {
   display: inline-block;
   width: 20px;
   height: 20px;

@@ -815,6 +815,7 @@ section[data-section-id] {
 
 /* Section label spacing between demo groups */
 .label--spaced {
+  display: block;
   margin-top: 15px;
 }
 

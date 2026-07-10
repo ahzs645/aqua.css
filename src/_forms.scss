@@ -230,6 +230,9 @@ input[type="search"],
   padding: 0 24px;
   border-radius: 11px;
   background: var(--search-field-gradient);
+  background-image: var(--search-icon), var(--search-field-gradient);
+  background-repeat: no-repeat, no-repeat;
+  background-position: 8px center, 0 0;
   box-shadow: var(--search-field-shadow);
   font-family: var(--font-ui);
   font-size: var(--font-size-medium);
@@ -277,7 +280,9 @@ input[type="search"],
   font-family: var(--font-ui);
   font-size: var(--font-size-input);
 
-  label {
+  /* Leading label column ("Name: [input]") gets a fixed width;
+     a label that follows its control (checkbox/radio rows) hugs it */
+  label:first-child {
     min-width: 70px;
     text-align: right;
   }

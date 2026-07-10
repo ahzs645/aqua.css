@@ -670,13 +670,10 @@
     rgb(235, 235, 235) 100%
   );
   --progress-indicator-track-border: rgb(176, 176, 176);
-  --progress-indicator-fill: conic-gradient(
-    from -90deg,
-    rgb(90, 192, 246) 0deg,
-    rgb(84, 170, 240) calc(var(--progress, 0) * 3.6deg),
-    transparent calc(var(--progress, 0) * 3.6deg),
-    transparent 360deg
-  );
+  /* Arc colors for the determinate ring; the conic-gradient itself is
+     composed in _progress.scss so var(--progress) resolves per element */
+  --progress-indicator-arc-start: rgb(90, 192, 246);
+  --progress-indicator-arc-end: rgb(84, 170, 240);
   --progress-indicator-border: rgb(208, 208, 208);
   --progress-indicator-inner-gradient: linear-gradient(
     to bottom,
