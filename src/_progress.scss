@@ -193,13 +193,21 @@
     border: 0.5px solid var(--progress-indicator-track-border);
   }
 
-  /* Progress fill (pie style using conic-gradient) */
+  /* Progress fill (pie style using conic-gradient).
+     The gradient is composed here (not in a :root variable) so that
+     var(--progress) resolves against the element's own value. */
   .progress {
     position: absolute;
     width: calc(100% - 4px);
     height: calc(100% - 4px);
     border-radius: 50%;
-    background: var(--progress-indicator-fill);
+    background: conic-gradient(
+      from 0deg,
+      var(--progress-indicator-arc-start) 0deg,
+      var(--progress-indicator-arc-end) calc(var(--progress, 0) * 3.6deg),
+      transparent calc(var(--progress, 0) * 3.6deg),
+      transparent 360deg
+    );
     border: 0.5px solid var(--progress-indicator-border);
 
     /* Inner hole to make it a ring */
