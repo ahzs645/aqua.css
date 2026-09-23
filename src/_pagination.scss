@@ -28,6 +28,7 @@
   background: var(--pagination-gradient);
   padding: 2px;
   width: 20px;
+  min-width: 0; /* override the global button min-width */
   height: 20px;
   cursor: pointer;
   font-size: var(--font-size-small);

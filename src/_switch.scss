@@ -14,10 +14,12 @@
   padding: 0 2px;
   height: 16px;
   width: 28px;
+  min-width: 0; /* override the global button min-width */
   transition: background 200ms, box-shadow 200ms;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
 
   &:focus {
     outline: none;

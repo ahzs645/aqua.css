@@ -191,9 +191,11 @@
 .aqua-toast-close {
   flex-shrink: 0;
   width: 20px;
+  min-width: 0; /* override the global button min-width */
   height: 20px;
   padding: 0;
   border: none;
+  box-shadow: none;
   background: transparent;
   color: var(--toast-close-color);
   cursor: pointer;

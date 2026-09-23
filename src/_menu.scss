@@ -339,6 +339,7 @@
 
 .context-menu-item,
 .aqua-menu-item {
+  position: relative; /* anchor for nested submenus */
   padding: 0 26px 4px 4px;
   cursor: pointer;
   display: flex;

@@ -70,8 +70,11 @@ table.aqua-table {
 
 }
 
-/* Standard table styling (legacy) */
-table:not(.aqua):not(.table-view) {
+/* Standard table styling (legacy): plain <table> elements only, so these
+   rules never compete with .aqua-table / .aqua-tree-table */
+$plain-table: 'table:not(.aqua):not(.table-view):not(.aqua-table):not(.aqua-tree-table):not(.tree-table)';
+
+#{$plain-table} {
   border-collapse: collapse;
   font-size: var(--font-size-base);
   background: var(--table-bg);
@@ -139,7 +142,7 @@ table:not(.aqua):not(.table-view) {
    ERA-SPECIFIC: Mac OS X 10.0 Gray Selection
    ============================================ */
 @include aqua-era('10-0') {
-  table:not(.aqua):not(.table-view) tbody tr {
+  #{$plain-table} tbody tr {
     &.selected,
     &.highlighted {
       background: linear-gradient(

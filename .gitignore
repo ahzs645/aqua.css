@@ -31,3 +31,7 @@ coverage/
 
 # Generated source maps outside dist
 Resources/**/*.map
+
+# Dev server staging folders
+.dist-next/
+.dist-prev/

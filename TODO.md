@@ -6,6 +6,9 @@
 - [x] Package.json with dependencies (PostCSS, cssnano, EJS, etc.)
 - [x] Build script (build.js) - compiles CSS, inlines SVGs, generates docs
 - [x] Dev server (server.js) - hot reload on file changes
+- [x] Dev server keeps running when a rebuild fails (e.g. a Sass error)
+- [x] Fonts copied to `dist/fonts/`; every `dist/*.css` build loads `fonts/...` relative to itself, `dist/components/*.css` load `../fonts/...`
+- [x] Legacy build (`aqua.legacy.css`) no longer emits `undefined` values
 - [x] Git repository initialized
 - [x] MIT License
 - [x] README.md with installation and usage instructions
@@ -72,7 +75,8 @@
 
 #### Other
 - [x] Fieldset/legend (group box)
-- [x] Custom scrollbars (WebKit)
+- [x] Custom scrollbars (WebKit `::-webkit-scrollbar`)
+- [x] Firefox scrollbar fallback (`scrollbar-color`, wrapped in `@supports not selector(::-webkit-scrollbar)`)
 - [x] Utility classes (field-row, field-row-stacked)
 - [x] Labels
 
@@ -88,67 +92,73 @@
 ### High Priority
 
 #### SVG Icons (icon/ folder)
-- [ ] Traffic light button symbols (×, −, +) for hover state
-- [ ] Checkbox checkmark as SVG
-- [ ] Radio dot as SVG
-- [ ] Scrollbar arrows (up, down, left, right)
-- [ ] Select dropdown arrow
-- [ ] Disclosure triangles (for tree view)
+- [x] Traffic light button symbols (×, −, +) for hover state - rendered as text glyphs in `.icon` spans (`close.svg`, `minimize.svg`, `maximize.svg` exist in `icon/` but are not referenced)
+- [x] Checkbox checkmark as SVG (`icon/checkbox-check.svg`)
+- [x] Radio dot as SVG (`icon/radio-dot.svg`)
+- [x] Scrollbar arrows (up, down, left, right) (`icon/scrollbar-*.svg`)
+- [x] Select dropdown arrow - `.select-wrapper` uses `.select-arrows` markup (`icon/select-arrow.svg` exists but is not referenced)
+- [x] Disclosure triangles (`icon/disclosure-open.svg`, `icon/disclosure-closed.svg`)
+- [x] Alert icons (`icon/alert-*.svg`, `icon/finder.svg`, `icon/finder-jaguar.png`)
 
 #### Fonts (fonts/ folder)
-- [ ] Consider adding Lucida Grande alternative (or document system font usage)
-- [ ] Charcoal font for classic Mac feel (optional)
+- [x] Lucida Grande bundled (`fonts/`, loaded via `@font-face` in `src/_fonts.scss`, ~2.4 MB)
+- [x] Era font presets via `data-aqua-theme` (Chicago, Charcoal, Lucida Grande, Helvetica Neue, San Francisco) - only Lucida Grande is bundled; the rest use system-installed fonts
+- [ ] Confirm redistribution rights for the bundled Lucida Grande files before publishing to npm
+- [x] Font presets apply on any element (each preset recomputes `--font-ui`); not available in the legacy build
 
 #### Additional Components
-- [ ] **Menu bar** - Horizontal menu with dropdowns
-- [ ] **Dropdown menus** - With hover states and separators
-- [ ] **Context menus** - Right-click style menus
-- [ ] **Toolbar** - Icon toolbar like classic Mac apps
-- [ ] **Alert/Dialog boxes** - Modal alerts with icon
-- [ ] **Tooltips** - Hover tooltips
-- [ ] **Slider/Range input** - Aqua-style slider
-- [ ] **Stepper** - Number input with +/- buttons
-- [ ] **Search field** - Rounded search input with icon
-- [ ] **Segmented control** - Button group (like view switcher)
-- [ ] **List view** - Striped table rows
-- [ ] **Tree view** - Expandable/collapsible list
-- [ ] **Split view** - Resizable panes
-- [ ] **Disclosure triangle** - Expandable sections
+- [x] **Menu bar** - Horizontal menu with dropdowns (`.menu-bar`, `.menu-dropdown`)
+- [x] **Dropdown menus** - With hover states and separators (`.aqua-menu`, `.aqua-menu-item`, `.aqua-menu-separator`)
+- [x] **Context menus** - Right-click style menus (`.context-menu`, nested submenus)
+- [x] **Toolbar** - Icon toolbar like classic Mac apps (`.toolbar`, `.toolbar-button`, `.toolbar-separator`)
+- [x] **Alert/Dialog boxes** - Modal alerts with icon (`.alert-dialog`, `.modal-overlay`, `.aqua-dialog`)
+- [x] **Tooltips** - Hover tooltips (`[data-tooltip]`, `.aqua-tooltip`)
+- [x] **Slider/Range input** - Aqua-style slider (`input[type="range"]`, `.aqua-slider-custom`)
+- [x] **Stepper** - Number input with +/- buttons (`.aqua-stepper`, `.aqua-spinner`)
+- [x] **Search field** - Rounded search input with icon (`input[type="search"]`, `.aqua-search-field`)
+- [x] **Segmented control** - Button group (like view switcher) (`.segmented-control`)
+- [x] **List view** - Striped rows (`.aqua-list.striped`, `.table-view`)
+- [x] **Tree view** - Expandable/collapsible list (`.aqua-tree`, `.tree-view`, `.tree-table`)
+- [x] **Split view** - Resizable panes (`.aqua-split-pane`, `.split-view`; dragging needs page JS)
+- [x] **Disclosure triangle** - Expandable sections (`details.disclosure`)
 
 ### Medium Priority
 
 #### Variants/Themes
-- [ ] **Graphite theme** - Gray instead of blue
-- [ ] **Pinstripe variant** - Classic pinstripe background
-- [ ] **Brushed metal variant** - Full brushed metal window
+- [x] **Graphite theme** - Gray instead of blue (`.theme-graphite` / `data-aqua-theme="graphite"`; also `air`, `earth`, `fire`, `purple`)
+- [x] **Pinstripe variant** - Classic pinstripe background (`--pinstripe`, `.aqua-bg-pinstripe`)
+- [x] **Brushed metal variant** - Full brushed metal window (`.window.brushed-metal`, `-light`, `-dark`, `-authentic`)
+- [x] **Era presets** - `.aqua-era-*` / `data-aqua-era` (10.0, 10.2, 10.3, 10.4 default, 10.6)
 
 #### Animations
 - [ ] Window open/close animation
 - [ ] Button press animation refinement
 - [ ] Menu slide-down animation
-- [ ] Checkbox/radio transition animation
+- [x] Checkbox/radio transition animation (0.15s transitions on native inputs)
 
 #### Accessibility
-- [ ] Focus visible outlines
+- [x] Focus visible outlines (`:focus-visible` rings on buttons, checkboxes, radios, fields, sliders, tabs, menus, steppers)
+- [x] Focus ring for segmented controls (drawn on the control with `:has(:focus-visible)`)
 - [ ] High contrast mode support
-- [ ] Reduced motion support
+- [x] Reduced motion support (`src/_motion.scss`: pulses and progress stripes hold still, slides/rotations are instant, spinners keep turning)
 - [ ] Screen reader improvements
 
 ### Low Priority
 
 #### Advanced Features
-- [ ] **Dock** - Mac dock recreation
+- [x] **Dock** - Mac dock recreation (`.dock`, `.dock-icon`; magnification demo uses page JS)
 - [ ] **Desktop icons** - Grid of icons
 - [ ] **Finder window** - Sidebar + file list
-- [ ] **Sheet dialogs** - Slide-down from title bar
+- [ ] **Sheet dialogs** - Slide-down from title bar (static `.window.sheet` exists; no slide animation)
 - [ ] **Drawer** - Slide-out side panel
 
 #### Build/Tooling
 - [ ] GitHub Actions workflow for npm publish
-- [ ] GitHub Actions for gh-pages deployment
-- [ ] Minified + non-minified dist files
-- [ ] CSS custom properties preserved option
-- [ ] SCSS source files (like XP.css)
+- [ ] Publish to npm (package not published yet; README marks npm/CDN install as "once published")
+- [x] GitHub Actions for GitHub Pages deployment (`.github/workflows/deploy.yml`, on push to `main`)
+- [ ] Minified + non-minified dist files (all builds are currently minified by cssnano)
+- [x] CSS custom properties preserved option (`aqua.css` keeps them; `aqua.legacy.css` resolves them)
+- [x] SCSS source files (like XP.css) (`src/`)
 
 #### Documentation
 - [ ] Screenshot for README
@@ -165,24 +175,27 @@
 ```
 aqua.css/
 ├── .github/
-│   └── workflows/        # CI/CD (TODO)
+│   └── workflows/
+│       └── deploy.yml    # ✅ Builds and deploys dist/ to GitHub Pages
 ├── docs/
 │   ├── index.html.ejs    # ✅ Documentation template
+│   ├── partials/         # ✅ One _*.ejs partial per docs section
+│   ├── docs.css          # ✅ Docs site styles
 │   └── (screenshot.png)  # TODO
-├── fonts/                # TODO - add web fonts
-├── icon/                 # TODO - add SVG icons
-│   ├── close.svg
-│   ├── minimize.svg
-│   ├── maximize.svg
-│   ├── checkbox.svg
-│   ├── radio.svg
-│   ├── arrow-up.svg
-│   ├── arrow-down.svg
-│   └── ...
+├── fonts/                # ✅ Bundled Lucida Grande (woff/ttf)
+├── icon/                 # ✅ Icons
+│   ├── alert-error.svg, alert-info.svg, alert-question.svg, alert-warning.svg
+│   ├── checkbox-check.svg, radio-dot.svg
+│   ├── close.svg, minimize.svg, maximize.svg   # present, not referenced by the CSS
+│   ├── disclosure-closed.svg, disclosure-open.svg
+│   ├── scrollbar-up.svg, scrollbar-down.svg, scrollbar-left.svg, scrollbar-right.svg
+│   ├── search.svg, select-arrow.svg            # present, not referenced by the CSS
+│   ├── finder.svg, finder-jaguar.png, finder-jaguar.ico, apple.png
 ├── dist/                 # Generated by build
-│   ├── aqua.css
-│   ├── aqua.css.map
-│   └── index.html
+│   ├── aqua.css, aqua.legacy.css, aqua.scoped.css, aqua.inline.css (+ .map)
+│   ├── components/       # Per-component bundles
+│   ├── fonts/, icon/, progress.png
+│   └── index.html, docs.css, favicon.ico
 ├── src/                  # ✅ SCSS source (index.scss + partials)
 ├── .gitignore            # ✅
 ├── build.js              # ✅ Build script
@@ -218,4 +231,4 @@ aqua.css/
 ### Browser Support Target
 - Modern browsers (Chrome, Firefox, Safari, Edge)
 - WebKit scrollbar styling (Chrome, Safari, Edge)
-- Firefox scrollbar fallback needed
+- Firefox scrollbar fallback via `scrollbar-color` (done)

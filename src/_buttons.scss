@@ -364,7 +364,9 @@ input[type="button"],
   align-items: center;
   justify-content: center;
 
-  &:active {
+  /* :where() keeps the pressed state at element specificity so component
+     classes (.aqua-button--primary, .aqua-switch, ...) keep their own look */
+  &:where(:active) {
     background-image: var(--aqua-button-standard-active-gradient);
   }
 
@@ -425,7 +427,7 @@ input[type="submit"],
   border-color: var(--aqua-button-default-border);
   background-image: var(--aqua-button-default-gradient);
 
-  &:active {
+  &:where(:active) {
     background-image: var(--aqua-button-default-active-gradient);
   }
 

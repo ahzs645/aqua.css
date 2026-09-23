@@ -50,24 +50,28 @@
 [data-aqua-theme="chicago"],
 [data-aqua-theme="system1"] {
   --font-system: "Chicago", "ChicagoFLF", sans-serif;
+  --font-ui: var(--font-system); /* recompute here, not only at :root */
 }
 
 /* Mac OS 8–9.2.2 (1997–2001): Charcoal */
 [data-aqua-theme="charcoal"],
 [data-aqua-theme="macos9"] {
   --font-system: "Charcoal", "Charcoal CY", sans-serif;
+  --font-ui: var(--font-system); /* recompute here, not only at :root */
 }
 
 /* Mac OS X 10.0–10.9 (2001–2013): Lucida Grande (default) */
 [data-aqua-theme="lucida-grande"],
 [data-aqua-theme="aqua"] {
   --font-system: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  --font-ui: var(--font-system); /* recompute here, not only at :root */
 }
 
 /* OS X 10.10 Yosemite (2014–2015): Helvetica Neue */
 [data-aqua-theme="helvetica-neue"],
 [data-aqua-theme="yosemite"] {
   --font-system: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  --font-ui: var(--font-system); /* recompute here, not only at :root */
 }
 
 /* OS X 10.11+ El Capitan (2015+): San Francisco */
@@ -75,4 +79,5 @@
 [data-aqua-theme="el-capitan"] {
   --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-ui: var(--font-system); /* recompute here, not only at :root */
 }

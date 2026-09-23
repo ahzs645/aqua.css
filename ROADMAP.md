@@ -15,20 +15,29 @@ A comprehensive plan for building a CSS library that recreates Apple's Aqua inte
 
 ---
 
-## Current Status: Phase 1 Complete ✅
+## Current Status: Phases 1-4 Mostly Complete ✅
+
+See `TODO.md` for the item-by-item checklist.
 
 ### What's Been Built
 
 ```
 aqua.css/
-├── .github/workflows/     # Ready for CI/CD
+├── .github/workflows/
+│   └── deploy.yml         ✅ Builds dist/ and deploys it to GitHub Pages
 ├── docs/
-│   └── index.html.ejs     ✅ Documentation with examples
-├── fonts/                 # Empty - ready for fonts
-├── icon/                  # Empty - ready for SVGs
+│   ├── index.html.ejs     ✅ Documentation page template
+│   └── partials/          ✅ One _*.ejs partial per section (examples live here)
+├── fonts/                 ✅ Bundled Lucida Grande (~2.4 MB woff/ttf)
+├── icon/                  ✅ SVG/PNG icons (alerts, checkbox, radio, scrollbar, disclosure, ...)
 ├── dist/
-│   ├── aqua.css           ✅ 12KB minified
-│   ├── aqua.css.map       ✅ Source map
+│   ├── aqua.css           ✅ ~390 KB minified (~48 KB gzipped)
+│   ├── aqua.legacy.css    ✅ Custom properties resolved
+│   ├── aqua.scoped.css    ✅ Selectors prefixed with `.aqua `
+│   ├── aqua.inline.css    ✅ Images inlined as data URIs (fonts are not)
+│   ├── *.map              ✅ Source maps
+│   ├── components/        ✅ Per-component bundles
+│   ├── fonts/, icon/      ✅ Assets referenced by the CSS
 │   └── index.html         ✅ Generated docs
 ├── src/                   ✅ SCSS source (index.scss + partials)
 ├── .gitignore             ✅
@@ -57,8 +66,23 @@ aqua.css/
 | Progress Bar | ✅ Done | Static, animated stripe, indeterminate |
 | Tabs | ✅ Done | Active/inactive states |
 | Fieldset | ✅ Done | Group box with legend |
-| Scrollbars | ✅ Done | WebKit custom scrollbars |
+| Scrollbars | ✅ Done | WebKit custom scrollbars + Firefox `scrollbar-color` fallback |
 | Labels | ✅ Done | With disabled state |
+| Menus | ✅ Done | Menu bar, dropdowns, context menus, submenus |
+| Toolbar | ✅ Done | Buttons, separators, search |
+| Alerts / dialogs | ✅ Done | Alert icons, modal overlay, `.aqua-dialog` |
+| Slider, stepper, search field, segmented control | ✅ Done | |
+| List / tree / table views | ✅ Done | Striped lists, tree view, tree table, sortable headers |
+| Split view, disclosure, titled pane | ✅ Done | Split-pane dragging needs page JS |
+| Tooltip, balloon, toast, chat bubble, badge, pagination, dock | ✅ Done | |
+| Themes and era presets | ✅ Done | Graphite/air/earth/fire/purple; eras 10.0-10.6; font presets |
+
+### Recent build fixes
+
+- [x] Legacy build (`aqua.legacy.css`) no longer emits `undefined` values
+- [x] Fonts are copied to `dist/fonts/`; every `dist/*.css` build loads `fonts/...` relative to itself and `dist/components/*.css` load `../fonts/...`
+- [x] Dev server keeps running when a rebuild fails (e.g. a Sass error), builds in a child process and swaps the result into `dist/`, so pages never 404 mid-rebuild
+- [x] Dev dependencies: `npm audit` clean (dropped `live-server`, `postcss-copy`, `postcss-base64`, `postcss-calc`)
 
 ---
 
@@ -66,7 +90,16 @@ aqua.css/
 
 ### Priority: HIGH
 
-The current implementation uses CSS-only solutions. Adding proper SVG icons will improve authenticity.
+Status: the core icons now exist in `icon/`: `alert-error/info/question/warning.svg`,
+`checkbox-check.svg`, `radio-dot.svg`, `scrollbar-up/down/left/right.svg`,
+`disclosure-open/closed.svg`, `close/minimize/maximize.svg`, `search.svg`,
+`select-arrow.svg`, `finder.svg`, `finder-jaguar.png/.ico` and `apple.png`. The
+`close`/`minimize`/`maximize`, `search` and `select-arrow` SVGs are not referenced by the
+CSS (traffic lights use text glyphs, the search icon is an inline data URI, and selects use
+`.select-arrows` markup). The `-active`/`-disabled` variants, `scrollbar-track.svg` and
+`sort-arrow.svg` below were never created.
+
+The original plan:
 
 ### Icons to Create (`icon/` folder)
 
@@ -109,10 +142,10 @@ icon/
 
 ### Tasks
 
-1. [ ] Create close/minimize/maximize symbols (show on hover)
-2. [ ] Create checkmark SVG for checkboxes
-3. [ ] Create disclosure triangles for tree view
-4. [ ] Update src/ SCSS to use `svg-load()` for icons
+1. [x] Create close/minimize/maximize symbols (show on hover) - shipped as text glyphs
+2. [x] Create checkmark SVG for checkboxes
+3. [x] Create disclosure triangles for tree view
+4. [x] Update src/ SCSS to use `svg-load()` for icons
 5. [ ] Test icon rendering at different sizes
 
 ---
@@ -143,14 +176,14 @@ Classic Mac menu bar with dropdowns.
 ```
 
 **Features:**
-- [ ] Horizontal menu bar
-- [ ] Dropdown menus on hover/click
-- [ ] Menu item hover state (blue highlight)
-- [ ] Keyboard shortcuts display (right-aligned)
-- [ ] Separators
-- [ ] Disabled items
-- [ ] Submenus (nested)
-- [ ] Checkmark for selected items
+- [x] Horizontal menu bar (`.menu-bar`)
+- [x] Dropdown menus on hover/focus (`:hover` / `:focus-within`)
+- [x] Menu item hover state (blue highlight)
+- [x] Keyboard shortcuts display (right-aligned, `.shortcut`)
+- [x] Separators
+- [x] Disabled items
+- [x] Submenus (nested `.aqua-menu` / `.context-menu`)
+- [x] Checkmark for selected items (`.aqua-menu-item.checked`)
 
 ### 3.2 Toolbar
 
@@ -171,11 +204,11 @@ Icon toolbar like classic Mac apps.
 ```
 
 **Features:**
-- [ ] Icon + text buttons
+- [x] Icon + text buttons (`.toolbar-button.with-icon`)
 - [ ] Icon-only mode
-- [ ] Vertical separators
-- [ ] Disabled state
-- [ ] Toggle buttons (pressed state)
+- [x] Vertical separators
+- [x] Disabled state
+- [ ] Toggle buttons (pressed state) - only a transient `:active` state
 
 ### 3.3 Alert / Dialog Boxes
 
@@ -196,11 +229,11 @@ Modal dialogs with icon.
 ```
 
 **Features:**
-- [ ] Warning, error, info, question icons
-- [ ] Title and message
-- [ ] Button row (right-aligned)
-- [ ] Modal overlay
-- [ ] Sheet variant (slides from title bar)
+- [x] Warning, error, info, question icons
+- [x] Title and message
+- [x] Button row (right-aligned)
+- [x] Modal overlay (`.modal-overlay`)
+- [ ] Sheet variant (slides from title bar) - static `.window.sheet` exists, no slide animation
 
 ### 3.4 Slider / Range Input
 
@@ -211,10 +244,10 @@ Aqua-style slider control.
 ```
 
 **Features:**
-- [ ] Custom thumb (blue pill or circular)
-- [ ] Track styling
-- [ ] Tick marks (optional)
-- [ ] Vertical orientation
+- [x] Custom thumb (blue pill or circular)
+- [x] Track styling
+- [x] Tick marks (optional, `.aqua-slider-custom .ticks`)
+- [x] Vertical orientation
 
 ### 3.5 Search Field
 
@@ -225,10 +258,10 @@ Rounded search input with icon.
 ```
 
 **Features:**
-- [ ] Rounded pill shape
-- [ ] Magnifying glass icon
-- [ ] Clear button (×)
-- [ ] Focus state
+- [x] Rounded pill shape
+- [x] Magnifying glass icon
+- [x] Clear button (×) (WebKit `::-webkit-search-cancel-button` only)
+- [x] Focus state
 
 ### 3.6 Segmented Control
 
@@ -243,9 +276,10 @@ Button group for switching views.
 ```
 
 **Features:**
-- [ ] Connected button group
-- [ ] Active/selected state
+- [x] Connected button group
+- [x] Active/selected state (`.active` / `aria-pressed="true"`)
 - [ ] Icon-only variant
+- [x] Keyboard focus ring (drawn on the control with `:has(:focus-visible)`)
 
 ### 3.7 List View / Table
 
@@ -268,9 +302,9 @@ Striped table rows like Finder.
 ```
 
 **Features:**
-- [ ] Alternating row colors (zebra striping)
-- [ ] Sortable column headers
-- [ ] Selected row highlight (blue)
+- [x] Alternating row colors (zebra striping)
+- [x] Sortable column headers (`.sort-arrow`; sorting itself needs JS)
+- [x] Selected row highlight (blue)
 - [ ] Column resizing (visual only)
 
 ### 3.8 Tree View
@@ -292,9 +326,9 @@ Expandable file/folder hierarchy.
 ```
 
 **Features:**
-- [ ] Disclosure triangles
-- [ ] Indentation
-- [ ] Selected item highlight
+- [x] Disclosure triangles
+- [x] Indentation
+- [x] Selected item highlight
 - [ ] Dotted connection lines (optional)
 
 ### 3.9 Tooltip
@@ -306,9 +340,9 @@ Hover tooltips.
 ```
 
 **Features:**
-- [ ] Yellow/cream background
-- [ ] Black text
-- [ ] Subtle shadow
+- [x] Yellow/cream background
+- [x] Black text
+- [x] Subtle shadow
 - [ ] Arrow pointer
 - [ ] Delay before showing
 
@@ -327,10 +361,13 @@ Gray alternative to Aqua blue (was a real Mac OS X option).
 ```
 
 **Changes:**
-- [ ] Replace blue with gray in buttons, checkboxes, radios
-- [ ] Gray traffic light buttons when inactive
-- [ ] Gray progress bars
-- [ ] Gray selection highlight
+- [x] Replace blue with gray in buttons, checkboxes, radios
+- [x] Gray traffic light buttons when inactive (default inactive state)
+- [x] Gray progress bars
+- [x] Gray selection highlight
+
+Implemented as `.theme-graphite` / `data-aqua-theme="graphite"`, alongside `air`, `earth`,
+`fire` and `purple`.
 
 ### 4.2 Pinstripe Background
 
@@ -342,6 +379,10 @@ Classic pinstripe pattern for window backgrounds.
 }
 ```
 
+Done differently: there is no `.window.pinstripe` class. The pinstripe comes from the
+`--pinstripe` token (page `body`, title bars), the `.aqua-bg-pinstripe*` utilities and the
+`pinstripe-window` / `pinstripe-menu` mixins.
+
 ### 4.3 Brushed Metal
 
 Full brushed metal window (like iTunes, QuickTime).
@@ -351,9 +392,9 @@ Full brushed metal window (like iTunes, QuickTime).
 ```
 
 **Features:**
-- [ ] Metallic texture gradient
+- [x] Metallic texture gradient (`.window.brushed-metal`, `-light`, `-dark`, `-authentic`)
 - [ ] Slightly different button styling
-- [ ] Darker window body
+- [x] Darker window body
 
 ---
 
@@ -364,23 +405,23 @@ Full brushed metal window (like iTunes, QuickTime).
 ### 5.1 Animations
 
 - [ ] Button press animation (subtle scale)
-- [ ] Checkbox/radio transition
-- [ ] Progress bar smooth fill
+- [x] Checkbox/radio transition
+- [x] Progress bar smooth fill (width transition)
 - [ ] Menu dropdown slide
 - [ ] Window appear animation (scale + fade)
 - [ ] Genie effect (advanced, CSS only approximation)
 
 ### 5.2 Accessibility
 
-- [ ] Focus visible outlines (keyboard navigation)
-- [ ] `prefers-reduced-motion` support
+- [x] Focus visible outlines (keyboard navigation)
+- [x] `prefers-reduced-motion` support (`src/_motion.scss`)
 - [ ] `prefers-contrast` support
 - [ ] ARIA attributes in documentation examples
 - [ ] Screen reader testing
 
 ### 5.3 Browser Compatibility
 
-- [ ] Firefox scrollbar fallback (`scrollbar-color`, `scrollbar-width`)
+- [x] Firefox scrollbar fallback (`scrollbar-color`, `scrollbar-width`, inside `@supports not selector(::-webkit-scrollbar)`)
 - [ ] Test in Safari, Chrome, Firefox, Edge
 - [ ] Document browser support
 
@@ -401,12 +442,16 @@ Full brushed metal window (like iTunes, QuickTime).
 - Deploy docs to GitHub Pages
 ```
 
+- [x] Deploy docs to GitHub Pages (`.github/workflows/deploy.yml`, on push to `main`)
+- [ ] Lint, test and npm publish workflow
+
 ### 6.2 npm Publishing
 
 - [ ] Update package.json with final details
-- [ ] Add `files` field to limit package contents
+- [x] Add `files` field to limit package contents (includes `dist/fonts/`)
+- [ ] Confirm redistribution rights for the bundled Lucida Grande fonts
 - [ ] Test `npm pack` locally
-- [ ] Publish v0.1.0
+- [ ] Publish v0.1.0 (not on npm yet; README marks npm/CDN install as "once published")
 
 ### 6.3 Documentation Site
 
@@ -434,27 +479,29 @@ Full brushed metal window (like iTunes, QuickTime).
 | Blue selection/focus color | ✅ |
 | Candy-stripe progress bars | ✅ |
 | Custom scrollbars | ✅ |
-| Menus with blue highlight | ⬜ |
+| Menus with blue highlight | ✅ |
 | Translucent menus | ⬜ (CSS limitation) |
-| Sheet dialogs | ⬜ |
+| Sheet dialogs | ⬜ (static `.window.sheet` only) |
 | Genie minimize effect | ⬜ (CSS limitation) |
 
 ### Color Reference
 
-| Color | Hex | Usage |
-|-------|-----|-------|
-| Aqua Blue | `#2B99FF` | Buttons, checkboxes, selection |
-| Aqua Blue Dark | `#0066CC` | Borders, darker areas |
-| Aqua Blue Light | `#66CCFF` | Highlights |
-| Close Red | `#FF5F57` | Close button |
-| Minimize Yellow | `#FFBD2E` | Minimize button |
-| Maximize Green | `#28CA41` | Maximize button |
-| Window Gray | `#E8E8E8` | Window background |
-| Graphite | `#8C8C8C` | Graphite theme |
+Default (10.4) values from `src/_variables.scss`; eras and themes override them.
+
+| Color | Value | Token / usage |
+|-------|-------|---------------|
+| Aqua Blue | `#2B99FF` | `--aqua-blue` - buttons, checkboxes, selection |
+| Aqua Blue Dark | `#0066CC` | `--aqua-blue-dark` - borders, darker areas |
+| Close Red | `rgb(193, 58, 45)` → `rgb(205, 73, 52)` | `--traffic-light-red-gradient` |
+| Minimize Yellow | `rgb(202, 130, 13)` → `rgb(253, 253, 149)` | `--traffic-light-yellow-gradient` |
+| Maximize Green | `rgb(111, 174, 58)` → `rgb(138, 192, 50)` | `--traffic-light-green-gradient` |
+| Surface Gray | `#E8E8E8` | `--surface` |
+| Window Gray | `#ECECEC` | `--window-bg` - window body |
+| Graphite | `#8C8C8C` | `--aqua-blue` in the graphite theme |
 
 ### Typography
 
-- **System Font:** -apple-system, Lucida Grande, Helvetica Neue
+- **System Font:** Lucida Grande (bundled), falling back to Lucida Sans Unicode, sans-serif; other era fonts via `data-aqua-theme` presets
 - **Base Size:** 13px
 - **Small Size:** 11px (labels, status bar)
 
@@ -469,21 +516,21 @@ cd aqua.css
 npm install
 
 # Development
-npm start          # Dev server at localhost:3000
+npm start          # Dev server at localhost:3000 (keeps running if a rebuild fails)
 
 # Build
 npm run build      # Creates dist/aqua.css
 
 # File structure
 src/               # Edit this - SCSS source (index.scss + partials)
-docs/index.html.ejs # Edit this - documentation
+docs/partials/     # Edit this - documentation sections (_*.ejs)
 icon/              # Add SVGs here
 ```
 
 ### Adding a New Component
 
 1. Add a partial in `src/` and `@use` it from `src/index.scss` (follow existing patterns)
-2. Add example to `docs/index.html.ejs`
+2. Add examples in a `docs/partials/_*.ejs` partial and include it from `docs/index.html.ejs`
 3. Run `npm run build` to test
 4. Update TODO.md and ROADMAP.md
 
@@ -491,11 +538,11 @@ icon/              # Add SVGs here
 
 ## Questions to Decide
 
-1. **Should scrollbars be blue?** Classic Aqua had blue scrollbar thumbs, but the current implementation uses gray (more neutral). Consider adding a `.scrollbar-blue` variant.
+1. ~~**Should scrollbars be blue?**~~ Resolved: scrollbar thumbs now use the blue Aqua gradient (`--scrollbar-thumb-gradient`).
 
 2. **How authentic vs. usable?** Some Aqua elements (like heavy textures) may not suit modern web apps. Balance authenticity with practicality.
 
-3. **JavaScript?** Currently pure CSS. Should we add optional JS for:
+3. **JavaScript?** The library is still pure CSS; the docs site uses small page scripts for tabs, split panes, custom sliders/scrollbars and similar demos. Should we ship optional JS for:
    - Menu dropdowns
    - Tab switching
    - Tooltip positioning
@@ -520,4 +567,4 @@ icon/              # Add SVGs here
 
 ---
 
-*Last updated: December 2024*
+*Last updated: September 2026*
