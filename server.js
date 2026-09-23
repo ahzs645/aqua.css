@@ -23,7 +23,10 @@ function runBuild(reason) {
 
   buildInProgress = true;
   console.log(`Rebuilding...${reason ? ` (${reason})` : ""}`);
-  Promise.resolve(build())
+  // build() can throw synchronously (e.g. a Sass syntax error); starting from a
+  // resolved promise turns that into a rejection instead of crashing the server.
+  Promise.resolve()
+    .then(build)
     .catch((error) => {
       console.error(error);
     })
@@ -45,7 +48,8 @@ function scheduleBuild(reason) {
   }, 150);
 }
 
-Promise.resolve(build())
+Promise.resolve()
+  .then(build)
   .then(() => {
     const watcher = chokidar.watch(watchPaths, {
       ignoreInitial: true,

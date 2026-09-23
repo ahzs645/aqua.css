@@ -9,11 +9,74 @@ const sass = require("sass");
 
 const { homepage, version } = require("./package.json");
 const INLINE_ASSET_EXTENSIONS = [".png", ".svg", ".gif", ".jpg"];
+const FONT_EXTENSIONS = new Set(["woff", "woff2", "ttf", "otf"]);
+
+// Every build writes fonts to dist/fonts/ and other assets next to the CSS,
+// so all dist/*.css files resolve the same relative URLs.
+function assetTemplate(fileMeta) {
+  const file = `${fileMeta.name}.${fileMeta.ext}`;
+  return FONT_EXTENSIONS.has(fileMeta.ext) ? `fonts/${file}` : file;
+}
+
+// Legacy build only. A :root token that references another token is computed
+// once, at :root, so expand those chains up front and gather every :root token
+// into one block. postcss-css-variables otherwise resolves forward references
+// as `undefined` and lets theme overrides leak into the :root defaults.
+const ROOT_VAR_REF = /var\(\s*(--[\w-]+)\s*(?:,([^()]*))?\)/g;
+function resolveRootVars() {
+  return {
+    postcssPlugin: "resolve-root-vars",
+    Once(root) {
+      const raw = new Map();
+      root.walkRules((rule) => {
+        if (rule.selector.trim() !== ":root") return;
+        rule.walkDecls(/^--/, (decl) => {
+          raw.set(decl.prop, decl.value);
+          decl.remove();
+        });
+        if (!rule.nodes.length) rule.remove();
+      });
+
+      const resolved = new Map();
+      const resolve = (name, seen = new Set()) => {
+        if (resolved.has(name)) return resolved.get(name);
+        if (seen.has(name)) return raw.get(name);
+        seen.add(name);
+        const value = raw.get(name).replace(ROOT_VAR_REF, (match, ref) =>
+          raw.has(ref) ? resolve(ref, seen) : match);
+        resolved.set(name, value);
+        return value;
+      };
+
+      const nodes = [...raw.keys()].map((prop) => postcss.decl({ prop, value: resolve(prop) }));
+      root.prepend(postcss.rule({ selector: ":root", nodes }));
+    },
+  };
+}
+resolveRootVars.postcss = true;
+
+// postcss-css-variables writes `prop: undefined` when it cannot compute a
+// static fallback; the value is invalid CSS either way, so drop it.
+function dropUndefinedDecls() {
+  return {
+    postcssPlugin: "drop-undefined-decls",
+    Declaration(decl) {
+      if (decl.value.trim() === "undefined") decl.remove();
+    },
+  };
+}
+dropUndefinedDecls.postcss = true;
 
 function createPipeline({ preserveVars, copyAssets, prefixSelector, inlineAssets, inlineAssetRoot }) {
-  let pipeline = postcss()
-    .use(require("postcss-inline-svg"))
+  let pipeline = postcss().use(require("postcss-inline-svg"));
+
+  if (!preserveVars) {
+    pipeline = pipeline.use(resolveRootVars());
+  }
+
+  pipeline = pipeline
     .use(require("postcss-css-variables")({ preserve: preserveVars }))
+    .use(dropUndefinedDecls())
     .use(require("postcss-calc"))
     .use(require("autoprefixer"));
 
@@ -36,7 +99,7 @@ function createPipeline({ preserveVars, copyAssets, prefixSelector, inlineAssets
   }
 
   if (copyAssets) {
-    pipeline = pipeline.use(require("postcss-copy")({ dest: "dist", template: "[name].[ext]" }));
+    pipeline = pipeline.use(require("postcss-copy")({ dest: "dist", template: assetTemplate }));
   }
 
   return pipeline.use(require("cssnano"));
@@ -57,6 +120,12 @@ function runPostCSS(input, { from, to, preserveVars, copyAssets, prefixSelector,
 }
 
 function buildCSS() {
+  // Compile first so a Sass error leaves the previous dist/ in place.
+  const scssResult = sass.compile("src/index.scss", {
+    loadPaths: ["src"],
+    sourceMap: true,
+  });
+
   fs.rmSync("dist", { recursive: true, force: true });
   fs.mkdirSync("dist", { recursive: true });
 
@@ -68,12 +137,6 @@ function buildCSS() {
       fs.copyFileSync("icon/finder-jaguar.ico", path.join("dist", "favicon.ico"));
     }
   }
-
-  // Compile SCSS to CSS
-  const scssResult = sass.compile("src/index.scss", {
-    loadPaths: ["src"],
-    sourceMap: true,
-  });
 
   const input = `/*! aqua.css v${version} - ${homepage} */\n` + scssResult.css;
   return runPostCSS(input, {
@@ -90,7 +153,7 @@ function buildCSS() {
       from: "src/index.scss",
       to: "dist/aqua.legacy.css",
       preserveVars: false,
-      copyAssets: false,
+      copyAssets: true,
     }))
     .then((result) => {
       fs.writeFileSync("dist/aqua.legacy.css", result.css);
@@ -100,7 +163,7 @@ function buildCSS() {
       from: "src/index.scss",
       to: "dist/aqua.scoped.css",
       preserveVars: true,
-      copyAssets: false,
+      copyAssets: true,
       prefixSelector: ".aqua",
     }))
     .then((result) => {
@@ -144,6 +207,7 @@ function buildComponents() {
   return Promise.all(componentFiles.map((file) => {
     const name = file.replace(/^_/, "").replace(/\.scss$/, "");
     const scssInput = [
+      `@use "fonts";`,
       `@use "variables";`,
       `@use "backgrounds";`,
       `@use "themes";`,
