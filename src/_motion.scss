@@ -1,0 +1,51 @@
+/**
+ * Reduced Motion
+ * Honors prefers-reduced-motion: pulses and moving progress patterns hold
+ * still, and slides and rotations happen instantly. Colour and opacity fades
+ * stay (they are not motion), and spinners keep turning because they are the
+ * only sign that work is still going on.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Pulsing default buttons show a steady glow */
+  .aqua-button-flat--primary.aqua-button-flat--pulsing .aqua-button-flat__pulse,
+  button.default.pulse,
+  input[type="submit"].pulse,
+  .button.default.pulse,
+  .aqua-button.default.pulse,
+  .aqua-button--primary.pulse,
+  [data-aqua-era] .aqua-button.default.pulse,
+  [data-aqua-era] .aqua-button--primary.pulse,
+  [class*="aqua-era-"] .aqua-button.default.pulse,
+  [class*="aqua-era-"] .aqua-button--primary.pulse {
+    animation: none;
+  }
+
+  /* Scrolling stripes and shimmer hold still; the pattern still marks the bar
+     as busy */
+  .aqua-progress .bar,
+  .progress-bar.animated .progress-bar-fill,
+  .aqua-progress.indeterminate .stripes-inner,
+  .progress-wave__shimmer {
+    animation: none;
+  }
+
+  /* Toasts appear and leave without sliding. The animation still runs (1ms)
+     so scripts that wait for animationend keep working. */
+  .aqua-toast,
+  .aqua-toast--leaving {
+    animation-duration: 1ms;
+  }
+
+  /* Slides and rotations jump straight to their end state */
+  .aqua-switch-thumb,
+  .dock-label,
+  .aqua-titled-pane-arrow,
+  .aqua-tree-arrow,
+  .tree-table-arrow::before,
+  .aqua-tree-table-arrow::before,
+  details.disclosure > summary::before,
+  .tree-view details > summary::before {
+    transition: none;
+  }
+}

@@ -31,6 +31,12 @@
     )
   ));
 
+  /* Keyboard focus ring on the whole control (buttons drop their own
+     outline and shadow, and overflow: hidden would clip one on a segment) */
+  &:has(:focus-visible) {
+    box-shadow: var(--aqua-focus-ring), var(--aqua-button-secondary-shadow);
+  }
+
   button,
   .aqua-button {
     border: none;
