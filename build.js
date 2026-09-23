@@ -8,15 +8,78 @@ const postcss = require("postcss");
 const sass = require("sass");
 
 const { homepage, version } = require("./package.json");
-const INLINE_ASSET_EXTENSIONS = [".png", ".svg", ".gif", ".jpg"];
-const FONT_EXTENSIONS = new Set(["woff", "woff2", "ttf", "otf"]);
 
-// Every build writes fonts to dist/fonts/ and other assets next to the CSS,
-// so all dist/*.css files resolve the same relative URLs.
-function assetTemplate(fileMeta) {
-  const file = `${fileMeta.name}.${fileMeta.ext}`;
-  return FONT_EXTENSIONS.has(fileMeta.ext) ? `fonts/${file}` : file;
+// All paths are resolved from the repo root, whatever the working directory.
+const ROOT = __dirname;
+const fromRoot = (...parts) => path.join(ROOT, ...parts);
+
+const INLINE_MIME_TYPES = {
+  ".png": "image/png",
+  ".svg": "image/svg+xml",
+  ".gif": "image/gif",
+  ".jpg": "image/jpeg",
+};
+const FONT_EXTENSIONS = new Set([".woff", ".woff2", ".ttf", ".otf"]);
+const URL_PATTERN = /url\(\s*(['"]?)([^'")]+)\1\s*\)/g;
+
+// Local file referenced by a url(): skips data:, remote, and #fragment URLs.
+function localAssetPath(url) {
+  if (/^(data:|[a-z]+:|\/\/|#|%23|\/)/i.test(url)) return null;
+  return url.split(/[?#]/)[0];
 }
+
+function rewriteUrls(root, rewrite) {
+  root.walkDecls((decl) => {
+    if (!decl.value.includes("url(")) return;
+    decl.value = decl.value.replace(URL_PATTERN, (match, quote, url) => {
+      const file = localAssetPath(url);
+      const next = file && rewrite(file, decl);
+      return next ? `url("${next}")` : match;
+    });
+  });
+}
+
+// Copies each asset a stylesheet references into the output folder and points
+// the url() at the copy: fonts go to fonts/, everything else next to the CSS,
+// so every dist/*.css file resolves the same relative URLs.
+function copyAssets({ outDir }) {
+  return {
+    postcssPlugin: "aqua-copy-assets",
+    Once(root, { result }) {
+      const cssDir = path.dirname(result.opts.to);
+      const sourceDir = path.dirname(result.opts.from);
+      rewriteUrls(root, (file) => {
+        const source = path.resolve(sourceDir, file);
+        if (!fs.existsSync(source) || !fs.statSync(source).isFile()) return null;
+        const name = path.basename(source);
+        const target = FONT_EXTENSIONS.has(path.extname(name).toLowerCase())
+          ? path.join(outDir, "fonts", name)
+          : path.join(outDir, name);
+        fs.mkdirSync(path.dirname(target), { recursive: true });
+        fs.copyFileSync(source, target);
+        return path.relative(cssDir, target).split(path.sep).join("/");
+      });
+    },
+  };
+}
+copyAssets.postcss = true;
+
+// Inlines images (not fonts) as base64 data URIs, resolving url()s against
+// the output folder.
+function inlineAssets({ root: assetRoot }) {
+  return {
+    postcssPlugin: "aqua-inline-assets",
+    Once(root) {
+      rewriteUrls(root, (file) => {
+        const mime = INLINE_MIME_TYPES[path.extname(file).toLowerCase()];
+        const source = path.join(assetRoot, file);
+        if (!mime || !fs.existsSync(source)) return null;
+        return `data:${mime};base64,${fs.readFileSync(source).toString("base64")}`;
+      });
+    },
+  };
+}
+inlineAssets.postcss = true;
 
 // Legacy build only. A :root token that references another token is computed
 // once, at :root, so expand those chains up front and gather every :root token
@@ -67,7 +130,7 @@ function dropUndefinedDecls() {
 }
 dropUndefinedDecls.postcss = true;
 
-function createPipeline({ preserveVars, copyAssets, prefixSelector, inlineAssets, inlineAssetRoot }) {
+function createPipeline({ outDir, preserveVars, copyAssets: copy, prefixSelector, inlineAssets: inline, inlineAssetRoot }) {
   let pipeline = postcss().use(require("postcss-inline-svg"));
 
   if (!preserveVars) {
@@ -77,14 +140,10 @@ function createPipeline({ preserveVars, copyAssets, prefixSelector, inlineAssets
   pipeline = pipeline
     .use(require("postcss-css-variables")({ preserve: preserveVars }))
     .use(dropUndefinedDecls())
-    .use(require("postcss-calc"))
     .use(require("autoprefixer"));
 
-  if (inlineAssets) {
-    pipeline = pipeline.use(require("postcss-base64")({
-      root: inlineAssetRoot,
-      extensions: INLINE_ASSET_EXTENSIONS,
-    }));
+  if (inline) {
+    pipeline = pipeline.use(inlineAssets({ root: inlineAssetRoot }));
   }
 
   if (prefixSelector) {
@@ -98,19 +157,20 @@ function createPipeline({ preserveVars, copyAssets, prefixSelector, inlineAssets
     }));
   }
 
-  if (copyAssets) {
-    pipeline = pipeline.use(require("postcss-copy")({ dest: "dist", template: assetTemplate }));
+  if (copy) {
+    pipeline = pipeline.use(copyAssets({ outDir }));
   }
 
   return pipeline.use(require("cssnano"));
 }
 
-function runPostCSS(input, { from, to, preserveVars, copyAssets, prefixSelector, inlineAssets, inlineAssetRoot }) {
+function runPostCSS(input, { from, to, outDir, preserveVars, copyAssets: copy, prefixSelector, inlineAssets: inline, inlineAssetRoot }) {
   return createPipeline({
+    outDir,
     preserveVars,
-    copyAssets,
+    copyAssets: copy,
     prefixSelector,
-    inlineAssets,
+    inlineAssets: inline,
     inlineAssetRoot,
   }).process(input, {
     from,
@@ -119,77 +179,60 @@ function runPostCSS(input, { from, to, preserveVars, copyAssets, prefixSelector,
   });
 }
 
-function buildCSS() {
-  // Compile first so a Sass error leaves the previous dist/ in place.
-  const scssResult = sass.compile("src/index.scss", {
-    loadPaths: ["src"],
+function buildCSS(outDir) {
+  // Compile first so a Sass error leaves the previous output in place.
+  const scssResult = sass.compile(fromRoot("src/index.scss"), {
+    loadPaths: [fromRoot("src")],
     sourceMap: true,
   });
 
-  fs.rmSync("dist", { recursive: true, force: true });
-  fs.mkdirSync("dist", { recursive: true });
+  fs.rmSync(outDir, { recursive: true, force: true });
+  fs.mkdirSync(outDir, { recursive: true });
 
-  // Copy icon folder to dist before CSS processing (needed for postcss-base64)
-  if (fs.existsSync("icon")) {
-    fs.cpSync("icon", path.join("dist", "icon"), { recursive: true });
-    // Copy favicon.ico to dist root for browsers that request /favicon.ico
-    if (fs.existsSync("icon/finder-jaguar.ico")) {
-      fs.copyFileSync("icon/finder-jaguar.ico", path.join("dist", "favicon.ico"));
+  // Copy the icon folder first: the inline and component builds read from it
+  if (fs.existsSync(fromRoot("icon"))) {
+    fs.cpSync(fromRoot("icon"), path.join(outDir, "icon"), { recursive: true });
+    // Copy favicon.ico to the output root for browsers that request /favicon.ico
+    if (fs.existsSync(fromRoot("icon/finder-jaguar.ico"))) {
+      fs.copyFileSync(fromRoot("icon/finder-jaguar.ico"), path.join(outDir, "favicon.ico"));
     }
   }
 
+  const from = fromRoot("src/index.scss");
+  const out = (file) => path.join(outDir, file);
+  const write = (file) => (result) => {
+    fs.writeFileSync(out(file), result.css);
+    fs.writeFileSync(out(`${file}.map`), result.map.toString());
+  };
+
   const input = `/*! aqua.css v${version} - ${homepage} */\n` + scssResult.css;
-  return runPostCSS(input, {
-    from: "src/index.scss",
-    to: "dist/aqua.css",
-    preserveVars: true,
-    copyAssets: true,
-  })
-    .then((result) => {
-      fs.writeFileSync("dist/aqua.css", result.css);
-      fs.writeFileSync("dist/aqua.css.map", result.map.toString());
-    })
+  return runPostCSS(input, { from, to: out("aqua.css"), outDir, preserveVars: true, copyAssets: true })
+    .then(write("aqua.css"))
+    .then(() => runPostCSS(input, { from, to: out("aqua.legacy.css"), outDir, preserveVars: false, copyAssets: true }))
+    .then(write("aqua.legacy.css"))
     .then(() => runPostCSS(input, {
-      from: "src/index.scss",
-      to: "dist/aqua.legacy.css",
-      preserveVars: false,
-      copyAssets: true,
-    }))
-    .then((result) => {
-      fs.writeFileSync("dist/aqua.legacy.css", result.css);
-      fs.writeFileSync("dist/aqua.legacy.css.map", result.map.toString());
-    })
-    .then(() => runPostCSS(input, {
-      from: "src/index.scss",
-      to: "dist/aqua.scoped.css",
+      from,
+      to: out("aqua.scoped.css"),
+      outDir,
       preserveVars: true,
       copyAssets: true,
       prefixSelector: ".aqua",
     }))
-    .then((result) => {
-      fs.writeFileSync("dist/aqua.scoped.css", result.css);
-      fs.writeFileSync("dist/aqua.scoped.css.map", result.map.toString());
-    })
-    .then(() => {
-      const inlineSource = fs.readFileSync("dist/aqua.css", "utf-8");
-      return runPostCSS(inlineSource, {
-        from: "dist/aqua.css",
-        to: "dist/aqua.inline.css",
-        preserveVars: true,
-        copyAssets: false,
-        inlineAssets: true,
-        inlineAssetRoot: path.join(process.cwd(), "dist"),
-      });
-    })
-    .then((result) => {
-      fs.writeFileSync("dist/aqua.inline.css", result.css);
-      fs.writeFileSync("dist/aqua.inline.css.map", result.map.toString());
-    })
-    .then(() => buildComponents());
+    .then(write("aqua.scoped.css"))
+    .then(() => runPostCSS(fs.readFileSync(out("aqua.css"), "utf-8"), {
+      from: out("aqua.css"),
+      to: out("aqua.inline.css"),
+      outDir,
+      preserveVars: true,
+      inlineAssets: true,
+      inlineAssetRoot: outDir,
+    }))
+    .then(write("aqua.inline.css"))
+    .then(() => buildComponents(outDir));
 }
 
-function buildComponents() {
-  const componentDir = path.join("dist", "components");
+function buildComponents(outDir) {
+  const componentDir = path.join(outDir, "components");
   fs.mkdirSync(componentDir, { recursive: true });
 
   const exclude = new Set([
@@ -201,7 +244,7 @@ function buildComponents() {
     "_fonts.scss",
   ]);
 
-  const componentFiles = fs.readdirSync("src")
+  const componentFiles = fs.readdirSync(fromRoot("src"))
     .filter((file) => file.startsWith("_") && file.endsWith(".scss") && !exclude.has(file));
 
   return Promise.all(componentFiles.map((file) => {
@@ -214,19 +257,19 @@ function buildComponents() {
       `@use "${name}";`,
     ].join("\n");
     const result = sass.compileString(scssInput, {
-      loadPaths: ["src"],
+      loadPaths: [fromRoot("src")],
       sourceMap: true,
     });
     const input = `/*! aqua.css v${version} - ${homepage} */\n` + result.css;
     const target = path.join(componentDir, `${name}.css`);
 
     return runPostCSS(input, {
-      from: `src/${file}`,
+      from: fromRoot("src", file),
       to: target,
+      outDir,
       preserveVars: true,
-      copyAssets: false,
       inlineAssets: true,
-      inlineAssetRoot: path.join(process.cwd(), "dist"),
+      inlineAssetRoot: outDir,
     }).then((processed) => {
       fs.writeFileSync(target, processed.css);
       fs.writeFileSync(`${target}.map`, processed.map.toString());
@@ -234,7 +277,7 @@ function buildComponents() {
   }));
 }
 
-function buildDocs() {
+function buildDocs(outDir = fromRoot("dist")) {
   let id = 0;
   function getNewId() {
     return ++id;
@@ -243,7 +286,7 @@ function buildDocs() {
     return id;
   }
 
-  const template = fs.readFileSync("docs/index.html.ejs", "utf-8");
+  const template = fs.readFileSync(fromRoot("docs/index.html.ejs"), "utf-8");
 
   function example(code) {
     const magicBrackets = /\[\[(.*)\]\]/g;
@@ -307,30 +350,35 @@ function buildDocs() {
     </div>`;
   }
 
-  fs.readdirSync("docs", { withFileTypes: true }).forEach((entry) => {
+  fs.readdirSync(fromRoot("docs"), { withFileTypes: true }).forEach((entry) => {
     // Skip directories and .ejs files
     if (entry.isFile() && !entry.name.endsWith(".ejs")) {
-      fs.copyFileSync(path.join("docs", entry.name), path.join("dist", entry.name));
+      fs.copyFileSync(fromRoot("docs", entry.name), path.join(outDir, entry.name));
     }
   });
 
   fs.writeFileSync(
-    path.join(__dirname, "/dist/index.html"),
+    path.join(outDir, "index.html"),
     ejs.render(template, { getNewId, getCurrentId, example, bareExample, tabbedExample, homepage }, {
-      filename: path.join(__dirname, "docs/index.html.ejs")
+      filename: fromRoot("docs/index.html.ejs")
     })
   );
 }
 
-function build() {
-  return buildCSS()
-    .then(buildDocs);
+// Builds the library and docs into `outDir` (dist/ by default).
+function build({ outDir = fromRoot("dist") } = {}) {
+  const target = path.resolve(ROOT, outDir);
+  return buildCSS(target).then(() => buildDocs(target));
 }
 
 module.exports = build;
+module.exports.buildDocs = buildDocs;
 
 if (require.main === module) {
-  build().catch((err) => {
+  // `node build.js --out <dir>` builds somewhere other than dist/
+  const outIndex = process.argv.indexOf("--out");
+  const outDir = outIndex > -1 ? process.argv[outIndex + 1] : undefined;
+  build(outDir ? { outDir } : undefined).catch((err) => {
     console.error(err);
     process.exitCode = 1;
   });
