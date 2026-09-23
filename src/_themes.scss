@@ -6,6 +6,31 @@
 @use "mixins" as *;
 
 /* ============================================
+   Derived tokens
+   :root tokens written as var(--other) are computed once, at :root, so a
+   theme that overrides --other on its own element never reaches them.
+   Re-declare them on every theme element so they pick up the theme's
+   values. Comes first so a theme can still set any of them explicitly.
+   ============================================ */
+@each $theme in ('graphite', 'air', 'earth', 'fire', 'purple') {
+  @include aqua-theme($theme) {
+    --switch-thumb-on-gradient: var(--aqua-blue-gradient);
+    --checkbox-selected-shadow:
+      0 2px 3px var(--theme-shadow-drop),
+      0 1px 1px var(--theme-shadow-rim),
+      inset 0 1px 2px var(--theme-shadow-inner),
+      inset 0 2px 3px 1px var(--theme-shadow-ring);
+    --radio-selected-shadow: var(--checkbox-selected-shadow);
+    --radio-selected-border: var(--checkbox-selected-border);
+    --pagination-active-border: var(--checkbox-selected-border);
+    --combobox-option-hover-bg: var(--aqua-blue);
+    --blockquote-accent: var(--aqua-blue);
+    --slider-thumb-shadow: var(--aqua-button-primary-shadow);
+    --slider-thumb-active-shadow: var(--aqua-button-primary-shadow-active);
+  }
+}
+
+/* ============================================
    Graphite Theme (Gray)
    ============================================ */
 @include aqua-theme('graphite') {

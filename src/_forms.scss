@@ -38,8 +38,12 @@ textarea {
   }
 
   &:focus {
-    border-radius: 2px;
     box-shadow: var(--input-focus-shadow);
+  }
+
+  /* Low specificity so .round-rect / .search keep their 11px radius */
+  &:where(:focus) {
+    border-radius: 2px;
   }
 
   &::placeholder {

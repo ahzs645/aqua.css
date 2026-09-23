@@ -127,20 +127,21 @@
 /* ============================================
    STRIPED LIST (Alternating rows)
    ============================================ */
+/* :not(.selected) so stripes and hover never paint over the selection */
 .list-view.striped,
 .aqua-list.striped {
-  .list-item:nth-child(odd),
-  .aqua-list-item:nth-child(odd) {
+  .list-item:nth-child(odd):not(.selected),
+  .aqua-list-item:nth-child(odd):not(.selected) {
     background: var(--list-item-odd-bg);
   }
 
-  .list-item:nth-child(even),
-  .aqua-list-item:nth-child(even) {
+  .list-item:nth-child(even):not(.selected),
+  .aqua-list-item:nth-child(even):not(.selected) {
     background: var(--list-item-even-bg);
   }
 
-  .list-item:hover,
-  .aqua-list-item:hover {
+  .list-item:hover:not(.selected),
+  .aqua-list-item:hover:not(.selected) {
     background: var(--list-item-hover-bg);
   }
 }

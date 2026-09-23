@@ -578,10 +578,14 @@
   box-shadow: var(--scrollbar-corner-shadow);
 }
 
-/* Firefox scrollbar support */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-firefox-thumb) var(--scrollbar-firefox-track);
+/* Firefox scrollbar support. Kept out of browsers that support
+   ::-webkit-scrollbar: since Chromium 121 a non-auto scrollbar-width or
+   scrollbar-color switches the ::-webkit-scrollbar styling above off. */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-firefox-thumb) var(--scrollbar-firefox-track);
+  }
 }
 
 /* ========================================
@@ -627,8 +631,10 @@
     background: transparent;
   }
 
-  scrollbar-width: thin;
-  scrollbar-color: var(--overlay-scrollbar-thumb) transparent;
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--overlay-scrollbar-thumb) transparent;
+  }
 }
 
 .scroll-demo-vertical {

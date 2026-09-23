@@ -36,7 +36,7 @@
 }
 
 // macOS 10.2+ (Jaguar onwards) - No pinstripes on dialogs by default
-@each $era in ('10-2', '10-3', '10-6') {
+@each $era in ('10-2', '10-3', '10-4', '10-6') {
   @include aqua-era($era) {
     .aqua-alert-dialog,
     .alert-dialog {
@@ -57,6 +57,17 @@
   width: 64px;
   height: 64px;
   flex-shrink: 0;
+
+  /* _dialog.scss gives these icons a rounded, shadowed gradient tile; the
+     SVG icons below replace that tile, so drop its radius and shadow too */
+  &.warning,
+  &.error,
+  &.info,
+  &.question,
+  &.finder {
+    border-radius: 0;
+    box-shadow: none;
+  }
 
   &.warning {
     background-image: url("./icon/alert-warning.svg");
