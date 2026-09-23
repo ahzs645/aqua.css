@@ -107,7 +107,7 @@ Legend for the **Mechanism** column:
 | Switch | `ui/switch.tsx` (inline, `--os-color-switch-*`) | Switch | `.aqua-switch`, `.aqua-switch-thumb`, `--switch-*` | TOKEN + FORCE | Bridge remaps `--os-color-switch-track/-checked` from `--switch-track-gradient` / `--switch-thumb-on-gradient` (flattened). Real Aqua had no switches — aqua.css's is an extrapolation; good comparison case. |
 | Slider | `ui/slider.tsx` → `.os-slider*` (pure CSS) | Slider | `input[type=range]`, `.aqua-slider-custom` (`.track/.thumb/.ticks`) | CLASS (bridge maps) | Bridge maps `.os-slider-track/-range/-thumb` to aqua.css track/thumb gradients. |
 | Tabs | `shared/ThemedTabs.tsx` → `aqua-tab-bar/aqua-tab/aqua-tab-content` | Tabs | `.aqua-folder-tabs > .aqua-tab-bar > .aqua-tab`, `.aqua-tab-content`, `--tab-*` | CLASS | Class names collide by design; aqua.css expects `.aqua-tab--active` while ryOS uses `data-state="active"` — bridge adds a `data-state` alias rule. |
-| Scrollbars | `ui/scroll-area.tsx` + native | Scrollbar | `.scrollbar`, `.scrollbar-thumb-v/-h`, `.aqua-glass-v/-h` | GAP/partial | aqua.css scrollbars are bespoke markup; ryOS uses Radix/native. Bridge styles `::-webkit-scrollbar` from aqua.css thumb gradients as approximation; full fidelity = TEMPLATE. |
+| Scrollbars | `ui/scroll-area.tsx` + native | Scrollbar | global `::-webkit-scrollbar*` skin, plus bespoke `.scrollbar`, `.scrollbar-thumb-v/-h`, `.aqua-glass-v/-h` markup | CLASS (native) / partial | aqua.css ships global `::-webkit-scrollbar` styles (track, blue thumb, arrow buttons, corner) from `--scrollbar-*` tokens, so native scrollers get the Aqua skin with no bridge rule; in the scoped build they apply inside `.aqua`. Firefox gets a `scrollbar-color` fallback wrapped in `@supports not selector(::-webkit-scrollbar)`. Radix `ScrollArea` draws its own thumb, so matching it still needs bridge rules or TEMPLATE markup. |
 | Progress | (app-level) | Progress | `.progress-bar`, `.aqua-progress`, `.progress-wave`, `--progress-*` | CLASS | Use directly in apps; candy-stripe `.animated` variant available. |
 | Segmented control | (toolbars) | Segmented control | `.aqua-segmented-control > button`, `button.active` | CLASS | |
 | Stepper | (forms) | Stepper | `.aqua-stepper`, `.aqua-spinner` | CLASS | |
@@ -138,7 +138,7 @@ color themes (`[data-aqua-theme="graphite"|"air"|"earth"|"fire"|"purple"]`).
 - **Dark mode** — ryOS has full dark Aqua (`dark-aqua.css`, 87 KB); aqua.css has none.
 - **Glass material** — ryOS's modern “liquid glass” Aqua variant; out of scope for 10.0–10.4 but worth a comparison note.
 - **Radix-friendly state selectors** — supporting `[data-state="active"|"checked"|"open"]` alongside `.active`/`.selected`/`--checked` modifiers would make aqua.css drop-in for Radix/shadcn apps (small SCSS addition, big integration win).
-- **Native scrollbar skin** — a `::-webkit-scrollbar` fallback so hosts without bespoke markup still get Aqua scrollbars.
+- ~~**Native scrollbar skin**~~ — done: `src/_scrollbar.scss` ships global `::-webkit-scrollbar` styles plus a Firefox `scrollbar-color` fallback.
 - **Menu bar height token** — expose `--menu-bar-height` instead of hardcoded 28px.
 - **Optional bare-element layer** — move the plain `button`/`input`/`select` styling
   into a separable build (e.g. `aqua.forms.css`) so embedding the library in a
