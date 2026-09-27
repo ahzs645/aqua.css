@@ -140,39 +140,34 @@ table.aqua-tree-table {
 
 /* ============================================
    ERA-SPECIFIC: Mac OS X 10.0 Gray Selection
+   Flat #C2C2C2 when focused, #DDDDDD when not
    ============================================ */
 @include aqua-era('10-0') {
   .tree-table,
   table.aqua-tree-table {
     /* Gray selection for 10.0 era (unfocused) */
     tbody tr.selected {
-      background: linear-gradient(
-        rgb(220, 220, 220) 0%,
-        rgb(200, 200, 200) 100%
-      );
+      background: #dddddd;
       background-size: 100% 100%;
       background-position: 0 0;
       color: var(--text-color);
 
       td {
-        border-bottom-color: rgb(180, 180, 180);
+        border-bottom-color: transparent;
       }
     }
 
     /* Gray selection for 10.0 era (focused) */
     &:focus tbody tr.selected,
     &:focus-within tbody tr.selected {
-      background: linear-gradient(
-        rgb(200, 200, 200) 0%,
-        rgb(180, 180, 180) 100%
-      );
+      background: #c2c2c2;
       background-size: 100% 100%;
       background-position: 0 0;
       color: var(--text-color);
       text-shadow: none;
 
       td {
-        border-bottom-color: rgb(160, 160, 160);
+        border-bottom-color: transparent;
       }
     }
   }

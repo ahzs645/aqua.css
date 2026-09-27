@@ -139,21 +139,56 @@ $plain-table: 'table:not(.aqua):not(.table-view):not(.aqua-table):not(.aqua-tree
 }
 
 /* ============================================
+   ERA-SPECIFIC: 10.0 - 10.4 metrics
+   Headers are ~17px with 11px labels, rows ~18px with no grid lines
+   ============================================ */
+@each $era in ('10-0', '10-2', '10-3', '10-4') {
+  @include aqua-era($era) {
+    .table-view,
+    table.aqua,
+    table.aqua-table {
+      th {
+        height: 17px;
+        padding-top: 0;
+        padding-bottom: 0;
+        font-size: var(--font-size-small);
+      }
+
+      td {
+        height: 18px;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+    }
+
+    .aqua-table.unified-header thead th,
+    .aqua-table.aqua-unified-header thead th {
+      z-index: 11;
+
+      &.active,
+      &.sorted,
+      &[aria-sort] {
+        background: var(--aqua-gel-shine), var(--aqua-button-primary-gradient);
+      }
+    }
+  }
+}
+
+/* ============================================
    ERA-SPECIFIC: Mac OS X 10.0 Gray Selection
+   Flat #C2C2C2 when focused, #DDDDDD when not, with black text
    ============================================ */
 @include aqua-era('10-0') {
   #{$plain-table} tbody tr {
     &.selected,
     &.highlighted {
-      background: linear-gradient(
-        rgb(220, 220, 220) 0%,
-        rgb(200, 200, 200) 100%
-      );
+      background: #c2c2c2;
       color: var(--text-color);
       text-shadow: none;
 
       td {
-        border-bottom-color: rgb(180, 180, 180);
+        border-bottom-color: transparent;
       }
     }
   }
@@ -161,23 +196,15 @@ $plain-table: 'table:not(.aqua):not(.table-view):not(.aqua-table):not(.aqua-tree
   .table-view,
   table.aqua,
   table.aqua-table {
-    /* Gray selection for 10.0 era (unfocused) */
     tr.selected td {
-      background: linear-gradient(
-        rgb(220, 220, 220) 0%,
-        rgb(200, 200, 200) 100%
-      );
+      background: #dddddd;
       color: var(--text-color);
       text-shadow: none;
     }
 
-    /* Gray selection for 10.0 era (focused) */
     &:focus tr.selected td,
     &:focus-within tr.selected td {
-      background: linear-gradient(
-        rgb(200, 200, 200) 0%,
-        rgb(180, 180, 180) 100%
-      );
+      background: #c2c2c2;
       color: var(--text-color);
       text-shadow: none;
     }

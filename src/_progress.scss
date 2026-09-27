@@ -622,3 +622,24 @@
 .progress-wave.disabled .progress-wave__shimmer {
   animation: none;
 }
+
+/* 10.4 and earlier: gel fill in a light track with a #B4B4B4 edge */
+@each $era in ('10-0', '10-2', '10-3', '10-4') {
+  @include aqua-era($era) {
+    .progress-wave {
+      background: linear-gradient(#dcdcdc, #eeeeee 50%, #fafafa);
+      box-shadow: inset 0 0 0 1px #b4b4b4;
+    }
+
+    .progress-wave__fill {
+      background: var(--aqua-blue-gradient);
+      box-shadow:
+        inset 0 0 0 1px rgba(25, 60, 140, 0.45),
+        inset 0 1px 2px rgba(0, 20, 80, 0.35);
+    }
+
+    .progress-wave__shimmer {
+      opacity: 0.55;
+    }
+  }
+}

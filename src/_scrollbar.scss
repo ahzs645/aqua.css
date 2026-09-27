@@ -3,6 +3,8 @@
  * Mac OS X Aqua-style custom scrollbars with translucent blue thumbs
  */
 
+@use "mixins" as *;
+
 /* ========================================
    BASE SCROLLBAR STYLES (SHARED)
    ======================================== */
@@ -655,4 +657,74 @@
   width: 280px;
   height: 180px;
   overflow: scroll;
+}
+
+/* ========================================
+   10.4 AND EARLIER
+   15px scroller: near-white track that is darker on the leading edge,
+   gel thumb that brightens to cyan, white glass caps and arrows
+   ======================================== */
+@each $era in ('10-0', '10-2', '10-3', '10-4') {
+  @include aqua-era($era) {
+    .scrollbar.horizontal {
+      height: 15px;
+
+      .scrollbar-cap,
+      .scrollbar-track,
+      .scrollbar-buttons,
+      .scrollbar-btn-wrap {
+        height: 15px;
+      }
+
+      .scrollbar-track {
+        background: linear-gradient(180deg, #c5c5c5, #e9e9e9 35%, #fdfdfd);
+      }
+
+      .scrollbar-cap,
+      .scrollbar-buttons,
+      .scrollbar-btn-wrap {
+        background: var(--aqua-gray-gradient);
+      }
+    }
+
+    .scrollbar.vertical {
+      width: 15px;
+
+      .scrollbar-cap,
+      .scrollbar-track,
+      .scrollbar-buttons,
+      .scrollbar-btn-wrap {
+        width: 15px;
+      }
+
+      .scrollbar-track {
+        background: linear-gradient(90deg, #c5c5c5, #e9e9e9 35%, #fdfdfd);
+      }
+
+      .scrollbar-cap,
+      .scrollbar-buttons,
+      .scrollbar-btn-wrap {
+        background: linear-gradient(90deg, #e2e2e2, #d8d8d8 50%, #f2f2f2 80%, #ffffff);
+      }
+    }
+
+    .scrollbar-thumb-h {
+      background: var(--aqua-blue-gradient);
+      box-shadow:
+        0 0 0 1px rgba(25, 55, 130, 0.55),
+        inset 0 1px 2px rgba(0, 20, 80, 0.4);
+    }
+
+    .scrollbar-thumb-v {
+      background: linear-gradient(90deg, #7fa7dc, #86b6e8 47%, #6cabec 52%, #9fdcfb 80%, #b3ecff);
+      box-shadow:
+        0 0 0 1px rgba(25, 55, 130, 0.55),
+        inset 1px 0 2px rgba(0, 20, 80, 0.4);
+    }
+
+    .scrollbar-wave-shimmer-h,
+    .scrollbar-wave-shimmer-v {
+      opacity: 0.6;
+    }
+  }
 }

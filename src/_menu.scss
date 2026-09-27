@@ -3,6 +3,8 @@
  * Mac OS X Aqua-style horizontal menu bar with dropdown menus and pinstripes
  */
 
+@use "mixins" as *;
+
 .menu-bar {
   display: flex;
   align-items: center;
@@ -256,6 +258,44 @@
   }
 }
 
+/* 10.4 and earlier: 22px bar with 14px titles, square pulldowns with
+   19px items. The bar has no drop shadow, only its bottom rule. */
+@each $era in ('10-0', '10-2', '10-3', '10-4') {
+  @include aqua-era($era) {
+    .menu-bar {
+      height: 22px;
+      min-height: 22px;
+      max-height: 22px;
+      font-size: 14px;
+      box-shadow: var(--menu-bar-shadow);
+
+      &::before {
+        display: none;
+      }
+
+      .menu-dropdown {
+        margin-top: 0;
+        border-radius: 0;
+
+        li:not(.separator) {
+          height: 19px;
+          font-size: 14px;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+
+/* Spotlight arrived in 10.4 */
+@each $era in ('10-0', '10-2', '10-3') {
+  @include aqua-era($era) {
+    .menu-bar .menu-bar-spotlight {
+      display: none;
+    }
+  }
+}
+
 /* Frosted / modern macOS variant — translucent + blur */
 .menu-bar.frosted {
   background: rgba(248, 248, 248, 0.85);
@@ -320,20 +360,21 @@
 }
 
 /* Classic era context menu (10.0-10.2) - square with pinstripe */
-[data-aqua-era="10-0"],
-[data-aqua-era="10-2"] {
-  .context-menu,
-  .aqua-menu {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
+@each $era in ('10-0', '10-2') {
+  @include aqua-era($era) {
+    .context-menu,
+    .aqua-menu {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
 
-  /* Classic era separators - spacing only, no visible line */
-  .context-menu-separator,
-  .aqua-menu-separator {
-    background: transparent;
-    height: 8px;
-    margin: 0;
+    /* Classic era separators - spacing only, no visible line */
+    .context-menu-separator,
+    .aqua-menu-separator {
+      background: transparent;
+      height: 8px;
+      margin: 0;
+    }
   }
 }
 

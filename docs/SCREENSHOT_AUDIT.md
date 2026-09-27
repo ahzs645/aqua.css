@@ -187,6 +187,26 @@ Roughly in order of how often they appear:
 - The modern overlay scrollbar demo is not gated by era.
 - There's no docs demo for Puma's tab pane; tabs, disclosure, progress, slider and search demos inside `<details>` blocks weren't captured by the first render pass, and reviewers re-rendered them separately.
 
+## Status after the first fidelity pass
+
+Fixed on this branch, era by era (values live in the era presets in `src/_themes.scss`, with
+per-component era rules in each component file):
+
+- **Root cause found:** `:root` composes tokens such as `--aqua-button-primary-gradient` once, so
+  the per-era `--aqua-blue-gradient` never reached buttons, checkboxes or sliders. The classic
+  eras now re-declare those composed tokens.
+- 1.1 blue gel (opaque, per era, navy rim); 1.2 13px regular buttons and popups, white secondary glass;
+  1.3 traffic lights; 1.4 menu bar; 1.5 menus; 1.6 toolbar; 1.7 Dock; 1.8 tables; 1.9 scroller;
+  1.10 brushed metal; 1.11 legend, disclosure triangle, alert text, text field edges, progress track.
+- Era specifics: 10.0 gray selections and focus ring, translucent inactive title bar, window outline;
+  10.2/10.3/10.4 pinstripes; 10.3 flat selections, soft focus ring, tab pane; 10.4 title bar and
+  sidebar selection; Spotlight hidden before 10.4; `10-1` is now an alias of `10-0`.
+- Correction: the real 10.4 text field has the same `#7C7C7C` / `#C3C3C3` edges as 10.0 (the
+  `#BEBEBE` value above was a mis-sample).
+
+Not changed: the unscoped default (no `data-aqua-era`) and the `10-6` era keep their previous look.
+The new components in section 4 are still to do.
+
 ## Suggested order of work
 1. Opaque, era-specific blue gel (1.1), which fixes about ten components at once.
 2. Button/popup typography and sizing (1.2), plus the white secondary glass.
