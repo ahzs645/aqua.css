@@ -340,6 +340,15 @@
   }
 }
 
+/* 10.4 and earlier: sheets hang square from the title bar */
+@each $era in ('10-0', '10-2', '10-3', '10-4') {
+  @include aqua-era($era) {
+    .window.sheet {
+      border-radius: 0;
+    }
+  }
+}
+
 /* Utility window variant (smaller, no pinstripes) */
 .window.utility {
   border-radius: 4px 4px 0 0;
@@ -374,42 +383,54 @@
     .window:not(.brushed-metal):not(.brushed-metal-authentic):not(.brushed-metal-light):not(.brushed-metal-dark):not(.brushed-metal-warm) {
       .title-bar {
         background:
-          /* Gloss/shine overlay */
+          /* Soft shading that darkens toward the bottom edge */
           linear-gradient(
             to bottom,
-            rgba(255, 255, 255, 0.7) 0%,
-            rgba(255, 255, 255, 0.3) 45%,
-            rgba(0, 0, 0, 0.03) 55%,
-            rgba(0, 0, 0, 0.08) 100%
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(255, 255, 255, 0) 45%,
+            rgba(0, 0, 0, 0.04) 60%,
+            rgba(0, 0, 0, 0.09) 100%
           ),
-          /* Menu pinstripe - white on gray */
-          var(--aqua-menu-pinstripe);
+          var(--pinstripe);
       }
 
       .window-body {
         @include pinstripe-window;
       }
 
+      /* Only the title bar of an inactive window turns translucent;
+         the body stays opaque and the title stays legible */
       &.inactive {
         .title-bar {
           background:
-            /* Faded gloss for inactive state */
             linear-gradient(
               to bottom,
-              rgba(255, 255, 255, 0.5) 0%,
-              rgba(255, 255, 255, 0.2) 45%,
-              rgba(0, 0, 0, 0.02) 55%,
-              rgba(0, 0, 0, 0.04) 100%
+              rgba(255, 255, 255, 0.2) 0%,
+              rgba(255, 255, 255, 0) 45%,
+              rgba(0, 0, 0, 0.02) 60%,
+              rgba(0, 0, 0, 0.05) 100%
             ),
-            /* Menu pinstripe - white on gray */
-            var(--aqua-menu-pinstripe);
-          opacity: 0.85;
+            var(--pinstripe);
+          opacity: 0.75;
         }
 
-        .window-body {
-          @include pinstripe-window;
-          opacity: 0.85;
+        .title-bar-text {
+          color: #404349;
         }
+      }
+    }
+  }
+}
+
+/* ============================================
+   Mac OS X 10.3/10.4 Era Window Styling
+   Smooth title bar over a faint pinstriped body
+   ============================================ */
+@each $era in ('10-3', '10-4') {
+  @include aqua-era($era) {
+    .window:not(.brushed-metal):not(.brushed-metal-authentic):not(.brushed-metal-light):not(.brushed-metal-dark):not(.brushed-metal-warm) {
+      .window-body {
+        @include pinstripe-window;
       }
     }
   }
