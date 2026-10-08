@@ -351,9 +351,11 @@ function buildDocs(outDir = fromRoot("dist")) {
   }
 
   fs.readdirSync(fromRoot("docs"), { withFileTypes: true }).forEach((entry) => {
-    // Skip directories and .ejs files
+    // Copy static files and asset folders; skip templates and partials
     if (entry.isFile() && !entry.name.endsWith(".ejs")) {
       fs.copyFileSync(fromRoot("docs", entry.name), path.join(outDir, entry.name));
+    } else if (entry.isDirectory() && entry.name !== "partials") {
+      fs.cpSync(fromRoot("docs", entry.name), path.join(outDir, entry.name), { recursive: true });
     }
   });
 

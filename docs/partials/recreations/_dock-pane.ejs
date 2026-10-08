@@ -3,7 +3,7 @@
   Expects `pane` (one entry from the eras list in recreations.html.ejs).
 %>
 <% const uid = pane.id; %>
-<% const icon = (name) => include('_toolbar-icons', { name, uid }).trim(); %>
+<% const icon = (name) => include('_toolbar-icons', { name, release: pane.id }).trim(); %>
 <div class="rc-stage<%= pane.desktop ? ' rc-stage--desktop' : '' %>" data-aqua-era="<%= pane.aquaEra %>">
   <div class="window rc-prefs rc-prefs--<%= pane.chrome %>" style="width: <%= pane.width %>px;">
     <div class="title-bar">
