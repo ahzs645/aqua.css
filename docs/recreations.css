@@ -1,0 +1,370 @@
+/* Era Recreations page. Layout only: the windows and controls come from aqua.css. */
+
+.rc-page {
+  margin: 0;
+  padding: 0 20px 48px;
+  background: #e8e8e8;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: #000;
+}
+
+.rc-header,
+.rc-section {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.rc-header {
+  padding: 24px 0 8px;
+}
+
+.rc-header h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.rc-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 12px 0;
+}
+
+.rc-section {
+  padding-top: 32px;
+}
+
+.rc-section h2 {
+  margin: 0 0 4px;
+  font-size: 17px;
+}
+
+.rc-year {
+  font-weight: normal;
+  color: #666;
+}
+
+.rc-notes {
+  margin: 0 0 14px;
+  color: #333;
+}
+
+.rc-notes code {
+  margin-left: 4px;
+  font-size: 11px;
+  color: #555;
+}
+
+/* ---- Stage: the area around each window ---- */
+
+/* Windows keep their real size; narrow screens scroll the stage sideways */
+.rc-stage {
+  display: flex;
+  padding: 24px 12px 36px;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: #d4d4d4;
+}
+
+/* 10.0-10.1 screenshots were taken on the desktop */
+.rc-stage--desktop {
+  background:
+    radial-gradient(ellipse 70% 60% at 70% 25%, rgba(140, 190, 255, 0.55), transparent 70%),
+    radial-gradient(ellipse 80% 50% at 20% 90%, rgba(20, 60, 170, 0.6), transparent 70%),
+    linear-gradient(160deg, #3d77d6 0%, #2457b8 45%, #173f97 100%);
+}
+
+/* ---- Window ---- */
+
+.rc-prefs {
+  flex: none;
+  max-width: none;
+  margin: 0 auto;
+}
+
+.rc-prefs .title-bar {
+  flex: none;
+}
+
+/* 10.0-10.2: the icon toolbar shares the window's pinstripe */
+.rc-prefs--pinstripe {
+  background: var(--pinstripe);
+}
+
+/* 10.3: near-solid light gray */
+.rc-prefs--panther {
+  background: var(--window-bg);
+}
+
+/* 10.4+: title bar and toolbar form one unified gradient band */
+.rc-prefs--tiger,
+.rc-prefs--unified {
+  --rc-band-height: 54px;
+  background:
+    linear-gradient(to bottom, var(--rc-band-top), var(--rc-band-bottom)) 0 0 / 100% var(--rc-band-height) no-repeat,
+    var(--rc-body-bg);
+}
+
+.rc-prefs--tiger {
+  --rc-band-top: #ececec;
+  --rc-band-bottom: #d4d4d4;
+  --rc-body-bg: #f0f0f0;
+}
+
+.rc-prefs--unified {
+  --rc-band-top: #cfcfcf;
+  --rc-band-bottom: #a7a7a7;
+  --rc-body-bg: #ececec;
+}
+
+.rc-prefs--tiger .title-bar,
+.rc-prefs--unified .title-bar {
+  background: none;
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+.rc-prefs--tiger .window-body,
+.rc-prefs--unified .window-body {
+  background: var(--rc-body-bg);
+}
+
+/* Oval toolbar toggle at the right end of the title bar (10.1-10.4) */
+.rc-toolbar-pill {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  width: 20px;
+  height: 10px;
+  min-width: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 1px solid #7d7d7d;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #fdfdfd 0%, #e2e2e2 50%, #cfcfcf 51%, #f2f2f2 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  cursor: default;
+}
+
+/* ---- 10.0-10.3 icon toolbar ---- */
+
+.rc-icon-toolbar {
+  display: flex;
+  align-items: flex-end;
+  padding: 3px 6px 2px;
+  border-bottom: 1px solid #a5a5a5;
+}
+
+.rc-icon-button {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  font: inherit;
+  font-size: 11px;
+  color: #000;
+  cursor: default;
+}
+
+.rc-icon-button svg {
+  flex: none;
+  width: 32px;
+  height: 32px;
+}
+
+/* 10.0 spaced its toolbar items on a fixed grid */
+.rc-icon-toolbar--fixed .rc-icon-button {
+  width: 85px;
+}
+
+.rc-icon-separator {
+  align-self: stretch;
+  width: 0;
+  margin: 2px 6px;
+  border-left: 1px dotted #888;
+}
+
+/* ---- 10.4+ navigation toolbar ---- */
+
+.rc-nav-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 31px;
+  padding: 0 8px 2px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--rc-band-border, #8f8f8f);
+}
+
+.rc-prefs--unified .rc-nav-toolbar {
+  --rc-band-border: #515151;
+}
+
+/* Textured rounded-rect toolbar buttons */
+.rc-back-forward .aqua-button,
+.rc-show-all {
+  height: 20px;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.rc-back-forward .aqua-button {
+  padding: 0 6px;
+  font-size: 9px;
+}
+
+.rc-show-all {
+  padding: 0 12px;
+  border-radius: 4px;
+}
+
+.rc-back-forward,
+.rc-back-forward .aqua-button {
+  border-radius: 4px;
+}
+
+.rc-search {
+  width: 150px;
+  min-width: 0;
+  height: 20px;
+  margin-left: auto;
+}
+
+/* ---- Pane body ---- */
+
+.rc-pane-body {
+  position: relative;
+  padding: 14px 20px 18px;
+}
+
+.rc-form {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: center;
+  align-items: start;
+  column-gap: 8px;
+  row-gap: var(--rc-row-gap, 14px);
+}
+
+.rc-label {
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  min-height: 18px;
+  text-align: right;
+}
+
+.rc-control {
+  grid-column: 2;
+}
+
+.rc-slider {
+  width: 210px;
+}
+
+/* End-point tick marks with their captions centered underneath */
+.rc-scale {
+  position: relative;
+  width: 210px;
+  height: 20px;
+  margin-top: 2px;
+  font-size: 10px;
+}
+
+.rc-scale span {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+}
+
+.rc-scale span:first-child {
+  left: 7px;
+}
+
+.rc-scale span:last-child {
+  left: calc(100% - 7px);
+}
+
+.rc-scale span::before {
+  content: '';
+  width: 1px;
+  height: 5px;
+  margin-bottom: 2px;
+  background: #777;
+}
+
+.rc-pane-body .select-wrapper {
+  font-size: 12px;
+}
+
+.rc-pane-body .select-wrapper select {
+  height: 20px;
+  min-width: 120px;
+  font-size: 13px;
+}
+
+.rc-radios {
+  display: flex;
+  gap: 26px;
+  padding-left: 4px;
+  margin-bottom: 6px;
+}
+
+.rc-radio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.rc-radio label {
+  margin: 0;
+}
+
+.rc-check {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rc-check--tight + .rc-check--tight {
+  margin-top: calc(4px - var(--rc-row-gap, 14px));
+}
+
+/* Extra breathing room between groups of settings */
+.rc-gap {
+  grid-column: 1 / -1;
+}
+
+.rc-separator {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 4px 0;
+  border: 0;
+  border-top: 1px solid #a0a0a0;
+}
+
+.rc-help {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: 21px;
+  height: 21px;
+  min-width: 0;
+  padding: 0;
+  font-size: 13px;
+}

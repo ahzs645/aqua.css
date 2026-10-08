@@ -357,12 +357,22 @@ function buildDocs(outDir = fromRoot("dist")) {
     }
   });
 
+  const locals = { getNewId, getCurrentId, example, bareExample, tabbedExample, homepage };
   fs.writeFileSync(
     path.join(outDir, "index.html"),
-    ejs.render(template, { getNewId, getCurrentId, example, bareExample, tabbedExample, homepage }, {
-      filename: fromRoot("docs/index.html.ejs")
-    })
+    ejs.render(template, locals, { filename: fromRoot("docs/index.html.ejs") })
   );
+
+  // Extra standalone pages: docs/<name>.html.ejs -> <name>.html
+  fs.readdirSync(fromRoot("docs"))
+    .filter((name) => name.endsWith(".html.ejs") && name !== "index.html.ejs")
+    .forEach((name) => {
+      const filename = fromRoot("docs", name);
+      fs.writeFileSync(
+        path.join(outDir, name.replace(/\.ejs$/, "")),
+        ejs.render(fs.readFileSync(filename, "utf-8"), locals, { filename })
+      );
+    });
 }
 
 // Builds the library and docs into `outDir` (dist/ by default).

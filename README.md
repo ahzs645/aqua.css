@@ -71,7 +71,9 @@ npm install aqua.css
 
 Each `*.css` file has a matching `.map` source map. The build also writes the docs
 site into `dist/` (`index.html`, `docs.css`, `favicon.ico` and copies of the
-`docs/*.md` notes); only the files listed in `package.json` `files` are packaged.
+`docs/*.md` notes), plus one page per extra `docs/*.html.ejs` template, such as
+`recreations.html`, the System Preferences Dock pane rebuilt for every release from
+10.0 to 10.6. Only the files listed in `package.json` `files` are packaged.
 
 All `dist/*.css` builds reference fonts as `fonts/...` relative to themselves, and the
 component bundles in `dist/components/` reference `../fonts/...`, so keep the

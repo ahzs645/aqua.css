@@ -1,0 +1,108 @@
+<%
+  // One System Preferences > Dock pane per Mac OS X release, rebuilt from
+  // aqua.css components. `aquaEra` is the library era each one renders with
+  // (aqua.css has no separate 10.1 or 10.5 era, so those borrow the nearest).
+  const base = {
+    sizeLabel: 'Dock Size:',
+    minimizeLabel: 'Minimize using:',
+    effectLabel: 'Genie Effect',
+    toolbar: 'icons',
+    pill: true,
+    help: false,
+    desktop: false,
+  };
+  const eras = [
+    {
+      ...base, id: 'cheetah', release: '10.0', name: 'Cheetah', year: 2001,
+      aquaEra: '10-0', chrome: 'pinstripe', width: 592, pill: false, desktop: true, fixedToolbar: true,
+      magnification: true, checked: ['animate'],
+      rows: ['size', 'magnification', 'autohide', 'separator', 'animate'],
+      notes: 'Toolbar items on a fixed-width grid, no toolbar pill yet, and only three settings plus a separator.',
+    },
+    {
+      ...base, id: 'puma', release: '10.1', name: 'Puma', year: 2001,
+      aquaEra: '10-0', chrome: 'pinstripe', width: 597, desktop: true,
+      rows: ['size', 'magnification', 'gap', 'autohide', 'position', 'gap', 'minimize', 'animate'],
+      notes: 'Adds the toolbar pill, Position on screen and the Genie/Scale popup. Rendered with the 10.0 era.',
+    },
+    {
+      ...base, id: 'jaguar', release: '10.2', name: 'Jaguar', year: 2002,
+      aquaEra: '10-2', chrome: 'pinstripe', width: 620,
+      rows: ['size', 'magnification', 'position', 'minimize', 'animate', 'autohide'],
+      checkGroup: ['animate', 'autohide'],
+      notes: 'Same controls as Puma, reordered with the two checkboxes grouped at the bottom.',
+    },
+    {
+      ...base, id: 'panther', release: '10.3', name: 'Panther', year: 2003,
+      aquaEra: '10-3', chrome: 'panther', width: 620,
+      rows: ['size', 'magnification', 'position', 'minimize', 'animate', 'autohide'],
+      checkGroup: ['animate', 'autohide'],
+      notes: 'Identical layout to Jaguar; the pinstripes fade to a near-solid light gray.',
+    },
+    {
+      ...base, id: 'tiger', release: '10.4', name: 'Tiger', year: 2005,
+      aquaEra: '10-4', chrome: 'tiger', width: 595, toolbar: 'nav', pill: true, help: true,
+      rows: ['size', 'magnification', 'position', 'minimize', 'animate', 'autohide'],
+      checkGroup: ['animate', 'autohide'],
+      notes: 'Icon toolbar replaced by Back/Forward, Show All and a Spotlight search field. A Help button appears.',
+    },
+    {
+      ...base, id: 'leopard', release: '10.5', name: 'Leopard', year: 2007,
+      aquaEra: '10-6', chrome: 'unified', width: 670, toolbar: 'nav', pill: false, help: true,
+      sizeLabel: 'Size:',
+      rows: ['size', 'magnification', 'position', 'minimize', 'animate', 'autohide'],
+      checkGroup: ['animate', 'autohide'],
+      notes: 'Unified dark-gray toolbar, no pill, flat gray body. Rendered with the 10.6 era.',
+    },
+    {
+      ...base, id: 'snow-leopard', release: '10.6', name: 'Snow Leopard', year: 2009,
+      aquaEra: '10-6', chrome: 'unified', width: 668, toolbar: 'nav', pill: false, help: true,
+      sizeLabel: 'Size:', minimizeLabel: 'Minimize windows using:', effectLabel: 'Genie effect',
+      rows: ['size', 'magnification', 'position', 'minimize', 'intoIcon', 'animate', 'autohide'],
+      checkGroup: ['intoIcon', 'animate', 'autohide'],
+      notes: 'Adds "Minimize windows into application icon"; labels switch to sentence case.',
+    },
+  ];
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mac OS X System Preferences, rebuilt release by release with aqua.css.">
+  <title>Era Recreations - aqua.css</title>
+  <link rel="icon" href="icon/finder.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="aqua.css">
+  <link rel="stylesheet" href="recreations.css">
+</head>
+<body class="rc-page">
+  <header class="rc-header">
+    <h1>Era Recreations</h1>
+    <p>
+      The Dock preference pane from every Mac OS X release between 10.0 and 10.6,
+      rebuilt from aqua.css components. Each one sits in a wrapper carrying
+      <code>data-aqua-era</code>, so the library's era styles apply to it.
+      Reference: the <a href="https://512pixels.net/projects/aqua-screenshot-library/">Aqua Screenshot Library</a>.
+    </p>
+    <nav class="rc-jump" aria-label="Releases">
+<% eras.forEach((pane) => { %>
+      <a href="#<%= pane.id %>"><%= pane.release %> <%= pane.name %></a>
+<% }) %>
+    </nav>
+    <p><a href="index.html">&larr; Back to the component docs</a></p>
+  </header>
+
+  <main>
+<% eras.forEach((pane) => { %>
+    <section class="rc-section" id="<%= pane.id %>">
+      <h2>Mac OS X <%= pane.release %> <%= pane.name %> <span class="rc-year"><%= pane.year %></span></h2>
+      <p class="rc-notes">
+        <%= pane.notes %>
+        <code>data-aqua-era="<%= pane.aquaEra %>"</code>
+      </p>
+      <%- include('partials/recreations/_dock-pane', { pane }) %>
+    </section>
+<% }) %>
+  </main>
+</body>
+</html>
