@@ -17,6 +17,8 @@
     '--rc-col-gap': layout.colGap,
     '--rc-radio-pitch': layout.radioPitch,
     '--rc-radio-first': layout.radioFirst,
+    '--rc-radio-y': layout.radio && layout.radio[0],
+    '--rc-radio-gap': layout.radio && layout.radio[1],
     '--rc-left-check': layout.leftCheck,
     '--rc-tb-left': layout.toolbarX && layout.toolbarX[0],
     '--rc-tb-item-pad': layout.toolbarX && layout.toolbarX[1],
@@ -61,10 +63,10 @@
 <% } else { %>
     <div class="rc-nav-toolbar" role="toolbar">
       <div class="aqua-segmented-control rc-back-forward">
-        <button class="aqua-button aqua-button--secondary" aria-label="Back"><span>&#9664;</span></button>
-        <button class="aqua-button aqua-button--secondary" aria-label="Forward" disabled><span>&#9654;</span></button>
+        <button class="aqua-button aqua-button--secondary aqua-button--textured" aria-label="Back"><span>&#9664;</span></button>
+        <button class="aqua-button aqua-button--secondary aqua-button--textured" aria-label="Forward" disabled><span>&#9654;</span></button>
       </div>
-      <button class="aqua-button aqua-button--secondary rc-show-all"><span>Show All</span></button>
+      <button class="aqua-button aqua-button--secondary aqua-button--textured rc-show-all"><span>Show All</span></button>
       <input type="search" class="aqua-search-field aqua-focus-ring is-focused rc-search" aria-label="Search System Preferences">
     </div>
 <% } %>
@@ -77,7 +79,7 @@
         <div class="rc-control" <%- at(row, i) %>>
           <div class="aqua-slider-custom alternative-thumb rc-slider" id="<%= uid %>-size" role="slider" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" tabindex="0">
             <div class="track"></div>
-            <div class="thumb" style="--rc-value: 0.43;"><div class="shimmer"></div></div>
+            <div class="thumb" style="--rc-value: 0.42;"><div class="shimmer"></div></div>
           </div>
           <div class="rc-scale"><span>Small</span><span>Large</span></div>
         </div>

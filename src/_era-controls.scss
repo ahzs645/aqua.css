@@ -1,0 +1,203 @@
+/**
+ * Era controls
+ * Per-era colors for slider thumbs, radios, the help button and textured
+ * toolbar buttons, sampled from Mac OS X 10.0-10.6 screenshots
+ * (System Preferences > Dock). Pages without an era are unchanged.
+ */
+
+@use "mixins" as *;
+
+/* 10.0-10.1 Cheetah/Puma */
+@include aqua-era('10-0') {
+  --select-cap-rim: #1256a8;
+  --select-cap-gradient: linear-gradient(#9fc0e0 0%, #bad0e9 8%, #a2c3e6 20%, #76aae1 32%, #8ec3fa 50%, #a4d9ff 62%, #b1e5ff 75%, #bdf6ff 100%);
+  --traffic-light-inactive-gradient: linear-gradient(#f6f6f6, #e4e4e4 45%, #eeeeee 70%, #fafafa);
+  --slider-thumb-gradient: linear-gradient(#abb5da 0%, #83aad3 20%, #6393ca 33%, #6195cb 40%, #8db6e4 55%, #a6ccf8 66%, #c0e9ff 82%, #dbffff 100%);
+  --slider-thumb-border: #2c2c6b;
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%232c2c6b' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#dcdcdc 0%, #b3b3b3 18%, #b6b6b6 28%, #c9c9c9 42%, #e0e0e0 56%, #eaeaea 66%, #ffffff 82%, #ececec 100%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%238f8f8f' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-shine-opacity: 0.3;
+  --radio-size: 15px;
+  --radio-border: #585858;
+  --radio-gradient: linear-gradient(#868686 0%, #b1b1b1 20%, #cdcdcd 42%, #e0e0e0 60%, #f0f0f0 85%, #e4e4e4 100%);
+}
+
+/* 10.2 Jaguar */
+@include aqua-era('10-2') {
+  --select-cap-rim: #414093;
+  --select-cap-gradient: linear-gradient(#e1e9f7 0%, #c6daf1 8%, #b4d1ef 16%, #a6caf0 25%, #9ec6ed 33%, #7fbaf6 50%, #85c2fd 58%, #a4dbff 70%, #b4e9ff 85%, #c9ffff 100%);
+  --traffic-light-inactive-gradient: linear-gradient(#f6f6f6, #e4e4e4 45%, #eeeeee 70%, #fafafa);
+  --slider-thumb-gradient: linear-gradient(#c3dbf1 0%, #91b8e1 10%, #7aaede 24%, #5fa0dc 33%, #59a0e1 40%, #7dbaf6 55%, #9fd6ff 70%, #b4ebfe 85%, #ccfafa 100%);
+  --slider-thumb-border: #414097;
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23414097' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#fbfbfb 0%, #d6d6d6 10%, #c4c4c4 18%, #cfcfcf 33%, #d2d2d2 45%, #e4e4e4 60%, #ececec 70%, #fbfbfb 88%, #eeeeee 100%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23a8a8a8' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-shine-opacity: 0.35;
+  --radio-size: 15px;
+  --radio-border: #8f8f8f;
+  --radio-gradient: linear-gradient(#e5e5e5 0%, #dfdfdf 30%, #e7e7e7 50%, #f0f0f0 70%, #f5f5f5 100%);
+}
+
+/* 10.3 Panther */
+@include aqua-era('10-3') {
+  --select-cap-rim: #424193;
+  --select-cap-gradient: linear-gradient(#e1e9f7 0%, #c6daf1 8%, #b4d1ef 16%, #a6caf0 25%, #9ec6ed 33%, #7fbaf6 50%, #85c2fd 58%, #a4dbff 70%, #b4e9ff 85%, #c9ffff 100%);
+  --traffic-light-inactive-gradient: linear-gradient(#bfbfbf, #a2a2a2 30%, #b4b4b4 50%, #d6d6d6 80%, #dcdcdc);
+  --slider-thumb-gradient: linear-gradient(#c3dbf1 0%, #91b8e1 10%, #7aaede 24%, #5fa0dc 33%, #59a0e1 40%, #7dbaf6 55%, #9fd6ff 70%, #b4ebfe 85%, #ccfafa 100%);
+  --slider-thumb-border: #414097;
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23414097' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#fbfbfb 0%, #d6d6d6 10%, #c4c4c4 18%, #cfcfcf 33%, #d2d2d2 45%, #e4e4e4 60%, #ececec 70%, #fbfbfb 88%, #eeeeee 100%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23a8a8a8' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-shine-opacity: 0.35;
+  --radio-size: 15px;
+  --radio-border: #8f8f8f;
+  --radio-gradient: linear-gradient(#e5e5e5 0%, #dfdfdf 30%, #e7e7e7 50%, #f0f0f0 70%, #f5f5f5 100%);
+  --help-gradient: linear-gradient(#e8ddf9 0%, #e2d5f8 30%, #d9c1ee 45%, #efd6ff 55%, #f8e0ff 70%, #ffe6ff 100%);
+  --help-border: #7f7f7f;
+}
+
+/* 10.4 Tiger */
+@include aqua-era('10-4') {
+  --select-cap-rim: #00005a;
+  --select-cap-gradient: linear-gradient(#dde2f3 0%, #bed4ef 8%, #a6c8eb 16%, #94bdea 28%, #8ebbeb 36%, #64a8f2 48%, #73b7fd 60%, #86c9ff 68%, #97daff 78%, #a9e6ff 88%, #bbffff 100%);
+  --slider-thumb-gradient: linear-gradient(#cbd5ec 0%, #96bae1 8%, #77a7da 16%, #5f99d5 30%, #4087d2 40%, #4e94dd 48%, #73b7fd 64%, #97d6ff 78%, #b4f6ff 90%, #c7ffff 100%);
+  --slider-thumb-border: #1c237a;
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%231c237a' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#efefef 0%, #dfdfdf 13%, #b7b7b7 20%, #bababa 33%, #cacaca 46%, #e2e2e2 53%, #ececec 66%, #f5f5f5 100%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23757575' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-shine-opacity: 0.35;
+  --radio-size: 15px;
+  --radio-border: #707070;
+  --radio-gradient: linear-gradient(#f7f7f7 0%, #e2e2e2 30%, #dedede 40%, #eaeaea 60%, #fcfcfc 100%);
+  --help-gradient: linear-gradient(#e8ddf9 0%, #e2d5f8 30%, #d9c1ee 45%, #efd6ff 55%, #f8e0ff 70%, #ffe6ff 100%);
+  --help-border: #7f7f7f;
+  --textured-gradient: linear-gradient(#eaeaea 0%, #f5f5f5 50%, #e4e4e4 50%, #f2f2f2 100%);
+  --textured-border: #666666;
+}
+
+/* 10.6 Snow Leopard (also used for 10.5) */
+@include aqua-era('10-6') {
+  --select-cap-rim: #1d248c;
+  --select-cap-gradient: linear-gradient(#dbe5f3 0%, #c3dcf2 12%, #b0d3f0 25%, #76b5e7 50%, #7cbaeb 58%, #98cdf8 70%, #aedffe 82%, #cfffff 100%);
+  --slider-thumb-gradient: linear-gradient(#dcecf9 0%, #c1dcf5 15%, #a5cef1 30%, #8bc1ed 40%, #77b7ec 50%, #77baef 60%, #8ac6f7 75%, #97cffc 90%, #83a8dd 100%);
+  --slider-thumb-border: #5a6aa0;
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%235a6aa0' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#fcfcfc 0%, #f3f3f3 20%, #e5e5e5 40%, #dfdfdf 55%, #e6e6e6 70%, #f3f3f3 100%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%238a8a8a' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-shine-opacity: 0.5;
+  --radio-size: 15px;
+  --radio-border: #737373;
+  --radio-gradient: linear-gradient(#b4b4b4 0%, #cdcdcd 15%, #dedede 40%, #e5e5e5 60%, #e9e9e9 100%);
+  --help-gradient: linear-gradient(#faf7ff 0%, #ede3fb 30%, #eadbfd 50%, #f3e5fe 65%, #fcefff 80%, #fff7ff 100%);
+  --help-border: #744f93;
+  --textured-gradient: linear-gradient(#fefefe 0%, #b8b8b8 100%);
+  --textured-border: #565656;
+}
+
+/* Rules that read the tokens above, scoped to pages with an era */
+@each $era in ('10-0', '10-2', '10-3', '10-4', '10-6') {
+  @include aqua-era($era) {
+    /* Disabled slider: gray gel thumb at full strength, faded track */
+    .aqua-slider-custom.disabled {
+      opacity: 1;
+
+      .track {
+        opacity: 0.55;
+      }
+    }
+
+    .aqua-slider-custom.alternative-thumb .thumb .shimmer::before {
+      opacity: var(--slider-thumb-shine-opacity, 1);
+    }
+
+    /* Radios: a full 1px rim, and a softer shine on the unselected glass */
+    input[type="radio"] {
+      border-width: 1px;
+    }
+
+    input[type="radio"]:not(:checked)::before {
+      opacity: 0.4;
+    }
+
+    .aqua-slider-custom.alternative-thumb.disabled .thumb {
+      &::before {
+        background: var(--slider-thumb-disabled-gradient);
+      }
+
+      &::after {
+        background-image: var(--slider-thumb-pointer-border-disabled);
+      }
+    }
+  }
+}
+
+/* Popup arrow cap: its own gel and navy top rim, drawn above the control's
+   shared shine (which otherwise washes the cap out) */
+@each $era in ('10-0', '10-2', '10-3', '10-4', '10-6') {
+  @include aqua-era($era) {
+    .select-wrapper .select-button {
+      z-index: 21;
+      background: var(--select-cap-gradient);
+      box-shadow: inset 0 1px 0 var(--select-cap-rim);
+    }
+
+    .select-wrapper .select-arrows {
+      z-index: 22;
+    }
+
+    .select-wrapper select {
+      padding-left: calc(0.75em - 2px);
+    }
+  }
+}
+
+/* Help button: lavender from 10.3 on */
+@each $era in ('10-3', '10-4', '10-6') {
+  @include aqua-era($era) {
+    .aqua-button.help,
+    button.help {
+      background: var(--help-gradient);
+      box-shadow: 0 0 0 1px var(--help-border), 0 1px 2px rgba(0, 0, 0, 0.25);
+      color: #000;
+
+      span {
+        z-index: 3;
+        color: #000;
+        font-weight: bold;
+        text-shadow: none;
+      }
+    }
+  }
+}
+
+/* Textured toolbar button (10.4+): flat rounded rect with a crisp border,
+   the style of Show All and Back/Forward in System Preferences */
+.aqua-button--textured {
+  min-width: 0;
+  padding: 0 0.9em;
+  border-radius: 4px;
+  font-weight: normal;
+  color: #000;
+  background: var(--textured-gradient, linear-gradient(#fefefe, #d8d8d8));
+  box-shadow: inset 0 0 0 1px var(--textured-border, #7a7a7a), 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  span {
+    text-shadow: none;
+    letter-spacing: 0;
+  }
+
+  &:active:not(:disabled) {
+    background: var(--textured-border, #7a7a7a);
+    color: #fff;
+  }
+
+  &:disabled span {
+    opacity: 0.45;
+  }
+}

@@ -370,13 +370,14 @@
   grid-auto-columns: var(--rc-radio-pitch, 66px);
   justify-content: start;
   margin-left: calc(var(--rc-radio-first, 14px) - var(--rc-radio-pitch, 66px) / 2);
+  transform: translateY(var(--rc-radio-y, 0));
 }
 
 .rc-radio {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: var(--rc-radio-gap, 2px);
 }
 
 .rc-radio label {
