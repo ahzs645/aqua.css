@@ -95,24 +95,23 @@
   --textured-border: #565656;
 }
 
-/* Window title: top highlight, title weight and shadow per era.
-   10.0-10.3 titles carry a soft dark drop shadow, 10.4 has none and 10.5-10.6
-   use a thin light emboss. Text sits 1px higher than the library default. */
+/* Window title: top highlight and title shadow per era. 10.0-10.3 titles
+   carry a soft dark drop shadow, 10.4 has none and 10.5-10.6 use a thin
+   light emboss. Text sits 1px higher than the library default. */
 @include aqua-era('10-0') {
   --window-top-highlight: #fbfbfb;
-  --window-title-weight: 600;
-  --window-title-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --window-title-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   --window-title-height: 21px;
 }
 
 @include aqua-era('10-2') {
   --window-top-highlight: #fbfbfb;
-  --window-title-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --window-title-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 @include aqua-era('10-3') {
   --window-top-highlight: #f9f9f9;
-  --window-title-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --window-title-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 @include aqua-era('10-4') {
@@ -127,7 +126,10 @@
 
 @each $era in ('10-0', '10-2', '10-3', '10-4', '10-6') {
   @include aqua-era($era) {
+    /* Aqua windows have no hard outline: the pane runs to the edge and the
+       drop shadow defines it. Only the light top edge stays. */
     .window:not(.brushed-metal):not(.brushed-metal-authentic) {
+      border-width: 1px 0 0;
       border-top-color: var(--window-top-highlight);
 
       .title-bar {

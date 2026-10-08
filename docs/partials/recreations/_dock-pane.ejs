@@ -43,7 +43,7 @@
   const at = (row, i) => `data-row="${row}" style="margin-top: ${gap(row, i)}px"`;
 %>
 <div class="rc-stage<%= pane.desktop ? ' rc-stage--desktop' : '' %>" data-aqua-era="<%= pane.aquaEra %>">
-  <div class="window rc-prefs rc-prefs--<%= pane.chrome %>" style="width: <%= pane.width %>px;<%= vars ? ' ' + vars + ';' : '' %>">
+  <div class="window rc-prefs rc-prefs--<%= pane.chrome %>" style="width: <%= pane.width %>px; --rc-w: <%= pane.width %>px;<%= vars ? ' ' + vars + ';' : '' %>">
     <div class="title-bar">
       <div class="traffic-lights traffic-lights--always-colored">
         <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
