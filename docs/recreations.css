@@ -326,7 +326,7 @@
 }
 
 .rc-slider .thumb {
-  left: calc(var(--rc-inset) + (100% - 2 * var(--rc-inset)) * var(--rc-value));
+  left: round(calc(var(--rc-inset) + (100% - 2 * var(--rc-inset)) * var(--rc-value)), 1px);
 }
 
 /* End-point tick marks with their captions centered underneath */
@@ -358,10 +358,18 @@
 
 .rc-scale span::before {
   content: '';
+  position: relative;
+  left: var(--rc-tick-x, -2px);
   width: 1px;
   height: 5px;
-  margin-bottom: 5px;
-  background: #777;
+  margin-top: -1px;
+  margin-bottom: 6px;
+  background: var(--slider-tick, #777);
+}
+
+/* The ticks sit a little left of the captions' centers, as in the originals */
+.rc-scale span:last-child::before {
+  --rc-tick-x: -1px;
 }
 
 /* Popups grow upward from the row's baseline to the original's height */
