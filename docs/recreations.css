@@ -327,6 +327,7 @@
 
 .rc-slider .thumb {
   left: round(calc(var(--rc-inset) + (100% - 2 * var(--rc-inset)) * var(--rc-value)), 1px);
+  margin-left: var(--rc-thumb-x, 0);
 }
 
 /* End-point tick marks with their captions centered underneath */
