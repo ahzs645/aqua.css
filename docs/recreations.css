@@ -77,7 +77,9 @@
 
 /* ---- Window ---- */
 
+/* Widths are the real windows' outer widths, border included */
 .rc-prefs {
+  box-sizing: border-box;
   flex: none;
   max-width: none;
   margin: 0 auto;
@@ -221,7 +223,7 @@
   font-size: 9px;
 }
 
-.rc-show-all {
+.rc-nav-toolbar .rc-show-all {
   padding: 0 12px;
   border-radius: 4px;
 }
@@ -241,8 +243,13 @@
 /* ---- Pane body ---- */
 
 .rc-pane-body {
-  position: relative;
   padding: 14px 20px 18px;
+}
+
+/* Positioning context for the help button. It sits one level inside
+   .window-body because era styles reposition the body's direct children. */
+.rc-pane {
+  position: relative;
 }
 
 .rc-form {
@@ -358,10 +365,10 @@
   border-top: 1px solid #a0a0a0;
 }
 
-.rc-help {
+.rc-pane .aqua-button.rc-help {
   position: absolute;
-  right: 18px;
-  bottom: 18px;
+  right: -2px;
+  bottom: 0;
   width: 21px;
   height: 21px;
   min-width: 0;
