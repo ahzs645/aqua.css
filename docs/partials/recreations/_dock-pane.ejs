@@ -4,8 +4,40 @@
 %>
 <% const uid = pane.id; %>
 <% const icon = (name) => include('_toolbar-icons', { name, release: pane.id }).trim(); %>
+<%
+  // Spacing measured from the original screenshots (see `layout` in recreations.html.ejs)
+  const layout = pane.layout || {};
+  const vars = Object.entries({
+    '--rc-tb-top': layout.toolbar && layout.toolbar[0],
+    '--rc-tb-gap': layout.toolbar && layout.toolbar[1],
+    '--rc-tb-bottom': layout.toolbar && layout.toolbar[2],
+    '--rc-body-top': layout.body && layout.body[0],
+    '--rc-body-bottom': layout.body && layout.body[1],
+    '--rc-shift': layout.shift,
+    '--rc-col-gap': layout.colGap,
+    '--rc-radio-pitch': layout.radioPitch,
+    '--rc-radio-first': layout.radioFirst,
+    '--rc-left-check': layout.leftCheck,
+    '--rc-tb-left': layout.toolbarX && layout.toolbarX[0],
+    '--rc-tb-item-pad': layout.toolbarX && layout.toolbarX[1],
+    '--rc-tb-sep': layout.toolbarX && layout.toolbarX[2],
+    '--rc-slider-w': layout.slider && layout.slider[0],
+    '--rc-slider-x': layout.slider && layout.slider[1],
+    '--rc-font': layout.font,
+    '--rc-popup-h': layout.popup && layout.popup[0],
+    '--rc-popup-w': layout.popup && layout.popup[1],
+    '--rc-help-size': layout.help && layout.help[0],
+    '--rc-help-right': layout.help && layout.help[1],
+    '--rc-help-bottom': layout.help && layout.help[2],
+    '--rc-nav-h': layout.nav && layout.nav[0],
+    '--rc-nav-top': layout.nav && layout.nav[1],
+    '--rc-nav-left': layout.nav && layout.nav[2],
+  }).filter(([, v]) => v !== undefined).map(([k, v]) => `${k}: ${v}px`).join('; ');
+  const gap = (row, i) => (i === 0 ? 0 : (layout.gaps && layout.gaps[row] !== undefined ? layout.gaps[row] : 14));
+  const at = (row, i) => `data-row="${row}" style="margin-top: ${gap(row, i)}px"`;
+%>
 <div class="rc-stage<%= pane.desktop ? ' rc-stage--desktop' : '' %>" data-aqua-era="<%= pane.aquaEra %>">
-  <div class="window rc-prefs rc-prefs--<%= pane.chrome %>" style="width: <%= pane.width %>px;">
+  <div class="window rc-prefs rc-prefs--<%= pane.chrome %>" style="width: <%= pane.width %>px;<%= vars ? ' ' + vars + ';' : '' %>">
     <div class="title-bar">
       <div class="traffic-lights traffic-lights--always-colored">
         <div class="aqua-light aqua-red" role="button" tabindex="0" aria-label="Close"><span class="icon">×</span></div>
@@ -39,31 +71,31 @@
     <div class="window-body rc-pane-body">
       <div class="rc-pane">
       <div class="rc-form">
-<% pane.rows.forEach((row) => { %>
+<% pane.rows.forEach((row, i) => { %>
 <% if (row === 'size') { %>
-        <label class="rc-label" for="<%= uid %>-size"><%= pane.sizeLabel %></label>
-        <div class="rc-control">
+        <label class="rc-label" for="<%= uid %>-size" <%- at(row, i) %>><%= pane.sizeLabel %></label>
+        <div class="rc-control" <%- at(row, i) %>>
           <div class="aqua-slider-custom alternative-thumb rc-slider" id="<%= uid %>-size" role="slider" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" tabindex="0">
             <div class="track"></div>
-            <div class="thumb" style="left: 45%;"><div class="shimmer"></div></div>
+            <div class="thumb" style="--rc-value: 0.43;"><div class="shimmer"></div></div>
           </div>
           <div class="rc-scale"><span>Small</span><span>Large</span></div>
         </div>
 <% } else if (row === 'magnification') { %>
-        <div class="rc-label">
+        <div class="rc-label" <%- at(row, i) %>>
           <input type="checkbox" id="<%= uid %>-mag"<%= (pane.checked || []).includes('magnification') ? ' checked' : '' %>>
           <label for="<%= uid %>-mag">Magnification:</label>
         </div>
-        <div class="rc-control">
+        <div class="rc-control" <%- at(row, i) %>>
           <div class="aqua-slider-custom alternative-thumb rc-slider<%= pane.magnification ? '' : ' disabled' %>" role="slider" aria-label="Magnification" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"<%= pane.magnification ? ' tabindex="0"' : ' aria-disabled="true"' %>>
             <div class="track"></div>
-            <div class="thumb" style="left: 100%;"><div class="shimmer"></div></div>
+            <div class="thumb" style="--rc-value: 1;"><div class="shimmer"></div></div>
           </div>
           <div class="rc-scale"><span>Min</span><span>Max</span></div>
         </div>
 <% } else if (row === 'position') { %>
-        <div class="rc-label">Position on screen:</div>
-        <div class="rc-control rc-radios" role="radiogroup" aria-label="Position on screen">
+        <div class="rc-label" <%- at(row, i) %>>Position on screen:</div>
+        <div class="rc-control rc-radios" role="radiogroup" aria-label="Position on screen" <%- at(row, i) %>>
 <% ['Left', 'Bottom', 'Right'].forEach((side) => { %>
           <div class="rc-radio">
             <input type="radio" name="<%= uid %>-position" id="<%= uid %>-pos-<%= side.toLowerCase() %>"<%= side === 'Bottom' ? ' checked' : '' %>>
@@ -72,8 +104,8 @@
 <% }) %>
         </div>
 <% } else if (row === 'minimize') { %>
-        <label class="rc-label" for="<%= uid %>-effect"><%= pane.minimizeLabel %></label>
-        <div class="rc-control">
+        <label class="rc-label" for="<%= uid %>-effect" <%- at(row, i) %>><%= pane.minimizeLabel %></label>
+        <div class="rc-control" <%- at(row, i) %>>
           <div class="select-wrapper">
             <select id="<%= uid %>-effect">
               <option><%= pane.effectLabel %></option>
@@ -86,17 +118,15 @@
             </span>
           </div>
         </div>
-<% } else if (row === 'gap') { %>
-        <div class="rc-gap"></div>
 <% } else if (row === 'separator') { %>
-        <hr class="rc-separator">
+        <hr class="rc-separator" <%- at(row, i) %>>
 <% } else { %>
 <% const checks = {
   autohide: ['autohide', 'Automatically hide and show the Dock'],
   animate: ['animate', 'Animate opening applications'],
   intoIcon: ['into-icon', 'Minimize windows into application icon'],
 }; const [key, text] = checks[row]; %>
-        <div class="rc-check<%= pane.checkGroup && pane.checkGroup.includes(row) ? ' rc-check--tight' : '' %>">
+        <div class="rc-check<%= (layout.leftChecks || []).includes(row) ? ' rc-check--left' : '' %>" <%- at(row, i) %>>
           <input type="checkbox" id="<%= uid %>-<%= key %>"<%= (pane.checked || []).includes(row) ? ' checked' : '' %>>
           <label for="<%= uid %>-<%= key %>"><%= text %></label>
         </div>

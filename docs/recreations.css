@@ -154,7 +154,7 @@
 .rc-icon-toolbar {
   display: flex;
   align-items: flex-end;
-  padding: 3px 6px 2px;
+  padding: var(--rc-tb-top, 3px) 6px var(--rc-tb-bottom, 2px) var(--rc-tb-left, 6px);
   border-bottom: 1px solid #a5a5a5;
 }
 
@@ -163,9 +163,9 @@
   height: auto;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: var(--rc-tb-gap, 2px);
   min-width: 0;
-  padding: 0 4px;
+  padding: 0 var(--rc-tb-item-pad, 4px);
   border: 0;
   background: none;
   box-shadow: none;
@@ -181,15 +181,23 @@
   height: 32px;
 }
 
-/* 10.0 spaced its toolbar items on a fixed grid */
+/* 10.0 spaced its toolbar items on an 85px grid from the window edge */
 .rc-icon-toolbar--fixed .rc-icon-button {
   width: 85px;
+}
+
+.rc-icon-toolbar--fixed .rc-icon-button:first-child {
+  width: 82px;
+}
+
+.rc-icon-toolbar--fixed .rc-icon-separator {
+  margin: 2px -1px 2px 3px;
 }
 
 .rc-icon-separator {
   align-self: stretch;
   width: 0;
-  margin: 2px 6px;
+  margin: 2px var(--rc-tb-sep, 6px);
   border-left: 1px dotted #888;
 }
 
@@ -197,10 +205,10 @@
 
 .rc-nav-toolbar {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 9px;
   height: 31px;
-  padding: 0 8px 2px;
+  padding: var(--rc-nav-top, 2px) 8px 0 var(--rc-nav-left, 8px);
   box-sizing: border-box;
   border-bottom: 1px solid var(--rc-band-border, #8f8f8f);
 }
@@ -209,22 +217,25 @@
   --rc-band-border: #515151;
 }
 
-/* Textured rounded-rect toolbar buttons */
+/* Textured rounded-rect toolbar buttons, sized like the originals:
+   a 52px Back/Forward pair and an 80px Show All, both 22px tall */
 .rc-back-forward .aqua-button,
 .rc-show-all {
-  height: 20px;
+  height: var(--rc-nav-h, 22px);
   min-width: 0;
   font-size: 12px;
   font-weight: normal;
 }
 
 .rc-back-forward .aqua-button {
-  padding: 0 6px;
+  width: 26px;
+  padding: 0;
   font-size: 9px;
 }
 
 .rc-nav-toolbar .rc-show-all {
-  padding: 0 12px;
+  width: 80px;
+  padding: 0;
   border-radius: 4px;
 }
 
@@ -233,17 +244,28 @@
   border-radius: 4px;
 }
 
+.rc-back-forward {
+  height: var(--rc-nav-h, 22px);
+}
+
 .rc-search {
-  width: 150px;
+  box-sizing: border-box;
+  width: var(--rc-search-w, 150px);
   min-width: 0;
-  height: 20px;
+  height: 21px;
+  margin-top: 1px;
   margin-left: auto;
+}
+
+.rc-prefs--unified .rc-search {
+  --rc-search-w: 153px;
+  margin-right: -1px;
 }
 
 /* ---- Pane body ---- */
 
 .rc-pane-body {
-  padding: 14px 20px 18px;
+  padding: var(--rc-body-top, 14px) 20px var(--rc-body-bottom, 18px);
 }
 
 /* Positioning context for the help button. It sits one level inside
@@ -252,13 +274,20 @@
   position: relative;
 }
 
+/* Jaguar and Panther set their pane text a touch larger */
+.rc-form label,
+.rc-form .rc-label {
+  font-size: var(--rc-font, var(--font-size-base));
+}
+
 .rc-form {
   display: grid;
   grid-template-columns: max-content max-content;
   justify-content: center;
   align-items: start;
-  column-gap: 8px;
-  row-gap: var(--rc-row-gap, 14px);
+  column-gap: var(--rc-col-gap, 8px);
+  position: relative;
+  left: var(--rc-shift, 0);
 }
 
 .rc-label {
@@ -266,7 +295,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 1px;
   min-height: 18px;
   text-align: right;
 }
@@ -275,17 +304,26 @@
   grid-column: 2;
 }
 
+/* Aqua thumbs stay inside the track: the thumb center travels between
+   --rc-inset from each end, the same points the end ticks mark. */
 .rc-slider {
-  width: 210px;
+  --rc-inset: 8px;
+  width: var(--rc-slider-w, 210px);
+  margin-left: var(--rc-slider-x, 0);
+}
+
+.rc-slider .thumb {
+  left: calc(var(--rc-inset) + (100% - 2 * var(--rc-inset)) * var(--rc-value));
 }
 
 /* End-point tick marks with their captions centered underneath */
 .rc-scale {
   position: relative;
-  width: 210px;
+  width: var(--rc-slider-w, 210px);
+  margin-left: var(--rc-slider-x, 0);
   height: 20px;
   margin-top: 2px;
-  font-size: 10px;
+  font-size: calc(var(--rc-font, 13px) - 3px);
 }
 
 .rc-scale span {
@@ -298,36 +336,40 @@
 }
 
 .rc-scale span:first-child {
-  left: 7px;
+  left: 8px;
 }
 
 .rc-scale span:last-child {
-  left: calc(100% - 7px);
+  left: calc(100% - 8px);
 }
 
 .rc-scale span::before {
   content: '';
   width: 1px;
   height: 5px;
-  margin-bottom: 2px;
+  margin-bottom: 5px;
   background: #777;
 }
 
+/* Popups grow upward from the row's baseline to the original's height */
 .rc-pane-body .select-wrapper {
+  margin-top: calc(20px - var(--rc-popup-h, 20px));
   font-size: 12px;
 }
 
 .rc-pane-body .select-wrapper select {
-  height: 20px;
-  min-width: 120px;
+  height: var(--rc-popup-h, 20px);
+  min-width: var(--rc-popup-w, 120px);
   font-size: 13px;
 }
 
+/* Radios sit on a fixed pitch; --rc-radio-first is the first one's center */
 .rc-radios {
-  display: flex;
-  gap: 26px;
-  padding-left: 4px;
-  margin-bottom: 6px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--rc-radio-pitch, 66px);
+  justify-content: start;
+  margin-left: calc(var(--rc-radio-first, 14px) - var(--rc-radio-pitch, 66px) / 2);
 }
 
 .rc-radio {
@@ -345,16 +387,17 @@
   grid-column: 2;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0;
 }
 
-.rc-check--tight + .rc-check--tight {
-  margin-top: calc(4px - var(--rc-row-gap, 14px));
+.rc-check input {
+  margin-left: 0;
 }
 
-/* Extra breathing room between groups of settings */
-.rc-gap {
+/* 10.0-10.1: some checkboxes start under the Magnification checkbox */
+.rc-check--left {
   grid-column: 1 / -1;
+  padding-left: var(--rc-left-check, 0);
 }
 
 .rc-separator {
@@ -365,12 +408,13 @@
   border-top: 1px solid #a0a0a0;
 }
 
+/* Help sits a fixed distance from the window body's bottom-right corner */
 .rc-pane .aqua-button.rc-help {
   position: absolute;
-  right: -2px;
-  bottom: 0;
-  width: 21px;
-  height: 21px;
+  right: calc(var(--rc-help-right, 18px) - 20px);
+  bottom: calc(var(--rc-help-bottom, 18px) - var(--rc-body-bottom, 18px));
+  width: var(--rc-help-size, 21px);
+  height: var(--rc-help-size, 21px);
   min-width: 0;
   padding: 0;
   font-size: 13px;
