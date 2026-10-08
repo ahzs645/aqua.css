@@ -12,11 +12,11 @@
   --select-cap-rim: #1256a8;
   --select-cap-gradient: linear-gradient(#9fc0e0 0%, #bad0e9 8%, #a2c3e6 20%, #76aae1 32%, #8ec3fa 50%, #a4d9ff 62%, #b1e5ff 75%, #bdf6ff 100%);
   --traffic-light-inactive-gradient: linear-gradient(#f6f6f6, #e4e4e4 45%, #eeeeee 70%, #fafafa);
-  --slider-thumb-gradient: linear-gradient(#abb5da 0%, #83aad3 20%, #6393ca 33%, #6195cb 40%, #8db6e4 55%, #a6ccf8 66%, #c0e9ff 82%, #dbffff 100%);
+  --slider-thumb-gradient: linear-gradient(#abb5da 12%, #83aad3 24.8%, #6393ca 33.1%, #6195cb 37.6%, #8db6e4 47.2%, #a6ccf8 54.2%, #c0e9ff 64.5%, #dbffff 76%);
   --slider-thumb-border: #2c2c6b;
-  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%232c2c6b' stroke-width='1'/%3E%3C/svg%3E");
-  --slider-thumb-disabled-gradient: linear-gradient(#dcdcdc 0%, #b3b3b3 18%, #b6b6b6 28%, #c9c9c9 42%, #e0e0e0 56%, #eaeaea 66%, #ffffff 82%, #ececec 100%);
-  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%238f8f8f' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%232c2c6b' stroke-width='1.5'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#dcdcdc 12%, #b3b3b3 23.5%, #b6b6b6 29.9%, #c9c9c9 38.9%, #e0e0e0 47.8%, #eaeaea 54.2%, #ffffff 64.5%, #ececec 76%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%238f8f8f' stroke-width='1.5'/%3E%3C/svg%3E");
   --slider-thumb-shine-opacity: 0.3;
   --radio-size: 15px;
   --radio-border: #585858;
@@ -28,11 +28,11 @@
   --select-cap-rim: #414093;
   --select-cap-gradient: linear-gradient(#e1e9f7 0%, #c6daf1 8%, #b4d1ef 16%, #a6caf0 25%, #9ec6ed 33%, #7fbaf6 50%, #85c2fd 58%, #a4dbff 70%, #b4e9ff 85%, #c9ffff 100%);
   --traffic-light-inactive-gradient: linear-gradient(#f6f6f6, #e4e4e4 45%, #eeeeee 70%, #fafafa);
-  --slider-thumb-gradient: linear-gradient(#c3dbf1 0%, #91b8e1 10%, #7aaede 24%, #5fa0dc 33%, #59a0e1 40%, #7dbaf6 55%, #9fd6ff 70%, #b4ebfe 85%, #ccfafa 100%);
+  --slider-thumb-gradient: linear-gradient(#c3dbf1 12%, #91b8e1 18.4%, #7aaede 27.4%, #5fa0dc 33.1%, #59a0e1 37.6%, #7dbaf6 47.2%, #9fd6ff 56.8%, #b4ebfe 66.4%, #ccfafa 76%);
   --slider-thumb-border: #414097;
-  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23414097' stroke-width='1'/%3E%3C/svg%3E");
-  --slider-thumb-disabled-gradient: linear-gradient(#fbfbfb 0%, #d6d6d6 10%, #c4c4c4 18%, #cfcfcf 33%, #d2d2d2 45%, #e4e4e4 60%, #ececec 70%, #fbfbfb 88%, #eeeeee 100%);
-  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23a8a8a8' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23414097' stroke-width='1.5'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#fbfbfb 12%, #d6d6d6 18.4%, #c4c4c4 23.5%, #cfcfcf 33.1%, #d2d2d2 40.8%, #e4e4e4 50.4%, #ececec 56.8%, #fbfbfb 68.3%, #eeeeee 76%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23a8a8a8' stroke-width='1.5'/%3E%3C/svg%3E");
   --slider-thumb-shine-opacity: 0.35;
   --radio-size: 15px;
   --radio-border: #8f8f8f;
@@ -44,11 +44,11 @@
   --select-cap-rim: #424193;
   --select-cap-gradient: linear-gradient(#e1e9f7 0%, #c6daf1 8%, #b4d1ef 16%, #a6caf0 25%, #9ec6ed 33%, #7fbaf6 50%, #85c2fd 58%, #a4dbff 70%, #b4e9ff 85%, #c9ffff 100%);
   --traffic-light-inactive-gradient: linear-gradient(#bfbfbf, #a2a2a2 30%, #b4b4b4 50%, #d6d6d6 80%, #dcdcdc);
-  --slider-thumb-gradient: linear-gradient(#c3dbf1 0%, #91b8e1 10%, #7aaede 24%, #5fa0dc 33%, #59a0e1 40%, #7dbaf6 55%, #9fd6ff 70%, #b4ebfe 85%, #ccfafa 100%);
+  --slider-thumb-gradient: linear-gradient(#c3dbf1 12%, #91b8e1 18.4%, #7aaede 27.4%, #5fa0dc 33.1%, #59a0e1 37.6%, #7dbaf6 47.2%, #9fd6ff 56.8%, #b4ebfe 66.4%, #ccfafa 76%);
   --slider-thumb-border: #414097;
-  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23414097' stroke-width='1'/%3E%3C/svg%3E");
-  --slider-thumb-disabled-gradient: linear-gradient(#fbfbfb 0%, #d6d6d6 10%, #c4c4c4 18%, #cfcfcf 33%, #d2d2d2 45%, #e4e4e4 60%, #ececec 70%, #fbfbfb 88%, #eeeeee 100%);
-  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23a8a8a8' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23414097' stroke-width='1.5'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#fbfbfb 12%, #d6d6d6 18.4%, #c4c4c4 23.5%, #cfcfcf 33.1%, #d2d2d2 40.8%, #e4e4e4 50.4%, #ececec 56.8%, #fbfbfb 68.3%, #eeeeee 76%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23a8a8a8' stroke-width='1.5'/%3E%3C/svg%3E");
   --slider-thumb-shine-opacity: 0.35;
   --radio-size: 15px;
   --radio-border: #8f8f8f;
@@ -61,11 +61,11 @@
 @include aqua-era('10-4') {
   --select-cap-rim: #00005a;
   --select-cap-gradient: linear-gradient(#dde2f3 0%, #bed4ef 8%, #a6c8eb 16%, #94bdea 28%, #8ebbeb 36%, #64a8f2 48%, #73b7fd 60%, #86c9ff 68%, #97daff 78%, #a9e6ff 88%, #bbffff 100%);
-  --slider-thumb-gradient: linear-gradient(#cbd5ec 0%, #96bae1 8%, #77a7da 16%, #5f99d5 30%, #4087d2 40%, #4e94dd 48%, #73b7fd 64%, #97d6ff 78%, #b4f6ff 90%, #c7ffff 100%);
+  --slider-thumb-gradient: linear-gradient(#cbd5ec 12%, #96bae1 17.1%, #77a7da 22.2%, #5f99d5 31.2%, #4087d2 37.6%, #4e94dd 42.7%, #73b7fd 53.0%, #97d6ff 61.9%, #b4f6ff 69.6%, #c7ffff 76%);
   --slider-thumb-border: #1c237a;
-  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%231c237a' stroke-width='1'/%3E%3C/svg%3E");
-  --slider-thumb-disabled-gradient: linear-gradient(#efefef 0%, #dfdfdf 13%, #b7b7b7 20%, #bababa 33%, #cacaca 46%, #e2e2e2 53%, #ececec 66%, #f5f5f5 100%);
-  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23757575' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%231c237a' stroke-width='1.5'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#efefef 12%, #dfdfdf 20.3%, #b7b7b7 24.8%, #bababa 33.1%, #cacaca 41.4%, #e2e2e2 45.9%, #ececec 54.2%, #f5f5f5 76%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%23757575' stroke-width='1.5'/%3E%3C/svg%3E");
   --slider-thumb-shine-opacity: 0.35;
   --radio-size: 15px;
   --radio-border: #707070;
@@ -80,11 +80,11 @@
 @include aqua-era('10-6') {
   --select-cap-rim: #1d248c;
   --select-cap-gradient: linear-gradient(#dbe5f3 0%, #c3dcf2 12%, #b0d3f0 25%, #76b5e7 50%, #7cbaeb 58%, #98cdf8 70%, #aedffe 82%, #cfffff 100%);
-  --slider-thumb-gradient: linear-gradient(#dcecf9 0%, #c1dcf5 15%, #a5cef1 30%, #8bc1ed 40%, #77b7ec 50%, #77baef 60%, #8ac6f7 75%, #97cffc 90%, #83a8dd 100%);
+  --slider-thumb-gradient: linear-gradient(#dcecf9 12%, #c1dcf5 21.6%, #a5cef1 31.2%, #8bc1ed 37.6%, #77b7ec 44%, #77baef 50.4%, #8ac6f7 60%, #97cffc 69.6%, #83a8dd 76%);
   --slider-thumb-border: #5a6aa0;
-  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%235a6aa0' stroke-width='1'/%3E%3C/svg%3E");
-  --slider-thumb-disabled-gradient: linear-gradient(#fcfcfc 0%, #f3f3f3 20%, #e5e5e5 40%, #dfdfdf 55%, #e6e6e6 70%, #f3f3f3 100%);
-  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%238a8a8a' stroke-width='1'/%3E%3C/svg%3E");
+  --slider-thumb-pointer-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%235a6aa0' stroke-width='1.5'/%3E%3C/svg%3E");
+  --slider-thumb-disabled-gradient: linear-gradient(#fcfcfc 12%, #f3f3f3 24.8%, #e5e5e5 37.6%, #dfdfdf 47.2%, #e6e6e6 56.8%, #f3f3f3 76%);
+  --slider-thumb-pointer-border-disabled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 19'%3E%3Cpath d='M8.5 18.5 C14.5 12 16.5 10.5 16.5 9 L16.5 3 C16.5 1.5 15.5 0.5 14 0.5 L3 0.5 C1.5 0.5 0.5 1.5 0.5 3 L0.5 9 C0.5 10.5 2.5 12 8.5 18.5 Z' fill='none' stroke='%238a8a8a' stroke-width='1.5'/%3E%3C/svg%3E");
   --slider-thumb-shine-opacity: 0.5;
   --radio-size: 15px;
   --radio-border: #737373;
@@ -93,6 +93,54 @@
   --help-border: #744f93;
   --textured-gradient: linear-gradient(#fefefe 0%, #b8b8b8 100%);
   --textured-border: #565656;
+}
+
+/* Window title: top highlight, title weight and shadow per era.
+   10.0-10.3 titles carry a soft dark drop shadow, 10.4 has none and 10.5-10.6
+   use a thin light emboss. Text sits 1px higher than the library default. */
+@include aqua-era('10-0') {
+  --window-top-highlight: #fbfbfb;
+  --window-title-weight: 600;
+  --window-title-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --window-title-height: 21px;
+}
+
+@include aqua-era('10-2') {
+  --window-top-highlight: #fbfbfb;
+  --window-title-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@include aqua-era('10-3') {
+  --window-top-highlight: #f9f9f9;
+  --window-title-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@include aqua-era('10-4') {
+  --window-top-highlight: #fbfbfb;
+  --window-title-shadow: none;
+}
+
+@include aqua-era('10-6') {
+  --window-top-highlight: #e0e0e0;
+  --window-title-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+@each $era in ('10-0', '10-2', '10-3', '10-4', '10-6') {
+  @include aqua-era($era) {
+    .window:not(.brushed-metal):not(.brushed-metal-authentic) {
+      border-top-color: var(--window-top-highlight);
+
+      .title-bar {
+        height: var(--window-title-height, 22px);
+      }
+
+      .title-bar-text {
+        font-weight: var(--window-title-weight, 500);
+        text-shadow: var(--window-title-shadow);
+        transform: translateY(-1px);
+      }
+    }
+  }
 }
 
 /* Rules that read the tokens above, scoped to pages with an era */
@@ -109,6 +157,19 @@
 
     .aqua-slider-custom.alternative-thumb .thumb .shimmer::before {
       opacity: var(--slider-thumb-shine-opacity, 1);
+    }
+
+    /* Aqua's pointer thumb is 15x17. The gel only shows between about 12% and
+       76% of the box (the rest is rim and tip), so the thumb gradients above
+       place their stops in that range. */
+    .aqua-slider-custom.alternative-thumb .thumb {
+      width: 15px;
+      height: 17px;
+      margin-top: -1px;
+    }
+
+    .aqua-slider-custom.alternative-thumb .thumb .shimmer::after {
+      opacity: 0.2;
     }
 
     /* Radios: a full 1px rim, and a softer shine on the unselected glass */

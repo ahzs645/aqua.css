@@ -26,6 +26,10 @@
     '--rc-slider-w': layout.slider && layout.slider[0],
     '--rc-slider-x': layout.slider && layout.slider[1],
     '--rc-font': layout.font,
+    '--rc-band-top-era': layout.band && layout.band[0],
+    '--rc-band-bottom-era': layout.band && layout.band[1],
+    '--rc-body-bg-era': layout.band && layout.band[2],
+    '--rc-toolbar-bg': layout.toolbarBg,
     '--rc-popup-h': layout.popup && layout.popup[0],
     '--rc-popup-w': layout.popup && layout.popup[1],
     '--rc-help-size': layout.help && layout.help[0],
@@ -34,7 +38,7 @@
     '--rc-nav-h': layout.nav && layout.nav[0],
     '--rc-nav-top': layout.nav && layout.nav[1],
     '--rc-nav-left': layout.nav && layout.nav[2],
-  }).filter(([, v]) => v !== undefined).map(([k, v]) => `${k}: ${v}px`).join('; ');
+  }).filter(([, v]) => v !== undefined).map(([k, v]) => `${k}: ${typeof v === 'number' ? v + 'px' : v}`).join('; ');
   const gap = (row, i) => (i === 0 ? 0 : (layout.gaps && layout.gaps[row] !== undefined ? layout.gaps[row] : 14));
   const at = (row, i) => `data-row="${row}" style="margin-top: ${gap(row, i)}px"`;
 %>

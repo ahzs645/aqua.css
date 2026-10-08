@@ -18,6 +18,7 @@
   //   slider [width, x], radioPitch/radioFirst: radio spacing and first center,
   //   radio [y offset, circle-label gap],
   //   leftChecks/leftCheck: checkboxes under Magnification (10.0-10.1) and their indent,
+  //   toolbarBg/band: toolbar and unified-band colors,
   //   font: pane text size, popup [height, min width], help [size, right, bottom].
   const eras = [
     {
@@ -26,7 +27,8 @@
       magnification: true, checked: ['animate'],
       rows: ['size', 'magnification', 'autohide', 'separator', 'animate'],
       layout: {
-        toolbar: [6, 3, 2],
+        toolbarBg: 'repeating-linear-gradient(#fafafa 0 1px, #ffffff 1px 2px, #fafafa 2px 3px, #e9e9e9 3px 4px)',
+        toolbar: [7, 3, 2],
         toolbarX: [0, 4, 6],
         body: [22, 14],
         gaps: { magnification: 12, autohide: 14, animate: 17 },
@@ -42,7 +44,8 @@
       aquaEra: '10-0', chrome: 'pinstripe', width: 595, desktop: true,
       rows: ['size', 'magnification', 'autohide', 'position', 'minimize', 'animate'],
       layout: {
-        toolbar: [6, 3, 2],
+        toolbarBg: 'repeating-linear-gradient(#fafafa 0 1px, #ffffff 1px 2px, #fafafa 2px 3px, #e9e9e9 3px 4px)',
+        toolbar: [7, 3, 2],
         toolbarX: [6, 5.5, 7],
         body: [22, 28],
         gaps: { magnification: 12, autohide: 25, position: 19, minimize: 30, animate: 16 },
@@ -123,6 +126,7 @@
       sizeLabel: 'Size:',
       rows: ['size', 'magnification', 'position', 'minimize', 'animate', 'autohide'],
       layout: {
+        band: ['#c5c5c5', '#969696', '#e8e8e8'],
         nav: [19, 2, 8],
         body: [25, 21],
         gaps: { magnification: 10, position: 15, minimize: 16, animate: 15, autohide: 2 },

@@ -99,6 +99,16 @@
   background: var(--window-bg);
 }
 
+/* The icon toolbar is lighter than the pane below it: 10.0-10.1 use a
+   brighter pinstripe, 10.3 a lighter flat gray */
+.rc-prefs--pinstripe .rc-icon-toolbar {
+  background: var(--rc-toolbar-bg, none);
+}
+
+.rc-prefs--panther .rc-icon-toolbar {
+  background: #f7f7f7;
+}
+
 /* 10.4+: title bar and toolbar form one unified gradient band */
 .rc-prefs--tiger,
 .rc-prefs--unified {
@@ -115,9 +125,9 @@
 }
 
 .rc-prefs--unified {
-  --rc-band-top: #cfcfcf;
-  --rc-band-bottom: #a7a7a7;
-  --rc-body-bg: #ececec;
+  --rc-band-top: var(--rc-band-top-era, #cfcfcf);
+  --rc-band-bottom: var(--rc-band-bottom-era, #a7a7a7);
+  --rc-body-bg: var(--rc-body-bg-era, #ececec);
 }
 
 .rc-prefs--tiger .title-bar,
