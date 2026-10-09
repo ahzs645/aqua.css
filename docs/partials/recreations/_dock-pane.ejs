@@ -39,6 +39,8 @@
     '--rc-nav-h': layout.nav && layout.nav[0],
     '--rc-nav-top': layout.nav && layout.nav[1],
     '--rc-nav-left': layout.nav && layout.nav[2],
+    '--slider-thumb-gradient': layout.thumb,
+    '--rc-mag-y': layout.magY,
   }).filter(([, v]) => v !== undefined).map(([k, v]) => `${k}: ${typeof v === 'number' ? v + 'px' : v}`).join('; ');
   const gap = (row, i) => (i === 0 ? 0 : (layout.gaps && layout.gaps[row] !== undefined ? layout.gaps[row] : 14));
   const at = (row, i) => `data-row="${row}" style="margin-top: ${gap(row, i)}px"`;

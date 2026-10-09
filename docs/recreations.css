@@ -330,7 +330,15 @@
   margin-left: var(--rc-thumb-x, 0);
 }
 
-/* End-point tick marks with their captions centered underneath */
+/* --rc-mag-y nudges the Magnification slider row, which sits a pixel
+   off the Size row's spacing in some releases */
+.rc-control[data-row="magnification"] {
+  transform: translateY(var(--rc-mag-y, 0));
+}
+
+/* End-point tick marks with their captions centered underneath. The ticks
+   hang off the scale itself rather than the centered captions, so they land
+   on whole pixels instead of blurring across two. */
 .rc-scale {
   position: relative;
   width: var(--rc-slider-w, 210px);
@@ -340,12 +348,30 @@
   font-size: calc(var(--rc-font, 13px) - 3px);
 }
 
-.rc-scale span {
+.rc-scale::before,
+.rc-scale::after {
+  content: '';
   position: absolute;
   top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  left: 5px;
+  width: 1px;
+  height: 5px;
+  background: var(--slider-tick, #777);
+}
+
+.rc-scale::after {
+  left: calc(100% - 10px);
+}
+
+/* 10.0-10.4 fade a disabled slider's ticks with it */
+.rc-stage:not([data-aqua-era="10-6"]) .rc-slider.disabled + .rc-scale::before,
+.rc-stage:not([data-aqua-era="10-6"]) .rc-slider.disabled + .rc-scale::after {
+  opacity: 0.45;
+}
+
+.rc-scale span {
+  position: absolute;
+  top: 10px;
   transform: translateX(-50%);
 }
 
@@ -355,22 +381,6 @@
 
 .rc-scale span:last-child {
   left: calc(100% - 8px);
-}
-
-.rc-scale span::before {
-  content: '';
-  position: relative;
-  left: var(--rc-tick-x, -2px);
-  width: 1px;
-  height: 5px;
-  margin-top: -1px;
-  margin-bottom: 6px;
-  background: var(--slider-tick, #777);
-}
-
-/* The ticks sit a little left of the captions' centers, as in the originals */
-.rc-scale span:last-child::before {
-  --rc-tick-x: -1px;
 }
 
 /* Popups grow upward from the row's baseline to the original's height */
